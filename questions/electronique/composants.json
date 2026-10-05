@@ -1,8 +1,0 @@
-{
-  "$schema": "../../schemas/subtheme.schema.json",
-  "name": "Composants",
-  "icon": "🔋",
-  "description": "Résistances, condensateurs, bobines, diodes, LED, transistors, régulateurs : rôle, codes, choix et usages.",
-  "order": 2,
-  "questions": []
-}

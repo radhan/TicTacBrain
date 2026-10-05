@@ -1,8 +1,0 @@
-{
-  "$schema": "../../schemas/subtheme.schema.json",
-  "name": "Matériel & optique",
-  "icon": "🔭",
-  "description": "Capteurs, focales, objectifs, autofocus, stabilisation, flash, formats RAW et JPEG : comprendre son équipement.",
-  "order": 3,
-  "questions": []
-}
