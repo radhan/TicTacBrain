@@ -1325,6 +1325,95 @@
       ],
       "explanation": "Uniswap v4 permet d'attacher à une pool des **hooks**, des contrats appelés à des moments clés (avant ou après un swap, un ajout de liquidité…) pour y greffer des fonctions : frais dynamiques, ordres à cours limité, oracles… Toutes les pools vivent en outre dans un contrat unique (*singleton*), ce qui réduit le gas. La liquidité concentrée vient de la v3, les flash swaps de la v2, et les pools pondérées multi-jetons sont la marque de Balancer.",
       "difficulty": 3
+    },
+    {
+      "question": "Sur Aave, qui peut déclencher la **liquidation** d'une position devenue risquée ?",
+      "answer": "N'importe qui, en pratique surtout des robots spécialisés",
+      "wrong": [
+        "Uniquement l'équipe fondatrice d'Aave",
+        "Uniquement les détenteurs du jeton AAVE, par vote",
+        "Uniquement l'emprunteur lui-même, s'il y consent"
+      ],
+      "explanation": "La liquidation est **ouverte à tous** : dès que le facteur de santé passe sous 1, n'importe quelle adresse peut appeler la fonction de liquidation, rembourser une partie de la dette et récupérer du collatéral avec un bonus. En pratique, des robots surveillent en permanence les positions et se disputent ces opportunités, ce qui garantit des liquidations rapides sans autorité centrale.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que fait un **vault** (coffre) de rendement, comme ceux de Yearn Finance ?",
+      "answer": "Il place automatiquement les dépôts et réinvestit les gains",
+      "wrong": [
+        "Il conserve hors ligne les clés privées des utilisateurs",
+        "Il garantit un rendement fixe décidé à l'avance",
+        "Il émet un stablecoin adossé aux dépôts reçus"
+      ],
+      "explanation": "Un **vault** mutualise les dépôts et les confie à une **stratégie** automatisée : prêt, fourniture de liquidité, farming… Les récompenses sont récoltées et réinvesties (*auto-compounding*), ce qui économise à chaque utilisateur du temps et des frais de gas. Le rendement reste variable, et les risques s'additionnent : celui du vault plus celui de chaque protocole utilisé par la stratégie.",
+      "difficulty": 1
+    },
+    {
+      "question": "Le prix de l'ETH dans une pool Uniswap s'écarte de celui des autres marchés. Qui le ramène normalement au niveau du marché ?",
+      "answer": "Des arbitragistes, qui achètent là où l'ETH est le moins cher",
+      "wrong": [
+        "L'équipe d'Uniswap, qui corrige les réserves à la main",
+        "Un oracle de prix, qui réécrit les réserves de la pool",
+        "Les fournisseurs de liquidité, par un vote quotidien"
+      ],
+      "explanation": "Un AMM ne connaît pas le prix du marché : il ne voit que ses réserves. Si l'ETH y est moins cher qu'ailleurs, des **arbitragistes** l'achètent dans la pool et le revendent ailleurs, jusqu'à ce que l'écart disparaisse (frais compris). Ce mécanisme aligne les prix sans oracle, mais il a un coût : les gains des arbitragistes se font aux dépens des LP, ce qui se traduit par la perte impermanente.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel gestionnaire d'actifs a lancé en mars 2024 **BUIDL**, un fonds monétaire tokenisé sur Ethereum ?",
+      "answer": "BlackRock",
+      "wrong": [
+        "Vanguard",
+        "Fidelity",
+        "Amundi"
+      ],
+      "explanation": "**BlackRock** a lancé en mars 2024, avec Securitize, le fonds **BUIDL** (*BlackRock USD Institutional Digital Liquidity Fund*), dont les parts sont des jetons sur Ethereum. Investi en liquidités et en bons du Trésor américain, il est devenu une référence des **RWA** (actifs du monde réel tokenisés) ; il reste réservé aux investisseurs qualifiés.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel protocole de prêt a lancé en 2023 son propre stablecoin surcollatéralisé, le **GHO** ?",
+      "answer": "Aave",
+      "wrong": [
+        "Compound",
+        "MakerDAO",
+        "Lido"
+      ],
+      "explanation": "**GHO** est le stablecoin d'**Aave**, lancé sur Ethereum en juillet 2023. Il est créé quand un utilisateur l'emprunte contre le collatéral qu'il a déposé sur Aave, et les intérêts payés reviennent à la DAO d'Aave plutôt qu'à des déposants. MakerDAO émet le DAI, et Lido est un protocole de liquid staking.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi le lancement du jeton **YFI** de Yearn Finance, en juillet 2020, est-il resté célèbre ?",
+      "answer": "Aucun jeton n'a été réservé à l'équipe ni vendu à des investisseurs",
+      "wrong": [
+        "Il a levé un record de 4 milliards de dollars en prévente",
+        "Il a été le tout premier jeton distribué par airdrop",
+        "Il a été émis en quantité illimitée pour financer l'équipe"
+      ],
+      "explanation": "Andre Cronje a distribué les **30 000 YFI** uniquement aux utilisateurs qui fournissaient de la liquidité au protocole : pas de prévente, pas d'allocation pour l'équipe ni pour des fonds. Ce « *fair launch* » est devenu une référence de l'été 2020. Avec une offre aussi réduite, le YFI a rapidement dépassé le prix d'un bitcoin.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'apporte la fonction **`permit`** (EIP-2612) d'un jeton ERC-20 ?",
+      "answer": "Autoriser une dépense par simple signature, sans transaction `approve`",
+      "wrong": [
+        "Bloquer définitivement tout transfert vers une adresse donnée",
+        "Créer de nouveaux jetons sur autorisation du propriétaire",
+        "Rendre une autorisation existante valable sur toutes les chaînes"
+      ],
+      "explanation": "Avec **`permit`**, le détenteur signe hors chaîne un message (au format EIP-712) qui fixe le bénéficiaire, le montant et une date limite. N'importe qui peut ensuite soumettre cette signature au contrat du jeton, qui enregistre l'autorisation : on économise la transaction `approve` séparée et son gas. Revers : une signature `permit` obtenue par hameçonnage suffit à vider les jetons concernés, sans que la victime ait envoyé la moindre transaction.",
+      "difficulty": 3,
+      "source": "https://eips.ethereum.org/EIPS/eip-2612"
+    },
+    {
+      "question": "Qu'appelait-on les « **Curve Wars** » ?",
+      "answer": "La lutte des protocoles pour orienter les émissions de CRV via veCRV",
+      "wrong": [
+        "Le conflit juridique entre Curve et un concurrent sur sa formule",
+        "La série de piratages subis par Curve au cours de l'été 2023",
+        "La guerre des frais d'échange entre Curve et Uniswap"
+      ],
+      "explanation": "Les détenteurs de **veCRV** votent chaque semaine la répartition des émissions de CRV entre les pools (*gauge weights*). Pour qu'une pool contenant leur stablecoin attire de la liquidité, des protocoles ont accumulé des CRV verrouillés, directement ou via **Convex**, ou ont payé des « pots-de-vin » (*bribes*) aux votants. Cette compétition, intense en 2021-2022, illustre la valeur d'un pouvoir de vote qui dirige des récompenses.",
+      "difficulty": 3
     }
   ]
 }
