@@ -1167,6 +1167,268 @@
       "explanation": "La **productivité du travail** rapporte la production (en volume) à la quantité de travail utilisée : nombre de travailleurs ou, plus finement, nombre d'heures. Ses gains, permis par le progrès technique, l'équipement en capital et la formation, sont la principale source de hausse du niveau de vie à long terme. Travailler plus longtemps augmente la production, mais pas la productivité horaire.",
       "difficulty": 1,
       "source": "https://fr.wikipedia.org/wiki/Productivit%C3%A9"
+    },
+    {
+      "question": "Un pays augmente fortement ses **droits de douane** sur les produits importés. Quelle politique commerciale mène-t-il ?",
+      "answer": "Une politique protectionniste",
+      "wrong": [
+        "Une politique libre-échangiste",
+        "Une politique de relance monétaire",
+        "Une politique d'austérité budgétaire"
+      ],
+      "explanation": "Le **protectionnisme** consiste à protéger les producteurs nationaux de la concurrence étrangère par des **droits de douane** (taxes sur les importations), des quotas ou des normes contraignantes. Il s'oppose au **libre-échange**, qui vise à supprimer ces obstacles. Les droits de douane renchérissent les produits importés pour les consommateurs du pays et exposent souvent à des mesures de représailles des partenaires commerciaux.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Protectionnisme"
+    },
+    {
+      "question": "La **balance commerciale** d'un pays est dite déficitaire. Qu'est-ce que cela signifie ?",
+      "answer": "Il importe davantage de biens qu'il n'en exporte",
+      "wrong": [
+        "Il exporte davantage de biens qu'il n'en importe",
+        "Son État dépense plus qu'il ne perçoit d'impôts",
+        "Sa monnaie a perdu de la valeur sur l'année"
+      ],
+      "explanation": "La **balance commerciale** compare la valeur des exportations et des importations de **biens** d'un pays sur une période ; elle est déficitaire quand les importations l'emportent. C'est le cas de la France depuis de nombreuses années, son déficit sur les biens étant en partie compensé par un excédent sur les services, notamment le tourisme. L'écart entre dépenses et recettes de l'État, lui, s'appelle le déficit public.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Balance_commerciale"
+    },
+    {
+      "question": "Selon la théorie des **avantages comparatifs** de David Ricardo (1817), un pays moins efficace que ses voisins dans **toutes** les productions a-t-il intérêt à commercer avec eux ?",
+      "answer": "Oui, en se spécialisant là où son retard est le plus faible",
+      "wrong": [
+        "Non, il doit produire lui-même tout ce qu'il consomme",
+        "Non, l'échange ne profite qu'au pays le plus efficace",
+        "Oui, mais seulement s'il dévalue d'abord sa monnaie"
+      ],
+      "explanation": "Adam Smith expliquait l'échange par les **avantages absolus** : chacun produit ce qu'il fait mieux que les autres. **Ricardo** va plus loin avec l'exemple du vin et du drap entre le Portugal et l'Angleterre : même un pays moins productif partout gagne à se spécialiser dans la production où il est **relativement** le moins mauvais, et à importer le reste. Les deux pays peuvent alors consommer davantage qu'en autarcie.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Avantage_comparatif"
+    },
+    {
+      "question": "Quelle organisation internationale, créée en 1995 pour succéder au GATT, encadre les règles du commerce entre pays ?",
+      "answer": "L'Organisation mondiale du commerce (OMC)",
+      "wrong": [
+        "Le Fonds monétaire international (FMI)",
+        "La Banque des règlements internationaux (BRI)",
+        "L'Organisation internationale du travail (OIT)"
+      ],
+      "explanation": "L'**OMC**, installée à Genève, a remplacé le 1er janvier 1995 le **GATT**, l'accord général sur les tarifs douaniers et le commerce signé en 1947. Elle organise les négociations visant à réduire les obstacles aux échanges et dispose d'un mécanisme de **règlement des différends** entre États membres. Le FMI veille, lui, à la stabilité monétaire internationale, et la BRI sert de banque des banques centrales.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Organisation_mondiale_du_commerce"
+    },
+    {
+      "question": "Quel est le rôle principal du **Fonds monétaire international** (FMI), créé à Bretton Woods en 1944 ?",
+      "answer": "Veiller à la stabilité du système monétaire international",
+      "wrong": [
+        "Financer de grands projets d'infrastructure dans les pays pauvres",
+        "Fixer les taux directeurs des banques centrales membres",
+        "Négocier la baisse des droits de douane entre pays"
+      ],
+      "explanation": "Le **FMI** surveille les politiques économiques de ses membres et peut prêter aux pays confrontés à des difficultés de balance des paiements, généralement en échange de réformes (la « conditionnalité »). Le financement de projets de développement relève plutôt de la **Banque mondiale**, l'autre institution née à Bretton Woods, tandis que la baisse des droits de douane se négocie à l'OMC. Le FMI a son siège à Washington.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Fonds_mon%C3%A9taire_international"
+    },
+    {
+      "question": "Sur quel principe reposait le système monétaire international de **Bretton Woods** mis en place en 1944 ?",
+      "answer": "Des changes fixes autour d'un dollar convertible en or",
+      "wrong": [
+        "Des changes entièrement flottants entre toutes les monnaies",
+        "Une monnaie mondiale unique émise par le FMI",
+        "Le retour de toutes les monnaies à l'étalon-or"
+      ],
+      "explanation": "À **Bretton Woods** (États-Unis), 44 pays décident en juillet 1944 que leurs monnaies auront une parité fixe, mais ajustable, avec le dollar, lui-même convertible en or au prix de **35 dollars l'once**. C'est un système d'**étalon de change-or**, plus souple que l'étalon-or classique. Il prend fin quand le président Nixon suspend la convertibilité du dollar en or, le 15 août 1971 ; les changes deviennent ensuite flottants.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Accords_de_Bretton_Woods"
+    },
+    {
+      "question": "Selon le **triangle d'incompatibilité** de Mundell, quelles sont les trois choses qu'un pays ne peut pas obtenir simultanément ?",
+      "answer": "Changes fixes, libre circulation des capitaux, politique monétaire autonome",
+      "wrong": [
+        "Croissance forte, inflation faible et plein emploi",
+        "Budget équilibré, impôts faibles et dépenses sociales élevées",
+        "Excédent commercial, monnaie forte et taux d'intérêt bas"
+      ],
+      "explanation": "Avec des **changes fixes** et des **capitaux libres**, la banque centrale doit aligner ses taux sur ceux de la monnaie d'ancrage, sinon les capitaux fuient ou affluent : elle perd son **autonomie monétaire**. Un pays doit donc renoncer à l'un des trois éléments. Les pays de la zone euro ont abandonné l'autonomie monétaire nationale, les États-Unis ont choisi des changes flottants, et la Chine a longtemps limité les mouvements de capitaux.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Triangle_d%27incompatibilit%C3%A9"
+    },
+    {
+      "question": "Selon les critères du **traité de Maastricht** (1992), quels plafonds de déficit et de dette publics, en pourcentage du PIB, les États de la zone euro doivent-ils respecter ?",
+      "answer": "3 % pour le déficit et 60 % pour la dette",
+      "wrong": [
+        "1 % pour le déficit et 100 % pour la dette",
+        "3 % pour le déficit et 100 % pour la dette",
+        "5 % pour le déficit et 60 % pour la dette"
+      ],
+      "explanation": "Le traité de Maastricht fixe deux critères de finances publiques : un **déficit** inférieur à **3 % du PIB** et une **dette** inférieure à **60 % du PIB** (ou qui s'en rapproche à un rythme satisfaisant). Ils ont été repris par le pacte de stabilité et de croissance. Ces règles ont été suspendues de 2020 à 2023 face à la crise du Covid, et plusieurs pays, dont la France, dépassent largement le plafond de dette.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Crit%C3%A8res_de_convergence"
+    },
+    {
+      "question": "Dans le modèle keynésien simple, la **propension marginale à consommer** est de **0,8**. Quelle est la valeur du **multiplicateur** de dépenses publiques ?",
+      "answer": "5",
+      "wrong": [
+        "0,8",
+        "1,25",
+        "8"
+      ],
+      "explanation": "Le multiplicateur vaut **1 / (1 − c)**, où c est la propension marginale à consommer : 1 / (1 − 0,8) = 1 / 0,2 = **5**. L'idée : 100 € de dépense publique deviennent des revenus, dont 80 € sont dépensés, puis 64 €, etc. ; la somme de cette suite atteint 500 €. Dans la réalité, l'épargne, les impôts et les importations constituent des « fuites » qui réduisent nettement cet effet multiplicateur.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Multiplicateur_keyn%C3%A9sien"
+    },
+    {
+      "question": "Quelle idée la **courbe de Laffer** illustre-t-elle ?",
+      "answer": "Au-delà d'un certain taux, hausser l'impôt réduit les recettes",
+      "wrong": [
+        "Plus le taux d'imposition est élevé, plus les recettes augmentent",
+        "Les recettes fiscales sont indépendantes du taux d'imposition",
+        "Un impôt progressif rapporte toujours plus qu'un impôt proportionnel"
+      ],
+      "explanation": "Popularisée par l'économiste **Arthur Laffer** dans les années 1970, la courbe résume l'adage « **trop d'impôt tue l'impôt** » : à 0 % comme à 100 %, l'État ne perçoit rien, car à 100 % plus personne n'a intérêt à produire ou à déclarer un revenu. Entre les deux existe un taux qui maximise les recettes. Le principe est admis ; c'est la position de ce taux, et donc le fait qu'un pays l'ait dépassé ou non, qui fait débat.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Courbe_de_Laffer"
+    },
+    {
+      "question": "Un barème simplifié prévoit **0 %** d'impôt jusqu'à 10 000 € de revenu, puis **20 %** sur la part du revenu au-delà. Combien d'impôt paie une personne qui gagne **15 000 €** ?",
+      "answer": "1 000 €",
+      "wrong": [
+        "3 000 €",
+        "2 000 €",
+        "0 €"
+      ],
+      "explanation": "Avec un barème **par tranches**, chaque taux ne s'applique qu'à la fraction du revenu comprise dans sa tranche : 0 % sur les 10 000 premiers euros, puis 20 % sur les 5 000 € restants, soit **1 000 €**. Le **taux marginal** de cette personne est de 20 %, mais son **taux moyen** n'est que de 1 000 / 15 000 ≈ 6,7 %. Dans un tel barème, « passer dans la tranche supérieure » ne fait donc jamais baisser le revenu après impôt : seuls les euros supplémentaires sont taxés plus fort. L'impôt sur le revenu français repose sur ce principe.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que regroupent les **prélèvements obligatoires** ?",
+      "answer": "Les impôts, les taxes et les cotisations sociales",
+      "wrong": [
+        "Uniquement l'impôt sur le revenu des ménages",
+        "Les emprunts émis par l'État sur les marchés",
+        "Les amendes et les frais bancaires obligatoires"
+      ],
+      "explanation": "Les **prélèvements obligatoires** sont l'ensemble des versements imposés par la loi aux ménages et aux entreprises au profit des administrations publiques : impôts et taxes (TVA, impôt sur le revenu, impôt sur les sociétés…) et **cotisations sociales**. Rapporté au PIB, leur total donne le **taux de prélèvements obligatoires**, parmi les plus élevés de l'OCDE en France. Les emprunts de l'État, eux, sont remboursables et ne sont donc pas des prélèvements.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Pr%C3%A9l%C3%A8vements_obligatoires"
+    },
+    {
+      "question": "L'État finance une forte hausse de ses dépenses par l'emprunt, ce qui fait monter les taux d'intérêt et décourage l'investissement privé. Comment s'appelle ce phénomène ?",
+      "answer": "L'effet d'éviction",
+      "wrong": [
+        "L'effet multiplicateur",
+        "L'effet de levier",
+        "L'effet d'aubaine"
+      ],
+      "explanation": "L'**effet d'éviction** désigne la situation où la dépense publique se substitue en partie à la dépense privée au lieu de s'y ajouter : en empruntant massivement, l'État entre en concurrence avec les entreprises pour l'épargne disponible, ce qui renchérit le crédit. Cet argument, souvent opposé aux politiques de relance keynésiennes, pèse moins quand les taux sont bas et que l'économie est en sous-emploi. L'effet multiplicateur, à l'inverse, amplifie l'impact de la dépense publique.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Effet_d%27%C3%A9viction"
+    },
+    {
+      "question": "Que décrit le **paradoxe de l'épargne** mis en avant par Keynes ?",
+      "answer": "Si tous épargnent davantage, la baisse de la demande peut réduire les revenus",
+      "wrong": [
+        "Plus un pays épargne, plus son inflation augmente mécaniquement",
+        "Les ménages épargnent davantage quand les taux d'intérêt baissent",
+        "L'épargne des ménages finit toujours par être prélevée par l'impôt"
+      ],
+      "explanation": "Pour un ménage isolé, épargner plus est prudent. Mais si **tous** les ménages le font en même temps, ils consomment moins : les entreprises vendent moins, produisent moins et distribuent moins de revenus. Au final, les revenus baissent et l'épargne totale peut ne pas progresser, voire reculer. Ce **paradoxe** illustre une idée chère à Keynes : ce qui est rationnel pour un individu ne l'est pas forcément pour l'économie dans son ensemble.",
+      "difficulty": 3
+    },
+    {
+      "question": "Tu places **1 000 €** à **10 %** par an à intérêts composés (les intérêts sont réinvestis). De combien disposes-tu au bout de **2 ans** ?",
+      "answer": "1 210 €",
+      "wrong": [
+        "1 200 €",
+        "1 100 €",
+        "1 020 €"
+      ],
+      "explanation": "Avec les **intérêts composés**, les intérêts de la première année produisent eux-mêmes des intérêts : 1 000 × 1,10 = 1 100 € après un an, puis 1 100 × 1,10 = **1 210 €** après deux ans. Avec des intérêts simples, calculés seulement sur le capital de départ, on obtiendrait 1 200 €. L'écart paraît faible sur deux ans, mais il devient énorme sur des décennies : c'est l'effet « boule de neige ».",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Int%C3%A9r%C3%AAts_compos%C3%A9s"
+    },
+    {
+      "question": "Avec une inflation constante de **3 %** par an, en combien de temps environ le niveau général des prix double-t-il ?",
+      "answer": "En 24 ans environ",
+      "wrong": [
+        "En 33 ans environ",
+        "En 12 ans environ",
+        "En 72 ans environ"
+      ],
+      "explanation": "Les hausses de prix se cumulent comme des intérêts composés. La **règle de 72** donne une bonne approximation du temps de doublement : 72 divisé par le taux annuel, soit 72 / 3 = **24 ans** (le calcul exact donne environ 23,4 ans). Raisonner de façon linéaire (100 / 3 ≈ 33 ans) surestime ce délai, car chaque hausse s'applique à des prix déjà augmentés.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/R%C3%A8gle_de_72"
+    },
+    {
+      "question": "Quel économiste britannique a publié en 1936 la **Théorie générale de l'emploi, de l'intérêt et de la monnaie** ?",
+      "answer": "John Maynard Keynes",
+      "wrong": [
+        "Adam Smith",
+        "Alfred Marshall",
+        "Friedrich Hayek"
+      ],
+      "explanation": "Publiée pendant la Grande Dépression, la **Théorie générale** de **John Maynard Keynes** remet en cause l'idée que le marché ramène spontanément le plein emploi. Keynes y montre qu'un chômage durable peut résulter d'une demande insuffisante et justifie l'intervention de l'État pour la soutenir. L'ouvrage fonde la **macroéconomie** moderne et inspire les politiques de relance de l'après-guerre.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/John_Maynard_Keynes"
+    },
+    {
+      "question": "Quel penseur est l'auteur du **Capital**, dont le premier livre paraît en 1867 et qui analyse le capitalisme à travers l'exploitation des travailleurs ?",
+      "answer": "Karl Marx",
+      "wrong": [
+        "Adam Smith",
+        "Pierre-Joseph Proudhon",
+        "John Stuart Mill"
+      ],
+      "explanation": "Dans **Le Capital**, **Karl Marx** soutient que le profit provient de la **plus-value** : la différence entre la valeur créée par le travail des ouvriers et le salaire qui leur est versé. Il y voit une exploitation et annonce des crises de plus en plus graves du capitalisme. Seul le livre I a été publié de son vivant ; les livres II et III ont été édités par Friedrich Engels après sa mort.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Le_Capital"
+    },
+    {
+      "question": "À quel économiste associe-t-on le **monétarisme** et la formule « l'inflation est toujours et partout un phénomène monétaire » ?",
+      "answer": "Milton Friedman",
+      "wrong": [
+        "John Maynard Keynes",
+        "Joseph Schumpeter",
+        "Paul Krugman"
+      ],
+      "explanation": "Figure de l'**école de Chicago**, **Milton Friedman** (prix Nobel 1976) estime que l'inflation résulte d'une croissance de la masse monétaire plus rapide que celle de la production. Il recommande donc une progression régulière et modérée de la monnaie plutôt que des politiques de relance au coup par coup. Ses idées ont inspiré la lutte contre l'inflation des années 1980, notamment aux États-Unis et au Royaume-Uni.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Milton_Friedman"
+    },
+    {
+      "question": "Dans l'équation de la **théorie quantitative de la monnaie**, `M × V = P × T`, que représente **V** ?",
+      "answer": "La vitesse de circulation de la monnaie",
+      "wrong": [
+        "La valeur ajoutée totale de l'économie",
+        "Le volume des réserves de change",
+        "La variation annuelle des taux d'intérêt"
+      ],
+      "explanation": "Formalisée par **Irving Fisher** en 1911, l'équation dit que la masse monétaire (M) multipliée par sa **vitesse de circulation** (V, le nombre de fois qu'un euro change de mains sur la période) égale le niveau des prix (P) multiplié par le volume des transactions (T). Si V et T sont supposés stables, toute hausse de M se traduit par une hausse de P : c'est le cœur de l'explication monétariste de l'inflation.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Th%C3%A9orie_quantitative_de_la_monnaie"
+    },
+    {
+      "question": "Quelle formule résume la **loi des débouchés** de Jean-Baptiste Say, telle qu'on la présente habituellement ?",
+      "answer": "L'offre crée sa propre demande",
+      "wrong": [
+        "La demande crée sa propre offre",
+        "La mauvaise monnaie chasse la bonne",
+        "Trop d'impôt tue l'impôt"
+      ],
+      "explanation": "Pour **Jean-Baptiste Say** (1803), « les produits s'échangent contre des produits » : toute production distribue des revenus qui serviront à acheter d'autres productions, si bien qu'une surproduction générale et durable serait impossible. La formule « l'offre crée sa propre demande » est en fait le résumé qu'en a donné Keynes pour la critiquer : selon lui, une partie des revenus peut être épargnée plutôt que dépensée, d'où des crises de demande. « La mauvaise monnaie chasse la bonne » est la loi de Gresham.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Loi_de_Say"
+    },
+    {
+      "question": "Que signifie l'acronyme **SMIC** ?",
+      "answer": "Salaire minimum interprofessionnel de croissance",
+      "wrong": [
+        "Salaire moyen indexé sur la consommation",
+        "Salaire minimum individuel de carrière",
+        "Seuil minimal d'imposition des contribuables"
+      ],
+      "explanation": "Le **SMIC**, créé en 1970, a remplacé le SMIG (salaire minimum interprofessionnel garanti) institué en 1950. Le mot « croissance » rappelle qu'il ne doit pas seulement suivre les prix, mais aussi faire profiter les salariés les moins payés des fruits de la croissance. Il est revalorisé chaque 1er janvier, et automatiquement en cours d'année dès que les prix ont augmenté d'au moins 2 % depuis la dernière revalorisation.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Salaire_minimum_interprofessionnel_de_croissance"
     }
   ]
 }

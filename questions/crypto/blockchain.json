@@ -1293,6 +1293,248 @@
       ],
       "explanation": "Selon **EIP-55**, chaque lettre de l'adresse est mise en majuscule ou non selon le hash Keccak-256 de l'adresse écrite en minuscules. Un portefeuille peut ainsi détecter la plupart des erreurs de saisie avant d'envoyer des fonds. L'hexadécimal étant insensible à la casse, une adresse tout en minuscules reste valide : elle n'offre simplement pas cette vérification. La casse ne dit rien du type de compte ni du réseau.",
       "difficulty": 3
+    },
+    {
+      "question": "Un producteur de bloc publie un bloc dans lequel il s'attribue 1 000 ETH de récompense non prévue par le protocole. Que font les autres nœuds ?",
+      "answer": "Ils rejettent ce bloc, qui enfreint les règles",
+      "wrong": [
+        "Ils l'acceptent, car il a été produit à temps",
+        "Ils l'acceptent, mais réduisent sa récompense",
+        "Ils votent pour décider s'il est acceptable"
+      ],
+      "explanation": "Chaque nœud vérifie **lui-même** chaque bloc reçu : signatures, soldes, respect des règles d'émission… Un bloc invalide est simplement ignoré, quel que soit celui qui l'a produit, et son auteur perd la récompense légitime qu'il aurait pu obtenir. C'est ce qui rend les règles d'une blockchain difficiles à contourner : il ne suffit pas de produire des blocs, encore faut-il que les nœuds les acceptent.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi les transactions sont-elles beaucoup moins chères sur un rollup que sur le réseau principal d'Ethereum ?",
+      "answer": "Il regroupe de nombreuses transactions en un seul lot",
+      "wrong": [
+        "Il supprime toute vérification des transactions",
+        "Il est subventionné par la Fondation Ethereum",
+        "Il n'enregistre jamais les transactions nulle part"
+      ],
+      "explanation": "Un **rollup** exécute les transactions hors de la couche 1, puis publie sur Ethereum un **lot** compressé de centaines de transactions, accompagné selon le cas d'une preuve de validité ou d'un délai de contestation. Le coût de cette publication est partagé entre tous les utilisateurs du lot, d'où des frais bien plus faibles. Les transactions restent vérifiables : c'est ce qui distingue un rollup d'une simple base de données centralisée.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel surnom a souvent été donné à Ethereum, pour sa capacité à exécuter n'importe quel programme sur une blockchain ?",
+      "answer": "L'ordinateur mondial (world computer)",
+      "wrong": [
+        "L'or numérique (digital gold)",
+        "Le grand livre bancaire",
+        "La monnaie du peuple"
+      ],
+      "explanation": "Ethereum a été présenté comme un « **ordinateur mondial** » : une machine virtuelle unique, l'EVM, dont l'état est répliqué sur des milliers de nœuds et que n'importe qui peut programmer en déployant des smart contracts. « L'**or numérique** » est au contraire le surnom de Bitcoin, mis en avant comme réserve de valeur rare plutôt que comme plateforme de programmes.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie le terme « trustless », souvent employé pour décrire une blockchain ?",
+      "answer": "On n'a pas besoin de faire confiance à un tiers",
+      "wrong": [
+        "Les utilisateurs ne se font jamais confiance entre eux",
+        "Le réseau n'est pas digne de confiance",
+        "Les transactions ne sont pas sécurisées"
+      ],
+      "explanation": "« **Trustless** » ne veut pas dire « peu fiable », mais « sans besoin de confiance » : les règles sont publiques et chacun peut vérifier lui-même que les transactions les respectent, au lieu de croire une banque ou un intermédiaire sur parole. La confiance est déplacée vers le code, la cryptographie et les incitations économiques du protocole. C'est l'idée résumée par le slogan « Don't trust, verify ».",
+      "difficulty": 1
+    },
+    {
+      "question": "Ta transaction Ethereum reste « en attente » (pending) depuis des heures. Quelle est la cause la plus probable ?",
+      "answer": "Les frais proposés sont trop bas pour le moment",
+      "wrong": [
+        "Le destinataire n'a pas encore accepté le paiement",
+        "Le réseau Ethereum est fermé la nuit",
+        "La banque de l'expéditeur vérifie l'opération"
+      ],
+      "explanation": "Tant qu'une transaction n'est pas incluse dans un bloc, elle patiente dans la **mempool**. Si le prix maximal proposé est inférieur à la base fee du moment, ou si le pourboire est trop faible, les producteurs de blocs lui préfèrent d'autres transactions. On peut attendre que la demande baisse, ou la **remplacer** en renvoyant une transaction de même nonce avec des frais plus élevés. Le destinataire n'a jamais à « accepter » un paiement, et le réseau fonctionne en continu.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel environnement de développement, utilisable directement dans le navigateur, permet d'écrire, compiler et déployer des contrats Solidity sans rien installer ?",
+      "answer": "Remix",
+      "wrong": [
+        "Hardhat",
+        "Foundry",
+        "Ganache"
+      ],
+      "explanation": "**Remix IDE**, maintenu par la Fondation Ethereum, est un éditeur en ligne doté d'un compilateur Solidity, d'un débogueur et d'une blockchain simulée dans le navigateur : idéal pour apprendre ou tester rapidement. **Hardhat** (outillage JavaScript/TypeScript) et **Foundry** (outils en ligne de commande, tests écrits en Solidity) s'installent sur la machine du développeur, et **Ganache** était une blockchain locale de test, aujourd'hui abandonnée.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qu'Infura, service très utilisé par les portefeuilles et les dApps d'Ethereum ?",
+      "answer": "Un fournisseur d'accès à des nœuds Ethereum par API",
+      "wrong": [
+        "Un portefeuille matériel pour stocker ses clés",
+        "Une plateforme d'échange décentralisée",
+        "Un langage de programmation de smart contracts"
+      ],
+      "explanation": "Faire tourner son propre nœud demande du stockage et de la maintenance. **Infura** (groupe ConsenSys) en exploite pour le compte des applications, qui interrogent la blockchain et diffusent leurs transactions via son API JSON-RPC ; MetaMask l'utilise par défaut. C'est pratique, mais cela recentralise une partie de l'écosystème : une panne d'Infura, comme en novembre 2020, peut perturber de nombreux services d'un coup.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce que Tornado Cash, sanctionné par le Trésor américain en août 2022 ?",
+      "answer": "Un mixeur qui brouille l'origine des fonds sur Ethereum",
+      "wrong": [
+        "Une plateforme d'échange centralisée basée aux Bahamas",
+        "Un stablecoin algorithmique effondré en 2022",
+        "Un portefeuille matériel fabriqué en France"
+      ],
+      "explanation": "**Tornado Cash** est un ensemble de smart contracts : on y dépose des ETH ou des jetons, puis on les retire plus tard vers une autre adresse en prouvant son droit par une **preuve à divulgation nulle**, sans révéler de quel dépôt il s'agit. Utile pour la confidentialité, l'outil a aussi servi à blanchir des fonds volés, notamment par le groupe nord-coréen Lazarus, d'où ces sanctions, levées en mars 2025. FTX était la plateforme basée aux Bahamas, et TerraUSD le stablecoin effondré en 2022.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qu'une « attaque Sybil » contre un réseau pair à pair ?",
+      "answer": "Créer une multitude de fausses identités pour peser plus",
+      "wrong": [
+        "Inonder le réseau de requêtes pour le saturer",
+        "Intercepter les messages entre deux nœuds",
+        "Voler la clé privée d'un validateur"
+      ],
+      "explanation": "Dans une **attaque Sybil**, un seul acteur se fait passer pour une foule en créant d'innombrables nœuds ou comptes, pour influencer un vote ou isoler des victimes. Dans un réseau ouvert, compter les identités ne suffit donc pas : la **preuve de travail** et la **preuve d'enjeu** pondèrent l'influence par une ressource coûteuse (puissance de calcul ou jetons misés) qu'on ne peut pas dupliquer gratuitement. Inonder de requêtes décrit un déni de service, et intercepter les messages une attaque de l'homme du milieu.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qu'un « soulbound token » (SBT), concept popularisé par Vitalik Buterin en 2022 ?",
+      "answer": "Un jeton non transférable, lié à une identité",
+      "wrong": [
+        "Un jeton qui s'autodétruit après sa première vente",
+        "Un jeton adossé à de l'or physique",
+        "Un jeton de gouvernance à vote secret"
+      ],
+      "explanation": "Un **soulbound token** reste attaché à l'adresse qui l'a reçu : on ne peut ni le vendre ni le transférer. L'idée, inspirée des objets « liés à l'âme » du jeu World of Warcraft, est de représenter des diplômes, des participations ou une réputation, qui n'ont de sens que pour leur titulaire. Le concept a été détaillé en 2022 dans l'article « Decentralized Society: Finding Web3's Soul », coécrit par Vitalik Buterin.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur un rollup comme Arbitrum ou Optimism, quel est le rôle du « séquenceur » ?",
+      "answer": "Ordonner les transactions et les publier en lots sur Ethereum",
+      "wrong": [
+        "Miner les blocs d'Ethereum en preuve de travail",
+        "Fixer le prix de l'ETH pour les autres protocoles",
+        "Générer les clés privées des utilisateurs"
+      ],
+      "explanation": "Le **séquenceur** reçoit les transactions des utilisateurs, décide de leur ordre, les exécute pour donner une confirmation quasi instantanée, puis publie régulièrement des lots compressés sur Ethereum. Sur de nombreux rollups, il est exploité par une seule entité : il pourrait retarder ou censurer des transactions, d'où des mécanismes permettant de soumettre une transaction directement via Ethereum en cas d'abus. Il ne peut pas, en principe, voler les fonds ni faire accepter un état invalide.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que désigne le « MEV » (Maximal Extractable Value) sur une blockchain comme Ethereum ?",
+      "answer": "Le profit tiré du choix et de l'ordre des transactions d'un bloc",
+      "wrong": [
+        "La valeur maximale qu'un validateur peut miser",
+        "Le plafond des frais qu'une transaction peut payer",
+        "La récompense fixe versée pour chaque bloc produit"
+      ],
+      "explanation": "Celui qui construit un bloc décide quelles transactions y entrent et dans quel ordre. Il peut en tirer un profit supplémentaire : arbitrages entre plateformes, liquidations, ou attaques contre des utilisateurs (front-running, sandwich). On parlait à l'origine de **Miner** Extractable Value, rebaptisée **Maximal** Extractable Value car le phénomène ne concerne pas que les mineurs. Ce profit, considérable, façonne l'organisation de la production des blocs.",
+      "difficulty": 2
+    },
+    {
+      "question": "Avant The Merge, pourquoi l'algorithme de minage d'Ethereum, Ethash, exigeait-il beaucoup de mémoire ?",
+      "answer": "Pour limiter l'avantage des ASIC sur les cartes graphiques",
+      "wrong": [
+        "Pour stocker toute la blockchain dans chaque hash",
+        "Pour accélérer la validation des transactions",
+        "Pour permettre le minage sur téléphone mobile"
+      ],
+      "explanation": "**Ethash** obligeait à lire sans cesse un gros jeu de données (le « DAG », de plusieurs gigaoctets) : la vitesse dépendait surtout de la bande passante mémoire, que les cartes graphiques (GPU) offrent en abondance. L'objectif était d'éviter que des puces spécialisées (ASIC) monopolisent le minage, comme sur Bitcoin. Des ASIC pour Ethash ont fini par apparaître, mais les GPU sont restés très présents jusqu'à l'abandon de la preuve de travail en 2022.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur Etherscan, que signifie la mention « contrat vérifié » (verified) affichée sur la page d'un smart contract ?",
+      "answer": "Son code source publié correspond au bytecode déployé",
+      "wrong": [
+        "Le contrat a été audité par l'équipe d'Etherscan",
+        "Le contrat ne peut plus être modifié ni mis à jour",
+        "Le contrat est garanti sans arnaque ni faille"
+      ],
+      "explanation": "Sur la blockchain ne figure que le **bytecode** du contrat, illisible pour un humain. Lorsqu'un développeur publie son code source, Etherscan le recompile avec les mêmes paramètres et vérifie que le résultat est identique au bytecode déployé. Chacun peut alors lire ce que fait réellement le contrat. Mais « vérifié » ne veut pas dire « sûr » : un contrat malveillant ou bogué peut parfaitement être vérifié.",
+      "difficulty": 2
+    },
+    {
+      "question": "En mars 2022, le pont de la blockchain Ronin a été vidé d'environ 600 millions de dollars en cryptos. À quel jeu vidéo cette blockchain était-elle dédiée ?",
+      "answer": "Axie Infinity",
+      "wrong": [
+        "The Sandbox",
+        "Decentraland",
+        "CryptoKitties"
+      ],
+      "explanation": "**Ronin** est la blockchain créée par Sky Mavis pour son jeu **Axie Infinity**. Son pont vers Ethereum était contrôlé par 9 validateurs, dont 5 signatures suffisaient à autoriser un retrait : les attaquants, que le FBI a identifiés comme le groupe nord-coréen **Lazarus**, en ont compromis 5 et ont retiré environ 173 600 ETH et 25,5 millions d'USDC. Ce piratage illustre la fragilité des ponts dont la sécurité repose sur un petit groupe de signataires.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi EIP-155, adopté en 2016, a-t-il intégré l'identifiant de chaîne (chain ID) dans la signature des transactions ?",
+      "answer": "Pour empêcher de rejouer une transaction sur une autre chaîne",
+      "wrong": [
+        "Pour accélérer la vérification des signatures",
+        "Pour chiffrer le destinataire de la transaction",
+        "Pour permettre d'annuler une transaction déjà envoyée"
+      ],
+      "explanation": "Après la scission entre Ethereum et Ethereum Classic, une transaction signée pour l'une des chaînes était aussi valide sur l'autre : un tiers pouvait la **rejouer** et déplacer des fonds sans que leur propriétaire le veuille. Avec EIP-155, la signature couvre l'identifiant de la chaîne (1 pour le réseau principal d'Ethereum, 61 pour Ethereum Classic), si bien qu'elle n'est valable que là où elle a été prévue. Le nonce, lui, empêche le rejeu au sein d'une même chaîne.",
+      "difficulty": 3
+    },
+    {
+      "question": "Depuis la mise à jour Dencun (mars 2024) et EIP-6780, que fait l'instruction `SELFDESTRUCT` appelée sur un contrat déployé de longue date ?",
+      "answer": "Elle envoie son ETH, mais n'efface plus le contrat",
+      "wrong": [
+        "Elle efface le code et le stockage du contrat",
+        "Elle gèle le contrat pendant 18 jours",
+        "Elle brûle tout l'ETH détenu par le contrat"
+      ],
+      "explanation": "Avec **EIP-6780**, `SELFDESTRUCT` ne supprime plus le code ni le stockage d'un contrat, sauf s'il est appelé dans la **même transaction** que celle qui a créé ce contrat. Sinon, l'instruction se contente de transférer le solde d'ETH vers l'adresse indiquée. Ce changement simplifie la gestion de l'état ; il a aussi mis fin aux contrats « métamorphiques », qu'on détruisait puis redéployait à la même adresse avec un code différent.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que permet l'instruction `CREATE2` de l'EVM, introduite en 2019 ?",
+      "answer": "Connaître l'adresse d'un contrat avant même de le déployer",
+      "wrong": [
+        "Déployer deux copies d'un contrat en une transaction",
+        "Créer un contrat sans payer de gas",
+        "Déployer un contrat simultanément sur deux chaînes"
+      ],
+      "explanation": "Avec `CREATE`, l'adresse d'un nouveau contrat dépend de l'adresse du créateur et de son **nonce**. Avec `CREATE2`, elle dépend du créateur, d'un **sel** (salt) choisi librement et du hash du code d'initialisation : on peut donc la calculer à l'avance, voire y envoyer des fonds, avant tout déploiement. C'est très utilisé par les portefeuilles intelligents, les canaux de paiement ou les usines (factories) de pools d'échange.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un contrat Solidity stocke un mot de passe dans une variable déclarée `private`. Ce mot de passe est-il secret ?",
+      "answer": "Non, n'importe qui peut lire le stockage du contrat",
+      "wrong": [
+        "Oui, seul le contrat peut lire cette variable",
+        "Oui, le compilateur la chiffre automatiquement",
+        "Oui, tant que le contrat n'est pas vérifié"
+      ],
+      "explanation": "`private` signifie seulement que les **autres contrats** ne peuvent pas accéder à la variable dans leur code. Mais tout l'état d'Ethereum est public : n'importe qui peut lire un emplacement de stockage avec un nœud (méthode `eth_getStorageAt`), ou retrouver la valeur dans les données de la transaction qui l'a écrite. Un secret ne doit donc jamais être stocké en clair sur une blockchain publique : on y place au mieux son hash.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi est-il dangereux d'utiliser `block.timestamp` ou le hash d'un bloc comme source de hasard dans une loterie en smart contract ?",
+      "answer": "Ces valeurs sont prévisibles ou influençables",
+      "wrong": [
+        "Ces valeurs changent à chaque lecture",
+        "Ces valeurs sont inaccessibles en Solidity",
+        "Ces valeurs coûtent des milliers d'ETH à lire"
+      ],
+      "explanation": "Tout ce qu'un contrat peut lire est **déterministe** et connu au moment de l'exécution : sur Ethereum, l'horodatage d'un bloc découle directement du numéro de slot, et le producteur d'un bloc peut influencer d'autres valeurs, par exemple en choisissant de publier ou non son bloc. Un attaquant peut aussi simuler la loterie dans un contrat et n'y participer que lorsqu'il gagne. Pour un hasard fiable, on utilise un schéma « engagement puis révélation » (commit-reveal) ou un oracle de hasard vérifiable, comme **Chainlink VRF**, qui fournit un nombre aléatoire accompagné d'une preuve.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'était la « bombe de difficulté » (difficulty bomb) de l'Ethereum en preuve de travail ?",
+      "answer": "Une hausse programmée de la difficulté de minage",
+      "wrong": [
+        "Une attaque qui faisait exploser les frais de gas",
+        "Un bug qui a bloqué le réseau plusieurs jours",
+        "Une division brutale de la récompense des mineurs"
+      ],
+      "explanation": "Le code d'Ethereum contenait une **bombe de difficulté** : à partir d'un certain bloc, la difficulté de minage augmentait de façon exponentielle, rallongeant le temps entre les blocs jusqu'à rendre la chaîne inutilisable (l'« âge de glace »). Elle devait inciter à passer à la preuve d'enjeu et empêcher les mineurs de prolonger indéfiniment la preuve de travail. Elle a été repoussée plusieurs fois par des hard forks (Muir Glacier, Arrow Glacier, Gray Glacier) avant de devenir sans objet avec The Merge.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel problème théorique de la preuve d'enjeu désigne l'expression « nothing at stake » (rien en jeu) ?",
+      "answer": "Voter pour plusieurs branches concurrentes ne coûte rien",
+      "wrong": [
+        "Les validateurs n'ont rien à miser au départ",
+        "Les petits détenteurs n'ont aucune chance d'être choisis",
+        "Les frais de transaction finissent par tomber à zéro"
+      ],
+      "explanation": "En preuve de travail, miner sur deux branches à la fois oblige à diviser sa puissance de calcul. Dans une preuve d'enjeu naïve, signer des blocs sur toutes les branches concurrentes ne coûte presque rien, et c'est même la stratégie la plus rentable : le consensus pourrait ne jamais converger. Ethereum y répond par le **slashing** : un validateur qui signe des votes contradictoires perd une partie de sa mise.",
+      "difficulty": 3
     }
   ]
 }
