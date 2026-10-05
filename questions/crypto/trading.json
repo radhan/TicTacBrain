@@ -1139,6 +1139,237 @@
       ],
       "explanation": "Un **explorateur de blocs** est un moteur de recherche de la blockchain : il affiche n'importe quelle transaction, le solde d'une adresse, la liste des détenteurs d'un token ou le code d'un contrat. C'est l'outil de base pour vérifier un envoi, l'adresse d'un contrat ou la répartition d'un token. Il ne donne aucun pouvoir sur les fonds : il ne peut ni annuler un envoi, ni restaurer un portefeuille.",
       "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qui distingue un contrat **perpétuel** (perp) d'un contrat à terme (future) classique ?",
+      "answer": "Il n'a pas de date d'échéance et peut rester ouvert indéfiniment",
+      "wrong": [
+        "Il ne peut jamais être liquidé, quel que soit le levier utilisé",
+        "Il oblige à livrer physiquement les tokens à la clôture",
+        "Il ne s'utilise que sans effet de levier, comme le spot"
+      ],
+      "explanation": "Un **future** classique expire à une date fixée, où la position est réglée. Le **contrat perpétuel**, devenu le produit dérivé le plus échangé en crypto, n'a pas d'échéance : on le garde tant que la marge suffit. Pour que son prix reste proche du prix spot, il utilise des paiements périodiques entre acheteurs et vendeurs, le **funding rate**. Il peut être liquidé comme n'importe quelle position à levier.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur un contrat perpétuel, le **funding rate** est positif. Que se passe-t-il à chaque échéance de financement ?",
+      "answer": "Les positions longues paient les positions courtes",
+      "wrong": [
+        "Les positions courtes paient les positions longues",
+        "La plateforme paie les deux camps à parts égales",
+        "Les positions sont fermées puis rouvertes automatiquement"
+      ],
+      "explanation": "Le **funding rate** est un paiement périodique (souvent toutes les 8 heures) entre traders. Quand il est positif, le prix du perpétuel est en général au-dessus du prix spot, signe que les acheteurs dominent : les **longs paient les shorts**, ce qui incite à rééquilibrer. Négatif, c'est l'inverse. Un funding élevé et durable grignote une position gardée longtemps, même si le prix ne bouge pas.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur une plateforme de dérivés, quelle est la différence entre la marge **isolée** et la marge **croisée** ?",
+      "answer": "Isolée : seule la marge de la position est en jeu ; croisée : tout le solde du compte",
+      "wrong": [
+        "Isolée : levier plafonné à 2x ; croisée : levier illimité sur tous les contrats",
+        "Isolée : uniquement des positions short ; croisée : uniquement des positions long",
+        "Isolée : frais de trading nuls ; croisée : frais doublés sur chaque ordre"
+      ],
+      "explanation": "En **marge isolée**, chaque position dispose de sa propre marge : si elle est liquidée, tu perds cette marge, mais le reste du compte est épargné. En **marge croisée**, tout le solde disponible sert de garantie commune : la position résiste plus longtemps, mais une seule mauvaise position peut emporter l'ensemble du compte. Pour un débutant, la marge isolée limite les dégâts.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi les plateformes de dérivés déclenchent-elles généralement les liquidations sur le **prix de marque** (mark price) plutôt que sur le dernier prix échangé ?",
+      "answer": "Pour éviter qu'un pic de prix bref ou manipulé sur une seule plateforme liquide les traders",
+      "wrong": [
+        "Parce que le prix de marque est toujours plus favorable aux positions longues",
+        "Parce que le dernier prix échangé n'est publié qu'une fois par jour",
+        "Parce que le prix de marque est fixé chaque matin par une banque centrale"
+      ],
+      "explanation": "Le **mark price** est un prix de référence calculé notamment à partir d'un indice de prix spot sur plusieurs plateformes, et lissé dans le temps. Le dernier prix échangé (last price) peut, lui, bondir quelques secondes à cause d'un gros ordre ou d'une manipulation sur un carnet peu profond. Utiliser le prix de marque pour les liquidations et le PnL latent protège contre ces mèches artificielles, sans les neutraliser totalement.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi une baisse de prix sur un marché chargé en positions longues à levier peut-elle s'emballer en **cascade de liquidations** ?",
+      "answer": "Chaque liquidation force des ventes qui font baisser le prix et en déclenchent d'autres",
+      "wrong": [
+        "Les plateformes suspendent les achats dès que le prix baisse de 10 %",
+        "Les liquidations créent de nouveaux tokens qui diluent le marché",
+        "Les positions courtes sont obligées de vendre quand le prix baisse"
+      ],
+      "explanation": "Quand une position longue à levier est liquidée, la plateforme la ferme en vendant au marché. Ces ventes forcées poussent le prix plus bas, ce qui atteint le seuil de liquidation d'autres positions, vendues à leur tour : c'est l'effet domino des **cascades de liquidations**, à l'origine de chutes éclair de 10 à 20 % en quelques minutes. Le même phénomène existe à la hausse quand des shorts sont liquidés : on parle alors de **short squeeze**.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur un marché de dérivés, que mesure l'**open interest** (intérêt ouvert) ?",
+      "answer": "Le nombre total de contrats encore ouverts, ni clôturés ni liquidés",
+      "wrong": [
+        "Le nombre de contrats échangés au cours des dernières 24 heures",
+        "Le taux d'intérêt payé par la plateforme sur les dépôts",
+        "La proportion de traders en position longue sur la plateforme"
+      ],
+      "explanation": "L'**open interest** compte les positions encore ouvertes à un instant donné. Chaque contrat a un acheteur et un vendeur : il ne dit donc pas si le marché est plutôt long ou short. Contrairement au **volume**, qui additionne tous les échanges d'une période, il mesure l'exposition encore engagée. Un open interest qui grimpe fortement avec un levier élevé signale un marché fragile, exposé aux cascades de liquidations.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sans stop-loss ni liquidation, quelle est en théorie la perte maximale d'une position **short** (vente à découvert) ?",
+      "answer": "Illimitée, car le prix d'un actif peut monter sans plafond",
+      "wrong": [
+        "Limitée à la mise, car un prix ne peut pas descendre sous zéro",
+        "Limitée à 50 % de la mise, grâce au mécanisme de marge",
+        "Nulle, car la plateforme rembourse les pertes des shorts"
+      ],
+      "explanation": "Un **short** gagne quand le prix baisse, mais ce gain est plafonné : le prix ne peut pas descendre sous zéro. À l'inverse, rien n'empêche le prix de doubler, tripler ou décupler : la perte théorique est **illimitée**. En pratique, sur une plateforme de dérivés, la position est liquidée avant et l'on perd la marge engagée. La perte « limitée à la mise » caractérise au contraire l'achat simple, sans levier.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que donne l'achat d'une **option d'achat** (call) sur le bitcoin ?",
+      "answer": "Le droit, sans obligation, d'acheter du bitcoin à un prix fixé, à une échéance donnée",
+      "wrong": [
+        "L'obligation d'acheter du bitcoin au prix du marché, à une échéance donnée",
+        "Le droit, sans obligation, de vendre du bitcoin à un prix fixé, à une échéance donnée",
+        "La garantie de recevoir du bitcoin gratuitement si son prix baisse"
+      ],
+      "explanation": "Un **call** donne le droit d'acheter l'actif à un prix d'exercice (strike) ; il devient intéressant à exercer si le prix du marché dépasse ce strike. Pour ce droit, l'acheteur paie une **prime**, qui constitue sa perte maximale si l'option expire sans valeur. Le droit de vendre à un prix fixé est un **put**. Les options sont des produits complexes, rarement adaptés aux débutants.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce que le **wash trading** ?",
+      "answer": "S'acheter et se vendre un actif à soi-même pour gonfler artificiellement le volume",
+      "wrong": [
+        "Revendre ses tokens juste après un airdrop pour encaisser le gain",
+        "Convertir ses tokens en stablecoins pour se protéger de la volatilité",
+        "Faire transiter ses fonds par plusieurs adresses pour brouiller leur origine"
+      ],
+      "explanation": "Le **wash trading** consiste à être à la fois acheteur et vendeur, directement ou via des comptes complices. Aucun actif ne change réellement de mains, mais le volume affiché grimpe, donnant l'illusion d'un marché actif et liquide. En 2019, la société Bitwise a estimé, dans une analyse présentée à la SEC, qu'environ 95 % du volume de bitcoin déclaré par les plateformes étudiées était fictif ou non économique. Cette pratique est interdite sur les marchés régulés.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce que le **spoofing** sur un carnet d'ordres ?",
+      "answer": "Placer de gros ordres qu'on n'a pas l'intention d'exécuter, pour tromper les autres traders",
+      "wrong": [
+        "Usurper l'adresse d'un portefeuille pour recevoir les fonds destinés à un autre",
+        "Exécuter un ordre au prix moyen de la journée pour réduire le slippage",
+        "Découper un gros ordre en petits morceaux pour limiter son impact sur le prix"
+      ],
+      "explanation": "Le **spoofer** affiche par exemple un énorme ordre d'achat juste sous le prix pour faire croire à une forte demande, pousse les autres à acheter, puis annule son ordre avant qu'il ne soit exécuté et vend au prix gonflé. Ces « murs » d'ordres qui apparaissent et disparaissent sont fréquents sur les marchés crypto peu surveillés. Le spoofing est une manipulation de marché interdite sur les marchés régulés, en Europe comme aux États-Unis. Découper un gros ordre en petits morceaux est en revanche une pratique légitime.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur une DEX, en quoi consiste une **attaque sandwich** contre ton ordre d'achat ?",
+      "answer": "Un bot achète juste avant toi pour faire monter le prix, puis revend juste après",
+      "wrong": [
+        "Un bot copie ton ordre et l'exécute sur une autre DEX au même prix",
+        "Un bot bloque ton ordre jusqu'à ce que tu paies une rançon",
+        "Un bot divise ton ordre en deux pour réduire tes frais de gas"
+      ],
+      "explanation": "Le bot repère ta transaction en attente et place un achat juste avant la tienne (**front-running**), ce qui fait monter le prix ; ton achat s'exécute alors plus cher, puis le bot revend aussitôt après (**back-running**) en empochant la différence. Ton ordre est pris en « sandwich ». Plus ta tolérance de slippage est élevée, plus l'attaquant peut te faire payer cher. Une tolérance serrée et l'envoi de transactions par un canal privé limitent ce risque.",
+      "difficulty": 3
+    },
+    {
+      "question": "Tu protèges une position avec un ordre **stop-limit** (déclenchement à 95 $, limite à 94 $). Le prix s'effondre d'un coup de 100 $ à 80 $, sans échanges entre les deux. Que risque-t-il de se passer ?",
+      "answer": "L'ordre se déclenche mais n'est pas exécuté, car le prix est passé sous la limite",
+      "wrong": [
+        "L'ordre est exécuté exactement à 95 $, le seuil de déclenchement choisi",
+        "L'ordre est exécuté vers 80 $, au meilleur prix alors disponible",
+        "L'ordre est annulé et la plateforme rembourse la perte subie"
+      ],
+      "explanation": "Un **stop-limit** place, une fois le seuil de déclenchement atteint, un ordre **à cours limité** : il ne vendra pas en dessous de 94 $. Si le marché s'effondre trop vite, aucun acheteur n'est disponible à 94 $ ou plus et l'ordre reste en attente pendant que la perte se creuse. Un **stop-market**, lui, vend au meilleur prix disponible, ici vers 80 $ : un slippage important, mais la certitude de sortir.",
+      "difficulty": 3
+    },
+    {
+      "question": "Le meilleur prix de vente (ask) d'un token est de 100 $, avec une quantité suffisante. Tu places un ordre d'**achat à cours limité à 101 $**. Comment est-il traité ?",
+      "answer": "Il s'exécute aussitôt contre l'ask à 100 $ et tu paies les frais de taker",
+      "wrong": [
+        "Il reste dans le carnet jusqu'à ce que le prix monte à 101 $",
+        "Il est refusé, car un achat limité doit être sous le prix actuel",
+        "Il s'exécute à 101 $ et tu paies les frais de maker"
+      ],
+      "explanation": "Un ordre limité d'achat signifie « au plus 101 $ ». Comme des vendeurs proposent déjà à 100 $, l'ordre se remplit immédiatement contre eux, au prix de 100 $, meilleur que ta limite. Il retire de la liquidité du carnet : tu es donc **taker**. Un ordre limité n'est pas automatiquement « maker ». Pour garantir ce statut, certaines plateformes proposent l'option **post-only**, qui annule l'ordre s'il devait s'exécuter immédiatement.",
+      "difficulty": 3
+    },
+    {
+      "question": "L'indicateur **RSI** (Relative Strength Index) d'un token dépasse 70. Comment l'interprète-t-on classiquement ?",
+      "answer": "Le token est en zone de surachat après une forte hausse",
+      "wrong": [
+        "Le token est en zone de survente après une forte baisse",
+        "70 % des détenteurs du token sont actuellement en perte",
+        "Le token a été échangé 70 fois plus que sa moyenne"
+      ],
+      "explanation": "Le **RSI**, présenté par J. Welles Wilder en 1978, oscille entre 0 et 100 et compare l'ampleur des hausses et des baisses récentes, souvent sur 14 périodes. Au-dessus de 70, on parle classiquement de **surachat** ; sous 30, de **survente**. Ce n'est pas un signal de vente automatique : en forte tendance haussière, le RSI peut rester au-dessus de 70 longtemps pendant que le prix continue de monter.",
+      "difficulty": 3
+    },
+    {
+      "question": "En analyse technique, qu'appelle-t-on un **golden cross** ?",
+      "answer": "La moyenne mobile 50 jours qui passe au-dessus de la moyenne mobile 200 jours",
+      "wrong": [
+        "La moyenne mobile 200 jours qui passe au-dessus de la moyenne mobile 50 jours",
+        "Le prix qui dépasse pour la première fois son plus haut historique",
+        "Le croisement à la hausse du cours du bitcoin et de celui de l'or"
+      ],
+      "explanation": "Un **golden cross** survient quand une moyenne mobile courte (classiquement 50 jours) croise à la hausse une moyenne longue (200 jours) : on y voit souvent le signe d'une tendance haussière. Le croisement inverse s'appelle **death cross**. Comme toute moyenne mobile, ces signaux arrivent en retard sur le prix et produisent de nombreux faux signaux : ce sont des indicateurs, pas des prédictions.",
+      "difficulty": 3
+    },
+    {
+      "question": "Tu investis 100 € dans un token qui vaut 100 €, puis encore 100 € quand il tombe à 50 €. Quel est ton prix de revient moyen par token ?",
+      "answer": "Environ 66,67 €",
+      "wrong": [
+        "75 €",
+        "50 €",
+        "Environ 83,33 €"
+      ],
+      "explanation": "Avec 100 € à 100 €, tu obtiens 1 token ; avec 100 € à 50 €, 2 tokens. Tu possèdes donc 3 tokens pour 200 €, soit **200 / 3 ≈ 66,67 €** par token. Le piège à 75 € fait la moyenne simple des deux prix, ce qui n'est juste que si l'on achète la même **quantité** à chaque fois. En investissant un montant fixe, on achète davantage de tokens quand le prix est bas : c'est tout l'intérêt du DCA.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que mesure la **dominance du bitcoin** (BTC dominance) ?",
+      "answer": "La part du bitcoin dans la capitalisation totale du marché crypto",
+      "wrong": [
+        "La part des paiements mondiaux réglés en bitcoin",
+        "La part des blocs Bitcoin minés par le plus grand pool",
+        "La part des bitcoins détenus par les plateformes d'échange"
+      ],
+      "explanation": "La **dominance du bitcoin** = market cap du bitcoin / market cap de l'ensemble du marché crypto. Quand elle baisse, les altcoins progressent plus vite que le bitcoin, ce qu'on appelle parfois une « altseason » ; quand elle monte, les capitaux se replient vers le bitcoin, souvent en période d'incertitude. Son niveau exact dépend de la liste de tokens prise en compte par chaque site.",
+      "difficulty": 2
+    },
+    {
+      "question": "Après une chute de 60 %, un token rebondit de 15 % puis reprend sa baisse. Comment appelle-t-on ce rebond éphémère ?",
+      "answer": "Un dead cat bounce",
+      "wrong": [
+        "Un bull run",
+        "Un golden cross",
+        "Un all-time high"
+      ],
+      "explanation": "L'expression vient d'un adage boursier cynique : « même un chat mort rebondit s'il tombe d'assez haut ». Un **dead cat bounce** est une remontée temporaire dans une tendance baissière, alimentée par des acheteurs qui croient au creux et par des vendeurs à découvert qui rachètent. Il piège ceux qui achètent en pensant la baisse terminée. On ne sait souvent qu'après coup s'il s'agissait d'un vrai retournement ou d'un rebond sans lendemain.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un indice « **Fear & Greed** » du marché crypto affiche 10 sur une échelle de 0 à 100. Qu'indique-t-il ?",
+      "answer": "Une peur extrême parmi les investisseurs",
+      "wrong": [
+        "Une avidité extrême parmi les investisseurs",
+        "Un marché parfaitement neutre et stable",
+        "Une hausse de 10 % du marché sur la journée"
+      ],
+      "explanation": "Les indices **Fear & Greed** combinent plusieurs mesures (volatilité, volume, réseaux sociaux, dominance…) en un score allant de 0 (**peur extrême**) à 100 (**avidité extrême**). Certains investisseurs s'en servent à contre-courant, selon l'adage « sois avide quand les autres ont peur ». Ce n'est qu'un thermomètre de l'humeur du marché : une peur extrême peut durer pendant que le prix continue de baisser.",
+      "difficulty": 2
+    },
+    {
+      "question": "Tu achètes un token à 100 $ et places un **trailing stop** (stop suiveur) de 10 %. Le prix monte jusqu'à 150 $, puis redescend. À quel prix la vente se déclenche-t-elle ?",
+      "answer": "À 135 $",
+      "wrong": [
+        "À 90 $",
+        "À 140 $",
+        "À 110 $"
+      ],
+      "explanation": "Un **stop suiveur** accompagne le prix à la hausse en gardant toujours le même écart : ici 10 % sous le plus haut atteint. Au sommet de 150 $, le seuil est remonté à 150 × 0,9 = **135 $**, et il ne redescend jamais. Il protège une partie des gains tout en laissant courir la hausse. Le piège à 90 $ correspond à un stop-loss fixe calculé sur le prix d'achat.",
+      "difficulty": 2
+    },
+    {
+      "question": "Tu détiens 1 BTC et crains une baisse, sans vouloir le vendre. Quelle opération permet de te **couvrir** (hedge) contre ce risque ?",
+      "answer": "Ouvrir une position short d'environ 1 BTC sur un contrat dérivé",
+      "wrong": [
+        "Acheter 1 BTC supplémentaire avec un levier de 10x",
+        "Transférer ton BTC vers un portefeuille matériel",
+        "Placer un ordre d'achat limité sous le prix actuel"
+      ],
+      "explanation": "Une **couverture** compense les pertes d'une position par les gains d'une autre. Avec 1 BTC détenu et 1 BTC vendu à découvert, une baisse fait perdre sur le premier mais gagner à peu près autant sur le second : la valeur globale est quasi figée, hors frais et funding. En contrepartie, on renonce aussi aux gains en cas de hausse : la couverture réduit le risque, elle ne crée pas de profit. Un portefeuille matériel protège du piratage, pas des variations de prix.",
+      "difficulty": 2
     }
   ]
 }

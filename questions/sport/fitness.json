@@ -837,6 +837,280 @@
       ],
       "explanation": "Décrit par Robert Hickson en 1980, l'**effet d'interférence** désigne le fait qu'un entraînement **concurrent** (force + endurance) donne parfois moins de gains de force, et surtout de puissance, que la musculation seule. Il dépend fortement du volume d'endurance, de la modalité (la course semble plus pénalisante que le vélo) et du délai entre les séances. Avec une programmation raisonnable, on progresse néanmoins sur les deux plans.",
       "difficulty": 3
+    },
+    {
+      "question": "Dans l'acronyme **FITT**, souvent utilisé pour construire un programme d'entraînement, que désignent les quatre lettres ?",
+      "answer": "Fréquence, Intensité, Temps, Type",
+      "wrong": [
+        "Force, Intensité, Tempo, Technique",
+        "Fréquence, Inertie, Tension, Tonus",
+        "Flexibilité, Intensité, Travail, Tempo"
+      ],
+      "explanation": "Le modèle **FITT** rassemble les quatre leviers d'un programme : la **fréquence** (combien de séances), l'**intensité** (à quel niveau d'effort), le **temps** (durée des séances) et le **type** d'activité. Pour appliquer la surcharge progressive, on modifie de préférence un seul de ces paramètres à la fois. On le complète parfois en FITT-VP, en ajoutant le volume et la progression.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel principe d'entraînement affirme qu'on progresse surtout dans ce qu'on entraîne réellement (un nageur doit nager, un sprinteur sprinter) ?",
+      "answer": "La spécificité",
+      "wrong": [
+        "La surcharge progressive",
+        "La réversibilité",
+        "La variété"
+      ],
+      "explanation": "Selon le principe de **spécificité**, l'organisme s'adapte précisément aux contraintes qu'on lui impose (en anglais, *SAID principle* : *Specific Adaptation to Imposed Demands*). Courir développe surtout les qualités utiles à la course, soulever lourd développe la force maximale, et ainsi de suite. Plus une compétition approche, plus l'entraînement doit ressembler à l'épreuve visée.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel principe d'entraînement rappelle que les gains obtenus **s'estompent** si l'on arrête de s'entraîner ?",
+      "answer": "La réversibilité",
+      "wrong": [
+        "La spécificité",
+        "La surcompensation",
+        "L'individualisation"
+      ],
+      "explanation": "Le principe de **réversibilité** (« use it or lose it ») rappelle que l'organisme n'entretient que ce qui lui sert : sans stimulation, les adaptations régressent. Les qualités d'endurance, comme la VO2max, déclinent en général plus vite que la force maximale. Une ou deux séances hebdomadaires suffisent souvent à limiter fortement ces pertes pendant une période chargée.",
+      "difficulty": 1
+    },
+    {
+      "question": "Selon le modèle de la **surcompensation**, à quel moment faut-il idéalement placer la séance suivante ?",
+      "answer": "Au pic, quand le niveau dépasse celui de départ",
+      "wrong": [
+        "Pendant la fatigue, avant toute récupération",
+        "Au retour exact au niveau de départ",
+        "Longtemps après, une fois l'effet dissipé"
+      ],
+      "explanation": "Après une séance, la performance baisse (fatigue), remonte pendant la récupération puis dépasse temporairement le niveau initial : c'est la **surcompensation**. Placer la séance suivante à ce **pic** permet d'empiler les progrès. Trop tôt, on accumule la fatigue ; trop tard, le bénéfice s'est dissipé et l'on stagne. Ce modèle reste une simplification, mais il illustre bien l'importance de la récupération.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Supercompensation"
+    },
+    {
+      "question": "Dans une planification d'entraînement, à quoi correspond le plus souvent un **microcycle** ?",
+      "answer": "À une semaine d'entraînement",
+      "wrong": [
+        "À une seule séance",
+        "À un bloc de 4 à 6 semaines",
+        "À une saison complète"
+      ],
+      "explanation": "La périodisation emboîte trois niveaux : le **macrocycle** (souvent une saison ou une année), le **mésocycle** (un bloc de quelques semaines centré sur un objectif) et le **microcycle**, le plus souvent d'une **semaine**. Le microcycle organise l'alternance des séances difficiles et faciles, tandis que les mésocycles font évoluer les objectifs au fil de la saison.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qui caractérise une **périodisation ondulatoire** (non linéaire) ?",
+      "answer": "Les charges et les répétitions varient d'une séance à l'autre",
+      "wrong": [
+        "L'intensité augmente régulièrement, bloc après bloc",
+        "Le volume et l'intensité restent fixes toute l'année",
+        "La musculation et le cardio alternent chaque jour"
+      ],
+      "explanation": "Dans la **périodisation ondulatoire**, les paramètres changent fréquemment, souvent d'une séance à l'autre dans la même semaine : par exemple 5 répétitions lourdes le lundi, 10 répétitions modérées le mercredi et 15 répétitions plus légères le vendredi. La **périodisation linéaire** classique fait au contraire évoluer l'intensité progressivement, bloc après bloc. La version quotidienne est souvent désignée par le sigle DUP (*daily undulating periodization*).",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment appelle-t-on une semaine planifiée où l'on réduit volontairement le volume ou l'intensité pour **récupérer** avant de repartir ?",
+      "answer": "Une semaine de décharge (deload)",
+      "wrong": [
+        "Une semaine de choc",
+        "Une semaine de surcharge",
+        "Une semaine d'accumulation"
+      ],
+      "explanation": "La **semaine de décharge** (*deload*) est souvent placée après trois à six semaines de travail : on y diminue le volume (moins de séries) ou l'intensité, pour dissiper la fatigue accumulée tout en conservant les acquis. Elle limite le risque de surmenage. Elle se distingue de l'**affûtage**, réduction de charge programmée juste avant une compétition pour arriver au pic de forme le jour J.",
+      "difficulty": 2
+    },
+    {
+      "question": "Le **syndrome général d'adaptation** de Hans Selye, souvent utilisé pour expliquer les effets de l'entraînement, comprend trois phases. Lesquelles ?",
+      "answer": "Alarme, résistance, épuisement",
+      "wrong": [
+        "Effort, récupération, surcompensation",
+        "Stress, adaptation, plateau",
+        "Charge, décharge, affûtage"
+      ],
+      "explanation": "Le médecin Hans **Selye** a décrit dans les années 1930 la réponse de l'organisme à un stress : une phase d'**alarme** (le choc initial), une phase de **résistance** (l'organisme s'adapte et devient plus solide) puis, si le stress persiste sans répit, une phase d'**épuisement**. Transposé au sport, ce modèle illustre la nécessité de doser la charge : bien dosée, elle mène à l'adaptation ; excessive et sans récupération, au surentraînement.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/General_adaptation_syndrome"
+    },
+    {
+      "question": "Comment appelle-t-on l'état de fatigue durable, avec une baisse de performance qui persiste **malgré plusieurs semaines de repos**, dû à un excès de charge sans récupération suffisante ?",
+      "answer": "Le syndrome de surentraînement",
+      "wrong": [
+        "La surcompensation",
+        "Le désentraînement",
+        "L'affûtage"
+      ],
+      "explanation": "Le **syndrome de surentraînement** se distingue du simple surmenage (*overreaching*), dont on récupère en quelques jours ou semaines : il peut demander des mois de repos. Il s'accompagne souvent de troubles du sommeil et de l'humeur, d'infections à répétition et d'une lassitude profonde. On le prévient en augmentant la charge progressivement, en programmant des périodes de récupération et en restant attentif à ses sensations.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Overtraining"
+    },
+    {
+      "question": "La force produite en poussant avec les **deux jambes en même temps** est souvent inférieure à la somme des forces de chaque jambe testée seule. Comment appelle-t-on ce phénomène ?",
+      "answer": "Le déficit bilatéral",
+      "wrong": [
+        "L'éducation croisée",
+        "L'inhibition réciproque",
+        "Le principe de Henneman"
+      ],
+      "explanation": "Le **déficit bilatéral** s'expliquerait surtout par des facteurs nerveux : lors d'un effort à deux membres, le système nerveux recrute un peu moins complètement les unités motrices de chaque côté. C'est un argument pour inclure des exercices **unilatéraux** (fentes, squat bulgare) dans un programme. Il tend à s'atténuer chez les sportifs habitués aux efforts bilatéraux, comme les haltérophiles.",
+      "difficulty": 3
+    },
+    {
+      "question": "Entraîner en force une seule jambe pendant plusieurs semaines augmente aussi, dans une moindre mesure, la force de l'**autre jambe**, non entraînée. Comment s'appelle cet effet ?",
+      "answer": "L'éducation croisée",
+      "wrong": [
+        "Le déficit bilatéral",
+        "La surcompensation",
+        "L'hypertrophie compensatoire"
+      ],
+      "explanation": "L'**éducation croisée** (*cross-education*) est d'origine nerveuse : le membre non entraîné ne grossit pas, mais le système nerveux apprend à mieux commander le mouvement des deux côtés. Le gain observé du côté non entraîné ne représente qu'une fraction de celui du membre travaillé. Cet effet est exploité en rééducation, par exemple pour limiter la perte de force d'une jambe immobilisée en entraînant l'autre.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Cross_education"
+    },
+    {
+      "question": "Lors des premières semaines de musculation, la force d'un débutant augmente vite alors que ses muscles grossissent peu. À quoi l'essentiel de ce progrès est-il dû ?",
+      "answer": "À des adaptations nerveuses",
+      "wrong": [
+        "À une hausse du nombre de fibres",
+        "À un épaississement des tendons",
+        "À une hausse du glycogène musculaire"
+      ],
+      "explanation": "Au début, le système nerveux apprend à **recruter** davantage d'unités motrices, à augmenter leur fréquence de décharge et à mieux coordonner agonistes et antagonistes. Ces **adaptations nerveuses** dominent les premières semaines ; l'hypertrophie, plus lente, prend ensuite le relais. L'augmentation du nombre de fibres (hyperplasie) reste, elle, marginale voire non démontrée chez l'humain.",
+      "difficulty": 2
+    },
+    {
+      "question": "Selon le **principe de taille de Henneman**, dans quel ordre les unités motrices sont-elles recrutées quand l'effort augmente ?",
+      "answer": "Des plus petites (lentes) aux plus grandes (rapides)",
+      "wrong": [
+        "Des plus grandes (rapides) aux plus petites (lentes)",
+        "Toutes en même temps, dès le début de l'effort",
+        "Au hasard, selon l'état de fatigue de chacune"
+      ],
+      "explanation": "Le système nerveux recrute d'abord les **petites unités motrices**, peu puissantes mais résistantes à la fatigue (fibres de type I), puis, si la force demandée augmente, les plus grandes, qui commandent des fibres rapides de type II. Conséquence pratique : pour solliciter les fibres rapides, il faut soulever lourd, bouger de façon explosive, ou pousser une série légère près de l'échec, quand la fatigue oblige à recruter de nouvelles unités.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Henneman%27s_size_principle"
+    },
+    {
+      "question": "En physiologie, qu'appelle-t-on une **unité motrice** ?",
+      "answer": "Un motoneurone et les fibres musculaires qu'il commande",
+      "wrong": [
+        "Un muscle et les tendons qui le prolongent",
+        "Un groupe de muscles qui agissent ensemble",
+        "Une myofibrille et l'ensemble de ses sarcomères"
+      ],
+      "explanation": "Une **unité motrice** réunit un **motoneurone** de la moelle épinière et toutes les fibres qu'il innerve : quand il décharge, elles se contractent toutes ensemble. Les muscles de précision, comme ceux de l'œil, n'ont que quelques fibres par unité, alors que les gros muscles des jambes en comptent des centaines, voire des milliers. Pour graduer la force, le système nerveux recrute plus ou moins d'unités et module leur fréquence de décharge.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Motor_unit"
+    },
+    {
+      "question": "Quelles protéines glissent les unes sur les autres pour raccourcir le **sarcomère** lors d'une contraction ?",
+      "answer": "L'actine et la myosine",
+      "wrong": [
+        "Le collagène et l'élastine",
+        "La kératine et la fibrine",
+        "L'hémoglobine et la myoglobine"
+      ],
+      "explanation": "Selon la **théorie des filaments glissants**, les têtes de **myosine** (filaments épais) s'accrochent à l'**actine** (filaments fins) et la tirent vers le centre du sarcomère, en consommant de l'ATP. Des milliers de sarcomères alignés en série raccourcissent ainsi la fibre. Le collagène et l'élastine forment surtout les tendons et les tissus conjonctifs ; la myoglobine stocke l'oxygène dans le muscle.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Sliding_filament_theory"
+    },
+    {
+      "question": "Quel ion, libéré par le **réticulum sarcoplasmique**, déclenche la contraction de la fibre musculaire ?",
+      "answer": "Le calcium",
+      "wrong": [
+        "Le sodium",
+        "Le potassium",
+        "Le magnésium"
+      ],
+      "explanation": "Quand l'influx nerveux atteint la fibre, le **réticulum sarcoplasmique** libère du **calcium** : celui-ci se fixe sur la troponine, ce qui démasque les sites de liaison de l'actine et permet aux têtes de myosine de s'y accrocher. Le relâchement survient quand le calcium est repompé dans le réticulum, ce qui consomme aussi de l'ATP. Le sodium et le potassium interviennent plus en amont, dans la propagation du potentiel d'action.",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment appelle-t-on l'augmentation du volume d'un muscle due à l'**épaississement** de ses fibres ?",
+      "answer": "L'hypertrophie",
+      "wrong": [
+        "L'hyperplasie",
+        "L'atrophie",
+        "L'hypotonie"
+      ],
+      "explanation": "L'**hypertrophie** désigne la croissance des fibres existantes, qui accumulent davantage de protéines contractiles : c'est le principal mécanisme de prise de muscle. L'**hyperplasie**, une augmentation du nombre de fibres, a été observée chez certains animaux mais reste marginale ou non démontrée chez l'humain. L'**atrophie** est le phénomène inverse de l'hypertrophie, par exemple après une immobilisation.",
+      "difficulty": 1
+    },
+    {
+      "question": "Comment appelle-t-on la perte progressive de masse et de force musculaires liée au **vieillissement** ?",
+      "answer": "La sarcopénie",
+      "wrong": [
+        "L'ostéoporose",
+        "L'arthrose",
+        "La fibromyalgie"
+      ],
+      "explanation": "La **sarcopénie** s'installe progressivement à l'âge adulte et s'accélère avec les années, en touchant surtout les fibres rapides. Elle augmente le risque de chutes et de perte d'autonomie. La musculation est le moyen le plus efficace de la freiner, à tout âge : même des personnes de plus de 80 ans gagnent de la force avec un entraînement adapté. L'ostéoporose concerne, elle, la fragilisation des os.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Sarcopenia"
+    },
+    {
+      "question": "Quelles cellules souches, nichées à la surface des fibres musculaires, participent à leur réparation et à leur croissance ?",
+      "answer": "Les cellules satellites",
+      "wrong": [
+        "Les ostéoblastes",
+        "Les adipocytes",
+        "Les cellules de Schwann"
+      ],
+      "explanation": "Les **cellules satellites** sommeillent entre la membrane de la fibre et sa lame basale. Activées par une lésion ou un entraînement intense, elles se multiplient et fusionnent avec les fibres, auxquelles elles apportent de **nouveaux noyaux**, utiles à la réparation et à la croissance. Les ostéoblastes fabriquent l'os, les adipocytes stockent les graisses et les cellules de Schwann entourent les nerfs.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Myosatellite_cell"
+    },
+    {
+      "question": "Si l'on arrête la musculation, les muscles peuvent-ils se **transformer en graisse** ?",
+      "answer": "Non, ce sont deux tissus différents",
+      "wrong": [
+        "Oui, en quelques semaines seulement",
+        "Oui, mais uniquement après 40 ans",
+        "Oui, si l'on mangeait beaucoup de protéines"
+      ],
+      "explanation": "Un tissu ne peut pas se changer en un autre : les fibres musculaires et les cellules graisseuses (adipocytes) sont des cellules différentes. À l'arrêt de l'entraînement, les muscles **s'atrophient** progressivement ; si l'on continue à manger autant alors que la dépense baisse, la masse grasse augmente. Ces deux évolutions simultanées donnent l'illusion d'une transformation.",
+      "difficulty": 1
+    },
+    {
+      "question": "Faire des centaines de crunchs fait-il fondre **en priorité** la graisse du ventre ?",
+      "answer": "Non, la perte de graisse localisée est un mythe",
+      "wrong": [
+        "Oui, la graisse brûlée vient du muscle travaillé",
+        "Oui, mais seulement si l'on s'entraîne à jeun",
+        "Oui, à partir de 100 répétitions par série"
+      ],
+      "explanation": "Les graisses utilisées à l'effort sont libérées dans le sang depuis les réserves de **tout le corps**, pas spécifiquement autour du muscle qui travaille. Des études l'ont montré, par exemple chez des joueurs de tennis dont le bras dominant, bien plus musclé, n'était pas moins gras que l'autre. Pour affiner la taille, il faut réduire la masse grasse globale ; les abdominaux renforcent la sangle, mais ne « brûlent » pas la graisse qui les recouvre.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel est l'un des principaux effets recherchés lors d'un **échauffement** ?",
+      "answer": "Élever la température des muscles",
+      "wrong": [
+        "Remplir les réserves de glycogène",
+        "Faire baisser la fréquence cardiaque",
+        "Empêcher à coup sûr les courbatures"
+      ],
+      "explanation": "L'échauffement élève la **température musculaire**, ce qui accélère les réactions chimiques, améliore la conduction nerveuse et rend les muscles plus souples et plus réactifs. Il augmente aussi progressivement la fréquence cardiaque et le débit sanguin vers les muscles. Il ne remplit pas les réserves de glycogène et ne protège pas des courbatures, qui dépendent surtout d'un travail excentrique inhabituel.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi déconseille-t-on souvent de longs **étirements statiques** (plus de 60 s par muscle) juste avant un effort de force ou de sprint ?",
+      "answer": "Ils peuvent réduire momentanément la force et l'explosivité",
+      "wrong": [
+        "Ils vident les réserves de phosphocréatine",
+        "Ils provoquent des crampes dans les minutes qui suivent",
+        "Ils font grimper fortement la tension artérielle"
+      ],
+      "explanation": "Tenus longtemps, les **étirements statiques** diminuent temporairement la raideur du complexe muscle-tendon et l'activation nerveuse, ce qui peut réduire la force et la puissance de l'effort qui suit. Des étirements courts (moins de 60 s par muscle) intégrés à un échauffement dynamique n'ont en revanche qu'un effet négligeable. Les étirements longs trouvent mieux leur place à distance de l'effort, pour travailler la souplesse.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle méthode d'étirement alterne une **contraction isométrique** du muscle étiré, un relâchement, puis un étirement plus ample ?",
+      "answer": "Le contracter-relâcher (PNF)",
+      "wrong": [
+        "L'étirement balistique",
+        "L'étirement passif statique",
+        "L'étirement dynamique actif"
+      ],
+      "explanation": "Issue de la **facilitation neuromusculaire proprioceptive** (PNF), la technique du **contracter-relâcher** consiste à contracter quelques secondes le muscle en position étirée, à le relâcher, puis à gagner de l'amplitude. Elle donne des gains de souplesse au moins équivalents à ceux de l'étirement statique simple. L'étirement balistique, lui, utilise des rebonds et des lancers de membres, et l'étirement dynamique des mouvements contrôlés sur toute l'amplitude.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Proprioceptive_neuromuscular_facilitation"
     }
   ]
 }

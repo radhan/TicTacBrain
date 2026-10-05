@@ -1228,6 +1228,306 @@
       "explanation": "`__slots__` déclare la liste **fermée** des attributs d'instance : Python ne crée alors pas de `__dict__` par instance et réserve seulement la place des attributs prévus. Ajouter un attribut non déclaré, comme `y`, lève une `AttributeError`. Le principal intérêt est l'économie de mémoire (et un accès un peu plus rapide), précieuse quand on crée des millions de petits objets.",
       "difficulty": 3,
       "source": "https://docs.python.org/fr/3/reference/datamodel.html#slots"
+    },
+    {
+      "question": "Qui a créé le langage Python, dont la première version publique date de 1991 ?",
+      "answer": "Guido van Rossum",
+      "wrong": [
+        "James Gosling",
+        "Larry Wall",
+        "Bjarne Stroustrup"
+      ],
+      "explanation": "Le Néerlandais **Guido van Rossum** a commencé Python fin 1989 au CWI d'Amsterdam et l'a publié en février 1991. Il en a été le « dictateur bienveillant à vie » (BDFL) jusqu'en 2018, avant que la gouvernance passe à un conseil élu (Steering Council). James Gosling a créé Java, Larry Wall Perl, et Bjarne Stroustrup C++.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Guido_van_Rossum"
+    },
+    {
+      "question": "D'où vient le nom du langage Python ?",
+      "answer": "De la troupe comique britannique des Monty Python",
+      "wrong": [
+        "Du serpent python, choisi pour sa souplesse",
+        "D'un acronyme désignant son premier laboratoire",
+        "Du surnom d'un collègue de son créateur"
+      ],
+      "explanation": "Guido van Rossum lisait les scripts du **Monty Python's Flying Circus** quand il a cherché un nom court et un peu mystérieux pour son langage. Le serpent n'est venu qu'ensuite, dans les logos et sur les couvertures de livres. La documentation officielle cultive d'ailleurs cette référence : les exemples utilisent volontiers `spam` et `eggs` plutôt que `foo` et `bar`.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/faq/general.html#why-is-it-called-python"
+    },
+    {
+      "question": "Quel outil en ligne de commande installe les paquets publiés sur PyPI, le dépôt officiel de paquets Python ?",
+      "answer": "`pip`",
+      "wrong": [
+        "`npm`",
+        "`cargo`",
+        "`gem`"
+      ],
+      "explanation": "`pip` (« pip installs packages ») télécharge et installe les paquets de **PyPI** (Python Package Index) : `pip install requests`. On l'appelle souvent via `python -m pip` pour être sûr d'utiliser le pip de l'interpréteur voulu. `npm` est le gestionnaire de JavaScript, `cargo` celui de Rust et `gem` celui de Ruby.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/installing/index.html"
+    },
+    {
+      "question": "À quoi sert un environnement virtuel créé avec `python -m venv .venv` ?",
+      "answer": "À isoler les paquets installés pour un projet donné",
+      "wrong": [
+        "À exécuter Python dans une machine virtuelle séparée",
+        "À compiler le projet en un exécutable autonome",
+        "À tester le code sur plusieurs versions de Python"
+      ],
+      "explanation": "Un environnement virtuel est un dossier contenant un interpréteur Python (lien ou copie de celui d'origine) et son propre répertoire de paquets. Une fois activé, `pip install` y installe les dépendances **sans toucher** au Python du système ni aux autres projets, ce qui évite les conflits de versions. Il n'a rien d'une machine virtuelle : c'est une simple isolation de dossiers, légère et jetable.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/library/venv.html"
+    },
+    {
+      "question": "Quelle exception lève l'appel `int(\"abc\")` ?",
+      "answer": "`ValueError`",
+      "wrong": [
+        "`TypeError`",
+        "`SyntaxError`",
+        "`KeyError`"
+      ],
+      "explanation": "`int` accepte bien une chaîne (le **type** est correct), mais celle-ci ne représente pas un entier : c'est la **valeur** qui pose problème, d'où `ValueError: invalid literal for int() with base 10: 'abc'`. Une `TypeError` correspond à un type inadapté, par exemple `int([1, 2])`. On protège généralement la conversion d'une saisie utilisateur avec un `try/except ValueError`.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/library/exceptions.html#ValueError"
+    },
+    {
+      "question": "Quel mode d'ouverture `open(chemin, mode)` permet d'ajouter du texte à la fin d'un fichier existant sans effacer son contenu ?",
+      "answer": "`\"a\"`",
+      "wrong": [
+        "`\"w\"`",
+        "`\"r\"`",
+        "`\"x\"`"
+      ],
+      "explanation": "Le mode `\"a\"` (*append*) écrit toujours à la **fin** du fichier, en le créant s'il n'existe pas. Le mode `\"w\"` (*write*) vide le fichier dès l'ouverture : un piège classique qui efface des données. `\"r\"` ouvre en lecture seule (mode par défaut) et `\"x\"` crée un nouveau fichier, en échouant s'il existe déjà.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/library/functions.html#open"
+    },
+    {
+      "question": "Selon la PEP 8, le guide de style officiel, comment nomme-t-on une classe et une fonction ?",
+      "answer": "`MaClasse` et `ma_fonction`",
+      "wrong": [
+        "`ma_classe` et `maFonction`",
+        "`MACLASSE` et `MaFonction`",
+        "`maClasse` et `ma-fonction`"
+      ],
+      "explanation": "La PEP 8 recommande le **CapWords** (ou PascalCase) pour les classes et le **snake_case** (minuscules séparées par des tirets bas) pour les fonctions, méthodes et variables. Les MAJUSCULES sont réservées aux constantes, comme `TAILLE_MAX`. Le tiret `-` est impossible dans un identifiant, car Python le lirait comme une soustraction.",
+      "difficulty": 1,
+      "source": "https://peps.python.org/pep-0008/"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\npi = 3.14159\nprint(f\"{pi:.2f}\")\n```",
+      "answer": "`3.14`",
+      "wrong": [
+        "`3.14159`",
+        "`3.1`",
+        "`3.15`"
+      ],
+      "explanation": "Après le deux-points, une f-string accepte une **spécification de format** : `.2f` affiche le nombre en virgule fixe avec 2 décimales, arrondies. 3,14159 devient donc `3.14`. D'autres spécifications utiles : `{n:05d}` complète un entier avec des zéros (`00042`), `{x:,}` ajoute un séparateur de milliers, et `{r:.1%}` affiche un pourcentage.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/library/string.html#format-specification-mini-language"
+    },
+    {
+      "question": "Dans un fichier Python, quand la condition `if __name__ == \"__main__\":` est-elle vraie ?",
+      "answer": "Quand le fichier est exécuté directement, et non importé",
+      "wrong": [
+        "Quand le fichier est importé depuis un autre module",
+        "Quand le script est lancé avec des droits administrateur",
+        "Quand une fonction `main()` a été définie dans le fichier"
+      ],
+      "explanation": "Python donne à la variable spéciale `__name__` la valeur `\"__main__\"` pour le fichier lancé (`python script.py`), et le **nom du module** (par exemple `\"script\"`) quand il est importé. Ce test permet donc d'écrire du code (tests rapides, point d'entrée) qui s'exécute au lancement direct, mais pas lors d'un `import`. Définir une fonction `main()` n'a aucun effet particulier en Python : c'est une simple convention.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/__main__.html"
+    },
+    {
+      "question": "Pourquoi recommande-t-on d'écrire `x is None` plutôt que `x == None` ?",
+      "answer": "`None` est un objet unique, et `==` peut être redéfini par `__eq__`",
+      "wrong": [
+        "`x == None` lève une `TypeError` si `x` est un nombre",
+        "`is` convertit `x` en booléen avant de le comparer",
+        "`== None` est une syntaxe interdite depuis Python 3"
+      ],
+      "explanation": "Il n'existe qu'un seul objet `None` (un **singleton**) : tester l'identité avec `is` est donc exact, rapide et ne peut pas être détourné. `==`, lui, appelle la méthode `__eq__` de l'objet, qu'une classe peut redéfinir à sa guise : certains objets (comme les tableaux NumPy) ne renvoient même pas un simple booléen. `x == None` reste valide et ne lève pas d'erreur, mais la PEP 8 recommande `is` / `is not`.",
+      "difficulty": 2,
+      "source": "https://peps.python.org/pep-0008/#programming-recommendations"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nfor n in [1, 3, 5]:\n    if n % 2 == 0:\n        print(\"pair trouvé\")\n        break\nelse:\n    print(\"aucun pair\")\n```",
+      "answer": "`aucun pair`",
+      "wrong": [
+        "`pair trouvé`",
+        "Rien du tout",
+        "Une `SyntaxError`"
+      ],
+      "explanation": "Une boucle `for` (ou `while`) peut avoir un bloc `else` : il s'exécute quand la boucle se termine **normalement**, c'est-à-dire sans avoir été interrompue par un `break`. Aucun nombre n'étant pair, le `break` n'est jamais atteint, donc le `else` affiche `aucun pair`. C'est l'idiome de la recherche infructueuse, qui évite une variable drapeau `trouve = False`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nnombres = [3, 1, 2]\nresultat = nombres.sort()\nprint(resultat)\n```",
+      "answer": "`None`",
+      "wrong": [
+        "`[1, 2, 3]`",
+        "`[3, 1, 2]`",
+        "`True`"
+      ],
+      "explanation": "`list.sort()` trie la liste **en place** et renvoie `None` : par convention, les méthodes qui modifient un objet en place (comme `sort`, `append` ou `reverse`) renvoient `None`, pour qu'on ne les confonde pas avec des opérations qui créent une copie. La liste `nombres` vaut bien `[1, 2, 3]`, mais `resultat` est `None`. Pour obtenir une nouvelle liste triée, on utilise `sorted(nombres)`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/howto/sorting.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ndef double(x: int) -> int:\n    return x * 2\n\nprint(double(\"ab\"))\n```",
+      "answer": "`abab`",
+      "wrong": [
+        "Une `TypeError`",
+        "Une `ValueError`",
+        "`None`"
+      ],
+      "explanation": "Les annotations de type (`x: int`, `-> int`) ne sont **pas vérifiées** à l'exécution : l'interpréteur les enregistre (dans `double.__annotations__`) mais les ignore. La fonction reçoit donc la chaîne `\"ab\"`, et `\"ab\" * 2` donne `\"abab\"`. Pour détecter ce genre d'incohérence, on utilise un vérificateur statique comme mypy ou Pyright, qui analyse le code sans l'exécuter.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/typing.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nfrom contextlib import contextmanager\n\n@contextmanager\ndef balise(nom):\n    print(f\"<{nom}>\")\n    yield\n    print(f\"</{nom}>\")\n\nwith balise(\"p\"):\n    print(\"texte\")\n```",
+      "answer": "`<p>`, `texte`, puis `</p>`",
+      "wrong": [
+        "`texte`, `<p>`, puis `</p>`",
+        "`<p>`, `</p>`, puis `texte`",
+        "`<p>` puis `texte` seulement"
+      ],
+      "explanation": "`@contextmanager` transforme un générateur en gestionnaire de contexte : le code **avant** `yield` s'exécute à l'entrée du bloc `with`, le corps du `with` s'exécute à l'emplacement du `yield`, et le code **après** s'exécute à la sortie. C'est une façon concise d'écrire un `__enter__` et un `__exit__`. Pour garantir le nettoyage même en cas d'exception, on place le `yield` dans un `try/finally`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/contextlib.html#contextlib.contextmanager"
+    },
+    {
+      "question": "Que se passe-t-il à la dernière ligne de ce code ?\n```python\nfrom abc import ABC, abstractmethod\n\nclass Forme(ABC):\n    @abstractmethod\n    def aire(self):\n        ...\n\nf = Forme()\n```",
+      "answer": "Une `TypeError` : la classe est abstraite",
+      "wrong": [
+        "`f` est créé et `f.aire()` renverra `None`",
+        "Une `NotImplementedError` à la création",
+        "Une `SyntaxError` à cause des `...`"
+      ],
+      "explanation": "Une classe qui hérite d'`ABC` et possède au moins une méthode marquée `@abstractmethod` est **abstraite** : l'instancier lève `TypeError: Can't instantiate abstract class Forme…`. Seule une sous-classe qui implémente `aire` peut être instanciée. Les `...` (l'objet `Ellipsis`) constituent un corps de fonction valide, équivalent à `pass`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/abc.html#abc.abstractmethod"
+    },
+    {
+      "question": "En quelle année Python 2 a-t-il officiellement atteint sa fin de vie (plus aucune correction, même de sécurité) ?",
+      "answer": "2020",
+      "wrong": [
+        "2010",
+        "2015",
+        "2024"
+      ],
+      "explanation": "Python 2 a cessé d'être maintenu le **1er janvier 2020**, sa toute dernière version (2.7.18) étant publiée en avril 2020. La date avait déjà été repoussée une fois : initialement prévue en 2015, elle avait été décalée pour laisser le temps de migrer. Python 3, sorti en décembre 2008, cassait volontairement la compatibilité (`print` devenu une fonction, chaînes Unicode par défaut, `/` toujours réel), d'où une transition de plus de dix ans.",
+      "difficulty": 2,
+      "source": "https://peps.python.org/pep-0373/"
+    },
+    {
+      "question": "Que renvoie l'appel `f()` si la fonction `f` est définie avec `async def` ?",
+      "answer": "Un objet coroutine, qui ne s'exécute qu'une fois attendu",
+      "wrong": [
+        "Le résultat de `f`, calculé dans un thread séparé",
+        "Une tâche déjà planifiée sur la boucle d'événements",
+        "`None`, le vrai résultat arrivant plus tard"
+      ],
+      "explanation": "Appeler une fonction `async def` n'exécute **pas** son corps : cela crée un objet coroutine. Il faut l'attendre avec `await` dans une autre coroutine, ou le lancer avec `asyncio.run(f())` ou `asyncio.create_task(f())`. Oublier le `await` est un bug classique, signalé par l'avertissement `RuntimeWarning: coroutine 'f' was never awaited`. Par défaut, les coroutines d'une boucle asyncio alternent toutes sur un seul thread.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/asyncio-task.html#coroutines"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nimport heapq\n\ntas = [5, 1, 8, 3]\nheapq.heapify(tas)\nprint(heapq.heappop(tas), heapq.heappop(tas))\n```",
+      "answer": "`1 3`",
+      "wrong": [
+        "`8 5`",
+        "`5 1`",
+        "`1 5`"
+      ],
+      "explanation": "`heapq` implémente un **tas min** sur une simple liste : `heapify` réorganise la liste en O(n) pour que le plus petit élément soit toujours en tête, et `heappop` retire ce minimum en O(log n). Deux `heappop` successifs renvoient donc les deux plus petites valeurs, 1 puis 3. Pour un tas max, l'astuce courante est de stocker les valeurs opposées (`-x`). C'est la structure idéale pour une file de priorité.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/heapq.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ndef f():\n    try:\n        return \"A\"\n    finally:\n        print(\"B\")\n\nprint(f())\n```",
+      "answer": "`B` puis `A`",
+      "wrong": [
+        "`A` puis `B`",
+        "`A` seulement",
+        "`B` seulement"
+      ],
+      "explanation": "Le bloc `finally` s'exécute **toujours**, même quand le `try` se termine par un `return` : la valeur `\"A\"` est mise de côté, `finally` affiche `B`, puis la fonction rend effectivement `\"A\"`, que le `print` extérieur affiche ensuite. C'est ce qui rend `finally` fiable pour libérer une ressource. Si `finally` contenait lui-même un `return`, il écraserait la valeur du `try`, une pratique déconseillée.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/tutorial/errors.html#defining-clean-up-actions"
+    },
+    {
+      "question": "Que produit ce code ?\n```python\ntry:\n    1 / 0\nexcept ZeroDivisionError as e:\n    pass\n\nprint(e)\n```",
+      "answer": "Une `NameError`",
+      "wrong": [
+        "`division by zero`",
+        "`ZeroDivisionError`",
+        "`None`"
+      ],
+      "explanation": "À la sortie d'un bloc `except ... as e`, Python **supprime** automatiquement la variable `e` (comme un `del e`). L'exception garde en effet une référence vers la pile d'exécution, qui contient elle-même `e` : sans cette suppression, on créerait un cycle de références retardant la libération de la mémoire. Pour conserver l'exception, il faut la copier dans une autre variable à l'intérieur du bloc `except`.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/reference/compound_stmts.html#except-clause"
+    },
+    {
+      "question": "Pourquoi un bloc `try: ... except Exception:` n'intercepte-t-il pas un Ctrl+C (`KeyboardInterrupt`) ?",
+      "answer": "`KeyboardInterrupt` hérite de `BaseException`, pas d'`Exception`",
+      "wrong": [
+        "Ctrl+C arrête le processus avant toute exception Python",
+        "`KeyboardInterrupt` est un avertissement, pas une exception",
+        "`except Exception` ignore les exceptions venues du système"
+      ],
+      "explanation": "La racine de la hiérarchie est `BaseException`. `Exception` en est une sous-classe dont dérivent les erreurs « normales » d'un programme ; `KeyboardInterrupt`, `SystemExit` (levée par `sys.exit()`) et `GeneratorExit` dérivent **directement** de `BaseException`. Ainsi, un `except Exception` attrape les bugs sans empêcher l'utilisateur d'interrompre le programme. À l'inverse, un `except:` nu attrape tout, Ctrl+C compris, d'où sa mauvaise réputation.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/library/exceptions.html#exception-hierarchy"
+    },
+    {
+      "question": "Que deviennent les instructions `assert` quand on lance un programme avec `python -O script.py` ?",
+      "answer": "Elles sont supprimées et ne sont jamais évaluées",
+      "wrong": [
+        "Elles sont vérifiées une seule fois au démarrage",
+        "Elles affichent un avertissement au lieu de lever",
+        "Elles provoquent une erreur dès la compilation"
+      ],
+      "explanation": "L'option `-O` (optimisation) retire du bytecode toutes les instructions `assert` (et les blocs `if __debug__:`) : la condition n'est même plus évaluée. Un `assert` ne doit donc **jamais** servir à valider des entrées utilisateur ou à contrôler des droits, car ces vérifications disparaîtraient en production. Il est réservé aux invariants internes, qu'on vérifie pendant le développement ; pour le reste, on lève explicitement une exception.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/reference/simple_stmts.html#the-assert-statement"
+    },
+    {
+      "question": "Dans une coroutine `asyncio`, quel est l'effet d'un appel à `time.sleep(2)` au lieu de `await asyncio.sleep(2)` ?",
+      "answer": "Il bloque toute la boucle d'événements pendant 2 secondes",
+      "wrong": [
+        "Il suspend seulement cette coroutine pendant 2 secondes",
+        "Il lève une `RuntimeError`, interdit dans une coroutine",
+        "Il est converti automatiquement en `asyncio.sleep(2)`"
+      ],
+      "explanation": "asyncio fait alterner les coroutines sur un **seul thread** : une coroutine ne cède la main qu'aux points `await`. `time.sleep` est un appel bloquant ordinaire, sans `await` : il gèle le thread, donc toute la boucle d'événements, et aucune autre tâche n'avance pendant ce temps. `await asyncio.sleep(2)` suspend au contraire uniquement la coroutine courante. Même règle pour les requêtes réseau ou les gros calculs : dans du code asynchrone, il faut des API asynchrones ou `asyncio.to_thread`.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/library/asyncio-dev.html#running-blocking-code"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nimport json\n\nprint(json.loads(json.dumps({1: \"a\"})))\n```",
+      "answer": "`{'1': 'a'}`",
+      "wrong": [
+        "`{1: 'a'}`",
+        "`'{\"1\": \"a\"}'`",
+        "Une `TypeError`"
+      ],
+      "explanation": "En JSON, les clés d'objet sont **toujours des chaînes**. `json.dumps` convertit donc silencieusement la clé entière `1` en `\"1\"`, et `json.loads` relit une clé de type `str`. L'aller-retour ne restitue pas le dictionnaire d'origine. De même, un tuple devient une liste JSON, relue comme `list`. Pour conserver fidèlement des types Python, il faut convertir explicitement à la relecture.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/library/json.html#json.dumps"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nROUGE = \"rouge\"\ncouleur = \"bleu\"\n\nmatch couleur:\n    case ROUGE:\n        print(\"C'est rouge !\")\n\nprint(ROUGE)\n```",
+      "answer": "`C'est rouge !` puis `bleu`",
+      "wrong": [
+        "`rouge` seulement",
+        "`C'est rouge !` puis `rouge`",
+        "Une `SyntaxError`"
+      ],
+      "explanation": "Dans un `case`, un nom simple n'est **pas** comparé à la variable du même nom : c'est un motif de **capture**, qui correspond à n'importe quelle valeur et l'affecte à ce nom. Le `case ROUGE` réussit donc toujours et réaffecte `ROUGE = \"bleu\"`. S'il était suivi d'autres `case`, Python lèverait une `SyntaxError` (« makes remaining patterns unreachable »). Pour comparer à une constante, il faut un nom pointé, comme `Couleur.ROUGE` avec une `Enum`, ou un littéral.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/reference/compound_stmts.html#capture-patterns"
     }
   ]
 }

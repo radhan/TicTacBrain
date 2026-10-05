@@ -787,6 +787,259 @@
       ],
       "explanation": "`tx.origin` désigne le compte (EOA) qui a **lancé** la transaction, quel que soit le nombre de contrats traversés, alors que `msg.sender` désigne l'appelant **direct**. Si le propriétaire interagit avec un contrat malveillant, celui-ci peut appeler le contrat victime : `tx.origin` vaut toujours l'adresse du propriétaire, et la vérification passe. Pour l'authentification, on utilise donc `msg.sender`.",
       "difficulty": 3
+    },
+    {
+      "question": "Pourquoi les frais de transaction sur Ethereum s'envolent-ils quand le réseau est très sollicité ?",
+      "answer": "La place dans les blocs est limitée, la demande fait monter le prix",
+      "wrong": [
+        "Les validateurs doublent leurs tarifs pendant les heures de pointe",
+        "Les transactions deviennent plus longues à chiffrer",
+        "La Fondation Ethereum relève ses tarifs chaque semaine"
+      ],
+      "explanation": "Chaque bloc ne peut contenir qu'une quantité limitée de gas. Quand beaucoup d'utilisateurs veulent être inclus en même temps (lancement de NFT, krach du marché…), la **base fee** d'EIP-1559 grimpe automatiquement et les plus pressés ajoutent un pourboire plus élevé. Aucune autorité ne fixe ces tarifs : c'est un marché de l'espace de bloc. Les transactions, elles, ne sont pas chiffrées.",
+      "difficulty": 1
+    },
+    {
+      "question": "Un fichier numérique se copie à l'infini. Quel problème une blockchain résout-elle pour qu'une monnaie numérique fonctionne sans banque ?",
+      "answer": "La double dépense",
+      "wrong": [
+        "La perte des clés privées",
+        "La lenteur des connexions Internet",
+        "Le vol de mots de passe"
+      ],
+      "explanation": "Sans tiers de confiance, rien n'empêcherait de dépenser deux fois la même unité numérique en envoyant deux paiements simultanés. La blockchain résout ce problème de **double dépense** en faisant tenir par tout le réseau un registre unique et ordonné : seule la première dépense inscrite est valide. La perte des clés privées, elle, reste un risque que la blockchain ne corrige pas.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qu'un portefeuille « multisig » (multisignature) ?",
+      "answer": "Un portefeuille qui exige plusieurs signatures, par exemple 2 sur 3",
+      "wrong": [
+        "Un portefeuille compatible avec plusieurs blockchains",
+        "Un portefeuille qui signe plusieurs transactions d'un coup",
+        "Un portefeuille qui génère une nouvelle adresse à chaque paiement"
+      ],
+      "explanation": "Un **multisig** n'exécute une opération que si un nombre minimal de détenteurs de clés l'approuvent : 2 sur 3, 3 sur 5… Il protège contre la perte ou le vol d'une seule clé et sert souvent à gérer la trésorerie d'une équipe ou d'une DAO. Sur Ethereum, c'est un smart contract (le plus connu est **Safe**, ex-Gnosis Safe) ; Bitcoin le gère directement dans ses scripts.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qu'un audit de smart contract ?",
+      "answer": "Un examen du code par des experts pour y déceler des failles",
+      "wrong": [
+        "Un contrôle fiscal des portefeuilles d'un projet",
+        "Un test de la vitesse du réseau Ethereum",
+        "Une autorisation légale obligatoire avant le déploiement"
+      ],
+      "explanation": "Avant de déployer un contrat qui gérera des fonds, une équipe le fait relire par des **auditeurs** spécialisés, qui traquent réentrance, erreurs de logique ou contrôles d'accès manquants. Un audit réduit les risques mais ne garantit pas l'absence de bug : de nombreux protocoles audités ont tout de même été piratés. Ce n'est en général pas une obligation légale, mais une bonne pratique, souvent complétée par des primes aux bugs (bug bounty).",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qu'une blockchain « privée » ou « à permission », comme Hyperledger Fabric ?",
+      "answer": "Un réseau où seuls des participants autorisés valident les blocs",
+      "wrong": [
+        "Une blockchain dont toutes les données sont chiffrées",
+        "Une blockchain qui appartient à un seul particulier",
+        "Une blockchain publique utilisée en mode hors ligne"
+      ],
+      "explanation": "Dans une blockchain **à permission**, un consortium (banques, entreprises d'une filière…) décide qui peut rejoindre le réseau et valider : les participants sont identifiés, ce qui permet des mécanismes de consensus plus rapides et plus économes. À l'inverse, Bitcoin et Ethereum sont des blockchains **publiques** (« permissionless ») : n'importe qui peut y lire, y écrire et participer à la validation.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans un réseau blockchain, qu'appelle-t-on un « nœud » ?",
+      "answer": "Un ordinateur qui conserve la chaîne et vérifie les règles",
+      "wrong": [
+        "Un lien cryptographique entre deux blocs",
+        "Le serveur central qui stocke les transactions",
+        "Un portefeuille qui contient plus de 32 ETH"
+      ],
+      "explanation": "Un **nœud** fait tourner le logiciel du réseau : il reçoit les transactions et les blocs, vérifie qu'ils respectent les règles du protocole et relaie ceux qui sont valides. Plus il y a de nœuds indépendants, plus le réseau est résilient et difficile à censurer : il n'existe justement **aucun serveur central**. Le lien entre deux blocs, lui, est le hash du bloc précédent.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie qu'une transaction a reçu « 6 confirmations » ?",
+      "answer": "Elle est dans un bloc suivi de 5 autres blocs",
+      "wrong": [
+        "6 nœuds ont vérifié sa signature",
+        "Le destinataire l'a acceptée 6 fois",
+        "6 validateurs ont signé un reçu officiel"
+      ],
+      "explanation": "Une transaction obtient sa **première confirmation** quand elle est incluse dans un bloc, puis une de plus à chaque bloc ajouté par-dessus. Plus elle est enfouie, plus il serait coûteux de réécrire la chaîne pour l'annuler : sur Bitcoin, 6 confirmations (environ une heure) sont la règle de prudence traditionnelle pour les gros montants. Ce n'est ni un vote de nœuds, ni une action du destinataire.",
+      "difficulty": 1
+    },
+    {
+      "question": "Où est généralement stockée l'image associée à un NFT ?",
+      "answer": "Hors chaîne : le jeton ne contient qu'un lien",
+      "wrong": [
+        "Dans le bloc, en pleine résolution",
+        "Dans le portefeuille de l'acheteur",
+        "Sur les serveurs de la Fondation Ethereum"
+      ],
+      "explanation": "Stocker une image sur Ethereum coûterait une fortune en gas. Le contrat d'un NFT associe donc le plus souvent chaque jeton à une **URI** de métadonnées pointant vers un fichier hébergé ailleurs : sur un serveur classique ou sur **IPFS**, un système de stockage adressé par le contenu. Si ce fichier disparaît, le jeton existe toujours mais ne montre plus rien. Quelques projets stockent toutefois leurs œuvres entièrement « on-chain ».",
+      "difficulty": 1
+    },
+    {
+      "question": "Que garantit le mot-clé `view` sur une fonction Solidity ?",
+      "answer": "Elle lit l'état sans le modifier",
+      "wrong": [
+        "Elle ne lit ni ne modifie l'état",
+        "Elle peut recevoir de l'ETH",
+        "Elle n'est visible que du propriétaire"
+      ],
+      "explanation": "Une fonction `view` peut lire les variables du contrat mais pas les modifier. Appelée depuis l'extérieur (`eth_call`), elle est exécutée localement par un nœud et ne coûte **aucun frais**. Le piège décrit `pure`, plus strict, qui interdit même la lecture de l'état ; recevoir de l'ETH exige le mot-clé `payable`, et la visibilité se règle avec `public`, `external`, `internal` ou `private`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que se passe-t-il quand une condition `require(...)` échoue dans une fonction Solidity appelée directement par ta transaction ?",
+      "answer": "Toutes ses modifications d'état sont annulées",
+      "wrong": [
+        "Seule la ligne fautive est ignorée, la suite s'exécute",
+        "Le contrat est désactivé définitivement",
+        "L'ETH envoyé est conservé par le contrat"
+      ],
+      "explanation": "`require` déclenche un **revert** : la transaction échoue et l'état revient exactement à ce qu'il était avant, y compris les transferts déjà effectués pendant l'appel. C'est l'**atomicité** : tout ou rien. Le message d'erreur éventuel est renvoyé à l'appelant ; le gas consommé jusque-là reste dû, mais le gas restant est rendu. Le contrat, lui, reste parfaitement utilisable.",
+      "difficulty": 2
+    },
+    {
+      "question": "En Solidity, que renvoie la lecture d'une clé jamais écrite dans un `mapping(address => uint256)` ?",
+      "answer": "`0`",
+      "wrong": [
+        "Une erreur qui annule la transaction",
+        "`null`",
+        "`undefined`"
+      ],
+      "explanation": "En Solidity, toute variable possède une **valeur par défaut** : `0` pour un entier, `false` pour un booléen, l'adresse nulle pour une `address`. Un `mapping` se comporte comme si toutes les clés possibles existaient déjà avec cette valeur. Conséquence : on ne peut ni savoir si une clé a été écrite, ni parcourir un mapping, sans tenir à part une liste des clés. `null` et `undefined` n'existent pas en Solidity.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans ce modificateur Solidity, que représente la ligne `_;` ?\n```solidity\nmodifier onlyOwner() {\n    require(msg.sender == owner);\n    _;\n}\n```",
+      "answer": "L'endroit où s'exécute le corps de la fonction",
+      "wrong": [
+        "Une instruction vide sans aucun effet",
+        "La fin du contrat après la vérification",
+        "Une variable anonyme ignorée"
+      ],
+      "explanation": "Un **modificateur** enveloppe les fonctions qui l'utilisent : à l'appel, le corps de la fonction est inséré à la place de `_;`. Ici, la vérification `require` s'exécute donc d'abord, puis la fonction elle-même si l'appelant est bien le propriétaire. Placer des instructions après `_;` permet aussi d'exécuter du code une fois la fonction terminée.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans « ERC-20 » ou « ERC-721 », que signifie le sigle ERC ?",
+      "answer": "Ethereum Request for Comments",
+      "wrong": [
+        "Ethereum Registered Contract",
+        "Enhanced Runtime Code",
+        "Ether Reserve Certificate"
+      ],
+      "explanation": "Le nom s'inspire des **RFC** (Request for Comments) qui décrivent les standards d'Internet. Un ERC est une catégorie d'**EIP** (Ethereum Improvement Proposal) consacrée aux conventions applicatives, comme l'interface des jetons : il ne modifie pas le protocole lui-même. Le numéro est simplement celui de la proposition : ERC-20 tient son nom du numéro de la discussion GitHub où il a été proposé.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi existe-t-il du WETH (Wrapped Ether), échangeable à 1 pour 1 contre de l'ETH ?",
+      "answer": "Parce que l'ETH natif ne suit pas le standard ERC-20",
+      "wrong": [
+        "Parce que l'ETH natif ne peut pas être envoyé à un contrat",
+        "Pour pouvoir utiliser l'ETH sur le réseau Bitcoin",
+        "Pour échapper aux frais de gas lors des transferts"
+      ],
+      "explanation": "L'ETH existait avant le standard **ERC-20** : c'est la monnaie native du protocole, qui n'expose pas de fonctions `transfer` ou `approve`. Pour le manipuler comme n'importe quel jeton dans les applications DeFi (échanges, prêts), on le dépose dans le contrat **WETH**, qui émet le même montant de jetons ERC-20 et les rembourse en ETH à la demande. L'ETH natif peut pourtant bien être envoyé à un contrat, si celui-ci le prévoit (fonction `payable`).",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel jeu de collection de chats virtuels a congestionné le réseau Ethereum fin 2017 et popularisé les NFT ?",
+      "answer": "CryptoKitties",
+      "wrong": [
+        "Axie Infinity",
+        "CryptoPunks",
+        "Bored Ape Yacht Club"
+      ],
+      "explanation": "Lancé fin novembre 2017, **CryptoKitties** permettait d'acheter, d'échanger et de « faire se reproduire » des chats numériques uniques. Son succès a saturé Ethereum et fait exploser les frais pendant des jours. Son équipe a contribué à formaliser le standard **ERC-721** des jetons non fongibles. Les CryptoPunks, apparus quelques mois plus tôt, sont des portraits en pixels, et Axie Infinity un jeu de créatures lancé en 2018.",
+      "difficulty": 2
+    },
+    {
+      "question": "En mars 2021, la maison Christie's a vendu le NFT « Everydays: The First 5000 Days » de l'artiste Beeple. Pour environ combien ?",
+      "answer": "69 millions de dollars",
+      "wrong": [
+        "6,9 millions de dollars",
+        "690 000 dollars",
+        "690 millions de dollars"
+      ],
+      "explanation": "L'œuvre numérique de **Beeple** (Mike Winkelmann), un collage de 5 000 images publiées jour après jour depuis 2007, a été adjugée environ **69,3 millions de dollars**, frais compris, le 11 mars 2021. C'était une première pour une œuvre purement numérique vendue par une grande maison de ventes traditionnelle, et l'un des prix les plus élevés jamais atteints par un artiste vivant. Elle a marqué l'apogée de l'engouement pour les NFT en 2021.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un contrat Solidity émet un événement avec `emit Transfer(...)`. Quelle est la principale limite de ces journaux (logs) ?",
+      "answer": "Les contrats ne peuvent pas les relire",
+      "wrong": [
+        "Ils coûtent plus cher que le stockage",
+        "Ils ne sont visibles que de l'émetteur",
+        "Ils sont limités à un par transaction"
+      ],
+      "explanation": "Les **événements** sont inscrits dans les reçus de transaction, pour beaucoup moins cher que dans le storage. Les applications hors chaîne (interfaces web, explorateurs, indexeurs) les écoutent pour suivre l'activité d'un contrat, par exemple tous les transferts d'un jeton. En revanche, aucun contrat ne peut lire les logs : une information dont la logique du contrat aura besoin plus tard doit être gardée dans le storage.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle est la taille d'un « mot » (word), l'unité de base sur laquelle calcule l'EVM ?",
+      "answer": "256 bits",
+      "wrong": [
+        "64 bits",
+        "32 bits",
+        "512 bits"
+      ],
+      "explanation": "L'EVM manipule des mots de **256 bits** (32 octets), une taille choisie pour faciliter les calculs cryptographiques, comme les hash Keccak-256 qui tiennent dans un seul mot. C'est pourquoi `uint256` est le type entier par défaut de Solidity (`uint` en est un alias) et que le storage est découpé en emplacements de 32 octets. Les processeurs courants travaillent, eux, sur 64 bits.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quand une transaction appelle `transfer(address,uint256)` sur un contrat, comment l'EVM sait-elle quelle fonction exécuter ?",
+      "answer": "Par les 4 premiers octets du hash Keccak-256 de la signature",
+      "wrong": [
+        "Par le nom de la fonction écrit en clair dans la transaction",
+        "Par le numéro d'ordre de la fonction dans le code source",
+        "Par un registre central des fonctions tenu par Etherscan"
+      ],
+      "explanation": "Les données d'appel commencent par un **sélecteur de fonction** : les 4 premiers octets du Keccak-256 de la signature canonique. Pour `transfer(address,uint256)`, c'est `0xa9059cbb`, suivi des arguments encodés selon l'**ABI**. Le code du contrat compare ce sélecteur à ceux de ses fonctions pour aiguiller l'appel. Deux signatures différentes peuvent, rarement, partager le même sélecteur : le compilateur Solidity refuse une telle collision au sein d'un même contrat.",
+      "difficulty": 3
+    },
+    {
+      "question": "Une application te propose une « approbation illimitée » (`approve` avec un montant maximal) pour l'un de tes jetons ERC-20. Quel risque prends-tu ?",
+      "answer": "Le contrat approuvé pourra prendre tous ces jetons, à tout moment",
+      "wrong": [
+        "Tes jetons sont bloqués tant que l'approbation est active",
+        "Tu paies des frais de gas à chaque transfert futur",
+        "L'approbation expire et tes jetons sont brûlés"
+      ],
+      "explanation": "`approve` autorise un autre compte, généralement un contrat, à prélever tes jetons via `transferFrom`. Une approbation illimitée évite de réapprouver à chaque opération, mais si ce contrat est piraté, malveillant ou mal conçu, il peut vider **tout** ton solde de ce jeton, même des mois plus tard. L'autorisation ne disparaît pas seule : il faut la **révoquer** (remettre l'allocation à zéro), par exemple avec l'outil de vérification des approbations d'Etherscan.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un jeton ERC-20 a 18 décimales. Quelle valeur entière son contrat stocke-t-il pour représenter un solde de 1,5 jeton ?",
+      "answer": "`1500000000000000000`",
+      "wrong": [
+        "`15`",
+        "`150000000000000000`",
+        "`15000000000000000000`"
+      ],
+      "explanation": "Solidity ne gère pas les nombres à virgule : les soldes sont des entiers, et le champ `decimals` indique seulement où placer la virgule à l'affichage. Avec 18 décimales, 1 jeton vaut 10¹⁸ unités, donc 1,5 jeton = 1,5 × 10¹⁸ = **1 500 000 000 000 000 000** (19 chiffres). L'ether suit la même logique avec le wei, alors que l'USDC n'utilise que 6 décimales : confondre les deux est une erreur classique.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que standardise ERC-4626 ?",
+      "answer": "Les coffres (vaults) de rendement tokenisés",
+      "wrong": [
+        "Les jetons non transférables liés à une identité",
+        "Les signatures d'approbation sans gas (permit)",
+        "Les noms de domaine en .eth"
+      ],
+      "explanation": "**ERC-4626** définit une interface commune pour les **vaults** : on y dépose un actif ERC-20 (par exemple de l'USDC) et l'on reçoit en échange des parts, elles-mêmes des jetons ERC-20, dont la valeur grandit avec les rendements de la stratégie. Grâce à des fonctions normalisées (`deposit`, `withdraw`, `convertToAssets`…), les protocoles s'intègrent entre eux sans adaptateur sur mesure. Les signatures « permit » relèvent d'ERC-2612, et les noms en .eth de l'ENS.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'est-ce qui distingue fondamentalement une sidechain (chaîne latérale) d'un rollup ?",
+      "answer": "La sidechain repose sur son propre consensus, pas sur Ethereum",
+      "wrong": [
+        "La sidechain publie toutes ses données sur Ethereum",
+        "Le rollup possède ses propres validateurs indépendants",
+        "Le rollup n'utilise aucun smart contract sur Ethereum"
+      ],
+      "explanation": "Une **sidechain** est une blockchain indépendante reliée à Ethereum par un pont : sa sécurité dépend entièrement de ses propres validateurs, et s'ils sont corrompus, les fonds peuvent être perdus. Un **rollup** publie au contraire ses données de transactions sur Ethereum et y fait vérifier son état (par preuve de fraude ou de validité) : il **hérite** de la sécurité de la couche 1. Gnosis Chain et Polygon PoS sont souvent cités comme exemples de sidechains.",
+      "difficulty": 3
     }
   ]
 }

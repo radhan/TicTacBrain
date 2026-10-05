@@ -1140,6 +1140,253 @@
       "explanation": "Le consentement n'est valable que si l'internaute fait un choix réel : il doit pouvoir **accepter ou refuser avec le même degré de simplicité**, par exemple avec un bouton « Tout refuser » au même niveau que « Tout accepter ». En janvier 2022, la CNIL a ainsi sanctionné Google (150 millions d'euros) et Facebook (60 millions d'euros), car refuser les cookies demandait plusieurs clics quand un seul suffisait pour accepter.",
       "difficulty": 2,
       "source": "https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/cookies/que-dit-la-loi"
+    },
+    {
+      "question": "En marketing, en quoi consiste le **lead nurturing** ?",
+      "answer": "Entretenir la relation avec un prospect jusqu'à ce qu'il soit prêt à acheter",
+      "wrong": [
+        "Acheter des fichiers de prospects auprès de courtiers spécialisés",
+        "Relancer par téléphone les clients qui ont résilié leur contrat",
+        "Supprimer de la base les prospects inactifs depuis plusieurs mois"
+      ],
+      "explanation": "La plupart des leads ne sont pas prêts à acheter au moment où ils laissent leurs coordonnées. Le **lead nurturing** (« nourrir » les prospects) consiste à leur envoyer, souvent de façon automatisée, des contenus adaptés à leur stade de réflexion : guides, études de cas, invitations à une démo. Le but est de rester présent et utile jusqu'au moment de la décision. Relancer d'anciens clients relève plutôt de la réactivation.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans un produit numérique, que désigne l'**onboarding** ?",
+      "answer": "Le parcours qui guide un nouvel utilisateur lors de ses premiers pas",
+      "wrong": [
+        "Le référencement de l'application sur les magasins d'applis",
+        "La procédure de résiliation d'un abonnement en ligne",
+        "La mise en ligne d'une nouvelle version de l'application"
+      ],
+      "explanation": "L'**onboarding** regroupe tout ce qui accompagne un nouvel utilisateur : écran de bienvenue, tutoriel, checklist, données d'exemple, e-mails des premiers jours. Son objectif est de l'amener le plus vite possible au « moment aha », c'est-à-dire à l'activation. Un onboarding raté fait perdre des utilisateurs qui ont pourtant coûté cher à acquérir.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'appelle-t-on une **vanity metric** (métrique de vanité) ?",
+      "answer": "Un chiffre flatteur qui n'aide pas à prendre de décision",
+      "wrong": [
+        "Un indicateur qui mesure la notoriété d'une marque de luxe",
+        "Un chiffre volontairement falsifié pour impressionner",
+        "Un indicateur réservé aux comptes personnels sur les réseaux"
+      ],
+      "explanation": "Nombre cumulé d'inscrits, de téléchargements ou de « j'aime » : ces chiffres montent presque toujours et font plaisir, mais ne disent pas si le produit crée de la valeur ni quoi faire ensuite. Eric Ries, dans *The Lean Startup*, les oppose aux métriques **actionnables**, comme la rétention par cohorte ou le taux de conversion, qui permettent de relier une action à son effet. Une vanity metric n'est pas fausse, elle est juste peu utile.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans l'approche **Lean Startup**, qu'est-ce qu'un **MVP** (*minimum viable product*) ?",
+      "answer": "La version la plus simple qui permet d'apprendre des utilisateurs",
+      "wrong": [
+        "Le produit le plus vendu du catalogue de l'entreprise",
+        "Le prix minimum auquel le produit reste encore rentable",
+        "La version finale du produit, sans aucun défaut connu"
+      ],
+      "explanation": "Le **MVP** est la version qui demande le moins d'effort tout en permettant de tester une hypothèse auprès de vrais utilisateurs. Il alimente la boucle « construire, mesurer, apprendre » popularisée par Eric Ries dans *The Lean Startup* (2011). Un MVP peut être très rudimentaire : Dropbox a d'abord validé l'intérêt du public avec une simple vidéo de démonstration.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel levier psychologique un site exploite-t-il en affichant « **Plus que 2 articles en stock !** » ?",
+      "answer": "La rareté",
+      "wrong": [
+        "La réciprocité",
+        "L'autorité",
+        "L'engagement"
+      ],
+      "explanation": "Ce qui est rare paraît plus précieux, et la peur de manquer pousse à décider vite : c'est le principe de **rareté**, l'un des leviers de persuasion décrits par Robert Cialdini. La **réciprocité** consiste à donner pour recevoir (échantillon gratuit), l'**autorité** à s'appuyer sur un expert. Attention : une rareté inventée de toutes pièces peut constituer une pratique commerciale trompeuse.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que permet un outil de **marketing automation** ?",
+      "answer": "Déclencher automatiquement des actions selon le comportement des contacts",
+      "wrong": [
+        "Générer automatiquement de faux avis clients positifs sur le site",
+        "Remplacer toute l'équipe commerciale par un robot téléphonique",
+        "Publier les mêmes annonces sur tous les sites sans aucun ciblage"
+      ],
+      "explanation": "Le **marketing automation** repose sur des scénarios du type « si… alors » : e-mail de bienvenue à l'inscription, relance d'un panier abandonné, attribution de points de lead scoring, alerte au commercial quand un prospect consulte la page des tarifs. Il permet de personnaliser la communication à grande échelle, au bon moment, sans intervention manuelle.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qu'une **campagne de réactivation** (*win-back*) ?",
+      "answer": "Une action visant à faire revenir des clients devenus inactifs",
+      "wrong": [
+        "Une campagne qui cible des prospects n'ayant jamais acheté",
+        "Une opération de remboursement des clients mécontents",
+        "Une relance des fournisseurs en retard de livraison"
+      ],
+      "explanation": "Une **campagne de réactivation** cible les clients qui n'ont plus acheté depuis un certain temps ou qui ont résilié : offre spéciale, présentation des nouveautés, enquête sur les raisons du départ. Ces personnes connaissent déjà la marque, ce qui rend souvent leur reconquête moins coûteuse que l'acquisition d'un client totalement nouveau.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qu'un **effet de réseau** ?",
+      "answer": "La valeur d'un service augmente avec le nombre de ses utilisateurs",
+      "wrong": [
+        "Le coût unitaire d'un service baisse quand sa production augmente",
+        "La vitesse d'un site dépend de la qualité de la connexion internet",
+        "Chaque client influence en moyenne dix personnes de son entourage"
+      ],
+      "explanation": "Avec un **effet de réseau**, chaque nouvel utilisateur rend le service plus utile pour tous les autres : téléphone, messageries, réseaux sociaux, places de marché. C'est un puissant moteur de croissance et une barrière à l'entrée pour les concurrents. À ne pas confondre avec les **économies d'échelle**, qui concernent la baisse des coûts de production et non la valeur perçue par l'utilisateur.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel « growth hack » a contribué à la croissance fulgurante de **Hotmail** après son lancement en 1996 ?",
+      "answer": "Une signature promotionnelle ajoutée en bas de chaque e-mail envoyé",
+      "wrong": [
+        "Un concours doté d'un million de dollars pour les nouveaux inscrits",
+        "Des spots publicitaires diffusés pendant la finale du Super Bowl",
+        "Un parrainage qui rémunérait chaque ami invité en argent liquide"
+      ],
+      "explanation": "Chaque e-mail envoyé depuis Hotmail se terminait par une invitation du type « PS: I love you. Get your free email at Hotmail ». Chaque utilisateur faisait ainsi, sans effort, la promotion du service auprès de ses correspondants : une **boucle virale** intégrée au produit lui-même. Hotmail a été racheté par Microsoft dès 1997, pour environ 400 millions de dollars.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Outlook.com"
+    },
+    {
+      "question": "Quel était le principe du célèbre programme de **parrainage de Dropbox** ?",
+      "answer": "Offrir de l'espace de stockage gratuit au parrain et au filleul",
+      "wrong": [
+        "Verser une commission en argent au parrain pour chaque inscrit",
+        "Offrir un mois d'abonnement payant au seul filleul inscrit",
+        "Tirer au sort chaque mois un parrain qui gagnait un ordinateur"
+      ],
+      "explanation": "Dropbox offrait de l'**espace de stockage supplémentaire aux deux parties** : le parrain et l'ami invité. Ce parrainage « double face » est efficace car la récompense est liée au produit lui-même (plus d'espace rend Dropbox plus utile) et parce que l'invité y gagne aussi, ce qui rend l'invitation moins gênante à envoyer. Il est devenu un cas d'école du growth marketing.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la différence entre un **MQL** et un **SQL** ?",
+      "answer": "Le MQL est qualifié par le marketing, le SQL est prêt pour l'équipe commerciale",
+      "wrong": [
+        "Le MQL provient du site web, le SQL d'un salon ou d'un événement physique",
+        "Le MQL désigne un client actif, le SQL un ancien client à reconquérir",
+        "Le MQL est un lead de particulier, le SQL un lead d'entreprise (B2B)"
+      ],
+      "explanation": "Un **MQL** (*Marketing Qualified Lead*) a montré assez d'intérêt pour être jugé prometteur par le marketing, souvent via le lead scoring (téléchargements, visites répétées). Un **SQL** (*Sales Qualified Lead*) a été validé comme ayant un vrai besoin et un projet d'achat : il est transmis aux commerciaux. Définir ensemble ces seuils évite les reproches mutuels entre marketing et ventes sur la qualité des leads.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur quels trois critères repose la **segmentation RFM** d'une base clients ?",
+      "answer": "Récence, Fréquence, Montant",
+      "wrong": [
+        "Revenu, Fidélité, Marge",
+        "Rétention, Fréquentation, Mobilité",
+        "Réseau, Formation, Métier"
+      ],
+      "explanation": "La **segmentation RFM**, héritée de la vente par correspondance, note chaque client selon la **récence** de son dernier achat, la **fréquence** de ses achats et le **montant** dépensé. On repère ainsi les meilleurs clients à choyer, les nouveaux à fidéliser ou les anciens gros clients devenus inactifs, cibles idéales d'une campagne de réactivation.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pour prioriser des idées d'expériences de croissance, que signifie la méthode de notation **ICE** ?",
+      "answer": "Impact, Confiance, Facilité (Impact, Confidence, Ease)",
+      "wrong": [
+        "Investissement, Coût, Efficacité (Investment, Cost, Efficiency)",
+        "Idée, Contexte, Exécution (Idea, Context, Execution)",
+        "Intérêt, Clients, Engagement (Interest, Customers, Engagement)"
+      ],
+      "explanation": "Avec **ICE**, popularisée par Sean Ellis, chaque idée reçoit une note (souvent de 1 à 10) pour son **impact** potentiel, la **confiance** qu'on a dans son succès et sa **facilité** de mise en œuvre ; on teste d'abord les idées les mieux notées. La variante **RICE**, proposée par Intercom, ajoute la portée (*Reach*) et remplace la facilité par l'effort.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce que le **product-led growth** (PLG) ?",
+      "answer": "Une croissance portée par le produit lui-même, souvent essayé gratuitement",
+      "wrong": [
+        "Une croissance portée par des commerciaux qui démarchent les clients",
+        "Une stratégie qui consiste à multiplier les produits au catalogue",
+        "Une croissance financée uniquement par des levées de fonds successives"
+      ],
+      "explanation": "En **product-led growth**, l'utilisateur découvre, adopte et souvent achète le produit par lui-même, via une offre freemium ou un essai gratuit : c'est l'usage qui démontre la valeur, pas un commercial. Des outils comme Slack, Zoom ou Canva ont grandi ainsi, avec en prime une viralité naturelle (inviter ses collègues). Le modèle inverse, piloté par une force de vente, est dit *sales-led*.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans un service par abonnement, qu'appelle-t-on le **churn involontaire** ?",
+      "answer": "Des départs dus à des échecs de paiement, non voulus par le client",
+      "wrong": [
+        "Des clients qui oublient leur abonnement et continuent de payer",
+        "Des clients partis chez un concurrent après une hausse de prix",
+        "Des clients qui passent à une offre moins chère sans résilier"
+      ],
+      "explanation": "Le **churn involontaire** survient quand un client perd son abonnement sans l'avoir décidé : carte expirée, plafond atteint, prélèvement refusé. Il peut représenter une part notable des résiliations. On le combat par le **dunning** : relances automatiques, nouvelles tentatives de prélèvement, rappels avant expiration de la carte. Le passage à une offre moins chère est une contraction de revenu, pas un départ.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un client découvre une marque sur **Instagram**, revient via la **newsletter**, puis achète après un clic sur une **annonce Google**. Avec un modèle d'attribution au **dernier clic**, à qui revient la vente ?",
+      "answer": "Entièrement à l'annonce Google",
+      "wrong": [
+        "Entièrement à la publicité Instagram",
+        "À parts égales entre les trois canaux",
+        "Principalement à la newsletter"
+      ],
+      "explanation": "Le modèle au **dernier clic** attribue 100 % de la conversion au dernier point de contact, ici l'annonce Google. Il surévalue les canaux de fin de parcours (recherche sur la marque, retargeting) et sous-évalue ceux qui font découvrir la marque. Le modèle au premier clic aurait tout donné à Instagram et le modèle linéaire un tiers à chaque canal.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qui a présenté en **2007** le cadre des « **pirate metrics** » AARRR ?",
+      "answer": "Dave McClure",
+      "wrong": [
+        "Sean Ellis",
+        "Eric Ries",
+        "Seth Godin"
+      ],
+      "explanation": "L'investisseur **Dave McClure** (futur fondateur de l'incubateur 500 Startups) a présenté en 2007 « Startup Metrics for Pirates », un exposé de cinq minutes qui résumait la croissance d'une startup en cinq étapes : AARRR, que l'on prononce comme un cri de pirate. Sean Ellis a popularisé le terme « growth hacker », Eric Ries la méthode Lean Startup et Seth Godin le *permission marketing*.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Dave_McClure"
+    },
+    {
+      "question": "Une application démarre avec **1 000** utilisateurs et un **facteur K constant de 0,5**. Si seule la viralité joue, combien d'utilisateurs aura-t-elle **au total** à terme ?",
+      "answer": "Environ 2 000",
+      "wrong": [
+        "Environ 1 500",
+        "Environ 3 000",
+        "Sans limite, la croissance est infinie"
+      ],
+      "explanation": "Chaque vague amène 0,5 fois la précédente : 1 000 + 500 + 250 + 125 + … C'est une série géométrique dont la somme vaut 1 000 / (1 − 0,5) = **2 000**. Le piège à 1 500 s'arrête à la première vague. Avec K < 1, la viralité **amplifie** l'acquisition (ici ×2) mais s'éteint ; seule une valeur de K ≥ 1 entretient une croissance sans fin.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un SaaS a un **CAC de 600 €**. Chaque client paie **50 € par mois**, avec une **marge brute de 80 %**. En combien de mois le coût d'acquisition est-il **remboursé** (CAC payback) ?",
+      "answer": "15 mois",
+      "wrong": [
+        "12 mois",
+        "7,5 mois",
+        "20 mois"
+      ],
+      "explanation": "Chaque mois, un client rapporte 50 × 0,8 = **40 €** de marge brute. Il faut donc 600 / 40 = **15 mois** pour récupérer le CAC. Le piège à 12 mois divise le CAC par le chiffre d'affaires sans tenir compte de la marge, ce qui est trop optimiste. Plus le payback est court, moins la croissance consomme de trésorerie.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans *Crossing the Chasm* (1991), entre quels groupes d'adopteurs **Geoffrey Moore** situe-t-il le « gouffre » qu'une innovation technologique doit franchir ?",
+      "answer": "Les adopteurs précoces et la majorité précoce",
+      "wrong": [
+        "Les innovateurs et les adopteurs précoces",
+        "La majorité précoce et la majorité tardive",
+        "La majorité tardive et les retardataires"
+      ],
+      "explanation": "Moore s'appuie sur la courbe de diffusion d'Everett Rogers (innovateurs 2,5 %, adopteurs précoces 13,5 %, majorité précoce 34 %, majorité tardive 34 %, retardataires 16 %). Le gouffre sépare les **adopteurs précoces**, des visionnaires prêts à prendre des risques, de la **majorité précoce**, des pragmatiques qui veulent une solution complète et des références. Beaucoup de produits technologiques échouent à ce passage.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Crossing_the_Chasm"
+    },
+    {
+      "question": "Selon la **loi de Metcalfe**, comment évolue la valeur d'un réseau de télécommunication quand son nombre d'utilisateurs **n** augmente ?",
+      "answer": "Proportionnellement à n²",
+      "wrong": [
+        "Proportionnellement à n",
+        "Proportionnellement à n × log(n)",
+        "Proportionnellement à 2ⁿ"
+      ],
+      "explanation": "La **loi de Metcalfe**, du nom de Robert Metcalfe, co-inventeur d'Ethernet, part du nombre de connexions possibles entre n utilisateurs : n(n − 1) / 2, qui croît comme **n²**. Elle sert souvent à illustrer la puissance des effets de réseau. Elle est jugée trop optimiste par certains, car toutes les connexions n'ont pas la même valeur : d'autres modèles proposent une croissance en n × log(n).",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Metcalfe%27s_law"
+    },
+    {
+      "question": "Avec **iOS 14.5** (avril 2021), Apple a déployé l'**App Tracking Transparency**. Quel en a été l'effet principal pour la publicité mobile ?",
+      "answer": "Les apps doivent obtenir l'accord de l'utilisateur pour le suivre entre apps et sites",
+      "wrong": [
+        "Les publicités sont interdites dans les applications gratuites de l'App Store",
+        "Les annonceurs doivent payer Apple pour cibler les utilisateurs d'iPhone",
+        "Les applications ne peuvent plus envoyer de notifications push sans paiement"
+      ],
+      "explanation": "Depuis iOS 14.5, une application doit afficher une demande d'autorisation avant d'accéder à l'**IDFA**, l'identifiant publicitaire de l'appareil, et de suivre l'utilisateur à travers les apps et sites d'autres sociétés. Une grande partie des utilisateurs refuse, ce qui a dégradé le ciblage et la mesure des conversions, en particulier pour Meta, qui estimait début 2022 que ces changements lui coûteraient environ 10 milliards de dollars de revenus sur l'année.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Identifier_for_Advertisers"
     }
   ]
 }

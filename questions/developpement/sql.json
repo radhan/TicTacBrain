@@ -1170,6 +1170,306 @@
       "explanation": "Toutes les colonnes nécessaires (`client_id` pour filtrer, `montant` pour afficher) sont présentes **dans l'index** : c'est un index **couvrant**, et le moteur peut faire un parcours d'index seul (*index-only scan*) sans aller chercher les lignes dans la table. PostgreSQL permet aussi d'ajouter des colonnes non clés avec `INCLUDE`. Un index ne stocke ni résultats de requêtes ni agrégats.",
       "difficulty": 3,
       "source": "https://www.postgresql.org/docs/current/indexes-index-only-scans.html"
+    },
+    {
+      "question": "Dans une réplication primaire-réplique classique (PostgreSQL, MySQL), vers quel serveur faut-il envoyer les **écritures** ?",
+      "answer": "Vers le serveur primaire uniquement",
+      "wrong": [
+        "Vers n'importe quelle réplique",
+        "Vers toutes les répliques en parallèle",
+        "Vers la réplique la moins chargée"
+      ],
+      "explanation": "Le primaire reçoit toutes les écritures et transmet ses modifications (son journal) aux répliques, qui ne sont accessibles **qu'en lecture**. On répartit ainsi les lectures sur plusieurs machines et on dispose d'un serveur prêt à prendre le relais en cas de panne. Revers : une réplique asynchrone peut avoir un léger retard, donc une lecture juste après une écriture peut y montrer une donnée périmée.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/hot-standby.html"
+    },
+    {
+      "question": "Qu'est-ce qu'un **trigger** (déclencheur) dans une base de données ?",
+      "answer": "Une procédure lancée automatiquement lors d'une modification de table",
+      "wrong": [
+        "Une tâche planifiée qui s'exécute chaque nuit à heure fixe",
+        "Une alerte envoyée à l'administrateur quand le serveur tombe",
+        "Un index recalculé automatiquement après chaque requête"
+      ],
+      "explanation": "Un trigger s'exécute **automatiquement** lors d'un `INSERT`, `UPDATE` ou `DELETE` sur une table, avant (`BEFORE`) ou après (`AFTER`) la modification. Usages typiques : tenir à jour une date de modification, alimenter une table d'historique, appliquer une règle métier complexe. Revers : cette logique « invisible » complique le débogage si l'on en abuse.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/trigger-definition.html"
+    },
+    {
+      "question": "Comment appelle-t-on une clé primaire **sans signification métier**, comme un entier auto-incrémenté ?",
+      "answer": "Une clé de substitution (surrogate key)",
+      "wrong": [
+        "Une clé naturelle (natural key)",
+        "Une clé étrangère (foreign key)",
+        "Une clé composite (composite key)"
+      ],
+      "explanation": "Une clé de substitution est un identifiant **artificiel** (entier, UUID) généré par le système. À l'inverse, une clé **naturelle** vient des données elles-mêmes : numéro ISBN, numéro de sécurité sociale, code pays… La clé de substitution ne change jamais, même si les données métier évoluent, et reste compacte pour les jointures ; on garde alors souvent une contrainte `UNIQUE` sur la clé naturelle.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Surrogate_key"
+    },
+    {
+      "question": "En MySQL, quel attribut de colonne fait générer automatiquement un entier croissant pour chaque nouvelle ligne ?",
+      "answer": "`AUTO_INCREMENT`",
+      "wrong": [
+        "`AUTOINCREMENT`",
+        "`IDENTITY(1, 1)`",
+        "`NEXTVAL`"
+      ],
+      "explanation": "En MySQL : `id INT AUTO_INCREMENT PRIMARY KEY`. Chaque SGBD a sa syntaxe : `IDENTITY(1, 1)` en SQL Server, `GENERATED ALWAYS AS IDENTITY` (standard) ou `SERIAL` en PostgreSQL, et en SQLite une colonne `INTEGER PRIMARY KEY`, le mot-clé `AUTOINCREMENT` (sans tiret bas) n'y ajoutant que la garantie de ne jamais réutiliser un identifiant. `NEXTVAL` est une fonction de séquence, pas un attribut de colonne.",
+      "difficulty": 1,
+      "source": "https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html"
+    },
+    {
+      "question": "Dans un projet de données, que signifie le sigle **ETL** ?",
+      "answer": "Extract, Transform, Load",
+      "wrong": [
+        "Encrypt, Transfer, Log",
+        "Export, Test, Launch",
+        "Execute, Track, Lock"
+      ],
+      "explanation": "Un processus ETL **extrait** les données de sources variées (bases de production, fichiers, API), les **transforme** (nettoyage, conversion, agrégation) puis les **charge** dans une cible, typiquement un entrepôt de données. Avec la puissance des entrepôts modernes, on pratique aussi l'**ELT** : charger d'abord les données brutes, puis les transformer en SQL directement dans l'entrepôt.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Extract-transform-load"
+    },
+    {
+      "question": "Quelle est la différence entre `CHAR(10)` et `VARCHAR(10)` ?",
+      "answer": "`CHAR(10)` complète avec des espaces jusqu'à 10 caractères",
+      "wrong": [
+        "`CHAR(10)` n'accepte que des lettres, sans chiffres",
+        "`VARCHAR(10)` accepte des chaînes de n'importe quelle taille",
+        "`CHAR(10)` stocke un seul caractère répété 10 fois"
+      ],
+      "explanation": "`CHAR(n)` est de longueur **fixe** : `'abc'` y est stocké avec 7 espaces de remplissage. `VARCHAR(n)` est de longueur **variable**, avec n comme maximum : une valeur plus longue est refusée (ou tronquée selon le SGBD et son mode). `CHAR` convient aux codes de taille constante (code pays `'FR'`) ; pour le reste, `VARCHAR` (ou `TEXT`) est le choix courant.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/datatype-character.html"
+    },
+    {
+      "question": "En PostgreSQL, quelle fonction d'agrégat concatène les valeurs d'un groupe en une seule chaîne, avec un séparateur ?",
+      "answer": "`STRING_AGG(nom, ', ')`",
+      "wrong": [
+        "`CONCAT(nom, ', ')`",
+        "`GROUP_CONCAT(nom, ', ')`",
+        "`COALESCE(nom, ', ')`"
+      ],
+      "explanation": "`SELECT ville, STRING_AGG(nom, ', ') FROM clients GROUP BY ville` donne par exemple « Ana, Léo, Zoé » pour chaque ville. `GROUP_CONCAT` est l'équivalent de **MySQL et SQLite** et n'existe pas en PostgreSQL ; SQL Server utilise aussi `STRING_AGG`. `CONCAT` n'est pas un agrégat : il assemble des valeurs d'une même ligne.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/functions-aggregate.html"
+    },
+    {
+      "question": "En PostgreSQL, à quoi sert la clause `RETURNING` dans `INSERT INTO clients (nom) VALUES ('Ana') RETURNING id;` ?",
+      "answer": "À récupérer l'`id` généré sans requête supplémentaire",
+      "wrong": [
+        "À annuler l'insertion si l'`id` existe déjà",
+        "À renvoyer l'`id` le plus grand de toute la table",
+        "À réessayer l'insertion en cas d'erreur"
+      ],
+      "explanation": "`RETURNING` renvoie des colonnes des lignes **réellement insérées, modifiées ou supprimées**, dans la même instruction : c'est le moyen fiable d'obtenir un identifiant auto-généré. Relire `MAX(id)` juste après serait faux en cas d'insertions concurrentes. SQLite le supporte depuis la version 3.35 ; MySQL propose plutôt `LAST_INSERT_ID()`.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/dml-returning.html"
+    },
+    {
+      "question": "Quelle opération un **index de hachage** ne sait-il pas accélérer, contrairement à un index B-tree ?",
+      "answer": "Une recherche par plage (`BETWEEN`, `<`, `>`)",
+      "wrong": [
+        "Une recherche par égalité stricte (`=`)",
+        "Une jointure sur égalité de deux colonnes",
+        "La vérification de doublons à l'insertion"
+      ],
+      "explanation": "Un index de hachage stocke une empreinte de chaque valeur : deux valeurs proches ont des empreintes sans rapport, donc l'ordre est perdu. Il ne sert qu'aux comparaisons d'**égalité** (la documentation de PostgreSQL le dit explicitement). Le B-tree, trié, gère l'égalité, les plages, les tris et les préfixes : c'est pourquoi c'est le type d'index par défaut.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/indexes-types.html"
+    },
+    {
+      "question": "Pourquoi **dénormalise**-t-on parfois volontairement un schéma, en dupliquant certaines données ?",
+      "answer": "Pour accélérer les lectures en évitant des jointures",
+      "wrong": [
+        "Pour réduire l'espace disque occupé",
+        "Pour éliminer tout risque d'incohérence",
+        "Pour se passer de clés primaires"
+      ],
+      "explanation": "Stocker par exemple le nom du client directement dans chaque facture évite une jointure à chaque lecture : utile pour les tables très lues ou les entrepôts de données. Le prix à payer est l'inverse des bénéfices de la normalisation : **plus d'espace** et un **risque d'incohérence**, puisqu'une même information doit être mise à jour à plusieurs endroits.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Denormalization"
+    },
+    {
+      "question": "Dans un entrepôt de données modélisé en **schéma en étoile**, quelle table occupe le centre de l'étoile ?",
+      "answer": "La table de faits",
+      "wrong": [
+        "La table de dimensions",
+        "La table d'agrégats",
+        "La table de jointure"
+      ],
+      "explanation": "La **table de faits** contient les mesures (montant, quantité…) d'événements comme des ventes, ainsi que des clés étrangères vers les **tables de dimensions** qui l'entourent : date, produit, magasin, client. Les requêtes analytiques joignent les faits à quelques dimensions pour filtrer et regrouper. Quand les dimensions sont elles-mêmes normalisées en sous-tables, on parle de schéma en **flocon**.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Star_schema"
+    },
+    {
+      "question": "Dans un MCD Merise, la cardinalité **0,n** est notée du côté de l'entité `Client` sur l'association `Passer` (avec `Commande`). Que signifie-t-elle ?",
+      "answer": "Un client peut passer aucune ou plusieurs commandes",
+      "wrong": [
+        "Un client passe au moins une commande",
+        "Un client passe au plus une commande",
+        "Une commande peut concerner plusieurs clients"
+      ],
+      "explanation": "En Merise, la cardinalité placée à côté d'une entité indique combien de fois **une occurrence de cette entité** participe à l'association : au minimum 0 (un client inscrit sans commande est permis), au maximum n. Une cardinalité 1,n imposerait au moins une commande, et 0,1 au plus une. Lors du passage au modèle logique, une association 1,1 / 0,n devient une clé étrangère `client_id` dans `Commande`.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Merise_(informatique)"
+    },
+    {
+      "question": "Pourquoi une pagination en `ORDER BY id LIMIT 20 OFFSET 100000` devient-elle lente sur une grande table ?",
+      "answer": "Le moteur doit produire puis écarter les 100 000 premières lignes",
+      "wrong": [
+        "`OFFSET` interdit au moteur d'utiliser le moindre index",
+        "Le moteur verrouille toutes les lignes sautées",
+        "Le serveur envoie toutes les lignes au client, qui filtre"
+      ],
+      "explanation": "Le SGBD ne sait pas « sauter » directement à la 100 001e ligne : il parcourt les lignes dans l'ordre et jette les 100 000 premières, d'où un coût qui croît avec la profondeur de la page. La **pagination par clé** (*keyset*) évite ce problème : `WHERE id > :dernier_id_vu ORDER BY id LIMIT 20`, ce qui permet à l'index de démarrer directement au bon endroit.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/queries-limit.html"
+    },
+    {
+      "question": "En Redis, quelle commande fait disparaître automatiquement la clé `session:42` au bout de 60 secondes ?",
+      "answer": "`EXPIRE session:42 60`",
+      "wrong": [
+        "`TTL session:42 60`",
+        "`DEL session:42 60`",
+        "`PERSIST session:42 60`"
+      ],
+      "explanation": "`EXPIRE` associe une **durée de vie** à une clé, qui est supprimée automatiquement à l'échéance : idéal pour les sessions, les caches ou les codes à usage unique. `TTL` ne fait que **lire** le temps restant, `PERSIST` retire l'expiration et `DEL` supprime immédiatement. On peut aussi fixer la durée dès l'écriture : `SET session:42 valeur EX 60`.",
+      "difficulty": 2,
+      "source": "https://redis.io/docs/latest/commands/expire/"
+    },
+    {
+      "question": "Quel étage du pipeline d'agrégation de MongoDB réalise l'équivalent d'une jointure entre deux collections ?",
+      "answer": "`$lookup`",
+      "wrong": [
+        "`$join`",
+        "`$group`",
+        "`$unwind`"
+      ],
+      "explanation": "`$lookup` ajoute à chaque document un tableau des documents correspondants d'une autre collection, à la manière d'un `LEFT JOIN`. On le fait souvent suivre de `$unwind`, qui « déplie » ce tableau en un document par élément. Il n'existe pas d'étage `$join`. En MongoDB, on évite d'ailleurs souvent la jointure en **imbriquant** les données liées dans un même document.",
+      "difficulty": 2,
+      "source": "https://www.mongodb.com/docs/manual/reference/operator/aggregation/lookup/"
+    },
+    {
+      "question": "Qu'est-ce qui caractérise une sous-requête **corrélée** ?",
+      "answer": "Elle fait référence à une colonne de la requête externe",
+      "wrong": [
+        "Elle est placée dans la clause `FROM`",
+        "Elle renvoie plusieurs colonnes à la fois",
+        "Elle contient forcément une fonction d'agrégat"
+      ],
+      "explanation": "Dans `SELECT nom FROM employes e WHERE salaire > (SELECT AVG(salaire) FROM employes WHERE service = e.service)`, la sous-requête utilise `e.service`, venu de la requête externe : elle doit être évaluée **pour chaque ligne** externe (logiquement, du moins : l'optimiseur peut la réécrire en jointure). Une sous-requête non corrélée, elle, est indépendante et peut être calculée une seule fois.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/functions-subquery.html"
+    },
+    {
+      "question": "La table `ventes(annee, mois, montant)` couvre 2 années et 3 couples (année, mois). Qu'ajoute `GROUP BY ROLLUP (annee, mois)` par rapport à `GROUP BY annee, mois` ?",
+      "answer": "Un sous-total par année et un total général",
+      "wrong": [
+        "Un sous-total par mois, toutes années confondues",
+        "Les mois sans ventes, avec un total à 0",
+        "Un tri par année, puis par mois"
+      ],
+      "explanation": "`ROLLUP (annee, mois)` calcule les regroupements `(annee, mois)`, puis `(annee)`, puis `()` : on obtient les lignes détaillées, une ligne de **sous-total par année** (avec `mois` à NULL) et une ligne de **total général** (les deux à NULL), soit 3 + 2 + 1 = 6 lignes. Le sous-total par mois toutes années confondues demanderait `CUBE` ou `GROUPING SETS`. La fonction `GROUPING()` distingue ces NULL techniques des vrais NULL.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-GROUPING-SETS"
+    },
+    {
+      "question": "Quel algorithme de jointure exige des entrées **triées** sur la clé de jointure (quitte à les trier d'abord) ?",
+      "answer": "La jointure par fusion (merge join)",
+      "wrong": [
+        "La jointure par hachage (hash join)",
+        "La jointure par boucles imbriquées (nested loop)",
+        "La jointure par produit cartésien (cross join)"
+      ],
+      "explanation": "Le *merge join* parcourt les deux entrées triées en parallèle, comme on fusionne deux listes ordonnées : très efficace si les données sont déjà triées (par un index, par exemple). Le *hash join* construit une table de hachage sur la plus petite entrée, sans tri, mais seulement pour des conditions d'égalité. Le *nested loop* compare chaque ligne externe aux lignes internes, idéal quand l'une des entrées est petite et l'autre indexée.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/planner-optimizer.html"
+    },
+    {
+      "question": "En PostgreSQL, déclarer `commandes.client_id REFERENCES clients(id)` crée-t-il un index sur `commandes.client_id` ?",
+      "answer": "Non, il faut le créer soi-même si nécessaire",
+      "wrong": [
+        "Oui, toujours automatiquement",
+        "Oui, mais seulement avec `ON DELETE CASCADE`",
+        "Non, car une clé étrangère ne peut pas être indexée"
+      ],
+      "explanation": "PostgreSQL exige un index (clé primaire ou `UNIQUE`) sur la colonne **référencée** (`clients.id`), mais n'en crée aucun sur la colonne **référençante**. Sans cet index, les jointures sur `client_id` et chaque suppression de client (qui doit vérifier les commandes liées) peuvent déclencher un parcours complet de `commandes`. MySQL (InnoDB), lui, crée automatiquement un index sur la colonne de la clé étrangère.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-FK"
+    },
+    {
+      "question": "En PostgreSQL, que crée `CREATE INDEX ON commandes (client_id) WHERE statut = 'en_cours';` ?",
+      "answer": "Un index ne contenant que les commandes en cours",
+      "wrong": [
+        "Un index composite sur `statut` et `client_id`",
+        "Un index qui disparaît quand plus rien n'est en cours",
+        "Un index unique sur `client_id` pour ces commandes"
+      ],
+      "explanation": "C'est un **index partiel** : seules les lignes vérifiant la condition y figurent. Si les commandes en cours sont une petite fraction de la table, l'index est bien plus compact et rapide, et il sert aux requêtes dont le `WHERE` implique cette condition (`… WHERE statut = 'en_cours' AND client_id = 7`). Il ne devient unique qu'avec `CREATE UNIQUE INDEX`, ce qui permet par exemple d'imposer « une seule commande en cours par client ».",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/indexes-partial.html"
+    },
+    {
+      "question": "Depuis PostgreSQL 15, quelle option permet à une contrainte `UNIQUE` de n'accepter qu'**un seul** NULL, au lieu d'autant qu'on veut ?",
+      "answer": "`NULLS NOT DISTINCT`",
+      "wrong": [
+        "`NULLS DISTINCT`",
+        "`NULLS FIRST`",
+        "`IS DISTINCT FROM`"
+      ],
+      "explanation": "Par défaut, deux NULL ne sont pas considérés comme égaux, donc une colonne `UNIQUE` peut en contenir plusieurs : c'est le comportement `NULLS DISTINCT`, implicite. Avec `UNIQUE NULLS NOT DISTINCT`, les NULL sont traités comme égaux et un second NULL déclenche une violation d'unicité. SQL Server, lui, n'accepte déjà qu'un seul NULL dans une contrainte `UNIQUE`. `NULLS FIRST` concerne le tri, et `IS DISTINCT FROM` est un opérateur de comparaison.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/sql-createtable.html"
+    },
+    {
+      "question": "Plusieurs processus dépilent des tâches d'une même table. À quoi leur sert `SELECT … FOR UPDATE SKIP LOCKED` (PostgreSQL, MySQL 8) ?",
+      "answer": "À ignorer les lignes déjà verrouillées par un autre processus",
+      "wrong": [
+        "À lire les lignes sans poser le moindre verrou",
+        "À attendre sans limite que les verrous se libèrent",
+        "À verrouiller la table entière le temps de la lecture"
+      ],
+      "explanation": "Chaque processus verrouille les tâches qu'il prend et **saute** celles déjà prises par les autres, au lieu d'attendre leur libération : les processus travaillent en parallèle sans se bloquer ni traiter deux fois la même tâche. Typiquement : `SELECT id FROM taches WHERE statut = 'a_faire' ORDER BY id LIMIT 1 FOR UPDATE SKIP LOCKED`. La variante `NOWAIT`, elle, échoue immédiatement si une ligne est verrouillée.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/sql-select.html#SQL-FOR-UPDATE-SHARE"
+    },
+    {
+      "question": "Le théorème **PACELC** prolonge CAP : en cas de partition (P), on choisit entre disponibilité (A) et cohérence (C). Et sinon (E, *else*) ?",
+      "answer": "Entre la latence (L) et la cohérence (C)",
+      "wrong": [
+        "Entre la durabilité (D) et la cohérence (C)",
+        "Entre la latence (L) et la disponibilité (A)",
+        "Entre l'atomicité (A) et l'isolation (I)"
+      ],
+      "explanation": "Formulé par Daniel Abadi, PACELC rappelle qu'il y a un compromis **même sans panne** : garantir que toutes les répliques sont à jour impose d'attendre leur confirmation, donc d'ajouter de la latence. Des systèmes comme Cassandra ou DynamoDB, dans leur configuration par défaut, sont « PA/EL » (disponibilité et faible latence), quand des bases fortement cohérentes sont « PC/EC ».",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/PACELC_theorem"
+    },
+    {
+      "question": "Quelle structure de stockage, utilisée par Cassandra ou RocksDB, accumule les écritures en mémoire puis les vide dans des fichiers triés, fusionnés périodiquement ?",
+      "answer": "L'arbre LSM (Log-Structured Merge-tree)",
+      "wrong": [
+        "L'arbre B+ (B+ tree)",
+        "L'arbre R (R-tree)",
+        "Le tas binaire (binary heap)"
+      ],
+      "explanation": "Un LSM-tree transforme les écritures aléatoires en écritures **séquentielles** : les données vont d'abord dans une table en mémoire (*memtable*), puis sont vidées en fichiers triés immuables (*SSTables*) qu'une **compaction** fusionne en arrière-plan. Les écritures sont très rapides ; les lectures peuvent devoir consulter plusieurs fichiers, ce que des filtres de Bloom limitent. Le B+ tree, lui, met à jour ses pages sur place, au profit des lectures.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Log-structured_merge-tree"
+    },
+    {
+      "question": "En PostgreSQL, la colonne `data` est de type `jsonb` et contient `{\"nom\": \"Ana\"}`. Que renvoie `data ->> 'nom'` ?",
+      "answer": "`Ana`, sous forme de texte",
+      "wrong": [
+        "`\"Ana\"`, sous forme de `jsonb`",
+        "`true`, car la clé existe",
+        "`{nom}`, le chemin de la clé"
+      ],
+      "explanation": "`->` extrait un champ en restant en **`jsonb`** (on obtient `\"Ana\"` avec ses guillemets JSON, pratique pour enchaîner : `data -> 'adresse' ->> 'ville'`). `->>` extrait le champ en **texte** brut, utilisable directement dans une comparaison avec une chaîne SQL ou un `ORDER BY`. Pour tester l'existence d'une clé, l'opérateur est `?`.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/functions-json.html"
     }
   ]
 }

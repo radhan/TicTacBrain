@@ -8,7 +8,11 @@
     {
       "question": "Que désigne l'**intégration continue** (CI) ?",
       "answer": "Fusionner souvent le code, testé automatiquement",
-      "wrong": ["Déployer chaque commit en production sans validation", "Surveiller en continu les performances en production", "Regrouper toutes les fusions de branches en fin de sprint"],
+      "wrong": [
+        "Déployer chaque commit en production sans validation",
+        "Surveiller en continu les performances en production",
+        "Regrouper toutes les fusions de branches en fin de sprint"
+      ],
       "explanation": "L'**intégration continue** consiste à intégrer très souvent (au moins quotidiennement) les modifications dans la branche principale, chaque intégration déclenchant automatiquement un build et des tests. Les problèmes sont ainsi détectés tôt, quand ils sont encore petits. Déployer automatiquement en production relève du **déploiement continu**, une étape plus loin dans le pipeline.",
       "difficulty": 1,
       "source": "https://martinfowler.com/articles/continuousIntegration.html"
@@ -16,7 +20,11 @@
     {
       "question": "Quelle instruction Dockerfile définit l'image de base à partir de laquelle l'image est construite ?",
       "answer": "`FROM`",
-      "wrong": ["`BASE`", "`IMAGE`", "`USE`"],
+      "wrong": [
+        "`BASE`",
+        "`IMAGE`",
+        "`USE`"
+      ],
       "explanation": "`FROM` démarre une étape de build et définit l'image de base, par exemple `FROM node:24-alpine`, ou `FROM scratch` pour partir d'une image vide. Un Dockerfile doit commencer par `FROM` (seuls des `ARG`, des commentaires et des directives du parser peuvent le précéder). Plusieurs `FROM` dans un même fichier créent un build multi-stage.",
       "difficulty": 1,
       "source": "https://docs.docker.com/reference/dockerfile/"
@@ -24,7 +32,11 @@
     {
       "question": "Quelle est la plus petite unité déployable que l'on peut créer et gérer dans Kubernetes ?",
       "answer": "Le Pod",
-      "wrong": ["Le conteneur", "Le Node", "Le ReplicaSet"],
+      "wrong": [
+        "Le conteneur",
+        "Le Node",
+        "Le ReplicaSet"
+      ],
       "explanation": "Un **Pod** regroupe un ou plusieurs conteneurs qui partagent le même réseau (une IP, un `localhost` commun) et peuvent partager des volumes. Kubernetes ne gère jamais un conteneur isolé : il planifie des Pods sur des nœuds (**Nodes**). En pratique, on crée rarement des Pods à la main : un **Deployment** gère des ReplicaSets, qui gèrent eux-mêmes des Pods.",
       "difficulty": 1,
       "source": "https://kubernetes.io/docs/concepts/workloads/pods/"
@@ -32,7 +44,11 @@
     {
       "question": "Quelle commande Terraform affiche les modifications prévues sur l'infrastructure, sans rien appliquer ?",
       "answer": "`terraform plan`",
-      "wrong": ["`terraform apply`", "`terraform validate`", "`terraform init`"],
+      "wrong": [
+        "`terraform apply`",
+        "`terraform validate`",
+        "`terraform init`"
+      ],
       "explanation": "`terraform plan` compare la configuration au state et à l'infrastructure réelle, puis affiche ce qui serait créé (`+`), modifié (`~`) ou détruit (`-`). C'est l'étape de revue avant `terraform apply`. `terraform validate` vérifie seulement la syntaxe et la cohérence de la configuration, sans interroger les APIs des fournisseurs, et `terraform init` prépare le répertoire (providers, backend).",
       "difficulty": 1,
       "source": "https://developer.hashicorp.com/terraform/cli/commands/plan"
@@ -40,14 +56,22 @@
     {
       "question": "Comment Ansible se connecte-t-il, par défaut, aux serveurs Linux qu'il configure ?",
       "answer": "En SSH, sans agent à installer",
-      "wrong": ["Via un agent installé sur chaque serveur", "Via une API REST exposée par chaque serveur", "Via un démon qui tire sa config d'un maître"],
+      "wrong": [
+        "Via un agent installé sur chaque serveur",
+        "Via une API REST exposée par chaque serveur",
+        "Via un démon qui tire sa config d'un maître"
+      ],
       "explanation": "Ansible est **agentless** : depuis le nœud de contrôle, il se connecte en **SSH**, copie de petits modules Python sur la machine cible, les exécute puis les supprime. À l'inverse, Puppet et Chef reposent classiquement sur un agent installé sur chaque serveur, qui tire sa configuration d'un serveur central (modèle *pull*).",
       "difficulty": 1
     },
     {
       "question": "Quelle stratégie de déploiement maintient deux environnements de production identiques et bascule tout le trafic de l'ancien vers le nouveau d'un seul coup ?",
       "answer": "Blue/green",
-      "wrong": ["Canary", "Rolling update", "Recreate"],
+      "wrong": [
+        "Canary",
+        "Rolling update",
+        "Recreate"
+      ],
       "explanation": "En **blue/green**, la nouvelle version (green) est déployée à côté de la version en service (blue), testée, puis le routeur ou le load balancer bascule tout le trafic vers elle. Le rollback est quasi instantané : il suffit de rebasculer vers blue. La contrepartie est de devoir faire tourner temporairement le double de ressources.",
       "difficulty": 1,
       "source": "https://martinfowler.com/bliki/BlueGreenDeployment.html"
@@ -55,7 +79,11 @@
     {
       "question": "Quels sont les trois piliers classiques de l'observabilité ?",
       "answer": "Logs, métriques et traces",
-      "wrong": ["Logs, alertes et dashboards", "Métriques, SLA et incidents", "Traces, tests et audits"],
+      "wrong": [
+        "Logs, alertes et dashboards",
+        "Métriques, SLA et incidents",
+        "Traces, tests et audits"
+      ],
       "explanation": "Les **logs** décrivent des événements ponctuels, les **métriques** des valeurs numériques agrégées dans le temps (latence, taux d'erreur…) et les **traces** le parcours d'une requête à travers plusieurs services. Une stack typique : Prometheus pour les métriques, Loki ou Elasticsearch pour les logs, Jaeger ou Tempo pour les traces, et **Grafana** pour visualiser le tout. OpenTelemetry standardise leur collecte.",
       "difficulty": 1,
       "source": "https://opentelemetry.io/docs/concepts/observability-primer/"
@@ -63,7 +91,11 @@
     {
       "question": "Quel terme désigne un engagement contractuel envers des clients sur un niveau de service, assorti de pénalités s'il n'est pas tenu ?",
       "answer": "SLA",
-      "wrong": ["SLO", "SLI", "MTTR"],
+      "wrong": [
+        "SLO",
+        "SLI",
+        "MTTR"
+      ],
       "explanation": "Le **SLA** (*Service Level Agreement*) est un contrat, avec des compensations en cas de non-respect. Le **SLO** (*Service Level Objective*) est l'objectif interne, généralement plus exigeant que le SLA pour garder une marge, et le **SLI** (*Service Level Indicator*) la mesure réelle, par exemple le pourcentage de requêtes servies en moins de 300 ms. Le MTTR est le temps moyen de rétablissement après un incident.",
       "difficulty": 1,
       "source": "https://sre.google/sre-book/service-level-objectives/"
@@ -71,7 +103,11 @@
     {
       "question": "Quelle est la différence entre **livraison continue** (continuous delivery) et **déploiement continu** (continuous deployment) ?",
       "answer": "Le déploiement continu met en prod sans validation manuelle",
-      "wrong": ["La livraison continue met chaque commit en prod d'office", "Le déploiement continu se passe des tests automatisés", "La livraison continue ne vise que les applis mobiles"],
+      "wrong": [
+        "La livraison continue met chaque commit en prod d'office",
+        "Le déploiement continu se passe des tests automatisés",
+        "La livraison continue ne vise que les applis mobiles"
+      ],
       "explanation": "En **livraison continue**, chaque changement qui passe le pipeline est *prêt* à partir en production, mais la mise en prod reste déclenchée par une décision humaine (souvent un simple clic). En **déploiement continu**, cette dernière étape est elle aussi automatisée : tout commit qui passe les tests est déployé. Les deux reposent sur l'intégration continue et sur des tests automatisés solides.",
       "difficulty": 2,
       "source": "https://martinfowler.com/bliki/ContinuousDelivery.html"
@@ -79,7 +115,11 @@
     {
       "question": "Pourquoi écrit-on souvent un Dockerfile Node.js dans cet ordre ?\n```dockerfile\nCOPY package.json package-lock.json ./\nRUN npm ci\nCOPY . .\n```",
       "answer": "Pour garder `npm ci` en cache si seul le code change",
-      "wrong": ["Parce que `COPY . .` ignore les fichiers `package*.json`", "Pour réduire le nombre total de couches de l'image", "Parce que `npm ci` exige un dossier sans code source"],
+      "wrong": [
+        "Parce que `COPY . .` ignore les fichiers `package*.json`",
+        "Pour réduire le nombre total de couches de l'image",
+        "Parce que `npm ci` exige un dossier sans code source"
+      ],
       "explanation": "Docker met chaque couche en cache, et un changement dans les fichiers copiés invalide le cache de cette instruction **et de toutes les suivantes**. En copiant d'abord uniquement les manifestes de dépendances, l'étape coûteuse `npm ci` n'est rejouée que si `package.json` ou le lockfile changent ; une modification du code n'invalide que le dernier `COPY`. Cet ordre ajoute d'ailleurs une couche au lieu d'en retirer.",
       "difficulty": 2,
       "source": "https://docs.docker.com/build/cache/"
@@ -87,7 +127,11 @@
     {
       "question": "Quel est l'intérêt principal d'un build Docker **multi-stage** ?",
       "answer": "Produire une image finale légère, sans les outils de build",
-      "wrong": ["Construire une même image pour plusieurs architectures CPU", "Lancer plusieurs conteneurs depuis un seul Dockerfile", "Répartir les étapes du build sur plusieurs machines"],
+      "wrong": [
+        "Construire une même image pour plusieurs architectures CPU",
+        "Lancer plusieurs conteneurs depuis un seul Dockerfile",
+        "Répartir les étapes du build sur plusieurs machines"
+      ],
       "explanation": "Un build multi-stage enchaîne plusieurs `FROM` : une première étape compile avec tout l'outillage nécessaire (SDK, compilateur…), puis l'étape finale part d'une image minimale et ne récupère que l'artefact via `COPY --from=build`. L'image livrée est plus petite et offre moins de surface d'attaque. Le build multi-architecture (amd64/arm64) est une autre fonctionnalité, proposée par `docker buildx`.",
       "difficulty": 2,
       "source": "https://docs.docker.com/build/building/multi-stage/"
@@ -95,7 +139,11 @@
     {
       "question": "Les Pods sont éphémères et leur IP change à chaque recréation. Quel objet Kubernetes fournit une IP et un nom DNS stables pour joindre un ensemble de Pods ?",
       "answer": "Un Service",
-      "wrong": ["Un Ingress", "Un Deployment", "Une ConfigMap"],
+      "wrong": [
+        "Un Ingress",
+        "Un Deployment",
+        "Une ConfigMap"
+      ],
       "explanation": "Un **Service** sélectionne des Pods grâce à leurs labels et expose une IP virtuelle stable (ClusterIP) ainsi qu'un nom DNS (`mon-service.mon-namespace.svc.cluster.local`), en répartissant le trafic entre les Pods prêts. Un **Ingress** se place en amont : il route le trafic HTTP(S) externe vers des Services selon l'hôte ou le chemin, mais ne cible pas directement les Pods.",
       "difficulty": 2,
       "source": "https://kubernetes.io/docs/concepts/services-networking/service/"
@@ -103,7 +151,11 @@
     {
       "question": "À quoi sert le fichier d'état de Terraform (`terraform.tfstate`) ?",
       "answer": "À lier les ressources déclarées aux objets réels",
-      "wrong": ["À verrouiller les versions des providers utilisés", "À stocker la configuration HCL sous forme compilée", "À conserver l'historique des commandes exécutées"],
+      "wrong": [
+        "À verrouiller les versions des providers utilisés",
+        "À stocker la configuration HCL sous forme compilée",
+        "À conserver l'historique des commandes exécutées"
+      ],
       "explanation": "Le **state** mémorise la correspondance entre chaque ressource déclarée et l'objet réel créé (son identifiant chez le fournisseur), ainsi que ses attributs : sans lui, Terraform ne saurait pas quoi modifier ou détruire. Le verrouillage des versions de providers est le rôle du fichier `.terraform.lock.hcl`. Comme le state peut contenir des secrets, on le stocke dans un backend distant sécurisé, avec verrouillage, plutôt que dans Git.",
       "difficulty": 2,
       "source": "https://developer.hashicorp.com/terraform/language/state"
@@ -111,14 +163,22 @@
     {
       "question": "Que signifie qu'une tâche Ansible est **idempotente** ?",
       "answer": "La rejouer produit le même état qu'une seule exécution",
-      "wrong": ["Elle s'exécute en parallèle sur tous les hôtes", "Elle est annulée automatiquement en cas d'erreur", "Elle ne peut être exécutée qu'une fois par hôte"],
+      "wrong": [
+        "Elle s'exécute en parallèle sur tous les hôtes",
+        "Elle est annulée automatiquement en cas d'erreur",
+        "Elle ne peut être exécutée qu'une fois par hôte"
+      ],
       "explanation": "Une tâche idempotente décrit un **état souhaité** (« le paquet nginx est installé ») plutôt qu'une action : si cet état est déjà atteint, Ansible ne change rien et rapporte `ok` au lieu de `changed`. On peut donc relancer un playbook sans risque. Attention : les modules `command` et `shell` ne sont pas idempotents par nature, d'où des options comme `creates` ou `changed_when`.",
       "difficulty": 2
     },
     {
       "question": "Dans une approche **GitOps** avec Argo CD ou Flux, comment un changement arrive-t-il dans le cluster Kubernetes ?",
       "answer": "Un agent du cluster tire l'état désiré depuis Git",
-      "wrong": ["La CI lance `kubectl apply` sur le cluster après les tests", "Un opérateur applique les manifests à la main après revue", "Le cluster pousse sa configuration courante vers Git"],
+      "wrong": [
+        "La CI lance `kubectl apply` sur le cluster après les tests",
+        "Un opérateur applique les manifests à la main après revue",
+        "Le cluster pousse sa configuration courante vers Git"
+      ],
       "explanation": "En GitOps, le dépôt Git est la **source de vérité** de l'état désiré. Un contrôleur qui tourne dans le cluster (Argo CD, Flux) surveille le dépôt et **réconcilie** en continu l'état réel avec celui décrit dans Git : c'est le modèle *pull*. Déployer revient à merger une pull request, et la CI n'a plus besoin d'identifiants d'accès au cluster, contrairement au modèle *push* où elle lance elle-même `kubectl apply`.",
       "difficulty": 2,
       "source": "https://opengitops.dev/"
@@ -126,7 +186,11 @@
     {
       "question": "Vous envoyez la nouvelle version à 5 % des utilisateurs, surveillez ses métriques d'erreur, puis augmentez progressivement la part de trafic si tout va bien. Quelle stratégie de déploiement est-ce ?",
       "answer": "Canary",
-      "wrong": ["Blue/green", "Recreate", "Shadow"],
+      "wrong": [
+        "Blue/green",
+        "Recreate",
+        "Shadow"
+      ],
       "explanation": "Le **canary** (en référence aux canaris que les mineurs emportaient pour détecter les gaz toxiques) expose la nouvelle version à une petite fraction du trafic réel, compare ses métriques à celles de l'ancienne, puis élargit progressivement, ou annule au moindre problème. Un déploiement **shadow**, lui, duplique le trafic vers la nouvelle version sans jamais renvoyer ses réponses aux utilisateurs. Des outils comme Argo Rollouts ou Flagger automatisent l'analyse canary.",
       "difficulty": 2,
       "source": "https://martinfowler.com/bliki/CanaryRelease.html"
@@ -134,7 +198,11 @@
     {
       "question": "Lequel de ces indicateurs ne fait **pas** partie des métriques DORA de performance de la livraison logicielle ?",
       "answer": "Le taux de couverture de code",
-      "wrong": ["La fréquence de déploiement", "Le délai de mise en production d'un changement", "Le taux d'échec des changements"],
+      "wrong": [
+        "La fréquence de déploiement",
+        "Le délai de mise en production d'un changement",
+        "Le taux d'échec des changements"
+      ],
       "explanation": "Les métriques **DORA** (DevOps Research and Assessment, popularisées par le livre *Accelerate*) mesurent le débit et la stabilité : **fréquence de déploiement**, **délai de mise en production** (*lead time for changes*), **taux d'échec des changements**, **temps de restauration** après un déploiement raté et, depuis 2024, **taux de reprise** (*rework rate*). La couverture de code est un indicateur de qualité interne utile, mais elle n'en fait pas partie.",
       "difficulty": 2,
       "source": "https://dora.dev/guides/dora-metrics-four-keys/"
@@ -142,7 +210,11 @@
     {
       "question": "Dans une **infrastructure immuable**, comment applique-t-on un correctif de sécurité à un serveur en production ?",
       "answer": "On construit une nouvelle image et on remplace le serveur",
-      "wrong": ["On se connecte en SSH pour installer le correctif", "On lance Ansible pour mettre à jour le serveur en place", "On redémarre le serveur pour charger le correctif"],
+      "wrong": [
+        "On se connecte en SSH pour installer le correctif",
+        "On lance Ansible pour mettre à jour le serveur en place",
+        "On redémarre le serveur pour charger le correctif"
+      ],
       "explanation": "En infrastructure **immuable**, un serveur n'est jamais modifié après son déploiement : tout changement passe par une nouvelle image (AMI construite avec Packer, image Docker…) qui remplace les anciennes instances. On élimine ainsi la dérive de configuration (*configuration drift*) et chaque déploiement devient reproductible. C'est l'approche « cattle, not pets » : on remplace plutôt que de réparer.",
       "difficulty": 2,
       "source": "https://martinfowler.com/bliki/ImmutableServer.html"
@@ -150,7 +222,11 @@
     {
       "question": "Avec ce Dockerfile, qu'affiche `docker run mon-image Docker` ?\n```dockerfile\nFROM alpine\nENTRYPOINT [\"echo\", \"Hello\"]\nCMD [\"World\"]\n```",
       "answer": "`Hello Docker`",
-      "wrong": ["`Hello World`", "`Docker`", "`Hello World Docker`"],
+      "wrong": [
+        "`Hello World`",
+        "`Docker`",
+        "`Hello World Docker`"
+      ],
       "explanation": "En forme exec, `CMD` fournit les **arguments par défaut** de l'`ENTRYPOINT`. Les arguments passés à `docker run` après le nom de l'image **remplacent** `CMD`, mais pas l'`ENTRYPOINT` : la commande exécutée est donc `echo Hello Docker`. Sans argument, on obtiendrait `Hello World` ; pour remplacer l'`ENTRYPOINT` lui-même, il faut l'option `--entrypoint`.",
       "difficulty": 3,
       "source": "https://docs.docker.com/reference/dockerfile/#understand-how-cmd-and-entrypoint-interact"
@@ -158,7 +234,11 @@
     {
       "question": "La **readiness probe** d'un conteneur échoue, alors que sa liveness probe réussit. Que fait Kubernetes ?",
       "answer": "Il retire le Pod des endpoints, sans le redémarrer",
-      "wrong": ["Il redémarre le conteneur après le seuil d'échecs", "Il supprime le Pod et le recrée sur un autre nœud", "Il annule le dernier rollout du Deployment"],
+      "wrong": [
+        "Il redémarre le conteneur après le seuil d'échecs",
+        "Il supprime le Pod et le recrée sur un autre nœud",
+        "Il annule le dernier rollout du Deployment"
+      ],
       "explanation": "Une **readiness probe** en échec signale que le conteneur n'est pas prêt à recevoir du trafic : le Pod est retiré des endpoints des Services jusqu'à ce que la probe réussisse de nouveau. C'est la **liveness probe** qui, en cas d'échec, fait redémarrer le conteneur par le kubelet. Confondre les deux peut créer des boucles de redémarrage, par exemple quand une dépendance externe est lente.",
       "difficulty": 3,
       "source": "https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/"
@@ -166,7 +246,11 @@
     {
       "question": "`http_requests_total` est un **counter** Prometheus. Quelle requête PromQL donne le nombre moyen de requêtes par seconde sur les 5 dernières minutes ?",
       "answer": "`rate(http_requests_total[5m])`",
-      "wrong": ["`sum(http_requests_total[5m])`", "`avg(http_requests_total[5m])`", "`delta(http_requests_total[5m])`"],
+      "wrong": [
+        "`sum(http_requests_total[5m])`",
+        "`avg(http_requests_total[5m])`",
+        "`delta(http_requests_total[5m])`"
+      ],
       "explanation": "Un **counter** ne fait qu'augmenter (et repart à zéro quand le processus redémarre) : sa valeur brute a peu d'intérêt. `rate()` calcule son taux d'augmentation **par seconde** sur la fenêtre `[5m]`, en gérant ces remises à zéro. `delta()` est prévu pour les gauges, et `sum`/`avg` agrègent des séries entre elles sans accepter de *range vector*. Pour un total sur la période, on utilise `increase()`.",
       "difficulty": 3,
       "source": "https://prometheus.io/docs/prometheus/latest/querying/functions/"
@@ -174,7 +258,11 @@
     {
       "question": "Un service a un SLO de disponibilité de **99,9 %** sur une fenêtre glissante de 30 jours. À combien d'indisponibilité correspond environ son budget d'erreur ?",
       "answer": "Environ 43 minutes",
-      "wrong": ["Environ 4 minutes", "Environ 7 heures", "Environ 8 heures 45"],
+      "wrong": [
+        "Environ 4 minutes",
+        "Environ 7 heures",
+        "Environ 8 heures 45"
+      ],
       "explanation": "30 jours = 30 × 24 × 60 = 43 200 minutes, et le budget d'erreur vaut 100 % − 99,9 % = 0,1 % de cette durée, soit **43,2 minutes**. 8 h 45 correspond à 99,9 % sur une année entière, environ 7 h à 99 % sur 30 jours, et environ 4 minutes à 99,99 %. Tant qu'il reste du budget, l'équipe peut livrer et prendre des risques ; une fois épuisé, la priorité passe à la fiabilité.",
       "difficulty": 3,
       "source": "https://sre.google/sre-book/embracing-risk/"
@@ -182,7 +270,11 @@
     {
       "question": "Dans l'acronyme **CALMS**, qui résume les piliers d'une démarche DevOps, que signifie le **A** ?",
       "answer": "Automation",
-      "wrong": ["Agility", "Availability", "Alignment"],
+      "wrong": [
+        "Agility",
+        "Availability",
+        "Alignment"
+      ],
       "explanation": "**CALMS** = **C**ulture, **A**utomation, **L**ean, **M**easurement, **S**haring. Le modèle CAMS a été formulé par John Willis et Damon Edwards, puis Jez Humble y a ajouté le L de *Lean*. Il rappelle que DevOps n'est pas qu'une affaire d'outils : la culture et le partage comptent autant que l'automatisation.",
       "difficulty": 3,
       "source": "https://www.atlassian.com/devops/frameworks/calms-framework"
@@ -190,7 +282,11 @@
     {
       "question": "Que fait l'instruction `EXPOSE 8080` dans un Dockerfile ?",
       "answer": "Elle documente le port écouté, sans rien publier",
-      "wrong": ["Elle publie le port 8080 du conteneur sur l'hôte", "Elle ouvre le port 8080 dans le pare-feu de l'hôte", "Elle redirige le port 80 du conteneur vers le 8080"],
+      "wrong": [
+        "Elle publie le port 8080 du conteneur sur l'hôte",
+        "Elle ouvre le port 8080 dans le pare-feu de l'hôte",
+        "Elle redirige le port 80 du conteneur vers le 8080"
+      ],
       "explanation": "`EXPOSE` sert de **documentation** entre l'auteur de l'image et la personne qui l'exécute : elle indique le port sur lequel l'application écoute, mais ne publie rien. Pour rendre le port accessible depuis l'hôte, il faut `docker run -p 8080:8080` (port de l'hôte à gauche, port du conteneur à droite), ou `-P`, qui publie tous les ports exposés sur des ports aléatoires de l'hôte.",
       "difficulty": 3,
       "source": "https://docs.docker.com/reference/dockerfile/#expose"
@@ -198,10 +294,299 @@
     {
       "question": "Une ressource `aws_instance` créée par Terraform est supprimée du code HCL, sans autre changement. Que se passe-t-il au prochain `terraform apply` ?",
       "answer": "Terraform détruit l'instance EC2 réelle",
-      "wrong": ["L'instance est conservée mais n'est plus gérée", "Terraform refuse car l'instance existe encore", "L'instance est seulement retirée du state"],
+      "wrong": [
+        "L'instance est conservée mais n'est plus gérée",
+        "Terraform refuse car l'instance existe encore",
+        "L'instance est seulement retirée du state"
+      ],
       "explanation": "Terraform compare la configuration au state : une ressource présente dans le state mais absente du code est considérée comme à **détruire**, et le plan l'affiche avec un `-`. Pour arrêter de gérer une ressource sans la supprimer, il faut la retirer du state avec `terraform state rm`, ou, depuis Terraform 1.7, utiliser un bloc `removed` avec `destroy = false`. D'où l'importance de toujours relire le plan avant d'appliquer.",
       "difficulty": 3,
       "source": "https://developer.hashicorp.com/terraform/cli/commands/state/rm"
+    },
+    {
+      "question": "Dans un dépôt GitHub, dans quel dossier doivent se trouver les fichiers YAML qui définissent les workflows GitHub Actions ?",
+      "answer": "`.github/workflows/`",
+      "wrong": [
+        "`.github/actions/`",
+        "`.workflows/`",
+        "`.ci/github/`"
+      ],
+      "explanation": "GitHub Actions détecte automatiquement les fichiers `.yml` ou `.yaml` placés dans le dossier `.github/workflows/` du dépôt : chaque fichier est un **workflow** distinct, déclenché par les événements listés sous sa clé `on`. Le dossier `.github/actions/` est souvent utilisé, par convention, pour ranger des actions locales réutilisables, mais un fichier qui s'y trouve n'est jamais lancé comme workflow.",
+      "difficulty": 1,
+      "source": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax"
+    },
+    {
+      "question": "Dans un workflow GitHub Actions, quelle clé d'un job indique le type de machine (le **runner**) sur laquelle il s'exécute, par exemple `ubuntu-latest` ?",
+      "answer": "`runs-on`",
+      "wrong": [
+        "`runner`",
+        "`platform`",
+        "`machine`"
+      ],
+      "explanation": "`runs-on` choisit le runner : une machine hébergée par GitHub (`ubuntu-latest`, `windows-latest`, `macos-latest`…) ou un **runner auto-hébergé**, désigné par ses labels (`runs-on: [self-hosted, linux]`). Chaque job démarre sur une machine vierge, ce qui rend les builds reproductibles. La clé `container` ne remplace pas `runs-on` : elle fait tourner les étapes du job dans un conteneur, sur le runner choisi.",
+      "difficulty": 1,
+      "source": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax"
+    },
+    {
+      "question": "Dans un pipeline CI/CD, qu'appelle-t-on un **artefact** ?",
+      "answer": "Un fichier produit par le pipeline, comme un binaire ou une archive",
+      "wrong": [
+        "Une erreur de build laissée par un commit précédent",
+        "Le fichier de configuration qui décrit les étapes du pipeline",
+        "Une variable secrète injectée au moment du déploiement"
+      ],
+      "explanation": "Un **artefact** est un résultat du build : binaire, archive `.jar` ou `.zip`, bundle JavaScript, image Docker, rapport de tests… L'outil de CI le conserve (ou le pousse dans un dépôt d'artefacts comme Nexus, Artifactory ou un registre de conteneurs) pour le transmettre aux étapes suivantes, le rendre téléchargeable ou le déployer. Le fichier qui décrit les étapes, lui, est la définition du pipeline (`.gitlab-ci.yml`, workflow GitHub Actions, `Jenkinsfile`…).",
+      "difficulty": 1
+    },
+    {
+      "question": "Selon la **pyramide des tests**, quel type de test devrait être le plus nombreux dans une suite de tests automatisés ?",
+      "answer": "Les tests unitaires",
+      "wrong": [
+        "Les tests de bout en bout",
+        "Les tests d'intégration",
+        "Les tests manuels"
+      ],
+      "explanation": "La pyramide, popularisée par Mike Cohn, place à sa base de **nombreux tests unitaires**, rapides et ciblés, puis moins de tests d'intégration, et au sommet quelques tests de bout en bout (*end-to-end*), lents, coûteux et plus fragiles. Une pyramide inversée (beaucoup de tests de bout en bout, peu d'unitaires) donne un pipeline lent et des échecs difficiles à diagnostiquer.",
+      "difficulty": 1,
+      "source": "https://martinfowler.com/articles/practical-test-pyramid.html"
+    },
+    {
+      "question": "Quelle est la relation entre une **image** Docker et un **conteneur** ?",
+      "answer": "Un conteneur est une instance en cours d'exécution d'une image",
+      "wrong": [
+        "Une image est un conteneur arrêté et sauvegardé sur disque",
+        "Une image regroupe plusieurs conteneurs qui tournent ensemble",
+        "Un conteneur est la recette texte qui sert à construire l'image"
+      ],
+      "explanation": "Une **image** est un modèle en lecture seule, composé de couches empilées (système de fichiers et métadonnées comme la commande par défaut). Un **conteneur** est une instance de cette image lancée avec `docker run` : Docker ajoute une couche inscriptible par-dessus l'image et isole le processus. On peut lancer autant de conteneurs qu'on veut à partir d'une même image, un peu comme on crée plusieurs objets à partir d'une classe. La recette texte, c'est le Dockerfile.",
+      "difficulty": 1,
+      "source": "https://docs.docker.com/get-started/docker-overview/"
+    },
+    {
+      "question": "Quel outil permet de décrire dans un fichier YAML une application composée de plusieurs conteneurs (API, base de données, cache…) et de tout lancer avec une seule commande ?",
+      "answer": "Docker Compose",
+      "wrong": [
+        "Docker Hub",
+        "Docker Desktop",
+        "Docker Buildx"
+      ],
+      "explanation": "**Docker Compose** lit un fichier `compose.yaml` (ou l'ancien `docker-compose.yml`) qui déclare les services, leurs images, ports, volumes, variables et réseaux. `docker compose up -d` crée et démarre l'ensemble, `docker compose down` l'arrête et supprime les conteneurs. C'est l'outil idéal pour un environnement de développement ou de test local. Docker Hub est un registre d'images, et Buildx une extension dédiée à la construction d'images.",
+      "difficulty": 1,
+      "source": "https://docs.docker.com/compose/"
+    },
+    {
+      "question": "Quelle commande liste les Pods du namespace courant dans un cluster Kubernetes ?",
+      "answer": "`kubectl get pods`",
+      "wrong": [
+        "`kubectl list pods`",
+        "`kubectl show pods`",
+        "`kubectl ps`"
+      ],
+      "explanation": "`kubectl get` liste les ressources d'un type donné (`pods`, `deployments`, `services`…) ; on ajoute `-n mon-namespace` pour viser un autre namespace, `-A` pour tous, et `-o wide` pour voir le nœud et l'IP de chaque Pod. Pour le détail d'un objet et ses événements récents, on utilise `kubectl describe pod <nom>`, et `kubectl logs <nom>` pour les journaux d'un conteneur. `kubectl` n'a pas de sous-commande `list`, `show` ni `ps`.",
+      "difficulty": 1,
+      "source": "https://kubernetes.io/docs/reference/kubectl/quick-reference/"
+    },
+    {
+      "question": "Un workflow GitHub Actions contient deux jobs, `build` et `deploy`, sans autre précision sur leur ordre. Comment s'exécutent-ils ?",
+      "answer": "En parallèle, sauf si `deploy` déclare `needs: build`",
+      "wrong": [
+        "L'un après l'autre, dans l'ordre du fichier YAML",
+        "En parallèle, et aucune option ne permet de les ordonner",
+        "L'un après l'autre, sur la même machine virtuelle"
+      ],
+      "explanation": "Par défaut, les jobs d'un workflow démarrent **en parallèle**, chacun sur son propre runner. Pour créer une dépendance, on écrit `needs: build` dans le job `deploy` : il attend alors la réussite de `build`, et il est ignoré si `build` échoue (sauf condition comme `if: always()`). Même enchaînés, deux jobs ne partagent pas de machine : pour transmettre des fichiers de l'un à l'autre, il faut passer par des artefacts ou par les outputs du job.",
+      "difficulty": 2,
+      "source": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax"
+    },
+    {
+      "question": "Combien de jobs cette matrice GitHub Actions génère-t-elle ?\n```yaml\nstrategy:\n  matrix:\n    os: [ubuntu-latest, windows-latest, macos-latest]\n    node: [20, 22]\n    exclude:\n      - os: macos-latest\n        node: 20\n```",
+      "answer": "5",
+      "wrong": [
+        "6",
+        "4",
+        "7"
+      ],
+      "explanation": "Une matrice crée un job par **combinaison** de valeurs : 3 systèmes × 2 versions de Node = 6 combinaisons. `exclude` retire celles qui correspondent à toutes les clés indiquées, ici macOS avec Node 20, ce qui laisse **5** jobs. À l'inverse, `include` ajoute une combinaison, ou des variables supplémentaires à certaines combinaisons. Chaque job de la matrice s'exécute sur son propre runner, en parallèle.",
+      "difficulty": 2,
+      "source": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax"
+    },
+    {
+      "question": "Dans un workflow GitHub Actions, le job `build` produit un dossier `dist/` dont le job `deploy` (qui déclare `needs: build`) a besoin. Quelle est la solution prévue pour le lui transmettre ?",
+      "answer": "`actions/upload-artifact` puis `actions/download-artifact`",
+      "wrong": [
+        "Rien : les jobs d'un même workflow partagent leur disque",
+        "Déclarer `dist/` dans les `outputs` du job `build`",
+        "Lancer `deploy` avec `needs: build` suffit à copier `dist/`"
+      ],
+      "explanation": "Chaque job tourne sur un **runner neuf** : les fichiers créés par `build` n'existent pas pour `deploy`, même avec `needs`. On publie donc `dist/` avec `actions/upload-artifact`, puis on le récupère dans `deploy` avec `actions/download-artifact` ; l'artefact reste aussi téléchargeable depuis l'interface pendant sa durée de rétention. Les `outputs` d'un job ne transportent que de petites chaînes de caractères (un numéro de version, un tag…), pas des fichiers.",
+      "difficulty": 2,
+      "source": "https://github.com/actions/upload-artifact"
+    },
+    {
+      "question": "Pourquoi utilise-t-on souvent une clé de cache comme `npm-${{ hashFiles('**/package-lock.json') }}` dans un workflow GitHub Actions ?",
+      "answer": "Pour invalider le cache dès que les dépendances changent",
+      "wrong": [
+        "Pour chiffrer le cache avec l'empreinte du lockfile",
+        "Pour partager le cache avec les dépôts forkés",
+        "Pour que le cache expire automatiquement chaque jour"
+      ],
+      "explanation": "`hashFiles()` calcule une empreinte SHA-256 des fichiers indiqués : tant que le lockfile ne change pas, la clé reste identique et le cache (par exemple `~/.npm`) est restauré, ce qui accélère l'installation. Dès qu'une dépendance change, la clé change, et un nouveau cache est enregistré à la fin du job. Les `restore-keys` (comme `npm-`) permettent de repartir d'un cache proche quand aucune clé ne correspond exactement.",
+      "difficulty": 2,
+      "source": "https://github.com/actions/cache"
+    },
+    {
+      "question": "Pourquoi recommande-t-on de construire l'artefact **une seule fois**, puis de déployer ce même artefact en préproduction puis en production ?",
+      "answer": "Pour déployer en prod exactement ce qui a été testé",
+      "wrong": [
+        "Pour économiser l'espace disque du registre d'artefacts",
+        "Pour que chaque environnement ait sa propre version du code",
+        "Pour pouvoir se passer de tests en préproduction"
+      ],
+      "explanation": "Reconstruire l'application pour chaque environnement introduit un risque : une dépendance mise à jour entre-temps, un outil de build différent… et l'on déploie alors un binaire qui **n'a jamais été testé**. Le principe *build once, deploy many* promeut le même artefact (même empreinte, même tag d'image) d'un environnement à l'autre ; seule la configuration, injectée au déploiement (variables d'environnement, secrets), diffère.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans une CI, qu'appelle-t-on un test **flaky** ?",
+      "answer": "Un test qui passe ou échoue au hasard, sans changement de code",
+      "wrong": [
+        "Un test qui échoue toujours sur la branche principale",
+        "Un test trop lent, exécuté seulement la nuit",
+        "Un test désactivé temporairement avec un `skip`"
+      ],
+      "explanation": "Un test **flaky** (instable) donne des résultats différents sur le même code : dépendance à l'heure ou à l'ordre d'exécution, appel à un service réseau, attente asynchrone mal gérée (un `sleep` au lieu d'attendre un événement)… Il est nocif car l'équipe prend l'habitude de relancer le pipeline sans réfléchir, et finit par ignorer les vrais échecs. Bonne pratique : le mettre en quarantaine, suivre son taux d'échec et le corriger rapidement.",
+      "difficulty": 2
+    },
+    {
+      "question": "En **trunk-based development**, comment les développeurs travaillent-ils ?",
+      "answer": "Ils intègrent au moins chaque jour sur une branche principale unique",
+      "wrong": [
+        "Ils maintiennent des branches `develop` et `release` séparées",
+        "Chacun garde sa branche de fonctionnalité pendant tout le sprint",
+        "Ils livrent chaque version depuis un dépôt Git différent"
+      ],
+      "explanation": "En **trunk-based development**, chacun intègre de petits changements sur le tronc (`main`) au moins une fois par jour, directement ou via des branches très courtes (quelques heures, un ou deux jours au plus). C'est la condition d'une vraie intégration continue : on évite les fusions douloureuses de branches longues, et le travail inachevé est masqué derrière des *feature flags*. À l'opposé, **Git Flow** maintient des branches longues comme `develop` et `release/*`.",
+      "difficulty": 2,
+      "source": "https://trunkbaseddevelopment.com/"
+    },
+    {
+      "question": "Quel est l'intérêt principal des **feature flags** (feature toggles) dans une démarche de livraison continue ?",
+      "answer": "Déployer du code sans activer tout de suite la fonctionnalité",
+      "wrong": [
+        "Bloquer le merge d'une branche dont les tests échouent",
+        "Construire une version différente de l'application par client",
+        "Marquer dans Git les commits qui ajoutent une fonctionnalité"
+      ],
+      "explanation": "Un **feature flag** est une condition dans le code, pilotée par configuration, qui active ou désactive une fonctionnalité à l'exécution. Il **découple le déploiement** (le code est en production) **de la mise en service** (les utilisateurs y ont accès) : on peut livrer du code inachevé masqué, l'ouvrir à un pourcentage d'utilisateurs, ou couper une fonctionnalité défaillante sans redéployer. Revers de la médaille : les flags obsolètes doivent être retirés, sinon ils deviennent une dette technique.",
+      "difficulty": 2,
+      "source": "https://martinfowler.com/articles/feature-toggles.html"
+    },
+    {
+      "question": "Que fait `docker stop` sur un conteneur Linux dont le processus principal ignore le signal d'arrêt ?",
+      "answer": "Il envoie SIGKILL après un délai de grâce de 10 s",
+      "wrong": [
+        "Il attend indéfiniment que le processus se termine",
+        "Il met le conteneur en pause en gelant ses processus",
+        "Il renvoie SIGTERM toutes les 10 s jusqu'à l'arrêt"
+      ],
+      "explanation": "`docker stop` envoie d'abord le signal d'arrêt (SIGTERM par défaut, modifiable avec `STOPSIGNAL`) au processus principal (PID 1) du conteneur. S'il tourne encore à la fin du délai de grâce (**10 secondes** par défaut pour un conteneur Linux, réglable avec `-t`), Docker envoie **SIGKILL**, qui ne peut pas être ignoré. `docker kill` envoie SIGKILL immédiatement, et `docker pause` gèle les processus sans les arrêter. Une application doit donc intercepter SIGTERM pour s'arrêter proprement.",
+      "difficulty": 2,
+      "source": "https://docs.docker.com/reference/cli/docker/container/stop/"
+    },
+    {
+      "question": "Dans un cluster Kubernetes où aucun chiffrement au repos n'a été configuré, que protège réellement l'encodage **base64** des valeurs d'un objet Secret ?",
+      "answer": "Rien : c'est un encodage réversible, pas un chiffrement",
+      "wrong": [
+        "Il les chiffre avec une clé propre au cluster",
+        "Il empêche toute lecture via `kubectl get secret`",
+        "Il les rend illisibles dans etcd sans mot de passe"
+      ],
+      "explanation": "Le **base64** des champs `data` d'un Secret sert seulement à transporter des données binaires dans du YAML : `echo cGFzc3dvcmQ= | base64 -d` suffit à retrouver `password`. Par défaut, les Secrets sont stockés **non chiffrés** dans etcd ; on les protège avec le chiffrement au repos (`EncryptionConfiguration`, souvent via un KMS), des règles RBAC strictes, et des outils comme Sealed Secrets ou External Secrets pour ne jamais committer de secret en clair dans Git. Beaucoup d'offres Kubernetes managées activent ce chiffrement d'office.",
+      "difficulty": 2,
+      "source": "https://kubernetes.io/docs/concepts/configuration/secret/"
+    },
+    {
+      "question": "Dans un dépôt **public**, une pull request ouverte depuis un **fork** déclenche un workflow `on: pull_request`. À quels secrets ce workflow a-t-il accès ?",
+      "answer": "Aucun, hormis un `GITHUB_TOKEN` en lecture seule",
+      "wrong": [
+        "Tous les secrets du dépôt, masqués dans les logs",
+        "Seulement les secrets définis au niveau de l'organisation",
+        "Les secrets du fork, copiés lors de sa création"
+      ],
+      "explanation": "Le code d'une PR venant d'un fork n'est pas digne de confiance : il pourrait simplement afficher ou exfiltrer les secrets. GitHub ne transmet donc **aucun secret**, à l'exception du `GITHUB_TOKEN`, aux workflows déclenchés depuis un fork, et ce `GITHUB_TOKEN` n'a que des droits en lecture. Le dépôt peut en plus exiger une approbation manuelle avant de lancer les workflows de contributeurs externes. Les traitements qui ont besoin de secrets passent par d'autres mécanismes, à manier avec précaution, comme `pull_request_target`.",
+      "difficulty": 3,
+      "source": "https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows"
+    },
+    {
+      "question": "Pourquoi un workflow déclenché par `pull_request_target`, qui récupère le code de la pull request puis lance `npm install` et les tests, est-il dangereux ?",
+      "answer": "Du code non fiable s'exécute avec accès aux secrets",
+      "wrong": [
+        "Le workflow s'exécute sur l'infrastructure du fork",
+        "Les tests modifient directement la branche principale",
+        "Le code de la PR remplace le fichier du workflow"
+      ],
+      "explanation": "`pull_request_target` s'exécute dans le contexte du **dépôt de base** : le fichier de workflow utilisé est celui de sa branche par défaut (la PR ne peut donc pas le modifier), et il a accès aux secrets ainsi qu'à un `GITHUB_TOKEN` pouvant écrire. C'est voulu pour des opérations sûres, comme étiqueter ou commenter une PR. Mais s'il récupère le code de la PR et l'exécute (`npm install` lance des scripts, les tests aussi), un attaquant peut voler les secrets : c'est l'attaque dite *pwn request*. Pour tester du code externe, on utilise `pull_request`, sans secrets.",
+      "difficulty": 3,
+      "source": "https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows"
+    },
+    {
+      "question": "Pourquoi les guides de sécurité de GitHub Actions recommandent-ils d'écrire `uses: un-editeur/une-action@<SHA complet du commit>` plutôt que `@v2` pour une action tierce ?",
+      "answer": "Un tag peut être déplacé vers un autre code, pas un SHA",
+      "wrong": [
+        "Le SHA permet de recevoir automatiquement les correctifs",
+        "Les runners refusent les actions référencées par un tag",
+        "Le SHA rend le téléchargement de l'action plus rapide"
+      ],
+      "explanation": "Un tag Git comme `v2` est **mutable** : si le dépôt de l'action est compromis, l'attaquant peut le faire pointer vers un code malveillant, exécuté ensuite dans tous les workflows qui l'utilisent, avec leurs secrets. C'est ce qui s'est produit en mars 2025 avec `tj-actions/changed-files`, dont les tags ont été réécrits pour afficher les secrets dans les logs. Un SHA de commit complet est immuable : on le met à jour volontairement, par exemple via Dependabot, en notant la version en commentaire.",
+      "difficulty": 3,
+      "source": "https://docs.github.com/en/actions/reference/security/secure-use"
+    },
+    {
+      "question": "Dans un workflow déclenché par un push sur `main`, `git describe --tags` échoue juste après un `actions/checkout` utilisé avec ses options par défaut. Quelle en est la cause ?",
+      "answer": "Seul le dernier commit est récupéré (`fetch-depth: 1`)",
+      "wrong": [
+        "Les tags ne sont jamais accessibles depuis un runner",
+        "Git n'est pas installé sur les runners hébergés",
+        "Le checkout copie les fichiers sans le dossier `.git`"
+      ],
+      "explanation": "Pour aller vite, `actions/checkout` fait par défaut un clone **superficiel** : un seul commit, celui qui a déclenché le workflow, sans l'historique ni les tags. Les commandes qui ont besoin de l'historique (`git describe`, calcul d'une version à partir des tags, `git log` entre deux versions) échouent alors ou donnent un résultat faux. On ajoute `with: fetch-depth: 0` pour récupérer tout l'historique, branches et tags compris.",
+      "difficulty": 3,
+      "source": "https://github.com/actions/checkout"
+    },
+    {
+      "question": "Dans un workflow GitHub Actions, une étape a l'id `version`. Quelle commande, lancée dans cette étape, rend la valeur `1.4.2` lisible par les étapes suivantes via `steps.version.outputs.tag` ?",
+      "answer": "`echo \"tag=1.4.2\" >> \"$GITHUB_OUTPUT\"`",
+      "wrong": [
+        "`echo \"tag=1.4.2\" >> \"$GITHUB_ENV\"`",
+        "`echo \"tag=1.4.2\" >> \"$GITHUB_STEP_SUMMARY\"`",
+        "`export tag=1.4.2`"
+      ],
+      "explanation": "Chaque étape dispose de fichiers spéciaux dont le chemin est donné par des variables d'environnement. Écrire `nom=valeur` dans `$GITHUB_OUTPUT` définit un **output** de l'étape, lisible ensuite avec `${{ steps.version.outputs.tag }}`. `$GITHUB_ENV` définit plutôt une variable d'environnement pour les étapes suivantes (lue via `env.tag`), et `$GITHUB_STEP_SUMMARY` ajoute du Markdown au résumé du run. Un simple `export` disparaît à la fin de l'étape, car chaque étape lance un nouveau shell.",
+      "difficulty": 3,
+      "source": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands"
+    },
+    {
+      "question": "L'archive `dataset.tar.gz` pèse 500 Mo. Le dernier `RUN` de ce Dockerfile réduit-il la taille de l'image finale ?\n```dockerfile\nFROM ubuntu:24.04\nCOPY dataset.tar.gz /tmp/\nRUN mkdir /data && tar -xzf /tmp/dataset.tar.gz -C /data\nRUN rm /tmp/dataset.tar.gz\n```",
+      "answer": "Non, l'archive reste stockée dans la couche du `COPY`",
+      "wrong": [
+        "Oui, de 500 Mo, car le fichier est supprimé du disque",
+        "Oui, mais seulement une fois l'image compressée au push",
+        "Non, car `rm` est ignoré dans une instruction `RUN`"
+      ],
+      "explanation": "Chaque instruction `COPY`, `ADD` ou `RUN` crée une **couche** immuable, et l'image est l'empilement de toutes ses couches. Supprimer un fichier dans une couche suivante ne fait que le masquer : les 500 Mo restent dans la couche du `COPY`, et sont toujours téléchargés avec l'image. Pour s'en débarrasser, il faut ajouter et supprimer le fichier dans la même instruction (télécharger, extraire puis supprimer dans un seul `RUN`), utiliser un montage temporaire (`RUN --mount`) ou un build multi-stage.",
+      "difficulty": 3,
+      "source": "https://docs.docker.com/build/building/best-practices/"
+    },
+    {
+      "question": "Un Deployment Kubernetes de **4 réplicas** est mis à jour avec la stratégie `RollingUpdate` et ses valeurs par défaut (`maxSurge` et `maxUnavailable` à 25 %). Combien de Pods, anciens et nouveaux confondus, peuvent tourner au maximum pendant la mise à jour ?",
+      "answer": "5",
+      "wrong": [
+        "4",
+        "6",
+        "8"
+      ],
+      "explanation": "Par défaut, `maxSurge` et `maxUnavailable` valent **25 %**. `maxSurge` est arrondi à l'entier supérieur : 25 % de 4 = 1, donc au plus 4 + 1 = **5** Pods. `maxUnavailable` est arrondi à l'entier inférieur : 1 Pod au plus peut être indisponible, donc au moins 3 restent disponibles. Le contrôleur remplace ainsi les Pods par petites vagues, sans jamais doubler la capacité comme le ferait un déploiement blue/green.",
+      "difficulty": 3,
+      "source": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
     }
   ]
 }

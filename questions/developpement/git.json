@@ -891,6 +891,282 @@
       "explanation": "Par défaut, le rebase ne rejoue que les commits ordinaires, l'un après l'autre : les commits de merge sont abandonnés et l'historique devient linéaire (les commits de la branche fusionnée sont rejoués individuellement s'ils ne sont pas déjà dans `main`). Pour conserver la structure, il faut `git rebase --rebase-merges` (`-r`), qui recrée les merges.",
       "difficulty": 3,
       "source": "https://git-scm.com/docs/git-rebase"
+    },
+    {
+      "question": "En plein conflit de merge, vous voulez tout annuler et revenir à l'état d'avant la fusion. Quelle commande utiliser ?",
+      "answer": "`git merge --abort`",
+      "wrong": [
+        "`git merge --quit`",
+        "`git merge --undo`",
+        "`git revert HEAD`"
+      ],
+      "explanation": "`git merge --abort` remet la branche, l'index et les fichiers dans l'état d'avant le merge (d'où l'intérêt de lancer un merge avec un répertoire de travail propre). `--quit` existe aussi, mais se contente d'oublier le merge en cours en laissant fichiers et marqueurs de conflit tels quels. Les équivalents existent pour les autres opérations : `git rebase --abort`, `git cherry-pick --abort`.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-merge"
+    },
+    {
+      "question": "Pendant un merge, vous avez corrigé les marqueurs de conflit dans `app.js`. Comment indiquer à Git que ce fichier est résolu ?",
+      "answer": "`git add app.js`",
+      "wrong": [
+        "`git restore app.js`",
+        "`git checkout --theirs app.js`",
+        "`git stash push app.js`"
+      ],
+      "explanation": "`git add` enregistre la version finale dans l'index, ce qui fait passer le fichier de *both modified* à résolu. Une fois tous les fichiers résolus, `git commit` (ou `git merge --continue`) crée le commit de merge. `git checkout --theirs` se contente d'écrire la version de l'autre branche dans le fichier : il faut ensuite quand même faire `git add`. Et Git ne vérifie pas que les marqueurs ont disparu : relisez avant d'ajouter !",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-merge#_how_to_resolve_conflicts"
+    },
+    {
+      "question": "Comment afficher uniquement les 3 derniers commits avec `git log` ?",
+      "answer": "`git log -3`",
+      "wrong": [
+        "`git log HEAD~3`",
+        "`git log --last=3`",
+        "`git log --depth=3`"
+      ],
+      "explanation": "`-<n>` (ou `-n <n>`, `--max-count=<n>`) limite le nombre de commits affichés. Piège : `git log HEAD~3` afficherait l'historique à partir du 4ᵉ commit le plus récent, c'est-à-dire tout **sauf** les trois derniers. Sous forme d'intervalle, les trois derniers commits d'un historique linéaire s'écrivent `git log HEAD~3..HEAD`.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-log"
+    },
+    {
+      "question": "Que fait `git config --global alias.st status` ?",
+      "answer": "Il permet de taper `git st` au lieu de `git status`",
+      "wrong": [
+        "Il crée une branche `st` qui suit `status`",
+        "Il ajoute `st` comme raccourci clavier du terminal",
+        "Il affiche le statut dans l'invite du shell"
+      ],
+      "explanation": "Les alias (section `[alias]` de la configuration) définissent vos propres sous-commandes : `git st`, `git co` pour `checkout`, ou `git lg` pour un long `log --oneline --graph --all`. Un alias qui commence par `!` exécute une commande shell, par exemple `alias.visual = !gitk`.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases"
+    },
+    {
+      "question": "Quelle commande recherche une chaîne de caractères dans les fichiers suivis du dépôt ?",
+      "answer": "`git grep`",
+      "wrong": [
+        "`git find`",
+        "`git search`",
+        "`git blame`"
+      ],
+      "explanation": "`git grep \"motif\"` cherche dans les fichiers suivis du répertoire de travail : les fichiers non suivis ou ignorés (comme `node_modules/`) sont exclus par défaut, ce qui le rend souvent plus rapide et plus pertinent qu'un `grep -r`. Il sait aussi chercher dans une version passée : `git grep motif v1.0`. `git find` et `git search` n'existent pas.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-grep"
+    },
+    {
+      "question": "Quelle commande renomme la branche courante en `develop` ?",
+      "answer": "`git branch -m develop`",
+      "wrong": [
+        "`git switch -c develop`",
+        "`git mv develop`",
+        "`git branch -c develop`"
+      ],
+      "explanation": "`-m` (*move*) renomme la branche, et `-M` force le renommage si le nom existe déjà. `git switch -c develop` créerait une nouvelle branche en laissant l'ancienne, et `git branch -c` **copie** la branche (avec sa configuration et son reflog). Renommer en local ne renomme pas la branche distante : il faut pousser le nouveau nom et supprimer l'ancien.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-branch"
+    },
+    {
+      "question": "Une branche a été supprimée sur le dépôt distant, mais `origin/ancienne` apparaît toujours dans votre `git branch -r`. Quelle commande la fait disparaître ?",
+      "answer": "`git fetch --prune`",
+      "wrong": [
+        "`git fetch --all`",
+        "`git branch -d ancienne`",
+        "`git gc --prune=now`"
+      ],
+      "explanation": "Par défaut, `git fetch` crée et met à jour les branches de suivi, mais ne les supprime jamais. `--prune` (`-p`) retire celles dont la branche n'existe plus sur le remote ; `git config --global fetch.prune true` le rend automatique, et `git remote prune origin` fait la même chose. Vos branches locales ne sont jamais touchées. `git gc --prune`, lui, concerne les objets, pas les références.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-fetch#_pruning"
+    },
+    {
+      "question": "Sans aucune modification en cours, vous lancez `git commit -m \"relance CI\"`. Que se passe-t-il ?",
+      "answer": "Git refuse, sauf avec l'option `--allow-empty`",
+      "wrong": [
+        "Git crée un commit vide, avec un avertissement",
+        "Git recommite le dernier commit à l'identique",
+        "Git crée un commit de merge avec `origin`"
+      ],
+      "explanation": "Sans rien à commiter, Git affiche *nothing to commit, working tree clean* et se termine en erreur. `--allow-empty` force la création d'un commit dont l'arbre est identique à celui de son parent : on s'en sert parfois pour relancer un pipeline d'intégration continue ou marquer un événement. Ce commit a bien un nouveau SHA, puisque sa date et son parent diffèrent.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-commit"
+    },
+    {
+      "question": "Que produit `git commit -m \"Corrige le login\" -m \"Le jeton expirait trop tôt.\"` ?",
+      "answer": "Un titre puis un paragraphe de description",
+      "wrong": [
+        "Deux commits successifs, un par message",
+        "Un message où seul le dernier `-m` est gardé",
+        "Une erreur : `-m` ne peut apparaître qu'une fois"
+      ],
+      "explanation": "Plusieurs `-m` sont concaténés en paragraphes séparés par une ligne vide. Le premier devient le **titre**, seul affiché par `git log --oneline`, et les suivants forment le corps du message. C'est la convention recommandée : un titre court (une cinquantaine de caractères), une ligne vide, puis un corps qui explique le pourquoi du changement.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-commit"
+    },
+    {
+      "question": "Vous voulez regrouper vos 3 derniers commits (non poussés) en un seul. Quelle séquence fait l'affaire ?",
+      "answer": "`git reset --soft HEAD~3` puis `git commit`",
+      "wrong": [
+        "`git reset --hard HEAD~3` puis `git commit`",
+        "`git revert HEAD~3` puis `git commit`",
+        "`git stash` puis `git commit --amend`"
+      ],
+      "explanation": "`--soft` recule la branche de trois commits sans toucher à l'index ni aux fichiers : les changements cumulés des trois commits restent indexés, et un seul `git commit` les recrée en un. Avec `--hard`, ces changements seraient au contraire effacés. L'autre méthode classique est `git rebase -i HEAD~3`, en marquant les deux derniers commits `squash` ou `fixup`.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-reset"
+    },
+    {
+      "question": "Dans un rebase interactif, quel mot-clé fond un commit dans le précédent **en jetant son message** ?",
+      "answer": "`fixup`",
+      "wrong": [
+        "`squash`",
+        "`reword`",
+        "`drop`"
+      ],
+      "explanation": "`squash` et `fixup` fusionnent tous deux le commit dans celui de la ligne du dessus. `squash` ouvre l'éditeur pour combiner les deux messages, tandis que `fixup` garde silencieusement le seul message du commit précédent. `drop` supprime le commit et ses changements, et `reword` ne modifie que le message. Idéal pour absorber de petits commits « typo » avant de pousser.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-rebase#_interactive_mode"
+    },
+    {
+      "question": "Que fait `git pull --rebase` quand votre branche et la branche distante ont toutes deux de nouveaux commits ?",
+      "answer": "Il rejoue vos commits locaux par-dessus les distants",
+      "wrong": [
+        "Il crée un commit de merge entre les deux branches",
+        "Il écrase vos commits locaux par les distants",
+        "Il rejoue les commits distants par-dessus les vôtres"
+      ],
+      "explanation": "Après le fetch, au lieu de fusionner (avec un commit de merge), Git rebase : vos commits locaux non poussés sont rejoués au-dessus de la branche distante, avec de nouveaux SHA. On obtient un historique linéaire, sans commits « Merge branch 'main' of … ». `git config pull.rebase true` en fait le comportement par défaut ; comme ces commits n'avaient pas été poussés, la réécriture est sans danger.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-pull"
+    },
+    {
+      "question": "Votre `main` locale et `origin/main` ont divergé. Que fait `git pull --ff-only` ?",
+      "answer": "Il échoue sans rien fusionner",
+      "wrong": [
+        "Il crée un commit de merge",
+        "Il rebase vos commits locaux",
+        "Il écrase vos commits locaux"
+      ],
+      "explanation": "`--ff-only` n'accepte qu'une intégration en *fast-forward*, c'est-à-dire quand votre branche est un ancêtre de la branche distante. Si les deux ont de nouveaux commits, Git récupère bien les objets mais refuse d'intégrer (*Not possible to fast-forward, aborting*) : à vous de choisir entre merge et rebase. `git config pull.ff only` en fait un réglage par défaut prudent.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-pull"
+    },
+    {
+      "question": "Parmi ces éléments, lequel **n'est pas** un type d'objet stocké dans la base d'objets de Git ?",
+      "answer": "La branche (*branch*)",
+      "wrong": [
+        "Le blob",
+        "L'arbre (*tree*)",
+        "Le tag annoté (*tag*)"
+      ],
+      "explanation": "Git connaît quatre types d'objets : le **blob** (contenu d'un fichier), le **tree** (un répertoire : noms, modes et SHA), le **commit** (instantané et métadonnées) et le **tag** annoté. Une branche n'est qu'une **référence** : un fichier de `.git/refs/heads/` (ou une ligne de `.git/packed-refs`) contenant un SHA, hors de la base d'objets. D'où sa mobilité, alors que les objets, eux, sont immuables.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/book/en/v2/Git-Internals-Git-Objects"
+    },
+    {
+      "question": "Un collègue clone votre dépôt. Retrouve-t-il votre reflog dans son clone ?",
+      "answer": "Non, le reflog est propre à chaque dépôt local",
+      "wrong": [
+        "Oui, il est copié avec les objets lors du clone",
+        "Oui, mais seulement les 30 derniers jours",
+        "Seulement s'il clone avec `--mirror`"
+      ],
+      "explanation": "Le reflog enregistre les déplacements de **vos** références (`HEAD`, branches) dans `.git/logs/` : il n'est jamais poussé, récupéré ni cloné. Un clone démarre avec un reflog neuf, réduit à l'entrée du clone. Conséquence : le reflog ne peut vous sauver que sur la machine où l'erreur a eu lieu, et un commit jamais poussé puis perdu localement n'est pas récupérable depuis le serveur.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-reflog"
+    },
+    {
+      "question": "Lors d'un merge à trois voies (*three-way merge*), quels sont les trois commits comparés ?",
+      "answer": "Les deux pointes de branche et leur ancêtre commun",
+      "wrong": [
+        "Les trois derniers commits de la branche courante",
+        "La branche courante, la branche fusionnée et `origin`",
+        "Les deux pointes de branche et le premier commit"
+      ],
+      "explanation": "Git compare chaque pointe à la **base de fusion** (le meilleur ancêtre commun, donné par `git merge-base A B`). Un changement fait d'un seul côté est repris automatiquement ; un conflit n'apparaît que si les deux côtés ont modifié différemment la même zone par rapport à cette base. Sans elle, Git ne saurait pas lequel des deux côtés a changé une ligne.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging"
+    },
+    {
+      "question": "Sur `feature`, les commits `A`, `B` puis `C` se suivent. Depuis `main`, quels commits applique `git cherry-pick A..C` ?",
+      "answer": "`B` et `C` seulement",
+      "wrong": [
+        "`A`, `B` et `C`",
+        "`A` et `B` seulement",
+        "`A` et `C` seulement"
+      ],
+      "explanation": "`A..C` désigne les commits accessibles depuis `C` mais pas depuis `A` : `A` lui-même est donc **exclu**, exactement comme dans `git log A..C`. Pour l'inclure, il faut partir de son parent : `git cherry-pick A^..C`. Les commits sont appliqués dans l'ordre, du plus ancien au plus récent.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-cherry-pick"
+    },
+    {
+      "question": "Bob fait un `git cherry-pick` d'un commit écrit par Alice. Qui sont l'**auteur** et le **committer** du nouveau commit ?",
+      "answer": "Auteur : Alice ; committer : Bob",
+      "wrong": [
+        "Auteur : Bob ; committer : Alice",
+        "Alice pour les deux rôles",
+        "Bob pour les deux rôles"
+      ],
+      "explanation": "Git distingue l'**auteur** (qui a écrit le changement, avec la date d'origine) et le **committer** (qui a créé ce commit-ci, avec la date du moment). Cherry-pick, rebase ou `git am` conservent l'auteur et mettent à jour le committer. `git log` affiche l'auteur par défaut ; `git log --format=fuller` montre les deux.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History"
+    },
+    {
+      "question": "`git describe` affiche `v1.4-2-ga7d3b75`. Que signifie cette sortie ?",
+      "answer": "2 commits après le tag `v1.4`, sur le commit `a7d3b75`",
+      "wrong": [
+        "Version 1.4, correctif 2, branche `ga7d3b75`",
+        "2 commits avant le tag `v1.4`, sur le commit `a7d3b75`",
+        "Tag `v1.4` posé il y a 2 jours par l'auteur `a7d3b75`"
+      ],
+      "explanation": "`git describe` cherche le tag annoté le plus proche parmi les ancêtres du commit : `v1.4` est ce tag, `2` le nombre de commits depuis, et le préfixe `g` (pour *git*) précède le SHA abrégé du commit décrit. Pratique pour générer automatiquement un numéro de version lors d'un build. Si le commit porte lui-même le tag, seul `v1.4` est affiché ; les tags légers ne sont pris en compte qu'avec `--tags`.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-describe"
+    },
+    {
+      "question": "Comment Git calcule-t-il l'identifiant d'un blob (celui qu'affiche `git hash-object fichier`) ?",
+      "answer": "SHA-1 de l'en-tête `blob <taille>\\0` suivi du contenu",
+      "wrong": [
+        "SHA-1 du nom du fichier suivi de son contenu",
+        "SHA-1 du contenu compressé avec zlib",
+        "SHA-1 du contenu et de la date d'ajout"
+      ],
+      "explanation": "Git préfixe le contenu d'un en-tête (le type, une espace, la taille en octets, un octet nul) puis hache l'ensemble : `printf 'blob 6\\0hello\\n' | sha1sum` donne le même SHA que `git hash-object` sur un fichier contenant `hello`. Le nom n'en fait pas partie (d'où le partage d'un même blob entre fichiers identiques), et le hash est calculé **avant** la compression zlib utilisée pour le stockage.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/book/en/v2/Git-Internals-Git-Objects"
+    },
+    {
+      "question": "Vous venez de faire un merge (sans conflit) que vous regrettez, et rien d'autre depuis. Quelle commande ramène la branche à son état d'avant le merge ?",
+      "answer": "`git reset --hard ORIG_HEAD`",
+      "wrong": [
+        "`git merge --abort`",
+        "`git reset --hard FETCH_HEAD`",
+        "`git revert ORIG_HEAD`"
+      ],
+      "explanation": "Avant les commandes qui déplacent `HEAD` de façon importante (merge, rebase, reset, `git am`), Git note l'ancienne position dans `ORIG_HEAD`. `git reset --hard ORIG_HEAD` annule donc le merge tant que rien d'autre n'a été fait. `git merge --abort` ne fonctionne que pendant un merge inachevé (en conflit), et `FETCH_HEAD` désigne ce qu'a rapporté le dernier fetch.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/gitrevisions"
+    },
+    {
+      "question": "Depuis Git 2.34 (2021), quelle stratégie Git utilise-t-il par défaut pour fusionner deux branches ?",
+      "answer": "`ort`",
+      "wrong": [
+        "`recursive`",
+        "`resolve`",
+        "`octopus`"
+      ],
+      "explanation": "`ort` (*Ostensibly Recursive's Twin*) est une réécriture de `recursive`, l'ancienne stratégie par défaut : résultats équivalents en pratique, mais beaucoup plus rapide, notamment sur les gros dépôts avec des renommages. D'où le message *Merge made by the 'ort' strategy*. `resolve` est une stratégie à trois voies plus ancienne et plus simple, et `octopus` est utilisée automatiquement quand on fusionne plus de deux branches à la fois.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/merge-strategies"
+    },
+    {
+      "question": "Vous avez écrit un hook `pre-commit` dans `.git/hooks/`. Vos collègues l'obtiennent-ils en clonant le dépôt ?",
+      "answer": "Non : `.git/hooks/` n'est ni versionné ni cloné",
+      "wrong": [
+        "Oui, il est cloné avec le reste du dépôt",
+        "Oui, mais seulement après un `git pull`",
+        "Seulement s'il est marqué comme exécutable"
+      ],
+      "explanation": "Le contenu de `.git/` (hooks, configuration…) ne fait pas partie des commits, et un clone reçoit seulement des exemples de hooks par défaut (`*.sample`). C'est aussi une mesure de sécurité : cloner un dépôt ne doit jamais exécuter de code arbitraire. Pour partager des hooks, on les versionne dans un dossier du projet et chacun y fait pointer `core.hooksPath`, ou l'on passe par un outil comme Husky ou pre-commit.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/githooks"
     }
   ]
 }
