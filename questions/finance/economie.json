@@ -619,6 +619,273 @@
       "explanation": "Les **barrières à l'entrée** protègent les entreprises installées : obstacles légaux (brevets, licences, autorisations), techniques ou financiers (investissement initial énorme, accès aux réseaux de distribution), voire stratégiques (guerre des prix contre les nouveaux venus). Plus elles sont fortes, plus le marché tend vers l'oligopole ou le monopole. Les barrières non tarifaires et les droits de douane, eux, visent les importations dans le commerce international.",
       "difficulty": 2,
       "source": "https://fr.wikipedia.org/wiki/Barri%C3%A8re_%C3%A0_l%27entr%C3%A9e"
+    },
+    {
+      "question": "Que désigne le **taux directeur** d'une banque centrale ?",
+      "answer": "Le taux auquel elle prête de l'argent aux banques commerciales",
+      "wrong": [
+        "Le taux auquel les banques prêtent aux particuliers",
+        "Le taux d'inflation que l'État vise chaque année",
+        "Le taux de rendement des emprunts d'État à 10 ans"
+      ],
+      "explanation": "Les **taux directeurs** sont les taux fixés par la banque centrale pour ses opérations avec les banques : prêts de liquidités, rémunération de leurs dépôts. Ils servent de référence à toute l'économie : quand ils montent, les banques se refinancent plus cher et répercutent la hausse sur les crédits aux ménages et aux entreprises. La BCE en a trois : le taux de la facilité de dépôt, celui des opérations principales de refinancement et celui de la facilité de prêt marginal.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Taux_directeur"
+    },
+    {
+      "question": "Depuis quand les pièces et les billets en **euros** circulent-ils en France ?",
+      "answer": "Depuis le 1er janvier 2002",
+      "wrong": [
+        "Depuis le 1er janvier 1999",
+        "Depuis le 1er janvier 1992",
+        "Depuis le 1er janvier 2005"
+      ],
+      "explanation": "L'euro existe depuis le **1er janvier 1999**, mais d'abord sous forme scripturale seulement (comptes, chèques, marchés financiers). Les **pièces et billets** ne sont arrivés dans les porte-monnaie que le **1er janvier 2002** ; le franc a cessé d'avoir cours légal le 17 février 2002. 1992 est l'année de la signature du traité de Maastricht, qui a programmé la monnaie unique.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Euro"
+    },
+    {
+      "question": "Quel est le taux de conversion officiel, fixé définitivement, entre le **franc français** et l'**euro** ?",
+      "answer": "1 euro = 6,55957 francs",
+      "wrong": [
+        "1 euro = 6,95583 francs",
+        "1 euro = 5,65957 francs",
+        "1 euro = 7,55957 francs"
+      ],
+      "explanation": "Le 31 décembre 1998, le Conseil de l'Union européenne a fixé de façon **irrévocable** les taux de conversion entre l'euro et les monnaies des pays participants, dont **1 € = 6,55957 F**. Ce taux à six chiffres significatifs sert toujours à convertir un ancien montant en francs. Pour le mark allemand, il était de 1,95583 DM pour 1 €.",
+      "difficulty": 2
+    },
+    {
+      "question": "Le 1er janvier 1999, l'euro a été lancé comme monnaie scripturale. Combien de pays de l'Union européenne l'ont alors adopté ?",
+      "answer": "11",
+      "wrong": [
+        "6",
+        "12",
+        "15"
+      ],
+      "explanation": "Onze pays ont adopté l'euro en 1999 : l'Allemagne, l'Autriche, la Belgique, l'Espagne, la Finlande, la France, l'Irlande, l'Italie, le Luxembourg, les Pays-Bas et le Portugal. La **Grèce**, qui ne remplissait pas encore les critères, les a rejoints en 2001, si bien que **douze** pays ont mis en circulation les pièces et billets en 2002. Le Royaume-Uni, le Danemark et la Suède, alors membres de l'UE (qui en comptait 15), étaient restés à l'écart.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Zone_euro"
+    },
+    {
+      "question": "Quel pays a adopté l'euro le **1er janvier 2023** ?",
+      "answer": "La Croatie",
+      "wrong": [
+        "La Pologne",
+        "La Hongrie",
+        "La Roumanie"
+      ],
+      "explanation": "La **Croatie**, membre de l'Union européenne depuis 2013, a remplacé sa monnaie, la **kuna**, par l'euro le 1er janvier 2023, devenant le 20e pays de la zone euro. Pour y entrer, un pays doit respecter les critères de convergence de Maastricht (inflation, finances publiques, taux d'intérêt à long terme, stabilité du change). La Pologne, la Hongrie et la Roumanie ont, elles, conservé leur monnaie nationale.",
+      "difficulty": 2
+    },
+    {
+      "question": "Parmi ces rôles, lequel fait partie des **trois fonctions classiques de la monnaie** ?",
+      "answer": "Servir de réserve de valeur",
+      "wrong": [
+        "Garantir le plein emploi",
+        "Fixer le niveau des salaires",
+        "Mesurer la productivité"
+      ],
+      "explanation": "Depuis Aristote, on attribue à la monnaie trois fonctions : **intermédiaire des échanges** (elle évite le troc), **unité de compte** (elle exprime la valeur de tous les biens dans une même unité) et **réserve de valeur** (elle permet de conserver du pouvoir d'achat pour plus tard). L'inflation abîme surtout cette dernière fonction, puisqu'elle érode la valeur de la monnaie que l'on garde.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Monnaie"
+    },
+    {
+      "question": "Quel est le principal inconvénient du **troc** que la monnaie permet de surmonter ?",
+      "answer": "Il exige une double coïncidence des besoins",
+      "wrong": [
+        "Il est interdit dans la plupart des pays",
+        "Il provoque une inflation très élevée",
+        "Il oblige à payer la TVA deux fois"
+      ],
+      "explanation": "Pour troquer, il faut trouver quelqu'un qui possède ce que l'on veut **et** qui veut justement ce que l'on propose : c'est la **double coïncidence des besoins**, décrite notamment par l'économiste William Stanley Jevons. La monnaie, acceptée par tous, sépare la vente de l'achat : on vend à l'un, on achète à un autre. Elle permet aussi de comparer facilement les valeurs, ce que le troc complique.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que désigne la **monnaie fiduciaire** ?",
+      "answer": "Les billets et les pièces",
+      "wrong": [
+        "Les dépôts sur les comptes bancaires",
+        "Les réserves d'or de la banque centrale",
+        "Les cryptomonnaies comme le bitcoin"
+      ],
+      "explanation": "La **monnaie fiduciaire** (du latin fiducia, « confiance ») regroupe les billets et les pièces : leur valeur ne vient pas du métal ou du papier, mais de la confiance qu'on leur accorde. Elle ne représente qu'une petite partie de la monnaie en circulation. L'essentiel est constitué de **monnaie scripturale**, c'est-à-dire des soldes des comptes bancaires, qui circulent par virement, carte ou chèque.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Monnaie_fiduciaire"
+    },
+    {
+      "question": "Comment les **banques commerciales** créent-elles l'essentiel de la monnaie en circulation ?",
+      "answer": "En accordant des crédits portés au compte des emprunteurs",
+      "wrong": [
+        "En imprimant des billets sur autorisation de la banque centrale",
+        "En prêtant uniquement l'épargne déjà déposée par leurs clients",
+        "En achetant de l'or et en émettant des certificats"
+      ],
+      "explanation": "Quand une banque accorde un prêt, elle inscrit simplement le montant sur le compte de l'emprunteur : de la **monnaie scripturale** nouvelle apparaît, d'où l'adage « les crédits font les dépôts ». Cette monnaie est détruite au fur et à mesure du remboursement. Contrairement à une idée reçue, la banque ne se contente donc pas de prêter l'épargne existante ; sa capacité de création reste limitée par la réglementation, la demande de crédit et la politique de la banque centrale. Seule la banque centrale émet les billets.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Cr%C3%A9ation_mon%C3%A9taire"
+    },
+    {
+      "question": "Dans la zone euro, que regroupe l'agrégat monétaire **M1** ?",
+      "answer": "Les billets et pièces en circulation et les dépôts à vue",
+      "wrong": [
+        "Uniquement les billets et pièces en circulation",
+        "Les dépôts à vue et l'ensemble des livrets d'épargne",
+        "Toute la monnaie, y compris les titres à long terme"
+      ],
+      "explanation": "Les **agrégats monétaires** sont emboîtés, du plus liquide au moins liquide. **M1** comprend la monnaie au sens strict : billets, pièces et dépôts à vue utilisables immédiatement. **M2** y ajoute les dépôts à terme jusqu'à deux ans et les dépôts remboursables avec un préavis jusqu'à trois mois (comme les livrets d'épargne), et **M3** ajoute encore certains instruments négociables (pensions, parts de fonds monétaires, titres de créance jusqu'à deux ans).",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Agr%C3%A9gat_mon%C3%A9taire"
+    },
+    {
+      "question": "Depuis sa revue stratégique de **2021**, quel objectif d'inflation la BCE poursuit-elle ?",
+      "answer": "2 % à moyen terme, de façon symétrique",
+      "wrong": [
+        "Inférieur à 2 %, mais proche de 2 %, à moyen terme",
+        "0 % pour garantir la stabilité absolue des prix",
+        "Entre 3 et 5 % pour soutenir la croissance"
+      ],
+      "explanation": "Le mandat principal de la BCE est la **stabilité des prix**. Depuis juillet 2021, elle la définit comme une inflation de **2 % à moyen terme**, avec un objectif **symétrique** : un écart à la baisse est jugé aussi indésirable qu'un écart à la hausse. Auparavant, elle visait une inflation « inférieure à, mais proche de 2 % », formule qui laissait penser qu'elle tolérait mieux une inflation trop faible. Viser 0 % serait risqué, car cela rapprocherait l'économie de la déflation.",
+      "difficulty": 2
+    },
+    {
+      "question": "La Réserve fédérale américaine a un mandat souvent qualifié de **double**. Quels sont ses deux grands objectifs ?",
+      "answer": "La stabilité des prix et le plein emploi",
+      "wrong": [
+        "La stabilité des prix et l'équilibre du budget fédéral",
+        "Le plein emploi et un dollar fort face à l'euro",
+        "La croissance du PIB et la réduction de la dette"
+      ],
+      "explanation": "Depuis une loi de 1977, la **Fed** doit viser à la fois le **maximum d'emploi** et la **stabilité des prix** (le texte mentionne aussi des taux d'intérêt à long terme modérés). La BCE, elle, a un mandat hiérarchisé : la stabilité des prix d'abord, le soutien aux politiques économiques de l'Union ensuite. Aucune de ces deux banques centrales n'est chargée d'équilibrer le budget de l'État.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/R%C3%A9serve_f%C3%A9d%C3%A9rale"
+    },
+    {
+      "question": "Dans quelle ville se trouve le siège de la **Banque centrale européenne** ?",
+      "answer": "Francfort",
+      "wrong": [
+        "Bruxelles",
+        "Luxembourg",
+        "Strasbourg"
+      ],
+      "explanation": "La **BCE**, créée le 1er juin 1998, siège à **Francfort-sur-le-Main**, en Allemagne, ville qui accueillait déjà la Bundesbank. Avec les banques centrales nationales des pays de la zone euro (dont la Banque de France), elle forme l'**Eurosystème**. Bruxelles accueille la Commission européenne, Luxembourg la Banque européenne d'investissement et Strasbourg le Parlement européen.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Banque_centrale_europ%C3%A9enne"
+    },
+    {
+      "question": "Qu'interdit l'**article 123** du traité sur le fonctionnement de l'Union européenne à la BCE et aux banques centrales nationales ?",
+      "answer": "Acheter directement aux États les titres de dette qu'ils émettent",
+      "wrong": [
+        "Acheter des titres de dette publique sur le marché secondaire",
+        "Modifier leurs taux directeurs sans l'accord des gouvernements",
+        "Prêter des liquidités aux banques commerciales de la zone"
+      ],
+      "explanation": "L'article 123 interdit le **financement monétaire** des États : la banque centrale ne peut ni leur accorder de découvert, ni acheter leurs obligations directement lors de leur émission (sur le marché **primaire**). Les achats sur le marché **secondaire**, auprès d'investisseurs qui détiennent déjà ces titres, restent en revanche possibles, ce qui a permis les grands programmes d'achats de la BCE. La règle vise à empêcher un gouvernement de faire « tourner la planche à billets » pour financer ses déficits.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que désigne l'**assouplissement quantitatif** (quantitative easing) pratiqué par plusieurs banques centrales après la crise de 2008 ?",
+      "answer": "Des achats massifs de titres pour faire baisser les taux longs",
+      "wrong": [
+        "Une baisse des réserves obligatoires imposées aux banques",
+        "La distribution directe de billets à chaque ménage",
+        "La réduction progressive du bilan de la banque centrale"
+      ],
+      "explanation": "Alors que leurs taux directeurs étaient déjà proches de zéro, la Fed, la Banque d'Angleterre ou encore la BCE (dont le grand programme d'achat de dette publique démarre en 2015) ont acheté en masse des obligations d'État et d'autres titres. Ces achats font monter le prix des obligations, donc baisser les **taux à long terme**, et injectent des liquidités pour soutenir le crédit. L'opération inverse, la réduction du bilan de la banque centrale, s'appelle le **resserrement quantitatif** (quantitative tightening).",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Assouplissement_quantitatif"
+    },
+    {
+      "question": "En juin 2014, la BCE a fixé le taux de sa **facilité de dépôt** à −0,10 %. Concrètement, qu'est-ce que cela signifiait pour les banques ?",
+      "answer": "Elles payaient pour laisser leurs liquidités excédentaires à la BCE",
+      "wrong": [
+        "La BCE leur versait un intérêt sur leurs dépôts excédentaires",
+        "Elles pouvaient emprunter auprès de la BCE sans aucun intérêt",
+        "Elles devaient rémunérer leurs clients à un taux négatif"
+      ],
+      "explanation": "La **facilité de dépôt** rémunère les liquidités que les banques laissent du jour au lendemain à la banque centrale. Avec un taux négatif, ce placement leur coûtait de l'argent : la BCE voulait les inciter à prêter davantage à l'économie plutôt qu'à garder ces fonds, dans un contexte d'inflation très faible. Ce taux est resté négatif jusqu'à l'été 2022, quand la BCE a relevé fortement ses taux face au retour de l'inflation.",
+      "difficulty": 3
+    },
+    {
+      "question": "Lors d'une panique bancaire, la banque centrale peut fournir des liquidités aux banques solvables qui n'en trouvent plus ailleurs. Comment appelle-t-on ce rôle ?",
+      "answer": "Prêteur en dernier ressort",
+      "wrong": [
+        "Garant des dépôts bancaires",
+        "Emprunteur en dernier ressort",
+        "Teneur de marché officiel"
+      ],
+      "explanation": "Le rôle de **prêteur en dernier ressort** a été théorisé au XIXe siècle par Walter Bagehot : en cas de crise de confiance, la banque centrale doit prêter largement aux banques solvables, contre de bonnes garanties et à un taux pénalisant. Le but est d'éviter qu'une simple crise de liquidité ne provoque des faillites en chaîne. La garantie des dépôts des particuliers relève, en France, d'un organisme distinct : le Fonds de garantie des dépôts et de résolution.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Pr%C3%AAteur_en_dernier_ressort"
+    },
+    {
+      "question": "En juillet 2012, en pleine crise de la dette de la zone euro, quel dirigeant a déclaré que la BCE ferait « **tout ce qu'il faudra** » (« whatever it takes ») pour préserver l'euro ?",
+      "answer": "Mario Draghi",
+      "wrong": [
+        "Jean-Claude Trichet",
+        "Christine Lagarde",
+        "Angela Merkel"
+      ],
+      "explanation": "**Mario Draghi**, président de la BCE de 2011 à 2019, a prononcé cette phrase à Londres le 26 juillet 2012. Elle a suffi à calmer les marchés, qui pariaient sur l'éclatement de la zone euro : les taux d'emprunt de l'Espagne et de l'Italie ont reculé, alors que le programme d'achat de titres annoncé ensuite (OMT) n'a jamais été utilisé. Jean-Claude Trichet l'avait précédé à la tête de la BCE, Christine Lagarde lui a succédé.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Mario_Draghi"
+    },
+    {
+      "question": "En France, quel organisme calcule l'**indice des prix à la consommation** (IPC), qui sert à mesurer l'inflation ?",
+      "answer": "L'Insee",
+      "wrong": [
+        "La Banque de France",
+        "Le ministère de l'Économie",
+        "La Cour des comptes"
+      ],
+      "explanation": "L'**Insee** (Institut national de la statistique et des études économiques) calcule chaque mois l'IPC en relevant les prix d'un large panier de biens et services, pondérés selon leur poids dans la consommation des ménages. Il publie aussi l'**IPCH** (indice des prix à la consommation harmonisé), calculé selon une méthode commune à toute l'Union européenne, qui sert de référence à la BCE.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Indice_des_prix_%C3%A0_la_consommation"
+    },
+    {
+      "question": "Le prix du pétrole flambe et les entreprises répercutent la hausse de leurs coûts sur leurs prix de vente. De quel type d'inflation s'agit-il ?",
+      "answer": "D'une inflation par les coûts",
+      "wrong": [
+        "D'une inflation par la demande",
+        "D'une inflation d'origine monétaire",
+        "D'une hyperinflation spéculative"
+      ],
+      "explanation": "On distingue classiquement l'**inflation par la demande**, quand la demande globale dépasse ce que l'économie peut produire, et l'**inflation par les coûts**, quand la hausse du prix des matières premières, de l'énergie ou des salaires est répercutée sur les prix de vente. Les chocs pétroliers de 1973 et 1979 en sont des exemples types. Lorsque ce renchérissement vient de produits achetés à l'étranger, on parle aussi d'**inflation importée**.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que désigne la **boucle prix-salaires** (ou spirale prix-salaires) ?",
+      "answer": "Des hausses de prix et de salaires qui s'alimentent mutuellement",
+      "wrong": [
+        "L'indexation des prix sur les salaires décidée par l'État",
+        "La baisse des salaires qui suit toujours une baisse des prix",
+        "L'écart entre le salaire minimum et le salaire moyen"
+      ],
+      "explanation": "Quand les prix montent, les salariés réclament des hausses de salaires pour préserver leur pouvoir d'achat ; les entreprises, dont les coûts augmentent, relèvent à nouveau leurs prix, et ainsi de suite. Cette **spirale** peut entretenir durablement l'inflation, surtout si les salaires sont indexés automatiquement sur les prix. C'est pourquoi la France a mis fin à l'indexation générale des salaires sur les prix en 1982-1983.",
+      "difficulty": 3
+    },
+    {
+      "question": "Selon la définition classique de l'économiste Phillip Cagan, à partir de quel rythme de hausse des prix parle-t-on d'**hyperinflation** ?",
+      "answer": "Plus de 50 % par mois",
+      "wrong": [
+        "Plus de 10 % par an",
+        "Plus de 20 % par an",
+        "Plus de 100 % par an"
+      ],
+      "explanation": "Dans son étude de 1956, **Phillip Cagan** fixe le seuil de l'hyperinflation à une hausse des prix supérieure à **50 % par mois**, soit environ 13 000 % par an. Les exemples historiques les plus célèbres sont l'Allemagne de Weimar en 1923, la Hongrie en 1946 (record absolu) et le Zimbabwe en 2008. Elle survient généralement quand un État finance ses dépenses en faisant massivement tourner la planche à billets.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Hyperinflation"
+    },
+    {
+      "question": "Une inflation forte et **imprévue** est-elle plutôt favorable aux emprunteurs à taux fixe ou aux prêteurs ?",
+      "answer": "Aux emprunteurs, car la valeur réelle de leur dette diminue",
+      "wrong": [
+        "Aux prêteurs, car les intérêts encaissés augmentent",
+        "Aux deux, car tous les revenus augmentent",
+        "À aucun des deux, la dette suivant les prix"
+      ],
+      "explanation": "Avec un taux fixe, les mensualités restent les mêmes en euros alors que les prix, et souvent les revenus, augmentent : le poids réel de la dette s'allège. Le prêteur, lui, est remboursé en euros qui ont perdu du pouvoir d'achat. L'inflation allège de la même façon la dette des États. Une inflation **anticipée**, en revanche, est intégrée dès le départ dans les taux d'intérêt demandés par les prêteurs.",
+      "difficulty": 2
     }
   ]
 }

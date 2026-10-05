@@ -258,6 +258,265 @@
       "explanation": "Ohm publie *Die galvanische Kette, mathematisch bearbeitet* (le circuit galvanique étudié mathématiquement) en **1827**. Les autres dates sont aussi des jalons de l'électricité : 1785 pour les mesures de Coulomb sur la force électrostatique, 1800 pour la pile de Volta et 1845 pour les lois de Kirchhoff. Les travaux d'Ohm furent d'abord mal accueillis en Allemagne avant d'être reconnus.",
       "difficulty": 2,
       "source": "https://fr.wikipedia.org/wiki/Georg_Simon_Ohm"
+    },
+    {
+      "question": "Un pont diviseur de tension est formé de R1 (reliée à l'entrée Ve) et de R2 (reliée à la masse). Quelle est la tension de sortie Vs, prise aux bornes de R2, sans charge branchée ?",
+      "answer": "`Vs = Ve × R2 / (R1 + R2)`",
+      "wrong": [
+        "`Vs = Ve × R1 / (R1 + R2)`",
+        "`Vs = Ve × R2 / R1`",
+        "`Vs = Ve × (R1 + R2) / R2`"
+      ],
+      "explanation": "Les deux résistances sont en série et parcourues par le même courant I = Ve / (R1 + R2). La tension aux bornes de R2 vaut donc R2 × I = **Ve × R2 / (R1 + R2)**. La sortie est toujours une **fraction** de l'entrée (le rapport est inférieur à 1), ce qui élimine la formule inversée. Avec R1 au numérateur, on obtiendrait la tension aux bornes de R1, pas celle de la sortie.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Diviseur_de_tension"
+    },
+    {
+      "question": "Un pont diviseur alimenté en 12 V comporte R1 = 10 kΩ (côté alimentation) et R2 = 4,7 kΩ (côté masse). Quelle tension obtient-on, à vide, aux bornes de R2 ?",
+      "answer": "Environ 3,84 V",
+      "wrong": [
+        "Environ 8,16 V",
+        "Environ 5,64 V",
+        "Environ 6,00 V"
+      ],
+      "explanation": "Vs = 12 × 4,7 / (10 + 4,7) = 12 × 4,7 / 14,7 ≈ **3,84 V**. Les 8,16 V restants se trouvent aux bornes de R1 (la somme fait bien 12 V, loi des mailles). 5,64 V vient de l'erreur classique qui divise par R1 seule au lieu de R1 + R2, et 6 V supposerait deux résistances égales.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Diviseur_de_tension"
+    },
+    {
+      "question": "On veut obtenir environ 3,3 V à partir de 5 V avec un pont diviseur à vide, la sortie étant prise aux bornes de R2 (côté masse). Quel couple de résistances convient ?",
+      "answer": "R1 = 1 kΩ et R2 = 2 kΩ",
+      "wrong": [
+        "R1 = 2 kΩ et R2 = 1 kΩ",
+        "R1 = 1 kΩ et R2 = 1 kΩ",
+        "R1 = 10 kΩ et R2 = 4,7 kΩ"
+      ],
+      "explanation": "Avec R1 = 1 kΩ et R2 = 2 kΩ, Vs = 5 × 2 / 3 ≈ **3,33 V**. En inversant les deux (R1 = 2 kΩ, R2 = 1 kΩ), on obtient 1,67 V ; deux résistances égales donnent 2,5 V et le couple 10 kΩ / 4,7 kΩ environ 1,6 V. Ce type de pont convient pour adapter un **signal** (une entrée qui consomme très peu), pas pour alimenter une charge, dont le courant ferait chuter la tension.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Diviseur_de_tension"
+    },
+    {
+      "question": "Un pont diviseur de deux résistances de 1 kΩ est alimenté en 12 V. On branche en sortie une charge de 1 kΩ. Quelle tension obtient-on aux bornes de la charge ?",
+      "answer": "4 V",
+      "wrong": [
+        "6 V",
+        "3 V",
+        "8 V"
+      ],
+      "explanation": "La charge se met **en parallèle avec R2** : 1 kΩ // 1 kΩ = 500 Ω. Le pont devient donc 1 kΩ en série avec 500 Ω, et Vs = 12 × 500 / 1 500 = **4 V** au lieu des 6 V à vide. C'est l'effet de charge : pour qu'un pont diviseur reste précis, la charge doit avoir une résistance bien plus grande que R2 (règle pratique : au moins dix fois plus).",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Diviseur_de_tension"
+    },
+    {
+      "question": "Un courant de 30 mA se partage entre deux résistances montées en parallèle : 1 kΩ et 2 kΩ. Quel courant traverse la résistance de 1 kΩ ?",
+      "answer": "20 mA",
+      "wrong": [
+        "10 mA",
+        "15 mA",
+        "25 mA"
+      ],
+      "explanation": "Formule du diviseur de courant : I1 = I × R2 / (R1 + R2) = 30 × 2 / 3 = **20 mA** ; il reste 10 mA dans la résistance de 2 kΩ. Vérification : les deux branches ont bien la même tension (20 mA × 1 kΩ = 10 mA × 2 kΩ = 20 V). Le courant passe en priorité par la branche **la moins résistante**, à l'inverse du diviseur de tension où c'est la plus grande résistance qui reçoit la plus grande part.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Diviseur_de_courant"
+    },
+    {
+      "question": "Quelle caractéristique devrait avoir un voltmètre idéal ?",
+      "answer": "Une résistance d'entrée infinie",
+      "wrong": [
+        "Une résistance d'entrée nulle",
+        "Une résistance égale à celle du dipôle",
+        "Une très forte capacité d'entrée"
+      ],
+      "explanation": "Branché en parallèle, un voltmètre ne doit **prélever aucun courant** au circuit pour ne pas modifier la tension qu'il mesure : idéalement, sa résistance d'entrée est infinie. En pratique, un multimètre numérique courant présente environ **10 MΩ**. C'est l'ampèremètre, placé en série, qui doit idéalement avoir une résistance nulle.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Voltm%C3%A8tre"
+    },
+    {
+      "question": "Un multimètre d'impédance d'entrée 10 MΩ mesure la tension au point milieu d'un pont diviseur formé de deux résistances de 1 MΩ, alimenté en 10 V. Quelle valeur affiche-t-il ?",
+      "answer": "Environ 4,76 V",
+      "wrong": [
+        "Exactement 5,00 V",
+        "Environ 4,55 V",
+        "Environ 3,33 V"
+      ],
+      "explanation": "Le voltmètre se place en parallèle avec la résistance du bas : 1 MΩ // 10 MΩ ≈ 0,909 MΩ. La tension mesurée vaut donc 10 × 0,909 / (1 + 0,909) ≈ **4,76 V** au lieu des 5 V attendus, soit près de 5 % d'erreur. C'est l'**effet de charge** de l'appareil : il devient sensible dès que les résistances du circuit ne sont plus négligeables devant l'impédance d'entrée. Avec un appareil de 1 MΩ seulement, on lirait 3,33 V.",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment un multimètre numérique mesure-t-il le plus souvent un courant ?",
+      "answer": "Via la tension aux bornes d'une résistance de shunt",
+      "wrong": [
+        "En comptant les électrons qui le traversent",
+        "En mesurant le champ magnétique autour du fil",
+        "En chronométrant la charge d'un condensateur"
+      ],
+      "explanation": "Le cœur d'un multimètre numérique est un **voltmètre**. Pour mesurer un courant, on le fait passer dans une résistance interne très faible et précise, le **shunt**, et on mesure la tension à ses bornes : I = U / R_shunt. C'est pour cela que chaque calibre de courant a sa propre borne et son fusible. La mesure par le champ magnétique est le principe des pinces ampèremétriques, pas des bornes du multimètre.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Shunt_(%C3%A9lectrotechnique)"
+    },
+    {
+      "question": "On mesure à l'ohmmètre, hors tension, une résistance marquée 10 kΩ restée soudée sur sa carte. L'appareil affiche 6,8 kΩ. Quelle est l'explication la plus probable ?",
+      "answer": "D'autres composants sont en parallèle avec elle",
+      "wrong": [
+        "Les soudures ajoutent une résistance en série",
+        "L'ohmmètre chauffe la résistance pendant la mesure",
+        "Le courant de mesure est trop faible pour elle"
+      ],
+      "explanation": "L'ohmmètre injecte un petit courant et mesure la tension obtenue. Si la résistance reste dans le circuit, ce courant peut aussi emprunter **d'autres chemins en parallèle**, ce qui fait apparaître une valeur **plus faible** que la valeur réelle (une résistance en parallèle abaisse toujours l'équivalent). Des soudures en série augmenteraient au contraire la valeur lue, et de façon négligeable. Pour une mesure fiable, on dessoude au moins une patte.",
+      "difficulty": 2
+    },
+    {
+      "question": "Après une mesure de courant, on oublie la pointe rouge dans la borne « 10 A » du multimètre et on tente de mesurer la tension d'une batterie de voiture. Que se passe-t-il ?",
+      "answer": "La batterie est court-circuitée via le shunt et le fusible",
+      "wrong": [
+        "Le multimètre affiche la tension normalement",
+        "L'écran affiche 0 V, sans autre conséquence",
+        "La mesure est juste, mais moins précise"
+      ],
+      "explanation": "Sur la plupart des multimètres, la borne « A » est reliée **en permanence** à la borne COM par le fusible et le **shunt**, une résistance de quelques milliohms, quelle que soit la position du sélecteur. Poser les pointes sur une batterie, capable de débiter des centaines d'ampères, revient à la **court-circuiter** : au mieux le fusible saute, au pire l'appareil est détruit. C'est l'erreur de mesure la plus courante, d'où l'intérêt de fusibles à haut pouvoir de coupure.",
+      "difficulty": 2
+    },
+    {
+      "question": "Selon la norme CEI 61010, à quoi correspond la catégorie de mesure CAT III d'un multimètre ?",
+      "answer": "Aux mesures sur l'installation fixe d'un bâtiment",
+      "wrong": [
+        "Aux mesures sur les appareils branchés sur une prise",
+        "Aux mesures à l'origine de l'installation (compteur)",
+        "Aux mesures sur des circuits non reliés au secteur"
+      ],
+      "explanation": "Les catégories de mesure indiquent les **surtensions transitoires** que l'appareil peut supporter selon l'endroit où l'on mesure. **CAT II** : appareils raccordés par une prise. **CAT III** : installation fixe du bâtiment (tableau de distribution, disjoncteurs, câblage, moteurs fixes). **CAT IV** : origine de l'installation (compteur, branchement, lignes extérieures). Plus on se rapproche de la source, plus l'énergie des surtensions est élevée, et plus la catégorie exigée est haute.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/IEC_61010"
+    },
+    {
+      "question": "Qu'apporte un multimètre « True RMS » par rapport à un modèle classique en mesure alternative ?",
+      "answer": "La vraie valeur efficace, même hors sinusoïde",
+      "wrong": [
+        "La valeur crête-à-crête du signal",
+        "Une meilleure précision en continu",
+        "Une mesure sans limite de fréquence"
+      ],
+      "explanation": "Un multimètre classique mesure en fait la valeur moyenne du signal redressé et la multiplie par **1,11**, le facteur de forme d'une **sinusoïde** : le résultat n'est juste que pour un signal sinusoïdal. Un appareil **True RMS** calcule la vraie valeur efficace, quelle que soit la forme d'onde (signal carré, triangle, courant déformé par une alimentation à découpage…). Il reste limité par sa bande passante, indiquée dans sa notice.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Valeur_efficace"
+    },
+    {
+      "question": "La tension du secteur vaut 230 V efficaces. Quelle est, environ, sa valeur crête (maximale) ?",
+      "answer": "325 V",
+      "wrong": [
+        "230 V",
+        "163 V",
+        "460 V"
+      ],
+      "explanation": "Pour une sinusoïde, la valeur crête vaut la valeur efficace multipliée par **√2** : 230 × 1,414 ≈ **325 V**. La tension oscille donc entre +325 V et −325 V (650 V crête à crête). 163 V est l'erreur inverse (230 / √2). La valeur efficace est celle d'une tension continue qui produirait le même échauffement dans une résistance.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Valeur_efficace"
+    },
+    {
+      "question": "Quelle est la période d'un signal périodique de fréquence 50 Hz ?",
+      "answer": "20 ms",
+      "wrong": [
+        "50 ms",
+        "2 ms",
+        "200 ms"
+      ],
+      "explanation": "La période est l'inverse de la fréquence : **T = 1 / f** = 1 / 50 = 0,02 s = **20 ms**. Le signal du secteur européen reproduit donc le même motif 50 fois par seconde. Inversement, un signal de période 2 ms aurait une fréquence de 500 Hz.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle est la valeur moyenne, sur une période entière, d'une tension sinusoïdale d'amplitude 10 V sans composante continue ?",
+      "answer": "0 V",
+      "wrong": [
+        "7,07 V",
+        "6,37 V",
+        "5 V"
+      ],
+      "explanation": "Une sinusoïde passe autant de temps, avec la même forme, au-dessus et au-dessous de zéro : sa **valeur moyenne est nulle**. C'est pour cela qu'on la caractérise plutôt par sa **valeur efficace** (10 / √2 ≈ 7,07 V). 6,37 V (2/π × 10) est la valeur moyenne de la sinusoïde **redressée**, c'est-à-dire de sa valeur absolue.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Valeur_efficace"
+    },
+    {
+      "question": "Quelle est la valeur efficace d'un signal carré qui alterne entre +5 V et −5 V, avec un rapport cyclique de 50 % ?",
+      "answer": "5 V",
+      "wrong": [
+        "3,54 V",
+        "2,5 V",
+        "0 V"
+      ],
+      "explanation": "La valeur efficace est la racine carrée de la moyenne du **carré** du signal. Ici, u² vaut 25 V² en permanence, que u soit à +5 V ou à −5 V : la valeur efficace vaut donc √25 = **5 V**. Le piège 3,54 V (5 / √2) applique la relation de la sinusoïde, qui ne vaut que pour elle. 0 V est la valeur **moyenne** de ce signal, pas sa valeur efficace.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Valeur_efficace"
+    },
+    {
+      "question": "Quel appareil permet de visualiser l'allure d'une tension au cours du temps ?",
+      "answer": "L'oscilloscope",
+      "wrong": [
+        "L'ohmmètre",
+        "Le wattmètre",
+        "Le fréquencemètre"
+      ],
+      "explanation": "L'**oscilloscope** trace la tension (axe vertical) en fonction du temps (axe horizontal) : on voit la forme du signal, son amplitude, sa période, ses parasites. Le fréquencemètre ne donne qu'un nombre (la fréquence), le wattmètre une puissance et l'ohmmètre une résistance.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Oscilloscope"
+    },
+    {
+      "question": "Un oscilloscope est réglé sur 2 V/div. Un signal sinusoïdal centré sur zéro occupe 6 divisions verticales de son minimum à son maximum. Quelle est son amplitude (valeur crête) ?",
+      "answer": "6 V",
+      "wrong": [
+        "12 V",
+        "4,2 V",
+        "3 V"
+      ],
+      "explanation": "6 divisions × 2 V/div = 12 V : c'est la tension **crête à crête**, du minimum au maximum. L'amplitude (valeur crête), mesurée depuis zéro, en vaut la moitié : **6 V**. La valeur efficace correspondante serait 6 / √2 ≈ 4,2 V. Confondre crête, crête à crête et efficace est l'erreur de lecture la plus fréquente.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Oscilloscope"
+    },
+    {
+      "question": "Que vérifie le mode « continuité » (celui qui émet un bip) d'un multimètre ?",
+      "answer": "Qu'une liaison a une résistance très faible",
+      "wrong": [
+        "Qu'une tension est présente entre deux points",
+        "Qu'un courant circule dans le fil testé",
+        "Qu'un fil est correctement relié à la terre"
+      ],
+      "explanation": "En mode continuité, le multimètre fonctionne en **ohmmètre** et bipe lorsque la résistance entre les pointes passe sous un seuil bas (quelques dizaines d'ohms selon les modèles). On l'utilise pour repérer un fil coupé, une piste interrompue ou un court-circuit. Comme toute mesure de résistance, il s'utilise **circuit hors tension**.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Multim%C3%A8tre"
+    },
+    {
+      "question": "Un multimètre « 3 ½ digits » affiche au maximum 1999. Sur son calibre 2 V, quelle est la plus petite variation de tension qu'il peut afficher ?",
+      "answer": "1 mV",
+      "wrong": [
+        "0,1 mV",
+        "10 mV",
+        "2 mV"
+      ],
+      "explanation": "Sur le calibre 2 V, l'affichage maximal est 1,999 V : le dernier chiffre représente des **millivolts**, d'où une résolution de **1 mV**. Le « ½ digit » désigne le premier chiffre, qui ne peut valoir que 0 ou 1. Attention : la résolution n'est pas la précision, qui s'exprime en % de la lecture plus un certain nombre de digits.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Multim%C3%A8tre"
+    },
+    {
+      "question": "Un multimètre annonce une précision de ±(0,5 % + 2 digits) sur son calibre 20 V, dont la résolution est 10 mV. Il affiche 10,00 V. Quelle est l'incertitude sur cette mesure ?",
+      "answer": "± 0,07 V",
+      "wrong": [
+        "± 0,05 V",
+        "± 0,02 V",
+        "± 0,12 V"
+      ],
+      "explanation": "Le pourcentage s'applique à la **valeur lue** : 0,5 % de 10,00 V = 0,05 V. Les **digits** sont des unités du dernier chiffre affiché : 2 × 10 mV = 0,02 V. Au total : ± **0,07 V**, donc une tension réelle entre 9,93 V et 10,07 V. Le piège ± 0,12 V applique à tort le pourcentage au calibre (20 V) au lieu de la lecture.",
+      "difficulty": 3
+    },
+    {
+      "question": "À quoi sert la mesure de résistance dite « 4 fils » (méthode de Kelvin) ?",
+      "answer": "À éliminer l'effet des cordons sur les très faibles valeurs",
+      "wrong": [
+        "À mesurer des valeurs très élevées sans courant de fuite",
+        "À mesurer en même temps la tension et le courant alternatifs",
+        "À tester quatre résistances en une seule mesure"
+      ],
+      "explanation": "En mesure 2 fils, la résistance des cordons et des contacts (souvent quelques dixièmes d'ohm) s'ajoute à celle du composant, ce qui fausse complètement la mesure d'un shunt de quelques milliohms. En **4 fils**, une paire de fils injecte le courant et une **autre paire**, qui ne transporte quasiment aucun courant, mesure la tension directement aux bornes du composant : la chute de tension dans les cordons n'est plus comptée.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Four-terminal_sensing"
     }
   ]
 }

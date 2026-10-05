@@ -1139,6 +1139,285 @@
       ],
       "explanation": "`List<? extends Number>` désigne une liste d'un sous-type **inconnu** de `Number` : ce peut être une `List<Integer>` comme une `List<Double>`. Lire est sûr (on obtient forcément un `Number`), mais ajouter est interdit (sauf `null`), car on risquerait de glisser un `Integer` dans une liste de `Double`. À l'inverse, `List<? super Integer>` accepte des ajouts d'`Integer` mais ne renvoie que des `Object` en lecture. Moyen mnémotechnique : PECS, « Producer Extends, Consumer Super ».",
       "difficulty": 3
+    },
+    {
+      "question": "Quelle interface fonctionnelle de `java.util.function` représente une fonction qui prend un argument et renvoie un `boolean` ?",
+      "answer": "`Predicate<T>`",
+      "wrong": [
+        "`Supplier<T>`",
+        "`Consumer<T>`",
+        "`Runnable`"
+      ],
+      "explanation": "Les quatre interfaces de base à connaître : `Predicate<T>` (`boolean test(T t)`), `Function<T, R>` (`R apply(T t)`), `Consumer<T>` (`void accept(T t)`, ne renvoie rien) et `Supplier<T>` (`T get()`, ne prend rien). Un `Predicate` s'utilise par exemple avec `filter` ou `removeIf`, et se combine avec `and`, `or` et `negate`. `Runnable` ne prend rien et ne renvoie rien.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle lambda est équivalente à la référence de méthode `String::length` ?",
+      "answer": "`s -> s.length()`",
+      "wrong": [
+        "`() -> String.length()`",
+        "`s -> String.length(s)`",
+        "`(s, n) -> s.length(n)`"
+      ],
+      "explanation": "`String::length` est une référence à une méthode d'instance d'un objet **quelconque** du type : le premier paramètre de la lambda devient l'objet sur lequel la méthode est appelée. Les autres formes sont la méthode statique (`Integer::parseInt`, soit `s -> Integer.parseInt(s)`), la méthode d'un objet précis (`System.out::println`) et le constructeur (`ArrayList::new`).",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nSystem.out.println(IntStream.range(1, 5).sum());\n```",
+      "answer": "`10`",
+      "wrong": [
+        "`15`",
+        "`4`",
+        "`24`"
+      ],
+      "explanation": "`IntStream.range(debut, fin)` exclut la borne de fin : on additionne 1 + 2 + 3 + 4 = 10. Pour inclure 5, on utilise `rangeClosed(1, 5)`, qui donnerait 15. Les flux de primitives (`IntStream`, `LongStream`, `DoubleStream`) évitent l'autoboxing et proposent directement `sum()`, `average()` ou `max()`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle version de Java a introduit les expressions lambda et l'API `Stream` ?",
+      "answer": "Java 8, en 2014",
+      "wrong": [
+        "Java 5, en 2004",
+        "Java 7, en 2011",
+        "Java 11, en 2018"
+      ],
+      "explanation": "Java 8 (mars 2014) a profondément changé la façon d'écrire du Java : lambdas, références de méthode, API `Stream`, méthodes `default`, `Optional` et la nouvelle API de dates `java.time`. Java 5 avait apporté les génériques, les enums, les annotations, l'autoboxing et la boucle for-each ; Java 7, le try-with-resources et l'opérateur diamant ; Java 11, `var` dans les lambdas et le client HTTP standard.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nString s = Stream.of(\"a\", \"b\", \"c\")\n        .collect(Collectors.joining(\", \", \"[\", \"]\"));\nSystem.out.println(s);\n```",
+      "answer": "`[a, b, c]`",
+      "wrong": [
+        "`a, b, c`",
+        "`[a][b][c]`",
+        "`[a, b, c, ]`"
+      ],
+      "explanation": "`Collectors.joining(separateur, prefixe, suffixe)` place le séparateur **uniquement entre** les éléments, puis ajoute le préfixe et le suffixe **une seule fois**, autour du tout. Sans préfixe ni suffixe, `joining(\", \")` donnerait `a, b, c`, comme `String.join(\", \", liste)`. C'est la façon la plus simple d'éviter la virgule en trop qu'on obtient avec une boucle naïve.",
+      "difficulty": 1
+    },
+    {
+      "question": "Parmi ces versions de Java, laquelle bénéficie d'un support à long terme (LTS) ?",
+      "answer": "Java 17",
+      "wrong": [
+        "Java 14",
+        "Java 16",
+        "Java 19"
+      ],
+      "explanation": "Depuis 2018 (Java 10), une nouvelle version de Java sort tous les **six mois**, en mars et en septembre. Seules certaines sont **LTS** et maintenues pendant des années : 8, 11, 17, puis 21 (2023) et 25 (2025), la cadence étant passée à une LTS tous les deux ans après Java 17. Chez Oracle, les autres versions, comme 14, 16 ou 19, ne sont maintenues que six mois, jusqu'à la sortie de la suivante.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel outil, apparu avec Java 9, permet de taper et d'exécuter du code Java instruction par instruction, sans classe ni `main` ?",
+      "answer": "`jshell`",
+      "wrong": [
+        "`javap`",
+        "`jdb`",
+        "`jconsole`"
+      ],
+      "explanation": "`jshell` (JEP 222) est le **REPL** (Read-Eval-Print Loop) du JDK : on tape `int x = 2 + 3;` et on voit immédiatement le résultat, ce qui est idéal pour tester une API ou apprendre. `javap` désassemble des fichiers `.class`, `jdb` est le débogueur en ligne de commande et `jconsole` surveille une JVM en cours d'exécution.",
+      "difficulty": 1,
+      "source": "https://openjdk.org/jeps/222"
+    },
+    {
+      "question": "Que vérifie l'annotation `@FunctionalInterface` placée sur une interface ?",
+      "answer": "Qu'elle déclare exactement une méthode abstraite",
+      "wrong": [
+        "Qu'elle ne contient aucune méthode `default`",
+        "Que toutes ses méthodes sont `static`",
+        "Qu'elle ne déclare aucune méthode abstraite"
+      ],
+      "explanation": "Une interface **fonctionnelle** possède une seule méthode abstraite (SAM, Single Abstract Method) : c'est ce qui permet de l'implémenter avec une lambda. Elle peut avoir autant de méthodes `default` et `static` qu'on veut (`Function` a `andThen` et `compose`). L'annotation est facultative (`Runnable` ou `Comparator` sont fonctionnelles de toute façon) : elle demande simplement au compilateur de vérifier la règle.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que se passe-t-il à la compilation ?\n```java\nint compteur = 0;\nRunnable r = () -> System.out.println(compteur);\ncompteur++;\n```",
+      "answer": "Erreur : `compteur` doit être effectivement finale",
+      "wrong": [
+        "Elle compile, et la lambda affichera `1`",
+        "Elle compile, et la lambda affichera `0`",
+        "Elle compile, avec un simple avertissement"
+      ],
+      "explanation": "Une lambda ne peut capturer une variable locale que si celle-ci est `final` ou **effectivement finale**, c'est-à-dire jamais réaffectée après son initialisation. Ici, `compteur++` viole cette règle, même s'il est situé après la lambda. La raison : la lambda capture une **copie** de la valeur et peut s'exécuter plus tard, voire dans un autre thread. Si un compteur partagé est vraiment nécessaire, on utilise par exemple un `AtomicInteger`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nint r = IntStream.rangeClosed(1, 5).reduce(1, (a, b) -> a * b);\nSystem.out.println(r);\n```",
+      "answer": "`120`",
+      "wrong": [
+        "`15`",
+        "`24`",
+        "`0`"
+      ],
+      "explanation": "`reduce(identite, operation)` combine les éléments deux à deux en partant de l'identité : ((((1 × 1) × 2) × 3) × 4) × 5 = 120, soit 5!. L'identité doit être l'**élément neutre** de l'opération : 1 pour un produit, 0 pour une somme. Avec 0 ici, on obtiendrait 0. La variante sans identité, `reduce(operation)`, renvoie un `OptionalInt`, car le flux pourrait être vide.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nvar m = Stream.of(\"chat\", \"rat\", \"chien\", \"loup\")\n        .collect(Collectors.groupingBy(String::length));\nSystem.out.println(m);\n```",
+      "answer": "`{3=[rat], 4=[chat, loup], 5=[chien]}`",
+      "wrong": [
+        "`{3=1, 4=2, 5=1}`",
+        "`{3=rat, 4=loup, 5=chien}`",
+        "`{rat=3, chat=4, chien=5, loup=4}`"
+      ],
+      "explanation": "`groupingBy(classifieur)` renvoie une `Map<K, List<T>>` : chaque clé (ici la longueur) est associée à la **liste** des éléments correspondants, dans leur ordre de rencontre. On peut ajouter un collecteur en aval : `groupingBy(String::length, Collectors.counting())` donnerait `{3=1, 4=2, 5=1}`. `Collectors.toMap`, lui, échouerait ici, car deux mots ont la même longueur.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nList<List<Integer>> l = List.of(List.of(1, 2), List.of(3));\nSystem.out.println(l.stream().flatMap(List::stream).toList());\n```",
+      "answer": "`[1, 2, 3]`",
+      "wrong": [
+        "`[[1, 2], [3]]`",
+        "`[1, 2]`",
+        "`[[1], [2], [3]]`"
+      ],
+      "explanation": "`flatMap` transforme chaque élément en un **flux**, puis concatène (« aplatit ») tous ces flux en un seul. Avec `map(List::stream)`, on aurait obtenu un `Stream<Stream<Integer>>`, peu pratique. Usage typique : passer d'un flux de lignes à un flux de mots, avec `lignes.flatMap(l -> Arrays.stream(l.split(\" \")))`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nSystem.out.println(Stream.iterate(1, x -> x * 2).limit(5).toList());\n```",
+      "answer": "`[1, 2, 4, 8, 16]`",
+      "wrong": [
+        "`[2, 4, 8, 16, 32]`",
+        "`[1, 2, 4, 8, 16, 32]`",
+        "Rien : la boucle est infinie"
+      ],
+      "explanation": "`Stream.iterate(graine, f)` produit un flux **infini** : graine, f(graine), f(f(graine))… La graine 1 est donc le premier élément. Grâce à la paresse des streams, `limit(5)` coupe le flux après cinq éléments ; sans lui, `toList()` ne se terminerait jamais. Depuis Java 9, la variante `iterate(1, x -> x < 100, x -> x * 2)` intègre une condition d'arrêt, comme une boucle `for`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Avec `record P(String nom, int age)`, dans quel ordre ce tri range-t-il Léa (30 ans), Tom (25 ans) et Zoé (30 ans) ?\n```java\nliste.sort(Comparator.comparing(P::age)\n        .reversed()\n        .thenComparing(P::nom));\n```",
+      "answer": "Léa, Zoé, Tom",
+      "wrong": [
+        "Tom, Léa, Zoé",
+        "Zoé, Léa, Tom",
+        "Léa, Tom, Zoé"
+      ],
+      "explanation": "`comparing(P::age)` trie par âge croissant, et `reversed()` inverse **tout le comparateur construit jusque-là** : l'âge devient décroissant, les 30 ans passent avant Tom. `thenComparing(P::nom)` départage ensuite les ex aequo par nom croissant : Léa avant Zoé. Piège classique : placer `reversed()` à la fin de la chaîne inverserait aussi l'ordre des noms.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nrecord Point(int x, int y) {}\n// ...\nSystem.out.println(new Point(1, 2));\n```",
+      "answer": "`Point[x=1, y=2]`",
+      "wrong": [
+        "`Point(x=1, y=2)`",
+        "`Point@1b6d3586`",
+        "`{x=1, y=2}`"
+      ],
+      "explanation": "Un record génère un `toString()` qui affiche le nom du type puis chaque composant avec sa valeur, **entre crochets**. Il génère aussi `equals()` et `hashCode()` à partir de tous les composants : `new Point(1, 2).equals(new Point(1, 2))` vaut `true`, contrairement à une classe ordinaire. La forme avec parenthèses, `Point(x=1, y=2)`, est celle des data classes de Kotlin ou de Lombok.",
+      "difficulty": 2
+    },
+    {
+      "question": "En Java 21, qu'affiche ce code ?\n```java\nrecord Point(int x, int y) {}\n// ...\nObject o = new Point(3, 4);\nif (o instanceof Point(int x, int y)) {\n    System.out.println(x + y);\n}\n```",
+      "answer": "`7`",
+      "wrong": [
+        "`34`",
+        "Rien : la condition est fausse",
+        "Rien : erreur de compilation"
+      ],
+      "explanation": "Les **record patterns** (JEP 440, finalisés en Java 21) permettent de **déconstruire** un record directement dans un `instanceof` ou un `switch` : si `o` est un `Point`, `x` et `y` reçoivent ses composants, ici 3 et 4. Ces motifs peuvent s'imbriquer, comme `Ligne(Point(var x1, var y1), Point fin)`. Associés aux types `sealed` et au `switch`, ils permettent un style de programmation orienté données.",
+      "difficulty": 2,
+      "source": "https://openjdk.org/jeps/440"
+    },
+    {
+      "question": "En Java 21, qu'affiche `decrire(42) + \" \" + decrire(5) + \" \" + decrire(1.5)` ?\n```java\nstatic String decrire(Object o) {\n    return switch (o) {\n        case Integer i when i > 10 -> \"grand\";\n        case Integer i -> \"entier\";\n        case String s -> \"texte\";\n        default -> \"autre\";\n    };\n}\n```",
+      "answer": "`grand entier autre`",
+      "wrong": [
+        "`entier entier autre`",
+        "`grand entier texte`",
+        "`grand grand autre`"
+      ],
+      "explanation": "Le **pattern matching pour `switch`** (JEP 441, Java 21) permet de tester le type de l'objet dans chaque `case`. La clause `when` ajoute une condition (une « garde ») : 42 est un `Integer` supérieur à 10, d'où `grand` ; 5 échoue à la garde et tombe dans le `case` suivant, `entier`. 1.5 est un `Double`, qui ne correspond à aucun motif : c'est le `default`, obligatoire ici puisque `Object` n'est pas un type scellé.",
+      "difficulty": 2,
+      "source": "https://openjdk.org/jeps/441"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nstatic String defaut() {\n    System.out.print(\"calcul \");\n    return \"défaut\";\n}\n// ...\nOptional<String> opt = Optional.of(\"valeur\");\nSystem.out.println(opt.orElse(defaut()));\n```",
+      "answer": "`calcul valeur`",
+      "wrong": [
+        "`valeur`",
+        "`calcul défaut`",
+        "`défaut`"
+      ],
+      "explanation": "En Java, les arguments sont **évalués avant l'appel** : `defaut()` s'exécute donc toujours, même si l'`Optional` contient une valeur, qui est finalement renvoyée. Avec `opt.orElseGet(Main::defaut)`, on passe un `Supplier` qui n'est appelé **que si** l'`Optional` est vide : seul `valeur` s'afficherait. La différence compte quand la valeur par défaut est coûteuse (requête en base…) ou a des effets de bord.",
+      "difficulty": 3
+    },
+    {
+      "question": "Avec le JDK 21, qu'affiche ce code ?\n```java\nlong n = List.of(1, 2, 3).stream()\n        .peek(System.out::print)\n        .count();\nSystem.out.println(\"n=\" + n);\n```",
+      "answer": "`n=3`",
+      "wrong": [
+        "`123n=3`",
+        "`1n=3`",
+        "`n=0`"
+      ],
+      "explanation": "Depuis Java 9, `count()` peut calculer directement le résultat quand la taille du flux est connue d'avance (source de taille fixe, pas de `filter`…), **sans parcourir le pipeline** : l'action de `peek` n'est jamais exécutée. La Javadoc de `count()` prévient explicitement de ce comportement. Avec un `filter` avant le `peek`, la taille deviendrait inconnue et `123` s'afficherait. Morale : `peek` sert au débogage, pas à des effets de bord dont on dépend.",
+      "difficulty": 3,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/stream/Stream.html#count()"
+    },
+    {
+      "question": "Que se passe-t-il à l'exécution de ce code ?\n```java\nMap<Integer, String> m = Stream.of(\"chat\", \"rat\", \"loup\")\n        .collect(Collectors.toMap(String::length, s -> s));\n```",
+      "answer": "Une `IllegalStateException` : clé en double",
+      "wrong": [
+        "`m` vaut `{3=rat, 4=loup}` : la dernière gagne",
+        "`m` vaut `{3=rat, 4=chat}` : la première gagne",
+        "Rien : une erreur de compilation l'empêche"
+      ],
+      "explanation": "Contrairement à `Map.put`, qui écrase silencieusement, `Collectors.toMap` à deux arguments lève une `IllegalStateException` dès que deux éléments produisent la même clé (« Duplicate key 4 »), ici `chat` et `loup`. Pour choisir, on passe une fonction de fusion en troisième argument : `toMap(String::length, s -> s, (a, b) -> a)` garde la première valeur. Pour tout conserver, on préfère `groupingBy`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Par quel type faut-il remplacer `???` pour que ce code compile ?\n```java\nMap<Integer, ???> m = mots.stream()\n        .collect(Collectors.groupingBy(String::length, Collectors.counting()));\n```",
+      "answer": "`Long`",
+      "wrong": [
+        "`Integer`",
+        "`List<String>`",
+        "`Double`"
+      ],
+      "explanation": "`Collectors.counting()` produit un **`Long`**, comme `Stream.count()` renvoie un `long`. Écrire `Map<Integer, Integer>` provoque une erreur d'inférence de type, piège très fréquent. Si l'on tient à des `Integer`, on peut utiliser `Collectors.summingInt(s -> 1)`. Sans collecteur en aval, `groupingBy` aurait donné des `List<String>`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'affiche l'appel à `test()` ?\n```java\nclass Externe {\n    public String toString() { return \"Externe\"; }\n    void test() {\n        Runnable lambda = () -> System.out.println(this);\n        Runnable anonyme = new Runnable() {\n            public void run() { System.out.println(this); }\n            public String toString() { return \"Anonyme\"; }\n        };\n        lambda.run();\n        anonyme.run();\n    }\n}\n```",
+      "answer": "`Externe` puis `Anonyme`",
+      "wrong": [
+        "`Anonyme` puis `Anonyme`",
+        "`Externe` puis `Externe`",
+        "`Anonyme` puis `Externe`"
+      ],
+      "explanation": "Une lambda n'introduit pas de nouvelle portée : `this` y désigne l'instance **englobante**, ici l'objet `Externe`. Une classe anonyme, elle, est une vraie classe : son `this` désigne l'objet anonyme lui-même, dont le `toString()` renvoie `Anonyme`. Autre différence : les lambdas ne génèrent pas de fichier `.class` séparé, elles sont créées à l'exécution grâce à l'instruction `invokedynamic`.",
+      "difficulty": 3
+    },
+    {
+      "question": "En Java 21, que se passe-t-il à la compilation ?\n```java\nreturn switch (o) {\n    case CharSequence cs -> \"séquence\";\n    case String s -> \"chaîne\";\n    default -> \"autre\";\n};\n```",
+      "answer": "Erreur : le `case String` est dominé par le précédent",
+      "wrong": [
+        "Elle compile : une `String` donne `\"chaîne\"`",
+        "Elle compile : une `String` donne `\"séquence\"`",
+        "Elle compile, avec un avertissement de code mort"
+      ],
+      "explanation": "Les `case` d'un `switch` à motifs sont testés dans l'ordre. Comme `String` implémente `CharSequence`, toute chaîne correspond déjà au premier `case` : le second ne pourrait jamais être atteint. Le compilateur refuse ce code (« this case label is dominated by a preceding case label »). Comme pour les blocs `catch`, on range les motifs du plus spécifique au plus général.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nString s = null;\nswitch (s) {\n    case \"a\": System.out.println(\"a\"); break;\n    default: System.out.println(\"défaut\");\n}\n```",
+      "answer": "Rien : une `NullPointerException` est levée",
+      "wrong": [
+        "`défaut`",
+        "Rien : aucun `case` ne correspond",
+        "Rien : erreur de compilation"
+      ],
+      "explanation": "Un `switch` classique lève une `NullPointerException` quand la valeur testée vaut `null` (le code compilé appelle d'ailleurs `s.hashCode()`), et le `default` ne capture **pas** la valeur `null`. Java 21 permet de traiter ce cas explicitement dans un `switch` à motifs avec `case null ->` (ou `case null, default ->`). Sans ce `case null`, même un `switch` moderne lève toujours une `NullPointerException`, par compatibilité.",
+      "difficulty": 3
+    },
+    {
+      "question": "Laquelle de ces expressions ne compile **pas** (`o` est de type `Object`) ?",
+      "answer": "`o instanceof String s || s.isEmpty()`",
+      "wrong": [
+        "`o instanceof String s && s.isEmpty()`",
+        "`!(o instanceof String s) || s.isEmpty()`",
+        "`o instanceof Integer i && i > 0`"
+      ],
+      "explanation": "Une variable de motif n'existe que là où le compilateur est **sûr** que le test a réussi (« flow scoping »). Avec `&&`, la partie droite n'est évaluée que si le test a réussi : `s` y est utilisable. Avec `||`, la partie droite est évaluée justement quand le test a **échoué** : `s` n'existe pas, d'où l'erreur « cannot find symbol ». À l'inverse, avec `!(...) ||`, la partie droite n'est évaluée que si `o` est bien une `String`, donc `s` y est disponible.",
+      "difficulty": 3
     }
   ]
 }

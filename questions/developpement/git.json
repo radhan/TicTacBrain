@@ -1167,6 +1167,282 @@
       "explanation": "Le contenu de `.git/` (hooks, configuration…) ne fait pas partie des commits, et un clone reçoit seulement des exemples de hooks par défaut (`*.sample`). C'est aussi une mesure de sécurité : cloner un dépôt ne doit jamais exécuter de code arbitraire. Pour partager des hooks, on les versionne dans un dossier du projet et chacun y fait pointer `core.hooksPath`, ou l'on passe par un outil comme Husky ou pre-commit.",
       "difficulty": 3,
       "source": "https://git-scm.com/docs/githooks"
+    },
+    {
+      "question": "Quelle option de `git log` dessine en mode texte le graphe des branches et des merges ?",
+      "answer": "`--graph`",
+      "wrong": [
+        "`--tree`",
+        "`--branches`",
+        "`--draw`"
+      ],
+      "explanation": "`--graph` trace à gauche des commits les lignes qui les relient (`*`, `|`, `/`, `\\`). On le combine souvent : `git log --oneline --graph --all` donne une vue compacte de toutes les branches, et beaucoup en font un alias. `--branches` existe aussi, mais sert seulement à choisir les commits affichés (ceux de toutes les branches locales), sans rien dessiner.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-log"
+    },
+    {
+      "question": "Quelle commande pose l'étiquette `v1.0` sur le commit courant ?",
+      "answer": "`git tag v1.0`",
+      "wrong": [
+        "`git branch v1.0`",
+        "`git label v1.0`",
+        "`git commit --tag v1.0`"
+      ],
+      "explanation": "`git tag v1.0` crée un tag léger sur `HEAD`, et `git tag -a v1.0 -m \"…\"` un tag annoté. On peut aussi étiqueter un ancien commit en ajoutant son SHA (`git tag v0.9 a1b2c3d`), et `git tag` seul liste les tags existants. `git branch v1.0` créerait une **branche**, un pointeur destiné à avancer avec les commits, alors qu'un tag reste fixe.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-tag"
+    },
+    {
+      "question": "Sur GitHub, à quoi sert une *pull request* ?",
+      "answer": "Proposer d'intégrer une branche, avec revue et discussion",
+      "wrong": [
+        "Télécharger les derniers commits du dépôt distant",
+        "Demander l'accès en écriture à un dépôt",
+        "Copier un dépôt dans son propre compte"
+      ],
+      "explanation": "Une *pull request* (GitLab parle de *merge request*) demande aux mainteneurs de fusionner une branche, du même dépôt ou d'un fork, dans une autre, typiquement `main`. La plateforme affiche le diff, permet de commenter ligne par ligne, d'approuver et de lancer l'intégration continue, puis de fusionner en un clic. Le nom vient de l'idée de demander au mainteneur de « tirer » (*pull*) vos changements, mais c'est une fonctionnalité de la plateforme, pas une commande Git. Copier un dépôt dans son compte, c'est un *fork*.",
+      "difficulty": 1,
+      "source": "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests"
+    },
+    {
+      "question": "Quelle commande indexe toutes les modifications, y compris les nouveaux fichiers, du dossier courant et de ses sous-dossiers ?",
+      "answer": "`git add .`",
+      "wrong": [
+        "`git add -u`",
+        "`git commit -a`",
+        "`git add -n .`"
+      ],
+      "explanation": "`git add .` indexe tout ce qui se trouve sous le dossier courant : modifications, suppressions et nouveaux fichiers (hors fichiers ignorés). `git add -u` ne traite que les fichiers déjà suivis, `git commit -a` non plus (et commite aussitôt), et `-n` (`--dry-run`) se contente d'afficher ce qui serait ajouté. Pour couvrir tout le dépôt où que vous soyez : `git add -A`.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-add"
+    },
+    {
+      "question": "Dans la liste affichée par `git stash list`, que désigne `stash@{0}` ?",
+      "answer": "L'entrée la plus récente du stash",
+      "wrong": [
+        "L'entrée la plus ancienne du stash",
+        "Le premier fichier de l'entrée courante",
+        "Le stash créé sur la branche `0`"
+      ],
+      "explanation": "Le stash fonctionne comme une **pile** : chaque nouveau `git stash` devient `stash@{0}` et décale les autres (`stash@{1}`, `stash@{2}`…). `pop`, `apply`, `show` et `drop` agissent par défaut sur `stash@{0}`, ou sur l'entrée indiquée. `git stash push -m \"message\"` donne une description plus parlante que le *WIP on main* par défaut.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-stash"
+    },
+    {
+      "question": "Quel hook Git côté client permet de vérifier, voire de refuser, le **message** d'un commit ?",
+      "answer": "`commit-msg`",
+      "wrong": [
+        "`pre-commit`",
+        "`post-commit`",
+        "`pre-push`"
+      ],
+      "explanation": "Le hook `commit-msg` reçoit en argument le chemin d'un fichier contenant le message ; s'il se termine avec un code non nul, le commit est annulé. On s'en sert pour imposer une convention (*Conventional Commits*, numéro de ticket…), par exemple avec commitlint. `pre-commit` s'exécute plus tôt, avant même que le message existe, pour contrôler le code ; `post-commit` arrive trop tard pour refuser quoi que ce soit.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/githooks"
+    },
+    {
+      "question": "Vous voulez ignorer un fichier personnel (vos notes) dans un dépôt, sans modifier le `.gitignore` partagé avec l'équipe. Où ajouter la règle ?",
+      "answer": "Dans `.git/info/exclude`",
+      "wrong": [
+        "Dans `.git/config`, section `[ignore]`",
+        "Dans un fichier `.gitignore.local`",
+        "Dans `.git/hooks/ignore`"
+      ],
+      "explanation": "`.git/info/exclude` utilise la même syntaxe que `.gitignore`, mais reste propre à votre clone puisque `.git/` n'est pas versionné. Pour des règles valables dans tous vos dépôts (fichiers de votre éditeur, `.DS_Store`…), on utilise un fichier global déclaré par `core.excludesFile` (par défaut `~/.config/git/ignore`). Un `.gitignore.local` n'a aucune signification pour Git.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/gitignore"
+    },
+    {
+      "question": "Quel réglage de configuration choisit le nom de la branche créée par `git init` ?",
+      "answer": "`init.defaultBranch`",
+      "wrong": [
+        "`core.mainBranch`",
+        "`branch.default`",
+        "`remote.origin.head`"
+      ],
+      "explanation": "Introduit avec Git 2.28 (2020), il s'utilise ainsi : `git config --global init.defaultBranch main`. Sans ce réglage, Git a longtemps nommé la première branche `master`. Vers 2020, GitHub, GitLab et d'autres sont passés à `main` pour les nouveaux dépôts. Pour un dépôt existant, on renomme la branche avec `git branch -m`.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-init"
+    },
+    {
+      "question": "Pourquoi Git 2.23 (2019) a-t-il introduit les commandes `git switch` et `git restore` ?",
+      "answer": "Pour séparer les deux rôles de `git checkout`",
+      "wrong": [
+        "Pour remplacer `git branch` et `git reset`",
+        "Pour gérer les sous-modules et les worktrees",
+        "Pour remplacer `git stash` par un mécanisme plus sûr"
+      ],
+      "explanation": "`git checkout` faisait deux choses très différentes : changer de branche (`git checkout feature`) et écraser des fichiers (`git checkout -- app.js`), source de nombreuses erreurs. `git switch` reprend le premier rôle (les branches) et `git restore` le second (restaurer des fichiers depuis l'index ou un commit). Ces commandes ont d'abord été marquées expérimentales, et `git checkout` existe toujours.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-switch"
+    },
+    {
+      "question": "Après avoir cloné un projet qui utilise des sous-modules, leurs dossiers sont vides. Quelle commande les remplit ?",
+      "answer": "`git submodule update --init`",
+      "wrong": [
+        "`git submodule add`",
+        "`git pull --all`",
+        "`git fetch --tags`"
+      ],
+      "explanation": "Un sous-module est un autre dépôt Git intégré au projet, figé sur un commit précis. Par défaut, le clone n'enregistre que son emplacement : `git submodule update --init` (avec `--recursive` pour les sous-modules imbriqués) les initialise et les clone au commit attendu. On peut aussi tout faire d'un coup avec `git clone --recurse-submodules <url>`. `git submodule add <url> chemin` sert, lui, à ajouter un nouveau sous-module.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/book/en/v2/Git-Tools-Submodules"
+    },
+    {
+      "question": "Avec Git LFS, que contient réellement le dépôt Git pour une grosse vidéo suivie par LFS ?",
+      "answer": "Un petit fichier pointeur vers le contenu stocké à part",
+      "wrong": [
+        "La vidéo compressée avec un algorithme spécial",
+        "La vidéo découpée en blocs de taille fixe",
+        "Uniquement le nom du fichier, sans aucun lien"
+      ],
+      "explanation": "Git LFS (*Large File Storage*) remplace les gros fichiers, dans les commits, par de petits fichiers texte **pointeurs** (version, empreinte SHA-256, taille). Le vrai contenu est envoyé sur un serveur LFS séparé et téléchargé à l'extraction grâce aux filtres Git. Cela évite d'alourdir l'historique, que chaque clone télécharge entièrement. Les fichiers concernés se déclarent avec `git lfs track \"*.mp4\"`, qui les inscrit dans `.gitattributes`.",
+      "difficulty": 2,
+      "source": "https://github.com/git-lfs/git-lfs"
+    },
+    {
+      "question": "Un mot de passe a été commité il y a des mois. Pour purger le fichier de **tout** l'historique, quel outil la documentation de Git recommande-t-elle plutôt que `git filter-branch` ?",
+      "answer": "`git filter-repo`",
+      "wrong": [
+        "`git revert`",
+        "`git rm --cached`",
+        "`git gc --aggressive`"
+      ],
+      "explanation": "La page de manuel de `git filter-branch` met en garde contre ses nombreux pièges et sa lenteur, et recommande `git filter-repo`, un outil séparé, pour réécrire l'historique. `git rm --cached` et `git revert` n'agissent que sur les commits futurs : le secret reste dans les anciens. Après réécriture, tous les SHA changent (push forcé, nouveaux clones pour l'équipe) et, surtout, le mot de passe doit être considéré comme compromis et changé.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-filter-branch"
+    },
+    {
+      "question": "Dans le modèle de branches **Git Flow**, de quelle branche part une branche `hotfix` ?",
+      "answer": "De `master`, la branche de production",
+      "wrong": [
+        "De `develop`, la branche d'intégration",
+        "De la dernière branche `release` en cours",
+        "De la branche `feature` concernée par le bug"
+      ],
+      "explanation": "Dans Git Flow (Vincent Driessen, 2010), `master` ne contient que les versions publiées et `develop` intègre le travail en cours. Un bug urgent en production se corrige dans une branche `hotfix` partie de `master`, puis fusionnée dans `master` (avec un tag de version) **et** dans `develop`, pour que le correctif ne se perde pas. Les branches `feature` partent de `develop`, tout comme les branches `release` qui préparent une version.",
+      "difficulty": 2,
+      "source": "https://nvie.com/posts/a-successful-git-branching-model/"
+    },
+    {
+      "question": "Qu'est-ce qu'un dépôt *bare*, créé avec `git init --bare` ?",
+      "answer": "Un dépôt sans répertoire de travail",
+      "wrong": [
+        "Un dépôt sans aucun historique",
+        "Un dépôt sans dépôt distant configuré",
+        "Un dépôt dont les objets ne sont pas compressés"
+      ],
+      "explanation": "Un dépôt *bare* ne contient que ce qui se trouve normalement dans `.git` (objets, références, configuration), sans fichiers extraits. C'est le format d'un dépôt serveur ou central : personne n'y travaille directement, donc un push ne peut écraser les fichiers de personne. Par convention, son dossier se termine par `.git` (`projet.git`). Vers un dépôt non *bare*, Git refuse d'ailleurs par défaut de pousser sur la branche extraite.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server"
+    },
+    {
+      "question": "Avant un grand ménage, quelle commande liste les branches locales déjà fusionnées dans la branche courante ?",
+      "answer": "`git branch --merged`",
+      "wrong": [
+        "`git branch --contains`",
+        "`git branch -a`",
+        "`git log --merges`"
+      ],
+      "explanation": "`--merged` liste les branches dont la pointe est accessible depuis `HEAD` : on peut les supprimer avec `git branch -d` sans rien perdre, et `--no-merged` liste les autres. `--contains` fait l'inverse : il liste les branches qui contiennent un commit donné (`HEAD` par défaut). `git branch -a` liste toutes les branches, et `git log --merges` affiche des commits de merge, pas des branches.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-branch"
+    },
+    {
+      "question": "Vous faites `chmod 640 config.sh` sur un fichier suivi, auparavant en 644. Que signale ensuite `git status` ?",
+      "answer": "Rien : Git ne suit que le bit exécutable",
+      "wrong": [
+        "Un changement de mode de 100644 à 100640",
+        "Le fichier comme modifié, sans diff de contenu",
+        "Une erreur de permissions sur le fichier"
+      ],
+      "explanation": "Pour un fichier, Git ne stocke que deux modes : `100644` (normal) et `100755` (exécutable), plus `120000` pour un lien symbolique. Les droits de lecture et d'écriture du groupe ou des autres sont ignorés ; seul un changement du bit exécutable apparaît (`old mode 100644` / `new mode 100755`). Sur les systèmes où ce bit n'est pas fiable, `core.fileMode=false` le fait ignorer, et `git update-index --chmod=+x` le fixe directement dans l'index.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/book/en/v2/Git-Internals-Git-Objects"
+    },
+    {
+      "question": "Avec `git bisect run ./test.sh`, quel code de sortie du script signifie « ce commit ne peut pas être testé, passe au suivant » ?",
+      "answer": "125",
+      "wrong": [
+        "1",
+        "127",
+        "255"
+      ],
+      "explanation": "Le script doit renvoyer 0 si le commit est bon, un code de 1 à 127 **sauf 125** s'il est mauvais, et 125 s'il ne peut pas être testé : c'est l'équivalent de `git bisect skip`, typiquement pour un commit qui ne compile pas. Tout autre code (au-delà de 127, comme 255) interrompt la recherche.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-bisect"
+    },
+    {
+      "question": "Quelle différence entre `git commit -s` et `git commit -S` ?",
+      "answer": "`-s` ajoute un `Signed-off-by:`, `-S` signe avec une clé GPG",
+      "wrong": [
+        "`-S` ajoute un `Signed-off-by:`, `-s` signe avec une clé GPG",
+        "Aucune : la casse des options est ignorée",
+        "`-s` produit un résumé court, `-S` un message détaillé"
+      ],
+      "explanation": "`-s` (`--signoff`) ajoute à la fin du message la ligne `Signed-off-by: Nom <email>` : une simple déclaration, exigée par exemple par le noyau Linux (*Developer Certificate of Origin*), sans aucune valeur cryptographique. `-S` (`--gpg-sign`) signe cryptographiquement le commit (clé GPG, ou SSH depuis Git 2.34), signature vérifiable avec `git log --show-signature`.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-commit"
+    },
+    {
+      "question": "Dans la sortie de `git diff`, que signifie l'en-tête de bloc `@@ -10,6 +10,8 @@` ?",
+      "answer": "Bloc des lignes 10 à 15 avant, 10 à 17 après",
+      "wrong": [
+        "6 lignes supprimées et 8 lignes ajoutées",
+        "Lignes 6 et 8 modifiées autour de la ligne 10",
+        "Modification en colonne 10, de 6 à 8 caractères"
+      ],
+      "explanation": "Dans le format unifié, `-début,longueur` décrit le bloc dans l'ancienne version et `+début,longueur` dans la nouvelle. Ces longueurs incluent les lignes de **contexte** (3 par défaut avant et après) : ici 6 lignes avant, 8 après, donc le bloc compte deux lignes de plus, par exemple deux lignes ajoutées. Le texte qui suit parfois le second `@@` indique la fonction englobante, pour faciliter la lecture.",
+      "difficulty": 3,
+      "source": "https://www.gnu.org/software/diffutils/manual/html_node/Detailed-Unified.html"
+    },
+    {
+      "question": "Que montre `git diff main...feature`, avec **trois** points ?",
+      "answer": "Les changements de `feature` depuis l'ancêtre commun",
+      "wrong": [
+        "Les différences actuelles entre `main` et `feature`",
+        "Les changements de `main` depuis l'ancêtre commun",
+        "Les commits présents sur une seule des deux branches"
+      ],
+      "explanation": "Pour `git diff`, `A...B` compare `B` à la base de fusion de `A` et `B` : on voit exactement ce qu'apporte `feature`, sans le bruit des changements arrivés sur `main` entre-temps. C'est ce qu'affiche une pull request. `git diff main feature` (ou `main..feature`, synonyme pour `diff`) compare directement les deux pointes. Attention : dans `git log`, `A...B` désigne autre chose, la différence symétrique (les commits présents d'un seul côté).",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-diff"
+    },
+    {
+      "question": "Techniquement, comment `git stash` enregistre-t-il vos modifications ?",
+      "answer": "Sous forme de commits, référencés par `refs/stash`",
+      "wrong": [
+        "Sous forme de fichiers `.patch` dans `.git/stash/`",
+        "Dans le reflog de `HEAD`, sous forme de diff",
+        "Dans une copie de l'index, `.git/index.stash`"
+      ],
+      "explanation": "Une entrée du stash est un commit spécial (message *WIP on main: …*) dont les parents sont le commit `HEAD` et un commit contenant l'état de l'index, plus un troisième parent pour les fichiers non suivis avec `-u`. `refs/stash` pointe vers la plus récente, et la liste `stash@{n}` n'est autre que le **reflog** de cette référence. Une entrée supprimée par erreur reste donc un commit inaccessible, récupérable un temps avec `git fsck --unreachable`.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-stash"
+    },
+    {
+      "question": "Un de vos commits de `feature` a déjà été cherry-pické tel quel sur `main`. Que fait `git rebase main` de ce commit ?",
+      "answer": "Il le saute, car le même patch est déjà dans `main`",
+      "wrong": [
+        "Il le rejoue et crée un doublon dans l'historique",
+        "Il s'arrête sur un conflit à résoudre à la main",
+        "Il le transforme en commit de merge vide"
+      ],
+      "explanation": "Avant de rejouer, le rebase compare l'empreinte du **patch** de vos commits (*patch-id*, un hash du diff indépendant du SHA) à celle des commits de la branche cible : les changements identiques sont sautés (*skipped previously applied commit*). C'est pourquoi un rebase après un cherry-pick ne crée pas de doublon. L'option `--reapply-cherry-picks` désactive ce comportement.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-rebase"
+    },
+    {
+      "question": "Vous résolvez sans cesse le même conflit en rebasant une branche à répétition. Quelle fonctionnalité de Git peut mémoriser votre résolution pour la réappliquer automatiquement ?",
+      "answer": "`rerere`",
+      "wrong": [
+        "`reflog`",
+        "`autosquash`",
+        "`mergetool`"
+      ],
+      "explanation": "`rerere` (*reuse recorded resolution*), activé par `git config --global rerere.enabled true`, enregistre chaque conflit et la façon dont vous l'avez résolu ; quand le même conflit réapparaît, Git réapplique lui-même la résolution dans le fichier. Il reste à vérifier puis à faire `git add`. `git mergetool`, lui, ouvre seulement un outil graphique de résolution, sans rien mémoriser.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/book/en/v2/Git-Tools-Rerere"
     }
   ]
 }

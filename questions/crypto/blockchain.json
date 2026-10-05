@@ -1040,6 +1040,259 @@
       ],
       "explanation": "Une **sidechain** est une blockchain indépendante reliée à Ethereum par un pont : sa sécurité dépend entièrement de ses propres validateurs, et s'ils sont corrompus, les fonds peuvent être perdus. Un **rollup** publie au contraire ses données de transactions sur Ethereum et y fait vérifier son état (par preuve de fraude ou de validité) : il **hérite** de la sécurité de la couche 1. Gnosis Chain et Polygon PoS sont souvent cités comme exemples de sidechains.",
       "difficulty": 3
+    },
+    {
+      "question": "Dans le monde des NFT et des jetons, que signifie « minter » (to mint) ?",
+      "answer": "Créer un nouveau jeton et l'inscrire sur la blockchain",
+      "wrong": [
+        "Revendre un jeton juste après l'avoir acheté",
+        "Détruire un jeton pour réduire l'offre",
+        "Convertir un jeton en monnaie fiduciaire"
+      ],
+      "explanation": "**Minter**, c'est « frapper » un jeton, comme on frappe une pièce de monnaie : la transaction appelle le contrat, qui crée le jeton et l'attribue à une adresse. Lors du lancement d'une collection de NFT, les acheteurs mintent souvent eux-mêmes leurs jetons en payant un prix fixé plus le gas. L'opération inverse, qui détruit des jetons, s'appelle le **burn**.",
+      "difficulty": 1
+    },
+    {
+      "question": "Tu as envoyé de l'ETH à une mauvaise adresse, et la transaction est confirmée. Que se passe-t-il ?",
+      "answer": "Personne ne peut annuler la transaction",
+      "wrong": [
+        "La Fondation Ethereum peut te rembourser",
+        "Elle est annulée automatiquement sous 24 h",
+        "Le validateur la renvoie à l'expéditeur"
+      ],
+      "explanation": "Une transaction confirmée est **irréversible** : il n'existe ni service client ni procédure de rétrofacturation comme avec une carte bancaire. Seul le détenteur de l'adresse de destination pourrait renvoyer les fonds, s'il existe et s'il le veut ; si l'adresse ne correspond à aucune clé connue, les fonds sont perdus pour toujours. D'où l'intérêt de vérifier l'adresse et de faire un petit envoi test avant un gros montant.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi la preuve d'enjeu consomme-t-elle bien moins d'énergie que la preuve de travail ?",
+      "answer": "Elle n'exige aucune course au calcul pour produire les blocs",
+      "wrong": [
+        "Ses serveurs sont tous alimentés à l'énergie solaire",
+        "Elle produit dix fois moins de blocs par jour",
+        "Elle compresse les transactions avant de les valider"
+      ],
+      "explanation": "En **preuve de travail**, les mineurs calculent des milliards de hash par seconde pour gagner le droit de produire un bloc : c'est cette compétition qui consomme autant d'électricité. En **preuve d'enjeu**, la sécurité repose sur l'ETH mis en garantie, et un validateur tourne sur un ordinateur ordinaire. Lors de The Merge, la consommation d'énergie d'Ethereum a ainsi chuté de plus de 99,9 %.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie qu'une donnée est « on-chain » ?",
+      "answer": "Elle est enregistrée sur la blockchain elle-même",
+      "wrong": [
+        "Elle est accessible en ligne sur un site web",
+        "Elle est chiffrée de bout en bout",
+        "Elle est stockée sur une clé USB sécurisée"
+      ],
+      "explanation": "Une donnée **on-chain** est inscrite dans la blockchain : publique, vérifiable par tous et quasi impossible à modifier, mais coûteuse à stocker. Une donnée **off-chain** (« hors chaîne ») est conservée ailleurs, comme l'image de la plupart des NFT. Le piège joue sur la ressemblance avec « online » (en ligne), qui n'a rien à voir.",
+      "difficulty": 1
+    },
+    {
+      "question": "Comment le réseau Ethereum sait-il qu'une transaction a bien été autorisée par le propriétaire du compte, sans connaître son identité ?",
+      "answer": "Grâce à une signature produite avec sa clé privée",
+      "wrong": [
+        "Grâce à un code envoyé par SMS au titulaire",
+        "Grâce à un mot de passe stocké sur la blockchain",
+        "Grâce à une vérification par la plateforme d'échange"
+      ],
+      "explanation": "Chaque transaction est **signée** avec la clé privée du compte. N'importe quel nœud peut vérifier mathématiquement cette signature et en déduire l'adresse émettrice, sans jamais voir la clé privée. Aucun mot de passe ni code SMS n'existe au niveau du protocole : quiconque détient la clé privée contrôle le compte, et personne d'autre.",
+      "difficulty": 1
+    },
+    {
+      "question": "Lequel de ces réseaux de couche 2 a été lancé comme un ZK-rollup, qui prouve la validité de ses lots par des preuves cryptographiques ?",
+      "answer": "Starknet",
+      "wrong": [
+        "Arbitrum One",
+        "Optimism",
+        "Polygon PoS"
+      ],
+      "explanation": "**Starknet**, développé par StarkWare, publie pour chaque lot une **preuve STARK** que vérifie un contrat sur Ethereum : un état invalide ne peut tout simplement pas être accepté. Arbitrum One et Optimism sont nés comme **rollups optimistes**, qui présument les lots valides sauf preuve de fraude, et Polygon PoS a été conçu comme une sidechain dotée de ses propres validateurs. zkSync Era, Scroll ou Linea sont d'autres ZK-rollups.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle technique cryptographique Zcash utilise-t-il pour masquer l'expéditeur, le destinataire et le montant de ses transactions protégées ?",
+      "answer": "Les preuves à divulgation nulle (zk-SNARK)",
+      "wrong": [
+        "Les signatures de cercle (ring signatures)",
+        "Le mélange collectif CoinJoin",
+        "Le chiffrement homomorphe complet"
+      ],
+      "explanation": "Une **preuve à divulgation nulle de connaissance** permet de prouver qu'une affirmation est vraie sans rien révéler d'autre. **Zcash** l'utilise pour démontrer qu'une transaction protégée respecte les règles (pas de création de monnaie, fonds réellement détenus) sans en publier les détails. Les **signatures de cercle** sont la technique de Monero, et **CoinJoin** consiste à fusionner les transactions de plusieurs utilisateurs sur Bitcoin. Les ZK-rollups exploitent la même famille de preuves, mais surtout pour compresser la vérification.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi qualifie-t-on souvent les protocoles DeFi de « money legos » (briques de Lego financières) ?",
+      "answer": "Parce qu'ils s'imbriquent librement les uns dans les autres",
+      "wrong": [
+        "Parce qu'ils sont conçus pour les enfants",
+        "Parce que leurs jetons ont une valeur fixe",
+        "Parce qu'ils sont tous édités par la même société"
+      ],
+      "explanation": "Sur Ethereum, tout contrat peut appeler n'importe quel autre sans permission : c'est la **composabilité**. On peut ainsi déposer de l'ETH dans un protocole de staking, utiliser le jeton reçu comme garantie dans un protocole de prêt, puis placer la somme empruntée dans un pool d'échange. Cette puissance a un revers : une faille dans une seule brique peut se propager à toutes celles qui en dépendent.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que reçoit-on en échange d'ETH déposé auprès du protocole de staking liquide Lido ?",
+      "answer": "Du stETH, un jeton qui représente l'ETH misé",
+      "wrong": [
+        "Du WETH, la version ERC-20 de l'ether",
+        "Du DAI, un stablecoin adossé à des cryptos",
+        "Des droits de vote sur le protocole Ethereum"
+      ],
+      "explanation": "Le **staking liquide** évite d'immobiliser son capital : Lido mise l'ETH via des opérateurs de validateurs et remet au déposant du **stETH**, dont le solde augmente avec les récompenses. Ce jeton reste utilisable ailleurs en DeFi (échange, garantie de prêt…). En contrepartie, on ajoute le risque du protocole et de ses opérateurs, et le stETH peut s'échanger temporairement un peu en dessous de l'ETH sur le marché.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans un consensus par « preuve d'autorité » (Proof of Authority), qui produit les blocs ?",
+      "answer": "Des validateurs identifiés et approuvés à l'avance",
+      "wrong": [
+        "Les mineurs dotés de la plus grande puissance de calcul",
+        "Tous les détenteurs du jeton, à tour de rôle",
+        "Celui qui détient le plus de jetons à chaque bloc"
+      ],
+      "explanation": "En **preuve d'autorité**, un petit nombre de validateurs connus, dont la réputation sert de garantie, signent les blocs à tour de rôle. C'est rapide et économe, mais centralisé : on le réserve aux réseaux privés, aux consortiums ou à certains réseaux de test, comme l'ancien testnet Rinkeby avec son moteur « Clique ». La puissance de calcul relève de la preuve de travail, et la mise de jetons de la preuve d'enjeu.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel cofondateur d'Ethereum a ensuite lancé la blockchain Cardano ?",
+      "answer": "Charles Hoskinson",
+      "wrong": [
+        "Gavin Wood",
+        "Joseph Lubin",
+        "Anthony Di Iorio"
+      ],
+      "explanation": "**Charles Hoskinson** a quitté Ethereum en 2014, après des désaccords sur l'orientation du projet, puis a cofondé la société IOHK (devenue Input Output Global), qui développe **Cardano**, lancée en 2017 et fondée sur la preuve d'enjeu Ouroboros. Gavin Wood a, lui, fondé Polkadot, et Joseph Lubin la société ConsenSys, à l'origine de MetaMask. Anthony Di Iorio a été l'un des premiers financeurs d'Ethereum.",
+      "difficulty": 2
+    },
+    {
+      "question": "L'offre d'ether est-elle plafonnée, comme les 21 millions de bitcoins ?",
+      "answer": "Non, elle n'a pas de plafond fixé à l'avance",
+      "wrong": [
+        "Oui, à 21 millions d'ETH comme le bitcoin",
+        "Oui, à 100 millions d'ETH",
+        "Oui, à 1 milliard d'ETH"
+      ],
+      "explanation": "Ethereum n'a **pas de plafond** d'émission : de nouveaux ETH récompensent les validateurs en continu. Mais depuis EIP-1559 (2021), la base fee de chaque transaction est **brûlée**, si bien que l'offre peut baisser lors des périodes de forte activité et monter quand le réseau est calme. La politique monétaire est donc dynamique, alors que celle de Bitcoin est fixée une fois pour toutes.",
+      "difficulty": 2
+    },
+    {
+      "question": "Ton adresse MetaMask (un compte classique) fonctionne-t-elle aussi sur d'autres chaînes compatibles EVM, comme Arbitrum ou Polygon ?",
+      "answer": "Oui, la même clé donne la même adresse sur chacune",
+      "wrong": [
+        "Non, chaque réseau génère une adresse différente",
+        "Seulement après une inscription sur chaque réseau",
+        "Seulement sur les rollups, pas sur les sidechains"
+      ],
+      "explanation": "Une adresse Ethereum se déduit uniquement de la clé publique, sans référence au réseau : la même clé privée contrôle donc la **même adresse** sur toutes les chaînes compatibles EVM, et il suffit d'ajouter le réseau à son portefeuille. Les soldes, eux, sont distincts : 1 ETH sur Arbitrum n'apparaît pas sur Ethereum. Attention, un portefeuille intelligent (un contrat) n'a pas forcément la même adresse sur toutes les chaînes.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans une blockchain en preuve de travail comme Bitcoin, quelle est la nature de la finalité d'un bloc ?",
+      "answer": "Probabiliste : elle se renforce à chaque nouveau bloc",
+      "wrong": [
+        "Immédiate : dès l'inclusion, le bloc est définitif",
+        "Garantie après exactement deux blocs",
+        "Décidée par un vote des deux tiers des nœuds"
+      ],
+      "explanation": "En preuve de travail, un bloc n'est jamais définitif au sens strict : une branche concurrente ayant accumulé plus de travail pourrait toujours le remplacer. Mais chaque bloc ajouté par-dessus rend ce scénario exponentiellement moins probable, d'où une **finalité probabiliste**. La preuve d'enjeu d'Ethereum offre au contraire une **finalité économique** : un bloc finalisé ne peut être annulé qu'au prix du slashing d'au moins un tiers de l'ETH misé.",
+      "difficulty": 2
+    },
+    {
+      "question": "Laquelle de ces blockchains est compatible avec l'EVM, ce qui permet d'y déployer tels quels des contrats Solidity écrits pour Ethereum ?",
+      "answer": "BNB Smart Chain",
+      "wrong": [
+        "Bitcoin",
+        "Solana",
+        "Cardano"
+      ],
+      "explanation": "**BNB Smart Chain**, lancée par Binance en 2020 à partir d'un fork du client Geth, reprend l'EVM et le format des adresses d'Ethereum : contrats, outils et portefeuilles comme MetaMask y fonctionnent directement. Avalanche C-Chain, Polygon PoS et la plupart des couches 2 d'Ethereum sont dans le même cas. Bitcoin n'exécute pas de contrats généralistes, Solana utilise sa propre machine virtuelle (programmes écrits surtout en Rust) et Cardano un modèle eUTXO avec Plutus.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qui distingue un « validium » d'un ZK-rollup classique ?",
+      "answer": "Les données des transactions restent hors d'Ethereum",
+      "wrong": [
+        "Il n'utilise aucune preuve de validité",
+        "Il repose sur des preuves de fraude et un délai de 7 jours",
+        "Il ne peut pas transférer de fonds vers Ethereum"
+      ],
+      "explanation": "Un **validium** publie bien des preuves de validité sur Ethereum, mais garde les **données des transactions** ailleurs, par exemple auprès d'un comité chargé de leur disponibilité. C'est moins cher, mais si ces données deviennent inaccessibles, les utilisateurs risquent de ne plus pouvoir prouver leurs soldes ni retirer leurs fonds. Un **rollup** publie au contraire ses données sur Ethereum (calldata ou blobs), ce qui garantit que chacun peut reconstruire l'état : c'est le problème de la **disponibilité des données**.",
+      "difficulty": 3
+    },
+    {
+      "question": "D'où vient le nom « proto-danksharding », donné à EIP-4844 ?",
+      "answer": "Des chercheurs Protolambda et Dankrad Feist",
+      "wrong": [
+        "D'un acronyme anglais lié aux données",
+        "Du nom de code du premier blob publié",
+        "D'un ancien projet de sharding de Bitcoin"
+      ],
+      "explanation": "Le **danksharding** est la forme complète de partitionnement des données envisagée pour Ethereum, nommée d'après le chercheur **Dankrad Feist**. **Proto-danksharding** en est la première étape, et son nom salue aussi **Protolambda**, coauteur de la proposition. EIP-4844 a été activé en mars 2024 avec la mise à jour Dencun.",
+      "difficulty": 3
+    },
+    {
+      "question": "En quoi consiste une « attaque sandwich » contre un échange sur un AMM comme Uniswap ?",
+      "answer": "Acheter juste avant la victime, puis revendre juste après",
+      "wrong": [
+        "Couper la transaction de la victime en deux moitiés",
+        "Bloquer la transaction de la victime entre deux forks",
+        "Envoyer à la victime deux faux jetons de part et d'autre"
+      ],
+      "explanation": "Le bot repère dans la mempool un gros achat en attente avec une tolérance de **slippage** large. Il place un achat juste **avant** (en payant plus de frais), ce qui fait monter le prix ; la victime achète alors plus cher, puis le bot revend juste **après** avec profit. C'est une forme de **MEV**. Pour s'en protéger, on limite le slippage accepté ou on passe par un canal privé qui ne diffuse pas la transaction dans la mempool publique.",
+      "difficulty": 3
+    },
+    {
+      "question": "Avec le logiciel MEV-Boost, adopté par la majorité des validateurs d'Ethereum après The Merge, qui assemble le contenu des blocs ?",
+      "answer": "Des « builders » spécialisés, via des relais",
+      "wrong": [
+        "Le validateur lui-même, transaction par transaction",
+        "La Fondation Ethereum, qui trie les transactions",
+        "Les rollups, qui envoient des blocs déjà prêts"
+      ],
+      "explanation": "Avec **MEV-Boost**, le validateur choisi pour un slot délègue la construction du bloc : des **builders** spécialisés assemblent les blocs les plus rentables (frais et MEV compris) et les proposent via des **relais**, et le validateur signe celui qui lui rapporte le plus. Cette séparation entre proposeur et constructeur (**PBS**) évite que seuls les validateurs sophistiqués captent le MEV, mais elle concentre la construction des blocs entre quelques acteurs.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur quel mécanisme reposent les échanges atomiques (atomic swaps) de cryptos entre deux blockchains différentes, sans intermédiaire ?",
+      "answer": "Des contrats à verrou de hash et de temps (HTLC)",
+      "wrong": [
+        "Un oracle qui annonce les taux de change",
+        "Une plateforme d'échange qui garde les fonds",
+        "Un hard fork commun aux deux blockchains"
+      ],
+      "explanation": "Un **HTLC** (Hashed Timelock Contract) bloque des fonds qui ne peuvent être réclamés qu'en révélant un secret dont le hash est connu, avant une date limite. Alice verrouille ses fonds sur une chaîne, Bob fait de même sur l'autre avec le même hash ; en réclamant les fonds de Bob, Alice révèle le secret, que Bob utilise pour réclamer ceux d'Alice. Si l'un ne joue pas le jeu, chacun récupère sa mise à l'expiration : l'échange se fait entièrement, ou pas du tout. Le Lightning Network repose sur le même mécanisme.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle structure de données Ethereum utilise-t-il pour organiser son état (soldes, code et stockage des comptes), dont la racine figure dans chaque en-tête de bloc ?",
+      "answer": "Un arbre de Merkle-Patricia",
+      "wrong": [
+        "Un arbre B+, comme les bases de données",
+        "Une simple liste chaînée de comptes",
+        "L'ensemble des sorties non dépensées (UTXO)"
+      ],
+      "explanation": "Ethereum range ses comptes dans un **arbre de Merkle-Patricia**, qui combine un arbre préfixe (Patricia), efficace pour retrouver une clé, et le hachage de Merkle : la moindre modification change la **racine d'état** (`stateRoot`) inscrite dans l'en-tête du bloc. Un client léger peut ainsi vérifier le solde d'un compte grâce à une courte preuve, sans télécharger tout l'état. Le remplacer par une structure aux preuves plus compactes est un chantier de long terme d'Ethereum.",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment une adresse Ethereum est-elle dérivée de la clé publique d'un compte ?",
+      "answer": "Ce sont les 20 derniers octets de son hash Keccak-256",
+      "wrong": [
+        "Ce sont les 20 premiers octets de son hash SHA-256",
+        "C'est son hash RIPEMD-160 encodé en Base58",
+        "C'est la clé publique entière, encodée en hexadécimal"
+      ],
+      "explanation": "On hache la clé publique (64 octets, issue de la courbe elliptique **secp256k1**) avec **Keccak-256**, puis on garde les **20 derniers octets** du résultat, écrits en hexadécimal après `0x`. Le piège RIPEMD-160 et Base58 décrit les anciennes adresses Bitcoin, obtenues par SHA-256 puis RIPEMD-160. Keccak-256 est la version d'origine de SHA-3, légèrement différente du standard finalement publié par le NIST.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi une adresse Ethereum s'écrit-elle parfois en mélangeant majuscules et minuscules, comme `0x5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAed` ?",
+      "answer": "La casse sert de somme de contrôle contre les fautes de frappe",
+      "wrong": [
+        "Les majuscules désignent les comptes de contrat",
+        "La casse indique sur quel réseau l'adresse est valable",
+        "Les majuscules marquent les adresses vérifiées par Etherscan"
+      ],
+      "explanation": "Selon **EIP-55**, chaque lettre de l'adresse est mise en majuscule ou non selon le hash Keccak-256 de l'adresse écrite en minuscules. Un portefeuille peut ainsi détecter la plupart des erreurs de saisie avant d'envoyer des fonds. L'hexadécimal étant insensible à la casse, une adresse tout en minuscules reste valide : elle n'offre simplement pas cette vérification. La casse ne dit rien du type de compte ni du réseau.",
+      "difficulty": 3
     }
   ]
 }

@@ -937,6 +937,283 @@
       "explanation": "Google indique utiliser le **contenu visible** de la page pour en déterminer la langue, et non les informations techniques comme l'attribut `lang` ou l'URL. `hreflang` sert à relier des variantes entre elles, pas à détecter la langue de la page. Mélanger plusieurs langues dans le texte principal, ou juxtaposer original et traduction, brouille donc ce signal.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites"
+    },
+    {
+      "question": "Comment appelle-t-on l'encadré qui affiche, au-dessus des résultats classiques, un extrait d'une page répondant directement à la question posée ?",
+      "answer": "L'extrait optimisé (featured snippet)",
+      "wrong": [
+        "Le pack local",
+        "Le carrousel d'actualités",
+        "Le lien annexe (sitelink)"
+      ],
+      "explanation": "L'**extrait optimisé** (*featured snippet*), surnommé « position zéro », met en avant un passage d'une page (paragraphe, liste, tableau) qui répond à la requête, avec un lien vers la source. Google choisit lui-même l'extrait ; un contenu structuré, avec une question en intertitre suivie d'une réponse concise, augmente les chances d'être retenu. Le pack local présente des établissements sur une carte, et les liens annexes (*sitelinks*) des raccourcis vers d'autres pages d'un même site.",
+      "difficulty": 1,
+      "source": "https://developers.google.com/search/docs/appearance/featured-snippets"
+    },
+    {
+      "question": "Pour une requête comme « pizzeria près de moi », comment appelle-t-on le bloc qui présente quelques établissements accompagnés d'une carte ?",
+      "answer": "Le pack local",
+      "wrong": [
+        "L'extrait optimisé",
+        "Le panneau de connaissances",
+        "Le carrousel d'images"
+      ],
+      "explanation": "Le **pack local** (*local pack*) affiche une carte et une poignée d'établissements, généralement trois, issus des fiches Google Business Profile. Il apparaît pour les requêtes à intention locale, explicites (« près de moi », nom de ville) ou implicites (« boulangerie »). Y figurer dépend surtout de la fiche d'établissement, et pas seulement des signaux du site web.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel outil gratuit de Google permet à un commerce de gérer sa fiche dans Google Maps et dans les résultats locaux ?",
+      "answer": "Google Business Profile",
+      "wrong": [
+        "Google Search Console",
+        "Google Tag Manager",
+        "Google Merchant Center"
+      ],
+      "explanation": "**Google Business Profile** (appelé Google My Business jusqu'en novembre 2021) permet de renseigner adresse, horaires, catégories et photos, et de répondre aux avis clients. Une fiche complète et active est le premier levier du SEO local. La Search Console suit la présence d'un site dans la recherche, Tag Manager gère les balises de suivi et Merchant Center les flux de produits pour Google Shopping.",
+      "difficulty": 1,
+      "source": "https://support.google.com/business/answer/7091"
+    },
+    {
+      "question": "En SEO local, que désigne l'acronyme **NAP** ?",
+      "answer": "Name, Address, Phone : nom, adresse et téléphone",
+      "wrong": [
+        "Navigation, Accessibility, Performance",
+        "Notoriété, Avis, Proximité",
+        "Network, Authority, Popularity"
+      ],
+      "explanation": "Le **NAP** (*Name, Address, Phone*) regroupe les coordonnées d'un établissement. Leur cohérence exacte entre le site, la fiche Google Business Profile et les annuaires (Pages Jaunes, Yelp…) renforce la confiance des moteurs dans ces informations. Une adresse écrite différemment selon les sources, ou un ancien numéro oublié quelque part, brouille au contraire ce signal.",
+      "difficulty": 1
+    },
+    {
+      "question": "En SEO, que désigne le **thin content** (contenu mince) ?",
+      "answer": "Des pages qui n'apportent que peu ou pas de valeur à l'internaute",
+      "wrong": [
+        "Des pages dont le code HTML est très léger et rapide",
+        "Des pages optimisées pour l'affichage sur mobile",
+        "Des pages rédigées en langage simple et accessible"
+      ],
+      "explanation": "Le **thin content** désigne des pages à faible valeur ajoutée : textes creux, fiches produits copiées du fournisseur, pages générées automatiquement, contenus d'affiliation sans apport original. Ce type de pages est visé depuis l'algorithme Panda (2011). Ce n'est pas une question de nombre de mots : une page courte qui répond parfaitement à la question n'est pas du thin content.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que désigne l'expression **black hat SEO** ?",
+      "answer": "Des techniques interdites par les moteurs pour manipuler le classement",
+      "wrong": [
+        "Le référencement des sites hébergés sur le dark web (Tor)",
+        "L'optimisation SEO des sites qui proposent un thème sombre",
+        "Les audits SEO réalisés sans l'accord du propriétaire"
+      ],
+      "explanation": "Le **black hat** regroupe les pratiques contraires aux règles anti-spam des moteurs : cloaking, achat de liens, contenu caché, réseaux de sites, bourrage de mots-clés… Elles peuvent donner des résultats rapides, mais exposent à des déclassements algorithmiques ou à des actions manuelles. Le **white hat** respecte les consignes, et le **grey hat** désigne la zone intermédiaire, tolérée mais risquée.",
+      "difficulty": 1,
+      "source": "https://developers.google.com/search/docs/essentials/spam-policies"
+    },
+    {
+      "question": "En netlinking, en quoi consiste le **guest blogging** ?",
+      "answer": "Publier un article invité sur un autre site, avec un lien vers le sien",
+      "wrong": [
+        "Inviter des internautes à commenter les articles de son blog",
+        "Échanger des liens en pied de page avec un site partenaire",
+        "Recopier sur son blog des articles publiés ailleurs"
+      ],
+      "explanation": "Le **guest blogging** (article invité) consiste à rédiger un contenu pour un site tiers de sa thématique, qui le publie avec un lien vers l'auteur. Pratiqué avec mesure, il apporte visibilité et liens pertinents. Pratiqué à grande échelle avec des ancres optimisées, il est considéré par Google comme un schéma de liens.",
+      "difficulty": 1,
+      "source": "https://developers.google.com/search/docs/essentials/spam-policies"
+    },
+    {
+      "question": "Qu'appelle-t-on un contenu **evergreen** ?",
+      "answer": "Un contenu qui reste pertinent longtemps, indépendamment de l'actualité",
+      "wrong": [
+        "Un contenu consacré à l'écologie et au développement durable",
+        "Un contenu mis à jour automatiquement chaque jour",
+        "Un contenu accessible uniquement aux abonnés"
+      ],
+      "explanation": "Un contenu **evergreen** (« toujours vert ») répond à une question durable : guide pour choisir ses chaussures de running, définition, tutoriel de base. Il génère du trafic régulier pendant des années, à l'inverse d'un article d'actualité dont l'audience retombe vite. Il gagne tout de même à être actualisé de temps en temps pour rester exact.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quoi sert principalement un logiciel comme **Screaming Frog SEO Spider** ?",
+      "answer": "Explorer un site comme un robot pour en auditer la technique",
+      "wrong": [
+        "Suivre les positions d'un site sur ses mots-clés",
+        "Générer automatiquement des articles optimisés",
+        "Acheter des backlinks sur des sites partenaires"
+      ],
+      "explanation": "**Screaming Frog SEO Spider** est un *crawler* : il parcourt un site en suivant ses liens, comme Googlebot, et liste pour chaque URL son code HTTP, sa balise `<title>`, sa canonique, ses directives robots, sa profondeur, etc. On repère ainsi erreurs 404, chaînes de redirections ou titres dupliqués, et, en croisant avec le sitemap, des pages orphelines. Le suivi de positions relève d'autres outils.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'appelle-t-on la **cannibalisation** de mots-clés ?",
+      "answer": "Plusieurs pages d'un même site qui se concurrencent sur la même requête",
+      "wrong": [
+        "Un concurrent qui copie vos contenus pour se positionner",
+        "Un mot-clé trop générique pour être bien positionné",
+        "La disparition d'un mot-clé du vocabulaire des internautes"
+      ],
+      "explanation": "Il y a **cannibalisation** quand plusieurs pages d'un site visent la même intention de recherche : Google hésite entre elles, les positions fluctuent et aucune ne s'impose. La solution consiste souvent à fusionner les contenus en une page plus complète (avec redirection 301), ou à différencier clairement leurs angles. On la repère notamment dans la Search Console, quand plusieurs URL alternent sur une même requête.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans les consignes de qualité de Google, que désigne **YMYL** ?",
+      "answer": "Your Money or Your Life : les sujets touchant santé, argent ou sécurité",
+      "wrong": [
+        "Your Media Your Links : les contenus partagés sur les réseaux sociaux",
+        "Yearly Metrics Yearly Logs : les statistiques annuelles d'un site",
+        "Your Mobile Your Layout : l'adaptation d'un site au mobile"
+      ],
+      "explanation": "**YMYL** (*Your Money or Your Life*) désigne les sujets susceptibles d'affecter la santé, la stabilité financière, la sécurité ou le bien-être des personnes : conseils médicaux, placements, informations juridiques… Les évaluateurs de Google appliquent à ces pages des exigences d'E-E-A-T particulièrement élevées, car une information erronée peut y causer un tort réel.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+    },
+    {
+      "question": "Quel attribut Google recommande-t-il d'ajouter à un lien **payant** (publicité, article sponsorisé) ?",
+      "answer": "`rel=\"sponsored\"`",
+      "wrong": [
+        "`rel=\"ugc\"`",
+        "`rel=\"noopener\"`",
+        "`rel=\"external\"`"
+      ],
+      "explanation": "Google recommande `rel=\"sponsored\"` pour les liens issus d'une publicité ou d'une contrepartie ; `rel=\"nofollow\"` reste accepté pour ces liens. `rel=\"ugc\"` sert aux liens publiés par les utilisateurs (commentaires, forums), `noopener` relève de la sécurité du navigateur et `external` n'a aucun effet SEO. Un lien payant non qualifié peut être considéré comme un schéma de liens.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links"
+    },
+    {
+      "question": "À quoi sert l'outil de **désaveu de liens** de Google ?",
+      "answer": "Demander à Google d'ignorer certains backlinks pointant vers son site",
+      "wrong": [
+        "Supprimer des liens sortants de son propre site",
+        "Signaler à Google un site concurrent qui fait du spam",
+        "Retirer une page de son site des résultats de Google"
+      ],
+      "explanation": "Lancé en octobre 2012, l'**outil de désaveu** permet de transmettre la liste des liens ou domaines que l'on ne veut pas voir pris en compte, typiquement après une action manuelle pour liens artificiels. Il ne supprime pas les liens eux-mêmes. Google le réserve aux cas sérieux : la plupart des sites n'en ont pas besoin, ses algorithmes ignorant déjà l'essentiel des liens de mauvaise qualité.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/blog/2012/10/a-new-tool-to-disavow-links"
+    },
+    {
+      "question": "Qu'est-ce que le **linkbaiting** ?",
+      "answer": "Créer un contenu qui attire spontanément des liens",
+      "wrong": [
+        "Acheter des liens sur des sites à forte autorité",
+        "Cacher des liens dans le code source d'une page",
+        "Échanger des liens avec des sites partenaires"
+      ],
+      "explanation": "Le **linkbaiting** (« appât à liens ») consiste à produire un contenu qui attire naturellement des backlinks : étude originale avec des chiffres inédits, outil gratuit, infographie, guide de référence. C'est l'approche la plus conforme aux consignes de Google, car les liens obtenus sont éditoriaux. Acheter ou échanger des liens à grande échelle relève au contraire des schémas de liens.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que désigne un **PBN** (*Private Blog Network*) ?",
+      "answer": "Un réseau de sites contrôlés par une même personne pour créer des backlinks",
+      "wrong": [
+        "Un réseau privé virtuel utilisé pour suivre ses positions",
+        "Un annuaire de blogs réservé aux membres payants",
+        "Un groupe de blogueurs qui partagent leurs statistiques"
+      ],
+      "explanation": "Un **PBN** est un ensemble de sites, souvent bâtis sur des noms de domaine expirés qui conservent des backlinks, dont le seul but est de faire des liens vers un site « money ». C'est une technique black hat : Google la considère comme un schéma de liens et ses systèmes anti-spam cherchent à neutraliser ces réseaux. Depuis mars 2024, réutiliser un domaine expiré pour profiter de sa réputation passée est même visé par une règle anti-spam spécifique.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/essentials/spam-policies"
+    },
+    {
+      "question": "Le **Trust Flow** et le **Domain Authority** sont des indicateurs…",
+      "answer": "Créés par des outils tiers (Majestic, Moz) pour estimer la popularité",
+      "wrong": [
+        "Calculés par Google et affichés dans la Search Console",
+        "Officiellement utilisés par Google pour classer les sites",
+        "Calculés par le W3C pour certifier la qualité d'un site"
+      ],
+      "explanation": "Le **Trust Flow** (Majestic) et le **Domain Authority** (Moz) sont des scores propriétaires qui estiment la popularité d'un site à partir de leurs propres index de liens. Pratiques pour comparer des sites, ils ne sont pas utilisés par Google, qui ne publie plus aucun score de popularité depuis l'abandon du PageRank affiché dans sa barre d'outils (2016). Les « gonfler » artificiellement n'a donc aucun intérêt en soi.",
+      "difficulty": 2
+    },
+    {
+      "question": "Selon Google, sur quels trois grands critères reposent les résultats de recherche **locale** ?",
+      "answer": "La pertinence, la distance et la notoriété",
+      "wrong": [
+        "Le prix, les horaires et le nombre de photos",
+        "L'ancienneté, le chiffre d'affaires et la taille",
+        "Le budget Google Ads, les avis et la catégorie"
+      ],
+      "explanation": "Google explique que ses résultats locaux reposent principalement sur la **pertinence** (adéquation de la fiche avec la recherche), la **distance** (éloignement entre l'établissement et l'internaute ou le lieu recherché) et la **notoriété** (à quel point l'établissement est connu : avis, liens, citations, présence en ligne). Payer des annonces Google Ads n'améliore pas le classement local naturel.",
+      "difficulty": 2,
+      "source": "https://support.google.com/business/answer/7091"
+    },
+    {
+      "question": "Quelle source de données permet de savoir précisément quelles URL Googlebot a réellement explorées, et quand ?",
+      "answer": "Les logs du serveur web",
+      "wrong": [
+        "Les rapports de Google Analytics",
+        "Le fichier `sitemap.xml`",
+        "Le fichier `robots.txt`"
+      ],
+      "explanation": "Chaque requête reçue par le serveur est enregistrée dans ses **logs** : on y voit les passages de Googlebot URL par URL, avec la date et le code HTTP renvoyé. L'**analyse de logs** révèle les pages trop ou pas assez explorées, les erreurs rencontrées par le robot et le gaspillage du budget de crawl. Google Analytics, qui repose sur du JavaScript exécuté chez les visiteurs, ne mesure pas l'activité des robots.",
+      "difficulty": 2
+    },
+    {
+      "question": "Créer des dizaines de pages quasi identiques (« plombier Lyon », « plombier Villeurbanne », « plombier Bron »…) dans le seul but de capter chaque requête locale relève…",
+      "answer": "Des pages satellites (doorway pages), sanctionnées par Google",
+      "wrong": [
+        "D'une stratégie de longue traîne recommandée par Google",
+        "Du maillage interne en cocon sémantique",
+        "De l'optimisation classique pour le SEO local"
+      ],
+      "explanation": "Les **pages satellites** (*doorway pages*) sont créées pour se positionner sur des requêtes très proches et canaliser l'internaute vers une même destination, sans valeur propre. Google les classe parmi les pratiques de spam. Cibler plusieurs villes reste légitime si chaque page apporte un contenu réellement spécifique (équipe locale, adresse, réalisations sur place), et pas un simple changement de nom de ville.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/essentials/spam-policies"
+    },
+    {
+      "question": "Dans le code HTML, comment écrit-on un lien « **dofollow** » ?",
+      "answer": "Sans attribut : c'est le comportement par défaut",
+      "wrong": [
+        "Avec l'attribut `rel=\"dofollow\"`",
+        "Avec l'attribut `rel=\"follow\"`",
+        "Avec l'attribut `data-follow=\"true\"`"
+      ],
+      "explanation": "L'attribut `dofollow` **n'existe pas** : c'est un terme de jargon qui désigne un lien ordinaire, sans `nofollow`, `sponsored` ni `ugc`. Un simple `<a href=\"…\">` peut transmettre de la popularité. Écrire `rel=\"dofollow\"` ou `rel=\"follow\"` n'a aucun effet, car ce ne sont pas des valeurs reconnues par les moteurs.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links"
+    },
+    {
+      "question": "Un site ajoute `rel=\"nofollow\"` sur ses liens internes vers les mentions légales, pour concentrer le PageRank sur ses autres liens. Selon Google, quel est l'effet ?",
+      "answer": "Aucun gain : la part de ces liens n'est pas reportée sur les autres",
+      "wrong": [
+        "Les autres liens de la page reçoivent la part libérée",
+        "Les mentions légales sont retirées de l'index",
+        "Google applique une pénalité pour manipulation"
+      ],
+      "explanation": "Cette technique, le **PageRank sculpting**, a fonctionné à une époque. Mais en 2009, Matt Cutts (Google) a expliqué que la popularité attribuée aux liens en `nofollow` « s'évapore » au lieu d'être redistribuée aux autres liens de la page. Mettre des liens internes en `nofollow` ne fait donc rien gagner ailleurs, et peut même freiner la découverte de pages. Un `nofollow` n'empêche pas non plus l'indexation de la page liée.",
+      "difficulty": 3
+    },
+    {
+      "question": "Des requêtes arrivent sur ton serveur avec le user-agent de Googlebot. Comment vérifier qu'il s'agit bien de Google ?",
+      "answer": "Par une recherche DNS inverse sur l'IP, puis une DNS directe",
+      "wrong": [
+        "En vérifiant que le user-agent contient « Googlebot »",
+        "En vérifiant que les requêtes respectent le `robots.txt`",
+        "En vérifiant que l'IP est située aux États-Unis"
+      ],
+      "explanation": "Le user-agent se falsifie trivialement : beaucoup de robots se font passer pour Googlebot. Google recommande une **recherche DNS inverse** sur l'adresse IP (le nom obtenu doit se terminer par `googlebot.com`, `google.com` ou `googleusercontent.com`), puis une **recherche DNS directe** sur ce nom pour vérifier qu'il renvoie bien la même IP. Google publie aussi la liste de ses plages d'adresses IP au format JSON.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/verifying-googlebot"
+    },
+    {
+      "question": "Pour un lien constitué uniquement d'une image (`<a href=\"…\"><img …></a>`), quel élément Google utilise-t-il comme texte d'ancre ?",
+      "answer": "L'attribut `alt` de l'image",
+      "wrong": [
+        "Le nom du fichier de l'image",
+        "L'attribut `title` de l'image",
+        "Le texte du paragraphe précédent"
+      ],
+      "explanation": "Quand un lien ne contient qu'une image, Google se sert de l'attribut **`alt`** de l'image comme texte d'ancre. Un `alt` vide ou absent prive donc le lien de tout contexte, un oubli fréquent sur les logos et bannières cliquables. C'est aussi ce texte que lisent les lecteurs d'écran pour annoncer la destination du lien.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable"
+    },
+    {
+      "question": "Sur quelle période maximale le rapport **Performances** de la Search Console permet-il de consulter clics et impressions ?",
+      "answer": "16 mois",
+      "wrong": [
+        "3 mois",
+        "6 mois",
+        "5 ans"
+      ],
+      "explanation": "Le rapport Performances conserve **16 mois** de données (clics, impressions, CTR, position moyenne), ce qui permet de comparer une même période d'une année sur l'autre. Au-delà, les données sont perdues : pour garder un historique plus long, il faut les exporter régulièrement, via l'API ou l'export groupé vers BigQuery. L'ancienne version de l'outil n'offrait que 90 jours d'historique.",
+      "difficulty": 3
     }
   ]
 }

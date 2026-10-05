@@ -874,6 +874,292 @@
       "explanation": "`prevent_destroy = true` fait échouer tout plan qui prévoit de **détruire** la ressource, y compris pour la remplacer : c'est un garde-fou contre la suppression accidentelle de données. Pour vraiment la remplacer, il faut d'abord retirer cet argument du code. Il ne protège pas si l'on supprime tout le bloc `resource`, puisque le réglage disparaît avec lui. `create_before_destroy` change seulement l'ordre du remplacement, et `ignore_changes` fait ignorer certains attributs modifiés.",
       "difficulty": 3,
       "source": "https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle"
+    },
+    {
+      "question": "Dans Kubernetes, à quoi sert un **namespace** ?",
+      "answer": "À cloisonner logiquement les ressources d'un même cluster",
+      "wrong": [
+        "À isoler chaque Pod dans sa propre machine virtuelle",
+        "À attribuer un nom DNS public à une application",
+        "À regrouper plusieurs clusters sous une même API"
+      ],
+      "explanation": "Un **namespace** découpe un cluster en espaces logiques (par équipe, par projet ou par environnement : `dev`, `staging`…). Les noms des objets doivent être uniques au sein d'un namespace, et on peut y appliquer des droits RBAC, des quotas de ressources (`ResourceQuota`) ou des politiques réseau. Ce n'est pas une frontière de sécurité forte à lui seul : par défaut, les Pods de namespaces différents peuvent communiquer entre eux. Certains objets, comme les Nodes ou les PersistentVolumes, n'appartiennent à aucun namespace.",
+      "difficulty": 1,
+      "source": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"
+    },
+    {
+      "question": "Quel outil est souvent présenté comme le gestionnaire de paquets de Kubernetes, avec ses « charts » réutilisables ?",
+      "answer": "Helm",
+      "wrong": [
+        "Kustomize",
+        "Istio",
+        "kubeadm"
+      ],
+      "explanation": "**Helm** empaquette une application Kubernetes sous forme de **chart** : des modèles de manifestes YAML paramétrés par un fichier `values.yaml`. `helm install` crée une *release*, `helm upgrade` la met à jour et `helm rollback` revient à une révision précédente. **Kustomize**, intégré à `kubectl` (`kubectl apply -k`), suit une autre approche : il superpose des modifications (*overlays*) à des manifestes de base, sans moteur de templates. Istio est un service mesh, et kubeadm un outil d'installation de cluster.",
+      "difficulty": 1,
+      "source": "https://helm.sh/docs/intro/using_helm/"
+    },
+    {
+      "question": "À quoi sert le fichier `.dockerignore` ?",
+      "answer": "À exclure des fichiers du contexte envoyé au build",
+      "wrong": [
+        "À ignorer certaines instructions du Dockerfile",
+        "À empêcher Git de versionner les images Docker",
+        "À cacher des fichiers à l'intérieur du conteneur"
+      ],
+      "explanation": "Au lancement de `docker build .`, le dossier indiqué (le **contexte de build**) est transmis au moteur de build. `.dockerignore`, avec une syntaxe proche de `.gitignore`, en exclut des fichiers : `node_modules`, `.git`, fichiers `.env`… Le build est plus rapide, le cache n'est pas invalidé par des fichiers inutiles, et on évite qu'un `COPY . .` embarque des secrets dans l'image.",
+      "difficulty": 1,
+      "source": "https://docs.docker.com/build/concepts/context/"
+    },
+    {
+      "question": "Que signifie l'expression « **shift left** » dans une démarche DevOps ?",
+      "answer": "Tester et sécuriser plus tôt dans le cycle de développement",
+      "wrong": [
+        "Revenir à la version précédente après un incident",
+        "Repousser les tests après la mise en production",
+        "Migrer les serveurs physiques vers le cloud"
+      ],
+      "explanation": "Si l'on représente le cycle de vie de gauche (conception, code) à droite (production), **shift left** consiste à déplacer vers la gauche les tests, l'analyse de sécurité et les contrôles qualité : linters et tests dès le poste du développeur ou le commit, analyse des dépendances dans la CI, revue d'architecture en amont. Un défaut trouvé tôt coûte bien moins cher à corriger qu'en production. Le **shift right**, complémentaire, désigne les vérifications en production (canary, chaos engineering, monitoring).",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel est le rôle d'un environnement de **préproduction** (staging) ?",
+      "answer": "Valider une version dans des conditions proches de la prod",
+      "wrong": [
+        "Héberger le code des développeurs en cours d'écriture",
+        "Servir de copie de secours si la production tombe",
+        "Stocker les artefacts produits par le pipeline"
+      ],
+      "explanation": "La **préproduction** reproduit au plus près la production (même configuration, mêmes versions, données réalistes ou anonymisées) pour y valider une version avant sa mise en service : tests de bout en bout, recette, tests de performance. Plus elle s'écarte de la production, moins elle détecte de problèmes. Une copie prête à reprendre le service relève plutôt du plan de reprise d'activité, et les artefacts sont stockés dans un dépôt ou un registre dédié.",
+      "difficulty": 1
+    },
+    {
+      "question": "Selon le **versionnage sémantique** (SemVer), quelle version suit `2.4.1` si l'on publie uniquement une correction de bug rétrocompatible ?",
+      "answer": "`2.4.2`",
+      "wrong": [
+        "`2.5.0`",
+        "`3.0.0`",
+        "`2.4.1.1`"
+      ],
+      "explanation": "SemVer utilise le format `MAJEUR.MINEUR.CORRECTIF` : on incrémente le **correctif** pour une correction rétrocompatible (`2.4.2`), le **mineur** pour une nouveauté rétrocompatible (`2.5.0`, en remettant le correctif à zéro) et le **majeur** pour un changement incompatible de l'API (`3.0.0`). Dans un pipeline de release, ce numéro est souvent calculé automatiquement à partir des messages de commit, puis posé en tag Git.",
+      "difficulty": 1,
+      "source": "https://semver.org/lang/fr/"
+    },
+    {
+      "question": "Après un incident en production, que vise un **postmortem « blameless »** (sans reproche) ?",
+      "answer": "Comprendre les causes systémiques sans chercher de coupable",
+      "wrong": [
+        "Désigner la personne responsable pour éviter une récidive",
+        "Clore l'incident sans rédiger de rapport écrit",
+        "Rédiger le rapport avant d'avoir rétabli le service"
+      ],
+      "explanation": "Un postmortem **sans reproche** part du principe que chacun a agi au mieux avec les informations dont il disposait : on analyse la chronologie, les causes profondes et les facteurs aggravants (alerte absente, procédure ambiguë, garde-fou manquant), puis on décide d'actions correctives. Si l'on cherche un coupable, les gens cachent leurs erreurs et l'organisation cesse d'apprendre. Cette pratique est au cœur de la culture SRE décrite par Google.",
+      "difficulty": 1,
+      "source": "https://sre.google/sre-book/postmortem-culture/"
+    },
+    {
+      "question": "Vous devez faire tourner un agent de collecte de logs sur **chaque nœud** d'un cluster Kubernetes, y compris sur les nœuds ajoutés plus tard. Quel objet utiliser ?",
+      "answer": "Un DaemonSet",
+      "wrong": [
+        "Un Deployment",
+        "Un StatefulSet",
+        "Un ReplicaSet"
+      ],
+      "explanation": "Un **DaemonSet** garantit qu'une copie d'un Pod tourne sur chaque nœud (ou sur un sous-ensemble choisi avec un `nodeSelector`) : quand un nœud rejoint le cluster, le Pod y est ajouté automatiquement, et il disparaît avec le nœud. C'est l'objet idéal pour les agents de logs (Fluent Bit), de monitoring (node-exporter) ou réseau. Un **Deployment**, lui, maintient un nombre de réplicas sans se soucier de leur répartition entre les nœuds.",
+      "difficulty": 2,
+      "source": "https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/"
+    },
+    {
+      "question": "Pourquoi déploie-t-on plutôt une base de données répliquée avec un **StatefulSet** qu'avec un Deployment ?",
+      "answer": "Chaque Pod a un nom stable et son propre volume persistant",
+      "wrong": [
+        "Les Pods d'un StatefulSet ne redémarrent jamais",
+        "Un StatefulSet tourne en dehors du réseau du cluster",
+        "Seul un StatefulSet peut monter un volume persistant"
+      ],
+      "explanation": "Un **StatefulSet** donne à chaque Pod une identité stable : un nom ordonné (`db-0`, `db-1`…), un nom DNS stable via un Service *headless*, et un volume persistant dédié (créé à partir de `volumeClaimTemplates`) qu'il retrouve s'il est recréé. Les Pods sont aussi créés et supprimés dans l'ordre. Un Deployment peut très bien monter un volume persistant, mais ses Pods sont interchangeables, avec des noms aléatoires : il convient aux applications sans état.",
+      "difficulty": 2,
+      "source": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/"
+    },
+    {
+      "question": "Quel objet Kubernetes ajuste automatiquement le nombre de réplicas d'un Deployment selon, par exemple, l'utilisation CPU de ses Pods ?",
+      "answer": "Le HorizontalPodAutoscaler",
+      "wrong": [
+        "Le VerticalPodAutoscaler",
+        "Le Cluster Autoscaler",
+        "Le kube-scheduler"
+      ],
+      "explanation": "Le **HorizontalPodAutoscaler** (HPA) compare régulièrement une métrique (utilisation CPU rapportée aux *requests*, mémoire ou métrique personnalisée) à une cible, et augmente ou réduit le nombre de réplicas entre un minimum et un maximum. Le **VerticalPodAutoscaler** ajuste plutôt les ressources demandées par chaque Pod, et le **Cluster Autoscaler** ajoute ou retire des nœuds quand des Pods ne trouvent pas de place. Un HPA basé sur le CPU exige que les conteneurs déclarent des `requests` CPU.",
+      "difficulty": 2,
+      "source": "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/"
+    },
+    {
+      "question": "Un Pod affiche le statut `CrashLoopBackOff`. Que signifie-t-il ?",
+      "answer": "Son conteneur plante en boucle et redémarre à délai croissant",
+      "wrong": [
+        "Son image est introuvable dans le registre indiqué",
+        "Aucun nœud n'a assez de ressources pour l'accueillir",
+        "Il attend qu'un volume persistant soit disponible"
+      ],
+      "explanation": "`CrashLoopBackOff` indique que le conteneur démarre puis s'arrête en erreur, encore et encore : le kubelet le relance en augmentant le délai entre deux tentatives (*back-off* exponentiel, plafonné). Causes classiques : exception au démarrage, configuration ou secret manquant, liveness probe trop stricte. On diagnostique avec `kubectl logs <pod> --previous` (les logs de l'exécution précédente) et `kubectl describe pod`. Une image introuvable donne plutôt `ImagePullBackOff`, et un manque de ressources laisse le Pod en `Pending`.",
+      "difficulty": 2,
+      "source": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/"
+    },
+    {
+      "question": "La nouvelle version d'un Deployment Kubernetes provoque des erreurs. Quelle commande revient le plus rapidement à la révision précédente ?",
+      "answer": "`kubectl rollout undo deployment/web`",
+      "wrong": [
+        "`kubectl rollback deployment/web`",
+        "`kubectl rollout restart deployment/web`",
+        "`kubectl delete deployment/web`"
+      ],
+      "explanation": "Chaque modification du modèle de Pod d'un Deployment crée une nouvelle **révision** (un nouveau ReplicaSet, l'ancien étant conservé à 0 réplica). `kubectl rollout undo` revient à la révision précédente, ou à une révision précise avec `--to-revision=N`, et `kubectl rollout history` les liste. `kubectl rollout restart` recrée les Pods avec la même spécification, et `kubectl rollback` n'existe pas. En GitOps, on revient plutôt en arrière dans Git, sinon l'agent réappliquera la version fautive.",
+      "difficulty": 2,
+      "source": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#rolling-back-a-deployment"
+    },
+    {
+      "question": "Une application écrit des fichiers dans `/app/uploads` d'un conteneur lancé **sans volume** (son image ne déclare aucun `VOLUME`). Que deviennent ces fichiers quand on supprime le conteneur avec `docker rm` ?",
+      "answer": "Ils sont perdus avec la couche inscriptible du conteneur",
+      "wrong": [
+        "Ils sont enregistrés dans l'image d'origine",
+        "Ils sont déplacés dans un volume anonyme",
+        "Ils restent dans `/app/uploads` sur l'hôte"
+      ],
+      "explanation": "Tout ce qu'un conteneur écrit hors volume va dans sa **couche inscriptible**, supprimée avec lui ; l'image, en lecture seule, n'est jamais modifiée. Pour persister des données, on monte un **volume** nommé (`-v uploads:/app/uploads`), géré par Docker et indépendant du cycle de vie du conteneur, ou un *bind mount* vers un dossier de l'hôte. Attention : si l'image déclare un `VOLUME` (c'est le cas de l'image officielle `postgres`), Docker crée automatiquement un volume anonyme, qui survit à un `docker rm` lancé sans `-v`.",
+      "difficulty": 2,
+      "source": "https://docs.docker.com/engine/storage/volumes/"
+    },
+    {
+      "question": "Si l'image ne contient aucune instruction `USER` et que `docker run` ne précise pas `--user`, sous quel utilisateur tourne le processus du conteneur ?",
+      "answer": "`root`",
+      "wrong": [
+        "`nobody`",
+        "`docker`",
+        "`daemon`"
+      ],
+      "explanation": "Sans instruction `USER` ni option `--user`, le processus tourne en **root** (UID 0) dans le conteneur. Ses privilèges sont réduits par l'isolation, mais c'est le même UID 0 que sur l'hôte : en cas d'évasion du conteneur ou de dossier de l'hôte monté, il agit avec les droits de root. Bonne pratique : créer un utilisateur dédié dans le Dockerfile et basculer dessus avec `USER app`. Docker en mode *rootless* ou le *user namespace remapping* associent aussi ce root à un utilisateur non privilégié de l'hôte.",
+      "difficulty": 2,
+      "source": "https://docs.docker.com/reference/dockerfile/#user"
+    },
+    {
+      "question": "Pour un fichier local, quelle capacité l'instruction `ADD` d'un Dockerfile possède-t-elle, contrairement à `COPY` ?",
+      "answer": "Extraire automatiquement une archive tar locale",
+      "wrong": [
+        "Copier des fichiers situés hors du contexte de build",
+        "Conserver les droits d'exécution des fichiers copiés",
+        "Copier des fichiers sans créer de nouvelle couche"
+      ],
+      "explanation": "Si la source est une archive tar locale (non compressée, ou compressée en gzip, bzip2 ou xz), `ADD app.tar.gz /opt/` en **extrait** le contenu dans le dossier cible ; `ADD` sait aussi télécharger une URL ou cloner un dépôt Git. Ces comportements implicites peuvent surprendre : la documentation de Docker recommande donc `COPY` pour une simple copie, plus explicite. Ni `ADD` ni `COPY` ne peuvent lire un fichier local situé hors du contexte de build, et les deux conservent les permissions des fichiers.",
+      "difficulty": 2,
+      "source": "https://docs.docker.com/reference/dockerfile/#add"
+    },
+    {
+      "question": "Pour chaque merge request, le pipeline déploie l'application sur une URL dédiée (`mr-42.preview.exemple.com`), supprimée à la fusion. Comment appelle-t-on ce type d'environnement ?",
+      "answer": "Un environnement éphémère (review app)",
+      "wrong": [
+        "Un environnement de préproduction partagé",
+        "Un déploiement canary en production",
+        "Un environnement de reprise d'activité"
+      ],
+      "explanation": "Un **environnement éphémère** (appelé *review app* dans GitLab, *preview deployment* chez d'autres hébergeurs) est créé automatiquement pour une branche ou une merge request, puis détruit à sa fusion ou à sa fermeture. Les relecteurs testent le changement en conditions réelles, isolé des autres travaux, sans se disputer une préproduction partagée. Dans GitLab, on le déclare avec un `environment` dynamique comme `review/$CI_COMMIT_REF_SLUG`, et `on_stop` désigne le job qui le supprime.",
+      "difficulty": 2,
+      "source": "https://docs.gitlab.com/ci/review_apps/"
+    },
+    {
+      "question": "Dans Kubernetes, un conteneur atteint sa **limite** CPU, un autre tente d'utiliser plus de mémoire que sa **limite**. Que se passe-t-il dans chaque cas ?",
+      "answer": "CPU : il est bridé (throttling) ; mémoire : il est tué (OOMKilled)",
+      "wrong": [
+        "CPU : il est tué (OOMKilled) ; mémoire : il est bridé",
+        "Les deux conteneurs sont tués puis redémarrés",
+        "Les deux Pods sont déplacés vers un nœud moins chargé"
+      ],
+      "explanation": "Le CPU est une ressource **compressible** : un conteneur qui atteint sa limite est simplement bridé (*throttling*) par les cgroups, ce qui le ralentit sans le tuer. La mémoire ne l'est pas : au-delà de sa limite, le conteneur est tué par l'OOM killer du noyau et apparaît avec la raison `OOMKilled` (code de sortie 137, soit 128 + 9 pour SIGKILL), puis il est redémarré selon la `restartPolicy`. Kubernetes ne déplace jamais un Pod en cours d'exécution vers un autre nœud : il faudrait le recréer.",
+      "difficulty": 3,
+      "source": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
+    },
+    {
+      "question": "Dans quel cas Kubernetes attribue-t-il la classe de QoS **Guaranteed** à un Pod ?",
+      "answer": "Tous ses conteneurs ont requests = limits, en CPU et en mémoire",
+      "wrong": [
+        "Le Pod ne définit ni requests ni limits",
+        "Au moins un conteneur définit une request mémoire",
+        "Le Pod tourne dans le namespace `kube-system`"
+      ],
+      "explanation": "Kubernetes classe les Pods en trois niveaux de qualité de service. **Guaranteed** : chaque conteneur a une request et une limit CPU et mémoire, avec request = limit. **BestEffort** : aucun conteneur n'a de request ni de limit. **Burstable** : tous les autres cas. Quand un nœud manque de mémoire, le kubelet expulse en priorité les Pods qui dépassent leurs requests (les BestEffort en premier) ; les Pods Guaranteed sont les mieux protégés.",
+      "difficulty": 3,
+      "source": "https://kubernetes.io/docs/concepts/workloads/pods/pod-qos/"
+    },
+    {
+      "question": "Par défaut, dans quelle plage Kubernetes prend-il le port d'un Service de type `NodePort` ?",
+      "answer": "De 30000 à 32767",
+      "wrong": [
+        "De 1024 à 49151",
+        "De 8000 à 8999",
+        "De 49152 à 65535"
+      ],
+      "explanation": "Un Service **NodePort** ouvre le même port sur **tous les nœuds** du cluster et redirige le trafic vers les Pods sélectionnés. Ce port est pris par défaut dans la plage **30000-32767** (modifiable avec l'option `--service-node-port-range` de l'API server), attribué automatiquement ou choisi à la main dans cette plage. En production, on lui préfère souvent un Service `LoadBalancer` ou un Ingress, qui évitent d'exposer des ports élevés sur chaque nœud.",
+      "difficulty": 3,
+      "source": "https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport"
+    },
+    {
+      "question": "Lors de la suppression d'un Pod, Kubernetes envoie SIGTERM à ses conteneurs. Combien de temps attend-il par défaut avant d'envoyer SIGKILL ?",
+      "answer": "30 secondes",
+      "wrong": [
+        "10 secondes",
+        "60 secondes",
+        "5 minutes"
+      ],
+      "explanation": "Le champ `terminationGracePeriodSeconds` vaut **30 secondes** par défaut. Pendant ce délai, le hook `preStop` s'exécute s'il existe, puis les conteneurs reçoivent SIGTERM et doivent terminer leurs requêtes et fermer leurs connexions ; en parallèle, le Pod est retiré des endpoints des Services. S'ils tournent encore à l'échéance, ils reçoivent SIGKILL. Côté Docker, `docker stop` n'attend que 10 secondes par défaut.",
+      "difficulty": 3,
+      "source": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination"
+    },
+    {
+      "question": "Une application Java met jusqu'à 3 minutes à démarrer, et sa liveness probe la fait redémarrer avant la fin du démarrage. Quelle solution Kubernetes prévoit-il pour ce cas ?",
+      "answer": "Ajouter une startupProbe, qui suspend les autres sondes",
+      "wrong": [
+        "Passer la `restartPolicy` du Pod à `Never`",
+        "Augmenter `terminationGracePeriodSeconds` à 180",
+        "Remplacer le Deployment par un StatefulSet"
+      ],
+      "explanation": "Une **startupProbe** vérifie que l'application a fini de démarrer : tant qu'elle n'a pas réussi, les liveness et readiness probes sont désactivées. Avec par exemple `periodSeconds: 10` et `failureThreshold: 18`, l'application dispose de 3 minutes pour démarrer ; ensuite, la liveness probe prend le relais avec ses réglages habituels, réactifs. Gonfler l'`initialDelaySeconds` de la liveness probe fonctionnerait aussi, mais retarderait à chaque démarrage la détection d'un vrai blocage.",
+      "difficulty": 3,
+      "source": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
+    },
+    {
+      "question": "Pourquoi la documentation Docker déconseille-t-elle la forme *shell* `ENTRYPOINT node server.js`, au profit de la forme *exec* `ENTRYPOINT [\"node\", \"server.js\"]` ?",
+      "answer": "`node` ne sera pas le PID 1 et ne recevra pas SIGTERM",
+      "wrong": [
+        "La forme shell n'est pas acceptée par `ENTRYPOINT`",
+        "La forme shell interdit l'usage des variables d'environnement",
+        "La forme shell exécute la commande pendant le build"
+      ],
+      "explanation": "En forme *shell*, Docker lance `/bin/sh -c \"node server.js\"` : c'est le shell qui devient le **PID 1** du conteneur, et il ne relaie pas les signaux. `docker stop` envoie donc SIGTERM au shell, `node` ne le reçoit jamais et finit tué par SIGKILL au bout du délai de grâce, sans arrêt propre. Cette forme ignore aussi `CMD` et les arguments de `docker run`. La forme *exec* (tableau JSON) lance directement le programme en PID 1 ; en contrepartie, sans shell, une variable comme `$PORT` n'y est pas remplacée.",
+      "difficulty": 3,
+      "source": "https://docs.docker.com/reference/dockerfile/#entrypoint"
+    },
+    {
+      "question": "Avec ce `compose.yaml`, que garantit `depends_on` au démarrage ?\n```yaml\nservices:\n  api:\n    build: .\n    depends_on:\n      - db\n  db:\n    image: postgres:16\n```",
+      "answer": "Que `db` est démarré avant `api`, pas qu'il est prêt",
+      "wrong": [
+        "Que `api` attend que PostgreSQL accepte les connexions",
+        "Que `api` redémarre automatiquement si `db` s'arrête",
+        "Que `api` et `db` tournent dans le même conteneur"
+      ],
+      "explanation": "`depends_on` règle l'**ordre de démarrage** : Compose lance `db` avant `api`, mais n'attend que le démarrage du conteneur, pas que PostgreSQL soit prêt à accepter des connexions, ce qui prend quelques secondes. Pour attendre vraiment, on définit un `healthcheck` sur `db` (par exemple avec `pg_isready`) et on écrit `condition: service_healthy` dans la forme longue de `depends_on`. L'application devrait de toute façon savoir réessayer ses connexions, car la base peut redémarrer à tout moment.",
+      "difficulty": 3,
+      "source": "https://docs.docker.com/compose/how-tos/startup-order/"
+    },
+    {
+      "question": "Vous voulez renommer la colonne `nom` en `last_name` sans interruption de service, avec un déploiement progressif où l'ancienne et la nouvelle version de l'application tournent en même temps. Quelle démarche adopter ?",
+      "answer": "Ajouter la nouvelle colonne, migrer, puis supprimer l'ancienne plus tard",
+      "wrong": [
+        "Renommer la colonne dans la même migration que le déploiement",
+        "Arrêter l'ancienne version, puis lancer la migration",
+        "Déployer la nouvelle version, puis renommer la colonne"
+      ],
+      "explanation": "Pendant un rolling update, un canary ou un blue/green, les deux versions de l'application utilisent la même base : le schéma doit convenir aux deux. Le modèle **expand/contract** (*parallel change*) procède en plusieurs déploiements : on **ajoute** `last_name` et on écrit dans les deux colonnes, on recopie les données existantes, on bascule les lectures, puis on **supprime** `nom` une fois l'ancienne version retirée. Un renommage direct casserait aussitôt les instances encore en ancienne version, et arrêter l'ancienne version imposerait une coupure.",
+      "difficulty": 3,
+      "source": "https://martinfowler.com/bliki/ParallelChange.html"
     }
   ]
 }
