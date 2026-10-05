@@ -587,6 +587,293 @@
       "explanation": "Par défaut, `maxSurge` et `maxUnavailable` valent **25 %**. `maxSurge` est arrondi à l'entier supérieur : 25 % de 4 = 1, donc au plus 4 + 1 = **5** Pods. `maxUnavailable` est arrondi à l'entier inférieur : 1 Pod au plus peut être indisponible, donc au moins 3 restent disponibles. Le contrôleur remplace ainsi les Pods par petites vagues, sans jamais doubler la capacité comme le ferait un déploiement blue/green.",
       "difficulty": 3,
       "source": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
+    },
+    {
+      "question": "Quel fichier, placé à la racine du dépôt, définit le pipeline CI/CD d'un projet GitLab ?",
+      "answer": "`.gitlab-ci.yml`",
+      "wrong": [
+        "`.gitlab/pipeline.yml`",
+        "`gitlab-pipeline.yaml`",
+        "`.gitlab/workflows/ci.yml`"
+      ],
+      "explanation": "GitLab lit par défaut le fichier `.gitlab-ci.yml` à la racine du dépôt (le chemin peut être changé dans les paramètres du projet). Il déclare les **stages** et les **jobs**, et chaque push, merge request ou tag peut déclencher un pipeline selon les règles définies. Le mot-clé `include` permet d'y importer d'autres fichiers YAML, du même projet ou d'un autre, pour mutualiser la configuration.",
+      "difficulty": 1,
+      "source": "https://docs.gitlab.com/ci/yaml/"
+    },
+    {
+      "question": "Dans GitLab CI/CD, quel programme récupère les jobs d'un pipeline et les exécute (dans un conteneur Docker, un shell, un Pod Kubernetes…) ?",
+      "answer": "GitLab Runner",
+      "wrong": [
+        "GitLab Pages",
+        "GitLab Agent",
+        "GitLab Worker"
+      ],
+      "explanation": "**GitLab Runner** est une application installée sur une machine (ou fournie par GitLab sur GitLab.com) : il interroge GitLab, récupère les jobs qui lui correspondent (grâce à leurs **tags**) et les exécute avec un **executor** : `docker`, `shell`, `kubernetes`… Avec l'executor Docker, le mot-clé `image` du job choisit l'image dans laquelle ses commandes s'exécutent. L'agent GitLab pour Kubernetes, lui, sert à connecter un cluster à GitLab, pas à exécuter les jobs de CI.",
+      "difficulty": 1,
+      "source": "https://docs.gitlab.com/runner/"
+    },
+    {
+      "question": "Dans Jenkins, comment s'appelle le fichier, versionné avec le code de l'application, qui décrit le pipeline ?",
+      "answer": "`Jenkinsfile`",
+      "wrong": [
+        "`jenkins.yml`",
+        "`Pipelinefile`",
+        "`.jenkins-ci.yml`"
+      ],
+      "explanation": "Le `Jenkinsfile` décrit le pipeline sous forme de code (*pipeline as code*), dans une syntaxe basée sur **Groovy**. Versionné avec l'application, il passe en revue de code comme le reste, et un job *Multibranch Pipeline* peut créer automatiquement un pipeline pour chaque branche qui en contient un. Jenkins est né en 2011 d'un fork de Hudson, à la suite d'un différend avec Oracle, propriétaire de la marque Hudson.",
+      "difficulty": 1,
+      "source": "https://www.jenkins.io/doc/book/pipeline/jenkinsfile/"
+    },
+    {
+      "question": "Quelle commande Terraform faut-il lancer en premier dans un nouveau dossier de configuration, pour télécharger les providers et initialiser le backend ?",
+      "answer": "`terraform init`",
+      "wrong": [
+        "`terraform get`",
+        "`terraform setup`",
+        "`terraform providers`"
+      ],
+      "explanation": "`terraform init` prépare le répertoire de travail : il télécharge les **providers** requis dans `.terraform/`, récupère les modules, configure le **backend** où sera stocké le state, et crée ou met à jour le fichier de verrouillage `.terraform.lock.hcl`. On le relance après avoir ajouté un provider ou un module, ou modifié le backend. `terraform get` ne télécharge que les modules, et `terraform providers` se contente d'afficher les providers requis.",
+      "difficulty": 1,
+      "source": "https://developer.hashicorp.com/terraform/cli/commands/init"
+    },
+    {
+      "question": "Dans quel format écrit-on un **playbook** Ansible ?",
+      "answer": "YAML",
+      "wrong": [
+        "HCL",
+        "XML",
+        "TOML"
+      ],
+      "explanation": "Un **playbook** est un fichier YAML qui liste des *plays* : chacun cible un groupe d'hôtes de l'inventaire et enchaîne des **tâches**, qui appellent chacune un module (`apt`, `copy`, `template`, `service`…). Par défaut, chaque tâche est exécutée sur tous les hôtes ciblés avant de passer à la suivante. HCL est le langage de Terraform.",
+      "difficulty": 1,
+      "source": "https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html"
+    },
+    {
+      "question": "Quel est le principal inconvénient de la stratégie de déploiement **Recreate**, qui arrête toutes les instances de l'ancienne version avant de démarrer la nouvelle ?",
+      "answer": "Une interruption de service pendant la bascule",
+      "wrong": [
+        "Le besoin de doubler temporairement l'infrastructure",
+        "Deux versions qui servent du trafic en même temps",
+        "Un retour à l'ancienne version impossible"
+      ],
+      "explanation": "Avec **Recreate**, il y a forcément un moment où aucune instance ne tourne : l'application est indisponible le temps que la nouvelle version démarre. En contrepartie, deux versions ne sont jamais actives en même temps, ce qui peut être nécessaire si elles sont incompatibles. Le **rolling update** évite la coupure en remplaçant les instances progressivement, au prix d'une cohabitation temporaire des deux versions, et le **blue/green** au prix d'une infrastructure doublée pendant la bascule.",
+      "difficulty": 1,
+      "source": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy"
+    },
+    {
+      "question": "Juste après un déploiement, le pipeline vérifie en quelques secondes que la page d'accueil répond et que la connexion fonctionne. Comment appelle-t-on ce type de test rapide ?",
+      "answer": "Un smoke test",
+      "wrong": [
+        "Un test de charge",
+        "Un test de mutation",
+        "Un test unitaire"
+      ],
+      "explanation": "Un **smoke test** (test de fumée) vérifie très vite que les fonctions vitales marchent, sans chercher l'exhaustivité : l'application démarre, répond, la base est joignable. Le terme vient notamment du test de matériel : on met l'appareil sous tension et on vérifie qu'il ne se met pas à fumer. S'il échoue juste après un déploiement, le pipeline peut déclencher un retour à la version précédente avant que les utilisateurs ne soient touchés.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans GitLab CI, deux jobs `lint` et `unit-tests` appartiennent au même stage `test`. Comment s'exécutent-ils, avec assez de runners disponibles ?",
+      "answer": "En parallèle, après la fin du stage précédent",
+      "wrong": [
+        "L'un après l'autre, dans l'ordre du fichier",
+        "En parallèle, dès le début du pipeline",
+        "Dans un même conteneur, l'un après l'autre"
+      ],
+      "explanation": "Les **stages** s'exécutent dans l'ordre déclaré sous `stages`, et tous les jobs d'un même stage tournent **en parallèle**. Les jobs d'un stage ne démarrent que lorsque ceux du stage précédent ont réussi. Le mot-clé `needs` permet d'assouplir ce modèle : un job démarre alors dès que les jobs dont il dépend sont terminés, sans attendre la fin de tout le stage précédent.",
+      "difficulty": 2,
+      "source": "https://docs.gitlab.com/ci/yaml/"
+    },
+    {
+      "question": "Dans un `.gitlab-ci.yml`, que provoque `when: manual` sur un job `deploy-prod` ?",
+      "answer": "Le job attend qu'un utilisateur le lance depuis GitLab",
+      "wrong": [
+        "Le job ne s'exécute que sur le poste d'un développeur",
+        "Le job ne s'exécute que si le précédent a échoué",
+        "Le job est ignoré jusqu'à sa suppression du fichier"
+      ],
+      "explanation": "Un job `when: manual` n'est pas lancé automatiquement : il apparaît dans le pipeline avec un bouton de lecture, et quelqu'un doit cliquer pour le déclencher. C'est le moyen classique d'obtenir de la **livraison continue** : tout est automatisé jusqu'à la production, mais la mise en prod reste une décision humaine. Avec un environnement protégé, on restreint en plus qui a le droit de le déclencher. Pour lancer un job seulement en cas d'échec, c'est `when: on_failure`.",
+      "difficulty": 2,
+      "source": "https://docs.gitlab.com/ci/yaml/"
+    },
+    {
+      "question": "Dans GitLab CI, que fait ce bloc dans la définition d'un job ?\n```yaml\nrules:\n  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH\n```",
+      "answer": "Il n'ajoute le job qu'aux pipelines de la branche par défaut",
+      "wrong": [
+        "Il fusionne la branche courante dans la branche par défaut",
+        "Il exécute le job sur toutes les branches sauf la principale",
+        "Il bloque le merge si la branche n'est pas à jour avec `main`"
+      ],
+      "explanation": "`rules` est évalué à la création du pipeline : la première règle qui correspond décide si le job est ajouté, et si aucune ne correspond, le job est exclu. `CI_DEFAULT_BRANCH` contient le nom de la branche par défaut (souvent `main`) et `CI_COMMIT_BRANCH` celui de la branche du pipeline ; cette dernière variable n'est pas définie dans les pipelines de merge request ni de tag, où le job sera donc exclu. `rules` remplace les anciens mots-clés `only` et `except`.",
+      "difficulty": 2,
+      "source": "https://docs.gitlab.com/ci/yaml/"
+    },
+    {
+      "question": "Dans GitLab CI, quel est l'effet de `allow_failure: true` sur un job ?",
+      "answer": "Son échec n'empêche pas le pipeline de continuer",
+      "wrong": [
+        "Il est relancé automatiquement en cas d'échec",
+        "Il peut s'exécuter même sans runner disponible",
+        "Ses erreurs sont masquées dans les logs du job"
+      ],
+      "explanation": "Avec `allow_failure: true`, un échec du job s'affiche en orange, comme un avertissement : les stages suivants s'exécutent et le pipeline peut réussir quand même. C'est utile pour un nouvel outil d'analyse qu'on introduit progressivement, ou pour un test expérimental. Pour relancer automatiquement un job instable, on utilise plutôt `retry`, avec un nombre maximal de tentatives.",
+      "difficulty": 2,
+      "source": "https://docs.gitlab.com/ci/yaml/"
+    },
+    {
+      "question": "Dans GitLab CI, quelle différence fait-on entre `cache` et `artifacts` ?",
+      "answer": "`artifacts` transmet des résultats, `cache` accélère les installations",
+      "wrong": [
+        "`cache` est conservé sans limite, `artifacts` est effacé à la fin du job",
+        "`artifacts` reste sur le runner, `cache` est envoyé sur GitLab",
+        "`cache` sert aux images Docker, `artifacts` au code source"
+      ],
+      "explanation": "Les **artifacts** sont des fichiers produits par un job (binaire, rapport de tests, `dist/`) : ils sont envoyés sur GitLab, transmis aux jobs des stages suivants et téléchargeables depuis l'interface, avec une durée de conservation (`expire_in`). Le **cache** sert à réutiliser des dépendances téléchargées (`node_modules`, `.m2`…) d'un pipeline à l'autre pour gagner du temps ; il est stocké sur le runner (ou dans un stockage partagé) et n'est jamais garanti. Un job ne doit donc pas dépendre du cache pour fonctionner.",
+      "difficulty": 2,
+      "source": "https://docs.gitlab.com/ci/caching/"
+    },
+    {
+      "question": "Dans un `Jenkinsfile` **déclaratif**, quel bloc doit englober toute la définition du pipeline ?",
+      "answer": "`pipeline { ... }`",
+      "wrong": [
+        "`node { ... }`",
+        "`job { ... }`",
+        "`workflow { ... }`"
+      ],
+      "explanation": "Un pipeline **déclaratif** commence par `pipeline { }`, qui contient un `agent` (où exécuter), des `stages` composés de blocs `stage('Build') { steps { ... } }`, et éventuellement une section `post` pour les actions finales (notifications, nettoyage). La syntaxe **scriptée**, plus ancienne et plus libre, commence par `node { }` et repose directement sur du code Groovy. La forme déclarative, plus récente, est conçue pour être plus simple à écrire et à relire, et elle est validée plus strictement.",
+      "difficulty": 2,
+      "source": "https://www.jenkins.io/doc/book/pipeline/syntax/"
+    },
+    {
+      "question": "Pourquoi un backend Terraform distant doit-il prendre en charge le **verrouillage** (locking) du state ?",
+      "answer": "Pour empêcher deux `apply` simultanés de corrompre le state",
+      "wrong": [
+        "Pour chiffrer le state avec la clé de l'utilisateur",
+        "Pour figer les versions des providers téléchargés",
+        "Pour interdire toute lecture du state par l'équipe"
+      ],
+      "explanation": "Si deux personnes, ou deux pipelines, lancent `terraform apply` en même temps sur le même state, elles peuvent créer des ressources en double et écrire des versions incohérentes du state. Avec le verrouillage, la première opération pose un verrou et la seconde échoue (ou patiente, avec `-lock-timeout`) jusqu'à sa libération. Après un crash, `terraform force-unlock` lève un verrou resté orphelin, avec prudence. Figer les versions des providers est le rôle de `.terraform.lock.hcl`.",
+      "difficulty": 2,
+      "source": "https://developer.hashicorp.com/terraform/language/state/locking"
+    },
+    {
+      "question": "Quelqu'un modifie à la main, dans la console AWS, une règle d'un security group géré par Terraform. Comment appelle-t-on cet écart, et quand Terraform le détecte-t-il ?",
+      "answer": "Une dérive (drift), détectée au prochain `terraform plan`",
+      "wrong": [
+        "Une dérive (drift), corrigée aussitôt par Terraform",
+        "Un conflit de state, bloqué par le verrou du backend",
+        "Une dérive (drift), que Terraform ne peut pas détecter"
+      ],
+      "explanation": "La **dérive** (*drift*) est l'écart entre l'infrastructure réelle et ce que décrivent le code et le state. Terraform ne surveille rien en continu : c'est à chaque `plan` (ou `apply`) qu'il interroge le fournisseur, constate la différence et propose de revenir à ce que dit le code. `terraform plan -refresh-only` montre seulement les dérives, et `terraform apply -refresh-only` les accepte dans le state sans toucher à l'infrastructure. Beaucoup d'équipes planifient un `plan` régulier dans leur CI pour repérer les dérives.",
+      "difficulty": 2,
+      "source": "https://developer.hashicorp.com/terraform/cli/commands/plan"
+    },
+    {
+      "question": "Dans un playbook Ansible, trois tâches qui modifient la configuration de nginx notifient le même handler `restart nginx`, et toutes trois rapportent `changed`. Combien de fois nginx est-il redémarré ?",
+      "answer": "Une seule fois, à la fin des tâches du play",
+      "wrong": [
+        "Trois fois, juste après chaque tâche",
+        "Aucune, un handler doit être appelé explicitement",
+        "Une fois, au tout début du play suivant"
+      ],
+      "explanation": "Un **handler** est une tâche qui ne s'exécute que si elle a été notifiée (`notify`) par une tâche ayant rapporté `changed`. Les notifications sont regroupées : le handler s'exécute **une seule fois**, par défaut à la fin des tâches du play, quel que soit le nombre de notifications. On évite ainsi de redémarrer un service trois fois de suite. Pour forcer l'exécution des handlers plus tôt, on utilise `meta: flush_handlers`.",
+      "difficulty": 2,
+      "source": "https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_handlers.html"
+    },
+    {
+      "question": "Pourquoi un pipeline tague-t-il souvent les images Docker avec le SHA du commit (`app:3f9c2a1`), plutôt qu'uniquement avec `latest` ?",
+      "answer": "Pour tracer le code déployé et revenir à une version précise",
+      "wrong": [
+        "Parce que Kubernetes refuse les images taguées `latest`",
+        "Pour que le registre compresse mieux les couches",
+        "Pour que l'image soit reconstruite à chaque déploiement"
+      ],
+      "explanation": "`latest` n'est qu'un tag par défaut, **mobile** : il désigne la dernière image poussée avec ce tag, pas forcément la version stable la plus récente, et ne dit pas quel code elle contient. Un tag basé sur le SHA du commit (ou sur un numéro de version) est unique et traçable : on sait exactement ce qui tourne, et revenir en arrière consiste à redéployer le tag précédent. Avec `latest`, Kubernetes utilise d'ailleurs par défaut `imagePullPolicy: Always`, et deux Pods démarrés à des moments différents peuvent exécuter des images différentes sous le même nom.",
+      "difficulty": 2,
+      "source": "https://kubernetes.io/docs/concepts/containers/images/"
+    },
+    {
+      "question": "Dans GitLab CI, à quoi sert le mot-clé `needs` sur un job ?",
+      "answer": "À démarrer le job dès que les jobs listés sont terminés",
+      "wrong": [
+        "À relancer le job tant que ses dépendances échouent",
+        "À installer les paquets nécessaires avant le script",
+        "À exiger une approbation avant de lancer le job"
+      ],
+      "explanation": "Avec `needs: [build-front]`, le job n'attend plus la fin de **tout** le stage précédent : il démarre dès que `build-front` a réussi, même si d'autres jobs plus lents de ce stage tournent encore. Le pipeline devient un graphe orienté acyclique (**DAG**) et peut être nettement plus court. Par effet de bord, le job ne télécharge plus que les artifacts des jobs listés dans `needs`, et `needs: []` le fait démarrer dès la création du pipeline.",
+      "difficulty": 2,
+      "source": "https://docs.gitlab.com/ci/yaml/"
+    },
+    {
+      "question": "Dans un `.gitlab-ci.yml` qui ne déclare pas de liste `stages`, à quel stage est rattaché un job défini sans le mot-clé `stage` ?",
+      "answer": "`test`",
+      "wrong": [
+        "`build`",
+        "`.pre`",
+        "`default`"
+      ],
+      "explanation": "Sans liste `stages`, GitLab utilise les stages par défaut `.pre`, `build`, `test`, `deploy` et `.post`, et un job sans `stage` est placé dans **`test`**. `.pre` et `.post` sont des stages spéciaux, toujours exécutés en premier et en dernier. Déclarer explicitement `stages` et le `stage` de chaque job rend malgré tout le pipeline plus lisible.",
+      "difficulty": 3,
+      "source": "https://docs.gitlab.com/ci/yaml/"
+    },
+    {
+      "question": "Dans un `.gitlab-ci.yml`, que se passe-t-il pour un job dont le nom commence par un point, comme `.deploy-template` ?",
+      "answer": "Il n'est jamais exécuté, mais peut servir de modèle via `extends`",
+      "wrong": [
+        "Il s'exécute avant tous les autres jobs du pipeline",
+        "Il n'est visible que des mainteneurs du projet",
+        "Il s'exécute en arrière-plan, sans bloquer son stage"
+      ],
+      "explanation": "Un job dont le nom commence par `.` est un **job caché** : GitLab ne l'ajoute pas au pipeline. On s'en sert comme modèle : d'autres jobs en héritent avec `extends: .deploy-template` (ou via des ancres YAML), puis surchargent ce qui change, par exemple l'environnement cible. C'est aussi un moyen rapide de désactiver temporairement un job sans le supprimer. Ne pas confondre avec les stages spéciaux `.pre` et `.post`, exécutés en premier et en dernier.",
+      "difficulty": 3,
+      "source": "https://docs.gitlab.com/ci/yaml/"
+    },
+    {
+      "question": "Une variable CI/CD GitLab `PROD_DEPLOY_TOKEN` est marquée **Protected**. Dans quels pipelines est-elle disponible ?",
+      "answer": "Ceux qui tournent sur une branche ou un tag protégés",
+      "wrong": [
+        "Tous, mais sa valeur est masquée dans les logs",
+        "Ceux déclenchés manuellement par un mainteneur",
+        "Ceux des merge requests ouvertes depuis un fork"
+      ],
+      "explanation": "Une variable **protégée** n'est injectée que dans les pipelines qui s'exécutent sur une **branche ou un tag protégés** (typiquement `main` et les tags de release). Un développeur qui pousse une branche quelconque ne peut donc pas écrire un job qui affiche le jeton de production. C'est différent d'une variable **masquée**, dont la valeur est remplacée par `[MASKED]` dans les logs mais qui reste disponible dans tous les pipelines. Pour un secret de production, on combine en général les deux.",
+      "difficulty": 3,
+      "source": "https://docs.gitlab.com/ci/variables/"
+    },
+    {
+      "question": "Dans GitLab CI, sans mot-clé `needs` ni `dependencies`, de quels jobs un job télécharge-t-il automatiquement les artifacts ?",
+      "answer": "De tous les jobs des stages précédents",
+      "wrong": [
+        "D'aucun, il faut les déclarer explicitement",
+        "Seulement du job placé juste avant dans le fichier",
+        "De tous les jobs du pipeline, stage courant inclus"
+      ],
+      "explanation": "Par défaut, un job récupère les artifacts de **tous les jobs des stages précédents**, ce qui peut le ralentir si ces artifacts sont volumineux. Le mot-clé `dependencies` restreint cette liste (`dependencies: []` pour n'en télécharger aucun), et avec `needs`, seuls les artifacts des jobs listés sont récupérés. Les jobs d'un même stage tournant en parallèle, ils ne peuvent pas s'échanger d'artifacts.",
+      "difficulty": 3,
+      "source": "https://docs.gitlab.com/ci/yaml/"
+    },
+    {
+      "question": "Vous retirez `\"alice\"` de la liste `noms` de cette configuration Terraform, déjà appliquée. Que propose le prochain `terraform plan` ?\n```hcl\nvariable \"noms\" {\n  default = [\"alice\", \"bob\", \"carol\"]\n}\nresource \"local_file\" \"f\" {\n  count    = length(var.noms)\n  filename = \"${var.noms[count.index]}.txt\"\n  content  = \"bonjour\"\n}\n```",
+      "answer": "Remplacer `f[0]` et `f[1]`, et détruire `f[2]`",
+      "wrong": [
+        "Détruire seulement `f[0]`, le fichier `alice.txt`",
+        "Renuméroter `f[1]` et `f[2]` sans rien recréer",
+        "Détruire puis recréer les trois fichiers"
+      ],
+      "explanation": "Avec `count`, chaque instance est identifiée par son **indice** : `f[0]` = alice, `f[1]` = bob, `f[2]` = carol. En retirant alice, bob passe à l'indice 0 et carol à l'indice 1 : Terraform voit que `f[0]` et `f[1]` changent de nom de fichier (ce qui impose de les remplacer) et que `f[2]` n'existe plus. Avec `for_each = toset(var.noms)`, les instances seraient indexées par clé (`f[\"bob\"]`), et seule `f[\"alice\"]` serait détruite. C'est pourquoi on préfère `for_each` pour une collection dont on peut retirer des éléments.",
+      "difficulty": 3,
+      "source": "https://developer.hashicorp.com/terraform/language/meta-arguments/count"
+    },
+    {
+      "question": "Une base de données gérée par Terraform porte `lifecycle { prevent_destroy = true }`. Un changement de configuration impose de la remplacer. Que se passe-t-il au `terraform apply` ?",
+      "answer": "Terraform s'arrête sur une erreur, sans rien détruire",
+      "wrong": [
+        "Terraform crée la nouvelle base avant de détruire l'ancienne",
+        "Terraform ignore le changement et garde la base telle quelle",
+        "Terraform détruit la base après une confirmation supplémentaire"
+      ],
+      "explanation": "`prevent_destroy = true` fait échouer tout plan qui prévoit de **détruire** la ressource, y compris pour la remplacer : c'est un garde-fou contre la suppression accidentelle de données. Pour vraiment la remplacer, il faut d'abord retirer cet argument du code. Il ne protège pas si l'on supprime tout le bloc `resource`, puisque le réglage disparaît avec lui. `create_before_destroy` change seulement l'ordre du remplacement, et `ignore_changes` fait ignorer certains attributs modifiés.",
+      "difficulty": 3,
+      "source": "https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle"
     }
   ]
 }

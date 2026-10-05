@@ -831,6 +831,281 @@
       ],
       "explanation": "Le secret est le terme constant d'un **polynôme de degré 2** tiré au hasard dans un corps fini ; chaque part est un point de ce polynôme. Trois points déterminent une parabole de façon unique, mais par deux points passent autant de paraboles que de valeurs possibles du secret : deux parts ne révèlent **strictement aucune information**. Cette sécurité est inconditionnelle, comme celle du masque jetable, quelle que soit la puissance de calcul de l'attaquant.",
       "difficulty": 3
+    },
+    {
+      "question": "Quelle langue amérindienne les Marines américains ont-ils utilisée comme code oral pendant la guerre du Pacifique ?",
+      "answer": "Le navajo",
+      "wrong": [
+        "Le quechua",
+        "L'inuktitut",
+        "Le nahuatl"
+      ],
+      "explanation": "Les **code talkers navajos** transmettaient les messages radio dans leur langue, alors très peu écrite et quasi inconnue hors de leur peuple, enrichie d'un vocabulaire codé (une « tortue » pour un char, par exemple). Plusieurs centaines de Navajos ont servi ainsi, notamment à Iwo Jima en 1945, et le code n'a jamais été percé par les Japonais. D'autres langues amérindiennes, comme le comanche, ont joué un rôle similaire en Europe.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi chiffre-t-on rarement un gros fichier directement avec RSA ?",
+      "answer": "C'est trop lent : on chiffre plutôt une clé AES avec RSA",
+      "wrong": [
+        "RSA ne sait chiffrer que du texte, pas des fichiers",
+        "La clé privée serait alors exposée au destinataire",
+        "RSA ne permet de chiffrer qu'un seul message par clé"
+      ],
+      "explanation": "Le chiffrement asymétrique est des centaines à des milliers de fois plus lent que le symétrique, et RSA ne peut de toute façon chiffrer d'un coup qu'un bloc plus petit que son module (quelques centaines d'octets). On utilise donc un **chiffrement hybride** : une clé AES aléatoire chiffre le fichier, et seule cette petite clé est chiffrée avec la clé publique RSA du destinataire. PGP et les anciennes versions de TLS fonctionnaient ainsi.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel protocole a succédé à SSL pour sécuriser les connexions web en HTTPS ?",
+      "answer": "TLS",
+      "wrong": [
+        "SSH",
+        "IPsec",
+        "PGP"
+      ],
+      "explanation": "**TLS** (Transport Layer Security) est le successeur de **SSL**, conçu par Netscape dans les années 1990 : TLS 1.0 (1999) était une évolution de SSL 3.0. Toutes les versions de SSL sont aujourd'hui proscrites car vulnérables, même si l'on parle encore de « certificats SSL » par habitude. SSH sécurise l'accès à distance à des machines, IPsec chiffre au niveau IP (VPN) et PGP sert surtout aux e-mails.",
+      "difficulty": 1
+    },
+    {
+      "question": "Lequel de ces algorithmes n'est pas une fonction de hachage ?",
+      "answer": "AES",
+      "wrong": [
+        "SHA-3",
+        "BLAKE2",
+        "RIPEMD-160"
+      ],
+      "explanation": "**AES** est un algorithme de **chiffrement symétrique** : avec la clé, on retrouve le message. SHA-3, BLAKE2 et RIPEMD-160 sont des **fonctions de hachage** : elles produisent une empreinte de taille fixe, sans clé, et sont conçues pour être impossibles à inverser. RIPEMD-160 sert par exemple, avec SHA-256, à dériver les adresses Bitcoin.",
+      "difficulty": 1
+    },
+    {
+      "question": "En cryptographie, comment appelle-t-on le message lisible d'origine, avant chiffrement ?",
+      "answer": "Le texte clair",
+      "wrong": [
+        "Le cryptogramme",
+        "Le condensat",
+        "Le vecteur d'initialisation"
+      ],
+      "explanation": "Le **texte clair** (ou simplement « clair », plaintext en anglais) est le message que l'on veut protéger. Une fois chiffré, il devient le **chiffré** ou **cryptogramme** (ciphertext). Le **condensat** est un autre nom de l'empreinte produite par une fonction de hachage, et le vecteur d'initialisation une valeur aléatoire qui sert à amorcer certains modes de chiffrement.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelles pièces de la machine Enigma tournaient à chaque frappe, de sorte que chaque lettre soit chiffrée avec une substitution différente ?",
+      "answer": "Les rotors",
+      "wrong": [
+        "Les cartes perforées",
+        "Les relais téléphoniques",
+        "Les bobines de ruban"
+      ],
+      "explanation": "Chaque **rotor** câblait une permutation de l'alphabet ; à chaque touche, le rotor rapide avançait d'un cran, entraînant de temps en temps le suivant, comme un compteur kilométrique. Une même lettre tapée deux fois était donc chiffrée différemment : Enigma réalisait une **substitution polyalphabétique** à très longue période. Le **tableau de connexions** (Steckerbrett) ajoutait des échanges de lettres et multipliait le nombre de réglages possibles.",
+      "difficulty": 1
+    },
+    {
+      "question": "Contre quel risque le chiffrement complet du disque (BitLocker, FileVault, LUKS) protège-t-il avant tout ?",
+      "answer": "La lecture des données d'un appareil perdu ou volé, éteint",
+      "wrong": [
+        "L'action d'un malware lancé pendant ta session",
+        "Le vol de tes mots de passe par phishing",
+        "L'interception de ta connexion Wi-Fi"
+      ],
+      "explanation": "Sans la clé (dérivée d'un mot de passe, d'un code ou d'une puce TPM), le disque d'un ordinateur volé n'est qu'une suite d'octets illisibles. Mais une fois la machine démarrée et déverrouillée, les données sont déchiffrées à la volée pour toi… et pour tout programme qui tourne sur ta session, malware compris. Le chiffrement de disque protège donc les **données au repos**, pas un système en cours d'utilisation ni le réseau.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle reine fut exécutée en 1587 après que ses lettres chiffrées, interceptées puis décryptées, eurent prouvé son implication dans un complot contre Élisabeth Iʳᵉ ?",
+      "answer": "Marie Stuart",
+      "wrong": [
+        "Marie-Antoinette",
+        "Anne Boleyn",
+        "Jeanne Grey"
+      ],
+      "explanation": "**Marie Stuart**, reine d'Écosse retenue captive en Angleterre, correspondait avec les conjurés du **complot de Babington** à l'aide d'un **nomenclateur** (une substitution de lettres complétée de symboles pour des mots courants). Le maître espion d'Élisabeth, Francis Walsingham, faisait intercepter ses lettres, que son cryptanalyste **Thomas Phelippes** déchiffrait par analyse des fréquences. Elle fut décapitée en février 1587.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel télégramme diplomatique allemand, intercepté et décrypté par les Britanniques en 1917, a contribué à l'entrée en guerre des États-Unis ?",
+      "answer": "Le télégramme Zimmermann",
+      "wrong": [
+        "La dépêche d'Ems",
+        "Le télégramme Kruger",
+        "La lettre Zinoviev"
+      ],
+      "explanation": "En janvier 1917, le ministre allemand **Arthur Zimmermann** proposait au Mexique une alliance contre les États-Unis, en échange de la reconquête du Texas, du Nouveau-Mexique et de l'Arizona. Décrypté par la **Room 40** de l'Amirauté britannique puis transmis à Washington, le message a retourné l'opinion américaine ; les États-Unis sont entrés en guerre en avril 1917. La dépêche d'Ems, elle, a précipité la guerre franco-prussienne de 1870.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel algorithme de chiffrement authentifié, bâti sur un chiffrement par flot de Daniel J. Bernstein, est proposé par TLS 1.3 aux côtés d'AES-GCM ?",
+      "answer": "ChaCha20-Poly1305",
+      "wrong": [
+        "RC4-HMAC-SHA1",
+        "Blowfish-CBC",
+        "Camellia-CCM"
+      ],
+      "explanation": "**ChaCha20** (un chiffrement par flot) associé à l'authentificateur **Poly1305**, tous deux conçus par **Daniel J. Bernstein**, fait partie des suites de TLS 1.3 avec AES-GCM. Il n'utilise que des additions, des rotations et des XOR : il est très rapide en logiciel, ce qui le rend précieux sur les appareils dépourvus d'instructions matérielles AES, comme de nombreux téléphones d'entrée de gamme. RC4 et les modes CBC ont disparu de TLS 1.3.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi un CRC32, très utilisé pour détecter les erreurs de transmission, ne protège-t-il pas un fichier contre une modification malveillante ?",
+      "answer": "On fabrique facilement un autre contenu de même CRC",
+      "wrong": [
+        "Il est bien trop lent pour les gros fichiers",
+        "Il ne fonctionne que sur des fichiers texte",
+        "Sa valeur change à chaque nouveau calcul"
+      ],
+      "explanation": "Un **CRC** est conçu pour repérer des erreurs **accidentelles** (bits inversés par le bruit), pas pour résister à un adversaire. Il est **linéaire** et ne fait que 32 bits : en ajustant quelques octets, on peut donner à un fichier modifié le CRC de l'original. Une fonction de hachage cryptographique comme SHA-256 rend cette falsification impossible en pratique ; et si l'attaquant peut aussi remplacer l'empreinte publiée, il faut un MAC ou une signature.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que contient essentiellement un certificat X.509 utilisé par un site en HTTPS ?",
+      "answer": "La clé publique du site, son identité et la signature d'une CA",
+      "wrong": [
+        "La clé privée du site, chiffrée par un mot de passe",
+        "La clé de session TLS négociée avec le visiteur",
+        "La liste des navigateurs autorisés à se connecter"
+      ],
+      "explanation": "Un certificat **X.509** lie une **clé publique** à une identité (le nom de domaine), avec une période de validité, et le tout est **signé** par une autorité de certification. Le navigateur vérifie cette signature en remontant la chaîne jusqu'à une racine de confiance. La **clé privée** ne quitte jamais le serveur : le certificat est public, envoyé à chaque visiteur, et les clés de session sont négociées à part, lors de la poignée de main.",
+      "difficulty": 2
+    },
+    {
+      "question": "En 2014, la faille Heartbleed permettait de lire la mémoire de nombreux serveurs, clés privées comprises. Quelle bibliothèque était touchée ?",
+      "answer": "OpenSSL",
+      "wrong": [
+        "GnuTLS",
+        "LibreSSL",
+        "BoringSSL"
+      ],
+      "explanation": "**Heartbleed** (CVE-2014-0160) venait d'une vérification de longueur oubliée dans l'extension **heartbeat** d'**OpenSSL** : le serveur renvoyait jusqu'à 64 Ko de sa mémoire à qui lui annonçait un message plus long qu'il ne l'était. **LibreSSL** (OpenBSD) et **BoringSSL** (Google) sont justement des forks nés après cette affaire, qui a aussi poussé à mieux financer les projets open source critiques.",
+      "difficulty": 2
+    },
+    {
+      "question": "À la première connexion SSH vers un serveur, le client affiche l'empreinte de sa clé et demande s'il faut lui faire confiance. Quel modèle de confiance cela illustre-t-il ?",
+      "answer": "La confiance à la première utilisation (TOFU)",
+      "wrong": [
+        "La toile de confiance, comme dans PGP",
+        "La chaîne de certificats d'une autorité",
+        "La preuve à divulgation nulle de connaissance"
+      ],
+      "explanation": "SSH n'utilise en général pas d'autorité de certification : à la première connexion, tu acceptes l'empreinte de la clé du serveur (**Trust On First Use**), qui est ensuite mémorisée dans `~/.ssh/known_hosts`. Aux connexions suivantes, si la clé a changé, SSH affiche un avertissement très visible : cela peut signaler une réinstallation… ou une attaque de l'homme du milieu. Le point faible est donc la toute première connexion, d'où l'intérêt de vérifier l'empreinte par un autre canal.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qu'une preuve à divulgation nulle de connaissance (zero-knowledge proof) ?",
+      "answer": "Prouver qu'on connaît un secret sans rien en révéler",
+      "wrong": [
+        "Chiffrer un secret avec une clé de longueur nulle",
+        "Effacer un secret de façon sûre après usage",
+        "Partager un secret entre plusieurs personnes"
+      ],
+      "explanation": "Une **preuve à divulgation nulle de connaissance** convainc un vérificateur qu'une affirmation est vraie (« je connais ce secret », « cette transaction est valide ») sans lui transmettre la moindre information supplémentaire. L'image classique est la **caverne d'Ali Baba** : en ressortant à chaque fois par le côté demandé, on prouve qu'on connaît la formule qui ouvre la porte du fond, sans la prononcer. Introduites en 1985 par Goldwasser, Micali et Rackoff, ces preuves servent aujourd'hui notamment dans certaines cryptomonnaies.",
+      "difficulty": 2
+    },
+    {
+      "question": "Combien de clés possibles offre une substitution monoalphabétique quelconque, où chaque lettre est remplacée par une autre sans que deux lettres aient la même image ?",
+      "answer": "26!, soit environ 4 × 10²⁶",
+      "wrong": [
+        "26, une par décalage possible",
+        "26², soit 676",
+        "2²⁶, soit environ 67 millions"
+      ],
+      "explanation": "Le A peut devenir l'une des 26 lettres, le B l'une des 25 restantes, etc. : **26! ≈ 4 × 10²⁶** permutations, soit plus de 2⁸⁸, bien davantage que les 2⁵⁶ clés du DES. Pourtant, ce chiffre se casse à la main en quelques minutes par **analyse des fréquences**, car il conserve la fréquence de chaque lettre. Un immense espace de clés est nécessaire, mais il ne suffit pas à rendre un chiffrement sûr.",
+      "difficulty": 2
+    },
+    {
+      "question": "En Python, lequel de ces appels convient pour générer une clé secrète de 32 octets ?",
+      "answer": "`secrets.token_bytes(32)`",
+      "wrong": [
+        "`random.randbytes(32)`",
+        "`random.getrandbits(256).to_bytes(32, 'big')`",
+        "`hashlib.sha256(str(time.time()).encode()).digest()`"
+      ],
+      "explanation": "Le module **`secrets`** puise dans le générateur cryptographique du système d'exploitation (comme `os.urandom`). Le module **`random`**, lui, repose sur le **Mersenne Twister** : rapide et adapté aux simulations, mais prévisible, puisque 624 sorties de 32 bits suffisent à reconstituer son état et à prédire toutes les suivantes. Hacher l'heure ne crée pas d'aléa non plus : un attaquant n'a qu'à essayer les instants plausibles.",
+      "difficulty": 2
+    },
+    {
+      "question": "En juin 1918, quel cryptanalyste français a percé le chiffre allemand ADFGVX, aidant à anticiper une offensive allemande ?",
+      "answer": "Georges Painvin",
+      "wrong": [
+        "Auguste Kerckhoffs",
+        "Gustave Bertrand",
+        "Marian Rejewski"
+      ],
+      "explanation": "Le chiffre **ADFGVX** combinait une substitution (chaque lettre ou chiffre devenait un couple parmi A, D, F, G, V et X, lettres choisies car bien distinctes en morse) et une **transposition** par colonnes. **Georges Painvin** en perça une clé début juin 1918, au prix d'un travail épuisant, révélant l'objectif d'une offensive allemande : c'est le « radiogramme de la victoire ». Rejewski a cassé Enigma dans les années 1930, et Bertrand fut l'officier français qui collabora alors avec les Polonais.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans une attaque par oracle de remplissage (padding oracle) contre AES-CBC, qu'exploite l'attaquant ?",
+      "answer": "Les réponses du serveur révélant si le remplissage est valide",
+      "wrong": [
+        "Un défaut mathématique de la S-box d'AES",
+        "La réutilisation d'un même vecteur d'initialisation",
+        "La fuite de la clé dans les messages d'erreur"
+      ],
+      "explanation": "Décrite par **Serge Vaudenay** en 2002, l'attaque modifie un bloc chiffré et observe si le serveur répond « remplissage invalide » ou une autre erreur (ou met un temps différent). Chaque réponse révèle un peu d'information : en au plus 256 essais par octet, on déchiffre tout le message **sans jamais connaître la clé**. La parade : un chiffrement authentifié comme AES-GCM, ou un MAC vérifié **avant** tout déchiffrement, et des erreurs indiscernables.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi recommande-t-on souvent AES-256 plutôt qu'AES-128 face à un futur ordinateur quantique ?",
+      "answer": "L'algorithme de Grover divise par deux la sécurité en bits",
+      "wrong": [
+        "L'algorithme de Shor casse AES-128 en temps polynomial",
+        "AES-128 repose sur la factorisation des entiers",
+        "Les qubits ne peuvent pas traiter de clés de 256 bits"
+      ],
+      "explanation": "L'**algorithme de Grover** accélère la recherche exhaustive de façon quadratique : il trouve une clé parmi 2ⁿ en environ 2^(n/2) étapes. AES-128 n'offrirait plus qu'environ 64 bits de sécurité théorique, alors qu'AES-256 en garderait 128. **Shor**, qui casse RSA et les courbes elliptiques, ne s'applique pas aux chiffrements symétriques, qui ne reposent ni sur la factorisation ni sur le logarithme discret. Comme Grover se parallélise mal, beaucoup d'experts jugent toutefois AES-128 encore suffisant.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel exposant public e est de loin le plus utilisé dans les clés RSA actuelles ?",
+      "answer": "65537",
+      "wrong": [
+        "3",
+        "17",
+        "65536"
+      ],
+      "explanation": "**65537 = 2¹⁶ + 1** est premier et ne comporte que deux bits à 1 : l'exponentiation de chiffrement ou de vérification ne demande que 17 multiplications modulaires. C'est le choix par défaut d'OpenSSL et de la plupart des bibliothèques. **e = 3**, encore plus rapide, a été délaissé car il facilite certaines attaques en cas de remplissage défaillant. **65536**, pair, est impossible : e doit être premier avec φ(n), qui est toujours pair.",
+      "difficulty": 3
+    },
+    {
+      "question": "Diffie-Hellman jouet : p = 23 et g = 5 sont publics. Alice choisit le secret a = 6, Bob le secret b = 15. Quelle clé commune obtiennent-ils ?",
+      "answer": "2",
+      "wrong": [
+        "8",
+        "19",
+        "14"
+      ],
+      "explanation": "Alice envoie A = 5⁶ mod 23 = **8**, Bob envoie B = 5¹⁵ mod 23 = **19**. Alice calcule Bᵃ = 19⁶ mod 23 = 2 et Bob Aᵇ = 8¹⁵ mod 23 = 2 : tous deux obtiennent **2**, car (gᵇ)ᵃ = (gᵃ)ᵇ = gᵃᵇ. Les valeurs 8 et 19 circulent en clair, et 14 = 5²¹ mod 23 correspond à l'erreur qui consiste à additionner les exposants. Avec un p de plus de 2 000 bits, retrouver a à partir de A devient impraticable.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle construction utilise Keccak, l'algorithme devenu SHA-3, contrairement à SHA-1 et SHA-2 ?",
+      "answer": "Une construction en éponge",
+      "wrong": [
+        "Une construction de Merkle-Damgård",
+        "Un réseau de Feistel",
+        "Un mode CBC-MAC"
+      ],
+      "explanation": "Keccak, de Guido Bertoni, Joan Daemen, Michaël Peeters et Gilles Van Assche, a remporté en 2012 le concours du NIST et est devenu **SHA-3** en 2015 (FIPS 202). Sa **construction en éponge** « absorbe » le message dans un grand état interne, puis en « essore » autant de bits de sortie que voulu. Une partie de l'état n'étant jamais exposée, SHA-3 résiste naturellement à l'extension de longueur qui touche les constructions de **Merkle-Damgård** comme SHA-1 et SHA-2.",
+      "difficulty": 3
+    },
+    {
+      "question": "En 2008, on découvre que les clés SSH et SSL générées sur Debian depuis 2006 sont prévisibles. Quelle en était la cause ?",
+      "answer": "Le générateur aléatoire n'était plus alimenté que par le PID",
+      "wrong": [
+        "Les clés étaient dérivées du nom d'hôte de la machine",
+        "Une porte dérobée de la NSA cachée dans OpenSSL",
+        "L'horloge système servait directement de clé privée"
+      ],
+      "explanation": "Pour faire taire un avertissement de l'outil Valgrind, un mainteneur Debian avait retiré d'OpenSSL deux lignes qui, en réalité, nourrissaient le générateur en **entropie**. Il ne restait plus que le **numéro de processus** (PID, au plus 32 768 valeurs) : pour un type et une taille de clé donnés, il n'existait donc qu'environ 32 768 clés possibles, toutes précalculables. Il a fallu régénérer en urgence d'innombrables clés de serveurs et de certificats.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel mode de chiffrement d'AES est le standard du chiffrement de disque (BitLocker, LUKS, FileVault 2) ?",
+      "answer": "XTS",
+      "wrong": [
+        "GCM",
+        "ECB",
+        "CFB"
+      ],
+      "explanation": "Le mode **XTS** chiffre chaque bloc en fonction de sa position sur le disque (un « tweak »), sans augmenter la taille des secteurs : deux secteurs identiques donnent des chiffrés différents, et l'on peut lire ou réécrire n'importe quel secteur isolément. **GCM** exigerait de stocker un nonce et une étiquette d'authentification par secteur, ce qui ne tient pas dans l'espace fixe d'un secteur. Revers : XTS n'authentifie rien, et une modification du chiffré passe inaperçue, même si elle produit des données aberrantes.",
+      "difficulty": 3
     }
   ]
 }

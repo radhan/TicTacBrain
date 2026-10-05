@@ -1127,6 +1127,251 @@
       ],
       "explanation": "Sur un répertoire, le bit setgid (`chmod g+s` ou `chmod 2775`) fait que les fichiers et sous-dossiers créés à l'intérieur prennent le groupe du répertoire, et non le groupe principal de leur créateur ; les sous-dossiers héritent aussi du bit. C'est la base des dossiers d'équipe : les membres de `dev` gardent l'accès aux fichiers de leurs collègues. Les permissions restent fixées par le umask de chacun, et la restriction de suppression est le rôle du sticky bit.",
       "difficulty": 3
+    },
+    {
+      "question": "Dans bash, quel raccourci clavier lance une recherche interactive dans l'historique des commandes ?",
+      "answer": "`Ctrl-R`",
+      "wrong": [
+        "`Ctrl-H`",
+        "`Ctrl-L`",
+        "`Ctrl-D`"
+      ],
+      "explanation": "`Ctrl-R` (*reverse search*) cherche en remontant l'historique au fur et à mesure de la frappe ; un nouveau `Ctrl-R` passe à l'occurrence plus ancienne et `Entrée` exécute la commande trouvée. `Ctrl-L` efface l'écran, `Ctrl-H` efface le caractère précédent et `Ctrl-D` envoie une fin de fichier, ce qui ferme le shell sur une ligne vide. La commande `history` liste les commandes passées, et `!42` réexécute celle portant le numéro 42.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que fait `alias ll='ls -lh'` dans un terminal bash ?",
+      "answer": "Il crée un raccourci : taper `ll` exécutera `ls -lh`",
+      "wrong": [
+        "Il crée un fichier exécutable `ll` dans le `PATH`",
+        "Il renomme définitivement la commande `ls` en `ll`",
+        "Il crée une variable `ll` contenant `ls -lh`"
+      ],
+      "explanation": "Un alias est un raccourci textuel que le shell substitue au premier mot d'une commande. Défini dans un terminal, il disparaît à sa fermeture : pour le garder, on l'ajoute à `~/.bashrc`. `alias` sans argument liste les alias existants et `unalias ll` en supprime un. La commande `ls` reste évidemment utilisable normalement.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle commande copie le fichier local `site.zip` dans le dossier `/var/www` d'un serveur, à travers SSH ?",
+      "answer": "`scp site.zip admin@serveur:/var/www/`",
+      "wrong": [
+        "`cp site.zip admin@serveur:/var/www/`",
+        "`ssh site.zip admin@serveur:/var/www/`",
+        "`scp admin@serveur:/var/www/ site.zip`"
+      ],
+      "explanation": "`scp` (*secure copy*) s'utilise comme `cp`, avec une source puis une destination, l'une des deux pouvant être distante sous la forme `utilisateur@hôte:chemin`. L'ordre compte : `scp admin@serveur:/var/www/site.zip .` ferait la copie inverse, du serveur vers la machine locale. `cp` ne sait pas parler à une machine distante. Pour synchroniser de gros dossiers, `rsync` ne transfère que les différences.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle commande affiche la taille **totale** occupée par le dossier `photos` et tout son contenu, dans une unité lisible ?",
+      "answer": "`du -sh photos`",
+      "wrong": [
+        "`df -h photos`",
+        "`ls -lh photos`",
+        "`wc -c photos`"
+      ],
+      "explanation": "`du` (*disk usage*) additionne l'espace occupé par un dossier et tout son contenu ; `-s` n'affiche que le total et `-h` l'exprime en K, M ou G. `df` donne l'espace libre du **système de fichiers** entier, et `ls -lh` les tailles du premier niveau seulement : un sous-dossier y apparaît avec quelques Ko, pas avec la taille de son contenu. Pour trouver ce qui prend de la place : `du -sh * | sort -h`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle commande affiche uniquement les 5 premières lignes de `data.csv` ?",
+      "answer": "`head -n 5 data.csv`",
+      "wrong": [
+        "`tail -n 5 data.csv`",
+        "`head -c 5 data.csv`",
+        "`cut -c 1-5 data.csv`"
+      ],
+      "explanation": "`head` affiche le début d'un fichier, 10 lignes par défaut ; `-n 5` en garde 5. `head -c 5` afficherait les 5 premiers **octets**, `tail -n 5` les 5 dernières lignes, et `cut -c 1-5` les 5 premiers caractères de **chaque** ligne. Astuce : `head -n 1` suffit pour lire l'en-tête d'un fichier CSV.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle commande affiche la quantité de mémoire vive (RAM) totale, utilisée et disponible ?",
+      "answer": "`free -h`",
+      "wrong": [
+        "`df -h`",
+        "`du -h`",
+        "`lsblk`"
+      ],
+      "explanation": "`free` résume l'utilisation de la mémoire vive et du swap ; `-h` affiche des unités lisibles. La colonne utile est `available` : Linux se sert de la RAM inutilisée comme cache disque, si bien que la colonne `free` paraît souvent faible sans que ce soit un problème. `df` et `du` concernent l'espace **disque**, et `lsblk` liste les disques et leurs partitions.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel gestionnaire de paquets utilise-t-on en ligne de commande sur **Fedora** ?",
+      "answer": "`dnf`",
+      "wrong": [
+        "`apt`",
+        "`pacman`",
+        "`zypper`"
+      ],
+      "explanation": "Fedora et la famille Red Hat (RHEL, Rocky Linux, AlmaLinux) utilisent des paquets `.rpm`, gérés par `dnf`, le successeur de `yum` : par exemple `sudo dnf install curl`. `apt` (paquets `.deb`) est l'outil de Debian et Ubuntu, `pacman` celui d'Arch Linux, et `zypper` celui d'openSUSE.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans bash, que fait `commande &> tout.log` ?",
+      "answer": "Il envoie la sortie standard **et** les erreurs dans `tout.log`",
+      "wrong": [
+        "Il envoie seulement les erreurs dans `tout.log`",
+        "Il ajoute la sortie à la fin de `tout.log` sans l'écraser",
+        "Il envoie la sortie dans `tout.log` et les erreurs à l'écran"
+      ],
+      "explanation": "En bash, `&>` est un raccourci pour `> tout.log 2>&1` : les deux flux vont dans le fichier, qui est écrasé (`&>>` ajoute à la fin). Ce n'est pas une syntaxe POSIX : dans un script exécuté par `sh` (dash sous Debian et Ubuntu), la ligne est comprise comme `commande &` suivi de `> tout.log`, c'est-à-dire une commande en arrière-plan et un fichier vidé. Dans un script portable, on écrit donc `> tout.log 2>&1`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche la commande suivante ?\n```bash\nprintf 'chat chat\\nchien\\nchat\\n' | grep -c chat\n```",
+      "answer": "`2`",
+      "wrong": [
+        "`3`",
+        "`1`",
+        "`4`"
+      ],
+      "explanation": "`grep -c` compte les **lignes** qui contiennent le motif, pas le nombre d'occurrences : la première ligne contient deux fois « chat » mais ne compte qu'une fois, la troisième aussi, d'où 2. Pour compter toutes les occurrences, on combine `-o` (une occurrence par ligne de sortie) et `wc -l` : `grep -o chat | wc -l` donne 3.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle commande liste les ports TCP **en écoute** sur la machine, avec le processus qui écoute sur chacun ?",
+      "answer": "`ss -tlnp`",
+      "wrong": [
+        "`ip addr show`",
+        "`ip route show`",
+        "`ping -c 1 localhost`"
+      ],
+      "explanation": "`ss` (*socket statistics*) remplace l'ancien `netstat` : `-t` pour TCP, `-l` pour les sockets en écoute, `-n` pour afficher les numéros de port plutôt que les noms de services, et `-p` pour le processus (il faut être root pour voir ceux des autres utilisateurs). C'est le réflexe face à une erreur « Address already in use ». `ip addr` liste les adresses des interfaces réseau et `ip route` la table de routage.",
+      "difficulty": 2
+    },
+    {
+      "question": "Tu veux que le nom `api.local` désigne l'adresse `192.168.1.50` sur ta seule machine, sans serveur DNS. Quel fichier modifier ?",
+      "answer": "`/etc/hosts`",
+      "wrong": [
+        "`/etc/hostname`",
+        "`/etc/resolv.conf`",
+        "`/etc/fstab`"
+      ],
+      "explanation": "`/etc/hosts` associe des noms à des adresses IP, une ligne par adresse, par exemple `192.168.1.50 api.local`. Il est en général consulté avant le DNS, selon l'ordre défini dans `/etc/nsswitch.conf`. `/etc/resolv.conf` indique quels serveurs DNS interroger, `/etc/hostname` contient le nom de la machine elle-même, et `/etc/fstab` décrit les montages de disques.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur Debian ou Ubuntu, que fait `apt update`, à la différence de `apt upgrade` ?",
+      "answer": "Il rafraîchit la liste des paquets disponibles, sans rien installer",
+      "wrong": [
+        "Il installe la dernière version de tous les paquets installés",
+        "Il fait passer la distribution à sa version majeure suivante",
+        "Il met à jour uniquement l'outil `apt` lui-même"
+      ],
+      "explanation": "`apt update` télécharge les index des dépôts pour savoir quelles versions existent ; `apt upgrade` installe ensuite les versions plus récentes des paquets déjà présents. On enchaîne donc souvent `sudo apt update && sudo apt upgrade`. Sans `update` préalable, `upgrade` travaille sur des index périmés. Passer à une nouvelle version de la distribution est une opération distincte, par exemple `do-release-upgrade` sur Ubuntu.",
+      "difficulty": 2
+    },
+    {
+      "question": "Tu lances un long traitement sur un serveur via SSH. Tu veux fermer ta connexion, puis t'y **rattacher** plus tard pour retrouver l'affichage et interagir avec le programme. Quel outil utiliser ?",
+      "answer": "`tmux`",
+      "wrong": [
+        "`nohup`",
+        "`cron`",
+        "`watch`"
+      ],
+      "explanation": "Un multiplexeur de terminal comme `tmux` (ou son aîné `screen`) fait vivre les sessions côté serveur : on s'en détache avec `Ctrl-b` puis `d`, on ferme SSH, et `tmux attach` rattache plus tard la session telle qu'on l'avait laissée. `nohup` empêche bien l'arrêt du programme à la déconnexion, mais ne permet pas de s'y rattacher : on peut seulement lire sa sortie dans `nohup.out`. `watch` relance une commande à intervalle régulier.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que devient le fichier `rapport.txt` après `gzip rapport.txt` ?",
+      "answer": "Il est remplacé par `rapport.txt.gz`",
+      "wrong": [
+        "Il est conservé, et `rapport.txt.gz` est créé à côté",
+        "Il est renommé en `rapport.gz`, sans compression",
+        "Il est archivé avec son dossier dans `rapport.tar.gz`"
+      ],
+      "explanation": "Par défaut, `gzip` compresse le fichier, ajoute l'extension `.gz` et **supprime l'original** ; `gunzip` (ou `gzip -d`) fait l'inverse. Pour garder l'original, on utilise `gzip -k` (*keep*) ou `gzip -c rapport.txt > rapport.txt.gz`. `gzip` compresse un seul fichier à la fois : pour regrouper un dossier entier, on passe par `tar`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la différence entre `systemctl disable` et `systemctl mask` appliqués à un service ?",
+      "answer": "`mask` empêche tout démarrage, même manuel ; `disable` ne retire que le démarrage au boot",
+      "wrong": [
+        "`disable` empêche tout démarrage, même manuel ; `mask` ne retire que le démarrage au boot",
+        "`mask` cache le service dans `systemctl list-units` sans changer son comportement",
+        "`mask` arrête le service immédiatement ; `disable` attend le prochain redémarrage"
+      ],
+      "explanation": "`disable` supprime les liens créés par `enable` : le service ne démarre plus au boot, mais `systemctl start` ou une autre unité qui en dépend peut toujours le lancer. `mask` relie l'unité à `/dev/null` dans `/etc/systemd/system/`, ce qui rend impossible tout démarrage, manuel ou par dépendance, jusqu'à un `systemctl unmask`. Aucune des deux commandes n'arrête un service en cours : on ajoute `--now` pour cela.",
+      "difficulty": 3,
+      "source": "https://www.freedesktop.org/software/systemd/man/latest/systemctl.html"
+    },
+    {
+      "question": "Pourquoi `sudo echo \"10.0.0.5 db\" >> /etc/hosts` échoue-t-il avec « Permission denied » ?",
+      "answer": "La redirection `>>` est faite par ton shell, qui n'a pas les droits root",
+      "wrong": [
+        "`sudo` ne peut pas lancer `echo`, qui est une commande intégrée",
+        "`/etc/hosts` est protégé en écriture, même pour l'utilisateur root",
+        "`sudo` exige que toute la commande soit placée entre guillemets"
+      ],
+      "explanation": "Le shell traite les redirections **avant** de lancer la commande : c'est ton shell, avec tes droits d'utilisateur, qui tente d'ouvrir `/etc/hosts` en écriture, et seul `echo` reçoit les droits root. Solutions : `echo \"10.0.0.5 db\" | sudo tee -a /etc/hosts`, où c'est `tee`, lancé en root, qui écrit, ou `sudo sh -c 'echo ... >> /etc/hosts'`. `sudo echo` fonctionne par ailleurs très bien : sudo lance alors le programme externe `echo`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans un script bash, que vaut `$?` après `false | true` ? Et si `set -o pipefail` a été activé avant ?",
+      "answer": "`0`, puis `1` avec `pipefail`",
+      "wrong": [
+        "`1`, puis `0` avec `pipefail`",
+        "`1` dans les deux cas",
+        "`0` dans les deux cas"
+      ],
+      "explanation": "Par défaut, le code de sortie d'un pipeline est celui de sa **dernière** commande : `true` réussit, donc 0, même si `false` a échoué. Avec `set -o pipefail`, le pipeline renvoie le code de la commande en échec la plus à droite, ici 1. C'est essentiel dans les scripts : sans cette option, `curl ... | tar xz` peut sembler réussir alors que le téléchargement a échoué. Le tableau `PIPESTATUS` donne aussi le code de chaque étape.",
+      "difficulty": 3
+    },
+    {
+      "question": "Le script `args.sh` ci-dessous est lancé avec `./args.sh \"un deux\" trois`. Qu'affiche-t-il ?\n```bash\n#!/bin/bash\nfor a in \"$@\"; do echo \"<$a>\"; done\n```",
+      "answer": "Deux lignes : `<un deux>` et `<trois>`",
+      "wrong": [
+        "Trois lignes : `<un>`, `<deux>` et `<trois>`",
+        "Une ligne : `<un deux trois>`",
+        "Deux lignes : `<un>` et `<deux trois>`"
+      ],
+      "explanation": "`\"$@\"`, avec les guillemets, se développe en autant de mots qu'il y a d'arguments, chacun préservé tel quel, espaces compris : c'est la bonne façon de relayer des arguments. Sans guillemets, `$@` comme `$*` subissent le découpage en mots et donneraient trois lignes. `\"$*\"` colle au contraire tous les arguments en une seule chaîne : `<un deux trois>`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle différence y a-t-il entre `find . -name \"*.log\" -exec rm {} \\;` et la même commande terminée par `{} +` ?",
+      "answer": "Avec `+`, `rm` reçoit de nombreux fichiers par appel au lieu d'un seul",
+      "wrong": [
+        "Avec `+`, `find` demande une confirmation avant chaque suppression",
+        "Avec `+`, la recherche descend aussi dans les sous-dossiers",
+        "Avec `+`, les suppressions sont réparties en parallèle sur les cœurs"
+      ],
+      "explanation": "Avec `\\;`, `find` lance `rm` une fois **par fichier** trouvé : 10 000 fichiers, 10 000 processus. Avec `+`, il regroupe un maximum de noms par appel (`rm a.log b.log c.log ...`), comme le ferait `xargs`, ce qui est bien plus rapide. Le `;` doit être échappé ou mis entre guillemets pour que le shell ne le prenne pas pour un séparateur de commandes. `find` est récursif dans les deux cas, et la confirmation s'obtient avec l'action `-ok`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Le dossier `/sauv` existe. Quelle est la différence entre `rsync -a photos/ /sauv/` et `rsync -a photos /sauv/` ?",
+      "answer": "La 1re copie le contenu de `photos` dans `/sauv`, la 2de crée `/sauv/photos`",
+      "wrong": [
+        "La 1re crée `/sauv/photos`, la 2de copie le contenu de `photos` dans `/sauv`",
+        "Aucune : rsync ignore toujours la barre oblique finale d'un chemin",
+        "La 1re copie récursivement, la 2de seulement les fichiers du 1er niveau"
+      ],
+      "explanation": "Pour la **source**, rsync distingue `photos/` (« le contenu de photos ») et `photos` (« le dossier photos lui-même ») : la seconde forme recrée le dossier dans la destination, d'où `/sauv/photos/...`. La barre finale de la destination ne change rien. Cette subtilité piège souvent, notamment avec `--delete` qui supprime ce qui n'existe pas dans la source. `-a` (archive) inclut la récursivité et conserve permissions, dates et liens symboliques.",
+      "difficulty": 3,
+      "source": "https://man7.org/linux/man-pages/man1/rsync.1.html"
+    },
+    {
+      "question": "Pour ajouter `alice` au groupe `docker` **sans** lui retirer ses autres groupes secondaires, quelle commande utiliser ?",
+      "answer": "`usermod -aG docker alice`",
+      "wrong": [
+        "`usermod -G docker alice`",
+        "`usermod -g docker alice`",
+        "`chgrp docker alice`"
+      ],
+      "explanation": "`-G` fixe la **liste complète** des groupes secondaires : sans `-a` (*append*), `usermod -G docker alice` retirerait alice de tous ses autres groupes secondaires, `sudo` compris, une erreur classique. `-g` change le groupe **principal**, et `chgrp` change le groupe d'un fichier, pas celui d'un utilisateur. Le nouveau groupe ne s'applique qu'à la prochaine connexion d'alice.",
+      "difficulty": 3,
+      "source": "https://man7.org/linux/man-pages/man8/usermod.8.html"
+    },
+    {
+      "question": "Sur un **répertoire**, un utilisateur a le droit `r` mais pas le droit `x`. Que peut-il faire ?",
+      "answer": "Lister les noms des fichiers, mais pas lire leur contenu",
+      "wrong": [
+        "Lire le contenu des fichiers, mais pas lister leurs noms",
+        "Lister les noms et lire les fichiers, mais pas en créer",
+        "Rien du tout : `r` sans `x` ne donne aucun accès"
+      ],
+      "explanation": "Sur un répertoire, `r` permet de lire la liste des noms qu'il contient (`ls`), tandis que `x` permet de le **traverser** : y entrer avec `cd` et accéder aux fichiers et à leurs métadonnées. Avec `r` seul, `ls` affiche les noms, mais `cat dossier/fichier` échoue avec « Permission denied » et `ls -l` ne peut afficher ni tailles ni droits. À l'inverse, `x` sans `r` permet d'ouvrir un fichier dont on connaît le nom exact, sans pouvoir lister le dossier.",
+      "difficulty": 3
     }
   ]
 }
