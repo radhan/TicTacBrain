@@ -8,7 +8,11 @@
     {
       "question": "Sur un marché, la demande d'un produit augmente fortement alors que la quantité offerte reste identique. Que se passe-t-il, toutes choses égales par ailleurs ?",
       "answer": "Son prix a tendance à augmenter",
-      "wrong": ["Son prix a tendance à baisser", "Son prix reste strictement inchangé", "Son prix devient impossible à déterminer"],
+      "wrong": [
+        "Son prix a tendance à baisser",
+        "Son prix reste strictement inchangé",
+        "Son prix devient impossible à déterminer"
+      ],
       "explanation": "C'est la **loi de l'offre et de la demande** : quand la demande grimpe mais que l'offre ne suit pas, les acheteurs se font concurrence pour une quantité limitée et sont prêts à payer davantage, ce qui pousse le prix vers le haut. À l'inverse, une offre abondante face à une demande faible fait baisser le prix.",
       "difficulty": 1,
       "source": "https://fr.wikipedia.org/wiki/Loi_de_l%27offre_et_de_la_demande"
@@ -16,7 +20,11 @@
     {
       "question": "Qu'appelle-t-on l'**inflation** ?",
       "answer": "La hausse générale et durable du niveau des prix",
-      "wrong": ["La hausse du prix d'un seul produit particulier", "La baisse générale et durable du niveau des prix", "L'augmentation de la quantité de biens produits dans un pays"],
+      "wrong": [
+        "La hausse du prix d'un seul produit particulier",
+        "La baisse générale et durable du niveau des prix",
+        "L'augmentation de la quantité de biens produits dans un pays"
+      ],
       "explanation": "L'**inflation** mesure l'augmentation générale et durable des prix de l'ensemble des biens et services, pas la hausse ponctuelle d'un seul produit. Elle réduit la valeur de la monnaie : avec la même somme, on achète progressivement moins de choses. La baisse générale des prix, elle, porte le nom de déflation.",
       "difficulty": 1,
       "source": "https://fr.wikipedia.org/wiki/Inflation"
@@ -24,14 +32,22 @@
     {
       "question": "Que désigne le terme **déflation** ?",
       "answer": "Une baisse générale et durable du niveau des prix",
-      "wrong": ["Un ralentissement de la hausse des prix qui restent orientés à la hausse", "La hausse générale et durable du niveau des prix", "Une réduction volontaire de la masse monétaire par l'État"],
+      "wrong": [
+        "Un ralentissement de la hausse des prix qui restent orientés à la hausse",
+        "La hausse générale et durable du niveau des prix",
+        "Une réduction volontaire de la masse monétaire par l'État"
+      ],
       "explanation": "La **déflation** est l'inverse de l'inflation : les prix baissent de façon générale et durable. Elle peut sembler favorable aux consommateurs, mais elle est redoutée car elle pousse à reporter les achats (« ce sera moins cher demain »), ce qui freine l'activité. Le simple ralentissement de l'inflation, lui, s'appelle la désinflation.",
       "difficulty": 1
     },
     {
       "question": "Que mesure le **PIB** (produit intérieur brut) d'un pays ?",
       "answer": "La valeur des biens et services produits sur son territoire pendant une période donnée",
-      "wrong": ["La somme de l'épargne détenue par ses habitants", "Le total des richesses accumulées dans le pays depuis sa création", "La quantité de monnaie en circulation dans le pays"],
+      "wrong": [
+        "La somme de l'épargne détenue par ses habitants",
+        "Le total des richesses accumulées dans le pays depuis sa création",
+        "La quantité de monnaie en circulation dans le pays"
+      ],
       "explanation": "Le **PIB** additionne la valeur de toute la production de biens et services finaux réalisée sur un territoire au cours d'une période (souvent un an ou un trimestre). C'est un flux, pas un stock : il mesure ce qui a été produit sur la période, pas le patrimoine total accumulé. Sa variation sert d'indicateur principal de la croissance.",
       "difficulty": 1,
       "source": "https://fr.wikipedia.org/wiki/Produit_int%C3%A9rieur_brut"
@@ -39,14 +55,22 @@
     {
       "question": "La **TVA** (taxe sur la valeur ajoutée) est un exemple de quel type d'impôt ?",
       "answer": "Un impôt indirect, payé sur la consommation",
-      "wrong": ["Un impôt direct, assis sur le revenu du contribuable", "Un impôt direct, assis sur le patrimoine", "Une cotisation sociale prélevée sur les salaires"],
+      "wrong": [
+        "Un impôt direct, assis sur le revenu du contribuable",
+        "Un impôt direct, assis sur le patrimoine",
+        "Une cotisation sociale prélevée sur les salaires"
+      ],
       "explanation": "La **TVA** est un impôt **indirect** : elle frappe la consommation et est incluse dans le prix payé par le client, puis reversée par le vendeur à l'État. On ne la paie pas en fonction de ses revenus, contrairement à un impôt direct comme l'impôt sur le revenu que le contribuable verse directement au Trésor.",
       "difficulty": 1
     },
     {
       "question": "Quelle institution est chargée de conduire la politique monétaire de la zone euro ?",
       "answer": "La Banque centrale européenne (BCE)",
-      "wrong": ["La Commission européenne", "Le Fonds monétaire international (FMI)", "La Banque centrale de chaque État membre, de façon indépendante"],
+      "wrong": [
+        "La Commission européenne",
+        "Le Fonds monétaire international (FMI)",
+        "La Banque centrale de chaque État membre, de façon indépendante"
+      ],
       "explanation": "La **BCE**, basée à Francfort, pilote la politique monétaire des pays ayant adopté l'euro : elle fixe les taux directeurs et veille à la stabilité des prix. Les banques centrales nationales existent toujours mais agissent dans le cadre de l'Eurosystème ; elles ne décident pas seules de la politique monétaire.",
       "difficulty": 1,
       "source": "https://www.ecb.europa.eu/ecb/html/index.fr.html"
@@ -54,21 +78,33 @@
     {
       "question": "Qu'appelle-t-on le **pouvoir d'achat** d'un revenu ?",
       "answer": "La quantité de biens et services que ce revenu permet d'acheter",
-      "wrong": ["Le montant total de ce revenu exprimé en euros", "La part de ce revenu que l'on choisit d'épargner", "La capacité à emprunter de l'argent auprès d'une banque"],
+      "wrong": [
+        "Le montant total de ce revenu exprimé en euros",
+        "La part de ce revenu que l'on choisit d'épargner",
+        "La capacité à emprunter de l'argent auprès d'une banque"
+      ],
       "explanation": "Le **pouvoir d'achat** relie le revenu aux prix : c'est ce que l'on peut concrètement se procurer avec son argent. Un salaire qui augmente de 2 % alors que les prix montent de 3 % se traduit par une perte de pouvoir d'achat, car la même somme achète moins de choses. Seul le montant nominal, lui, ignore l'évolution des prix.",
       "difficulty": 1
     },
     {
       "question": "Au sens statistique habituel, qui est comptabilisé comme **chômeur** ?",
       "answer": "Une personne sans emploi, disponible pour travailler et qui recherche activement un travail",
-      "wrong": ["Toute personne sans emploi, qu'elle en cherche un ou non", "Toute personne en âge de travailler mais qui n'exerce aucune activité", "Une personne qui travaille à temps partiel sans le vouloir"],
+      "wrong": [
+        "Toute personne sans emploi, qu'elle en cherche un ou non",
+        "Toute personne en âge de travailler mais qui n'exerce aucune activité",
+        "Une personne qui travaille à temps partiel sans le vouloir"
+      ],
       "explanation": "Au sens du Bureau international du travail (BIT), le **chômage** suppose trois conditions réunies : être sans emploi, être disponible pour en prendre un, et rechercher activement du travail. Une personne sans emploi qui ne cherche pas (par exemple un étudiant ou un retraité) est dite « inactive », pas au chômage.",
       "difficulty": 1
     },
     {
       "question": "Quelle est la différence entre **microéconomie** et **macroéconomie** ?",
       "answer": "La microéconomie étudie les agents individuels, la macroéconomie l'économie dans son ensemble",
-      "wrong": ["La microéconomie concerne les petites entreprises, la macroéconomie les grandes", "La microéconomie étudie le passé, la macroéconomie prévoit l'avenir", "La microéconomie porte sur un pays, la macroéconomie sur le monde entier"],
+      "wrong": [
+        "La microéconomie concerne les petites entreprises, la macroéconomie les grandes",
+        "La microéconomie étudie le passé, la macroéconomie prévoit l'avenir",
+        "La microéconomie porte sur un pays, la macroéconomie sur le monde entier"
+      ],
       "explanation": "La **microéconomie** analyse les décisions d'agents individuels (consommateurs, entreprises) et les marchés particuliers. La **macroéconomie** raisonne au niveau global : PIB, inflation, chômage, croissance d'un pays. La distinction tient à l'échelle d'analyse, pas à la taille des entreprises ni au pays concerné.",
       "difficulty": 1,
       "source": "https://fr.wikipedia.org/wiki/Microéconomie"
@@ -76,7 +112,11 @@
     {
       "question": "Selon la définition dite « technique » couramment utilisée, à partir de quand parle-t-on de **récession** ?",
       "answer": "Après deux trimestres consécutifs de recul du PIB",
-      "wrong": ["Dès qu'un seul trimestre affiche un recul du PIB", "Lorsque le chômage dépasse 10 % de la population active", "Lorsque l'inflation devient négative pendant un an"],
+      "wrong": [
+        "Dès qu'un seul trimestre affiche un recul du PIB",
+        "Lorsque le chômage dépasse 10 % de la population active",
+        "Lorsque l'inflation devient négative pendant un an"
+      ],
       "explanation": "La définition **technique** la plus répandue retient deux trimestres consécutifs de baisse du PIB réel. C'est une convention pratique : d'autres approches tiennent compte de l'emploi, de la production industrielle ou des revenus. Une récession traduit un recul de l'activité, à ne pas confondre avec la déflation, qui concerne les prix.",
       "difficulty": 2,
       "source": "https://fr.wikipedia.org/wiki/R%C3%A9cession_(%C3%A9conomie)"
@@ -84,28 +124,44 @@
     {
       "question": "Une banque centrale **augmente** ses taux directeurs. Quel effet recherche-t-elle généralement ?",
       "answer": "Freiner le crédit et la demande pour ralentir l'inflation",
-      "wrong": ["Stimuler le crédit pour relancer la consommation", "Faire baisser directement le taux de chômage", "Augmenter immédiatement la quantité de monnaie en circulation"],
+      "wrong": [
+        "Stimuler le crédit pour relancer la consommation",
+        "Faire baisser directement le taux de chômage",
+        "Augmenter immédiatement la quantité de monnaie en circulation"
+      ],
       "explanation": "Relever les taux directeurs rend le crédit plus cher : entreprises et ménages empruntent et dépensent moins, ce qui réduit la pression sur les prix et **freine l'inflation**. C'est un resserrement monétaire. À l'inverse, baisser les taux vise à relancer l'activité en rendant l'emprunt meilleur marché.",
       "difficulty": 2
     },
     {
       "question": "Que désigne la **masse monétaire** d'une économie ?",
       "answer": "La quantité totale de monnaie en circulation dans l'économie",
-      "wrong": ["Le poids des réserves d'or détenues par la banque centrale", "La richesse totale produite par le pays en une année", "La valeur de l'ensemble des dettes de l'État"],
+      "wrong": [
+        "Le poids des réserves d'or détenues par la banque centrale",
+        "La richesse totale produite par le pays en une année",
+        "La valeur de l'ensemble des dettes de l'État"
+      ],
       "explanation": "La **masse monétaire** regroupe l'argent disponible pour les transactions : billets et pièces, mais aussi les dépôts sur les comptes. On la découpe en agrégats (M1, M2, M3) selon la liquidité. À ne pas confondre avec le PIB, qui mesure une production, ni avec la dette publique.",
       "difficulty": 2
     },
     {
       "question": "Qu'est-ce qu'un **taux de change** ?",
       "answer": "Le prix d'une monnaie exprimé dans une autre monnaie",
-      "wrong": ["Le taux d'intérêt appliqué aux prêts en devises étrangères", "La commission prélevée par une banque lors d'un virement international", "Le rapport entre les exportations et les importations d'un pays"],
+      "wrong": [
+        "Le taux d'intérêt appliqué aux prêts en devises étrangères",
+        "La commission prélevée par une banque lors d'un virement international",
+        "Le rapport entre les exportations et les importations d'un pays"
+      ],
       "explanation": "Le **taux de change** indique combien d'unités d'une monnaie il faut pour en obtenir une autre (par exemple le nombre de dollars pour un euro). Il varie selon l'offre et la demande de devises. Il ne faut pas le confondre avec les frais bancaires ni avec la balance commerciale.",
       "difficulty": 2
     },
     {
       "question": "Quelle est la différence entre le **déficit public** et la **dette publique** ?",
       "answer": "Le déficit est l'écart négatif d'une année, la dette est le cumul des emprunts passés",
-      "wrong": ["Le déficit concerne l'État, la dette les collectivités locales", "Le déficit est remboursable, la dette ne l'est jamais", "Le déficit se mesure en euros, la dette en pourcentage uniquement"],
+      "wrong": [
+        "Le déficit concerne l'État, la dette les collectivités locales",
+        "Le déficit est remboursable, la dette ne l'est jamais",
+        "Le déficit se mesure en euros, la dette en pourcentage uniquement"
+      ],
       "explanation": "Le **déficit** est un flux : sur une année, les dépenses publiques dépassent les recettes. Pour le combler, l'État emprunte, et ces emprunts s'accumulent d'année en année pour former la **dette**, un stock. Chaque année de déficit vient donc gonfler la dette totale ; un budget en excédent la réduit.",
       "difficulty": 2,
       "source": "https://www.vie-publique.fr/fiches/21918-quest-ce-que-le-deficit-public"
@@ -113,21 +169,33 @@
     {
       "question": "Comment qualifie-t-on un marché où un **seul vendeur** fait face à de nombreux acheteurs ?",
       "answer": "Un monopole",
-      "wrong": ["Un monopsone", "Un oligopole", "Une situation de concurrence pure et parfaite"],
+      "wrong": [
+        "Un monopsone",
+        "Un oligopole",
+        "Une situation de concurrence pure et parfaite"
+      ],
       "explanation": "Un **monopole** désigne un marché dominé par un vendeur unique, qui dispose alors d'un fort pouvoir sur le prix. À ne pas confondre avec le **monopsone** (un seul acheteur face à de nombreux vendeurs) ni avec l'**oligopole** (quelques vendeurs). La concurrence pure et parfaite suppose au contraire une multitude d'acteurs.",
       "difficulty": 2
     },
     {
       "question": "Que désigne un **oligopole** ?",
       "answer": "Un marché dominé par un petit nombre de vendeurs",
-      "wrong": ["Un marché où un seul vendeur est présent", "Un marché avec un seul acheteur et de nombreux vendeurs", "Un marché totalement contrôlé par l'État"],
+      "wrong": [
+        "Un marché où un seul vendeur est présent",
+        "Un marché avec un seul acheteur et de nombreux vendeurs",
+        "Un marché totalement contrôlé par l'État"
+      ],
       "explanation": "Dans un **oligopole**, quelques entreprises se partagent l'essentiel du marché (téléphonie, compagnies aériennes, etc.). Leurs décisions sont interdépendantes : chacune surveille les autres, ce qui peut favoriser des ententes. Un seul vendeur correspond au monopole, un seul acheteur au monopsone.",
       "difficulty": 2
     },
     {
       "question": "Quelle institution conduit la politique monétaire des États-Unis ?",
       "answer": "La Réserve fédérale (Federal Reserve, « Fed »)",
-      "wrong": ["Le département du Trésor américain", "La Banque mondiale", "Le Fonds monétaire international (FMI)"],
+      "wrong": [
+        "Le département du Trésor américain",
+        "La Banque mondiale",
+        "Le Fonds monétaire international (FMI)"
+      ],
       "explanation": "La **Fed** (Federal Reserve System) est la banque centrale des États-Unis : elle fixe les taux directeurs et veille à la stabilité des prix et à l'emploi. Le Trésor, lui, gère le budget et la dette de l'État, tandis que la Banque mondiale et le FMI sont des institutions internationales, pas la banque centrale d'un pays.",
       "difficulty": 2,
       "source": "https://www.federalreserve.gov/aboutthefed.htm"
@@ -135,7 +203,11 @@
     {
       "question": "Qu'appelle-t-on le **coût d'opportunité** d'un choix ?",
       "answer": "La valeur de la meilleure option à laquelle on renonce en faisant ce choix",
-      "wrong": ["La somme d'argent effectivement dépensée pour ce choix", "Le coût total de toutes les options écartées additionnées", "Le risque de perdre de l'argent en se trompant de choix"],
+      "wrong": [
+        "La somme d'argent effectivement dépensée pour ce choix",
+        "Le coût total de toutes les options écartées additionnées",
+        "Le risque de perdre de l'argent en se trompant de choix"
+      ],
       "explanation": "Le **coût d'opportunité** rappelle que choisir, c'est renoncer : il correspond à ce que rapporte la meilleure alternative sacrifiée. Par exemple, passer une soirée à étudier a pour coût d'opportunité ce que cette soirée aurait pu rapporter autrement (travail rémunéré, loisir). Ce n'est ni la dépense directe ni la somme de toutes les options.",
       "difficulty": 2,
       "source": "https://fr.wikipedia.org/wiki/Co%C3%BBt_d%27opportunit%C3%A9"
@@ -143,28 +215,44 @@
     {
       "question": "Face à une crise, une banque centrale mène une politique monétaire dite **expansionniste**. En quoi consiste-t-elle principalement ?",
       "answer": "Baisser les taux d'intérêt pour stimuler le crédit et l'activité",
-      "wrong": ["Augmenter les taux d'intérêt pour attirer les capitaux", "Réduire la masse monétaire pour renforcer la monnaie", "Augmenter les impôts pour financer la relance"],
+      "wrong": [
+        "Augmenter les taux d'intérêt pour attirer les capitaux",
+        "Réduire la masse monétaire pour renforcer la monnaie",
+        "Augmenter les impôts pour financer la relance"
+      ],
       "explanation": "Une politique monétaire **expansionniste** vise à soutenir l'activité : en abaissant les taux directeurs (et parfois en injectant des liquidités), la banque centrale rend le crédit moins cher pour encourager investissement et consommation. Augmenter les impôts relève de la politique budgétaire, menée par l'État, pas de la banque centrale.",
       "difficulty": 2
     },
     {
       "question": "Parmi ces prélèvements, lequel est un **impôt direct** ?",
       "answer": "L'impôt sur le revenu",
-      "wrong": ["La TVA", "Les droits de douane", "La taxe sur les carburants"],
+      "wrong": [
+        "La TVA",
+        "Les droits de douane",
+        "La taxe sur les carburants"
+      ],
       "explanation": "Un **impôt direct** est payé directement par le contribuable en fonction de sa situation (revenu, patrimoine) : l'impôt sur le revenu en est l'exemple type. La TVA, les droits de douane et les taxes sur les carburants sont des impôts **indirects**, intégrés au prix des produits et acquittés lors de la consommation.",
       "difficulty": 2
     },
     {
       "question": "Un panier de biens coûtait 100 € il y a un an et coûte 105 € aujourd'hui. Quel est le taux d'inflation sur cette période ?",
       "answer": "5 %",
-      "wrong": ["0,5 %", "15 %", "105 %"],
+      "wrong": [
+        "0,5 %",
+        "15 %",
+        "105 %"
+      ],
       "explanation": "Le taux d'inflation se calcule ainsi : (prix final − prix initial) ÷ prix initial. Ici (105 − 100) ÷ 100 = 0,05, soit **5 %**. On rapporte toujours la hausse au prix de départ. La valeur 105 % correspondrait au nouveau prix exprimé en pourcentage de l'ancien, pas à la hausse.",
       "difficulty": 2
     },
     {
       "question": "Que décrit le terme **stagflation** ?",
       "answer": "Une inflation élevée accompagnée d'une croissance faible et d'un chômage important",
-      "wrong": ["Une forte croissance accompagnée d'une inflation élevée et d'un chômage faible", "Une baisse des prix combinée à une forte croissance", "Une période de stabilité totale des prix et de l'emploi"],
+      "wrong": [
+        "Une forte croissance accompagnée d'une inflation élevée et d'un chômage faible",
+        "Une baisse des prix combinée à une forte croissance",
+        "Une période de stabilité totale des prix et de l'emploi"
+      ],
       "explanation": "La **stagflation** (stagnation + inflation) décrit une situation déroutante : les prix montent alors que l'économie stagne et que le chômage grimpe. Elle est redoutée car les remèdes classiques s'opposent : lutter contre l'inflation en relevant les taux risque d'aggraver le chômage, et inversement.",
       "difficulty": 3,
       "source": "https://fr.wikipedia.org/wiki/Stagflation"
@@ -172,7 +260,11 @@
     {
       "question": "Dans l'esprit du **keynésianisme**, comment relancer une économie en récession ?",
       "answer": "En soutenant la demande, notamment par la dépense publique",
-      "wrong": ["En réduisant la dépense publique pour équilibrer le budget", "En laissant le marché se corriger sans intervention de l'État", "En augmentant les taux d'intérêt pour attirer l'épargne"],
+      "wrong": [
+        "En réduisant la dépense publique pour équilibrer le budget",
+        "En laissant le marché se corriger sans intervention de l'État",
+        "En augmentant les taux d'intérêt pour attirer l'épargne"
+      ],
       "explanation": "Pour **Keynes**, lors d'une crise, la demande insuffisante entretient le chômage ; l'État doit alors la soutenir, quitte à creuser temporairement le déficit, pour relancer l'activité. Cette approche s'oppose à la vision classique selon laquelle le marché se rééquilibre seul sans intervention publique.",
       "difficulty": 3,
       "source": "https://fr.wikipedia.org/wiki/Keyn%C3%A9sianisme"
@@ -180,14 +272,22 @@
     {
       "question": "Quelle idée résume le mieux la pensée **libérale classique** en économie ?",
       "answer": "Le marché tend à s'autoréguler et l'intervention de l'État doit rester limitée",
-      "wrong": ["L'État doit planifier la production et fixer les prix", "La dépense publique est le principal moteur de la croissance", "Les crises se résolvent uniquement par la relance budgétaire"],
+      "wrong": [
+        "L'État doit planifier la production et fixer les prix",
+        "La dépense publique est le principal moteur de la croissance",
+        "Les crises se résolvent uniquement par la relance budgétaire"
+      ],
       "explanation": "Le **libéralisme classique** (Smith, Ricardo) postule que, laissés libres, les marchés s'ajustent d'eux-mêmes grâce aux prix — la fameuse « main invisible » — et qu'un État trop interventionniste nuit à cet équilibre. C'est l'inverse de l'approche keynésienne, qui justifie l'intervention publique pour soutenir la demande.",
       "difficulty": 3
     },
     {
       "question": "Que décrit la **courbe de Phillips** dans sa version d'origine, à court terme ?",
       "answer": "Une relation inverse entre le taux de chômage et le taux d'inflation",
-      "wrong": ["Une relation positive entre le chômage et l'inflation", "Une relation entre le PIB et la dette publique", "L'évolution des prix en fonction du taux de change"],
+      "wrong": [
+        "Une relation positive entre le chômage et l'inflation",
+        "Une relation entre le PIB et la dette publique",
+        "L'évolution des prix en fonction du taux de change"
+      ],
       "explanation": "La **courbe de Phillips** met en évidence, à court terme, un arbitrage : quand le chômage baisse, l'inflation tend à monter, et inversement. Cette relation inverse est toutefois contestée à long terme, et des épisodes comme la stagflation ont montré ses limites, car chômage et inflation peuvent augmenter ensemble.",
       "difficulty": 3,
       "source": "https://fr.wikipedia.org/wiki/Courbe_de_Phillips"
@@ -195,21 +295,33 @@
     {
       "question": "En quoi consistent les **opérations d'open market** d'une banque centrale ?",
       "answer": "Acheter ou vendre des titres sur le marché pour régler la liquidité et influencer les taux",
-      "wrong": ["Prêter directement de l'argent aux particuliers pour relancer la consommation", "Fixer par décret le prix des biens et services de consommation courante", "Imprimer des billets neufs pour rembourser directement la dette de l'État"],
+      "wrong": [
+        "Prêter directement de l'argent aux particuliers pour relancer la consommation",
+        "Fixer par décret le prix des biens et services de consommation courante",
+        "Imprimer des billets neufs pour rembourser directement la dette de l'État"
+      ],
       "explanation": "Via l'**open market**, la banque centrale achète ou vend des titres (souvent des obligations d'État) aux banques. En achetant, elle injecte des liquidités et pousse les taux à la baisse ; en vendant, elle retire des liquidités. C'est un outil clé de la politique monétaire, distinct du financement direct de l'État.",
       "difficulty": 3
     },
     {
       "question": "Quels effets attend-on généralement d'une **dévaluation** de la monnaie nationale ?",
       "answer": "Les exportations deviennent plus compétitives et les importations plus chères",
-      "wrong": ["Les exportations et les importations deviennent toutes deux moins chères", "Les importations deviennent plus compétitives et les exportations plus chères", "Le pouvoir d'achat intérieur augmente immédiatement"],
+      "wrong": [
+        "Les exportations et les importations deviennent toutes deux moins chères",
+        "Les importations deviennent plus compétitives et les exportations plus chères",
+        "Le pouvoir d'achat intérieur augmente immédiatement"
+      ],
       "explanation": "Une **dévaluation** abaisse la valeur de la monnaie face aux autres devises. Les produits nationaux coûtent alors moins cher pour l'étranger (exportations dopées), tandis que les produits importés deviennent plus onéreux. Cet effet peut soutenir l'industrie nationale, mais renchérit les biens importés et peut alimenter l'inflation.",
       "difficulty": 3
     },
     {
       "question": "La demande d'un bien est dite **inélastique** par rapport au prix. Qu'est-ce que cela signifie ?",
       "answer": "La quantité demandée varie peu quand le prix change",
-      "wrong": ["La quantité demandée varie fortement quand le prix change", "Le prix du bien ne change jamais", "La demande dépend uniquement du revenu, pas du prix"],
+      "wrong": [
+        "La quantité demandée varie fortement quand le prix change",
+        "Le prix du bien ne change jamais",
+        "La demande dépend uniquement du revenu, pas du prix"
+      ],
       "explanation": "L'**élasticité-prix de la demande** mesure la sensibilité de la quantité demandée à une variation de prix. Une demande **inélastique** (élasticité inférieure à 1 en valeur absolue) réagit peu : c'est typique des biens de première nécessité comme le sel ou certains médicaments, que l'on continue d'acheter même si leur prix monte.",
       "difficulty": 3,
       "source": "https://fr.wikipedia.org/wiki/%C3%89lasticit%C3%A9_(%C3%A9conomie)"
@@ -217,17 +329,296 @@
     {
       "question": "Sur un an, un salaire augmente de 2 % tandis que les prix augmentent de 3 %. Qu'arrive-t-il au pouvoir d'achat ?",
       "answer": "Il diminue, car les prix montent plus vite que le salaire",
-      "wrong": ["Il augmente de 2 %, au rythme du salaire", "Il augmente de 1 %, soit la somme des deux hausses", "Il reste stable, les deux hausses se compensant exactement"],
+      "wrong": [
+        "Il augmente de 2 %, au rythme du salaire",
+        "Il augmente de 1 %, soit la somme des deux hausses",
+        "Il reste stable, les deux hausses se compensant exactement"
+      ],
       "explanation": "Le pouvoir d'achat dépend du revenu rapporté aux prix. Si le salaire progresse de 2 % mais que les prix montent de 3 %, la hausse des revenus ne suffit pas à suivre celle des prix : on peut acheter un peu moins qu'avant (environ 1 % de moins). Le pouvoir d'achat **baisse** donc, même si le salaire nominal a augmenté.",
       "difficulty": 3
     },
     {
       "question": "Quelle est la différence entre le **PIB nominal** et le **PIB réel** ?",
       "answer": "Le PIB nominal est mesuré aux prix courants, le PIB réel corrige l'effet de l'inflation",
-      "wrong": ["Le PIB nominal inclut les services, le PIB réel seulement les biens matériels", "Le PIB nominal concerne le secteur privé, le PIB réel le secteur public", "Le PIB nominal est une estimation, le PIB réel un chiffre définitif"],
+      "wrong": [
+        "Le PIB nominal inclut les services, le PIB réel seulement les biens matériels",
+        "Le PIB nominal concerne le secteur privé, le PIB réel le secteur public",
+        "Le PIB nominal est une estimation, le PIB réel un chiffre définitif"
+      ],
       "explanation": "Le **PIB nominal** évalue la production aux prix de l'année en cours ; il peut donc augmenter simplement parce que les prix montent. Le **PIB réel** utilise des prix constants (année de référence) pour neutraliser l'inflation et mesurer la vraie variation des volumes produits. C'est le PIB réel qui sert à juger la croissance.",
       "difficulty": 3,
       "source": "https://fr.wikipedia.org/wiki/Produit_int%C3%A9rieur_brut"
+    },
+    {
+      "question": "Selon la **loi de l'offre**, comment réagissent en général les producteurs quand le prix de vente de leur produit augmente ?",
+      "answer": "Ils proposent une plus grande quantité à la vente",
+      "wrong": [
+        "Ils réduisent la quantité proposée à la vente",
+        "Ils gardent exactement la même quantité proposée",
+        "Ils baissent leur prix pour attirer plus d'acheteurs"
+      ],
+      "explanation": "La **loi de l'offre** dit qu'un prix plus élevé rend la production plus rentable : les entreprises déjà présentes produisent davantage et de nouveaux producteurs peuvent entrer sur le marché. C'est pourquoi la courbe d'offre est croissante (elle monte de gauche à droite), à l'inverse de la courbe de demande, qui est décroissante.",
+      "difficulty": 1
+    },
+    {
+      "question": "Sur un graphique offre-demande, que représente le point où les deux courbes se croisent ?",
+      "answer": "Le prix et la quantité d'équilibre du marché",
+      "wrong": [
+        "Le prix maximal autorisé par l'État",
+        "Le coût de production le plus bas possible",
+        "Le bénéfice maximal des entreprises"
+      ],
+      "explanation": "À l'intersection des courbes, la quantité que les vendeurs veulent vendre est égale à celle que les acheteurs veulent acheter : c'est l'**équilibre du marché**. Au-dessus de ce prix, l'offre dépasse la demande (excédent) ; en dessous, la demande dépasse l'offre (pénurie). Dans les deux cas, la concurrence pousse le prix à revenir vers l'équilibre.",
+      "difficulty": 1
+    },
+    {
+      "question": "L'État impose un **prix plafond** nettement inférieur au prix d'équilibre d'un bien. Quelle conséquence la théorie économique prévoit-elle ?",
+      "answer": "Une pénurie : la demande dépasse l'offre",
+      "wrong": [
+        "Un excédent : l'offre dépasse la demande",
+        "Un retour automatique au prix d'équilibre",
+        "Une hausse de la quantité produite"
+      ],
+      "explanation": "À un prix maintenu artificiellement bas, davantage de gens veulent acheter, mais les producteurs, moins bien rémunérés, offrent moins : la quantité demandée dépasse la quantité offerte, d'où une **pénurie** (files d'attente, rationnement, marché noir). L'exemple classique est le contrôle strict des loyers, souvent accusé de réduire l'offre de logements à louer. Un **prix plancher** fixé au-dessus de l'équilibre produit l'effet inverse : un excédent.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Prix_plafond"
+    },
+    {
+      "question": "Le prix du café augmente fortement. Toutes choses égales par ailleurs, qu'arrive-t-il en général à la demande de **thé**, un bien substituable ?",
+      "answer": "Elle augmente, car des consommateurs se reportent sur le thé",
+      "wrong": [
+        "Elle baisse, car le thé suit toujours le prix du café",
+        "Elle reste inchangée, les deux marchés étant indépendants",
+        "Elle baisse, car on boit moins de boissons chaudes"
+      ],
+      "explanation": "Deux biens sont **substituables** lorsqu'ils satisfont le même besoin : si l'un devient plus cher, une partie des consommateurs se tourne vers l'autre, dont la demande augmente. C'est l'inverse pour des biens **complémentaires**, consommés ensemble (comme une imprimante et ses cartouches) : la hausse du prix de l'un réduit la demande de l'autre.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quand le revenu des ménages augmente, la demande de certains produits bon marché (pâtes premier prix, trajets en car…) **diminue**. Comment appelle-t-on ces biens ?",
+      "answer": "Des biens inférieurs",
+      "wrong": [
+        "Des biens normaux",
+        "Des biens de luxe",
+        "Des biens collectifs"
+      ],
+      "explanation": "Un **bien inférieur** est un bien dont la demande baisse quand le revenu augmente : les ménages plus aisés le remplacent par une version jugée de meilleure qualité. À l'inverse, la demande d'un **bien normal** progresse avec le revenu, et celle d'un **bien de luxe** progresse même plus vite que le revenu (élasticité-revenu supérieure à 1).",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Bien_inf%C3%A9rieur"
+    },
+    {
+      "question": "Qu'a de paradoxal un **bien de Giffen** ?",
+      "answer": "Sa demande augmente quand son prix augmente",
+      "wrong": [
+        "Son prix baisse quand sa demande augmente",
+        "Sa demande ne dépend pas du tout de son prix",
+        "Son offre diminue quand son prix augmente"
+      ],
+      "explanation": "Un **bien de Giffen** est un produit de première nécessité très bon marché qui pèse lourd dans le budget de ménages pauvres. Si son prix monte, ils s'appauvrissent au point de renoncer aux aliments plus chers et achètent… encore plus de ce bien de base. On cite souvent la pomme de terre en Irlande au XIXe siècle, exemple d'ailleurs débattu. Il ne faut pas le confondre avec le **bien de Veblen**, dont la demande augmente avec le prix par effet d'ostentation.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Bien_de_Giffen"
+    },
+    {
+      "question": "Le prix d'un bien augmente de **10 %** et la quantité demandée baisse de **20 %**. Que vaut l'**élasticité-prix** de la demande, et comment la qualifier ?",
+      "answer": "−2 : la demande est élastique",
+      "wrong": [
+        "−0,5 : la demande est inélastique",
+        "−2 : la demande est inélastique",
+        "−0,5 : la demande est élastique"
+      ],
+      "explanation": "L'élasticité-prix se calcule en divisant la variation en pourcentage de la quantité demandée par celle du prix : −20 % / +10 % = **−2**. En valeur absolue, elle dépasse 1 : la quantité réagit plus que proportionnellement au prix, la demande est donc **élastique**. Dans ce cas, augmenter le prix fait baisser la recette du vendeur : 1,10 × 0,80 = 0,88, soit 12 % de chiffre d'affaires en moins.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/%C3%89lasticit%C3%A9_(%C3%A9conomie)"
+    },
+    {
+      "question": "Une usine rejette des fumées qui salissent le linge des riverains, sans les indemniser. Comment les économistes qualifient-ils ce phénomène ?",
+      "answer": "Une externalité négative",
+      "wrong": [
+        "Une asymétrie d'information",
+        "Un coût d'opportunité",
+        "Un effet d'aubaine"
+      ],
+      "explanation": "Il y a **externalité** quand l'activité d'un agent affecte le bien-être d'autres agents sans que cela passe par un prix. Ici, le coût de la pollution est supporté par les riverains et non par l'usine : il n'entre pas dans son calcul, si bien qu'elle a tendance à trop produire du point de vue de la collectivité. Une externalité peut aussi être positive, comme l'apiculteur dont les abeilles pollinisent gratuitement les vergers voisins.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Externalit%C3%A9"
+    },
+    {
+      "question": "Pour corriger une pollution, l'économiste **Arthur Pigou** a proposé dès 1920 un instrument qui porte aujourd'hui son nom. Lequel ?",
+      "answer": "Une taxe égale au coût du dommage imposé aux tiers",
+      "wrong": [
+        "Une subvention versée aux entreprises les plus polluantes",
+        "Un plafond de prix sur les produits polluants",
+        "Une interdiction totale de toute production polluante"
+      ],
+      "explanation": "La **taxe pigouvienne** fait payer au pollueur le coût qu'il impose aux autres : elle « internalise » l'externalité, de sorte que le prix reflète le vrai coût social de la production. C'est le fondement du principe pollueur-payeur et des taxes carbone. Les marchés de quotas d'émission, comme le système européen d'échange de quotas de CO2, poursuivent le même but par une autre voie, en fixant une quantité plutôt qu'un prix.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Taxe_pigouvienne"
+    },
+    {
+      "question": "En économie, quelles sont les deux caractéristiques d'un **bien public** pur, comme l'éclairage des rues ou la défense nationale ?",
+      "answer": "La non-rivalité et la non-exclusion",
+      "wrong": [
+        "La gratuité et la production par l'État",
+        "La rareté et une forte valeur marchande",
+        "La rivalité et l'exclusion par le prix"
+      ],
+      "explanation": "Un bien est **non rival** quand sa consommation par une personne ne réduit pas celle des autres, et **non excluable** quand on ne peut empêcher personne d'en profiter. Le mot « public » ne renvoie donc pas au producteur : un bien produit par l'État n'est pas forcément un bien public au sens économique, et inversement. Ces biens sont souvent financés par l'impôt.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Bien_public"
+    },
+    {
+      "question": "Pourquoi le marché peine-t-il à financer un bien public comme un feu d'artifice tiré au-dessus d'une ville ?",
+      "answer": "Chacun peut en profiter sans payer (passager clandestin)",
+      "wrong": [
+        "Son coût dépasse toujours le plaisir qu'il procure",
+        "Les entreprises n'ont pas le droit de le produire",
+        "Presque personne n'a envie de le regarder"
+      ],
+      "explanation": "Un spectateur peut admirer le feu d'artifice qu'il ait payé ou non : chacun a donc intérêt à laisser les autres financer, c'est le comportement de **passager clandestin** (free rider), analysé notamment par Mancur Olson. Si tout le monde raisonne ainsi, le bien n'est pas produit alors que tous l'apprécient. C'est un argument classique en faveur d'un financement collectif par l'impôt.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Passager_clandestin_(%C3%A9conomie)"
+    },
+    {
+      "question": "Le premier verre d'eau après un effort procure une grande satisfaction, le cinquième beaucoup moins. Quel principe économique cela illustre-t-il ?",
+      "answer": "L'utilité marginale décroissante",
+      "wrong": [
+        "Les rendements d'échelle croissants",
+        "La loi de l'offre",
+        "L'élasticité-revenu de la demande"
+      ],
+      "explanation": "L'**utilité marginale** est la satisfaction supplémentaire apportée par une unité de plus d'un bien. Elle tend à diminuer à mesure que l'on consomme : chaque verre compte moins que le précédent. Ce principe, au cœur de la révolution marginaliste des années 1870 (Jevons, Menger, Walras), explique pourquoi on n'est prêt à payer des unités supplémentaires qu'à un prix plus bas.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Utilit%C3%A9_marginale"
+    },
+    {
+      "question": "En concurrence pure et parfaite, jusqu'à quel niveau une entreprise qui maximise son profit pousse-t-elle sa production ?",
+      "answer": "Jusqu'à ce que son coût marginal égale le prix de marché",
+      "wrong": [
+        "Jusqu'à ce que ses coûts fixes soient entièrement amortis",
+        "Jusqu'à épuisement de toute la demande du marché",
+        "Jusqu'à ce que son chiffre d'affaires soit maximal"
+      ],
+      "explanation": "Une entreprise « preneuse de prix » ne peut pas influencer le prix : chaque unité supplémentaire lui rapporte exactement ce prix. Tant que produire une unité de plus coûte moins que le prix (**coût marginal** inférieur au prix), son profit augmente ; au-delà, il diminue. Le profit est donc maximal quand **prix = coût marginal**.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Co%C3%BBt_marginal"
+    },
+    {
+      "question": "Une entreprise double sa production et voit son **coût de revient unitaire** baisser. De quel phénomène s'agit-il ?",
+      "answer": "D'économies d'échelle",
+      "wrong": [
+        "D'une inflation par les coûts",
+        "D'une déséconomie d'échelle",
+        "D'un rendement marginal décroissant"
+      ],
+      "explanation": "On parle d'**économies d'échelle** quand le coût moyen de production diminue à mesure que les volumes augmentent : les coûts fixes (usine, recherche, publicité) sont répartis sur plus d'unités et l'entreprise peut négocier de meilleurs prix d'achat. Au-delà d'une certaine taille, la complexité de l'organisation peut au contraire faire remonter le coût unitaire : ce sont les **déséconomies d'échelle**.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/%C3%89conomie_d%27%C3%A9chelle"
+    },
+    {
+      "question": "Quel économiste a popularisé l'image de la « **main invisible** » du marché ?",
+      "answer": "Adam Smith",
+      "wrong": [
+        "John Maynard Keynes",
+        "Karl Marx",
+        "Milton Friedman"
+      ],
+      "explanation": "Dans **La Richesse des nations** (1776), l'Écossais **Adam Smith** explique qu'en poursuivant son propre intérêt, chacun est conduit « par une main invisible » à servir l'intérêt général. L'expression, qui n'apparaît que rarement dans son œuvre, est devenue le symbole de l'idée selon laquelle le marché coordonne spontanément les décisions individuelles.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Main_invisible"
+    },
+    {
+      "question": "Dans son article sur le **marché des voitures d'occasion** (« The Market for Lemons », 1970), quel phénomène George Akerlof met-il en évidence ?",
+      "answer": "La sélection adverse, qui chasse les bons véhicules du marché",
+      "wrong": [
+        "L'aléa moral, qui pousse les conducteurs à rouler plus vite",
+        "La concurrence parfaite entre vendeurs particuliers",
+        "L'effet de réseau, qui renforce les plus gros vendeurs"
+      ],
+      "explanation": "Le vendeur connaît l'état réel de la voiture, l'acheteur non : c'est une **asymétrie d'information**. Faute de pouvoir distinguer les bonnes voitures des « lemons » (les tacots), l'acheteur ne propose qu'un prix moyen ; les propriétaires de bonnes voitures, mal payés, se retirent, et la qualité moyenne baisse encore. Ce mécanisme de **sélection adverse** a valu à Akerlof le prix Nobel 2001. L'aléa moral, lui, désigne un changement de comportement après la signature d'un contrat.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/S%C3%A9lection_adverse"
+    },
+    {
+      "question": "Une fois bien assuré contre le vol, un cycliste prend moins la peine d'attacher son vélo. Comment les économistes nomment-ils ce comportement ?",
+      "answer": "L'aléa moral",
+      "wrong": [
+        "La sélection adverse",
+        "L'effet d'éviction",
+        "L'illusion monétaire"
+      ],
+      "explanation": "L'**aléa moral** apparaît quand une partie, protégée par un contrat, modifie son comportement d'une façon que l'autre partie ne peut pas observer : l'assuré devient moins prudent car il ne supporte plus tout le coût d'un sinistre. Les franchises servent justement à le limiter. La sélection adverse, elle, joue **avant** la signature du contrat : ce sont surtout les plus exposés au risque qui cherchent à s'assurer.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Al%C3%A9a_moral"
+    },
+    {
+      "question": "Comment appelle-t-on une entente entre entreprises concurrentes pour fixer ensemble leurs prix ou leurs quantités produites ?",
+      "answer": "Un cartel",
+      "wrong": [
+        "Un monopsone",
+        "Un conglomérat",
+        "Une holding"
+      ],
+      "explanation": "Un **cartel** est une entente par laquelle des concurrents coordonnent leurs prix, se répartissent les marchés ou limitent leur production pour se comporter collectivement comme un monopole. Entre entreprises, ces pratiques sont interdites par le droit de la concurrence (en France, l'Autorité de la concurrence les sanctionne). L'**OPEP**, qui réunit des États producteurs de pétrole, est souvent décrite comme un cartel.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Cartel_(%C3%A9conomie)"
+    },
+    {
+      "question": "Pourquoi le réseau de distribution d'eau d'une ville est-il souvent cité comme exemple de **monopole naturel** ?",
+      "answer": "Un seul réseau coûte moins cher que plusieurs réseaux concurrents",
+      "wrong": [
+        "La loi interdit toute concurrence dans la distribution de l'eau",
+        "L'eau étant une ressource naturelle, elle n'a pas de prix",
+        "Les consommateurs refusent par principe de changer de fournisseur"
+      ],
+      "explanation": "Il y a **monopole naturel** quand les coûts fixes (canalisations, voies ferrées, lignes électriques) sont si lourds qu'une seule entreprise peut servir tout le marché à un coût moyen plus bas que plusieurs concurrents. Dupliquer les réseaux serait un gaspillage. C'est pourquoi ces activités sont souvent confiées à un opérateur unique, encadré par une régulation publique des tarifs ou de l'accès au réseau.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Monopole_naturel"
+    },
+    {
+      "question": "Quel problème fondamental la science économique cherche-t-elle à résoudre ?",
+      "answer": "Répartir des ressources rares entre des besoins illimités",
+      "wrong": [
+        "Fixer le prix officiel de chaque bien et service",
+        "Maximiser la quantité de monnaie en circulation",
+        "Supprimer définitivement toute forme de concurrence"
+      ],
+      "explanation": "L'économie part du constat de la **rareté** : le temps, le travail, les matières premières ou le capital sont limités, alors que les besoins semblent sans fin. Il faut donc choisir ce que l'on produit, comment et pour qui. Lionel Robbins a ainsi défini l'économie (1932) comme la science qui étudie le comportement humain face à des moyens rares ayant des usages alternatifs.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans le circuit économique, quel agent a pour fonction principale de **produire** des biens et services marchands ?",
+      "answer": "Les entreprises",
+      "wrong": [
+        "Les ménages",
+        "Les administrations publiques",
+        "La banque centrale"
+      ],
+      "explanation": "En comptabilité nationale, la fonction principale des **sociétés non financières** (les entreprises) est de produire des biens et services marchands, c'est-à-dire vendus à un prix qui couvre l'essentiel de leur coût. Les **ménages** consomment et fournissent leur travail, tandis que les **administrations publiques** produisent surtout des services non marchands (éducation, justice…) financés par les prélèvements obligatoires.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quel secteur d'activité appartiennent une banque, un hôpital ou un restaurant ?",
+      "answer": "Le secteur tertiaire",
+      "wrong": [
+        "Le secteur primaire",
+        "Le secteur secondaire",
+        "Le secteur informel"
+      ],
+      "explanation": "Selon la classification popularisée par Colin Clark (et par Jean Fourastié en France), le secteur **primaire** exploite les ressources naturelles (agriculture, pêche, sylviculture), le **secondaire** transforme les matières (industrie, construction) et le **tertiaire** regroupe les services. Dans les pays développés, le tertiaire concentre aujourd'hui la grande majorité des emplois.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Secteur_tertiaire"
+    },
+    {
+      "question": "Un brevet, des coûts d'installation très élevés ou une licence obligatoire empêchent de nouveaux concurrents d'arriver sur un marché. Comment appelle-t-on ces obstacles ?",
+      "answer": "Des barrières à l'entrée",
+      "wrong": [
+        "Des barrières non tarifaires",
+        "Des droits de douane",
+        "Des coûts d'opportunité"
+      ],
+      "explanation": "Les **barrières à l'entrée** protègent les entreprises installées : obstacles légaux (brevets, licences, autorisations), techniques ou financiers (investissement initial énorme, accès aux réseaux de distribution), voire stratégiques (guerre des prix contre les nouveaux venus). Plus elles sont fortes, plus le marché tend vers l'oligopole ou le monopole. Les barrières non tarifaires et les droits de douane, eux, visent les importations dans le commerce international.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Barri%C3%A8re_%C3%A0_l%27entr%C3%A9e"
     }
   ]
 }
