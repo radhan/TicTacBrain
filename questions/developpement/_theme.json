@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schemas/theme.schema.json",
+  "name": "Développement",
+  "icon": "💻",
+  "description": "Langages, cloud, outils et bonnes pratiques du dev.",
+  "color": "#6366f1",
+  "order": 1
+}

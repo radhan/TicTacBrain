@@ -1,0 +1,207 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Football",
+  "icon": "⚽",
+  "description": "Lois du jeu, Coupes du monde, Ballon d'Or, Ligue des champions et tactique : le ballon rond en questions.",
+  "order": 4,
+  "questions": [
+    {
+      "question": "Quelle est la durée réglementaire d'un match de football, hors temps additionnel ?",
+      "answer": "90 minutes (2 × 45 min)",
+      "wrong": ["80 minutes (2 × 40 min)", "100 minutes (2 × 50 min)", "60 minutes (3 × 20 min)"],
+      "explanation": "Un match se joue en deux périodes de 45 minutes, séparées d'une pause qui ne doit pas dépasser 15 minutes. L'arbitre ajoute du temps additionnel pour compenser les arrêts de jeu. En phase à élimination directe, une égalité peut mener à une prolongation de 2 × 15 minutes, puis aux tirs au but.",
+      "difficulty": 1,
+      "source": "https://www.theifab.com/laws/latest/the-duration-of-the-match/"
+    },
+    {
+      "question": "À quelle distance de la ligne de but se trouve le point de penalty ?",
+      "answer": "11 mètres",
+      "wrong": ["9,15 mètres", "13 mètres", "16,5 mètres"],
+      "explanation": "Le point de penalty est situé à **11 m** (12 yards) de la ligne de but, à égale distance des deux poteaux. Ne pas confondre avec les 16,5 m, profondeur de la surface de réparation, ni avec les 9,15 m, distance minimale que doivent respecter les adversaires lors d'un coup franc.",
+      "difficulty": 1,
+      "source": "https://www.theifab.com/laws/latest/the-field-of-play/"
+    },
+    {
+      "question": "Combien de buts un joueur doit-il marquer dans un même match pour réussir un « coup du chapeau » ?",
+      "answer": "3",
+      "wrong": ["2", "4", "5"],
+      "explanation": "Le coup du chapeau, traduction de l'anglais « hat-trick », désigne un **triplé**. L'expression vient du cricket : au XIXᵉ siècle, un lanceur qui éliminait trois batteurs sur trois balles consécutives pouvait se voir offrir un chapeau. Quand les trois buts sont marqués du pied droit, du pied gauche et de la tête, on parle de coup du chapeau « parfait ».",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Hat-trick"
+    },
+    {
+      "question": "Quel pays a remporté la première Coupe du monde, en 1930 ?",
+      "answer": "L'Uruguay",
+      "wrong": ["L'Argentine", "Le Brésil", "L'Italie"],
+      "explanation": "Pays organisateur, l'Uruguay bat l'Argentine 4-2 en finale à Montevideo. Seules treize équipes participaient à cette première édition. Le tout premier but de l'histoire de la Coupe du monde a été marqué par le Français Lucien Laurent, lors d'un France-Mexique.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Coupe_du_monde_de_football_1930"
+    },
+    {
+      "question": "En quelle année l'équipe de France a-t-elle remporté sa première Coupe du monde ?",
+      "answer": "1998",
+      "wrong": ["1958", "1984", "2006"],
+      "explanation": "Le 12 juillet 1998, au Stade de France, les Bleus battent le Brésil 3-0 grâce à un doublé de la tête de Zinédine Zidane et à un but d'Emmanuel Petit. Vingt ans plus tard, ils décrochent une deuxième étoile en Russie (4-2 contre la Croatie en 2018). En 1984, c'est le Championnat d'Europe que la France avait remporté.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Coupe_du_monde_de_football_1998"
+    },
+    {
+      "question": "Quelle sélection a remporté la Coupe du monde 2022 au Qatar ?",
+      "answer": "L'Argentine",
+      "wrong": ["La France", "La Croatie", "Le Brésil"],
+      "explanation": "La finale du 18 décembre 2022 s'achève sur un spectaculaire 3-3 après prolongation, et l'Argentine s'impose aux tirs au but (4-2) face à la France. Kylian Mbappé y signe un triplé, mais c'est Lionel Messi qui soulève enfin le trophée. C'est le troisième titre mondial de l'Argentine, après 1978 et 1986.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Coupe_du_monde_de_football_2022"
+    },
+    {
+      "question": "En 1993, quel club devient le premier club français à remporter la Ligue des champions ?",
+      "answer": "L'Olympique de Marseille",
+      "wrong": ["Le Paris Saint-Germain", "L'AS Monaco", "L'AS Saint-Étienne"],
+      "explanation": "Le 26 mai 1993 à Munich, l'OM bat le Milan AC 1-0 grâce à une tête de Basile Boli juste avant la mi-temps. Auparavant, Reims (1956 et 1959) puis Saint-Étienne (1976) avaient échoué en finale de la Coupe des clubs champions. L'OM joue ses matchs à domicile au stade Vélodrome.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/1993_UEFA_Champions_League_final"
+    },
+    {
+      "question": "Quelle sélection européenne est surnommée « les Diables rouges » ?",
+      "answer": "La Belgique",
+      "wrong": ["La Suisse", "Les Pays-Bas", "Le Danemark"],
+      "explanation": "Inspiré de son maillot rouge, le surnom de l'équipe de Belgique date de 1906. Les Diables rouges ont notamment remporté le tournoi olympique de 1920, à domicile, et terminé troisièmes de la Coupe du monde 2018. Les Pays-Bas, eux, sont surnommés les « Oranje ».",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/%C3%89quipe_de_Belgique_de_football"
+    },
+    {
+      "question": "Quel surnom désigne l'équipe nationale d'Argentine ?",
+      "answer": "La Albiceleste",
+      "wrong": ["La Celeste", "La Roja", "La Seleção"],
+      "explanation": "« Albiceleste » signifie « blanc et bleu ciel », les couleurs du maillot argentin à rayures verticales. Attention au piège : « La Celeste » désigne l'Uruguay, « La Roja » l'Espagne (et aussi le Chili), et « La Seleção » le Brésil.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qui a remporté le tout premier Ballon d'Or, décerné par le magazine France Football en 1956 ?",
+      "answer": "Stanley Matthews",
+      "wrong": ["Alfredo Di Stéfano", "Raymond Kopa", "Ferenc Puskás"],
+      "explanation": "L'ailier anglais de Blackpool est sacré à 41 ans, ce qui en fait le plus vieux lauréat de l'histoire. Imaginé par les journalistes Gabriel Hanot et Jacques Ferran, le trophée était alors réservé aux joueurs européens. Alfredo Di Stéfano l'emporte l'année suivante, puis Raymond Kopa devient le premier Français récompensé en 1958.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+    },
+    {
+      "question": "Avant Karim Benzema en 2022, qui était le dernier Français à avoir remporté le Ballon d'Or ?",
+      "answer": "Zinédine Zidane",
+      "wrong": ["Michel Platini", "Thierry Henry", "Franck Ribéry"],
+      "explanation": "Zidane l'avait remporté en 1998, l'année du premier titre mondial des Bleus : il a donc fallu attendre 24 ans pour qu'un autre Français soit sacré. Avant eux, Raymond Kopa (1958), Michel Platini (1983, 1984 et 1985) et Jean-Pierre Papin (1991, alors à l'OM) avaient aussi été récompensés.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+    },
+    {
+      "question": "Jusqu'en 2023 inclus, combien de Ballons d'Or Lionel Messi a-t-il remportés ?",
+      "answer": "8",
+      "wrong": ["5", "6", "7"],
+      "explanation": "Messi a été sacré en 2009, 2010, 2011, 2012, 2015, 2019, 2021 et 2023, un record. Il a reçu le huitième alors qu'il jouait à l'Inter Miami, une première pour un joueur évoluant hors d'Europe. À la même date, son grand rival Cristiano Ronaldo en comptait cinq.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+    },
+    {
+      "question": "À l'issue de la saison 2022-2023, quel club détenait le record de victoires en Coupe des clubs champions / Ligue des champions ?",
+      "answer": "Le Real Madrid",
+      "wrong": ["Le Milan AC", "Le Bayern Munich", "Le Liverpool FC"],
+      "explanation": "Le Real Madrid comptait alors 14 titres, loin devant le Milan AC (7). Le club madrilène a notamment remporté les cinq premières éditions de la compétition, de 1956 à 1960. Il dispute ses matchs à domicile au stade Santiago-Bernabéu.",
+      "difficulty": 2
+    },
+    {
+      "question": "Lors de quelle Coupe du monde l'assistance vidéo à l'arbitrage (VAR) a-t-elle été utilisée pour la première fois ?",
+      "answer": "2018, en Russie",
+      "wrong": ["2010, en Afrique du Sud", "2014, au Brésil", "2022, au Qatar"],
+      "explanation": "L'IFAB a intégré la VAR aux Lois du jeu en mars 2018, et la FIFA l'a aussitôt adoptée pour le Mondial russe. Quatre ans plus tôt, au Brésil, c'est la technologie sur la ligne de but qui avait fait ses débuts en Coupe du monde. En 2022, le Qatar a, lui, vu arriver le hors-jeu semi-automatique.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Video_assistant_referee"
+    },
+    {
+      "question": "Depuis la décision de l'IFAB en 2022, combien de remplacements une équipe peut-elle effectuer au maximum lors d'un match officiel (hors prolongation et commotions) ?",
+      "answer": "5",
+      "wrong": ["3", "4", "6"],
+      "explanation": "La règle des **cinq remplacements**, introduite à titre temporaire en 2020 pendant la pandémie de Covid-19, a été rendue permanente en 2022. Pour limiter les pertes de temps, ils doivent être effectués en trois interruptions de jeu au maximum, sans compter la mi-temps. Auparavant, la limite habituelle était de trois remplacements.",
+      "difficulty": 2,
+      "source": "https://www.theifab.com/laws/latest/the-players/"
+    },
+    {
+      "question": "Dans quelle situation un joueur ne peut-il pas être sanctionné pour hors-jeu s'il reçoit directement le ballon ?",
+      "answer": "Sur une rentrée de touche",
+      "wrong": ["Sur un coup franc indirect", "Sur un coup franc direct", "Sur une passe longue d'un coéquipier"],
+      "explanation": "Il n'y a pas de hors-jeu lorsque le ballon est reçu directement sur une **rentrée de touche**, un **corner** ou un **coup de pied de but**. Un joueur ne peut pas non plus être hors-jeu dans sa propre moitié de terrain. Sur un coup franc, en revanche, la règle s'applique normalement.",
+      "difficulty": 2,
+      "source": "https://www.theifab.com/laws/latest/offside/"
+    },
+    {
+      "question": "En quoi consiste le **gegenpressing** ?",
+      "answer": "Presser dès la perte du ballon pour le récupérer",
+      "wrong": ["Défendre bas en attendant l'adversaire", "Jouer en contre par de longs ballons", "Conserver le ballon par des passes courtes"],
+      "explanation": "« Gegenpressing » signifie « contre-pressing » en allemand : dès que le ballon est perdu, l'équipe presse collectivement pour le récupérer haut, pendant que l'adversaire est encore désorganisé. Cette approche a été popularisée par Jürgen Klopp au Borussia Dortmund puis à Liverpool.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Gegenpressing"
+    },
+    {
+      "question": "Comment appelle-t-on un avant-centre qui décroche régulièrement vers le milieu de terrain pour créer des espaces ?",
+      "answer": "Un faux 9",
+      "wrong": ["Un libéro", "Un box-to-box", "Un milieu récupérateur"],
+      "explanation": "Le faux 9 occupe nominalement la pointe de l'attaque mais recule pour participer au jeu, attirant les défenseurs centraux et libérant de l'espace pour ses partenaires. Lionel Messi en est devenu l'exemple le plus célèbre au FC Barcelone, chantre du tiki-taka. Le numéro 9 est traditionnellement celui de l'avant-centre, d'où le nom.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/False_9"
+    },
+    {
+      "question": "Jusqu'en 2022, le Brésil compte cinq titres de champion du monde. Laquelle de ces éditions n'en fait **pas** partie ?",
+      "answer": "1950",
+      "wrong": ["1958", "1970", "1994"],
+      "explanation": "En 1950, à domicile, le Brésil est battu 2-1 par l'Uruguay au Maracanã lors du match décisif : c'est le célèbre « Maracanazo », vécu comme un traumatisme national. Les cinq titres brésiliens datent de 1958, 1962, 1970, 1994 et 2002. Pelé, sacré en 1958, 1962 et 1970, est le seul joueur à avoir remporté trois Coupes du monde.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Maracanazo"
+    },
+    {
+      "question": "En finale de la Coupe du monde 2022, Kylian Mbappé réussit un triplé. Avant lui, quel joueur était le seul à avoir signé un triplé lors d'une finale de Coupe du monde ?",
+      "answer": "Geoff Hurst",
+      "wrong": ["Pelé", "Zinédine Zidane", "Ronaldo"],
+      "explanation": "L'Anglais Geoff Hurst avait inscrit un triplé lors de la finale de 1966, remportée 4-2 après prolongation par l'Angleterre face à la RFA, à Wembley. L'un de ses buts, une frappe qui touche la barre puis rebondit sur la ligne, fait encore débat. Pelé (1958), Zidane (1998) et Ronaldo (2002) avaient, eux, marqué deux fois dans une même finale.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/1966_FIFA_World_Cup_final"
+    },
+    {
+      "question": "Avant d'être le stade du PSG, le Parc des Princes a été inauguré en 1897 sous quelle forme ?",
+      "answer": "Un vélodrome",
+      "wrong": ["Un hippodrome", "Une patinoire", "Un champ de foire"],
+      "explanation": "Le « stade vélodrome du Parc des Princes » a accueilli l'arrivée du Tour de France de 1903 à 1967. L'enceinte actuelle, signée par l'architecte Roger Taillibert, date de 1972, et le PSG y joue depuis 1974. Le stade Vélodrome de Marseille doit lui aussi son nom à la piste cycliste qui l'entourait à l'origine.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Parc_des_Princes"
+    },
+    {
+      "question": "En 1995, le Ballon d'Or s'ouvre aux joueurs non européens évoluant en Europe. Qui devient alors le premier lauréat non européen ?",
+      "answer": "George Weah",
+      "wrong": ["Ronaldo", "Rivaldo", "Ronaldinho"],
+      "explanation": "L'attaquant libérien, passé par Monaco et le PSG avant de rejoindre le Milan AC en 1995, devient aussi le premier lauréat africain du trophée. Le Brésilien Ronaldo lui succède en 1997. Après sa carrière, Weah s'est lancé en politique et a été président du Liberia de 2018 à 2024.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/George_Weah"
+    },
+    {
+      "question": "Selon les Lois du jeu, un match ne peut pas commencer ou se poursuivre si une équipe compte moins de combien de joueurs ?",
+      "answer": "7 joueurs",
+      "wrong": ["6 joueurs", "8 joueurs", "9 joueurs"],
+      "explanation": "Une équipe aligne au maximum 11 joueurs, dont un gardien. Si, à la suite d'expulsions ou de blessures, elle tombe sous la barre des **sept joueurs**, l'arbitre ne peut pas laisser le match continuer, et c'est l'organisateur de la compétition qui statue sur le résultat.",
+      "difficulty": 3,
+      "source": "https://www.theifab.com/laws/latest/the-players/"
+    },
+    {
+      "question": "Le ballon réglementaire du football à 11 (taille 5) doit avoir une circonférence comprise entre…",
+      "answer": "68 et 70 cm",
+      "wrong": ["58 et 60 cm", "63 et 65 cm", "74 et 76 cm"],
+      "explanation": "La Loi 2 impose un ballon sphérique de **68 à 70 cm** de circonférence, pesant entre 410 et 450 g au début du match. Les tailles 3 et 4, plus petites et plus légères, sont réservées aux jeunes catégories.",
+      "difficulty": 3,
+      "source": "https://www.theifab.com/laws/latest/the-ball/"
+    },
+    {
+      "question": "Quel entraîneur a rendu célèbre le **catenaccio** avec la « Grande Inter » des années 1960 ?",
+      "answer": "Helenio Herrera",
+      "wrong": ["Arrigo Sacchi", "Rinus Michels", "Valeri Lobanovski"],
+      "explanation": "Le catenaccio (« verrou » en italien) est un système très défensif, avec un libéro placé derrière la ligne de défense, misant sur la solidité et la contre-attaque. Avec lui, l'Inter d'Helenio Herrera remporte la Coupe des clubs champions en 1964 et 1965. À l'opposé, Arrigo Sacchi bousculera le football italien à la fin des années 1980 avec le pressing et la défense en zone de son Milan AC.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Catenaccio"
+    }
+  ]
+}

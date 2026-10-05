@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/radhan/TicTacBrain/schemas/theme.schema.json",
+  "title": "TicTacBrain — fichier de thème",
+  "description": "Le fichier questions/<theme>/_theme.json. L'id du thème est le nom du dossier.",
+  "type": "object",
+  "required": ["name", "icon"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "name": {
+      "description": "Nom affiché du thème.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 40
+    },
+    "icon": {
+      "description": "Un emoji.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 16
+    },
+    "description": {
+      "description": "Phrase courte affichée sur la carte du thème.",
+      "type": "string",
+      "maxLength": 160
+    },
+    "color": {
+      "description": "Couleur d'accent du thème (hexadécimal).",
+      "type": "string",
+      "pattern": "^#[0-9a-fA-F]{6}$"
+    },
+    "order": {
+      "description": "Ordre d'affichage sur l'accueil (croissant). Par défaut : ordre alphabétique.",
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,286 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Blockchain & Ethereum",
+  "icon": "⛓️",
+  "description": "Consensus, smart contracts, gas, The Merge, jetons ERC, rollups et vocabulaire de la DeFi.",
+  "order": 2,
+  "questions": [
+    {
+      "question": "Qu'est-ce qu'une blockchain ?",
+      "answer": "Un registre partagé de blocs liés entre eux par des hash",
+      "wrong": [
+        "Une base de données gérée par une banque centrale",
+        "Un algorithme de chiffrement des transactions",
+        "Un réseau de serveurs appartenant à une seule entreprise"
+      ],
+      "explanation": "Une **blockchain** est un registre répliqué sur de nombreux nœuds, où chaque bloc contient le **hash du bloc précédent**. Modifier un ancien bloc changerait son hash et casserait tous les liens suivants, ce qui rend l'historique très difficile à falsifier. Ce n'est pas un algorithme de chiffrement : les données y sont généralement publiques.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qui a rédigé le livre blanc d'Ethereum, publié fin 2013 ?",
+      "answer": "Vitalik Buterin",
+      "wrong": [
+        "Satoshi Nakamoto",
+        "Nick Szabo",
+        "Hal Finney"
+      ],
+      "explanation": "**Vitalik Buterin**, alors âgé de 19 ans, a décrit fin 2013 Ethereum comme une blockchain capable d'exécuter des programmes arbitraires. Nick Szabo avait théorisé les **smart contracts** dès les années 1990, et Satoshi Nakamoto est le créateur de Bitcoin.",
+      "difficulty": 1,
+      "source": "https://ethereum.org/whitepaper/"
+    },
+    {
+      "question": "Qu'est-ce qu'un smart contract ?",
+      "answer": "Un programme sur une blockchain qui s'exécute automatiquement",
+      "wrong": [
+        "Un contrat papier signé électroniquement chez un notaire",
+        "Une intelligence artificielle qui négocie des prix",
+        "Un accord juridique entre mineurs et utilisateurs"
+      ],
+      "explanation": "Un **smart contract** est du code déployé à une adresse de la blockchain : il s'exécute exactement comme programmé dès qu'une transaction l'appelle, sans intermédiaire. Une fois déployé, son code ne peut en principe plus être modifié, ce qui rend les bugs particulièrement coûteux.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie le sigle NFT ?",
+      "answer": "Non-Fungible Token",
+      "wrong": [
+        "New Financial Technology",
+        "Network File Transfer",
+        "Non-Federal Token"
+      ],
+      "explanation": "Un **NFT** (jeton non fongible) est unique : contrairement à un euro ou à un ether, il n'est pas interchangeable avec un autre jeton du même contrat. Sur Ethereum, il suit généralement le standard **ERC-721**. Posséder un NFT prouve la détention d'un identifiant de jeton, pas forcément les droits d'auteur sur l'œuvre associée.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qu'un stablecoin ?",
+      "answer": "Un jeton indexé sur un actif comme le dollar",
+      "wrong": [
+        "Une cryptomonnaie dont l'offre ne change jamais",
+        "Un jeton réservé aux validateurs du réseau",
+        "Une monnaie numérique émise par une banque centrale"
+      ],
+      "explanation": "Un **stablecoin** vise une parité stable, le plus souvent 1 jeton = 1 dollar, grâce à des réserves (USDC, USDT), à des cryptos déposées en garantie (DAI) ou à un algorithme. Cette stabilité n'est pas garantie : le stablecoin algorithmique **TerraUSD** (UST) a perdu sa parité et s'est effondré en mai 2022. Une monnaie émise par une banque centrale est une MNBC, pas un stablecoin.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie l'adage « Not your keys, not your coins » ?",
+      "answer": "Sans vos clés privées, vous ne contrôlez pas vos cryptos",
+      "wrong": [
+        "Il faut changer de clé privée après chaque transaction",
+        "Une clé privée perdue peut être régénérée par le réseau",
+        "Seuls les mineurs possèdent réellement les cryptos"
+      ],
+      "explanation": "Quand vos cryptos sont sur une **plateforme centralisée** (CEX), c'est elle qui détient les clés : vous n'avez qu'une créance sur elle. En cas de faillite ou de gel des retraits, comme lors de l'effondrement de **FTX** en 2022, vous pouvez tout perdre. L'auto-conservation (self-custody) donne le contrôle total, mais aussi l'entière responsabilité de ses clés.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce que MetaMask ?",
+      "answer": "Un portefeuille Ethereum sous forme d'extension",
+      "wrong": [
+        "Une plateforme d'échange centralisée (CEX)",
+        "Un langage de programmation de smart contracts",
+        "Un explorateur de blocs pour le réseau Ethereum"
+      ],
+      "explanation": "**MetaMask** est un portefeuille **non custodial** : les clés privées sont générées et conservées chez l'utilisateur, qui les sauvegarde grâce à sa phrase de récupération. Disponible en extension de navigateur et en application mobile, il sert à signer des transactions et à se connecter aux applications décentralisées (dApps). Etherscan, lui, est un explorateur de blocs.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qu'un DEX ?",
+      "answer": "Une plateforme d'échange décentralisée, sans intermédiaire",
+      "wrong": [
+        "Une plateforme d'échange centralisée et réglementée",
+        "Un portefeuille matériel pour stocker ses clés",
+        "Un indice boursier des cryptomonnaies"
+      ],
+      "explanation": "Un **DEX** (Decentralized Exchange), comme Uniswap, permet d'échanger des jetons directement depuis son portefeuille via des smart contracts, sans confier ses fonds à un intermédiaire. Un **CEX** (Centralized Exchange), comme Coinbase ou Binance, est une entreprise qui garde les fonds de ses clients et fait correspondre leurs ordres dans un carnet.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel est le langage le plus utilisé pour écrire des smart contracts sur Ethereum ?",
+      "answer": "Solidity",
+      "wrong": [
+        "Rust",
+        "Go",
+        "Kotlin"
+      ],
+      "explanation": "**Solidity**, langage influencé par C++, Python et JavaScript, est compilé en bytecode pour l'EVM. Rust est surtout utilisé sur d'autres blockchains comme Solana, et Go sert notamment à écrire des clients Ethereum (comme Geth), pas des contrats. Vyper est l'autre langage notable de l'écosystème Ethereum.",
+      "difficulty": 2
+    },
+    {
+      "question": "En quelle année le réseau principal d'Ethereum a-t-il été lancé ?",
+      "answer": "2015",
+      "wrong": [
+        "2013",
+        "2017",
+        "2009"
+      ],
+      "explanation": "Le réseau principal d'Ethereum a démarré le **30 juillet 2015** avec la version « Frontier ». Le piège 2013 est l'année du livre blanc de Vitalik Buterin, et 2009 celle du lancement de Bitcoin.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Ethereum"
+    },
+    {
+      "question": "Qu'a changé « The Merge », le 15 septembre 2022, sur Ethereum ?",
+      "answer": "Le passage de la preuve de travail à la preuve d'enjeu",
+      "wrong": [
+        "Le passage de la preuve d'enjeu à la preuve de travail",
+        "La fusion d'Ethereum et d'Ethereum Classic",
+        "L'arrivée des premiers smart contracts"
+      ],
+      "explanation": "**The Merge** a fusionné le réseau principal avec la **Beacon Chain** : depuis, les blocs sont produits par des validateurs qui immobilisent de l'ETH en garantie (**preuve d'enjeu**) au lieu de mineurs. La consommation d'énergie d'Ethereum a ainsi chuté d'environ 99,95 %. Les smart contracts, eux, existent depuis le lancement en 2015.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle a été la conséquence du piratage de The DAO en 2016 ?",
+      "answer": "Un hard fork qui a séparé Ethereum et Ethereum Classic",
+      "wrong": [
+        "Le passage immédiat d'Ethereum à la preuve d'enjeu",
+        "La création du standard de jetons fongibles ERC-20",
+        "L'abandon du langage Solidity au profit de Vyper"
+      ],
+      "explanation": "En juin 2016, environ 3,6 millions d'ETH ont été siphonnés de **The DAO**, un fonds d'investissement géré par smart contract. La majorité de la communauté a soutenu un **hard fork** pour restituer les fonds : la chaîne modifiée est devenue Ethereum, tandis que ceux qui refusaient de réécrire l'historique ont poursuivi la chaîne d'origine, **Ethereum Classic** (ETC).",
+      "difficulty": 2
+    },
+    {
+      "question": "Que désigne l'EVM ?",
+      "answer": "La machine virtuelle qui exécute les smart contracts",
+      "wrong": [
+        "Le portefeuille officiel de la Fondation Ethereum",
+        "L'algorithme de minage historique d'Ethereum",
+        "Le registre des noms de domaine en .eth"
+      ],
+      "explanation": "L'**Ethereum Virtual Machine** exécute le bytecode des contrats de façon déterministe : tous les nœuds doivent obtenir exactement le même résultat, et chaque instruction coûte une quantité de **gas** donnée. Beaucoup d'autres blockchains sont « compatibles EVM » pour réutiliser contrats et outils. Les noms en .eth relèvent de l'ENS, et l'ancien algorithme de minage s'appelait Ethash.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur Ethereum, que mesure le « gas » ?",
+      "answer": "Le coût en calcul d'une opération",
+      "wrong": [
+        "La quantité d'ETH immobilisée par un validateur",
+        "La vitesse de propagation d'un bloc",
+        "Le nombre de transactions contenues dans un bloc"
+      ],
+      "explanation": "Chaque opération de l'EVM consomme une quantité fixe de **gas** : un simple transfert d'ETH coûte 21 000 gas, un appel de contrat bien davantage. Les frais payés valent `gas consommé × prix du gas`, ce prix étant exprimé en gwei. Ce mécanisme rémunère le calcul et empêche une boucle infinie de bloquer le réseau.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quoi sert la racine de Merkle (Merkle root) dans l'en-tête d'un bloc Bitcoin ?",
+      "answer": "À résumer toutes les transactions du bloc en un seul hash",
+      "wrong": [
+        "À chiffrer les transactions avant leur diffusion",
+        "À stocker la signature numérique du mineur",
+        "À fixer la difficulté de minage du bloc suivant"
+      ],
+      "explanation": "Les transactions sont hachées deux à deux, niveau par niveau, jusqu'à obtenir un seul hash : la **racine de Merkle**. Modifier une seule transaction change cette racine, donc l'en-tête du bloc. On peut aussi prouver qu'une transaction figure dans le bloc avec seulement quelques hash (preuve de Merkle), ce qu'exploitent les portefeuilles légers (SPV).",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la différence entre un soft fork et un hard fork ?",
+      "answer": "Le soft fork reste compatible avec les anciens nœuds",
+      "wrong": [
+        "Le hard fork reste compatible avec les anciens nœuds",
+        "Le soft fork ne modifie que les portefeuilles",
+        "Le hard fork est forcément l'œuvre d'un attaquant"
+      ],
+      "explanation": "Un **soft fork** resserre les règles : les nouveaux blocs restent valides aux yeux des anciens nœuds (exemple : SegWit en 2017). Un **hard fork** modifie les règles de façon incompatible : les nœuds non mis à jour rejettent les nouveaux blocs et, s'ils restent nombreux, la chaîne se scinde en deux (exemple : Ethereum et Ethereum Classic en 2016).",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel est le rôle d'un oracle comme Chainlink ?",
+      "answer": "Apporter aux smart contracts des données hors blockchain",
+      "wrong": [
+        "Prédire le prix futur des cryptomonnaies par IA",
+        "Valider les blocs à la place des validateurs",
+        "Conserver les clés privées des utilisateurs"
+      ],
+      "explanation": "Un smart contract ne peut pas aller chercher lui-même une information hors de la blockchain : cours d'une devise, résultat sportif, météo… Un **oracle** comme Chainlink publie ces données sur la chaîne pour les rendre utilisables. C'est un point sensible : un oracle manipulé ou défaillant peut fausser tous les contrats qui en dépendent.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel problème classique d'informatique distribuée les mécanismes de consensus des blockchains cherchent-ils à résoudre ?",
+      "answer": "Le problème des généraux byzantins",
+      "wrong": [
+        "Le problème du voyageur de commerce",
+        "Le problème du dîner des philosophes",
+        "Le problème de l'arrêt"
+      ],
+      "explanation": "Formalisé par Lamport, Shostak et Pease en 1982, le **problème des généraux byzantins** demande comment des participants peuvent se mettre d'accord alors que certains mentent ou sont défaillants. Bitcoin y a apporté une solution pratique pour un réseau ouvert grâce à la preuve de travail. Le dîner des philosophes concerne, lui, le partage de ressources entre processus concurrents.",
+      "difficulty": 2
+    },
+    {
+      "question": "À combien d'ether correspond 1 gwei ?",
+      "answer": "10⁻⁹ ETH",
+      "wrong": [
+        "10⁻⁶ ETH",
+        "10⁻¹⁸ ETH",
+        "10⁻³ ETH"
+      ],
+      "explanation": "Le **gwei** (giga-wei) vaut 10⁹ wei, et 1 ETH vaut 10¹⁸ wei : 1 gwei = **10⁻⁹ ETH**, soit un milliardième d'ether. Le piège 10⁻¹⁸ ETH correspond au **wei**, la plus petite unité. Le gwei est l'unité habituelle pour exprimer le prix du gas.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel standard Ethereum permet de gérer des jetons fongibles et non fongibles dans un même contrat ?",
+      "answer": "ERC-1155",
+      "wrong": [
+        "ERC-20",
+        "ERC-721",
+        "EIP-1559"
+      ],
+      "explanation": "**ERC-1155** est un standard « multi-jetons », très utilisé dans les jeux : monnaie fongible et objets uniques cohabitent dans un seul contrat, avec des transferts groupés. **ERC-20** ne couvre que les jetons fongibles et **ERC-721** que les NFT. EIP-1559 concerne le mécanisme de frais, pas les jetons.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle formule de « produit constant » l'AMM d'Uniswap v2 utilise-t-il pour fixer les prix dans un pool de liquidité ?",
+      "answer": "`x * y = k`",
+      "wrong": [
+        "`x + y = k`",
+        "`x / y = k`",
+        "`x² + y² = k`"
+      ],
+      "explanation": "Dans un pool aux réserves `x` et `y`, chaque échange doit conserver (hors frais) le **produit** `x * y = k`. Acheter un jeton en réduit la réserve et fait donc monter son prix, de plus en plus fortement à mesure que le pool s'assèche. Une somme constante (`x + y = k`) imposerait un prix fixe, envisageable entre deux stablecoins mais pas pour des actifs volatils.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'appelle-t-on « perte impermanente » (impermanent loss) en DeFi ?",
+      "answer": "Le manque à gagner face à la simple détention des jetons",
+      "wrong": [
+        "Les frais de gas perdus lors d'une transaction échouée",
+        "La perte d'une clé privée temporairement récupérable",
+        "La baisse de valeur d'un jeton pendant un hard fork"
+      ],
+      "explanation": "Quand le prix relatif des deux jetons d'un pool change, les arbitragistes rééquilibrent les réserves : le fournisseur de liquidité se retrouve avec davantage du jeton qui a baissé et moins de celui qui a monté. Il aurait donc mieux fait de garder simplement ses jetons. La perte est dite « impermanente » car elle disparaît si les prix reviennent à leur niveau initial ; elle devient définitive s'il retire sa liquidité entre-temps.",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment un rollup « optimiste » garantit-il la validité des transactions qu'il publie sur Ethereum ?",
+      "answer": "Il les présume valides, sauf preuve de fraude",
+      "wrong": [
+        "Il joint une preuve à divulgation nulle à chaque lot",
+        "Il fait valider chaque transaction par un oracle",
+        "Il impose une preuve de travail aux utilisateurs"
+      ],
+      "explanation": "Un **rollup optimiste** (Optimism, Arbitrum) exécute les transactions hors de la chaîne principale et en publie les données sur Ethereum en les supposant correctes. Pendant une période de contestation (souvent environ 7 jours), n'importe qui peut soumettre une **preuve de fraude**. Le piège décrit les **zk-rollups**, qui joignent à chaque lot une preuve de validité cryptographique et n'ont pas besoin de ce délai.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle vulnérabilité de smart contract a été exploitée lors du piratage de The DAO en 2016 ?",
+      "answer": "La réentrance (reentrancy)",
+      "wrong": [
+        "Le dépassement d'entier (integer overflow)",
+        "L'injection SQL",
+        "L'attaque des 51 %"
+      ],
+      "explanation": "Le contrat envoyait les fonds **avant** de mettre à jour le solde de l'utilisateur. Appelé lors de cet envoi, le contrat de l'attaquant rappelait aussitôt la fonction de retrait, encore et encore, avant que son solde ne soit remis à zéro. La parade classique est le motif **checks-effects-interactions** : vérifier, mettre à jour l'état, et seulement ensuite appeler l'extérieur.",
+      "difficulty": 3
+    },
+    {
+      "question": "Depuis EIP-1559 (2021), que devient la « base fee » payée pour chaque transaction Ethereum ?",
+      "answer": "Elle est brûlée (détruite)",
+      "wrong": [
+        "Elle est versée au validateur du bloc",
+        "Elle est reversée à la Fondation Ethereum",
+        "Elle est remboursée si la transaction échoue"
+      ],
+      "explanation": "EIP-1559, activé en août 2021 avec la mise à jour London, divise les frais en deux : une **base fee** fixée par le protocole selon l'encombrement des blocs, qui est **brûlée**, et un pourboire (priority fee) versé à celui qui produit le bloc (un mineur à l'époque, un validateur aujourd'hui). Une transaction qui échoue paie quand même le gas consommé.",
+      "difficulty": 3
+    }
+  ]
+}

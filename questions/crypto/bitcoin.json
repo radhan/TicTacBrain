@@ -1,0 +1,185 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Bitcoin",
+  "icon": "₿",
+  "description": "Satoshi, minage, halvings, UTXO, SegWit, Lightning : les rouages et l'histoire de la première cryptomonnaie.",
+  "order": 1,
+  "questions": [
+    {
+      "question": "Sous quel pseudonyme le créateur de Bitcoin a-t-il publié son livre blanc en 2008 ?",
+      "answer": "Satoshi Nakamoto",
+      "wrong": ["Vitalik Buterin", "Hal Finney", "Nick Szabo"],
+      "explanation": "Le livre blanc « Bitcoin: A Peer-to-Peer Electronic Cash System » a été publié le **31 octobre 2008** sous le pseudonyme **Satoshi Nakamoto**, dont l'identité réelle reste inconnue. Hal Finney a reçu la toute première transaction, Nick Szabo avait imaginé le « bit gold » et Vitalik Buterin a cofondé Ethereum.",
+      "difficulty": 1,
+      "source": "https://bitcoin.org/bitcoin.pdf"
+    },
+    {
+      "question": "Quel est le nombre maximal de bitcoins qui pourront exister ?",
+      "answer": "21 millions",
+      "wrong": ["100 millions", "18 millions", "1 milliard"],
+      "explanation": "Le protocole plafonne l'émission à **21 millions de BTC** : la récompense des mineurs est divisée par deux tous les 210 000 blocs, ce qui forme une série géométrique convergeant vers ce total. À cause des arrondis au satoshi, le total réel sera même légèrement inférieur (environ 20 999 999,98 BTC).",
+      "difficulty": 1
+    },
+    {
+      "question": "Combien de satoshis y a-t-il dans 1 bitcoin ?",
+      "answer": "100 000 000",
+      "wrong": ["1 000 000", "21 000 000", "10 000 000 000"],
+      "explanation": "Le **satoshi** (sat), nommé en hommage au créateur de Bitcoin, est la plus petite unité : 1 sat = 0,00000001 BTC, soit 10⁻⁸ BTC. Un bitcoin vaut donc **100 millions** de satoshis. Dans les transactions, les montants sont d'ailleurs stockés sous forme d'entiers exprimés en satoshis.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel intervalle moyen entre deux blocs le protocole Bitcoin vise-t-il ?",
+      "answer": "Environ 10 minutes",
+      "wrong": ["Environ 1 minute", "Environ 12 secondes", "Environ 1 heure"],
+      "explanation": "Bitcoin vise **un bloc toutes les 10 minutes** en moyenne. Comme la puissance de calcul du réseau varie sans cesse, la difficulté de minage est réajustée environ toutes les deux semaines pour maintenir ce rythme. Les 12 secondes correspondent aux créneaux (slots) d'Ethereum depuis son passage à la preuve d'enjeu.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quoi sert la phrase de récupération (seed phrase) de 12 ou 24 mots d'un portefeuille ?",
+      "answer": "À restaurer toutes les clés du portefeuille",
+      "wrong": ["À se connecter à une plateforme d'échange", "À recevoir des bitcoins de la part d'autrui", "À accélérer la confirmation des transactions"],
+      "explanation": "Définie par le standard **BIP-39**, la phrase de récupération encode la graine dont sont dérivées toutes les clés privées du portefeuille. Quiconque la connaît contrôle les fonds : elle ne doit jamais être partagée ni saisie sur un site web. Pour recevoir des bitcoins, on communique une **adresse**, jamais ces mots.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qu'un « cold wallet » (portefeuille froid) ?",
+      "answer": "Un portefeuille dont les clés privées restent hors ligne",
+      "wrong": ["Un portefeuille qui ne contient aucun bitcoin", "Un portefeuille gelé par une plateforme d'échange", "Un portefeuille réservé aux mineurs"],
+      "explanation": "Un **cold wallet** conserve les clés privées sur un support **déconnecté d'Internet** : portefeuille matériel, papier, ordinateur isolé… À l'inverse, un **hot wallet** (application mobile, extension de navigateur) est connecté en permanence : plus pratique, mais plus exposé au piratage.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel mécanisme de consensus Bitcoin utilise-t-il pour valider les blocs ?",
+      "answer": "La preuve de travail (Proof of Work)",
+      "wrong": ["La preuve d'enjeu (Proof of Stake)", "La preuve d'autorité (Proof of Authority)", "Le vote des détenteurs de bitcoins"],
+      "explanation": "Avec la **preuve de travail**, les mineurs dépensent de la puissance de calcul pour trouver un hash d'en-tête de bloc inférieur à une cible. Le premier qui y parvient publie le bloc et touche la récompense ; les autres nœuds vérifient ce travail instantanément. La preuve d'enjeu est utilisée par Ethereum depuis 2022, pas par Bitcoin.",
+      "difficulty": 1
+    },
+    {
+      "question": "Lequel de ces éléments faut-il absolument garder secret ?",
+      "answer": "La clé privée",
+      "wrong": ["La clé publique", "L'adresse de réception", "L'identifiant de transaction (txid)"],
+      "explanation": "La **clé privée** permet de signer des transactions, donc de dépenser les bitcoins associés : la divulguer revient à donner ses fonds. La **clé publique** en est dérivée, et l'**adresse** est généralement obtenue en hachant la clé publique : on peut les communiquer sans risque pour recevoir des paiements.",
+      "difficulty": 1
+    },
+    {
+      "question": "Le 22 mai 2010, Laszlo Hanyecz a réalisé l'un des premiers achats connus en bitcoins : deux pizzas. Combien les a-t-il payées ?",
+      "answer": "10 000 BTC",
+      "wrong": ["100 BTC", "1 000 BTC", "50 BTC"],
+      "explanation": "Laszlo Hanyecz a payé **10 000 BTC** pour deux pizzas, l'une des premières transactions commerciales réelles en bitcoins. Le 22 mai est depuis célébré chaque année comme le **Bitcoin Pizza Day**, symbole du chemin parcouru par la cryptomonnaie depuis ses débuts.",
+      "difficulty": 2
+    },
+    {
+      "question": "Tous les combien de blocs la récompense des mineurs de Bitcoin est-elle divisée par deux (« halving ») ?",
+      "answer": "210 000 blocs",
+      "wrong": ["21 000 blocs", "100 000 blocs", "52 560 blocs"],
+      "explanation": "Le **halving** a lieu tous les **210 000 blocs**, soit environ tous les quatre ans au rythme d'un bloc toutes les 10 minutes. C'est ce mécanisme qui rend l'émission de bitcoins décroissante et la fait tendre vers le plafond de 21 millions. Le piège 52 560 blocs correspond à environ une seule année.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle était la récompense par bloc des mineurs au lancement de Bitcoin, en 2009 ?",
+      "answer": "50 BTC",
+      "wrong": ["25 BTC", "100 BTC", "6,25 BTC"],
+      "explanation": "La subvention de bloc était de **50 BTC** à l'origine, puis elle a été divisée par deux à chaque halving : 25 BTC (2012), 12,5 BTC (2016), 6,25 BTC (2020) et 3,125 BTC (2024). En plus de cette subvention, les mineurs encaissent les frais des transactions incluses dans le bloc.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle fonction de hachage Bitcoin applique-t-il deux fois de suite aux en-têtes de bloc pour la preuve de travail ?",
+      "answer": "SHA-256",
+      "wrong": ["MD5", "Keccak-256", "Scrypt"],
+      "explanation": "Bitcoin calcule `SHA-256(SHA-256(en-tête))`, un double hachage également utilisé pour les identifiants de transaction. **Scrypt** est l'algorithme de minage de Litecoin et **Keccak-256** la fonction de hachage d'Ethereum. MD5, cassé depuis longtemps, n'a jamais été utilisé par Bitcoin.",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment s'appelle le champ de 32 bits de l'en-tête de bloc que les mineurs font varier pour chercher un hash valide ?",
+      "answer": "Le nonce",
+      "wrong": ["Le sel", "Le checksum", "Le padding"],
+      "explanation": "Le **nonce** (« number used once ») est un compteur que le mineur modifie à chaque essai, ce qui change complètement le hash obtenu. Ses 2³² valeurs (environ 4,3 milliards) s'épuisent en une fraction de seconde sur le matériel actuel : les mineurs font alors aussi varier un « extraNonce » dans la transaction coinbase, ou l'horodatage.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que contient la « mempool » d'un nœud Bitcoin ?",
+      "answer": "Les transactions valides en attente de confirmation",
+      "wrong": ["Les blocs rejetés par le réseau", "Les clés privées des utilisateurs du nœud", "L'historique de toutes les transactions confirmées"],
+      "explanation": "La **mempool** est la salle d'attente des transactions pas encore incluses dans un bloc. Chaque nœud a la sienne : il n'existe pas de mempool globale unique. Comme la place dans un bloc est limitée, les mineurs retiennent en priorité les transactions qui offrent les **frais par octet** (sat/vB) les plus élevés.",
+      "difficulty": 2
+    },
+    {
+      "question": "Bitcoin repose sur le modèle « UTXO ». Que signifie ce sigle ?",
+      "answer": "Unspent Transaction Output",
+      "wrong": ["Unified Token Transfer Order", "Universal Transaction Exchange Object", "Unverified Transaction Output"],
+      "explanation": "Un **UTXO** est une sortie de transaction pas encore dépensée. Bitcoin ne gère pas de soldes de comptes : votre solde est la somme des UTXO que vos clés peuvent dépenser. Une transaction consomme des UTXO **en entier** et en crée de nouveaux, dont souvent une sortie de « monnaie » (change) qui revient à l'expéditeur.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle mise à jour de Bitcoin, activée en 2017, a séparé les signatures (« witness ») du reste des données de transaction ?",
+      "answer": "SegWit",
+      "wrong": ["Taproot", "Lightning Network", "The Merge"],
+      "explanation": "**SegWit** (Segregated Witness), activé en août 2017 sous forme de **soft fork**, déplace les signatures dans une structure séparée. Il corrige la **malléabilité des transactions**, ce qui a ouvert la voie au Lightning Network, et augmente la capacité des blocs. Taproot date de 2021, et The Merge concerne Ethereum.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qui a reçu la toute première transaction en bitcoins envoyée par Satoshi Nakamoto, en janvier 2009 ?",
+      "answer": "Hal Finney",
+      "wrong": ["Laszlo Hanyecz", "Gavin Andresen", "Nick Szabo"],
+      "explanation": "Le 12 janvier 2009, dans le **bloc 170**, Satoshi Nakamoto a envoyé 10 BTC à **Hal Finney**, cypherpunk ayant travaillé sur PGP et l'un des tout premiers à faire tourner le logiciel. Laszlo Hanyecz est connu pour ses pizzas de 2010, et Gavin Andresen pour avoir pris la suite de Satoshi comme principal mainteneur du code.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce que le Lightning Network ?",
+      "answer": "Un réseau de canaux de paiement bâti au-dessus de Bitcoin",
+      "wrong": ["Un fork de Bitcoin aux blocs plus gros", "Un pool de minage décentralisé", "Un consensus plus rapide que la preuve de travail"],
+      "explanation": "Le **Lightning Network** est une solution de seconde couche : deux parties ouvrent un **canal de paiement** par une transaction on-chain, s'échangent ensuite autant de paiements qu'elles veulent hors chaîne, puis règlent le solde final sur la blockchain. Les paiements peuvent transiter par plusieurs canaux. Le fork aux blocs plus gros, c'est Bitcoin Cash (2017).",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel type de signature la mise à jour Taproot (2021) a-t-elle ajouté à Bitcoin ?",
+      "answer": "Les signatures de Schnorr",
+      "wrong": ["Les signatures ECDSA", "Les signatures RSA", "Les signatures de Lamport"],
+      "explanation": "**Taproot**, activé en novembre 2021, introduit les **signatures de Schnorr** (BIP-340), qui permettent notamment d'agréger plusieurs signatures et de rendre une dépense multisignature indiscernable d'une dépense simple. Le piège : **ECDSA** était déjà utilisé par Bitcoin depuis 2009 et reste valable pour les anciens types d'adresses.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un attaquant contrôle plus de 50 % de la puissance de calcul du réseau Bitcoin. Que peut-il faire ?",
+      "answer": "Dépenser deux fois ses propres bitcoins",
+      "wrong": ["Voler les bitcoins de n'importe quelle adresse", "Créer plus de 21 millions de bitcoins", "Retrouver les clés privées des utilisateurs"],
+      "explanation": "Lors d'une **attaque des 51 %**, l'attaquant mine en secret une chaîne concurrente plus longue pour réécrire les blocs récents : il peut ainsi annuler un paiement qu'il a lui-même effectué (**double dépense**) ou censurer des transactions. Il ne peut pas forger de signatures ni enfreindre les règles de consensus : les nœuds rejetteraient ses blocs invalides.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans une transaction Bitcoin, la somme des entrées dépasse celle des sorties. Que devient la différence ?",
+      "answer": "Elle revient au mineur sous forme de frais",
+      "wrong": ["Elle est renvoyée automatiquement à l'expéditeur", "Elle est détruite définitivement", "Elle reste bloquée dans la mempool"],
+      "explanation": "Il n'existe pas de champ « frais » : les **frais** valent implicitement `somme(entrées) − somme(sorties)` et reviennent au mineur du bloc. Comme un UTXO se dépense en entier, oublier la sortie de monnaie (change) peut offrir une petite fortune au mineur, et plusieurs erreurs célèbres de ce type ont eu lieu.",
+      "difficulty": 3
+    },
+    {
+      "question": "Combien de mots contient la liste du standard BIP-39 utilisée pour générer les phrases de récupération ?",
+      "answer": "2048",
+      "wrong": ["1024", "4096", "24"],
+      "explanation": "La liste BIP-39 compte **2048 mots** (2¹¹) : chaque mot encode donc **11 bits**. Une phrase de 12 mots représente 132 bits, soit 128 bits d'entropie et 4 bits de somme de contrôle. Le piège « 24 » est la longueur maximale d'une phrase, pas la taille du dictionnaire.",
+      "difficulty": 3
+    },
+    {
+      "question": "Tous les combien de blocs la difficulté de minage de Bitcoin est-elle réajustée ?",
+      "answer": "2016 blocs",
+      "wrong": ["210 000 blocs", "144 blocs", "1 000 blocs"],
+      "explanation": "Tous les **2016 blocs**, chaque nœud compare le temps réellement écoulé aux deux semaines visées (2016 × 10 min = 14 jours) et ajuste la cible en conséquence, d'un facteur 4 au maximum. 210 000 blocs correspond au **halving**, et 144 blocs à environ une journée.",
+      "difficulty": 3
+    },
+    {
+      "question": "Le bloc genèse de Bitcoin, miné le 3 janvier 2009, contient un message laissé par Satoshi Nakamoto. De quoi s'agit-il ?",
+      "answer": "Un titre du Times sur un nouveau sauvetage des banques",
+      "wrong": ["Une citation du manifeste cypherpunk", "Le cours de l'once d'or ce jour-là", "Un hommage à Alan Turing"],
+      "explanation": "La transaction coinbase du bloc genèse contient le texte `The Times 03/Jan/2009 Chancellor on brink of second bailout for banks`. Ce titre du quotidien britannique sert d'**horodatage** (le bloc n'a pas pu être créé avant cette date) et se lit comme un commentaire sur la fragilité du système bancaire. Les 50 BTC de ce bloc ne sont d'ailleurs pas dépensables.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle plateforme d'échange basée à Tokyo, longtemps la plus grande du monde pour le bitcoin, a fait faillite en 2014 après la disparition d'environ 850 000 BTC ?",
+      "answer": "Mt. Gox",
+      "wrong": ["FTX", "Bitfinex", "QuadrigaCX"],
+      "explanation": "**Mt. Gox**, dont le nom vient de « Magic: The Gathering Online eXchange », son projet initial d'échange de cartes, s'est déclarée en faillite en février 2014 ; environ 200 000 BTC ont ensuite été retrouvés. **FTX** s'est effondrée en 2022, Bitfinex a subi un piratage majeur en 2016 et QuadrigaCX était canadienne.",
+      "difficulty": 3
+    }
+  ]
+}

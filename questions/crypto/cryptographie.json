@@ -1,0 +1,286 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Cryptographie",
+  "icon": "🔐",
+  "description": "Chiffrement symétrique et asymétrique, hachage, signatures, TLS, chiffres historiques et post-quantique.",
+  "order": 3,
+  "questions": [
+    {
+      "question": "Qu'est-ce qui caractérise le chiffrement symétrique ?",
+      "answer": "La même clé sert à chiffrer et à déchiffrer",
+      "wrong": [
+        "Une clé publique chiffre et une clé privée déchiffre",
+        "Il ne nécessite aucune clé",
+        "Il ne peut chiffrer que des messages courts"
+      ],
+      "explanation": "En **chiffrement symétrique** (AES, ChaCha20…), l'émetteur et le destinataire partagent **une seule clé secrète**. C'est rapide, mais il faut pouvoir échanger cette clé de façon sûre. Le chiffrement **asymétrique** (RSA, courbes elliptiques) utilise une paire clé publique / clé privée ; en pratique, on combine les deux, comme dans TLS.",
+      "difficulty": 1
+    },
+    {
+      "question": "Avec le chiffre de César (décalage de 3 lettres vers la droite), comment s'écrit le mot `CHAT` ?",
+      "answer": "`FKDW`",
+      "wrong": [
+        "`DIBU`",
+        "`ZEXQ`",
+        "`PUNG`"
+      ],
+      "explanation": "Chaque lettre est remplacée par celle située **3 rangs plus loin** dans l'alphabet : C→F, H→K, A→D, T→W. `DIBU` correspond à un décalage de 1, `ZEXQ` à un décalage de 3 vers la gauche et `PUNG` à ROT13. Avec seulement 25 décalages possibles, ce chiffre se casse instantanément en les essayant tous.",
+      "difficulty": 1
+    },
+    {
+      "question": "Un mot de passe est stocké en base sous la forme `cGFzc3dvcmQ=` (Base64). Est-il protégé ?",
+      "answer": "Non, Base64 est un simple encodage, réversible sans clé",
+      "wrong": [
+        "Oui, Base64 est un chiffrement symétrique",
+        "Oui, Base64 est une fonction de hachage irréversible",
+        "Oui, tant que l'algorithme reste secret"
+      ],
+      "explanation": "**Base64** est un **encodage** : il représente des octets avec 64 caractères imprimables (A-Z, a-z, 0-9, `+` et `/`, plus `=` pour le remplissage). N'importe qui peut le décoder sans clé : ici, `cGFzc3dvcmQ=` donne `password`. Pour stocker un mot de passe, il faut une fonction de hachage lente et salée comme Argon2 ou bcrypt.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel mathématicien britannique a joué un rôle clé dans le décryptage d'Enigma à Bletchley Park ?",
+      "answer": "Alan Turing",
+      "wrong": [
+        "Claude Shannon",
+        "John von Neumann",
+        "Charles Babbage"
+      ],
+      "explanation": "À Bletchley Park, **Alan Turing** a conçu la **Bombe**, une machine électromécanique qui accélérait la recherche des réglages quotidiens d'Enigma, utilisée par l'armée allemande. Il s'appuyait sur les travaux pionniers des cryptologues polonais, dont **Marian Rejewski**, qui avaient cassé une première version d'Enigma dès 1932. Claude Shannon, américain, est le père de la théorie de l'information.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle est la taille de l'empreinte produite par la fonction de hachage SHA-256 ?",
+      "answer": "256 bits",
+      "wrong": [
+        "128 bits",
+        "512 bits",
+        "Autant que le message d'entrée"
+      ],
+      "explanation": "Comme toute fonction de hachage, **SHA-256** produit une empreinte de **taille fixe** : 256 bits (32 octets, soit 64 caractères hexadécimaux), que l'entrée fasse un octet ou plusieurs gigaoctets. C'est une fonction à sens unique : on ne peut pas retrouver le message à partir de l'empreinte. Elle fait partie de la famille SHA-2, standardisée par le NIST.",
+      "difficulty": 1
+    },
+    {
+      "question": "Bob veut envoyer à Alice un message chiffré avec un algorithme asymétrique. Quelle clé utilise-t-il pour chiffrer ?",
+      "answer": "La clé publique d'Alice",
+      "wrong": [
+        "La clé privée d'Alice",
+        "La clé privée de Bob",
+        "La clé publique de Bob"
+      ],
+      "explanation": "On chiffre avec la **clé publique du destinataire**, que tout le monde peut connaître : seule Alice, qui détient la **clé privée** correspondante, pourra déchiffrer le message. Bob n'a de toute façon pas accès à la clé privée d'Alice, et chiffrer avec sa propre clé publique ne permettrait qu'à lui-même de déchiffrer.",
+      "difficulty": 1
+    },
+    {
+      "question": "Lors d'une connexion HTTPS, qui garantit que le certificat présenté appartient bien au site visité ?",
+      "answer": "Une autorité de certification (CA)",
+      "wrong": [
+        "Le fournisseur d'accès à Internet",
+        "Le serveur DNS",
+        "Le navigateur, qui génère le certificat"
+      ],
+      "explanation": "Une **autorité de certification** signe le certificat **X.509** du site, liant sa clé publique à son nom de domaine. Le navigateur vérifie cette signature en remontant jusqu'à un certificat racine de confiance préinstallé : c'est le principe de la **PKI** (infrastructure à clés publiques). Let's Encrypt est par exemple une CA gratuite très répandue.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel algorithme, issu d'un concours public du NIST, est devenu en 2001 le standard de chiffrement symétrique remplaçant DES ?",
+      "answer": "AES",
+      "wrong": [
+        "Twofish",
+        "RSA",
+        "3DES"
+      ],
+      "explanation": "L'**AES** (Advanced Encryption Standard) est l'algorithme **Rijndael**, conçu par les Belges Joan Daemen et Vincent Rijmen, qui a remporté le concours face notamment à Serpent et **Twofish**. Il a remplacé **DES**, dont la clé de 56 bits était devenue trop courte : en 1998, la machine « Deep Crack » de l'EFF l'a retrouvée par force brute en quelques jours. 3DES, qui applique DES trois fois, n'était qu'une solution transitoire.",
+      "difficulty": 1,
+      "source": "https://csrc.nist.gov/pubs/fips/197/final"
+    },
+    {
+      "question": "Pour signer numériquement un document, quelle clé l'expéditeur utilise-t-il ?",
+      "answer": "Sa propre clé privée",
+      "wrong": [
+        "Sa propre clé publique",
+        "La clé publique du destinataire",
+        "La clé privée du destinataire"
+      ],
+      "explanation": "La **signature** se calcule avec la **clé privée** du signataire, que lui seul possède, et n'importe qui peut la vérifier avec sa **clé publique**. Elle garantit l'authenticité, l'intégrité et la non-répudiation, mais pas la confidentialité : le document signé reste lisible. C'est l'inverse du chiffrement, où l'on utilise la clé publique du destinataire.",
+      "difficulty": 2
+    },
+    {
+      "question": "Décodez ce mot chiffré en ROT13 : `PELCGB`",
+      "answer": "`CRYPTO`",
+      "wrong": [
+        "`CIPHER`",
+        "`SECRET`",
+        "`CRYPTE`"
+      ],
+      "explanation": "**ROT13** décale chaque lettre de 13 rangs : P→C, E→R, L→Y, C→P, G→T, B→O. Comme l'alphabet compte 26 lettres, appliquer ROT13 deux fois redonne le texte d'origine : la même opération sert à chiffrer et à déchiffrer. Il n'offre aucune sécurité et sert surtout à masquer des spoilers.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel chiffrement est prouvé inviolable, à condition que la clé soit vraiment aléatoire, aussi longue que le message et jamais réutilisée ?",
+      "answer": "Le masque jetable",
+      "wrong": [
+        "AES-256",
+        "RSA-4096",
+        "La machine Enigma"
+      ],
+      "explanation": "Le **masque jetable** (one-time pad) combine le message avec une clé aléatoire de même longueur, par exemple par XOR. Claude Shannon a démontré en 1949 qu'il offre une **sécurité parfaite** : le chiffré ne révèle rien du message. Mais réutiliser la clé suffit à le casser, et distribuer des clés aussi longues que les messages est très contraignant. AES et RSA ne sont « que » calculatoirement sûrs.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur quel problème mathématique repose la sécurité de RSA ?",
+      "answer": "La factorisation de grands entiers",
+      "wrong": [
+        "Le logarithme discret sur courbe elliptique",
+        "La recherche de collisions de hachage",
+        "Le problème du voyageur de commerce"
+      ],
+      "explanation": "**RSA**, inventé en 1977 par Rivest, Shamir et Adleman (d'où son nom), utilise un module `n = p × q`, produit de deux grands nombres premiers. Multiplier est facile, mais retrouver `p` et `q` à partir de `n` est hors de portée pour des clés de 2048 bits et plus. Le logarithme discret sur courbe elliptique est, lui, la base de l'ECC (ECDSA, ECDH).",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle fonction de hachage a été visée par l'attaque « SHAttered » de 2017, qui a produit deux fichiers PDF différents de même empreinte ?",
+      "answer": "SHA-1",
+      "wrong": [
+        "MD5",
+        "SHA-256",
+        "SHA-3"
+      ],
+      "explanation": "En 2017, Google et le CWI d'Amsterdam ont publié la première **collision** concrète sur **SHA-1** : deux PDF distincts ayant la même empreinte. SHA-1 est depuis abandonné pour les certificats et les signatures. Le piège MD5 était cassé bien avant, des collisions ayant été publiées dès 2004. SHA-256 et SHA-3 restent considérés comme sûrs.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quoi sert le « sel » (salt) ajouté avant de hacher un mot de passe ?",
+      "answer": "À rendre différents les hash de mots de passe identiques",
+      "wrong": [
+        "À pouvoir déchiffrer le mot de passe plus tard",
+        "À accélérer le calcul du hash",
+        "À remplacer le hachage par un chiffrement"
+      ],
+      "explanation": "Le **sel** est une valeur aléatoire, unique par utilisateur, stockée **en clair** à côté du hash. Il rend inutiles les tables précalculées (rainbow tables) et oblige l'attaquant à s'attaquer à chaque compte séparément. Le **poivre** (pepper), lui, est un secret commun conservé hors de la base de données (configuration, HSM), pour résister à une simple fuite de celle-ci.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel algorithme de hachage de mots de passe a remporté la Password Hashing Competition en 2015 ?",
+      "answer": "Argon2",
+      "wrong": [
+        "bcrypt",
+        "scrypt",
+        "PBKDF2"
+      ],
+      "explanation": "**Argon2** a gagné la PHC en 2015 ; sa variante **Argon2id** est aujourd'hui la plus recommandée (RFC 9106). Comme bcrypt et scrypt, plus anciens et toujours utilisés, il est volontairement **lent** ; comme scrypt, il consomme aussi beaucoup de mémoire, ce qui pénalise les attaques massives sur GPU. Un simple SHA-256, bien trop rapide, ne convient pas aux mots de passe.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi l'image du « pingouin ECB » est-elle célèbre en cryptographie ?",
+      "answer": "Elle révèle les motifs que laisse passer le mode ECB",
+      "wrong": [
+        "Elle prouve qu'AES a été cassé",
+        "Elle illustre une attaque par canal auxiliaire",
+        "Elle sert de vecteur de test officiel du NIST"
+      ],
+      "explanation": "Chiffrée en mode **ECB** (Electronic Codebook), l'image de Tux, la mascotte de Linux, reste parfaitement reconnaissable : chaque bloc est chiffré indépendamment, donc des zones de couleur identiques donnent des blocs chiffrés identiques. AES n'est pas en cause, c'est le mode d'opération. Des modes comme **CBC** (avec un IV aléatoire) ou **GCM** évitent ce problème.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel est l'objectif principal de l'échange de clés Diffie-Hellman ?",
+      "answer": "Établir une clé secrète commune sur un canal public",
+      "wrong": [
+        "Signer numériquement un document ou un message",
+        "Hacher un mot de passe de façon sûre",
+        "Chiffrer un fichier avec une clé publique"
+      ],
+      "explanation": "Publié en 1976, **Diffie-Hellman** permet à deux parties de calculer le même secret en n'échangeant que des valeurs publiques : un espion ne peut pas le retrouver sans résoudre le **logarithme discret**. Sans authentification, il reste vulnérable à une attaque de l'homme du milieu, c'est pourquoi TLS l'associe à des certificats.",
+      "difficulty": 2
+    },
+    {
+      "question": "Selon le principe de Kerckhoffs, qu'est-ce qui doit rester secret dans un système de chiffrement ?",
+      "answer": "Uniquement la clé",
+      "wrong": [
+        "Uniquement l'algorithme",
+        "L'algorithme et la clé",
+        "Le nom de l'expéditeur"
+      ],
+      "explanation": "Énoncé par Auguste Kerckhoffs en 1883, ce principe affirme qu'un système doit rester sûr même si l'ennemi **connaît tout de son fonctionnement** : seule la **clé** doit être secrète. C'est pourquoi les algorithmes modernes (AES, RSA…) sont publics et scrutés par toute la communauté. Compter sur le secret de l'algorithme relève de la « sécurité par l'obscurité ».",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la taille de bloc d'AES-256 ?",
+      "answer": "128 bits",
+      "wrong": [
+        "256 bits",
+        "192 bits",
+        "64 bits"
+      ],
+      "explanation": "Quelle que soit la longueur de clé (128, 192 ou 256 bits), **AES chiffre toujours des blocs de 128 bits** (16 octets). Le « 256 » d'AES-256 désigne la taille de la clé, qui détermine aussi le nombre de tours (10, 12 ou 14). Rijndael, l'algorithme d'origine, acceptait d'autres tailles de bloc, mais le standard AES n'a retenu que 128 bits. Les blocs de 64 bits sont ceux de DES.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que risque-t-on en réutilisant le même nonce avec la même clé en AES-GCM ?",
+      "answer": "Une fuite d'information et des messages falsifiables",
+      "wrong": [
+        "Rien, le nonce n'a pas besoin d'être unique",
+        "Seulement un chiffrement plus lent",
+        "Le destinataire ne peut plus déchiffrer"
+      ],
+      "explanation": "**GCM** est un mode de chiffrement authentifié (AEAD) basé sur un compteur : avec le même couple clé/nonce, le même flux de clé est produit, et le XOR de deux chiffrés révèle le XOR des deux messages clairs. Pire, un attaquant peut retrouver la clé d'authentification et **forger** des messages acceptés comme valides. Le nonce doit donc être **unique** pour chaque message chiffré avec une clé donnée.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que garantit la confidentialité persistante (Perfect Forward Secrecy) dans TLS ?",
+      "answer": "Les sessions passées restent sûres si la clé privée fuit",
+      "wrong": [
+        "Les clés de session sont plus longues que la clé privée",
+        "La même clé de session sert à toutes les connexions",
+        "Le certificat du serveur n'expire jamais"
+      ],
+      "explanation": "Avec la **PFS**, chaque session utilise une clé issue d'un échange **Diffie-Hellman éphémère** (DHE ou ECDHE), oubliée après usage. Un attaquant qui enregistre le trafic puis vole plus tard la clé privée du serveur ne peut donc pas déchiffrer les échanges passés. C'est pour cela que TLS 1.3 a supprimé l'échange de clés RSA statique, qui n'offrait pas cette protection.",
+      "difficulty": 3
+    },
+    {
+      "question": "Chiffrez le mot `ATTACK` avec le chiffre de Vigenère et la clé `LEMON` (A=0, B=1… on additionne les lettres modulo 26).",
+      "answer": "`LXFOPV`",
+      "wrong": [
+        "`PPHMPZ`",
+        "`MYGPQW`",
+        "`DWWDFN`"
+      ],
+      "explanation": "Chaque lettre du message est décalée de la valeur de la lettre de clé correspondante, la clé étant répétée : A+L=L, T+E=X, T+M=F, A+O=O, C+N=P, K+L=V. `PPHMPZ` s'obtient en soustrayant la clé, `MYGPQW` en numérotant A=1, et `DWWDFN` est un simple César de 3. Longtemps réputé indéchiffrable, Vigenère a été cassé au XIXe siècle (Babbage, Kasiski) en exploitant la répétition de la clé.",
+      "difficulty": 3
+    },
+    {
+      "question": "Avec un ordinateur quantique suffisamment puissant, quels algorithmes l'algorithme de Shor permettrait-il de casser ?",
+      "answer": "RSA et les courbes elliptiques",
+      "wrong": [
+        "AES-256 et la famille SHA-2",
+        "Le masque jetable de Vernam",
+        "bcrypt, scrypt et Argon2"
+      ],
+      "explanation": "L'**algorithme de Shor** (1994) factorise les entiers et calcule des logarithmes discrets en temps polynomial : RSA, Diffie-Hellman et l'ECC tomberaient. Pour le chiffrement symétrique et les fonctions de hachage, la menace vient de l'algorithme de **Grover**, qui n'offre qu'une accélération quadratique : des clés plus longues suffisent, d'où l'usage d'AES-256. Le masque jetable reste inconditionnellement sûr.",
+      "difficulty": 3
+    },
+    {
+      "question": "ML-KEM (ex-CRYSTALS-Kyber), standardisé par le NIST en août 2024 sous le nom FIPS 203, est conçu pour résister aux ordinateurs quantiques. Sur quel type de problème mathématique repose-t-il ?",
+      "answer": "Les réseaux euclidiens (lattices)",
+      "wrong": [
+        "La factorisation d'entiers",
+        "Le logarithme discret",
+        "Les isogénies de courbes elliptiques"
+      ],
+      "explanation": "**ML-KEM** (Module-Lattice-based Key-Encapsulation Mechanism) repose sur le problème **Module-LWE**, un problème de **réseaux euclidiens** pour lequel on ne connaît pas d'algorithme quantique efficace. La factorisation et le logarithme discret sont, eux, cassés par l'algorithme de Shor. Quant aux isogénies, le candidat SIKE a été cassé en 2022 par une attaque classique, sur un simple ordinateur.",
+      "difficulty": 3,
+      "source": "https://csrc.nist.gov/pubs/fips/203/final"
+    },
+    {
+      "question": "Quelle propriété d'une fonction de hachage signifie qu'il est difficile de trouver deux messages distincts quelconques ayant la même empreinte ?",
+      "answer": "La résistance aux collisions",
+      "wrong": [
+        "La résistance à la préimage",
+        "La résistance à la seconde préimage",
+        "L'effet avalanche"
+      ],
+      "explanation": "La **résistance aux collisions** porte sur n'importe quelle paire de messages, tous deux choisis librement par l'attaquant. Pour la **seconde préimage**, le premier message est imposé et il faut en trouver un autre de même empreinte ; la **préimage** consiste à retrouver un message à partir d'une empreinte donnée. Grâce au paradoxe des anniversaires, une collision sur `n` bits coûte environ `2^(n/2)` essais.",
+      "difficulty": 3
+    }
+  ]
+}

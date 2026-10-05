@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schemas/theme.schema.json",
+  "name": "Crypto",
+  "icon": "🪙",
+  "description": "Cryptomonnaies, blockchain et cryptographie.",
+  "color": "#f59e0b",
+  "order": 3
+}

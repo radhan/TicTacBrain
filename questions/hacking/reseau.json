@@ -1,0 +1,193 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Réseau",
+  "icon": "📡",
+  "description": "Réseau et sécurité : modèle OSI, TCP/IP, ports, nmap, Wi-Fi, ARP spoofing et calcul de sous-réseaux.",
+  "order": 2,
+  "questions": [
+    {
+      "question": "Combien de couches compte le modèle **OSI** ?",
+      "answer": "7",
+      "wrong": ["4", "5", "6"],
+      "explanation": "Le modèle OSI comporte **7 couches** : Physique, Liaison, Réseau, Transport, Session, Présentation, Application. Le modèle TCP/IP, lui, en condense 4.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/OSI_model"
+    },
+    {
+      "question": "Sur quel port TCP le service **SSH** écoute-t-il par défaut ?",
+      "answer": "22",
+      "wrong": ["21", "23", "80"],
+      "explanation": "SSH utilise le port **22**. Le 21 est celui de FTP (commandes), le 23 celui de Telnet (en clair, à proscrire), et le 80 celui de HTTP.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers"
+    },
+    {
+      "question": "Quel port est utilisé par défaut pour le **HTTPS** ?",
+      "answer": "443",
+      "wrong": ["80", "8080", "22"],
+      "explanation": "HTTPS (HTTP sur TLS) utilise le port **443**. Le port 80 est réservé au HTTP en clair, et 8080 est un port alternatif courant pour des serveurs web de développement ou des proxys.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle adresse IPv4 désigne l'interface de **bouclage** (loopback) de la machine locale ?",
+      "answer": "`127.0.0.1`",
+      "wrong": ["`0.0.0.0`", "`192.168.0.1`", "`255.255.255.255`"],
+      "explanation": "`127.0.0.1` (localhost) désigne la machine elle-même. `0.0.0.0` signifie « toutes les interfaces », `192.168.0.1` est une passerelle privée typique, et `255.255.255.255` est l'adresse de broadcast limité.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle est la séquence correcte de la **poignée de main (handshake)** TCP ?",
+      "answer": "SYN, SYN-ACK, ACK",
+      "wrong": ["SYN, ACK, SYN-ACK", "ACK, SYN, SYN-ACK", "SYN, SYN-ACK, FIN"],
+      "explanation": "Le client envoie **SYN**, le serveur répond **SYN-ACK**, puis le client confirme avec **ACK** : la connexion est établie. `FIN` sert au contraire à clore la connexion.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
+    },
+    {
+      "question": "Sur quel port (TCP et UDP) fonctionne le **DNS** ?",
+      "answer": "53",
+      "wrong": ["25", "110", "143"],
+      "explanation": "Le DNS écoute sur le port **53** (UDP pour la plupart des requêtes, TCP notamment pour les transferts de zone). Le 25 est SMTP, le 110 POP3 et le 143 IMAP.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel protocole de transport garantit une livraison **fiable et ordonnée** des données ?",
+      "answer": "TCP",
+      "wrong": ["UDP", "ICMP", "ARP"],
+      "explanation": "**TCP** établit une connexion, numérote les segments et les retransmet en cas de perte : la livraison est fiable et ordonnée. UDP est sans connexion et ne garantit rien, ICMP sert au diagnostic (ping), et ARP résout les adresses MAC.",
+      "difficulty": 1
+    },
+    {
+      "question": "Sur combien de bits est codée une adresse **IPv6** ?",
+      "answer": "128",
+      "wrong": ["32", "64", "256"],
+      "explanation": "Une adresse IPv6 fait **128 bits**, contre 32 bits pour IPv4. Cela offre un espace d'adressage colossal, répondant à la pénurie d'adresses IPv4.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/IPv6_address"
+    },
+    {
+      "question": "Que réalise l'option `-sS` de **nmap** ?",
+      "answer": "Un scan SYN (half-open)",
+      "wrong": ["Un scan UDP", "Une détection de version de service", "Une détection du système d'exploitation"],
+      "explanation": "`-sS` lance un **scan SYN** : nmap envoie un SYN et interprète la réponse sans finaliser le handshake (d'où « half-open »), ce qui est rapide et discret. `-sU` scanne l'UDP, `-sV` détecte les versions et `-O` le système d'exploitation.",
+      "difficulty": 2,
+      "source": "https://nmap.org/book/man-port-scanning-techniques.html"
+    },
+    {
+      "question": "Laquelle de ces plages fait partie des adresses **privées (RFC 1918)** ?",
+      "answer": "`172.16.0.0/12`",
+      "wrong": ["`172.32.0.0/12`", "`11.0.0.0/8`", "`192.169.0.0/16`"],
+      "explanation": "La RFC 1918 réserve `10.0.0.0/8`, `172.16.0.0/12` (soit 172.16 à 172.31) et `192.168.0.0/16`. Attention aux pièges : `172.32.x.x`, `11.x.x.x` et `192.169.x.x` sont **publiques**.",
+      "difficulty": 2,
+      "source": "https://www.rfc-editor.org/rfc/rfc1918"
+    },
+    {
+      "question": "Combien d'**hôtes utilisables** contient un sous-réseau en `/26` ?",
+      "answer": "62",
+      "wrong": ["64", "30", "126"],
+      "explanation": "Un `/26` laisse 32 − 26 = **6 bits** d'hôte, soit 2⁶ = 64 adresses. On retire l'adresse réseau et l'adresse de broadcast : 64 − 2 = **62** hôtes utilisables.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle attaque consiste à empoisonner les tables ARP d'un réseau local pour s'interposer dans le trafic (MITM) ?",
+      "answer": "ARP spoofing (poisoning)",
+      "wrong": ["DNS poisoning", "SYN flood", "VLAN hopping"],
+      "explanation": "L'**ARP spoofing** envoie de fausses réponses ARP pour associer l'IP de la passerelle à la MAC de l'attaquant, qui relaie alors le trafic de la victime (man-in-the-middle). ARP n'ayant aucune authentification, cette attaque est classique sur un LAN.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur combien de bits est codée une adresse **MAC** ?",
+      "answer": "48",
+      "wrong": ["32", "64", "128"],
+      "explanation": "Une adresse MAC (EUI-48) fait **48 bits**, généralement notée en 6 octets hexadécimaux (ex: `00:1A:2B:3C:4D:5E`). Les 24 premiers bits identifient le fabricant (OUI).",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/MAC_address"
+    },
+    {
+      "question": "Quel port TCP utilise par défaut le **RDP** (Bureau à distance de Windows) ?",
+      "answer": "3389",
+      "wrong": ["3306", "445", "5900"],
+      "explanation": "Le RDP écoute sur le port **3389**. Le 3306 est celui de MySQL, le 445 de SMB, et le 5900 de VNC (un autre protocole de bureau distant, à ne pas confondre).",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel port TCP, exploité par le ver **EternalBlue**, correspond au partage de fichiers Windows moderne (SMB) ?",
+      "answer": "445",
+      "wrong": ["143", "389", "3306"],
+      "explanation": "SMB en mode direct (sans NetBIOS) utilise le port **445**, cible de la faille MS17-010 / EternalBlue. Le 143 est IMAP, le 389 LDAP et le 3306 MySQL.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel protocole de sécurité Wi-Fi est **obsolète** et cassable en quelques minutes ?",
+      "answer": "WEP",
+      "wrong": ["WPA2", "WPA3", "WPA2-Enterprise"],
+      "explanation": "**WEP** souffre de faiblesses cryptographiques majeures (vecteurs d'initialisation RC4 trop courts) et se casse rapidement. WPA2 (AES-CCMP) et surtout WPA3 (SAE) sont les standards recommandés.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Wired_Equivalent_Privacy"
+    },
+    {
+      "question": "Sur quel champ des paquets IP `traceroute` s'appuie-t-il pour découvrir les routeurs intermédiaires ?",
+      "answer": "Le TTL (Time To Live)",
+      "wrong": ["Le numéro de port destination", "L'adresse MAC source", "Le champ Options IP"],
+      "explanation": "`traceroute` envoie des paquets avec un **TTL** croissant (1, 2, 3…). Chaque routeur décrémente le TTL ; quand il atteint 0, le routeur renvoie un message ICMP « Time Exceeded », révélant son adresse. On cartographie ainsi le chemin.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la différence clé entre un **IDS** et un **IPS** ?",
+      "answer": "L'IPS peut bloquer le trafic en temps réel ; l'IDS se contente de détecter et d'alerter",
+      "wrong": ["L'IDS chiffre le trafic, pas l'IPS", "L'IPS ne fonctionne qu'en IPv6", "L'IDS bloque le trafic, l'IPS se contente d'alerter"],
+      "explanation": "Un **IDS** (Intrusion Detection System) observe et alerte, mais laisse passer le trafic ; un **IPS** (Prevention) est en coupure et peut **bloquer** activement les flux malveillants. La dernière proposition inverse les deux rôles.",
+      "difficulty": 2
+    },
+    {
+      "question": "Combien d'**hôtes utilisables** offre un sous-réseau `/30`, courant pour une liaison point-à-point ?",
+      "answer": "2",
+      "wrong": ["4", "1", "6"],
+      "explanation": "Un `/30` a 32 − 30 = 2 bits d'hôte, soit 2² = 4 adresses. Moins l'adresse réseau et le broadcast : 4 − 2 = **2** hôtes utilisables, juste de quoi relier deux équipements.",
+      "difficulty": 3
+    },
+    {
+      "question": "En WPA2-PSK, quelle donnée un attaquant capture-t-il pour tenter un **cassage hors-ligne** du mot de passe Wi-Fi ?",
+      "answer": "Le 4-way handshake (poignée de main en quatre temps)",
+      "wrong": ["La trame beacon du point d'accès", "Le SSID diffusé en clair", "Une requête ARP de la victime"],
+      "explanation": "Le **4-way handshake**, échangé à la connexion d'un client, contient de quoi vérifier une clé candidate. Capturé (parfois après une désauthentification forcée), il permet une attaque par dictionnaire/force brute hors ligne. Le beacon et le SSID n'aident pas à retrouver la passphrase.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle requête DNS un attaquant tente-t-il pour récupérer **tous les enregistrements** d'une zone mal configurée ?",
+      "answer": "Un transfert de zone (AXFR)",
+      "wrong": ["Une requête inverse (PTR)", "Une requête MX", "Une requête récursive"],
+      "explanation": "Un **transfert de zone AXFR**, normalement réservé aux serveurs secondaires, livre l'intégralité des enregistrements d'une zone s'il est ouvert à tous : une mine d'or pour la reconnaissance. Les serveurs DNS doivent le restreindre aux seuls secondaires autorisés.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/DNS_zone_transfer"
+    },
+    {
+      "question": "Dans un **reverse shell**, qui initie la connexion réseau ?",
+      "answer": "La machine victime se connecte vers l'attaquant",
+      "wrong": ["L'attaquant se connecte à un port ouvert par la victime", "Le routeur relaie automatiquement la connexion", "Les deux machines écoutent simultanément"],
+      "explanation": "Dans un **reverse shell**, c'est la victime qui se connecte à l'attaquant (qui est en écoute), ce qui franchit souvent les pare-feu bloquant les connexions entrantes. À l'inverse, un **bind shell** ouvre un port sur la victime auquel l'attaquant se connecte.",
+      "difficulty": 3
+    },
+    {
+      "question": "Combien d'**hôtes utilisables** contient un sous-réseau `/23` ?",
+      "answer": "510",
+      "wrong": ["512", "254", "1022"],
+      "explanation": "Un `/23` dispose de 32 − 23 = 9 bits d'hôte, soit 2⁹ = 512 adresses. Moins le réseau et le broadcast : 512 − 2 = **510** hôtes utilisables (soit l'équivalent de deux `/24`).",
+      "difficulty": 3
+    },
+    {
+      "question": "À quelle **couche du modèle OSI** opère le protocole TCP ?",
+      "answer": "Couche 4 (Transport)",
+      "wrong": ["Couche 3 (Réseau)", "Couche 7 (Application)", "Couche 2 (Liaison)"],
+      "explanation": "TCP est un protocole de **couche 4 (Transport)** : il gère la connexion de bout en bout, le découpage en segments et la fiabilité. IP opère à la couche 3 (Réseau) et Ethernet à la couche 2 (Liaison).",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel type d'enregistrement DNS héberge les politiques **SPF** et les clés **DKIM** (lutte anti-spam) ?",
+      "answer": "TXT",
+      "wrong": ["MX", "CNAME", "SRV"],
+      "explanation": "Les enregistrements **TXT** stockent des données textuelles arbitraires, dont les politiques SPF et les clés publiques DKIM/DMARC. Le MX désigne les serveurs de messagerie, le CNAME crée un alias, et le SRV publie l'emplacement d'un service.",
+      "difficulty": 3
+    }
+  ]
+}

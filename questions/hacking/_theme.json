@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schemas/theme.schema.json",
+  "name": "Hacking",
+  "icon": "🕵️",
+  "description": "Sécurité offensive, malwares, web, réseau et CTF.",
+  "color": "#22c55e",
+  "order": 2
+}

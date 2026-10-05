@@ -1,0 +1,12 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": ["questions/*/_theme.json"],
+      "url": "./schemas/theme.schema.json"
+    },
+    {
+      "fileMatch": ["questions/*/*.json", "!questions/*/_theme.json"],
+      "url": "./schemas/subtheme.schema.json"
+    }
+  ]
+}

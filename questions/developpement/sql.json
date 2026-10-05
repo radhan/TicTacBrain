@@ -1,0 +1,307 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "SQL & BDD",
+  "icon": "🗄️",
+  "description": "Requêtes, jointures, NULL, index, transactions et NoSQL : de quoi dompter vos bases de données.",
+  "order": 6,
+  "questions": [
+    {
+      "question": "Quelle condition sélectionne correctement les lignes dont la colonne `email` est NULL ?",
+      "answer": "`WHERE email IS NULL`",
+      "wrong": [
+        "`WHERE email = NULL`",
+        "`WHERE email == NULL`",
+        "`WHERE email = 'NULL'`"
+      ],
+      "explanation": "NULL signifie « valeur inconnue » : toute comparaison avec `=` renvoie elle-même NULL (inconnu), jamais vrai, donc `email = NULL` ne sélectionne **aucune** ligne. Il faut l'opérateur dédié `IS NULL` (ou `IS NOT NULL`). Quant à `'NULL'`, c'est une chaîne de quatre caractères, pas l'absence de valeur.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/functions-comparison.html"
+    },
+    {
+      "question": "Quelle jointure renvoie **toutes** les lignes de la table de gauche, même celles sans correspondance dans la table de droite ?",
+      "answer": "`LEFT JOIN`",
+      "wrong": [
+        "`INNER JOIN`",
+        "`RIGHT JOIN`",
+        "`CROSS JOIN`"
+      ],
+      "explanation": "`LEFT JOIN` (ou `LEFT OUTER JOIN`) garde chaque ligne de la table de gauche ; sans correspondance, les colonnes de droite valent NULL. `INNER JOIN` ne garde que les lignes qui correspondent des deux côtés, et `RIGHT JOIN` fait l'inverse du `LEFT`. Pour conserver les lignes orphelines des deux côtés, il existe `FULL JOIN`.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+    },
+    {
+      "question": "Selon le standard SQL, quelle contrainte impose à la fois l'unicité des valeurs et l'absence de NULL ?",
+      "answer": "`PRIMARY KEY`",
+      "wrong": [
+        "`UNIQUE`",
+        "`FOREIGN KEY`",
+        "`CHECK`"
+      ],
+      "explanation": "Une clé primaire identifie chaque ligne de façon unique : elle équivaut à `UNIQUE` + `NOT NULL`, et une table en a au plus une. `UNIQUE` seul **autorise les NULL** (souvent plusieurs, car deux NULL ne sont pas considérés comme égaux). `FOREIGN KEY` sert à référencer une autre table, et `CHECK` vérifie une condition arbitraire.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/ddl-constraints.html"
+    },
+    {
+      "question": "La table `clients` contient plusieurs clients par ville. Que renvoie `SELECT DISTINCT ville FROM clients` ?",
+      "answer": "Chaque ville une seule fois",
+      "wrong": [
+        "Les villes n'ayant qu'un seul client",
+        "Le nombre de villes différentes",
+        "Les villes triées par ordre alphabétique"
+      ],
+      "explanation": "`DISTINCT` supprime les **lignes en double** du résultat : chaque ville présente apparaît exactement une fois. Il ne filtre pas les villes « uniques » et ne compte rien (pour cela, il faudrait `COUNT(DISTINCT ville)`). Enfin, l'ordre du résultat n'est jamais garanti sans `ORDER BY`.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/sql-select.html"
+    },
+    {
+      "question": "Quelle propriété ACID garantit qu'une transaction s'exécute **entièrement ou pas du tout** ?",
+      "answer": "L'atomicité",
+      "wrong": [
+        "La cohérence",
+        "L'isolation",
+        "La durabilité"
+      ],
+      "explanation": "**Atomicité** : si une étape de la transaction échoue, tout est annulé (*rollback*), comme pour un virement qui ne doit jamais débiter un compte sans créditer l'autre. La **cohérence** garantit le respect des contraintes, l'**isolation** que les transactions concurrentes ne se perturbent pas, et la **durabilité** qu'une transaction validée survit à une panne.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Propri%C3%A9t%C3%A9s_ACID"
+    },
+    {
+      "question": "Quel type de base NoSQL est le plus adapté pour explorer des relations comme « les amis de mes amis » ?",
+      "answer": "Une base orientée graphe",
+      "wrong": [
+        "Une base clé-valeur",
+        "Une base orientée colonnes",
+        "Une base orientée documents"
+      ],
+      "explanation": "Les bases **graphe** (Neo4j…) stockent nœuds et relations comme des éléments à part entière : parcourir plusieurs niveaux de liens est naturel et rapide, là où une base relationnelle enchaînerait les jointures. Les autres grandes familles NoSQL : clé-valeur (Redis), documents JSON (MongoDB) et colonnes larges (Cassandra).",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Graph_database"
+    },
+    {
+      "question": "Après un `GROUP BY client_id`, comment ne garder que les clients ayant passé plus de 5 commandes ?",
+      "answer": "`HAVING COUNT(*) > 5`",
+      "wrong": [
+        "`WHERE COUNT(*) > 5`",
+        "`ORDER BY COUNT(*) > 5`",
+        "`ON COUNT(*) > 5`"
+      ],
+      "explanation": "`WHERE` filtre les **lignes** avant le regroupement : il ne peut donc pas utiliser un agrégat comme `COUNT(*)` (erreur). `HAVING` filtre les **groupes** après le `GROUP BY`, une fois les agrégats calculés. Bonne pratique : tout ce qui peut être filtré dans le `WHERE` doit l'être, pour réduire le nombre de lignes à regrouper.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/sql-select.html"
+    },
+    {
+      "question": "La table `a` contient 3 lignes et la table `b` en contient 4. Combien de lignes renvoie `SELECT * FROM a CROSS JOIN b` ?",
+      "answer": "12",
+      "wrong": [
+        "7",
+        "4",
+        "3"
+      ],
+      "explanation": "`CROSS JOIN` produit le **produit cartésien** : chaque ligne de `a` est associée à chaque ligne de `b`, soit 3 × 4 = 12 lignes. C'est aussi ce qu'on obtient avec `FROM a, b` sans condition de jointure, un oubli classique qui fait exploser la taille des résultats.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+    },
+    {
+      "question": "Dans quel ordre **logique** les clauses d'une requête `SELECT` sont-elles évaluées ?",
+      "answer": "FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY",
+      "wrong": [
+        "SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY",
+        "FROM → GROUP BY → WHERE → HAVING → SELECT → ORDER BY",
+        "FROM → WHERE → SELECT → GROUP BY → HAVING → ORDER BY"
+      ],
+      "explanation": "On part des tables (`FROM`, jointures comprises), on filtre les lignes (`WHERE`), on regroupe (`GROUP BY`), on filtre les groupes (`HAVING`), on calcule les colonnes (`SELECT`) et enfin on trie (`ORDER BY`). Conséquence : en SQL standard, un alias défini dans le `SELECT` n'existe pas encore dans le `WHERE`, mais il est utilisable dans l'`ORDER BY`. Le moteur peut exécuter autrement en interne, tant que le résultat reste identique.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/sql-select.html"
+    },
+    {
+      "question": "Quelle commande vide **toutes les lignes** d'une table en conservant sa structure, sans accepter de clause `WHERE` ?",
+      "answer": "`TRUNCATE TABLE`",
+      "wrong": [
+        "`DROP TABLE`",
+        "`DELETE FROM`",
+        "`ALTER TABLE`"
+      ],
+      "explanation": "`TRUNCATE` vide la table d'un bloc, sans parcourir les lignes une à une : c'est généralement bien plus rapide, et cela ne déclenche pas les triggers `ON DELETE`. `DELETE FROM` supprime aussi des lignes, mais accepte un `WHERE` pour filtrer. `DROP TABLE`, lui, supprime la table elle-même, structure comprise.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/sql-truncate.html"
+    },
+    {
+      "question": "La table `clients` contient 5 lignes, dont 2 avec `email` à NULL. Que renvoient `COUNT(*)` et `COUNT(email)` ?",
+      "answer": "5 et 3",
+      "wrong": [
+        "5 et 5",
+        "3 et 3",
+        "3 et 5"
+      ],
+      "explanation": "`COUNT(*)` compte les **lignes**, quelles que soient leurs valeurs. `COUNT(colonne)` ne compte que les valeurs **non NULL** de cette colonne. Plus généralement, les fonctions d'agrégat (`SUM`, `AVG`, `MAX`…) ignorent les NULL : la moyenne de 10, 20 et NULL vaut 15, pas 10.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/functions-aggregate.html"
+    },
+    {
+      "question": "La table `a(id)` contient 1, 2, 2 et la table `b(id)` contient 2, 3. Combien de lignes renvoie :\n```sql\nSELECT id FROM a\nUNION\nSELECT id FROM b;\n```",
+      "answer": "3",
+      "wrong": [
+        "5",
+        "4",
+        "2"
+      ],
+      "explanation": "`UNION` élimine **tous** les doublons du résultat combiné, y compris ceux qui proviennent d'une même table : il reste 1, 2 et 3. `UNION ALL` conserverait tout et renverrait 5 lignes. Comme `UNION` doit dédoublonner (tri ou hachage), `UNION ALL` est plus rapide quand on sait qu'il n'y a pas de doublons.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/queries-union.html"
+    },
+    {
+      "question": "Des scores triés par ordre décroissant valent 100, 90, 90 et 80. Quel rang reçoit le score 80 avec `RANK()`, puis avec `DENSE_RANK()` ?",
+      "answer": "4, puis 3",
+      "wrong": [
+        "3, puis 4",
+        "4, puis 4",
+        "3, puis 3"
+      ],
+      "explanation": "Les deux 90 sont ex æquo au rang 2. `RANK()` laisse ensuite un **trou** (1, 2, 2, 4), alors que `DENSE_RANK()` n'en laisse pas (1, 2, 2, 3). `ROW_NUMBER()`, lui, numérote sans jamais d'égalité (1, 2, 3, 4), l'ordre entre ex æquo étant alors arbitraire.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/functions-window.html"
+    },
+    {
+      "question": "Comment s'appelle l'anomalie où une transaction lit des données modifiées par une autre transaction **pas encore validée** ?",
+      "answer": "La lecture sale (dirty read)",
+      "wrong": [
+        "La lecture fantôme (phantom read)",
+        "La lecture non répétable",
+        "La mise à jour perdue"
+      ],
+      "explanation": "Une **lecture sale** lit des données qui pourraient être annulées (*rollback*) juste après : on travaille alors sur des valeurs qui n'ont jamais officiellement existé. Dans le standard, seul le niveau `READ UNCOMMITTED` l'autorise. La **lecture fantôme**, elle, désigne des lignes qui apparaissent ou disparaissent quand on relance une même requête, à cause d'une autre transaction validée entre-temps.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/transaction-iso.html"
+    },
+    {
+      "question": "Selon le théorème CAP, que doit sacrifier un système distribué en cas de **partition réseau** ?",
+      "answer": "La cohérence ou la disponibilité",
+      "wrong": [
+        "La durabilité ou la cohérence",
+        "L'atomicité ou l'isolation",
+        "La disponibilité ou la durabilité"
+      ],
+      "explanation": "CAP : *Consistency* (tous les nœuds voient la même donnée), *Availability* (chaque requête reçoit une réponse) et *Partition tolerance*. Dans un système distribué, les partitions réseau sont inévitables : quand elles surviennent, il faut choisir entre refuser des requêtes pour rester cohérent (CP) ou répondre avec des données potentiellement obsolètes (AP).",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/CAP_theorem"
+    },
+    {
+      "question": "Pourquoi une requête préparée (paramétrée) protège-t-elle de l'injection SQL ?",
+      "answer": "Les valeurs ne sont jamais interprétées comme du SQL",
+      "wrong": [
+        "Les valeurs sont chiffrées avant d'être envoyées",
+        "Les apostrophes sont interdites dans les valeurs",
+        "La requête s'exécute avec des droits en lecture seule"
+      ],
+      "explanation": "Avec `WHERE nom = ?`, la structure de la requête est fixée **avant** l'arrivée des valeurs : une entrée comme `' OR '1'='1` reste une simple chaîne à comparer, pas du code. À l'inverse, concaténer l'entrée utilisateur dans la chaîne SQL permet à un attaquant de réécrire la requête. Attention : les noms de tables ou de colonnes ne se paramètrent pas et doivent être validés par liste blanche.",
+      "difficulty": 2,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+    },
+    {
+      "question": "Dans `WITH top AS (SELECT …) SELECT * FROM top;`, que définit la clause `WITH` ?",
+      "answer": "Une sous-requête nommée, propre à cette requête",
+      "wrong": [
+        "Une table temporaire visible de toute la session",
+        "Une vue enregistrée dans le schéma",
+        "Un index sur le résultat de la sous-requête"
+      ],
+      "explanation": "C'est une **CTE** (*Common Table Expression*) : un résultat intermédiaire nommé, utilisable comme une table dans la requête qui suit, puis oublié. Elle rend les requêtes complexes plus lisibles qu'une cascade de sous-requêtes, et sa variante récursive (`WITH RECURSIVE` en PostgreSQL) permet de parcourir des hiérarchies. Pour un objet persistant, il faudrait `CREATE VIEW` ou `CREATE TEMP TABLE`.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/queries-with.html"
+    },
+    {
+      "question": "La clé étrangère `commandes.client_id` est déclarée avec `ON DELETE CASCADE`. Que se passe-t-il si l'on supprime un client qui a des commandes ?",
+      "answer": "Ses commandes sont supprimées aussi",
+      "wrong": [
+        "La suppression du client est refusée",
+        "Leur `client_id` passe à NULL",
+        "Elles restent, avec un `client_id` orphelin"
+      ],
+      "explanation": "Une clé étrangère garantit l'**intégrité référentielle** : une commande ne peut pas pointer vers un client inexistant. Avec `CASCADE`, supprimer le client supprime automatiquement ses commandes. Par défaut (`NO ACTION` ou `RESTRICT`), la suppression serait refusée ; avec `ON DELETE SET NULL`, `client_id` passerait à NULL.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/ddl-constraints.html"
+    },
+    {
+      "question": "La table `t(id)` contient 1, 2 et 3. Combien de lignes renvoie :\n```sql\nSELECT * FROM t\nWHERE id NOT IN (1, NULL);\n```",
+      "answer": "0",
+      "wrong": [
+        "2",
+        "3",
+        "1"
+      ],
+      "explanation": "`id NOT IN (1, NULL)` équivaut à `id <> 1 AND id <> NULL`. Or `id <> NULL` vaut toujours NULL (inconnu) : la condition n'est donc **jamais vraie**, et aucune ligne n'est renvoyée. Piège fréquent avec `NOT IN (sous-requête)` quand la sous-requête renvoie un NULL ; `NOT EXISTS` n'a pas ce problème.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/functions-subquery.html"
+    },
+    {
+      "question": "`a(id)` contient 1, 2, 2 et `b(id)` contient 2, 2, 3. Combien de lignes renvoie :\n```sql\nSELECT * FROM a\nLEFT JOIN b ON a.id = b.id;\n```",
+      "answer": "5",
+      "wrong": [
+        "3",
+        "4",
+        "6"
+      ],
+      "explanation": "Chaque `2` de `a` correspond aux **deux** `2` de `b` : 2 × 2 = 4 lignes. Le `1` n'a aucune correspondance, mais le `LEFT JOIN` le garde avec des NULL à droite : une ligne de plus, soit 5. Le `3` de `b` n'apparaît pas, puisque seules les lignes de gauche sont conservées ; un `INNER JOIN` aurait renvoyé 4 lignes.",
+      "difficulty": 3
+    },
+    {
+      "question": "La colonne `ville` de `clients` contient : 'Paris', 'Lyon', 'Paris', NULL, NULL. Combien de lignes renvoie :\n```sql\nSELECT ville, COUNT(*)\nFROM clients\nGROUP BY ville;\n```",
+      "answer": "3",
+      "wrong": [
+        "2",
+        "4",
+        "5"
+      ],
+      "explanation": "Bien que `NULL = NULL` ne soit pas vrai, `GROUP BY` (comme `DISTINCT`) place **tous les NULL dans un même groupe**. On obtient donc Paris (2), Lyon (1) et NULL (2) : 3 lignes. Penser que les NULL sont ignorés donnerait 2 ; penser que chaque NULL forme son propre groupe donnerait 4.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/sql-select.html"
+    },
+    {
+      "question": "```sql\nSELECT c.nom, o.montant\nFROM clients c\nLEFT JOIN commandes o ON o.client_id = c.id\nWHERE o.montant > 100;\n```\nQue deviennent les clients qui n'ont **aucune commande** ?",
+      "answer": "Ils sont absents du résultat",
+      "wrong": [
+        "Ils apparaissent avec `montant` à NULL",
+        "Ils apparaissent avec `montant` à 0",
+        "La requête renvoie une erreur"
+      ],
+      "explanation": "Le `LEFT JOIN` les conserve d'abord avec `o.montant` à NULL, mais le `WHERE` est évalué **après** la jointure : `NULL > 100` n'est pas vrai, donc ces lignes sont éliminées et la requête se comporte comme un `INNER JOIN`. Pour garder tous les clients, il faut placer la condition dans la jointure : `ON o.client_id = c.id AND o.montant > 100`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Selon le standard SQL, quelle anomalie reste possible au niveau d'isolation `REPEATABLE READ` ?",
+      "answer": "La lecture fantôme (phantom read)",
+      "wrong": [
+        "La lecture sale (dirty read)",
+        "La lecture non répétable (non-repeatable read)",
+        "Aucune, toutes sont empêchées"
+      ],
+      "explanation": "`REPEATABLE READ` garantit qu'une ligne déjà lue ne changera pas, mais le standard tolère qu'en relançant une même requête, on voie **apparaître de nouvelles lignes** insérées par une autre transaction validée : c'est le fantôme. Dans le standard, seul `SERIALIZABLE` l'interdit. Certaines implémentations vont plus loin : en PostgreSQL, `REPEATABLE READ` empêche aussi les fantômes.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/transaction-iso.html"
+    },
+    {
+      "question": "Une table possède un index B-tree composite sur `(nom, prenom)`. Laquelle de ces requêtes en tire **le moins** parti ?",
+      "answer": "`WHERE prenom = 'Marie'`",
+      "wrong": [
+        "`WHERE nom = 'Durand'`",
+        "`WHERE prenom = 'Marie' AND nom = 'Durand'`",
+        "`WHERE nom = 'Durand' ORDER BY prenom`"
+      ],
+      "explanation": "Un index composite est trié d'abord par `nom`, puis par `prenom` à `nom` égal, comme un annuaire. Sans condition sur la **colonne de tête**, les « Marie » sont éparpillées dans tout l'index : au mieux, il faut le parcourir largement. L'ordre des conditions dans le `WHERE`, lui, n'a aucune importance : `prenom = … AND nom = …` exploite pleinement l'index.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/indexes-multicolumn.html"
+    },
+    {
+      "question": "La table `lignes_commande(id_commande, id_produit, quantite, nom_produit)` a pour clé primaire `(id_commande, id_produit)` et ne contient que des valeurs atomiques. Quelle est la **première** forme normale qu'elle ne respecte pas ?",
+      "answer": "La 2NF",
+      "wrong": [
+        "La 1NF",
+        "La 3NF",
+        "La BCNF"
+      ],
+      "explanation": "`nom_produit` ne dépend que de `id_produit`, c'est-à-dire d'une **partie** de la clé composite : cette dépendance partielle est interdite par la 2NF (la 1NF est respectée, les valeurs étant atomiques). Conséquence : le nom est répété à chaque ligne de commande et peut devenir incohérent ; il faut le déplacer dans une table `produits`. La 3NF, elle, interdit en plus les dépendances transitives entre colonnes non-clés.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Second_normal_form"
+    }
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Web",
+  "icon": "🌐",
+  "description": "Failles web : injections SQL, XSS, CSRF, SSRF, OWASP Top 10 et outils comme Burp Suite ou sqlmap.",
+  "order": 1,
+  "questions": [
+    {
+      "question": "Quelle catégorie occupe la **1re place** de l'OWASP Top 10 **2021** ?",
+      "answer": "Broken Access Control (A01)",
+      "wrong": [
+        "Injection (A03)",
+        "Cryptographic Failures (A02)",
+        "Security Misconfiguration (A05)"
+      ],
+      "explanation": "Dans l'édition 2021, **A01:2021 – Broken Access Control** (contrôle d'accès défaillant) passe en tête du classement. L'injection, longtemps n°1, recule à la 3e place (A03). Un contrôle d'accès cassé permet par exemple d'accéder aux données ou actions d'un autre utilisateur.",
+      "difficulty": 1,
+      "source": "https://owasp.org/Top10/"
+    },
+    {
+      "question": "Un champ de connexion renvoie toutes les lignes quand on saisit `' OR '1'='1`. De quelle attaque s'agit-il ?",
+      "answer": "Injection SQL",
+      "wrong": [
+        "Cross-Site Scripting (XSS)",
+        "Cross-Site Request Forgery (CSRF)",
+        "Server-Side Request Forgery (SSRF)"
+      ],
+      "explanation": "La condition `'1'='1'` est toujours vraie : elle modifie la logique de la requête SQL construite par concaténation. C'est une **injection SQL**. La parade de référence est l'utilisation de requêtes paramétrées (prepared statements).",
+      "difficulty": 1,
+      "source": "https://portswigger.net/web-security/sql-injection"
+    },
+    {
+      "question": "Quel en-tête HTTP historique protège du **clickjacking** en interdisant l'affichage de la page dans une `iframe` ?",
+      "answer": "`X-Frame-Options`",
+      "wrong": [
+        "`X-XSS-Protection`",
+        "`Referrer-Policy`",
+        "`X-Content-Type-Options`"
+      ],
+      "explanation": "`X-Frame-Options: DENY` (ou `SAMEORIGIN`) empêche le navigateur de charger la page dans un cadre, bloquant le clickjacking. L'approche moderne équivalente est la directive CSP `frame-ancestors`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel attribut de cookie empêche sa lecture via JavaScript (`document.cookie`) ?",
+      "answer": "`HttpOnly`",
+      "wrong": [
+        "`Secure`",
+        "`SameSite`",
+        "`Domain`"
+      ],
+      "explanation": "`HttpOnly` rend le cookie inaccessible au JavaScript, ce qui limite le vol de session par XSS. `Secure` force l'envoi uniquement en HTTPS, et `SameSite` restreint l'envoi cross-site : ils répondent à d'autres besoins.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel fichier placé à la racine d'un site indique aux robots les chemins à ne pas indexer, révélant parfois des répertoires sensibles ?",
+      "answer": "`robots.txt`",
+      "wrong": [
+        "`sitemap.xml`",
+        "`.htaccess`",
+        "`index.html`"
+      ],
+      "explanation": "`robots.txt` liste des règles `Disallow:` pour les crawlers. Lors d'une reconnaissance, il peut dévoiler des chemins que l'administrateur voulait garder discrets (ex: `/admin`). Ce n'est pas un contrôle de sécurité : il n'empêche personne de visiter ces URL.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel outil est un **proxy d'interception** incontournable pour tester des applications web (Repeater, Intruder…) ?",
+      "answer": "Burp Suite",
+      "wrong": [
+        "Wireshark",
+        "Nmap",
+        "John the Ripper"
+      ],
+      "explanation": "Burp Suite s'intercale entre le navigateur et le serveur pour inspecter et rejouer les requêtes HTTP (Repeater), les automatiser (Intruder), etc. Wireshark capture le trafic réseau, Nmap scanne les ports, John casse des mots de passe.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie le code de statut HTTP `404` ?",
+      "answer": "Ressource non trouvée",
+      "wrong": [
+        "Accès interdit",
+        "Erreur interne du serveur",
+        "Redirection permanente"
+      ],
+      "explanation": "`404 Not Found` indique que la ressource demandée n'existe pas. « Accès interdit » correspond à `403`, « erreur interne du serveur » à `500`, et « redirection permanente » à `301`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Une attaque **XSS** (Cross-Site Scripting) injecte principalement quel type de code, exécuté dans le navigateur de la victime ?",
+      "answer": "Du JavaScript côté client",
+      "wrong": [
+        "Des requêtes SQL",
+        "Des commandes shell système",
+        "Du code PHP côté serveur"
+      ],
+      "explanation": "Le XSS fait exécuter du **JavaScript** dans le navigateur d'autres utilisateurs, ce qui permet de voler des cookies ou d'agir en leur nom. La défense passe par l'encodage de sortie (output encoding) et une Content-Security-Policy.",
+      "difficulty": 1
+    },
+    {
+      "question": "Lors d'une **SSRF** sur une instance cloud (AWS/GCP), quelle adresse IP cible-t-on pour récupérer les métadonnées (et parfois des identifiants) ?",
+      "answer": "`169.254.169.254`",
+      "wrong": [
+        "`127.0.0.1`",
+        "`10.0.0.1`",
+        "`192.168.1.1`"
+      ],
+      "explanation": "`169.254.169.254` est l'endpoint de métadonnées des principaux clouds. Une SSRF qui l'atteint peut exfiltrer des informations d'instance, voire des jetons IAM temporaires. IMDSv2 (jeton obligatoire) atténue ce risque.",
+      "difficulty": 2,
+      "source": "https://portswigger.net/web-security/ssrf"
+    },
+    {
+      "question": "Un utilisateur remplace `?facture=123` par `?facture=124` et consulte la facture d'un autre client. Quelle faille est-ce ?",
+      "answer": "IDOR (Insecure Direct Object Reference)",
+      "wrong": [
+        "CSRF (Cross-Site Request Forgery)",
+        "XSS stocké (Stored Cross-Site Scripting)",
+        "Open redirect (redirection ouverte)"
+      ],
+      "explanation": "L'application expose un identifiant d'objet manipulable sans vérifier que l'utilisateur a le droit d'y accéder : c'est une **IDOR**, une forme de contrôle d'accès défaillant (A01). La correction est une vérification d'autorisation côté serveur pour chaque objet.",
+      "difficulty": 2,
+      "source": "https://portswigger.net/web-security/access-control"
+    },
+    {
+      "question": "Quelle séquence est caractéristique d'une attaque par **traversée de répertoire** (path traversal) ?",
+      "answer": "`../`",
+      "wrong": [
+        "`' OR 1=1`",
+        "`<script>`",
+        "`; ls -la`"
+      ],
+      "explanation": "`../` permet de remonter l'arborescence des dossiers pour lire des fichiers hors du répertoire prévu (ex: `../../../../etc/passwd`). Les autres séquences évoquent respectivement l'injection SQL, le XSS et l'injection de commande.",
+      "difficulty": 2,
+      "source": "https://portswigger.net/web-security/file-path-traversal"
+    },
+    {
+      "question": "Quelle est la défense la **plus fiable** contre les injections SQL ?",
+      "answer": "Les requêtes paramétrées (prepared statements)",
+      "wrong": [
+        "Filtrer les entrées en JavaScript côté client",
+        "Activer HTTPS sur le site",
+        "Masquer les messages d'erreur SQL"
+      ],
+      "explanation": "Les requêtes paramétrées séparent le code SQL des données : l'entrée utilisateur ne peut plus être interprétée comme du code. Le filtrage côté client se contourne trivialement, HTTPS ne protège que le transport, et masquer les erreurs ne supprime pas la vulnérabilité.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel attribut de cookie, en limitant l'envoi du cookie lors de requêtes **cross-site**, aide à se protéger du **CSRF** ?",
+      "answer": "`SameSite`",
+      "wrong": [
+        "`HttpOnly`",
+        "`Secure`",
+        "`Path`"
+      ],
+      "explanation": "`SameSite=Lax` ou `Strict` empêche le navigateur d'envoyer le cookie sur des requêtes initiées par un autre site, neutralisant une grande partie des CSRF. `HttpOnly` vise le vol par XSS, pas le CSRF. On complète souvent avec un jeton anti-CSRF.",
+      "difficulty": 2,
+      "source": "https://portswigger.net/web-security/csrf"
+    },
+    {
+      "question": "Quel en-tête HTTP permet de restreindre les sources de scripts autorisées afin d'atténuer les attaques XSS ?",
+      "answer": "`Content-Security-Policy`",
+      "wrong": [
+        "`Strict-Transport-Security`",
+        "`X-Frame-Options`",
+        "`X-Content-Type-Options`"
+      ],
+      "explanation": "Une **Content-Security-Policy** (ex: `script-src 'self'`) indique au navigateur quelles origines de scripts sont autorisées, bloquant l'exécution d'injections. `Strict-Transport-Security` force HTTPS et `X-Frame-Options` contre le clickjacking.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un script malveillant est enregistré en base de données puis renvoyé à chaque visiteur consultant la page. De quel type de XSS s'agit-il ?",
+      "answer": "XSS stocké (persistant)",
+      "wrong": [
+        "XSS réfléchi",
+        "XSS basé sur le DOM",
+        "XSS côté serveur"
+      ],
+      "explanation": "Le **XSS stocké** persiste sur le serveur et frappe tous les visiteurs, ce qui le rend particulièrement dangereux. Le XSS réfléchi renvoie l'entrée immédiatement dans la réponse, et le DOM-based s'exécute entièrement côté client via du JavaScript.",
+      "difficulty": 2,
+      "source": "https://portswigger.net/web-security/cross-site-scripting/stored"
+    },
+    {
+      "question": "À quoi sert principalement l'outil `sqlmap` ?",
+      "answer": "Détecter et exploiter des injections SQL",
+      "wrong": [
+        "Scanner les ports ouverts d'une machine",
+        "Intercepter le trafic HTTP via un proxy",
+        "Cracker des hachages de mots de passe"
+      ],
+      "explanation": "`sqlmap` automatise la découverte et l'exploitation des injections SQL (extraction de données, fingerprinting du SGBD, etc.). Le scan de ports relève de Nmap, l'interception de Burp, et le cassage de hachages de John ou Hashcat.",
+      "difficulty": 2,
+      "source": "https://sqlmap.org/"
+    },
+    {
+      "question": "Dans un paramètre mal filtré transmis à un shell, l'ajout de `; cat /etc/passwd` permet de faire quoi ?",
+      "answer": "Exécuter des commandes système arbitraires",
+      "wrong": [
+        "Lire des lignes de la base de données SQL",
+        "Exécuter du JavaScript dans le navigateur",
+        "Contourner la signature d'un jeton JWT"
+      ],
+      "explanation": "Le `;` enchaîne une commande supplémentaire interprétée par le shell : c'est une **injection de commande** (OS command injection), qui peut mener à la prise de contrôle du serveur. La parade est d'éviter l'appel au shell et d'utiliser des API sûres avec listes blanches.",
+      "difficulty": 2,
+      "source": "https://portswigger.net/web-security/os-command-injection"
+    },
+    {
+      "question": "Un serveur accepte un JWT dont l'en-tête indique `\"alg\": \"none\"`. Quelle en est la conséquence ?",
+      "answer": "N'importe qui peut forger un token valide",
+      "wrong": [
+        "Le token est automatiquement chiffré en AES",
+        "Le token expire immédiatement après émission",
+        "La signature bascule automatiquement en RSA"
+      ],
+      "explanation": "`alg: none` signifie « aucune signature » : si le serveur l'accepte, un attaquant peut fabriquer un token avec les claims de son choix (ex: `admin: true`) sans secret. Il faut imposer une liste blanche d'algorithmes côté serveur et rejeter `none`.",
+      "difficulty": 2,
+      "source": "https://portswigger.net/web-security/jwt"
+    },
+    {
+      "question": "Dans l'**OWASP Top 10 2021**, avec quelle catégorie le **XSS** a-t-il été fusionné ?",
+      "answer": "A03:2021 – Injection",
+      "wrong": [
+        "A01:2021 – Broken Access Control",
+        "A05:2021 – Security Misconfiguration",
+        "A07:2021 – Identification and Authentication Failures"
+      ],
+      "explanation": "Depuis 2021, le Cross-Site Scripting n'a plus de catégorie dédiée : il est regroupé avec les autres injections dans **A03:2021 – Injection**, aux côtés notamment des injections SQL.",
+      "difficulty": 3,
+      "source": "https://owasp.org/Top10/A03_2021-Injection/"
+    },
+    {
+      "question": "Quelle fonction MySQL est typiquement utilisée dans une injection SQL **aveugle basée sur le temps** (time-based blind) ?",
+      "answer": "`SLEEP()`",
+      "wrong": [
+        "`CONCAT()`",
+        "`VERSION()`",
+        "`COUNT()`"
+      ],
+      "explanation": "En injection aveugle, l'attaquant n'a pas de retour visible : il conditionne un `SLEEP(5)` à une hypothèse (ex: la 1re lettre du mot de passe). Si la réponse tarde, l'hypothèse est vraie. `CONCAT`, `VERSION` et `COUNT` n'introduisent aucun délai.",
+      "difficulty": 3,
+      "source": "https://portswigger.net/web-security/sql-injection/blind"
+    },
+    {
+      "question": "Pour réussir une injection SQL de type `UNION SELECT`, quelle condition est **indispensable** ?",
+      "answer": "Le même nombre de colonnes, de types compatibles",
+      "wrong": [
+        "Le SGBD doit obligatoirement être MySQL ou MariaDB",
+        "Le compte SQL de l'application doit être admin",
+        "Le site doit être servi en HTTP et non en HTTPS"
+      ],
+      "explanation": "Un `UNION` fusionne deux jeux de résultats : il exige le **même nombre de colonnes**, avec des types compatibles. L'attaquant détermine d'abord ce nombre (ex: `ORDER BY`), puis choisit une colonne au bon type pour exfiltrer les données.",
+      "difficulty": 3,
+      "source": "https://portswigger.net/web-security/sql-injection/union-attacks"
+    },
+    {
+      "question": "Une application analyse du XML fourni par l'utilisateur et résout les **entités externes**. Quelle faille cela ouvre-t-il ?",
+      "answer": "XXE (XML External Entity)",
+      "wrong": [
+        "XSS réfléchi (Reflected XSS)",
+        "CSRF (Cross-Site Request Forgery)",
+        "SSTI (Server-Side Template Injection)"
+      ],
+      "explanation": "Une **XXE** abuse d'une entité externe (ex: `<!ENTITY xxe SYSTEM \"file:///etc/passwd\">`) pour lire des fichiers locaux, faire du SSRF ou un déni de service. La parade : désactiver la résolution des entités externes et des DTD dans le parseur XML.",
+      "difficulty": 3,
+      "source": "https://portswigger.net/web-security/xxe"
+    },
+    {
+      "question": "Quelle configuration **CORS** est dangereuse car elle permet le vol de données authentifiées cross-origin ?",
+      "answer": "Refléter l'`Origin` reçue, avec `Allow-Credentials: true`",
+      "wrong": [
+        "`Access-Control-Allow-Origin: https://app.exemple.com`",
+        "`Access-Control-Allow-Methods: GET, POST, OPTIONS`",
+        "Ajouter l'en-tête `Vary: Origin` aux réponses"
+      ],
+      "explanation": "Renvoyer l'`Origin` reçue comme valeur autorisée tout en activant `Allow-Credentials: true` revient à autoriser n'importe quel site à lire les réponses authentifiées de la victime. Il faut une liste blanche stricte d'origines, jamais un reflet aveugle.",
+      "difficulty": 3,
+      "source": "https://portswigger.net/web-security/cors"
+    },
+    {
+      "question": "Quelle faille permet l'exécution de code en manipulant un **objet sérialisé** envoyé par le client (ex: PHP `unserialize`, Java `readObject`) ?",
+      "answer": "Désérialisation non sécurisée",
+      "wrong": [
+        "Injection SQL",
+        "Server-Side Template Injection (SSTI)",
+        "Path traversal"
+      ],
+      "explanation": "La **désérialisation non sécurisée** reconstruit un objet à partir de données contrôlées par l'attaquant, qui peut déclencher des chaînes de gadgets menant à l'exécution de code. On évite de désérialiser des données non fiables ou on signe/valide strictement le format.",
+      "difficulty": 3,
+      "source": "https://portswigger.net/web-security/deserialization"
+    },
+    {
+      "question": "Selon la **Same-Origin Policy**, deux URL ont la même origine si et seulement si elles partagent… ?",
+      "answer": "Le même schéma, le même hôte et le même port",
+      "wrong": [
+        "Le même hôte, quel que soit le port",
+        "Le même domaine et le même chemin d'accès",
+        "La même adresse IP et le même port"
+      ],
+      "explanation": "Une origine est le triplet **schéma + hôte + port**. Ainsi `https://site.com` et `http://site.com` diffèrent (schéma), tout comme `https://site.com` et `https://site.com:8443` (port). La SOP isole les contextes pour empêcher un site d'en lire un autre.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy"
+    }
+  ]
+}

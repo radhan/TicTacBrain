@@ -1,0 +1,309 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "JavaScript",
+  "icon": "🟨",
+  "description": "Coercition, hoisting, closures, this, boucle d'événements : les bizarreries du langage du Web.",
+  "order": 4,
+  "questions": [
+    {
+      "question": "Que renvoie `typeof null` ?",
+      "answer": "`\"object\"`",
+      "wrong": [
+        "`\"null\"`",
+        "`\"undefined\"`",
+        "`\"number\"`"
+      ],
+      "explanation": "C'est un bug historique de la toute première version de JavaScript : les valeurs portaient une étiquette de type, celle des objets valait 0, et `null` était représenté par le pointeur nul (0x00). `typeof null` renvoyait donc `\"object\"`, et ce comportement n'a jamais été corrigé pour ne pas casser le Web. Pour tester `null`, on écrit simplement `x === null`.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/typeof"
+    },
+    {
+      "question": "Que vaut `0.1 + 0.2 === 0.3` en JavaScript ?",
+      "answer": "`false`",
+      "wrong": [
+        "`true`",
+        "`undefined`",
+        "`NaN`"
+      ],
+      "explanation": "Les nombres JavaScript sont des flottants binaires IEEE 754 en double précision. Ni 0.1 ni 0.2 ne sont représentables exactement en binaire, et leur somme vaut en réalité `0.30000000000000004`. Pour comparer des décimaux, on vérifie que l'écart est minuscule (`Math.abs(a - b) < Number.EPSILON`) ou on travaille en entiers (des centimes plutôt que des euros).",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nconst user = { name: \"Alice\" };\nuser.name = \"Bob\";\nconsole.log(user.name);\n```",
+      "answer": "`Bob`",
+      "wrong": [
+        "`Alice`",
+        "Une `TypeError`",
+        "`undefined`"
+      ],
+      "explanation": "`const` empêche de **réaffecter** la variable (`user = {}` lèverait une `TypeError`), mais pas de modifier l'objet qu'elle référence : ses propriétés restent librement modifiables. Pour empêcher les modifications, il faut `Object.freeze(user)`, qui reste d'ailleurs superficiel (les objets imbriqués ne sont pas gelés).",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/const"
+    },
+    {
+      "question": "Quelle est la différence entre `==` et `===` ?",
+      "answer": "`===` compare sans convertir les types",
+      "wrong": [
+        "`===` compare aussi le contenu des objets",
+        "`==` ne fonctionne qu'avec des nombres",
+        "Aucune : `===` est juste plus récent"
+      ],
+      "explanation": "`==` (égalité faible) convertit les opérandes vers un type commun avant de comparer : `1 == \"1\"` vaut `true`. `===` (égalité stricte) renvoie `false` dès que les types diffèrent : `1 === \"1\"` vaut `false`. Pour les objets, les deux comparent les **références**, jamais le contenu : `{} === {}` vaut `false`. On privilégie `===` pour éviter les conversions surprises.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Equality_comparisons_and_sameness"
+    },
+    {
+      "question": "Quelle est la façon fiable de tester si `x` vaut `NaN` ?",
+      "answer": "`Number.isNaN(x)`",
+      "wrong": [
+        "`x === NaN`",
+        "`x == NaN`",
+        "`typeof x === \"NaN\"`"
+      ],
+      "explanation": "`NaN` est la seule valeur de JavaScript qui n'est pas égale à elle-même : `NaN === NaN` vaut `false`, donc `x === NaN` est **toujours** faux. Et `typeof NaN` vaut `\"number\"`. `Number.isNaN(x)` est la bonne méthode ; l'ancienne fonction globale `isNaN()` est piégeuse car elle convertit d'abord son argument (`isNaN(\"abc\")` vaut `true`).",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN"
+    },
+    {
+      "question": "Laquelle de ces lignes utilise la syntaxe **CommonJS** (et non les modules ES) ?",
+      "answer": "`const fs = require(\"fs\");`",
+      "wrong": [
+        "`import fs from \"fs\";`",
+        "`import * as fs from \"fs\";`",
+        "`export default fs;`"
+      ],
+      "explanation": "CommonJS est le système de modules historique de Node.js : on importe avec `require()` et on exporte avec `module.exports`. Les modules ES (ESM), standardisés en ES2015, utilisent `import` et `export` et fonctionnent aussi bien dans les navigateurs que dans Node. Les `import` statiques sont analysés avant l'exécution du module, alors que `require()` est un simple appel de fonction exécuté à la volée.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules"
+    },
+    {
+      "question": "Que renvoie toujours une fonction déclarée avec `async` ?",
+      "answer": "Une `Promise`",
+      "wrong": [
+        "Directement la valeur du `return`",
+        "`undefined` tant qu'elle n'a pas fini",
+        "Un objet `Generator`"
+      ],
+      "explanation": "Une fonction `async` renvoie **toujours** une promesse : si elle fait `return 42`, l'appelant reçoit une `Promise` résolue avec 42 ; si elle lève une erreur, la promesse est rejetée. Pour récupérer la valeur, il faut écrire `await f()` (dans une fonction `async` ou un module) ou `f().then(...)`.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/async_function"
+    },
+    {
+      "question": "Quel avantage offre un `Map` par rapport à un objet littéral `{}` ?",
+      "answer": "Ses clés peuvent être de n'importe quel type",
+      "wrong": [
+        "`JSON.stringify` conserve toutes ses entrées",
+        "Ses clés sont triées par ordre alphabétique",
+        "Il devient immuable après sa création"
+      ],
+      "explanation": "Les clés d'un objet sont forcément des chaînes (ou des symboles) : `obj[1]` et `obj[\"1\"]` désignent la même propriété, et un objet utilisé comme clé devient `\"[object Object]\"`. Un `Map` accepte n'importe quelle valeur comme clé (objets, fonctions, `NaN`…), conserve l'ordre d'insertion et donne sa taille via `.size`. En revanche, `JSON.stringify(new Map([[1, 2]]))` renvoie `\"{}\"` : il faut d'abord le convertir.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Map"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nconsole.log(a);\nconsole.log(b);\nvar a = 1;\nlet b = 2;\n```",
+      "answer": "`undefined`, puis une `ReferenceError`",
+      "wrong": [
+        "`1`, puis `2`",
+        "`undefined`, puis `undefined`",
+        "Une `ReferenceError` dès le premier `console.log`"
+      ],
+      "explanation": "Les déclarations `var` sont **remontées** (hoisting) et initialisées à `undefined` : `a` existe avant sa ligne, mais sans sa valeur. `let` et `const` sont aussi remontées, mais restent dans la **zone morte temporelle** (TDZ) jusqu'à leur déclaration : y accéder avant lève une `ReferenceError`. Le premier `console.log` affiche donc `undefined` et le second plante.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/let"
+    },
+    {
+      "question": "Que renvoie `[10, 1, 25, 2].sort()` ?",
+      "answer": "`[1, 10, 2, 25]`",
+      "wrong": [
+        "`[1, 2, 10, 25]`",
+        "`[25, 10, 2, 1]`",
+        "`[10, 1, 25, 2]`"
+      ],
+      "explanation": "Sans fonction de comparaison, `sort()` convertit les éléments en **chaînes** et les trie dans l'ordre des unités de code UTF-16, donc lexicographiquement : `\"10\"` passe avant `\"2\"` car `\"1\"` < `\"2\"`. Pour un tri numérique, il faut écrire `arr.sort((a, b) => a - b)`. Attention aussi : `sort()` modifie le tableau d'origine, alors que `toSorted()` renvoie une copie.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/sort"
+    },
+    {
+      "question": "Dans quel ordre s'affichent les lettres ?\n```js\nsetTimeout(() => console.log(\"A\"), 0);\nPromise.resolve().then(() => console.log(\"B\"));\nconsole.log(\"C\");\n```",
+      "answer": "C, B, A",
+      "wrong": [
+        "A, B, C",
+        "C, A, B",
+        "B, C, A"
+      ],
+      "explanation": "Le code synchrone s'exécute d'abord : `C`. Ensuite, la boucle d'événements vide **toute** la file des microtâches (callbacks de promesses, `queueMicrotask`) avant de passer à la tâche suivante : `B`. Le callback de `setTimeout`, même avec un délai de 0, est une tâche (macrotâche) traitée après : `A`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/fr/docs/Web/API/HTML_DOM_API/Microtask_guide"
+    },
+    {
+      "question": "Que vaut `[0 || 10, 0 ?? 10]` ?",
+      "answer": "`[10, 0]`",
+      "wrong": [
+        "`[0, 10]`",
+        "`[10, 10]`",
+        "`[0, 0]`"
+      ],
+      "explanation": "`||` renvoie l'opérande de droite dès que celle de gauche est **falsy** (`0`, `\"\"`, `false`, `NaN`, `null`, `undefined`) : `0 || 10` vaut donc `10`. `??` (nullish coalescing, ES2020) ne bascule que si la gauche vaut `null` ou `undefined` : `0 ?? 10` garde `0`. C'est l'opérateur à utiliser pour une valeur par défaut quand `0` ou `\"\"` sont des valeurs légitimes.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing"
+    },
+    {
+      "question": "Comment une fonction fléchée (`() => {}`) détermine-t-elle la valeur de `this` ?",
+      "answer": "Elle reprend le `this` de la portée englobante",
+      "wrong": [
+        "`this` désigne l'objet sur lequel on l'appelle",
+        "`this` vaut toujours l'objet global",
+        "`this` vaut le premier argument de `call()`"
+      ],
+      "explanation": "Une fonction fléchée n'a **pas son propre** `this` : elle capture celui du contexte où elle est définie (portée lexicale), et ni `call()`, ni `apply()`, ni `bind()` ne peuvent le changer. C'est pratique pour un callback dans une méthode (`setTimeout(() => this.count++)`), mais c'est un piège si on s'en sert comme méthode d'objet : `this` n'y désignera pas l'objet.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Functions/Arrow_functions"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nfor (var i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 0);\n}\n```",
+      "answer": "`3`, `3`, `3`",
+      "wrong": [
+        "`0`, `1`, `2`",
+        "`2`, `2`, `2`",
+        "`undefined` trois fois"
+      ],
+      "explanation": "`var` a une portée de **fonction** : il n'existe qu'une seule variable `i`, partagée par les trois closures. Quand les callbacks de `setTimeout` s'exécutent, la boucle est déjà terminée et `i` vaut 3. Avec `let i`, chaque itération crée une nouvelle liaison, capturée par sa propre closure, et on obtient `0`, `1`, `2`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Closures"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nconst a = { n: 1, tags: [\"x\"] };\nconst b = { ...a };\nb.n = 2;\nb.tags.push(\"y\");\nconsole.log(a.n, a.tags.length);\n```",
+      "answer": "`1 2`",
+      "wrong": [
+        "`1 1`",
+        "`2 2`",
+        "`2 1`"
+      ],
+      "explanation": "La syntaxe de décomposition `{ ...a }` fait une copie **superficielle** : les valeurs primitives sont copiées (modifier `b.n` ne touche pas `a.n`), mais `tags` désigne **le même tableau** dans `a` et dans `b`. Le `push` est donc visible depuis `a`. Pour une copie profonde, on peut utiliser `structuredClone(a)`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Spread_syntax"
+    },
+    {
+      "question": "Que fait `Promise.all([p1, p2, p3])` si seule `p2` est rejetée ?",
+      "answer": "Elle est rejetée avec l'erreur de `p2`",
+      "wrong": [
+        "Elle est résolue avec les résultats de `p1` et `p3`",
+        "Elle attend tout puis donne un statut par promesse",
+        "Elle relance automatiquement `p2`"
+      ],
+      "explanation": "`Promise.all` échoue rapidement (fail-fast) : dès qu'une promesse est rejetée, la promesse globale est rejetée avec la même raison, sans attendre les autres (qui continuent de s'exécuter, mais leurs résultats sont ignorés). Le comportement « tout attendre et obtenir un statut par promesse » correspond à `Promise.allSettled`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"
+    },
+    {
+      "question": "Quand on lit `obj.prop` et que `obj` n'a pas de propriété propre `prop`, que fait JavaScript ?",
+      "answer": "Il la cherche dans la chaîne des prototypes",
+      "wrong": [
+        "Il lève une `ReferenceError` immédiatement",
+        "Il la cherche dans l'objet global `window`",
+        "Il renvoie `null` sans chercher plus loin"
+      ],
+      "explanation": "Chaque objet possède un lien interne vers un prototype (accessible via `Object.getPrototypeOf(obj)`). Si la propriété n'est pas sur l'objet, JavaScript la cherche dans son prototype, puis dans le prototype de celui-ci, et ainsi de suite jusqu'à `null`. Si elle n'existe nulle part, le résultat est `undefined`, sans erreur. C'est ainsi que `[].map` fonctionne : `map` est défini sur `Array.prototype`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain"
+    },
+    {
+      "question": "Que valent `\"5\" + 2` et `\"5\" - 2` ?",
+      "answer": "`\"52\"` et `3`",
+      "wrong": [
+        "`7` et `3`",
+        "`\"52\"` et `\"3\"`",
+        "`\"52\"` et `NaN`"
+      ],
+      "explanation": "Avec `+`, si l'un des opérandes est une chaîne, JavaScript fait une **concaténation** : `\"5\" + 2` donne `\"52\"`. L'opérateur `-`, lui, ne sert qu'aux calculs : la chaîne `\"5\"` est convertie en nombre et `\"5\" - 2` donne `3`. Cette asymétrie est une source classique de bugs avec les valeurs lues dans un formulaire, qui sont toujours des chaînes.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Addition"
+    },
+    {
+      "question": "Laquelle de ces expressions vaut `true` ?",
+      "answer": "`null == undefined`",
+      "wrong": [
+        "`null == 0`",
+        "`NaN == NaN`",
+        "`null == false`"
+      ],
+      "explanation": "La spécification de `==` prévoit une règle spéciale : `null` et `undefined` sont égaux entre eux, et à **rien d'autre**. Ainsi `null == 0` et `null == false` valent `false`, même si `null` est falsy (alors que `null >= 0` vaut `true`, car les opérateurs de comparaison convertissent `null` en 0). Quant à `NaN`, il n'est égal à rien, pas même à lui-même. Le test `x == null` est d'ailleurs un raccourci courant pour « `x` vaut `null` ou `undefined` ».",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Equality"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nasync function f() {\n  console.log(\"1\");\n  await null;\n  console.log(\"2\");\n}\nf();\nconsole.log(\"3\");\n```",
+      "answer": "`1`, `3`, `2`",
+      "wrong": [
+        "`1`, `2`, `3`",
+        "`3`, `1`, `2`",
+        "`1`, `3` (et jamais `2`)"
+      ],
+      "explanation": "Le corps d'une fonction `async` s'exécute **de façon synchrone** jusqu'au premier `await` : `1` s'affiche immédiatement. `await` suspend alors la fonction et programme sa reprise en microtâche, même si la valeur attendue n'est pas une promesse. Le code appelant continue : `3`. Une fois la pile d'appels vide, la microtâche reprend la fonction : `2`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/await"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\n\"use strict\";\nconst user = {\n  name: \"Ada\",\n  hello() { return this.name; },\n};\nconst f = user.hello;\nconsole.log(f());\n```",
+      "answer": "Une `TypeError`",
+      "wrong": [
+        "`Ada`",
+        "`undefined`",
+        "Une chaîne vide"
+      ],
+      "explanation": "La valeur de `this` dépend de la **façon d'appeler** une fonction, pas de l'endroit où elle est définie. `f()` est un appel simple, sans objet devant le point : en mode strict, `this` vaut alors `undefined`, et lire `undefined.name` lève une `TypeError`. Le lien avec `user` est perdu dès qu'on extrait la méthode ; on le conserve en appelant `user.hello()` ou avec `user.hello.bind(user)`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/this"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nconst { a = 10, b = 20, c = 30 } = { a: undefined, b: null };\nconsole.log(a, b, c);\n```",
+      "answer": "`10 null 30`",
+      "wrong": [
+        "`10 20 30`",
+        "`undefined null 30`",
+        "`10 20 undefined`"
+      ],
+      "explanation": "Une valeur par défaut de déstructuration ne s'applique que si la valeur extraite est **strictement `undefined`** : c'est le cas de `a` (explicitement `undefined`) et de `c` (propriété absente). `null`, en revanche, est une vraie valeur : `b` reste `null` et le défaut `20` est ignoré. Les paramètres par défaut des fonctions suivent exactement la même règle.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Destructuring"
+    },
+    {
+      "question": "Si `obj` vaut `null`, que vaut `obj?.a.b.c` ?",
+      "answer": "`undefined`",
+      "wrong": [
+        "`null`",
+        "Une `TypeError` est levée",
+        "`false`"
+      ],
+      "explanation": "L'opérateur `?.` **court-circuite** toute la suite de la chaîne : dès que `obj` vaut `null` ou `undefined`, l'expression entière vaut `undefined`, sans évaluer `.a.b.c`. Inutile donc d'écrire `obj?.a?.b?.c` si seul `obj` peut manquer. En revanche, si `obj` existe mais que `obj.a` vaut `undefined`, alors `.b` lèvera bien une `TypeError`. Notez que le résultat est `undefined`, et non `null`, même quand `obj` vaut `null`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Optional_chaining"
+    },
+    {
+      "question": "Que renvoie `[\"1\", \"2\", \"3\"].map(parseInt)` ?",
+      "answer": "`[1, NaN, NaN]`",
+      "wrong": [
+        "`[1, 2, 3]`",
+        "`[\"1\", \"2\", \"3\"]`",
+        "`[NaN, NaN, NaN]`"
+      ],
+      "explanation": "`map` appelle son callback avec **trois** arguments : `(valeur, index, tableau)`. Or `parseInt` accepte un second paramètre, la base (radix). On calcule donc `parseInt(\"1\", 0)` → 1 (0 signifie « base par défaut »), `parseInt(\"2\", 1)` → `NaN` (la base 1 est invalide) et `parseInt(\"3\", 2)` → `NaN` (3 n'est pas un chiffre binaire). La bonne écriture : `.map(Number)` ou `.map(s => parseInt(s, 10))`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/parseInt"
+    },
+    {
+      "question": "Que renvoie `Object.keys({ b: 1, 2: 1, a: 1, 1: 1 })` ?",
+      "answer": "`[\"1\", \"2\", \"b\", \"a\"]`",
+      "wrong": [
+        "`[\"b\", \"2\", \"a\", \"1\"]`",
+        "`[\"1\", \"2\", \"a\", \"b\"]`",
+        "`[\"b\", \"a\", \"1\", \"2\"]`"
+      ],
+      "explanation": "L'ordre des clés d'un objet est fixé par la spécification : d'abord les clés qui ressemblent à des **indices entiers** (`\"0\"`, `\"1\"`…), dans l'ordre croissant, puis les autres chaînes dans l'**ordre d'insertion**. Les clés numériques sont par ailleurs converties en chaînes, d'où `\"1\"` et `\"2\"`. Un `Map`, lui, conserve strictement l'ordre d'insertion pour toutes ses clés.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Object/keys"
+    }
+  ]
+}

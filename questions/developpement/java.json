@@ -1,0 +1,309 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Java",
+  "icon": "☕",
+  "description": "JVM, collections, génériques, streams et nouveautés de Java 8 à 21 : les pièges classiques du langage.",
+  "order": 3,
+  "questions": [
+    {
+      "question": "Que produit le compilateur `javac` à partir d'un fichier `.java` ?",
+      "answer": "Des fichiers `.class` contenant du bytecode",
+      "wrong": [
+        "Un exécutable natif propre au système d'exploitation",
+        "Un fichier `.jar` directement exécutable",
+        "Du code assembleur à lier ensuite"
+      ],
+      "explanation": "`javac` compile le code source en **bytecode**, un jeu d'instructions indépendant de la plateforme, stocké dans des fichiers `.class`. C'est ensuite la JVM qui exécute ce bytecode, d'où le fameux « Write once, run anywhere ». Un `.jar` n'est qu'une archive regroupant des `.class`, créée par l'outil `jar` et non par `javac`.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Java_bytecode"
+    },
+    {
+      "question": "Comment s'imbriquent le JDK, le JRE et la JVM ?",
+      "answer": "Le JDK contient le JRE, qui contient la JVM",
+      "wrong": [
+        "La JVM contient le JRE, qui contient le JDK",
+        "Le JRE contient le JDK, qui contient la JVM",
+        "Le JDK contient la JVM, qui contient le JRE"
+      ],
+      "explanation": "La **JVM** exécute le bytecode. Le **JRE** (Java Runtime Environment) y ajoute les bibliothèques standard : c'est tout ce qu'il faut pour **exécuter** un programme. Le **JDK** (Java Development Kit) ajoute à cela les outils de **développement** : `javac`, `jar`, `javadoc`, `jdb`… Depuis Java 11, Oracle ne propose plus de JRE séparé (on peut en fabriquer un sur mesure avec `jlink`), mais le découpage reste le même.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Java_virtual_machine"
+    },
+    {
+      "question": "Quel est le rôle du compilateur JIT (Just-In-Time) dans la JVM ?",
+      "answer": "Compiler en code natif le bytecode souvent exécuté",
+      "wrong": [
+        "Compiler les fichiers `.java` en fichiers `.class`",
+        "Libérer la mémoire des objets inutilisés",
+        "Vérifier la syntaxe du code avant l'exécution"
+      ],
+      "explanation": "Au démarrage, la JVM interprète le bytecode. Le **JIT** repère les méthodes « chaudes » (appelées très souvent) et les compile à la volée en code machine natif optimisé, ce qui accélère fortement l'exécution. Il ne faut pas le confondre avec `javac`, qui compile le source en bytecode **avant** l'exécution, ni avec le garbage collector, qui gère la mémoire.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Just-in-time_compilation"
+    },
+    {
+      "question": "Pour vérifier que deux `String` `a` et `b` ont le même contenu, que faut-il écrire ?",
+      "answer": "`a.equals(b)`",
+      "wrong": [
+        "`a == b`",
+        "`a === b`",
+        "`a.same(b)`"
+      ],
+      "explanation": "`==` compare les **références** : il indique si `a` et `b` désignent le même objet en mémoire, pas si leur texte est identique. `equals()` compare le contenu caractère par caractère. `===` n'existe pas en Java (c'est du JavaScript). Avec des littéraux, `==` semble parfois fonctionner grâce au string pool, ce qui rend ce bug d'autant plus sournois.",
+      "difficulty": 1,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nString s = \"java\";\ns.replace('a', 'o');\nSystem.out.println(s);\n```",
+      "answer": "`java`",
+      "wrong": [
+        "`jovo`",
+        "`jova`",
+        "Erreur de compilation"
+      ],
+      "explanation": "Les `String` sont **immuables** en Java : `replace()` ne modifie pas `s`, elle renvoie une **nouvelle** chaîne… que l'on ignore ici. Pour obtenir `jovo`, il fallait écrire `s = s.replace('a', 'o');`. Toutes les méthodes de `String` qui semblent « modifier » la chaîne (`toUpperCase`, `trim`, `concat`…) fonctionnent ainsi.",
+      "difficulty": 1,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html"
+    },
+    {
+      "question": "Laquelle de ces exceptions est **vérifiée** (checked), c'est-à-dire qu'il faut obligatoirement la capturer ou la déclarer avec `throws` ?",
+      "answer": "`IOException`",
+      "wrong": [
+        "`NullPointerException`",
+        "`IllegalArgumentException`",
+        "`ArithmeticException`"
+      ],
+      "explanation": "Les exceptions qui héritent de `RuntimeException` (ainsi que les `Error`) sont **non vérifiées** : le compilateur n'impose rien. Les autres sous-classes d'`Exception`, comme `IOException`, sont **vérifiées** : une méthode qui peut la lever doit la traiter dans un `try/catch` ou la déclarer avec `throws`, sinon le code ne compile pas. `NullPointerException`, `IllegalArgumentException` et `ArithmeticException` héritent toutes de `RuntimeException`.",
+      "difficulty": 1,
+      "source": "https://docs.oracle.com/javase/tutorial/essential/exceptions/runtime.html"
+    },
+    {
+      "question": "Parmi ces opérations sur un `Stream`, laquelle est **terminale** ?",
+      "answer": "`collect()`",
+      "wrong": [
+        "`map()`",
+        "`filter()`",
+        "`sorted()`"
+      ],
+      "explanation": "Les opérations **intermédiaires** (`map`, `filter`, `sorted`, `distinct`…) renvoient un nouveau `Stream` et sont paresseuses : rien ne s'exécute tant qu'aucune opération **terminale** n'est appelée. Les opérations terminales (`collect`, `forEach`, `reduce`, `count`, `findFirst`…) déclenchent le traitement et produisent un résultat. Une fois consommé, un stream ne peut plus être réutilisé.",
+      "difficulty": 1,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/stream/package-summary.html"
+    },
+    {
+      "question": "Depuis Java 8, quel mot-clé permet d'écrire dans une interface une méthode d'instance **avec un corps**, héritée par les classes qui l'implémentent ?",
+      "answer": "`default`",
+      "wrong": [
+        "`static`",
+        "`abstract`",
+        "`final`"
+      ],
+      "explanation": "Les méthodes `default` ont été introduites en Java 8 pour faire évoluer des interfaces existantes (par exemple ajouter `forEach` à `Iterable` ou `stream()` à `Collection`) sans casser toutes les classes qui les implémentent. Une méthode `static` d'interface a aussi un corps, mais elle n'est pas héritée : on l'appelle via le nom de l'interface. `abstract` signifie justement « sans corps », et `final` est interdit sur une méthode d'interface.",
+      "difficulty": 1,
+      "source": "https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html"
+    },
+    {
+      "question": "Avec `var list = new ArrayList<String>();` (Java 10+), quel est le type de `list` ?",
+      "answer": "`ArrayList<String>`, inféré à la compilation",
+      "wrong": [
+        "Aucun : `var` rend la variable dynamiquement typée",
+        "`Object`, comme pour toute variable `var`",
+        "`List<String>`, l'interface la plus générale"
+      ],
+      "explanation": "`var` (Java 10, JEP 286) demande simplement au compilateur d'**inférer** le type à partir de l'initialiseur : ici `ArrayList<String>`, et non l'interface `List<String>`. Le typage reste **statique** : impossible ensuite d'affecter un `Integer` à `list`. `var` est réservé aux variables locales initialisées : pas de champs ni de paramètres de méthode.",
+      "difficulty": 2,
+      "source": "https://openjdk.org/jeps/286"
+    },
+    {
+      "question": "D'après le contrat entre `equals()` et `hashCode()`, quelle affirmation est vraie ?",
+      "answer": "Deux objets égaux doivent avoir le même `hashCode()`",
+      "wrong": [
+        "Deux objets de même `hashCode()` sont forcément égaux",
+        "Deux objets différents ont toujours des `hashCode()` différents",
+        "Redéfinir `equals()` suffit, `hashCode()` s'adapte seul"
+      ],
+      "explanation": "Le contrat impose : si `a.equals(b)` est vrai, alors `a.hashCode() == b.hashCode()`. L'inverse est faux : deux objets différents peuvent partager le même hash (une **collision**, inévitable avec seulement 2³² valeurs possibles). Si on redéfinit `equals()` sans `hashCode()`, deux objets « égaux » risquent d'atterrir dans des cases différentes d'un `HashMap` ou d'un `HashSet`, qui ne les reconnaîtra plus comme identiques.",
+      "difficulty": 2,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html"
+    },
+    {
+      "question": "Dans une classe, quelle visibilité a un champ déclaré **sans** modificateur d'accès (ni `public`, ni `protected`, ni `private`) ?",
+      "answer": "Visible uniquement dans son package",
+      "wrong": [
+        "Visible partout, comme `public`",
+        "Visible uniquement dans sa classe, comme `private`",
+        "Visible dans son package et dans ses sous-classes"
+      ],
+      "explanation": "Sans modificateur, on obtient l'accès dit **package-private** (ou « par défaut ») : seules les classes du même package y ont accès. C'est plus restrictif que `protected`, qui ouvre en plus l'accès aux sous-classes situées dans d'autres packages. Attention : dans une **interface**, les méthodes sans modificateur sont au contraire implicitement `public`.",
+      "difficulty": 2,
+      "source": "https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html"
+    },
+    {
+      "question": "Que garantit un appel à `System.gc()` ?",
+      "answer": "Rien : ce n'est qu'une suggestion faite à la JVM",
+      "wrong": [
+        "La libération immédiate des objets inaccessibles",
+        "Le retour de la mémoire libre au système",
+        "L'absence d'`OutOfMemoryError` par la suite"
+      ],
+      "explanation": "La Javadoc est explicite : `System.gc()` **suggère** à la JVM de récupérer de la mémoire, sans aucune garantie sur le moment ni sur la quantité libérée (l'option `-XX:+DisableExplicitGC` peut même le rendre sans effet). Un objet devient éligible au ramasse-miettes dès qu'il n'est plus **atteignable** depuis les racines (variables locales actives, champs statiques…), et c'est la JVM qui décide quand collecter. On n'a presque jamais besoin d'appeler `System.gc()`.",
+      "difficulty": 2,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/System.html"
+    },
+    {
+      "question": "Que se passe-t-il à l'exécution de `Optional.of(null)` ?",
+      "answer": "Une `NullPointerException` est levée",
+      "wrong": [
+        "Elle renvoie `Optional.empty()`",
+        "Elle renvoie un `Optional` contenant `null`",
+        "Elle renvoie `null`"
+      ],
+      "explanation": "`Optional.of(valeur)` exige une valeur non nulle et lève une `NullPointerException` sinon. Pour une valeur qui peut être `null`, il faut utiliser `Optional.ofNullable(valeur)`, qui renvoie alors `Optional.empty()`. Un `Optional` ne contient jamais `null` : il est soit vide, soit porteur d'une valeur.",
+      "difficulty": 2,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Optional.html"
+    },
+    {
+      "question": "Quel est le principal intérêt des **virtual threads**, finalisés en Java 21 ?",
+      "answer": "Lancer des millions de tâches bloquantes à faible coût",
+      "wrong": [
+        "Accélérer les calculs CPU en exploitant plus de cœurs",
+        "Exécuter du code Java directement sur le GPU",
+        "Supprimer le besoin de synchroniser les accès partagés"
+      ],
+      "explanation": "Un virtual thread est un thread léger géré par la JVM et non par l'OS : quand il se bloque (attente réseau, fichier…), la JVM le « démonte » et libère le thread système qui le portait. On peut ainsi en créer des millions, ce qui est idéal pour les serveurs « un thread par requête ». En revanche, ils n'accélèrent pas le calcul pur (le nombre de cœurs ne change pas) et les problèmes de concurrence restent les mêmes.",
+      "difficulty": 2,
+      "source": "https://openjdk.org/jeps/444"
+    },
+    {
+      "question": "Dans une `switch` expression (Java 14+), quel mot-clé fournit la valeur d'un `case` écrit sous forme de bloc ?\n```java\nint n = switch (jour) {\n    case SAMEDI, DIMANCHE -> 0;\n    default -> {\n        int h = calculer(jour);\n        ??? h;\n    }\n};\n```",
+      "answer": "`yield`",
+      "wrong": [
+        "`return`",
+        "`break`",
+        "`emit`"
+      ],
+      "explanation": "Dans une `switch` **expression**, un `case ->` peut renvoyer directement une expression ; s'il contient un bloc, on utilise `yield` pour produire la valeur. `return` est interdit ici (le compilateur refuse de « sortir » d'une switch expression) et `break` ne peut pas porter de valeur. Autre avantage des `case ->` : pas de fall-through, donc plus de `break` oubliés.",
+      "difficulty": 2,
+      "source": "https://openjdk.org/jeps/361"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nList<Integer> list = new ArrayList<>(List.of(1, 2, 3));\nlist.remove(1);\nSystem.out.println(list);\n```",
+      "answer": "`[1, 3]`",
+      "wrong": [
+        "`[2, 3]`",
+        "`[1, 2]`",
+        "`[1, 2, 3]`"
+      ],
+      "explanation": "`List` possède deux surcharges : `remove(int index)` et `remove(Object o)`. Avec le littéral `1` (un `int`), le compilateur préfère la surcharge qui ne nécessite **pas d'autoboxing** : `remove(int index)`. On supprime donc l'élément d'indice 1, c'est-à-dire `2`. Pour retirer la valeur `1`, il faut écrire `list.remove(Integer.valueOf(1))`.",
+      "difficulty": 2,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nStream.of(1, 2, 3)\n      .map(x -> {\n          System.out.print(x);\n          return x * 2;\n      });\nSystem.out.println(\"fin\");\n```",
+      "answer": "`fin`",
+      "wrong": [
+        "`123fin`",
+        "`246fin`",
+        "`fin123`"
+      ],
+      "explanation": "Les opérations intermédiaires comme `map` sont **paresseuses** : elles décrivent un traitement mais ne l'exécutent pas tant qu'aucune opération **terminale** (`forEach`, `collect`, `toList`…) n'est appelée. Ici, le stream est construit puis abandonné : la lambda ne s'exécute jamais et seul `fin` s'affiche. Avec `.toList()` en fin de chaîne, on obtiendrait `123fin`.",
+      "difficulty": 2,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/stream/package-summary.html"
+    },
+    {
+      "question": "Avec `record Point(int x, int y) {}` (Java 16+) et `Point p = new Point(1, 2);`, laquelle de ces affirmations est vraie ?",
+      "answer": "On lit `x` avec `p.x()`",
+      "wrong": [
+        "On lit `x` avec `p.getX()`",
+        "On modifie `x` avec `p.setX(3)`",
+        "Il peut étendre une autre classe avec `extends`"
+      ],
+      "explanation": "Un record génère automatiquement un constructeur, des champs `private final`, des accesseurs **portant le nom du composant** (`x()` et `y()`, pas `getX()`), ainsi que `equals()`, `hashCode()` et `toString()`. Il est immuable : aucun setter n'est généré. Il hérite implicitement de `java.lang.Record` et ne peut donc rien étendre d'autre, mais il peut implémenter des interfaces.",
+      "difficulty": 2,
+      "source": "https://openjdk.org/jeps/395"
+    },
+    {
+      "question": "Avec la configuration par défaut de la JVM, qu'affiche ce code ?\n```java\nInteger a = 127, b = 127;\nInteger c = 128, d = 128;\nSystem.out.println(a == b);\nSystem.out.println(c == d);\n```",
+      "answer": "`true` puis `false`",
+      "wrong": [
+        "`true` puis `true`",
+        "`false` puis `false`",
+        "`false` puis `true`"
+      ],
+      "explanation": "L'autoboxing passe par `Integer.valueOf()`, qui renvoie des objets **mis en cache** pour les valeurs de -128 à 127 : `a` et `b` désignent le même objet, d'où `true`. Pour 128, deux objets distincts sont créés, et `==` compare les références : `false`. La borne haute du cache peut être relevée (`-XX:AutoBoxCacheMax`), d'où la précision sur la configuration. Morale : on compare des `Integer` avec `equals()`.",
+      "difficulty": 3,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nString a = \"hello\";\nString b = \"hel\" + \"lo\";\nString c = new String(\"hello\");\nSystem.out.println(a == b);\nSystem.out.println(a == c);\nSystem.out.println(a == c.intern());\n```",
+      "answer": "`true`, `false`, `true`",
+      "wrong": [
+        "`false`, `false`, `true`",
+        "`true`, `false`, `false`",
+        "`false`, `false`, `false`"
+      ],
+      "explanation": "`\"hel\" + \"lo\"` est une **expression constante** : le compilateur la remplace par `\"hello\"`, stocké une seule fois dans le **string pool**. `a` et `b` désignent donc le même objet. `new String(...)` crée toujours un nouvel objet sur le tas, d'où `false`. Enfin, `intern()` renvoie la chaîne canonique du pool, c'est-à-dire le même objet que `a`.",
+      "difficulty": 3,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nList<String> a = new ArrayList<>();\nList<Integer> b = new ArrayList<>();\nSystem.out.println(a.getClass() == b.getClass());\n```",
+      "answer": "`true`",
+      "wrong": [
+        "`false`",
+        "Erreur de compilation",
+        "Une `ClassCastException`"
+      ],
+      "explanation": "Les génériques Java reposent sur l'**effacement de type** (type erasure) : `<String>` et `<Integer>` servent aux vérifications du compilateur, puis disparaissent du bytecode. À l'exécution, les deux objets sont de simples `ArrayList`, qui partagent le même objet `Class`. C'est aussi pour cela qu'on ne peut pas écrire `new T()` dans une classe générique.",
+      "difficulty": 3,
+      "source": "https://docs.oracle.com/javase/tutorial/java/generics/erasure.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nint x = Integer.MAX_VALUE;\nlong y = x + 1;\nSystem.out.println(y);\n```",
+      "answer": "`-2147483648`",
+      "wrong": [
+        "`2147483648`",
+        "`0`",
+        "Une `ArithmeticException`"
+      ],
+      "explanation": "`x + 1` est calculé **en `int`** (les deux opérandes sont des `int`) et dépasse la capacité : la valeur « fait le tour » et devient `Integer.MIN_VALUE`, soit -2147483648. Ce n'est qu'**ensuite** que ce résultat, déjà faux, est converti en `long`. Java ne lève pas d'exception en cas de dépassement sur les entiers : il fallait écrire `x + 1L`, ou utiliser `Math.addExact` pour détecter l'overflow.",
+      "difficulty": 3,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Math.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nStream.of(\"a\", \"b\", \"c\")\n    .filter(s -> { System.out.print(\"f\" + s + \" \"); return true; })\n    .map(s -> { System.out.print(\"m\" + s + \" \"); return s; })\n    .findFirst();\n```",
+      "answer": "`fa ma`",
+      "wrong": [
+        "`fa fb fc ma`",
+        "`fa fb fc ma mb mc`",
+        "`fa ma fb mb fc mc`"
+      ],
+      "explanation": "Un stream ne traite pas les étapes une par une pour toute la collection : chaque élément traverse **tout le pipeline** avant le suivant. De plus, `findFirst()` est une opération **court-circuitante** : dès que `\"a\"` a passé `filter` puis `map`, le résultat est trouvé et les autres éléments ne sont jamais traités. Seul `fa ma` s'affiche.",
+      "difficulty": 3,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/stream/package-summary.html"
+    },
+    {
+      "question": "Java 17 : une classe qui étend directement une classe `sealed` doit obligatoirement être déclarée…",
+      "answer": "`final`, `sealed` ou `non-sealed`",
+      "wrong": [
+        "`abstract`, `static` ou `final`",
+        "`final` uniquement",
+        "`public` et placée dans le même fichier"
+      ],
+      "explanation": "Une classe `sealed` restreint la liste de ses sous-classes directes (clause `permits`). Chacune doit préciser comment la hiérarchie se poursuit : `final` (elle s'arrête là), `sealed` (nouvelle liste fermée) ou `non-sealed` (de nouveau ouverte à tous). Sans l'un de ces trois modificateurs, le code ne compile pas. Cette hiérarchie fermée permet notamment au compilateur de vérifier l'exhaustivité d'un `switch` sur les types.",
+      "difficulty": 3,
+      "source": "https://openjdk.org/jeps/409"
+    },
+    {
+      "question": "Que se passe-t-il avec cette ligne ?\n```java\nList<Object> list = new ArrayList<String>();\n```",
+      "answer": "Erreur de compilation",
+      "wrong": [
+        "Compile et fonctionne normalement",
+        "Compile, mais `ClassCastException` à l'exécution",
+        "Compile avec un simple avertissement « unchecked »"
+      ],
+      "explanation": "Les génériques sont **invariants** : même si `String` est un sous-type d'`Object`, `List<String>` n'est **pas** un sous-type de `List<Object>`. Sinon, on pourrait glisser un `Integer` dans une liste de `String` via `list.add(42)`. Pour accepter une liste de n'importe quel type, on utilise un joker : `List<?>`. À l'inverse, les tableaux sont covariants : `Object[] t = new String[1];` compile, mais `t[0] = 42` lève une `ArrayStoreException` à l'exécution.",
+      "difficulty": 3,
+      "source": "https://docs.oracle.com/javase/tutorial/java/generics/inheritance.html"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schemas/theme.schema.json",
+  "name": "Sport",
+  "icon": "🏅",
+  "description": "Entraînement, nutrition, course et football.",
+  "color": "#ef4444",
+  "order": 4
+}

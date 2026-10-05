@@ -1,0 +1,305 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Stéganographie",
+  "icon": "🖼️",
+  "description": "Cacher l'existence d'un message : LSB, spectrogrammes, magic bytes et outils CTF comme steghide ou binwalk.",
+  "order": 4,
+  "questions": [
+    {
+      "question": "Quelle est la différence fondamentale entre **stéganographie** et **cryptographie** ?",
+      "answer": "La stéganographie cache l'existence même du message",
+      "wrong": [
+        "La stéganographie rend le message illisible sans clé",
+        "La cryptographie dissimule l'existence du message",
+        "La stéganographie ne s'applique qu'aux images"
+      ],
+      "explanation": "La **cryptographie** rend le contenu inintelligible, mais tout le monde voit qu'un message chiffré circule. La **stéganographie** dissimule le message dans un support anodin (image, son, texte) pour que personne ne soupçonne sa présence. Les deux se combinent souvent : `steghide`, par exemple, chiffre les données avant de les cacher.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/St%C3%A9ganographie"
+    },
+    {
+      "question": "D'où vient le mot « stéganographie » ?",
+      "answer": "Du grec steganos, « couvert », et graphein, « écrire »",
+      "wrong": [
+        "Du grec stenos, « étroit », et graphein, « écrire »",
+        "Du latin stagnum, « étang », et graphia, « trace »",
+        "Du nom de son inventeur, le moine Steganus"
+      ],
+      "explanation": "**Steganos** signifie « couvert, caché » et **graphein** « écrire » : c'est l'art de l'écriture cachée. Le terme a été popularisé par l'abbé Johannes Trithemius avec son traité Steganographia, rédigé vers 1499. À ne pas confondre avec la sténographie (de stenos, « étroit »), l'écriture abrégée rapide.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Steganography"
+    },
+    {
+      "question": "Dans la technique **LSB**, très répandue en stéganographie d'image, que modifie-t-on ?",
+      "answer": "Le bit de poids faible des valeurs de couleur",
+      "wrong": [
+        "Le bit de poids fort de chaque pixel",
+        "Les métadonnées EXIF de l'image",
+        "Les dimensions déclarées dans l'en-tête"
+      ],
+      "explanation": "LSB signifie **Least Significant Bit**, le bit de poids faible. Le remplacer modifie une composante de couleur d'au plus 1 sur 255 (par exemple `11001000` → `11001001`), un écart invisible à l'œil nu. Chaque pixel RVB peut ainsi transporter 3 bits du message. Modifier le bit de poids fort, au contraire, changerait la valeur de 128 et se verrait immédiatement.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Bit_numbering"
+    },
+    {
+      "question": "Quel outil permet d'afficher les métadonnées d'une image (modèle d'appareil, date, coordonnées GPS, commentaire…) ?",
+      "answer": "`exiftool`",
+      "wrong": [
+        "`zsteg`",
+        "`foremost`",
+        "`steghide`"
+      ],
+      "explanation": "`exiftool` lit (et écrit) les métadonnées EXIF, IPTC, XMP et bien d'autres, dans des centaines de formats. En CTF, un indice ou un flag se cache parfois simplement dans le champ commentaire, l'auteur ou les coordonnées GPS. `zsteg` cherche des données dans les bits des pixels, `foremost` récupère des fichiers et `steghide` extrait des données protégées par passphrase.",
+      "difficulty": 1,
+      "source": "https://exiftool.org/"
+    },
+    {
+      "question": "Dans un CTF, un fichier audio cache une image ou du texte « dessiné » dans ses fréquences. Quelle vue faut-il afficher dans Audacity ou Sonic Visualiser ?",
+      "answer": "Le spectrogramme",
+      "wrong": [
+        "La forme d'onde",
+        "L'égaliseur graphique",
+        "Les métadonnées ID3"
+      ],
+      "explanation": "Le **spectrogramme** représente l'intensité de chaque fréquence au fil du temps : en générant les bonnes fréquences, on peut y dessiner une image ou du texte. La forme d'onde, vue par défaut, ne montre que l'amplitude et ne révèle rien. Exemple célèbre : le visage caché par Aphex Twin dans un morceau de l'EP Windowlicker (1999).",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Spectrogram"
+    },
+    {
+      "question": "Quelle commande extrait d'un fichier binaire les suites d'au moins 4 caractères imprimables, réflexe n° 1 en CTF ?",
+      "answer": "`strings`",
+      "wrong": [
+        "`file`",
+        "`xxd`",
+        "`exiftool`"
+      ],
+      "explanation": "`strings` parcourt le fichier et affiche toutes les séquences de caractères imprimables d'une longueur minimale (4 par défaut, réglable avec `-n`). On l'enchaîne souvent avec `grep`, par exemple `strings image.png | grep -i flag`. `xxd` affiche tout le contenu en hexadécimal, et `file` identifie le type du fichier.",
+      "difficulty": 1,
+      "source": "https://man7.org/linux/man-pages/man1/strings.1.html"
+    },
+    {
+      "question": "La commande `file photo.png` répond « JPEG image data ». Sur quoi `file` se base-t-il principalement ?",
+      "answer": "Les premiers octets du fichier (magic bytes)",
+      "wrong": [
+        "L'extension indiquée dans le nom du fichier",
+        "Les métadonnées EXIF stockées dans l'image",
+        "La date de création inscrite dans le fichier"
+      ],
+      "explanation": "`file` ignore l'extension et compare le début du fichier à une base de signatures (« magic numbers ») : ici, il a reconnu les octets `FF D8 FF` d'un JPEG. Renommer un fichier pour tromper sur son type est un piège classique en CTF ; `file` est donc le premier réflexe face à un fichier inconnu.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/File_(command)"
+    },
+    {
+      "question": "Quelle technique, employée notamment par les espions allemands pendant la Seconde Guerre mondiale, réduisait une page entière à la taille d'un point typographique ?",
+      "answer": "Le micropoint (microdot)",
+      "wrong": [
+        "L'encre sympathique",
+        "La grille de Cardan",
+        "Le chiffre de César"
+      ],
+      "explanation": "Le **micropoint** est une photographie réduite à l'extrême, de la taille d'un point de ponctuation, collée à la place d'un vrai point dans une lettre banale. Il s'agit bien de stéganographie : le message n'est pas chiffré, il est caché. L'encre sympathique cache elle aussi un message, mais sans le miniaturiser, et le chiffre de César relève de la cryptographie.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Microdot"
+    },
+    {
+      "question": "Selon Hérodote, comment **Histiée** de Milet transmit-il secrètement un message à Aristagoras ?",
+      "answer": "Tatoué sur le crâne rasé d'un esclave",
+      "wrong": [
+        "Gravé sur du bois puis recouvert de cire",
+        "Écrit à l'encre invisible sur un parchemin",
+        "Caché dans la semelle d'une sandale"
+      ],
+      "explanation": "Histiée fit raser la tête de son esclave le plus fidèle, y tatoua son message, attendit que les cheveux repoussent puis l'envoya à Aristagoras, à qui il suffisait de le raser à nouveau. Hérodote rapporte un autre procédé, celui de Démarate : un message gravé sur le bois d'une tablette puis recouvert de cire vierge. Ce dernier n'est donc pas celui d'Histiée.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Histiaeus"
+    },
+    {
+      "question": "Par quels octets (magic bytes) commence un fichier **PNG** ?",
+      "answer": "`89 50 4E 47`",
+      "wrong": [
+        "`FF D8 FF E0`",
+        "`50 4B 03 04`",
+        "`25 50 44 46`"
+      ],
+      "explanation": "La signature PNG complète est `89 50 4E 47 0D 0A 1A 0A` ; `50 4E 47` correspond à « PNG » en ASCII. Le premier octet `89`, hors ASCII, et la séquence `0D 0A` permettent de détecter les transferts qui altèrent le 8e bit ou les fins de ligne. Les autres choix sont les signatures d'un JPEG (`FF D8 FF`), d'un ZIP (« PK ») et d'un PDF (`%PDF`).",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/List_of_file_signatures"
+    },
+    {
+      "question": "Pourquoi préfère-t-on un PNG ou un BMP à un JPEG pour cacher un message par LSB dans les pixels ?",
+      "answer": "La compression JPEG, avec pertes, altère les bits faibles",
+      "wrong": [
+        "Le PNG chiffre nativement les données qu'il contient",
+        "Le JPEG est limité à une palette de 256 couleurs",
+        "Le BMP réserve un espace dédié aux messages cachés"
+      ],
+      "explanation": "Le PNG est compressé **sans perte** et le BMP généralement pas compressé du tout : chaque bit modifié est restitué à l'identique. Le JPEG, lui, quantifie les coefficients DCT lors de l'encodage, ce qui détruit des bits de poids faible écrits dans les pixels. Pour le JPEG, on cache donc plutôt les données dans les coefficients DCT eux-mêmes.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Lossless_compression"
+    },
+    {
+      "question": "Quel outil permet de cacher puis d'extraire des données protégées par une passphrase dans des fichiers JPEG, BMP, WAV ou AU ?",
+      "answer": "`steghide`",
+      "wrong": [
+        "`zsteg`",
+        "`binwalk`",
+        "`exiftool`"
+      ],
+      "explanation": "`steghide` gère précisément les formats JPEG, BMP, WAV et AU, et chiffre par défaut les données avant de les cacher. On extrait avec `steghide extract -sf image.jpg`, qui demande la passphrase ; si on ne la connaît pas, des outils comme `stegseek` la cherchent par dictionnaire. `zsteg` ne traite que le PNG et le BMP, sans passphrase.",
+      "difficulty": 2,
+      "source": "https://steghide.sourceforge.net/"
+    },
+    {
+      "question": "Sur une image **PNG**, quel outil teste automatiquement de nombreuses combinaisons (bits faibles, canaux R/V/B, ordre de lecture…) pour révéler des données cachées ?",
+      "answer": "`zsteg`",
+      "wrong": [
+        "`steghide`",
+        "`exiftool`",
+        "`foremost`"
+      ],
+      "explanation": "`zsteg` est spécialisé dans la détection de données cachées dans les PNG et BMP : il essaie de nombreuses variantes (bit 0 ou bits supérieurs, canaux `r`, `g`, `b`, `a`, ordre `lsb`/`msb`, lecture par lignes ou colonnes) et signale ce qui ressemble à du texte ou à un fichier. `steghide`, lui, ne prend pas en charge le PNG.",
+      "difficulty": 2,
+      "source": "https://github.com/zed-0xff/zsteg"
+    },
+    {
+      "question": "Quel outil recherche dans un fichier les signatures d'autres fichiers embarqués (archive, image, système de fichiers…), les liste avec leur offset et peut les extraire avec `-e` ?",
+      "answer": "`binwalk`",
+      "wrong": [
+        "`exiftool`",
+        "`steghide`",
+        "`zsteg`"
+      ],
+      "explanation": "`binwalk` scanne un fichier à la recherche de signatures connues et affiche pour chacune son offset et son type ; `binwalk -e` extrait automatiquement ce qu'il trouve. Conçu pour analyser des firmwares, il est devenu incontournable en CTF pour repérer, par exemple, une archive ZIP collée à la fin d'une image.",
+      "difficulty": 2,
+      "source": "https://github.com/ReFirmLabs/binwalk"
+    },
+    {
+      "question": "Dans un CTF, à quoi sert principalement l'outil **Stegsolve** sur une image ?",
+      "answer": "Visualiser ses plans de bits et canaux un par un",
+      "wrong": [
+        "Casser la passphrase d'un fichier steghide",
+        "Extraire les fichiers d'un firmware",
+        "Supprimer les métadonnées GPS d'une photo"
+      ],
+      "explanation": "Stegsolve, petit outil Java, permet de faire défiler les **plans de bits** de chaque canal (rouge bit 0, vert bit 7…), d'appliquer des filtres ou de combiner deux images (XOR…). Un texte ou un QR code caché dans les bits faibles d'un canal y devient souvent visible d'un coup d'œil.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans une vue hexadécimale, vous repérez la séquence `50 4B 03 04` au milieu d'une image. Que signale-t-elle probablement ?",
+      "answer": "Le début d'une archive ZIP",
+      "wrong": [
+        "La fin d'une image JPEG",
+        "Le début d'un document PDF",
+        "L'en-tête d'une image PNG"
+      ],
+      "explanation": "`50 4B` correspond à « PK » en ASCII, les initiales de Phil Katz, créateur du format ZIP ; `50 4B 03 04` marque l'en-tête d'un fichier dans l'archive. Les formats DOCX, XLSX, JAR ou APK étant des ZIP, ils commencent de la même façon. La fin d'un JPEG est `FF D9`, un PDF commence par `%PDF` et un PNG par `89 50 4E 47`.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/List_of_file_signatures"
+    },
+    {
+      "question": "Où l'outil **SNOW** cache-t-il un message dans un fichier texte ?",
+      "answer": "Dans des espaces et tabulations en fin de ligne",
+      "wrong": [
+        "Dans des caractères Unicode de largeur nulle",
+        "Dans la casse de certaines lettres",
+        "Dans les métadonnées du fichier"
+      ],
+      "explanation": "SNOW (Steganographic Nature Of Whitespace) encode le message sous forme d'espaces et de tabulations ajoutés **en fin de ligne**, invisibles dans la plupart des éditeurs. Le message peut en plus être chiffré. Pour le repérer, il suffit d'afficher les caractères invisibles, par exemple avec `cat -A`, qui marque les fins de ligne par un `$`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Les caractères Unicode `U+200B`, `U+200C` et `U+200D`, utilisés pour cacher des messages dans du texte, ont quelle particularité ?",
+      "answer": "Ils sont invisibles car de largeur nulle",
+      "wrong": [
+        "Ils s'affichent comme des espaces insécables",
+        "Ils n'existent que dans l'encodage ASCII",
+        "Ils effacent le caractère qui les précède"
+      ],
+      "explanation": "Il s'agit de l'espace sans chasse (zero width space), de l'antiliant sans chasse (ZWNJ) et du liant sans chasse (ZWJ). Insérés entre des lettres, ils ne s'affichent pas mais sont bien copiés avec le texte, et leurs combinaisons peuvent coder des bits. On s'en sert aussi pour marquer différemment le texte envoyé à chaque destinataire et identifier l'auteur d'une fuite.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Zero-width_space"
+    },
+    {
+      "question": "On soupçonne des données ajoutées après la fin d'une image JPEG. Après quel marqueur faut-il regarder ?",
+      "answer": "`FF D9` (EOI, End Of Image)",
+      "wrong": [
+        "`FF D8` (SOI, Start Of Image)",
+        "`FF DA` (SOS, Start Of Scan)",
+        "`FF E1` (APP1, données EXIF)"
+      ],
+      "explanation": "Un JPEG commence par `FF D8` (SOI) et se termine par `FF D9` (EOI) ; les visionneuses ignorent tout ce qui suit ce dernier, ce qui en fait une cachette simple. Attention : une miniature stockée dans les métadonnées EXIF possède ses propres marqueurs SOI/EOI, c'est donc le `FF D9` de l'image principale (en général le dernier) qui compte.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/JPEG"
+    },
+    {
+      "question": "Pourquoi le fichier produit par `cat image.jpg secret.zip > out.jpg` s'affiche-t-il comme une image tout en restant décompressable ?",
+      "answer": "Le JPEG se lit depuis le début, le ZIP depuis la fin",
+      "wrong": [
+        "Le ZIP est rangé dans les métadonnées EXIF",
+        "Le format JPEG intègre la compression ZIP",
+        "`cat` fusionne les deux formats en un seul"
+      ],
+      "explanation": "Le décodeur JPEG part du marqueur `FF D8` en début de fichier et s'arrête à `FF D9`, sans se soucier de la suite. Les outils ZIP, eux, cherchent d'abord l'enregistrement « End of Central Directory » situé à la fin du fichier, puis remontent vers les fichiers de l'archive. Le résultat est valide dans deux formats à la fois : c'est un fichier **polyglotte**, que `binwalk` repère facilement.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/ZIP_(file_format)"
+    },
+    {
+      "question": "Les outils JSteg ou F5 cachent des données dans des images JPEG malgré la compression avec pertes. Où écrivent-ils les bits du message ?",
+      "answer": "Dans les coefficients DCT quantifiés",
+      "wrong": [
+        "Dans les LSB des pixels RVB décodés",
+        "Dans le segment de commentaire `COM`",
+        "Dans les octets situés après le marqueur EOI"
+      ],
+      "explanation": "Le JPEG découpe l'image en blocs de 8 × 8 pixels, applique une transformée en cosinus discrète (DCT) puis quantifie les coefficients : c'est cette étape qui provoque les pertes. JSteg et F5 modifient les coefficients **après** quantification, juste avant le codage entropique sans perte, donc ces modifications survivent dans le fichier. Écrire dans les pixels décodés ne marcherait pas, car le réencodage détruirait ces bits.",
+      "difficulty": 3
+    },
+    {
+      "question": "L'attaque statistique du **khi-deux** (chi-square) détecte un remplacement LSB dans une image en observant quel phénomène ?",
+      "answer": "Les paires de valeurs 2k et 2k+1 s'égalisent",
+      "wrong": [
+        "La taille du fichier augmente nettement",
+        "Des octets apparaissent après `FF D9`",
+        "Les métadonnées EXIF deviennent incohérentes"
+      ],
+      "explanation": "Remplacer le bit de poids faible ne peut transformer une valeur qu'en sa « paire » (100 ↔ 101, par exemple). Comme les bits d'un message chiffré sont quasi aléatoires, les effectifs de chaque paire 2k/2k+1 dans l'histogramme tendent à devenir égaux, ce qui est rare dans une image naturelle. Le test du khi-deux, proposé par Westfeld et Pfitzmann en 1999, mesure cette égalisation : c'est un exemple classique de **stéganalyse**.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Steganalysis"
+    },
+    {
+      "question": "Qu'est-ce qui distingue avant tout le **tatouage numérique** (watermarking) de la stéganographie ?",
+      "answer": "L'information cachée concerne le support lui-même",
+      "wrong": [
+        "La marque est toujours visible à l'œil nu",
+        "Il ne s'applique qu'aux fichiers audio",
+        "Il exige un format d'image sans perte"
+      ],
+      "explanation": "En stéganographie, le support n'est qu'un véhicule : ce qui compte, c'est le message secret et le fait que personne ne soupçonne son existence. En tatouage numérique, la marque porte une information **sur le support** (auteur, ayant droit, identifiant de l'acheteur), son existence peut être publique, et elle doit souvent résister à la compression ou au recadrage. Il existe des tatouages visibles (logo) comme invisibles.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Digital_watermarking"
+    },
+    {
+      "question": "Comment l'outil `foremost` récupère-t-il des fichiers à partir d'une image disque ou d'un fichier brut ?",
+      "answer": "Par carving, en repérant en-têtes et pieds de fichiers",
+      "wrong": [
+        "En lisant la table d'allocation du système de fichiers",
+        "En testant des passphrases par force brute",
+        "En inversant les bits de poids faible des pixels"
+      ],
+      "explanation": "Le **file carving** consiste à parcourir les données brutes à la recherche de signatures de début et de fin de fichier (par exemple `FF D8 FF` … `FF D9` pour un JPEG), sans s'appuyer sur le système de fichiers. C'est ce qui permet à `foremost` de retrouver des fichiers supprimés ou des fichiers dissimulés dans un autre. Lire la table d'allocation est l'approche des outils de récupération classiques, inutile quand celle-ci est absente ou effacée.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Foremost_(software)"
+    },
+    {
+      "question": "Une image PNG RVB de 100 × 100 pixels cache un message par LSB, à raison d'un bit par canal de couleur. Quelle est sa capacité maximale ?",
+      "answer": "3 750 octets",
+      "wrong": [
+        "30 000 octets",
+        "1 250 octets",
+        "10 000 octets"
+      ],
+      "explanation": "100 × 100 = 10 000 pixels, chacun avec 3 canaux (rouge, vert, bleu) portant 1 bit : on obtient 30 000 **bits**, soit 30 000 / 8 = 3 750 octets. Le piège à 30 000 confond bits et octets, et 1 250 octets correspondrait à un seul canal utilisé.",
+      "difficulty": 3
+    }
+  ]
+}

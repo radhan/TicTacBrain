@@ -1,0 +1,200 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Running",
+  "icon": "🏃",
+  "description": "Marathon, VMA, allures, trail et grandes figures de la course à pied : testez votre culture de coureur.",
+  "order": 3,
+  "questions": [
+    {
+      "question": "Quelle est la distance officielle d'un marathon ?",
+      "answer": "42,195 km",
+      "wrong": ["42 km", "40,195 km", "42,5 km"],
+      "explanation": "La distance de **42,195 km** (soit 26 miles et 385 yards) a été courue pour la première fois aux Jeux olympiques de Londres en 1908, puis officialisée par la fédération internationale d'athlétisme en 1921. Lors des premiers Jeux modernes, en 1896, le marathon ne mesurait qu'environ 40 km.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Marathon_(sport)"
+    },
+    {
+      "question": "Selon la légende à l'origine du marathon, dans quelle ville le messager Phidippidès a-t-il couru annoncer la victoire des Grecs sur les Perses ?",
+      "answer": "Athènes",
+      "wrong": ["Sparte", "Olympie", "Corinthe"],
+      "explanation": "Après la bataille de Marathon (490 av. J.-C.), Phidippidès aurait couru une quarantaine de kilomètres jusqu'à Athènes pour annoncer la victoire, avant de mourir d'épuisement. Cette légende a inspiré l'épreuve du marathon aux premiers Jeux modernes de 1896. L'historien Hérodote raconte plutôt qu'il aurait couru d'Athènes à Sparte pour demander des renforts : c'est l'origine du Spartathlon, une course d'environ 246 km.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Phidippid%C3%A8s"
+    },
+    {
+      "question": "En course à pied, que signifie le sigle **VMA** ?",
+      "answer": "Vitesse maximale aérobie",
+      "wrong": ["Vitesse moyenne d'allure", "Vitesse minimale anaérobie", "Variation maximale d'accélération"],
+      "explanation": "La VMA est la vitesse de course à partir de laquelle on atteint sa consommation maximale d'oxygène (VO₂max). On ne peut la maintenir que quelques minutes, et elle sert de référence pour calibrer les allures d'entraînement : endurance fondamentale, seuil, fractionné…",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Vitesse_maximale_a%C3%A9robie"
+    },
+    {
+      "question": "Courir à une allure de **5:00 min/km** correspond à quelle vitesse ?",
+      "answer": "12 km/h",
+      "wrong": ["10 km/h", "11 km/h", "13 km/h"],
+      "explanation": "Pour passer d'une allure à une vitesse, on divise 60 par l'allure exprimée en minutes : 60 ÷ 5 = **12 km/h**. Quelques repères utiles : 6:00 min/km = 10 km/h, 4:00 min/km = 15 km/h et 3:00 min/km = 20 km/h.",
+      "difficulty": 1
+    },
+    {
+      "question": "Le test de Cooper consiste à parcourir la plus grande distance possible en combien de temps ?",
+      "answer": "12 minutes",
+      "wrong": ["6 minutes", "10 minutes", "20 minutes"],
+      "explanation": "Mis au point à la fin des années 1960 par Kenneth Cooper, médecin de l'armée de l'air américaine, ce test servait à évaluer la condition physique des soldats et permet d'estimer la VO₂max. Sa variante sur 6 minutes, le **demi-Cooper**, est très utilisée pour estimer la VMA.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Test_de_Cooper"
+    },
+    {
+      "question": "À quoi reconnaît-on, en pratique, une allure d'endurance fondamentale ?",
+      "answer": "On peut tenir une conversation en courant",
+      "wrong": ["On ne peut la tenir que 5 minutes", "On court à sa VMA", "On est essoufflé dès le premier kilomètre"],
+      "explanation": "L'endurance fondamentale est une allure lente et confortable, d'environ 60 à 70 % de la VMA, qui permet de parler sans être essoufflé. Elle constitue l'essentiel du volume d'entraînement des coureurs d'endurance : elle développe le système cardiovasculaire et l'utilisation des graisses comme carburant, tout en limitant la fatigue.",
+      "difficulty": 1
+    },
+    {
+      "question": "En trail, que désigne l'indication « D+ » d'un parcours ?",
+      "answer": "Le dénivelé positif cumulé",
+      "wrong": ["La distance supplémentaire", "Le degré de difficulté technique", "La durée maximale autorisée"],
+      "explanation": "Le D+ additionne toutes les montées du parcours, en mètres (le D− fait de même pour les descentes). Un trail de « 50 km et 3 000 m D+ » est ainsi bien plus exigeant qu'un 50 km plat. Pour comparer les courses, on utilise souvent le « kilomètre-effort » : distance en km + D+ en mètres ÷ 100.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans une séance de fractionné « 30/30 », que représentent ces deux nombres ?",
+      "answer": "30 s rapides puis 30 s de récupération",
+      "wrong": ["30 répétitions de 30 mètres", "30 min à 30 % de la VMA", "30 s de sprint toutes les 30 min"],
+      "explanation": "Le 30/30 alterne 30 secondes de course rapide (autour de 100 % de la VMA) et 30 secondes de récupération en trottinant, répétées en série. Ce format permet d'accumuler plus de temps à haute intensité qu'un effort continu, ce qui en fait une séance classique pour développer sa VMA.",
+      "difficulty": 1
+    },
+    {
+      "question": "Lors de quels Jeux olympiques le marathon a-t-il été couru pour la première fois sur 42,195 km ?",
+      "answer": "Londres 1908",
+      "wrong": ["Athènes 1896", "Paris 1900", "Stockholm 1912"],
+      "explanation": "À Londres, le départ fut donné sur la pelouse du château de Windsor et l'arrivée jugée devant la loge royale du White City Stadium, ce qui porta la distance à 42,195 km. Cette course est restée célèbre pour l'Italien Dorando Pietri : arrivé en tête mais aidé par des officiels à franchir la ligne, il fut disqualifié au profit de l'Américain Johnny Hayes.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Marathon_(sport)"
+    },
+    {
+      "question": "Quelle est la distance exacte d'un semi-marathon ?",
+      "answer": "21,0975 km",
+      "wrong": ["21 km", "21,195 km", "20,5 km"],
+      "explanation": "Le semi-marathon mesure exactement la moitié d'un marathon : 42,195 ÷ 2 = **21,0975 km**, distance souvent arrondie à 21,1 km. C'est l'une des épreuves sur route les plus courues, et un excellent objectif intermédiaire avant de se lancer sur marathon.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Semi-marathon"
+    },
+    {
+      "question": "D'origine suédoise, le mot **fartlek** signifie littéralement…",
+      "answer": "Jeu de vitesse",
+      "wrong": ["Course en forêt", "Pas rapide", "Long souffle"],
+      "explanation": "En suédois, « fart » signifie vitesse et « lek » jeu. Développé par l'entraîneur suédois Gösta Holmér, le fartlek consiste à varier les allures au fil du parcours, souvent en nature et sans chronomètre strict. C'est une forme de fractionné ludique, guidée par les sensations.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Fartlek"
+    },
+    {
+      "question": "Que signifie courir une course en « negative split » ?",
+      "answer": "Courir la seconde moitié plus vite que la première",
+      "wrong": ["Courir la première moitié plus vite que la seconde", "Ralentir à chaque ravitaillement", "Alterner marche et course"],
+      "explanation": "En negative split, la seconde moitié de la course est bouclée plus vite que la première. Cette stratégie évite de partir trop vite et de puiser trop tôt dans ses réserves de glycogène. L'inverse, un départ trop rapide suivi d'un ralentissement, est appelé « positive split ».",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Negative_split"
+    },
+    {
+      "question": "Le fameux « mur du marathon », souvent ressenti vers le 30ᵉ kilomètre, est principalement lié à…",
+      "answer": "L'épuisement des réserves de glycogène",
+      "wrong": ["L'accumulation d'acide lactique", "Un manque d'oxygène dans le sang", "Une chute de la fréquence cardiaque"],
+      "explanation": "Le glycogène, forme de stockage des glucides dans les muscles et le foie, s'épuise après environ deux heures d'effort soutenu. L'organisme doit alors s'appuyer davantage sur les graisses, un carburant plus lent à mobiliser : les jambes deviennent lourdes et l'allure chute brutalement. Une recharge en glucides les jours précédents et des apports pendant la course aident à repousser ce mur.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Hitting_the_wall"
+    },
+    {
+      "question": "Comment appelle-t-on la réduction du volume d'entraînement dans les jours ou semaines qui précèdent une course importante ?",
+      "answer": "L'affûtage",
+      "wrong": ["Le fartlek", "Le surentraînement", "Le travail foncier"],
+      "explanation": "L'affûtage (« tapering » en anglais) consiste à réduire nettement le volume, tout en conservant un peu d'intensité, pour arriver frais et reposé le jour J. Avant un marathon, il dure généralement deux à trois semaines. Le surentraînement, lui, est l'état de fatigue chronique qu'on cherche justement à éviter.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur une chaussure de running, que désigne le **drop** ?",
+      "answer": "L'écart de hauteur entre le talon et l'avant-pied",
+      "wrong": ["L'épaisseur totale de la semelle", "Le poids de la chaussure", "La souplesse de la semelle"],
+      "explanation": "Le drop s'exprime en millimètres : une chaussure de 30 mm au talon et 22 mm à l'avant-pied a un drop de 8 mm. Les modèles classiques tournent souvent autour de 8 à 12 mm, tandis que les chaussures « zéro drop » ont un talon et un avant-pied à la même hauteur. Attention : le drop ne dit rien de l'épaisseur totale de l'amorti.",
+      "difficulty": 2
+    },
+    {
+      "question": "En course à pied, que désigne la **pronation** ?",
+      "answer": "Le léger affaissement du pied vers l'intérieur à l'appui",
+      "wrong": ["Le déroulé du pied vers l'extérieur à l'appui", "L'attaque du sol par l'avant-pied", "La poussée finale sur les orteils"],
+      "explanation": "La pronation est un mouvement naturel : en s'affaissant légèrement vers l'intérieur, le pied aide à amortir l'impact. Elle n'est considérée comme problématique que lorsqu'elle est excessive (hyperpronation). Le mouvement inverse, vers l'extérieur, s'appelle la supination.",
+      "difficulty": 2
+    },
+    {
+      "question": "L'UTMB, ultra-trail qui fait le tour du massif du Mont-Blanc au départ de Chamonix, traverse combien de pays ?",
+      "answer": "3 : France, Italie, Suisse",
+      "wrong": ["2 : France, Italie", "2 : France, Suisse", "4 : France, Italie, Suisse, Autriche"],
+      "explanation": "Créé en 2003, l'Ultra-Trail du Mont-Blanc boucle environ 170 km pour près de 10 000 m de D+. Il passe notamment par Courmayeur en Italie et Champex en Suisse, avant de revenir à Chamonix. Les meilleurs le terminent en une vingtaine d'heures.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Ultra-Trail_du_Mont-Blanc"
+    },
+    {
+      "question": "Quelle cadence de course est souvent citée comme repère, sans être une règle universelle ?",
+      "answer": "Environ 180 pas par minute",
+      "wrong": ["Environ 120 pas par minute", "Environ 150 pas par minute", "Environ 220 pas par minute"],
+      "explanation": "Ce chiffre a été popularisé par l'entraîneur américain Jack Daniels, qui avait compté les pas des coureurs élites aux Jeux olympiques de 1984. C'est un ordre de grandeur, pas une norme : la cadence varie avec la vitesse, la taille et la foulée de chacun. Augmenter légèrement sa cadence aide surtout à éviter les foulées trop longues, qui attaquent le sol loin devant le corps.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle allure moyenne faut-il tenir pour terminer un marathon en 3 heures ?",
+      "answer": "Environ 4:16 min/km",
+      "wrong": ["Environ 4:00 min/km", "Environ 4:30 min/km", "Environ 4:45 min/km"],
+      "explanation": "180 minutes ÷ 42,195 km ≈ 4,27 min/km, soit environ **4 min 16 s par kilomètre** (≈ 14,1 km/h). À 4:30 min/km, on finirait en 3 h 10 environ, et à 4:00 min/km en 2 h 49 environ : sur marathon, quelques secondes par kilomètre font vite une grande différence.",
+      "difficulty": 3
+    },
+    {
+      "question": "Lors d'un test demi-Cooper (6 minutes), un coureur parcourt 1 500 m. Quelle VMA en déduit-on ?",
+      "answer": "15 km/h",
+      "wrong": ["12 km/h", "9 km/h", "18 km/h"],
+      "explanation": "6 minutes représentent un dixième d'heure : la vitesse moyenne vaut donc 1,5 km × 10 = **15 km/h**. Astuce : au demi-Cooper, la VMA en km/h s'obtient en divisant la distance en mètres par 100. Le format fonctionne car 6 minutes correspondent à peu près à la durée pendant laquelle on peut tenir sa VMA.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Test_de_Cooper"
+    },
+    {
+      "question": "Au test VAMEVAL, de combien la vitesse imposée augmente-t-elle à chaque palier d'une minute ?",
+      "answer": "0,5 km/h",
+      "wrong": ["0,25 km/h", "1 km/h", "2 km/h"],
+      "explanation": "Le VAMEVAL est un test progressif : on part de 8 km/h et l'on accélère de **0,5 km/h chaque minute**, en se calant sur des bips sonores et des plots régulièrement espacés autour de la piste. On s'arrête quand on ne parvient plus à suivre le rythme, et la vitesse du dernier palier réalisé donne une estimation de la VMA.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Vitesse_maximale_a%C3%A9robie"
+    },
+    {
+      "question": "Sur un 3 000 m steeple, combien de fois les coureurs franchissent-ils la rivière ?",
+      "answer": "7 fois",
+      "wrong": ["3 fois", "5 fois", "10 fois"],
+      "explanation": "Le 3 000 m steeple comporte 35 obstacles : **28 barrières** et **7 passages de la rivière** (une barrière suivie d'une fosse remplie d'eau). Contrairement aux haies, les barrières sont fixes et ne basculent pas, si bien que les coureurs peuvent prendre appui dessus. Elles mesurent 91,4 cm chez les hommes et 76,2 cm chez les femmes.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/3000_metres_steeplechase"
+    },
+    {
+      "question": "En octobre 2019, lors de l'INEOS 1:59 Challenge, Eliud Kipchoge court la distance du marathon en 1 h 59 min 40 s. Dans quelle ville ?",
+      "answer": "Vienne",
+      "wrong": ["Berlin", "Monza", "Londres"],
+      "explanation": "Kipchoge a couru le 12 octobre 2019 sur un circuit tracé dans le Prater, le grand parc de Vienne. Ce temps n'a pas été homologué comme record du monde : lièvres se relayant, ravitaillement apporté à vélo et absence de compétition ouverte. Deux ans plus tôt, sur le circuit automobile de Monza, sa tentative Breaking2 s'était arrêtée à 2 h 00 min 25 s.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Ineos_1:59_Challenge"
+    },
+    {
+      "question": "Le 6 mai 1954, Roger Bannister devient le premier homme à courir sous les 4 minutes. Sur quelle distance ?",
+      "answer": "Le mile (1 609 m)",
+      "wrong": ["Le 1 500 m", "Le 1 000 m", "Le 2 000 m"],
+      "explanation": "À Oxford, Bannister boucle le mile en **3 min 59 s 4**, emmené par ses lièvres Chris Brasher et Chris Chataway. Cette barrière, longtemps jugée infranchissable, tombe à nouveau quelques semaines plus tard grâce à l'Australien John Landy. Étudiant en médecine à l'époque, Bannister deviendra neurologue.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Roger_Bannister"
+    },
+    {
+      "question": "Aux JO de Rome en 1960, quel Éthiopien remporte le marathon en courant pieds nus ?",
+      "answer": "Abebe Bikila",
+      "wrong": ["Mamo Wolde", "Haile Gebreselassie", "Miruts Yifter"],
+      "explanation": "Bikila s'impose de nuit, avec une arrivée sous l'arc de Constantin, en 2 h 15 min 16 s, meilleure performance mondiale de l'époque. Il devient le premier athlète d'Afrique noire champion olympique. Quatre ans plus tard à Tokyo, chaussé cette fois et quelques semaines seulement après une opération de l'appendicite, il devient le premier à remporter deux fois le marathon olympique.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Abebe_Bikila"
+    }
+  ]
+}

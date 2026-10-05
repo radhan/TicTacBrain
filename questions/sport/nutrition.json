@@ -1,0 +1,193 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Nutrition",
+  "icon": "🥗",
+  "description": "Macronutriments, protéines, vitamines, créatine, hydratation et dépense énergétique : les bases de la nutrition du sportif.",
+  "order": 2,
+  "questions": [
+    {
+      "question": "Quel est l'apport énergétique de **1 gramme de lipides** ?",
+      "answer": "9 kcal",
+      "wrong": ["4 kcal", "7 kcal", "12 kcal"],
+      "explanation": "Les **lipides** sont le macronutriment le plus dense en énergie : **9 kcal/g**, contre 4 kcal/g pour les glucides et les protéines. C'est pourquoi une cuillère à soupe d'huile (environ 10 g) apporte à elle seule près de 90 kcal. Ils restent indispensables : ils transportent les vitamines liposolubles et fournissent les acides gras essentiels.",
+      "difficulty": 1
+    },
+    {
+      "question": "Lequel de ces nutriments est un **micronutriment** ?",
+      "answer": "Le zinc",
+      "wrong": ["Les glucides", "Les protéines", "Les lipides"],
+      "explanation": "Les **micronutriments** regroupent les **vitamines** et les **minéraux** (zinc, fer, magnésium…) : ils n'apportent pas d'énergie et nos besoins se comptent en milligrammes ou en microgrammes. Les **macronutriments** (glucides, protéines, lipides) fournissent l'énergie et se consomment en dizaines ou centaines de grammes par jour.",
+      "difficulty": 1
+    },
+    {
+      "question": "Sous quelle forme l'organisme **stocke-t-il les glucides** dans le foie et les muscles ?",
+      "answer": "Le glycogène",
+      "wrong": ["Le glucagon", "Les triglycérides", "Le lactate"],
+      "explanation": "Le **glycogène** est un polymère de glucose stocké dans le **foie** et les **muscles**. À ne pas confondre avec le **glucagon**, une hormone du pancréas qui déclenche justement la libération du glucose hépatique. Les réserves de glycogène sont limitées, d'où l'intérêt d'apporter des glucides lors des efforts d'endurance de longue durée.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Glycog%C3%A8ne"
+    },
+    {
+      "question": "Quelle vitamine la peau peut-elle **synthétiser** sous l'effet des rayons UVB du soleil ?",
+      "answer": "La vitamine D",
+      "wrong": ["La vitamine C", "La vitamine B12", "La vitamine K"],
+      "explanation": "Sous l'action des **UVB**, la peau transforme un dérivé du cholestérol en **vitamine D**, ensuite activée par le foie puis les reins. Elle favorise l'absorption du calcium et joue un rôle clé dans la santé osseuse et musculaire. Aux latitudes de la France, la synthèse cutanée devient très faible en hiver, ce qui rend les apports alimentaires (poissons gras, œufs) plus importants.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel groupe d'aliments est la principale source de **fibres alimentaires** ?",
+      "answer": "Fruits, légumes, légumineuses et céréales complètes",
+      "wrong": ["Viandes et poissons", "Produits laitiers et œufs", "Huiles et matières grasses"],
+      "explanation": "Les **fibres** sont des glucides que nos enzymes ne savent pas digérer ; on les trouve dans les **végétaux**, les produits animaux n'en contenant pas naturellement. Elles favorisent le transit, la satiété et nourrissent le microbiote intestinal. Les légumineuses (lentilles, pois chiches…) figurent parmi les aliments les plus riches.",
+      "difficulty": 1
+    },
+    {
+      "question": "Comment appelle-t-on la situation où l'on **consomme moins d'énergie** que l'on n'en dépense ?",
+      "answer": "Un déficit calorique",
+      "wrong": ["Un surplus calorique", "L'équilibre énergétique", "L'effet thermique"],
+      "explanation": "En **déficit calorique**, l'organisme puise dans ses réserves pour couvrir la différence, ce qui entraîne une perte de poids au fil du temps. À l'inverse, un **surplus** favorise la prise de poids, et l'**équilibre** (maintenance) le stabilise. Associer un déficit modéré, un apport suffisant en protéines et la musculation aide à préserver la masse musculaire.",
+      "difficulty": 1
+    },
+    {
+      "question": "Où trouve-t-on surtout les **oméga-3 à longue chaîne** EPA et DHA ?",
+      "answer": "Dans les poissons gras",
+      "wrong": ["Dans l'huile de tournesol", "Dans l'huile d'olive", "Dans le beurre"],
+      "explanation": "Les **poissons gras** (sardine, maquereau, saumon, hareng) sont les principales sources d'**EPA** et de **DHA**, issus à l'origine des microalgues marines. L'huile de tournesol est riche en oméga-6 et l'huile d'olive en oméga-9. Les huiles de colza, de lin ou les noix apportent de l'oméga-3 ALA, mais l'organisme le convertit peu en EPA et DHA.",
+      "difficulty": 1
+    },
+    {
+      "question": "Parmi ces minéraux, lequel est perdu **en plus grande quantité** dans la sueur ?",
+      "answer": "Le sodium",
+      "wrong": ["Le potassium", "Le magnésium", "Le calcium"],
+      "explanation": "La sueur est salée : le **sodium** (avec le chlorure) est de loin l'électrolyte qu'on y perd le plus, alors que potassium, magnésium et calcium n'y sont présents qu'en faibles quantités. Les pertes varient beaucoup d'une personne à l'autre ; lors d'efforts longs et chauds, une boisson contenant du sodium aide à maintenir l'hydratation.",
+      "difficulty": 1
+    },
+    {
+      "question": "Combien de kilocalories apporte **1 gramme d'alcool** (éthanol) ?",
+      "answer": "7 kcal",
+      "wrong": ["0 kcal", "4 kcal", "9 kcal"],
+      "explanation": "L'**alcool** apporte environ **7 kcal/g**, presque autant que les lipides, sans fournir de nutriments utiles : on parle de « calories vides ». Un verre standard (10 g d'alcool pur) représente donc environ 70 kcal, hors sucres du mélange. L'alcool perturbe aussi la récupération et la qualité du sommeil.",
+      "difficulty": 2
+    },
+    {
+      "question": "Une portion contient **10 g de glucides**, **5 g de protéines** et **2 g de lipides**. Quel est son apport énergétique ?",
+      "answer": "78 kcal",
+      "wrong": ["68 kcal", "93 kcal", "153 kcal"],
+      "explanation": "On applique les coefficients d'Atwater : glucides et protéines **4 kcal/g**, lipides **9 kcal/g**. Soit 10 × 4 + 5 × 4 + 2 × 9 = 40 + 20 + 18 = **78 kcal**. Ce calcul explique pourquoi quelques grammes de lipides pèsent vite lourd dans le bilan énergétique.",
+      "difficulty": 2
+    },
+    {
+      "question": "Combien d'acides aminés sont considérés comme **essentiels** chez l'adulte ?",
+      "answer": "9",
+      "wrong": ["6", "12", "20"],
+      "explanation": "Les **9 acides aminés essentiels** (histidine, isoleucine, leucine, lysine, méthionine, phénylalanine, thréonine, tryptophane, valine) ne peuvent pas être synthétisés par l'organisme et doivent provenir de l'alimentation. Les protéines animales et le soja les contiennent tous en proportions satisfaisantes ; varier les sources végétales permet de combler les manques de chacune.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Acide_amin%C3%A9_essentiel"
+    },
+    {
+      "question": "Quels sont les trois acides aminés à chaîne ramifiée (**BCAA**) ?",
+      "answer": "Leucine, isoleucine, valine",
+      "wrong": ["Leucine, lysine, glutamine", "Valine, glycine, alanine", "Isoleucine, arginine, tryptophane"],
+      "explanation": "Les **BCAA** (*Branched-Chain Amino Acids*) sont la **leucine**, l'**isoleucine** et la **valine**, trois acides aminés essentiels dont la chaîne latérale est ramifiée. Contrairement à la plupart des acides aminés, ils sont largement métabolisés dans le muscle plutôt que dans le foie. Ils sont naturellement abondants dans les protéines alimentaires (viande, œufs, produits laitiers, légumineuses).",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Branched-chain_amino_acid"
+    },
+    {
+      "question": "Selon la prise de position de l'**ISSN** (2017), quel apport protéique quotidien suffit à la plupart des personnes qui s'entraînent ?",
+      "answer": "1,4 à 2,0 g/kg/jour",
+      "wrong": ["0,3 à 0,5 g/kg/jour", "0,8 à 1,0 g/kg/jour", "3,5 à 4,5 g/kg/jour"],
+      "explanation": "L'**International Society of Sports Nutrition** estime qu'un apport de **1,4 à 2,0 g de protéines par kg de poids corporel et par jour** suffit à la plupart des sportifs pour construire et maintenir leur masse musculaire. C'est nettement plus que la référence pour un adulte sédentaire (environ 0,83 g/kg/j selon l'ANSES). L'ISSN conseille aussi de répartir cet apport sur la journée, à raison d'environ 20 à 40 g par repas.",
+      "difficulty": 2,
+      "source": "https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8"
+    },
+    {
+      "question": "Par quel mécanisme principal la supplémentation en **créatine** améliore-t-elle les efforts courts et intenses ?",
+      "answer": "Elle augmente les réserves musculaires de phosphocréatine",
+      "wrong": ["Elle augmente directement la production de testostérone", "Elle accélère l'oxydation des graisses", "Elle augmente le nombre de globules rouges"],
+      "explanation": "La créatine est stockée dans les muscles surtout sous forme de **phosphocréatine**, qui régénère très rapidement l'ATP lors des efforts brefs et intenses (filière anaérobie alactique). Une supplémentation augmente ces réserves, ce qui permet de répéter les efforts et d'accumuler plus de travail à l'entraînement. Selon l'ISSN, la **créatine monohydrate** est la forme la plus étudiée et la plus efficace.",
+      "difficulty": 2,
+      "source": "https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0173-z"
+    },
+    {
+      "question": "Que mesure l'**index glycémique** (IG) d'un aliment ?",
+      "answer": "Son effet sur la glycémie, comparé à celui du glucose",
+      "wrong": ["Sa teneur totale en sucres", "Sa densité calorique", "Sa quantité de glucides par portion"],
+      "explanation": "L'**IG** compare l'élévation de la glycémie provoquée par un aliment à celle du **glucose pur** (IG = 100), à quantité égale de glucides. Un IG élevé signifie un glucide rapidement digéré et absorbé. Pour tenir compte de la portion réellement consommée, on utilise la **charge glycémique** (IG × grammes de glucides ÷ 100).",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Glycemic_index"
+    },
+    {
+      "question": "Quelles vitamines sont **liposolubles** ?",
+      "answer": "A, D, E et K",
+      "wrong": ["A, C, D et K", "B1, B6, B9 et B12", "C, D, E et K"],
+      "explanation": "Les vitamines **A, D, E et K** se dissolvent dans les graisses : elles sont absorbées avec les lipides du repas et peuvent être stockées dans le foie et le tissu adipeux, d'où un risque de surdosage en cas de supplémentation excessive. Les vitamines du groupe **B** et la vitamine **C** sont **hydrosolubles** : l'excès est en grande partie éliminé dans les urines.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle vitamine, consommée au même repas, améliore l'absorption du **fer d'origine végétale** (non héminique) ?",
+      "answer": "La vitamine C",
+      "wrong": ["La vitamine D", "La vitamine K", "La vitamine B12"],
+      "explanation": "La **vitamine C** maintient le fer non héminique sous une forme mieux absorbée par l'intestin. Associer des lentilles à un poivron ou à un agrume est donc une bonne stratégie, surtout pour les végétariens. À l'inverse, le thé et le café pris pendant le repas réduisent cette absorption. Le fer **héminique** (viandes, poissons) est, lui, naturellement mieux absorbé.",
+      "difficulty": 2
+    },
+    {
+      "question": "Chez une personne sédentaire, quelle composante représente la **plus grande part** de la dépense énergétique totale ?",
+      "answer": "Le métabolisme de base",
+      "wrong": ["L'activité physique", "L'effet thermique des aliments", "La thermogenèse liée au froid"],
+      "explanation": "Le **métabolisme de base** — l'énergie dépensée au repos pour les fonctions vitales (cœur, cerveau, respiration, température) — représente environ **60 à 70 %** de la dépense énergétique totale d'une personne sédentaire. L'activité physique et l'effet thermique des aliments (environ 10 %) se partagent le reste. La masse maigre est l'un des principaux déterminants du métabolisme de base.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel acide aminé est reconnu comme le principal **déclencheur de la synthèse protéique musculaire**, via la voie mTOR ?",
+      "answer": "La leucine",
+      "wrong": ["La glutamine", "La glycine", "La valine"],
+      "explanation": "La **leucine** agit comme un signal : elle active le complexe **mTORC1**, qui lance la synthèse de nouvelles protéines dans le muscle. C'est pourquoi la teneur en leucine est un critère de qualité d'une source de protéines ; le lactosérum (whey) en est particulièrement riche. Mais la leucine seule ne suffit pas : construire du muscle nécessite tous les acides aminés essentiels, d'où l'intérêt de protéines complètes.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel est le principal **mécanisme d'action de la caféine** sur le système nerveux ?",
+      "answer": "Elle bloque les récepteurs de l'adénosine",
+      "wrong": ["Elle bloque les récepteurs de la dopamine", "Elle active les récepteurs du GABA", "Elle stimule la sécrétion d'insuline"],
+      "explanation": "L'**adénosine** s'accumule au fil de l'éveil et favorise la sensation de fatigue. La caféine, de structure proche, **bloque ses récepteurs** sans les activer, ce qui réduit la perception de fatigue et de l'effort. L'ISSN rapporte des effets sur la performance pour des doses d'environ **3 à 6 mg/kg**, prises environ 60 minutes avant l'effort.",
+      "difficulty": 3,
+      "source": "https://jissn.biomedcentral.com/articles/10.1186/s12970-020-00383-4"
+    },
+    {
+      "question": "Quel macronutriment a l'**effet thermique** (coût énergétique de sa digestion) le plus élevé ?",
+      "answer": "Les protéines",
+      "wrong": ["Les glucides", "Les lipides", "Ils ont tous le même effet thermique"],
+      "explanation": "Digérer, absorber et métaboliser les **protéines** consomme environ **20 à 30 %** de l'énergie qu'elles apportent, contre environ 5 à 10 % pour les glucides et 0 à 3 % pour les lipides. Avec leur fort pouvoir rassasiant, c'est une des raisons pour lesquelles un apport protéique élevé est utile en période de déficit calorique.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Thermic_effect_of_food"
+    },
+    {
+      "question": "Dans l'organisme d'un adulte, où se trouve la **plus grande quantité totale** de glycogène ?",
+      "answer": "Dans les muscles squelettiques",
+      "wrong": ["Dans le foie", "Dans le cerveau", "Dans le tissu adipeux"],
+      "explanation": "Le foie est plus **concentré** en glycogène, mais la masse musculaire est si importante que les **muscles** en stockent au total bien davantage (de l'ordre de 300 à 500 g, contre environ 100 g pour le foie). Le glycogène musculaire ne sert qu'au muscle lui-même : faute d'enzyme glucose-6-phosphatase, il ne peut pas libérer de glucose dans le sang. C'est le **glycogène hépatique** qui maintient la glycémie.",
+      "difficulty": 3
+    },
+    {
+      "question": "Lors d'une épreuve très longue (ultra-trail, Ironman), boire de grandes quantités d'**eau pure** sans apport de sel expose surtout à quel risque ?",
+      "answer": "L'hyponatrémie",
+      "wrong": ["L'hypernatrémie", "L'hyperkaliémie", "L'hypercalcémie"],
+      "explanation": "Boire plus que ses pertes, en continuant de perdre du sodium par la sueur, **dilue le sodium sanguin** : c'est l'**hyponatrémie**, qui peut provoquer nausées, confusion, voire œdème cérébral. La prise de poids pendant l'épreuve est un signe d'alerte. Il est recommandé de boire en fonction de ses pertes (et de sa soif) plutôt qu'à l'excès, et d'apporter du sodium sur les efforts prolongés.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Hyponatremia"
+    },
+    {
+      "question": "Quel apport quotidien en **fibres** l'ANSES recommande-t-elle pour un adulte ?",
+      "answer": "30 g par jour",
+      "wrong": ["10 g par jour", "60 g par jour", "100 g par jour"],
+      "explanation": "L'**ANSES** recommande **30 g de fibres par jour** pour un adulte, alors que la consommation moyenne en France reste nettement inférieure. Pour y parvenir : légumes et fruits à chaque repas, légumineuses plusieurs fois par semaine et céréales complètes plutôt que raffinées. Mieux vaut augmenter progressivement et bien s'hydrater pour limiter l'inconfort digestif.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel acide aminé essentiel est le **premier facteur limitant** des céréales comme le blé ou le riz ?",
+      "answer": "La lysine",
+      "wrong": ["La méthionine", "La leucine", "La valine"],
+      "explanation": "Les céréales sont pauvres en **lysine**, tandis que les légumineuses manquent plutôt d'acides aminés soufrés comme la **méthionine**. Associer céréales et légumineuses sur la journée (riz et lentilles, semoule et pois chiches) permet donc d'obtenir un profil d'acides aminés complet : c'est la **complémentarité protéique**, utile en alimentation végétarienne ou végétalienne.",
+      "difficulty": 3
+    }
+  ]
+}

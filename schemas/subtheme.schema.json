@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/radhan/TicTacBrain/schemas/subtheme.schema.json",
+  "title": "TicTacBrain — fichier de sous-thème",
+  "description": "Un fichier questions/<theme>/<sous-theme>.json. L'id du sous-thème est le nom du fichier.",
+  "type": "object",
+  "required": ["name", "icon", "questions"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "name": {
+      "description": "Nom affiché du sous-thème.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 40
+    },
+    "icon": {
+      "description": "Un emoji.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 16
+    },
+    "description": {
+      "description": "Phrase courte affichée sous le nom.",
+      "type": "string",
+      "maxLength": 160
+    },
+    "order": {
+      "description": "Ordre d'affichage dans le thème (croissant). Par défaut : ordre alphabétique.",
+      "type": "integer"
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/question" }
+    }
+  },
+  "definitions": {
+    "question": {
+      "type": "object",
+      "required": ["question", "answer", "wrong", "explanation"],
+      "additionalProperties": false,
+      "properties": {
+        "question": {
+          "description": "L'énoncé. Markdown léger accepté : `code`, **gras**, blocs ``` et retours à la ligne.",
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 600
+        },
+        "answer": {
+          "description": "LA bonne réponse. L'ordre des choix est mélangé par l'app, pas besoin de la placer.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 150
+        },
+        "wrong": {
+          "description": "Les mauvaises réponses (1 à 5). Pas de « Toutes les réponses ci-dessus » : l'ordre est mélangé.",
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1, "maxLength": 150 }
+        },
+        "explanation": {
+          "description": "Pourquoi c'est la bonne réponse. Affichée dans la modale « Comprendre ». Même markdown léger que l'énoncé.",
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 1500
+        },
+        "difficulty": {
+          "description": "1 = facile, 2 = moyen (défaut), 3 = difficile. Les questions plus dures arrivent quand la série monte.",
+          "type": "integer",
+          "enum": [1, 2, 3]
+        },
+        "source": {
+          "description": "Lien pour approfondir (optionnel).",
+          "type": "string",
+          "pattern": "^https?://"
+        }
+      }
+    }
+  }
+}

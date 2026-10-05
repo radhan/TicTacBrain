@@ -1,0 +1,194 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Fitness",
+  "icon": "🏋️",
+  "description": "Anatomie des muscles, exercices clés, principes d'entraînement, filières énergétiques et cardio : les bases de la préparation physique.",
+  "order": 1,
+  "questions": [
+    {
+      "question": "Lors de la remontée d'un **squat**, quel groupe musculaire assure l'extension du genou ?",
+      "answer": "Le quadriceps",
+      "wrong": ["Les ischio-jambiers", "Les mollets", "Les adducteurs"],
+      "explanation": "Le **quadriceps** est le seul extenseur du genou : il réunit quatre chefs (droit fémoral, vaste latéral, vaste médial et vaste intermédiaire) qui s'insèrent sur le tibia via le tendon rotulien. Pendant le squat, le grand fessier et les adducteurs étendent en parallèle la hanche, ce qui fait du squat un exercice polyarticulaire très complet.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel est le format d'un protocole **Tabata** classique ?",
+      "answer": "8 × (20 s d'effort, 10 s de repos)",
+      "wrong": ["8 × (30 s d'effort, 30 s de repos)", "10 × (40 s d'effort, 20 s de repos)", "4 × (20 s d'effort, 40 s de repos)"],
+      "explanation": "Le **Tabata** enchaîne 8 cycles de 20 s d'effort et 10 s de récupération, soit **4 minutes** au total. Issu des travaux d'Izumi Tabata (1996) sur ergocycle, il est une forme de **HIIT** (entraînement fractionné de haute intensité) : les 20 s doivent être réalisées à une intensité quasi maximale pour obtenir les effets décrits.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/High-intensity_interval_training"
+    },
+    {
+      "question": "Selon la formule estimative la plus répandue, quelle est la **fréquence cardiaque maximale** théorique d'une personne de 30 ans ?",
+      "answer": "190 bpm",
+      "wrong": ["170 bpm", "200 bpm", "210 bpm"],
+      "explanation": "La formule la plus connue est **FCmax = 220 − âge**, soit 220 − 30 = **190 battements par minute**. Ce n'est qu'une estimation : l'écart avec la valeur réelle peut dépasser 10 bpm. Pour une valeur fiable, il faut un test d'effort maximal, idéalement encadré médicalement.",
+      "difficulty": 1
+    },
+    {
+      "question": "Comment appelle-t-on les douleurs musculaires qui apparaissent **24 à 72 h après** un effort inhabituel ?",
+      "answer": "Les courbatures",
+      "wrong": ["Les crampes", "Les contractures", "Les tendinites"],
+      "explanation": "Les **courbatures** (DOMS, *Delayed Onset Muscle Soreness*) culminent généralement 24 à 72 h après l'effort. Elles sont liées à des microlésions des fibres et à la réaction inflammatoire qui suit, surtout après des contractions excentriques, et **non à l'acide lactique**, éliminé en moins d'une heure. Elles diminuent nettement quand on répète le même exercice : c'est l'effet de « séance répétée ».",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Delayed_onset_muscle_soreness"
+    },
+    {
+      "question": "En musculation, que désigne le **1RM** ?",
+      "answer": "La charge maximale soulevable sur une seule répétition",
+      "wrong": ["Le nombre de répétitions réalisables en 1 minute", "Le temps de repos d'une minute entre deux séries", "La charge utilisée pour l'échauffement"],
+      "explanation": "Le **1RM** (*one-repetition maximum*) est la charge la plus lourde qu'on peut soulever une seule fois avec une technique correcte. Il sert de référence pour doser l'intensité en pourcentage (ex. : 80 % du 1RM). Comme le tester est exigeant, on l'estime souvent à partir d'une série de plusieurs répétitions grâce à des formules comme celles d'Epley ou de Brzycki.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/One-repetition_maximum"
+    },
+    {
+      "question": "Quel muscle du dos est le principal moteur des **tractions** (pull-ups) ?",
+      "answer": "Le grand dorsal",
+      "wrong": ["Le trapèze supérieur", "Les érecteurs du rachis", "Le carré des lombes"],
+      "explanation": "Le **grand dorsal** est le plus large muscle du dos : il ramène le bras vers le tronc (adduction et extension de l'épaule), exactement le geste qui hisse le corps à la barre. Les biceps, le grand rond et les rhomboïdes l'assistent. Plus la prise est large, plus l'adduction de l'épaule domine le mouvement.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans un programme **push/pull/legs**, quel exercice appartient à la séance « pull » ?",
+      "answer": "Le rowing barre",
+      "wrong": ["Le développé militaire", "Les dips", "La presse à cuisses"],
+      "explanation": "Le split **push/pull/legs** regroupe les exercices par schéma de mouvement : **pousser** (pectoraux, épaules, triceps), **tirer** (dos, biceps) et **jambes**. Le **rowing** est un tirage, donc « pull » ; le développé militaire et les dips sont des poussées, la presse à cuisses relève des jambes. Ce découpage permet de travailler chaque groupe musculaire deux fois par semaine en 6 séances.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel principe d'entraînement consiste à augmenter **progressivement** la charge, les répétitions ou le volume pour continuer à progresser ?",
+      "answer": "La surcharge progressive",
+      "wrong": ["La spécificité", "La réversibilité", "L'individualisation"],
+      "explanation": "La **surcharge progressive** repose sur un constat simple : l'organisme ne s'adapte que s'il est confronté à une contrainte supérieure à celle qu'il connaît déjà. On peut l'appliquer en ajoutant du poids, des répétitions, des séries ou en réduisant le repos. À ne pas confondre avec la **spécificité** (on progresse dans ce qu'on entraîne) et la **réversibilité** (les acquis se perdent à l'arrêt).",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Progressive_overload"
+    },
+    {
+      "question": "Lors de la descente contrôlée d'un **curl biceps**, le biceps s'allonge tout en restant sous tension. Comment s'appelle cette phase ?",
+      "answer": "La phase excentrique",
+      "wrong": ["La phase concentrique", "La phase isométrique", "La phase pliométrique"],
+      "explanation": "En phase **excentrique**, le muscle produit de la force **en s'allongeant** pour freiner la charge. La montée, où le muscle se raccourcit, est la phase **concentrique** ; maintenir la charge immobile est une contraction **isométrique**. Contrôler la descente (2 à 3 s) augmente le temps sous tension et la maîtrise technique.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Muscle_contraction"
+    },
+    {
+      "question": "Lors d'une **planche** (gainage) tenue sans bouger, quel type de contraction réalisent les muscles du tronc ?",
+      "answer": "Isométrique",
+      "wrong": ["Concentrique", "Excentrique", "Balistique"],
+      "explanation": "Une contraction **isométrique** produit de la force **sans changement de longueur** du muscle ni mouvement visible. Le gainage sollicite notamment le **transverse de l'abdomen**, le grand droit et les obliques pour stabiliser la colonne. Mieux vaut quelques séries de 20 à 40 s avec un bassin bien placé qu'une planche interminable avec le dos creusé.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel faisceau du **deltoïde** est la cible principale des **élévations latérales** ?",
+      "answer": "Le faisceau moyen (latéral)",
+      "wrong": ["Le faisceau antérieur", "Le faisceau postérieur", "Le faisceau inférieur"],
+      "explanation": "Le deltoïde compte trois faisceaux : **antérieur** (flexion de l'épaule, sollicité par les développés), **moyen** (abduction : lever le bras sur le côté) et **postérieur** (extension, sollicité par l'oiseau et les tirages). Les élévations latérales isolent donc le **faisceau moyen**, celui qui donne de la largeur aux épaules. Il n'existe pas de faisceau « inférieur ».",
+      "difficulty": 2
+    },
+    {
+      "question": "Lors d'un **soulevé de terre**, le grand fessier et les ischio-jambiers travaillent surtout pour étendre quelle articulation ?",
+      "answer": "La hanche",
+      "wrong": ["Le genou", "La cheville", "L'épaule"],
+      "explanation": "Le soulevé de terre est avant tout une **extension de hanche** : le **grand fessier** et les **ischio-jambiers** (qui étendent la hanche et fléchissent le genou) redressent le bassin, pendant que les **érecteurs du rachis** travaillent en isométrie pour garder le dos neutre. C'est l'exercice emblématique de la **chaîne postérieure**.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quels muscles les **dips** aux barres parallèles sollicitent-ils principalement ?",
+      "answer": "Triceps, pectoraux et deltoïdes antérieurs",
+      "wrong": ["Grand dorsal, biceps et rhomboïdes", "Quadriceps, fessiers et mollets", "Trapèzes, lombaires et obliques"],
+      "explanation": "Les **dips** sont un mouvement de poussée vers le bas : le **triceps** étend le coude, tandis que les **pectoraux** (surtout leur partie inférieure) et les **deltoïdes antérieurs** ramènent les bras de l'arrière vers l'avant (flexion de l'épaule). Buste droit, le triceps domine ; buste penché vers l'avant, les pectoraux travaillent davantage.",
+      "difficulty": 2
+    },
+    {
+      "question": "Selon le modèle classique des filières énergétiques, quelle filière prédomine lors d'un effort maximal **très bref** (environ 5 s, comme un départ de sprint) ?",
+      "answer": "L'anaérobie alactique (ATP-phosphocréatine)",
+      "wrong": ["L'anaérobie lactique (glycolyse)", "L'aérobie (oxydation des glucides)", "L'aérobie (oxydation des lipides)"],
+      "explanation": "La filière **anaérobie alactique** régénère l'ATP à partir de la **phosphocréatine** : elle est la plus puissante, mais ses réserves s'épuisent en quelques secondes. La filière **lactique** prend ensuite le relais sur les efforts intenses de quelques dizaines de secondes, et l'**aérobie** domine au-delà de quelques minutes. En réalité, les trois filières fonctionnent toujours simultanément ; seule leur part relative change.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel type de fibres musculaires est le plus **résistant à la fatigue** ?",
+      "answer": "Les fibres de type I (lentes)",
+      "wrong": ["Les fibres de type IIa (rapides)", "Les fibres de type IIx (rapides)", "Toutes se fatiguent au même rythme"],
+      "explanation": "Les fibres de **type I** sont riches en mitochondries, en capillaires et en myoglobine : elles produisent leur énergie surtout par voie **aérobie** et tiennent très longtemps, mais développent peu de force. Les **IIx** sont les plus puissantes et les plus fatigables, les **IIa** sont intermédiaires. Les marathoniens d'élite ont en général une forte proportion de fibres de type I, les sprinteurs de fibres de type II.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que représente la **VO2max** ?",
+      "answer": "Le débit maximal d'oxygène que l'organisme peut consommer",
+      "wrong": ["La quantité d'oxygène stockée dans les muscles", "Le volume d'air maximal contenu dans les poumons", "La fréquence respiratoire maximale"],
+      "explanation": "La **VO2max** est le débit maximal d'oxygène que l'organisme peut prélever, transporter et utiliser pendant un effort. On l'exprime souvent en **mL/kg/min** pour comparer des personnes de gabarits différents. C'est un indicateur clé de l'endurance : les meilleurs fondeurs et cyclistes dépassent 80 mL/kg/min.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/VO2_max"
+    },
+    {
+      "question": "Après avoir atteint l'échec sur une série de curls, vous **baissez immédiatement la charge** et continuez sans repos. Quelle est cette technique ?",
+      "answer": "Un drop set (série dégressive)",
+      "wrong": ["Un superset", "Une série pyramidale", "Un circuit training"],
+      "explanation": "Le **drop set** prolonge une série au-delà de l'échec en allégeant la charge sans pause, ce qui permet d'accumuler du volume en peu de temps. À ne pas confondre avec le **superset**, qui enchaîne sans repos deux exercices différents (par exemple curl biceps puis extension triceps). Très éprouvant, le drop set s'utilise plutôt en fin de séance et avec parcimonie.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans le continuum de répétitions classiquement enseigné (NSCA), quelle plage est associée au développement de la **force maximale** ?",
+      "answer": "6 répétitions ou moins (≥ 85 % du 1RM)",
+      "wrong": ["8 à 12 répétitions", "15 à 20 répétitions", "30 répétitions ou plus"],
+      "explanation": "La NSCA associe la **force maximale** aux charges lourdes : **6 répétitions ou moins** à au moins 85 % du 1RM, l'hypertrophie à environ 6 à 12 répétitions et l'endurance musculaire à 12 répétitions ou plus. Les études récentes nuancent ce schéma : l'hypertrophie peut être obtenue sur une large plage de répétitions si les séries sont proches de l'échec, mais les charges lourdes restent les plus efficaces pour la force.",
+      "difficulty": 2
+    },
+    {
+      "question": "Lors d'extensions de mollets **assis** (genou fléchi à 90°), quel muscle du mollet travaille le plus ?",
+      "answer": "Le soléaire",
+      "wrong": ["Le gastrocnémien (jumeaux)", "Le tibial antérieur", "Le plantaire grêle"],
+      "explanation": "Le **gastrocnémien** s'insère au-dessus du genou : quand le genou est fléchi, il est raccourci et ne peut plus produire beaucoup de force (insuffisance active). Le **soléaire**, qui part du tibia et du fibula sous le genou, prend alors le relais. C'est pourquoi on travaille les mollets **debout** (gastrocnémien et soléaire) et **assis** (surtout le soléaire).",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Soleus_muscle"
+    },
+    {
+      "question": "Quel chef du **triceps brachial** est le seul à croiser l'articulation de l'**épaule** ?",
+      "answer": "Le chef long",
+      "wrong": ["Le chef latéral", "Le chef médial", "Le chef court"],
+      "explanation": "Le **chef long** du triceps prend son origine sur l'omoplate (tubercule infraglénoïdal) : il étend le coude mais participe aussi à l'extension de l'épaule. Les chefs **latéral** et **médial** partent de l'humérus et n'agissent que sur le coude. Les exercices bras au-dessus de la tête (extension nuque) étirent davantage le chef long. Le « chef court » appartient au biceps, pas au triceps.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Triceps"
+    },
+    {
+      "question": "Dans quel type de contraction un muscle peut-il développer la **force la plus élevée** ?",
+      "answer": "Excentrique",
+      "wrong": ["Concentrique", "Isométrique", "La force est identique dans les trois cas"],
+      "explanation": "D'après la relation **force-vitesse**, un muscle produit plus de force en freinant une charge (**excentrique**) qu'en la maintenant (**isométrique**), et plus en isométrique qu'en la soulevant (**concentrique**). C'est pourquoi on peut descendre lentement une charge qu'on serait incapable de remonter. Le travail excentrique est aussi celui qui provoque le plus de courbatures.",
+      "difficulty": 3
+    },
+    {
+      "question": "À durée et intensité comparables, quelle activité provoque typiquement le **plus de courbatures** aux quadriceps chez une personne non habituée ?",
+      "answer": "Courir en descente",
+      "wrong": ["Courir en montée", "Pédaler sur un vélo d'appartement", "Nager le crawl"],
+      "explanation": "En descente, les quadriceps freinent le corps à chaque foulée : ils travaillent en **excentrique**, le mode de contraction qui crée le plus de microlésions et donc de courbatures. La course en descente sert d'ailleurs de modèle expérimental pour étudier les DOMS. Le vélo, à l'inverse, est presque exclusivement concentrique et génère très peu de courbatures.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur l'échelle **RPE** basée sur les répétitions en réserve (RIR), à quoi correspond une série notée **RPE 8** ?",
+      "answer": "Il restait environ 2 répétitions en réserve",
+      "wrong": ["Il restait environ 8 répétitions en réserve", "La série a été menée jusqu'à l'échec", "La charge représentait 80 % du 1RM"],
+      "explanation": "Sur cette échelle de 1 à 10, **RPE 10** signifie l'échec (0 répétition en réserve), **RPE 9** une répétition en réserve et **RPE 8** deux répétitions en réserve (**RIR 2**). Elle permet d'ajuster la charge selon la forme du jour plutôt que selon un pourcentage fixe du 1RM. Le RPE mesure l'effort perçu, pas un pourcentage de charge.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Rating_of_perceived_exertion"
+    },
+    {
+      "question": "Avec la **méthode de Karvonen**, quelle est la fréquence cardiaque cible à **70 %** pour une personne dont la FCmax est de 190 bpm et la FC de repos de 60 bpm ?",
+      "answer": "151 bpm",
+      "wrong": ["133 bpm", "91 bpm", "164 bpm"],
+      "explanation": "La méthode de **Karvonen** utilise la **fréquence cardiaque de réserve** (FCmax − FC repos = 190 − 60 = 130 bpm). FC cible = FC repos + 70 % × réserve = 60 + 91 = **151 bpm**. Appliquer simplement 70 % à la FCmax donnerait 133 bpm : la méthode de Karvonen tient compte du niveau de forme via la FC de repos.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel est le muscle le **plus profond** de la paroi abdominale ?",
+      "answer": "Le transverse de l'abdomen",
+      "wrong": ["Le grand droit de l'abdomen", "L'oblique externe", "L'oblique interne"],
+      "explanation": "De la surface vers la profondeur, on trouve l'**oblique externe**, l'**oblique interne** puis le **transverse**, tandis que le **grand droit** (les « tablettes ») est en avant. Le transverse, aux fibres horizontales, agit comme une ceinture : il comprime l'abdomen et contribue à stabiliser la colonne. Rentrer le nombril sans bouger le dos (vacuum, gainage) le sollicite particulièrement.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Transverse_abdominal_muscle"
+    }
+  ]
+}

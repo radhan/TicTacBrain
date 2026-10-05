@@ -1,0 +1,47 @@
+name: 💡 Proposer une question
+description: Pas à l'aise avec Git ? Propose ta question ici, quelqu'un l'ajoutera au JSON.
+title: "[Question] "
+labels: ["nouvelle question"]
+body:
+  - type: input
+    id: theme
+    attributes:
+      label: Thème et sous-thème
+      placeholder: "Hacking › Web (ou un nouveau sous-thème)"
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+    validations:
+      required: true
+  - type: input
+    id: answer
+    attributes:
+      label: Bonne réponse
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: Mauvaises réponses (une par ligne, idéalement 3)
+    validations:
+      required: true
+  - type: textarea
+    id: explanation
+    attributes:
+      label: Explication
+      description: Pourquoi c'est la bonne réponse ? C'est ce qui s'affiche dans la modale « Comprendre ».
+    validations:
+      required: true
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Difficulté
+      options: ["1 — Facile", "2 — Moyen", "3 — Difficile"]
+  - type: input
+    id: source
+    attributes:
+      label: Source (optionnel)
+      placeholder: https://…
