@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schemas/theme.schema.json",
+  "name": "Photographie",
+  "icon": "📷",
+  "description": "Exposition, composition, lumière et matériel : les bases pour réussir ses photos.",
+  "color": "#a855f7",
+  "order": 8
+}

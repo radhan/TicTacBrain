@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schemas/theme.schema.json",
+  "name": "Maison & bricolage",
+  "icon": "🏠",
+  "description": "Plomberie et électricité domestique : comprendre son installation et bricoler en sécurité.",
+  "color": "#f97316",
+  "order": 9
+}

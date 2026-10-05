@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schemas/theme.schema.json",
+  "name": "Électronique",
+  "icon": "🔌",
+  "description": "Lois des circuits, composants, électronique numérique et microcontrôleurs.",
+  "color": "#0ea5e9",
+  "order": 7
+}
