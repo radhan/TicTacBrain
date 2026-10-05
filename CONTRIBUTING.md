@@ -66,7 +66,7 @@ Le jeu est en mode série : une erreur et on retombe à zéro. Une question ambi
 
 1. **Une seule bonne réponse, indiscutable.** Vérifie qu'aucune « mauvaise » réponse n'est défendable.
 2. **Des mauvaises réponses crédibles**, de même nature et de longueur proche de la bonne (sinon la plus longue/détaillée se devine).
-3. **Pas de « Toutes les réponses ci-dessus » / « Aucune »** : les choix sont mélangés.
+3. **Pas de « Toutes les réponses ci-dessus » / « Aucune »** : les choix sont mélangés. Pour la même raison, l'explication ne doit pas parler de « la dernière proposition » ou de l'« option B » : nomme la réponse.
 4. **Pas de faits périssables** : prix, records en cours, « la dernière version »… Ou alors datés (« En 2022, … »).
 5. **Une explication qui apprend quelque chose** : pourquoi c'est juste, et idéalement pourquoi le piège est faux.
 6. Pour les questions de code : **exécute le code** pour vérifier la sortie.

@@ -19,6 +19,8 @@ const SUB_SCHEMA = readJson(join(ROOT, 'schemas/subtheme.schema.json'))
 const Q_SCHEMA = SUB_SCHEMA.definitions.question
 
 const ID_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/
+/** Les choix sont mélangés : une explication ne peut pas parler de « la dernière proposition ». */
+const POSITIONAL_RE = /respectivement|(premi[eè]re|deuxi[eè]me|derni[eè]re) (proposition|réponse)|ci-dessus|\b(option|réponse|choix) [A-F]\b/i
 const RESERVED_IDS = new Set(['all'])
 
 /** Normalise un énoncé (détection de doublons, identifiant). */
@@ -184,6 +186,8 @@ export function loadQuestionBank(dir = join(ROOT, 'questions')) {
           return
         }
         localTexts.add(key)
+        if (POSITIONAL_RE.test(q.explanation))
+          warnings.push(`${qWhere} : l'explication semble désigner un choix par sa position, or les choix sont mélangés`)
         const other = globalTexts.get(key)
         if (other) warnings.push(`${qWhere} : même énoncé que ${other}`)
         else globalTexts.set(key, qWhere)

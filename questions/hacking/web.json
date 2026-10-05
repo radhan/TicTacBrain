@@ -7,11 +7,11 @@
   "questions": [
     {
       "question": "Quelle catégorie occupe la **1re place** de l'OWASP Top 10 **2021** ?",
-      "answer": "Broken Access Control (A01)",
+      "answer": "Broken Access Control",
       "wrong": [
-        "Injection (A03)",
-        "Cryptographic Failures (A02)",
-        "Security Misconfiguration (A05)"
+        "Injection",
+        "Cryptographic Failures",
+        "Security Misconfiguration"
       ],
       "explanation": "Dans l'édition 2021, **A01:2021 – Broken Access Control** (contrôle d'accès défaillant) passe en tête du classement. L'injection, longtemps n°1, recule à la 3e place (A03). Un contrôle d'accès cassé permet par exemple d'accéder aux données ou actions d'un autre utilisateur.",
       "difficulty": 1,
@@ -127,7 +127,7 @@
         "`<script>`",
         "`; ls -la`"
       ],
-      "explanation": "`../` permet de remonter l'arborescence des dossiers pour lire des fichiers hors du répertoire prévu (ex: `../../../../etc/passwd`). Les autres séquences évoquent respectivement l'injection SQL, le XSS et l'injection de commande.",
+      "explanation": "`../` permet de remonter l'arborescence des dossiers pour lire des fichiers hors du répertoire prévu (ex: `../../../../etc/passwd`). Les autres séquences évoquent l'injection SQL (`' OR 1=1`), le XSS (`<script>`) et l'injection de commande (`; ls -la`).",
       "difficulty": 2,
       "source": "https://portswigger.net/web-security/file-path-traversal"
     },
@@ -150,7 +150,7 @@
         "`Secure`",
         "`Path`"
       ],
-      "explanation": "`SameSite=Lax` ou `Strict` empêche le navigateur d'envoyer le cookie sur des requêtes initiées par un autre site, neutralisant une grande partie des CSRF. `HttpOnly` vise le vol par XSS, pas le CSRF. On complète souvent avec un jeton anti-CSRF.",
+      "explanation": "`SameSite=Strict` empêche le navigateur d'envoyer le cookie sur des requêtes initiées par un autre site (`Lax` le laisse passer seulement lors d'une navigation de premier niveau en GET), neutralisant une grande partie des CSRF. `HttpOnly` vise le vol par XSS, pas le CSRF. On complète souvent avec un jeton anti-CSRF.",
       "difficulty": 2,
       "source": "https://portswigger.net/web-security/csrf"
     },

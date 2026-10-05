@@ -158,7 +158,7 @@
         "La vitesse de propagation d'un bloc",
         "Le nombre de transactions contenues dans un bloc"
       ],
-      "explanation": "Chaque opération de l'EVM consomme une quantité fixe de **gas** : un simple transfert d'ETH coûte 21 000 gas, un appel de contrat bien davantage. Les frais payés valent `gas consommé × prix du gas`, ce prix étant exprimé en gwei. Ce mécanisme rémunère le calcul et empêche une boucle infinie de bloquer le réseau.",
+      "explanation": "Chaque opération de l'EVM consomme une quantité de **gas** fixée par le protocole : un simple transfert d'ETH coûte 21 000 gas, un appel de contrat bien davantage. Les frais payés valent `gas consommé × prix du gas`, ce prix étant exprimé en gwei. Ce mécanisme rémunère le calcul et empêche une boucle infinie de bloquer le réseau.",
       "difficulty": 2
     },
     {

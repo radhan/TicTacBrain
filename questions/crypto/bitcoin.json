@@ -169,8 +169,8 @@
     },
     {
       "question": "Le bloc genèse de Bitcoin, miné le 3 janvier 2009, contient un message laissé par Satoshi Nakamoto. De quoi s'agit-il ?",
-      "answer": "Un titre du Times sur un nouveau sauvetage des banques",
-      "wrong": ["Une citation du manifeste cypherpunk", "Le cours de l'once d'or ce jour-là", "Un hommage à Alan Turing"],
+      "answer": "Un titre du Times sur le sauvetage des banques",
+      "wrong": ["Une citation tirée du manifeste cypherpunk", "Le cours de l'once d'or à la date du jour", "Un hommage à Alan Turing et à ses travaux"],
       "explanation": "La transaction coinbase du bloc genèse contient le texte `The Times 03/Jan/2009 Chancellor on brink of second bailout for banks`. Ce titre du quotidien britannique sert d'**horodatage** (le bloc n'a pas pu être créé avant cette date) et se lit comme un commentaire sur la fragilité du système bancaire. Les 50 BTC de ce bloc ne sont d'ailleurs pas dépensables.",
       "difficulty": 3
     },

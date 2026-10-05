@@ -93,7 +93,7 @@
       "answer": "ARP spoofing (poisoning)",
       "wrong": ["DNS poisoning", "SYN flood", "VLAN hopping"],
       "explanation": "L'**ARP spoofing** envoie de fausses réponses ARP pour associer l'IP de la passerelle à la MAC de l'attaquant, qui relaie alors le trafic de la victime (man-in-the-middle). ARP n'ayant aucune authentification, cette attaque est classique sur un LAN.",
-      "difficulty": 2
+      "difficulty": 1
     },
     {
       "question": "Sur combien de bits est codée une adresse **MAC** ?",
@@ -111,7 +111,7 @@
       "difficulty": 2
     },
     {
-      "question": "Quel port TCP, exploité par le ver **EternalBlue**, correspond au partage de fichiers Windows moderne (SMB) ?",
+      "question": "Quel port TCP, ciblé par l'exploit **EternalBlue**, correspond au partage de fichiers Windows moderne (SMB) ?",
       "answer": "445",
       "wrong": ["143", "389", "3306"],
       "explanation": "SMB en mode direct (sans NetBIOS) utilise le port **445**, cible de la faille MS17-010 / EternalBlue. Le 143 est IMAP, le 389 LDAP et le 3306 MySQL.",
@@ -134,9 +134,9 @@
     },
     {
       "question": "Quelle est la différence clé entre un **IDS** et un **IPS** ?",
-      "answer": "L'IPS peut bloquer le trafic en temps réel ; l'IDS se contente de détecter et d'alerter",
+      "answer": "L'IPS peut bloquer le trafic, l'IDS ne fait qu'alerter",
       "wrong": ["L'IDS chiffre le trafic, pas l'IPS", "L'IPS ne fonctionne qu'en IPv6", "L'IDS bloque le trafic, l'IPS se contente d'alerter"],
-      "explanation": "Un **IDS** (Intrusion Detection System) observe et alerte, mais laisse passer le trafic ; un **IPS** (Prevention) est en coupure et peut **bloquer** activement les flux malveillants. La dernière proposition inverse les deux rôles.",
+      "explanation": "Un **IDS** (Intrusion Detection System) observe et alerte, mais laisse passer le trafic ; un **IPS** (Prevention) est en coupure et peut **bloquer** activement les flux malveillants, en temps réel. Attention au piège qui inverse les deux rôles.",
       "difficulty": 2
     },
     {
@@ -148,9 +148,9 @@
     },
     {
       "question": "En WPA2-PSK, quelle donnée un attaquant capture-t-il pour tenter un **cassage hors-ligne** du mot de passe Wi-Fi ?",
-      "answer": "Le 4-way handshake (poignée de main en quatre temps)",
-      "wrong": ["La trame beacon du point d'accès", "Le SSID diffusé en clair", "Une requête ARP de la victime"],
-      "explanation": "Le **4-way handshake**, échangé à la connexion d'un client, contient de quoi vérifier une clé candidate. Capturé (parfois après une désauthentification forcée), il permet une attaque par dictionnaire/force brute hors ligne. Le beacon et le SSID n'aident pas à retrouver la passphrase.",
+      "answer": "Le 4-way handshake (échange EAPOL)",
+      "wrong": ["La trame beacon du point d'accès", "Une trame de désauthentification", "Une requête ARP de la victime"],
+      "explanation": "Le **4-way handshake** (poignée de main en quatre temps), échangé à la connexion d'un client, contient de quoi vérifier une clé candidate. Capturé (parfois après une désauthentification forcée, qui ne sert qu'à provoquer une reconnexion), il permet une attaque par dictionnaire/force brute hors ligne. Le beacon ne fournit que le SSID, qui sert de sel au calcul de la clé mais ne permet pas à lui seul de tester un mot de passe.",
       "difficulty": 3
     },
     {
@@ -180,13 +180,13 @@
       "answer": "Couche 4 (Transport)",
       "wrong": ["Couche 3 (Réseau)", "Couche 7 (Application)", "Couche 2 (Liaison)"],
       "explanation": "TCP est un protocole de **couche 4 (Transport)** : il gère la connexion de bout en bout, le découpage en segments et la fiabilité. IP opère à la couche 3 (Réseau) et Ethernet à la couche 2 (Liaison).",
-      "difficulty": 3
+      "difficulty": 2
     },
     {
       "question": "Quel type d'enregistrement DNS héberge les politiques **SPF** et les clés **DKIM** (lutte anti-spam) ?",
       "answer": "TXT",
       "wrong": ["MX", "CNAME", "SRV"],
-      "explanation": "Les enregistrements **TXT** stockent des données textuelles arbitraires, dont les politiques SPF et les clés publiques DKIM/DMARC. Le MX désigne les serveurs de messagerie, le CNAME crée un alias, et le SRV publie l'emplacement d'un service.",
+      "explanation": "Les enregistrements **TXT** stockent des données textuelles arbitraires, dont les politiques SPF et DMARC et les clés publiques DKIM. Le MX désigne les serveurs de messagerie, le CNAME crée un alias, et le SRV publie l'emplacement d'un service.",
       "difficulty": 3
     }
   ]

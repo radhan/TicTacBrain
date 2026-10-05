@@ -63,6 +63,14 @@ describe('loadQuestionBank', () => {
     expect(loadQuestionBank(dir).errors).toEqual([])
   })
 
+  it('avertit quand l’explication dépend de l’ordre des choix', () => {
+    const dir = bank({
+      'dev/_theme.json': theme,
+      'dev/hw.json': { name: 'HW', icon: '🖥️', questions: [question({ explanation: 'La dernière proposition est un piège.' })] },
+    })
+    expect(loadQuestionBank(dir).warnings.join('\n')).toMatch(/désigner un choix par sa position/)
+  })
+
   it('signale les clés inconnues (fautes de frappe)', () => {
     const dir = bank({
       'dev/_theme.json': theme,
