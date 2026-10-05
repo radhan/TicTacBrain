@@ -28,11 +28,16 @@ export function ThemeScreen({ theme, timer, onTimer }: {
         <p>{theme.description}</p>
         <div class="theme-hero-foot">
           <button type="button" class="hero-play" onClick={() => navigate(`/play/${theme.id}`)}>
-            ▶ Tout le thème
+            <span aria-hidden="true">▶</span> Tout le thème
             <small>{theme.count} questions</small>
           </button>
-          {bestAll > 0 && <span class="badge badge-light">🏆 {bestAll}</span>}
-          {save.isPerfect(poolKey(theme.id)) && <span class="badge badge-light">💯</span>}
+          {bestAll > 0 && (
+            <span class="badge badge-light">
+              <span aria-hidden="true">🏆</span>
+              <span class="sr-only">Record :</span> {bestAll}
+            </span>
+          )}
+          {save.isPerfect(poolKey(theme.id)) && <span class="badge badge-light">💯 sans faute</span>}
         </div>
       </section>
 
@@ -45,6 +50,7 @@ export function ThemeScreen({ theme, timer, onTimer }: {
         {theme.subthemes.map((sub) => {
           const key = poolKey(theme.id, sub.id)
           const best = save.best(key, timer)
+          const run = save.getRun(key, timer)
           return (
             <button key={sub.id} type="button" class="sub-row" onClick={() => navigate(`/play/${theme.id}/${sub.id}`)}>
               <span class="sub-icon" aria-hidden="true">
@@ -53,14 +59,21 @@ export function ThemeScreen({ theme, timer, onTimer }: {
               <span class="sub-text">
                 <span class="sub-name">{sub.name}</span>
                 {sub.description && <span class="sub-desc">{sub.description}</span>}
-              </span>
-              <span class="sub-side">
-                <span class="sub-count">{sub.count} Q</span>
-                {save.isPerfect(key) ? (
-                  <span class="badge badge-perfect">💯</span>
-                ) : (
-                  best > 0 && <span class="badge">🏆 {best}</span>
-                )}
+                <span class="sub-meta">
+                  <span>{sub.count} questions</span>
+                  {save.isPerfect(key) && <span class="meta-perfect">💯 sans faute</span>}
+                  {best > 0 && (
+                    <span class="meta-best">
+                      <span aria-hidden="true">🏆</span>
+                      <span class="sr-only">Record :</span> {best}
+                    </span>
+                  )}
+                  {run && run.streak > 0 && (
+                    <span class="meta-run">
+                      <span aria-hidden="true">▶</span> en cours : {run.streak}
+                    </span>
+                  )}
+                </span>
               </span>
               <span class="chevron" aria-hidden="true">
                 ›

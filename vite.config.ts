@@ -80,7 +80,7 @@ export default defineConfig({
         display: 'standalone',
         orientation: 'portrait',
         theme_color: '#151a2e',
-        background_color: '#151a2e',
+        background_color: '#eef1f8',
         categories: ['education', 'games'],
         icons: [
           { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },

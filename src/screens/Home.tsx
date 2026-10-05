@@ -1,4 +1,5 @@
 import { TimerPicker } from '../components/TimerPicker'
+import { resolvePool } from '../lib/data'
 import { navigate } from '../lib/router'
 import { save } from '../lib/storage'
 import type { Catalog, TimerSetting } from '../lib/types'
@@ -13,16 +14,42 @@ export function Home({ catalog, timer, onTimer }: {
 }) {
   const { stats } = save.get()
   const accuracy = stats.answered ? Math.round((stats.correct / stats.answered) * 100) : 0
-  const bestAll = save.best('all', timer)
+  const bestAll = save.bestAnyTimer('all')
+  const run = save.latestRun()
+  const runPool = run ? resolvePool(catalog, run.pool) : null
 
   return (
     <main class="screen home">
       <header class="brand">
         <img class="brand-mark" src={LOGO} alt="" width="44" height="44" />
-        <span class="brand-name">
+        <h1 class="brand-name">
           TicTac<b>Brain</b>
-        </span>
+        </h1>
       </header>
+
+      {run && runPool && (
+        <button
+          type="button"
+          class="resume"
+          style={{ '--c': runPool.color }}
+          onClick={() => {
+            onTimer(run.timer)
+            navigate(`/play/${run.pool}`)
+          }}
+        >
+          <span class="resume-icon" aria-hidden="true">
+            {runPool.icon}
+          </span>
+          <span class="resume-text">
+            <span class="resume-label">Reprendre ta série</span>
+            <span class="resume-title">{runPool.title}</span>
+          </span>
+          <span class="resume-streak">
+            <span aria-hidden="true">🔥</span> {run.streak}
+            <small>/{runPool.count}</small>
+          </span>
+        </button>
+      )}
 
       <section class="hero-card">
         <div class="hero-text">
@@ -59,7 +86,12 @@ export function Home({ catalog, timer, onTimer }: {
           <span class="play-all-title">Tout mélanger</span>
           <span class="play-all-sub">
             {catalog.total} questions · tous les thèmes
-            {bestAll > 0 && <span class="badge badge-light">🏆 {bestAll}</span>}
+            {bestAll > 0 && (
+              <span class="badge badge-light">
+                <span aria-hidden="true">🏆</span>
+                <span class="sr-only">Record :</span> {bestAll}
+              </span>
+            )}
           </span>
         </span>
         <span class="play-btn" aria-hidden="true">
@@ -82,7 +114,12 @@ export function Home({ catalog, timer, onTimer }: {
               <span class="tile-icon" aria-hidden="true">
                 {theme.icon}
               </span>
-              {best > 0 && <span class="tile-best">🏆 {best}</span>}
+              {best > 0 && (
+                <span class="tile-best">
+                  <span aria-hidden="true">🏆</span>
+                  <span class="sr-only">Record :</span> {best}
+                </span>
+              )}
               <span class="tile-name">{theme.name}</span>
               <span class="tile-meta">{theme.count} questions</span>
             </button>
