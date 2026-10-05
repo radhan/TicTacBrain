@@ -3,7 +3,7 @@ import { Modal } from '../components/Modal'
 import { Inline, Rich } from '../components/Rich'
 import { timerLabel } from '../components/TimerPicker'
 import { loadPoolQuestions, type PoolInfo } from '../lib/data'
-import { buildChoices, isMilestone, pickNext, remainingCandidates } from '../lib/game'
+import { buildChoices, isMilestone, milestoneProgress, pickNext, remainingCandidates } from '../lib/game'
 import { goBack } from '../lib/router'
 import { save } from '../lib/storage'
 import type { PoolQuestion, TimerSetting } from '../lib/types'
@@ -59,6 +59,7 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
   const [picked, setPicked] = useState<string | null>(null)
   const [explainOpen, setExplainOpen] = useState(false)
   const [notice, setNotice] = useState<string | null>(null)
+  const [burstKey, setBurstKey] = useState(0)
   const primaryRef = useRef<HTMLButtonElement>(null)
 
   // État de jeu « vivant », mis à jour immédiatement (le rendu, lui, est asynchrone) :
@@ -123,7 +124,10 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
       if (correct) {
         setStreak(newStreak)
         setBest((b) => Math.max(b, newStreak))
-        if (isMilestone(newStreak)) setNotice(`🔥 Série de ${newStreak} !`)
+        if (isMilestone(newStreak)) {
+          setNotice(`🔥 Série de ${newStreak} !`)
+          setBurstKey((k) => k + 1)
+        }
       } else {
         navigator.vibrate?.(200)
       }
@@ -190,6 +194,7 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
   const { q, choices } = turn
   const over = phase === 'wrong' || phase === 'timeout'
   const newRecord = over && streak > bestAtStart
+  const milestone = milestoneProgress(streak)
   const choiceState = (c: string) => {
     if (phase === 'question') return ''
     if (c === q.answer) return 'is-correct'
@@ -209,13 +214,20 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
         </span>
         <span class="scores">
           <span key={streak} class={`streak ${streak > 0 ? 'bump' : ''}`} aria-label={`Série actuelle : ${streak}`}>
-            🔥 {streak}
+            <span class="flame" aria-hidden="true">🔥</span> {streak}
+            <span class="next" aria-hidden="true">/{milestone.target}</span>
           </span>
           <span class="best" aria-label={`Record : ${best}`}>
             🏆 {best}
           </span>
         </span>
       </nav>
+
+      <div class="milestone-bar" aria-hidden="true">
+        <div class="milestone-fill" style={{ width: `${Math.round(milestone.fraction * 100)}%` }} />
+      </div>
+
+      {burstKey > 0 && <div key={burstKey} class="burst" aria-hidden="true" />}
 
       {timer > 0 && (
         <div class="timer-bar" aria-hidden="true">

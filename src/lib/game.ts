@@ -86,5 +86,12 @@ export function remainingCandidates<Q extends Question>(
 export const poolKey = (themeId?: string, subthemeId?: string) =>
   !themeId ? 'all' : subthemeId ? `${themeId}/${subthemeId}` : themeId
 
-/** Paliers de série qui déclenchent une petite célébration. */
+/** Paliers de série qui déclenchent une petite célébration : 5, puis 10, 20, 30… */
 export const isMilestone = (streak: number) => streak === 5 || (streak > 0 && streak % 10 === 0)
+
+/** Prochain palier et progression (0→1) depuis le palier précédent, pour la barre de progression. */
+export function milestoneProgress(streak: number): { target: number; fraction: number } {
+  const target = streak < 5 ? 5 : (Math.floor(streak / 10) + 1) * 10
+  const prev = streak < 5 ? 0 : streak < 10 ? 5 : target - 10
+  return { target, fraction: (streak - prev) / (target - prev) }
+}

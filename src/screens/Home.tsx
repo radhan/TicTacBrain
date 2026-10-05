@@ -18,7 +18,8 @@ export function Home({ catalog, timer, onTimer }: {
     <main class="screen home">
       <header class="hero">
         <h1 class="logo">
-          <span aria-hidden="true">🧠</span> TicTacBrain
+          <span class="logo-mark" aria-hidden="true">🧠</span>
+          <span class="logo-text">TicTacBrain</span>
         </h1>
         <p class="tagline">Enchaîne les bonnes réponses. Une seule erreur et ta série retombe à zéro.</p>
       </header>

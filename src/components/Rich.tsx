@@ -5,12 +5,16 @@ import type { ComponentChildren } from 'preact'
  *   `code`, **gras**, blocs ``` et retours à la ligne.
  */
 
-const INLINE = /(`[^`\n]+`|\*\*[^*\n]+\*\*)/g
+// `code`, **gras**, *italique* (l'italique exige un caractère non-espace collé
+// aux étoiles, pour ne pas confondre une multiplication « a * b » avec de l'emphase).
+const INLINE = /(`[^`\n]+`|\*\*[^*\n]+\*\*|\*(?=\S)[^*\n]+?(?<=\S)\*)/g
 
 export function renderInline(text: string): ComponentChildren[] {
   return text.split(INLINE).map((part, i) => {
     if (i % 2 === 0) return part
-    return part.startsWith('`') ? <code key={i}>{part.slice(1, -1)}</code> : <strong key={i}>{part.slice(2, -2)}</strong>
+    if (part.startsWith('`')) return <code key={i}>{part.slice(1, -1)}</code>
+    if (part.startsWith('**')) return <strong key={i}>{part.slice(2, -2)}</strong>
+    return <em key={i}>{part.slice(1, -1)}</em>
   })
 }
 
