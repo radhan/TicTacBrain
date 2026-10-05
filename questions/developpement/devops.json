@@ -1160,6 +1160,42 @@
       "explanation": "Pendant un rolling update, un canary ou un blue/green, les deux versions de l'application utilisent la même base : le schéma doit convenir aux deux. Le modèle **expand/contract** (*parallel change*) procède en plusieurs déploiements : on **ajoute** `last_name` et on écrit dans les deux colonnes, on recopie les données existantes, on bascule les lectures, puis on **supprime** `nom` une fois l'ancienne version retirée. Un renommage direct casserait aussitôt les instances encore en ancienne version, et arrêter l'ancienne version imposerait une coupure.",
       "difficulty": 3,
       "source": "https://martinfowler.com/bliki/ParallelChange.html"
+    },
+    {
+      "question": "Quel événement, ajouté sous `on:`, permet de lancer un workflow GitHub Actions **à la main**, depuis l'onglet Actions ?",
+      "answer": "`workflow_dispatch`",
+      "wrong": [
+        "`manual_trigger`",
+        "`workflow_run`",
+        "`on_demand`"
+      ],
+      "explanation": "`workflow_dispatch` ajoute un bouton **Run workflow** dans l'onglet Actions, et permet aussi un déclenchement via l'API ou `gh workflow run`. On peut lui déclarer des `inputs` typés, par exemple l'environnement cible ou un numéro de version, saisis au lancement. `workflow_run`, lui, déclenche un workflow quand un autre workflow a été lancé ou s'est terminé.",
+      "difficulty": 1,
+      "source": "https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow"
+    },
+    {
+      "question": "Comment exiger qu'une personne approuve le job de déploiement en production d'un workflow GitHub Actions avant qu'il ne s'exécute ?",
+      "answer": "Lier le job à un environment protégé par des reviewers",
+      "wrong": [
+        "Ajouter `when: manual` sur le job de déploiement",
+        "Ajouter `if: github.event.approved` sur le job",
+        "Placer le job dans un workflow séparé et privé"
+      ],
+      "explanation": "Dans les paramètres du dépôt, on crée un **environment** (par exemple `production`) avec la règle de protection *Required reviewers*. Un job qui déclare `environment: production` se met alors en attente jusqu'à ce qu'un des relecteurs désignés l'approuve. Les secrets de cet environment ne sont accessibles qu'aux jobs qui le référencent, et seulement après cette approbation. `when: manual` est une syntaxe de GitLab CI, inconnue de GitHub Actions.",
+      "difficulty": 2,
+      "source": "https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments"
+    },
+    {
+      "question": "Un nouveau run de ce workflow démarre sur `main` alors qu'un run précédent sur `main` est encore en cours. Que se passe-t-il ?\n```yaml\nconcurrency:\n  group: ci-${{ github.ref }}\n  cancel-in-progress: true\n```",
+      "answer": "Le run en cours est annulé au profit du nouveau",
+      "wrong": [
+        "Le nouveau run attend la fin du run en cours",
+        "Les deux runs s'exécutent en parallèle",
+        "Le nouveau run est annulé, l'ancien continue"
+      ],
+      "explanation": "`concurrency` garantit qu'un seul run (ou job) par **groupe** s'exécute à la fois ; ici, le groupe dépend de la branche. Avec `cancel-in-progress: true`, le run en cours est **annulé** dès qu'un nouveau arrive : pratique pour ne tester que le dernier commit poussé. Sans cette option, le nouveau run reste en attente, et par défaut, s'il en arrive un troisième, celui qui attendait est annulé (l'option `queue: max` permet d'en garder plusieurs en file). Pour un déploiement en production, on évite souvent `cancel-in-progress`, qui pourrait l'interrompre en plein milieu.",
+      "difficulty": 3,
+      "source": "https://docs.github.com/en/actions/concepts/workflows-and-actions/concurrency"
     }
   ]
 }

@@ -1106,6 +1106,281 @@
       ],
       "explanation": "Le mode **XTS** chiffre chaque bloc en fonction de sa position sur le disque (un « tweak »), sans augmenter la taille des secteurs : deux secteurs identiques donnent des chiffrés différents, et l'on peut lire ou réécrire n'importe quel secteur isolément. **GCM** exigerait de stocker un nonce et une étiquette d'authentification par secteur, ce qui ne tient pas dans l'espace fixe d'un secteur. Revers : XTS n'authentifie rien, et une modification du chiffré passe inaperçue, même si elle produit des données aberrantes.",
       "difficulty": 3
+    },
+    {
+      "question": "Quel port TCP est utilisé par défaut par HTTPS ?",
+      "answer": "443",
+      "wrong": [
+        "80",
+        "8080",
+        "22"
+      ],
+      "explanation": "**HTTPS** (HTTP sur TLS) écoute par défaut sur le port **443**, alors que le HTTP en clair utilise le port 80 et SSH le port 22 ; 8080 est un port alternatif courant pour des serveurs web de test. Avec HTTP/3, HTTPS peut aussi passer par QUIC, sur le port 443 en **UDP**, avec un chiffrement TLS 1.3 intégré au protocole de transport.",
+      "difficulty": 1
+    },
+    {
+      "question": "En quoi consiste une attaque par force brute contre une clé de chiffrement ?",
+      "answer": "Essayer toutes les clés possibles jusqu'à la bonne",
+      "wrong": [
+        "Inonder le serveur de requêtes pour le saturer",
+        "Forcer physiquement le boîtier de l'appareil",
+        "Deviner la clé à partir du nom de l'utilisateur"
+      ],
+      "explanation": "La **force brute** (ou recherche exhaustive) teste systématiquement chaque clé jusqu'à trouver celle qui déchiffre correctement le message. Elle marche toujours en théorie : la seule défense est un **espace de clés** assez grand pour la rendre irréaliste. Avec 2¹²⁸ clés pour AES-128, même un milliard de milliards d'essais par seconde demanderait environ 10¹³ ans, soit des centaines de fois l'âge de l'Univers. Inonder un serveur de requêtes relève, lui, du déni de service.",
+      "difficulty": 1
+    },
+    {
+      "question": "Lequel de ces algorithmes est un algorithme à clé publique (asymétrique) ?",
+      "answer": "RSA",
+      "wrong": [
+        "AES",
+        "ChaCha20",
+        "Triple DES"
+      ],
+      "explanation": "**RSA** utilise une paire de clés : une clé publique, diffusable, et une clé privée, gardée secrète. AES, ChaCha20 et Triple DES sont des chiffrements **symétriques**, où la même clé sert à chiffrer et à déchiffrer. Parmi les autres algorithmes asymétriques courants figurent Diffie-Hellman, ECDSA, Ed25519 et, désormais, les standards post-quantiques ML-KEM et ML-DSA.",
+      "difficulty": 1
+    },
+    {
+      "question": "Lequel de ces protocoles transmet tout en clair sur le réseau, y compris les mots de passe ?",
+      "answer": "Telnet",
+      "wrong": [
+        "SSH",
+        "SFTP",
+        "HTTPS"
+      ],
+      "explanation": "**Telnet**, né à la fin des années 1960, envoie chaque caractère tel quel : quiconque écoute le trafic voit les identifiants et les commandes. **SSH**, créé en 1995 par le Finlandais Tatu Ylönen après une attaque par écoute de mots de passe sur le réseau de son université, l'a remplacé en chiffrant et en authentifiant la session. SFTP transfère des fichiers à travers SSH, et HTTPS protège le web avec TLS.",
+      "difficulty": 1
+    },
+    {
+      "question": "Une clé AES de 128 bits occupe combien d'octets ?",
+      "answer": "16 octets",
+      "wrong": [
+        "8 octets",
+        "32 octets",
+        "128 octets"
+      ],
+      "explanation": "Un octet compte 8 bits : 128 / 8 = **16 octets**, soit 32 caractères en hexadécimal, puisque chaque caractère hexadécimal code 4 bits. Une clé AES-256 occupe 32 octets. Le piège classique consiste à confondre bits et octets, par exemple en prenant une clé hexadécimale de 32 caractères pour une clé de 32 octets.",
+      "difficulty": 1
+    },
+    {
+      "question": "Laquelle de ces fonctions de hachage est encore considérée comme sûre pour un usage cryptographique ?",
+      "answer": "SHA-256",
+      "wrong": [
+        "MD5",
+        "SHA-1",
+        "MD4"
+      ],
+      "explanation": "**MD4**, **MD5** et **SHA-1** sont cassés : on sait y fabriquer des collisions, en quelques secondes pour MD5, et SHA-1 est tombé publiquement en 2017. **SHA-256**, de la famille SHA-2, n'a pas de faiblesse pratique connue, tout comme SHA-3 ou BLAKE2. Ces vieux algorithmes survivent comme simples sommes de contrôle contre les erreurs accidentelles, mais plus jamais pour des signatures ou des certificats.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quoi se réduit un chiffre de Vigenère dont la clé ne compte qu'une seule lettre ?",
+      "answer": "À un chiffre de César",
+      "wrong": [
+        "À un masque jetable",
+        "À un chiffre de Playfair",
+        "À une transposition"
+      ],
+      "explanation": "Vigenère décale chaque lettre du message de la valeur de la lettre de clé correspondante, la clé étant répétée. Avec une clé d'une seule lettre, toutes les lettres subissent le **même décalage** : c'est exactement un **chiffre de César** (avec A = 0, la clé D donne le César classique de 3). À l'autre extrême, une clé aléatoire aussi longue que le message, jamais réutilisée, en fait un masque jetable.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel chiffrement par flot, utilisé dans le Wi-Fi WEP et longtemps dans TLS, a été interdit dans TLS en 2015 à cause de biais statistiques dans sa sortie ?",
+      "answer": "RC4",
+      "wrong": [
+        "ChaCha20",
+        "A5/1",
+        "Salsa20"
+      ],
+      "explanation": "**RC4**, conçu par Ron Rivest en 1987, est très simple et rapide, mais son flux de clé présente des **biais**, surtout dans ses premiers octets. Combiné à des vecteurs d'initialisation de 24 bits trop courts, il a permis de casser **WEP** en quelques minutes ; dans TLS, ces biais finissaient par révéler des données chiffrées un très grand nombre de fois, comme des cookies. La RFC 7465 l'a banni de TLS en 2015. ChaCha20, de la famille de Salsa20, est son remplaçant moderne.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel protocole permet à un client de demander en temps réel à une autorité de certification si un certificat a été révoqué ?",
+      "answer": "OCSP",
+      "wrong": [
+        "ACME",
+        "HSTS",
+        "SNI"
+      ],
+      "explanation": "**OCSP** (Online Certificate Status Protocol) interroge un serveur de l'autorité, qui répond « valide », « révoqué » ou « inconnu » pour un certificat donné. Il complète les **CRL**, des listes de révocation à télécharger en entier. Comme ces requêtes révèlent à la CA les sites visités et ralentissent la connexion, le serveur peut joindre lui-même une réponse OCSP signée et récente : c'est l'**OCSP stapling**. ACME sert à obtenir des certificats, HSTS impose HTTPS et SNI indique le nom du site demandé.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans PGP, comment établit-on la confiance dans la clé publique d'un correspondant, sans autorité centrale ?",
+      "answer": "Par une toile de confiance : des utilisateurs signent les clés d'autres",
+      "wrong": [
+        "Par un certificat délivré par une autorité racine du navigateur",
+        "Par la première connexion, sans vérification ultérieure",
+        "Par un mot de passe partagé avec chaque correspondant"
+      ],
+      "explanation": "Dans la **toile de confiance** (web of trust) imaginée par **Phil Zimmermann** pour PGP, publié en 1991, chacun peut signer la clé d'une personne dont il a vérifié l'identité, par exemple lors de « key signing parties ». Si tu fais confiance à Alice et qu'Alice a signé la clé de Bob, tu peux accorder une certaine confiance à la clé de Bob. Ce modèle décentralisé s'oppose à la **PKI hiérarchique** du web, où des autorités de certification se portent garantes des clés.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la particularité du chiffrement homomorphe ?",
+      "answer": "Il permet de calculer directement sur des données chiffrées",
+      "wrong": [
+        "Il chiffre et déchiffre avec exactement la même clé",
+        "Il produit toujours un chiffré de même taille que le clair",
+        "Il donne des chiffrés identiques pour des messages proches"
+      ],
+      "explanation": "Avec un **chiffrement homomorphe**, on peut additionner ou multiplier des chiffrés, et le résultat, une fois déchiffré, est celui du calcul sur les données en clair. Un serveur peut ainsi traiter des données sans jamais les voir. RSA « manuel » est déjà homomorphe pour la multiplication, mais le premier schéma **entièrement homomorphe**, autorisant des calculs arbitraires, n'a été trouvé qu'en 2009 par Craig Gentry. Il reste beaucoup plus lent qu'un calcul en clair.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que désigne la stratégie « harvest now, decrypt later » (collecter maintenant, déchiffrer plus tard) ?",
+      "answer": "Stocker des échanges chiffrés pour les casser avec un futur ordinateur quantique",
+      "wrong": [
+        "Chiffrer ses propres données aujourd'hui pour les relire plus tard",
+        "Retarder le déchiffrement pour économiser de l'énergie",
+        "Collecter des mots de passe par hameçonnage avant de les tester"
+      ],
+      "explanation": "Un adversaire peut enregistrer dès aujourd'hui du trafic chiffré avec RSA ou ECDH, en attendant qu'un ordinateur quantique assez puissant permette de le déchiffrer grâce à l'algorithme de Shor. Les secrets à longue durée de vie (diplomatie, santé, propriété industrielle) sont donc menacés **dès maintenant**. C'est pourquoi des navigateurs et des messageries déploient déjà des échanges de clés **hybrides**, combinant par exemple X25519 et ML-KEM.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi compare-t-on un MAC reçu avec une fonction à temps constant, comme `hmac.compare_digest` en Python, plutôt qu'avec `==` ?",
+      "answer": "Pour ne pas révéler, par la durée, le nombre d'octets corrects",
+      "wrong": [
+        "Parce que `==` ne sait pas comparer des octets",
+        "Pour accélérer la comparaison des longues valeurs",
+        "Parce que `==` modifie les valeurs comparées"
+      ],
+      "explanation": "Une comparaison classique s'arrête au **premier octet différent** : elle répond un peu plus vite quand le début est faux. En mesurant ces écarts sur de nombreux essais, un attaquant peut deviner le MAC valide octet par octet : c'est une **attaque temporelle**, un type d'**attaque par canal auxiliaire** décrit par Paul Kocher en 1996. Une comparaison à temps constant examine toujours tous les octets, quel que soit le résultat.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la particularité du chiffre de Playfair, utilisé notamment par l'armée britannique ?",
+      "answer": "Il chiffre les lettres deux par deux dans une grille 5 × 5",
+      "wrong": [
+        "Il chiffre chaque lettre à l'aide de rotors",
+        "Il ne fait que changer l'ordre des lettres",
+        "Il utilise une clé aussi longue que le message"
+      ],
+      "explanation": "Inventé en 1854 par **Charles Wheatstone** et promu par son ami Lord Playfair, ce chiffre place un alphabet de 25 lettres (I et J confondus) dans une grille 5 × 5 construite à partir d'un mot-clé, puis chiffre les lettres par **paires** (digrammes) selon leurs positions dans la grille. L'analyse des fréquences des lettres seules ne suffit plus : il faut étudier celles des 600 digrammes possibles. Il a servi pendant la guerre des Boers et la Première Guerre mondiale.",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment appelle-t-on une attaque où le cryptanalyste dispose de plusieurs couples (message clair, message chiffré correspondant) ?",
+      "answer": "Une attaque à clair connu",
+      "wrong": [
+        "Une attaque à chiffré seul",
+        "Une attaque par canal auxiliaire",
+        "Une attaque par dictionnaire"
+      ],
+      "explanation": "Dans une **attaque à clair connu**, l'attaquant connaît des paires clair/chiffré sans les avoir choisies, comme les « cribs » de Bletchley Park (bulletins météo, formules rituelles). C'est plus favorable que l'attaque **à chiffré seul**, et moins que l'attaque **à clair choisi**, où il fait chiffrer les messages de son choix. Un chiffrement moderne doit résister même à ce dernier scénario.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi, en pratique, signe-t-on l'empreinte d'un document plutôt que le document entier ?",
+      "answer": "Pour ne traiter qu'une petite valeur de taille fixe",
+      "wrong": [
+        "Pour que le contenu du document reste confidentiel",
+        "Pour pouvoir modifier le document après signature",
+        "Parce que la clé privée ne peut pas lire de texte"
+      ],
+      "explanation": "Les opérations asymétriques sont lentes et ne portent que sur des valeurs plus petites que la clé (quelques centaines d'octets). On calcule donc d'abord l'empreinte du document, par exemple avec SHA-256, et c'est elle qu'on signe : toute modification du document changerait l'empreinte et invaliderait la signature. Cela suppose une fonction de hachage **résistante aux collisions** : sinon, une signature valable pour un document le serait aussi pour son jumeau. Le document, lui, n'est pas chiffré pour autant.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qui distingue la distribution quantique de clés (comme le protocole BB84) de la cryptographie post-quantique ?",
+      "answer": "Elle repose sur la physique quantique et du matériel dédié",
+      "wrong": [
+        "C'est simplement un autre nom de la cryptographie post-quantique",
+        "Elle fonctionne sur n'importe quel ordinateur classique",
+        "Elle repose sur la difficulté des réseaux euclidiens"
+      ],
+      "explanation": "La **distribution quantique de clés**, inventée par Bennett et Brassard en 1984 (**BB84**), échange des photons : toute mesure par un espion perturbe leur état et se détecte. Elle exige des fibres optiques ou des liaisons satellites spécifiques et ne couvre que l'échange de clés. La **cryptographie post-quantique** (ML-KEM, ML-DSA…), elle, est faite d'algorithmes mathématiques classiques, exécutables sur nos ordinateurs actuels et réputés résister aux ordinateurs quantiques.",
+      "difficulty": 2
+    },
+    {
+      "question": "Le projet américain Venona a permis de décrypter une partie des messages soviétiques des années 1940. Quelle erreur soviétique l'a rendu possible ?",
+      "answer": "La réutilisation de pages de masques jetables",
+      "wrong": [
+        "L'emploi de machines Enigma capturées",
+        "Des clés de chiffrement de seulement 40 bits",
+        "L'envoi des clés du jour en clair par radio"
+      ],
+      "explanation": "Les Soviétiques utilisaient le **masque jetable**, en théorie incassable. Mais, sous la pression de la guerre, des pages de masques ont été produites **en double**, et donc utilisées deux fois. Deux messages chiffrés avec le même masque se combinent pour l'éliminer, ce qui a permis aux cryptanalystes américains de décrypter partiellement des milliers de messages. Venona a notamment aidé à identifier des espions comme Klaus Fuchs ou Julius Rosenberg.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi ne faut-il pas chiffrer avec RSA « manuel » (textbook RSA), c'est-à-dire calculer mᵉ mod n sans aucun remplissage ?",
+      "answer": "Il est déterministe et malléable",
+      "wrong": [
+        "Il révèle la clé privée à chaque chiffrement",
+        "Il ne fonctionne qu'avec des messages pairs",
+        "Il exige que l'exposant public reste secret"
+      ],
+      "explanation": "Sans remplissage aléatoire, un même message donne toujours le même chiffré : un attaquant peut **tester des messages candidats** en les chiffrant lui-même avec la clé publique. RSA nu est aussi **malléable** : en multipliant le chiffré par sᵉ mod n, on obtient le chiffré de m × s, sans connaître m. On utilise donc le remplissage **OAEP**, aléatoire, plutôt que l'ancien PKCS#1 v1.5, victime en 1998 de l'attaque de Bleichenbacher.",
+      "difficulty": 3
+    },
+    {
+      "question": "À quoi servent les journaux publics de Certificate Transparency ?",
+      "answer": "À rendre visibles tous les certificats émis, pour repérer les abus",
+      "wrong": [
+        "À publier les clés privées des certificats révoqués",
+        "À chiffrer l'historique de navigation des utilisateurs",
+        "À remplacer les autorités de certification par une blockchain"
+      ],
+      "explanation": "Depuis l'affaire **DigiNotar** (2011), où une autorité piratée avait émis de faux certificats pour Google, on veut pouvoir détecter les certificats émis à tort. Les CA enregistrent chaque certificat dans des **journaux publics en ajout seul**, vérifiables grâce à des arbres de Merkle, et des navigateurs comme Chrome ou Safari exigent la preuve de cette inscription. Le propriétaire d'un domaine peut ainsi surveiller ces journaux et repérer tout certificat émis à son nom à son insu.",
+      "difficulty": 3
+    },
+    {
+      "question": "Combien d'allers-retours réseau la poignée de main complète de TLS 1.3 nécessite-t-elle avant l'envoi des données chiffrées, contre deux pour TLS 1.2 ?",
+      "answer": "Un seul",
+      "wrong": [
+        "Aucun",
+        "Trois",
+        "Quatre"
+      ],
+      "explanation": "En TLS 1.3, le client envoie d'emblée sa part de l'échange de clés (par exemple X25519) dans son premier message, en pariant sur les algorithmes que le serveur acceptera : la négociation tient en **un aller-retour** (1-RTT). Le mode **0-RTT** permet en plus, lors d'une reprise de session, d'envoyer des données dès le premier message, mais celles-ci peuvent être **rejouées** par un attaquant : on les réserve donc aux requêtes sans effet de bord.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel générateur pseudo-aléatoire standardisé par le NIST est soupçonné, surtout depuis les révélations d'Edward Snowden en 2013, de contenir une porte dérobée de la NSA ?",
+      "answer": "Dual_EC_DRBG",
+      "wrong": [
+        "Hash_DRBG",
+        "HMAC_DRBG",
+        "CTR_DRBG"
+      ],
+      "explanation": "**Dual_EC_DRBG** utilise deux points P et Q d'une courbe elliptique fixés sans justification : quiconque connaît la relation secrète entre eux peut, à partir de quelques sorties, prédire toutes les suivantes. Des chercheurs avaient signalé ce risque dès 2007 ; les documents Snowden ont suggéré que la NSA l'avait poussé dans les standards. Le NIST l'a retiré en 2014, alors que Hash_DRBG, HMAC_DRBG et CTR_DRBG restent recommandés.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans le chiffre affine `E(x) = (a·x + b) mod 26`, combien de valeurs de a (entre 0 et 25) permettent de déchiffrer ?",
+      "answer": "12",
+      "wrong": [
+        "13",
+        "25",
+        "26"
+      ],
+      "explanation": "Pour pouvoir déchiffrer, a doit être **inversible modulo 26**, donc premier avec 26 = 2 × 13 : on exclut les nombres pairs et 13. Restent 1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23 et 25, soit **12 valeurs** (c'est φ(26)). Avec les 26 valeurs de b, cela ne fait que 312 clés, testables en un instant. Le chiffre de César est le cas particulier a = 1.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi les S-box du DES, modifiées par la NSA avant sa publication en 1977, ont-elles longtemps alimenté les soupçons… avant d'être réhabilitées ?",
+      "answer": "Elles résistaient à la cryptanalyse différentielle, publiée vers 1990",
+      "wrong": [
+        "Elles cachaient une porte dérobée découverte en 1990",
+        "Elles réduisaient la clé à 40 bits pour l'exportation",
+        "Elles rendaient DES compatible avec le futur AES"
+      ],
+      "explanation": "IBM avait conçu DES, et la NSA en avait modifié les tables de substitution (S-box) sans explication, ce qui faisait craindre une porte dérobée. Vers 1990, Eli Biham et Adi Shamir publient la **cryptanalyse différentielle**… et constatent que les S-box du DES y résistent remarquablement. En 1994, Don Coppersmith, d'IBM, a confirmé que la technique était connue d'IBM et de la NSA dès 1974 et gardée secrète. La NSA aurait en revanche poussé à limiter la clé à 56 bits.",
+      "difficulty": 3
+    },
+    {
+      "question": "Deux clés RSA publiques n₁ = p × q₁ et n₂ = p × q₂ partagent par malchance le même facteur premier p. Comment un attaquant retrouve-t-il p ?",
+      "answer": "En calculant le PGCD de n₁ et n₂",
+      "wrong": [
+        "En factorisant n₁ par recherche exhaustive",
+        "En calculant la différence n₁ − n₂",
+        "En divisant n₁ par n₂ et en arrondissant"
+      ],
+      "explanation": "L'**algorithme d'Euclide** calcule le PGCD de deux nombres de 2 048 bits en une fraction de seconde : il donne directement p, puis q₁ = n₁ / p et q₂ = n₂ / p, et les deux clés privées tombent. En 2012, des chercheurs ont ainsi cassé des milliers de clés RSA réellement utilisées sur Internet, souvent générées par des équipements embarqués manquant d'**entropie** au démarrage. Factoriser n₁ seul resterait, en revanche, hors de portée.",
+      "difficulty": 3
     }
   ]
 }
