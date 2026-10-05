@@ -4,5 +4,290 @@
   "icon": "🚰",
   "description": "Alimentation et évacuation, raccords, siphons, chauffe-eau, pression, fuites, matériaux et outillage du plombier.",
   "order": 1,
-  "questions": []
+  "questions": [
+    {
+      "question": "Une canalisation se met à fuir sous l'évier. Quel est le **premier** geste à faire ?",
+      "answer": "Fermer le robinet d'arrêt situé en amont",
+      "wrong": [
+        "Entourer la fuite de ruban téflon serré",
+        "Resserrer le raccord le plus fort possible",
+        "Ouvrir les robinets d'eau chaude du logement"
+      ],
+      "explanation": "Tant que l'eau arrive sous pression, rien ne peut être réparé proprement : on coupe d'abord l'eau, au robinet de l'appareil ou au robinet général, puis on ouvre un robinet pour vider la pression. Le **ruban téflon** ne sert qu'à étancher un filetage au montage, pas à colmater une fuite sous pression, et forcer sur un raccord peut fendre l'écrou ou écraser le joint. Si l'eau coule près d'appareils ou de prises électriques, on coupe aussi le courant.",
+      "difficulty": 1
+    },
+    {
+      "question": "Sur l'index d'un compteur d'eau, que représentent généralement les **chiffres noirs** ?",
+      "answer": "Des mètres cubes",
+      "wrong": [
+        "Des litres",
+        "Des hectolitres",
+        "Des kilowattheures"
+      ],
+      "explanation": "Les chiffres noirs indiquent les **mètres cubes** (m³), l'unité de facturation de l'eau ; les chiffres rouges (ou les petits cadrans) donnent les fractions : centaines de litres, dizaines de litres et litres. Rappel utile : 1 m³ = 1 000 litres. C'est cet index qu'on relève pour vérifier sa consommation ou traquer une fuite.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Compteur_d%27eau"
+    },
+    {
+      "question": "Comment vérifier simplement, avec le compteur, s'il existe une fuite cachée dans l'installation ?",
+      "answer": "Relever l'index et le comparer après des heures sans puisage",
+      "wrong": [
+        "Mesurer la pression au robinet le plus éloigné",
+        "Chronométrer le remplissage d'un seau de 10 litres",
+        "Comparer la température des tuyaux chaud et froid"
+      ],
+      "explanation": "On note l'index le soir, on n'utilise plus d'eau (ni lave-linge, ni chasse d'eau) et on le relit le matin : s'il a bougé, de l'eau s'échappe quelque part. Beaucoup de compteurs ont aussi un petit **indicateur de fuite** (étoile ou roue) qui tourne au moindre débit. Une baisse de pression ou un débit faible ne prouvent pas une fuite : ils peuvent venir d'un mousseur entartré ou d'un réducteur mal réglé.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans une maison raccordée au réseau public, à partir d'où les canalisations d'eau potable relèvent-elles en général du propriétaire ?",
+      "answer": "À partir de la sortie du compteur",
+      "wrong": [
+        "Dès la conduite principale sous la rue",
+        "Seulement au-delà du chauffe-eau",
+        "Seulement à partir des robinets"
+      ],
+      "explanation": "Le **branchement** (de la conduite publique jusqu'au compteur, souvent compteur compris) appartient au service des eaux, qui l'entretient. Tout ce qui se trouve **après le compteur** est l'installation privée : une fuite à cet endroit est à la charge de l'abonné et passe par le compteur, donc elle est facturée. La limite exacte (par exemple le joint après compteur) est précisée dans le règlement de service local.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle plage de pression est généralement jugée confortable pour une installation d'eau domestique ?",
+      "answer": "Environ 2 à 3 bar",
+      "wrong": [
+        "Environ 0,2 à 0,3 bar",
+        "Environ 20 à 30 bar",
+        "Environ 50 à 60 bar"
+      ],
+      "explanation": "Autour de **2 à 3 bar**, le débit est agréable sans fatiguer la robinetterie. En dessous d'environ 1 bar, la douche devient faible ; au-delà de 3 à 4 bar, on observe éclaboussures, bruits, usure des joints et coups de bélier, d'où l'intérêt d'un **réducteur de pression**. Le réseau public peut délivrer bien plus selon le relief et la hauteur du château d'eau.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Bar_(unit%C3%A9)"
+    },
+    {
+      "question": "À quoi sert un **réducteur de pression** installé juste après le compteur ?",
+      "answer": "À limiter la pression dans toute l'installation",
+      "wrong": [
+        "À augmenter le débit quand la pression est faible",
+        "À empêcher l'eau de refluer vers le réseau public",
+        "À retenir le sable et les impuretés de l'eau"
+      ],
+      "explanation": "Le réducteur abaisse et stabilise la pression du réseau à une valeur réglable (souvent autour de 3 bar), ce qui protège robinets, flexibles, chauffe-eau et électroménager, et réduit bruits et coups de bélier. Il ne crée pas de pression : pour l'augmenter, il faut un **surpresseur**. Empêcher le reflux est le rôle du **clapet anti-retour**, et retenir les particules celui du **filtre**.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel est le rôle du **clapet anti-retour** placé après le compteur d'eau ?",
+      "answer": "Empêcher l'eau de l'installation de refluer vers le réseau",
+      "wrong": [
+        "Abaisser la pression excessive du réseau public",
+        "Supprimer les coups de bélier à la fermeture",
+        "Bloquer les bulles d'air présentes dans l'eau"
+      ],
+      "explanation": "Le clapet ne laisse passer l'eau que dans un sens. Si la pression du réseau chute (casse de conduite, pompiers qui puisent beaucoup), il évite que l'eau de la maison, potentiellement souillée (eau stagnante d'un tuyau d'arrosage plongé dans une mare, par exemple), soit aspirée vers le réseau public. Il protège donc la **qualité de l'eau de tous**, pas la pression : abaisser la pression est le rôle du réducteur.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Clapet_anti-retour"
+    },
+    {
+      "question": "À quelle hauteur de colonne d'eau correspond approximativement une pression de **1 bar** ?",
+      "answer": "Environ 10 mètres",
+      "wrong": [
+        "Environ 1 mètre",
+        "Environ 100 mètres",
+        "Environ 10 centimètres"
+      ],
+      "explanation": "Une colonne d'eau de 10 m exerce à sa base environ 100 000 Pa, soit **1 bar** (calcul : 1 000 kg/m³ × 9,81 m/s² × 10,2 m). D'où deux repères pratiques : un château d'eau dont le niveau est 40 m au-dessus du robinet donne environ 4 bar, et chaque étage (environ 3 m) fait perdre environ 0,3 bar à un robinet situé plus haut.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Bar_(unit%C3%A9)"
+    },
+    {
+      "question": "Tu visses un manomètre sur un robinet pour mesurer la pression **statique** de l'installation. Dans quelle situation fais-tu la lecture ?",
+      "answer": "Quand aucun autre robinet n'est ouvert",
+      "wrong": [
+        "Quand la douche coule à plein débit",
+        "Quand le lave-linge est en remplissage",
+        "Quand le robinet général est fermé"
+      ],
+      "explanation": "La pression **statique** se mesure sans aucun écoulement : c'est la pression maximale disponible. Dès que l'eau circule, on mesure une pression **dynamique**, plus faible à cause des pertes de charge. Avec le robinet général fermé, on ne mesure plus la pression du réseau, seulement ce qui reste piégé dans les tuyaux.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi le jet d'un robinet faiblit-il quand quelqu'un ouvre la douche en même temps ?",
+      "answer": "Le débit accru augmente les pertes de charge",
+      "wrong": [
+        "Le compteur bride le débit total du logement",
+        "Le clapet anti-retour se referme en partie",
+        "L'eau froide se contracte en circulant"
+      ],
+      "explanation": "Quand l'eau circule, elle frotte sur les parois et perd de la pression dans chaque mètre de tuyau, coude et raccord : ce sont les **pertes de charge**, qui augmentent fortement avec le débit (à peu près comme son carré). Ouvrir la douche fait passer plus d'eau dans le tronçon commun, donc la pression restante au robinet baisse. Des tuyaux de section suffisante ou une distribution en **pieuvre** (un tuyau par appareil depuis un collecteur) limitent ce phénomène.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pour remplir un circuit de **chauffage central** depuis l'eau potable, quel dispositif protège le réseau contre un retour d'eau de chauffage ?",
+      "answer": "Un disconnecteur",
+      "wrong": [
+        "Un réducteur de pression",
+        "Un vase d'expansion",
+        "Un purgeur automatique"
+      ],
+      "explanation": "L'eau d'un circuit de chauffage stagne longtemps et contient parfois des additifs (inhibiteurs, antigel) : elle ne doit jamais revenir dans l'eau potable. Le **disconnecteur** comporte une zone intermédiaire qui se vide à l'égout dès qu'un risque de retour apparaît ; un simple clapet anti-retour n'offre pas un niveau de protection suffisant pour ce type de fluide. Le vase d'expansion absorbe la dilatation de l'eau de chauffage et le purgeur évacue l'air : aucun des deux ne protège le réseau.",
+      "difficulty": 3
+    },
+    {
+      "question": "La dureté de l'eau s'exprime souvent en **degrés français** (°f). À quoi correspond 1 °f ?",
+      "answer": "10 mg de carbonate de calcium par litre",
+      "wrong": [
+        "1 g de carbonate de calcium par litre",
+        "100 mg de chlorure de sodium par litre",
+        "1 mg de calcium et magnésium par litre"
+      ],
+      "explanation": "Le **titre hydrotimétrique** (TH) mesure les ions calcium et magnésium ; 1 °f équivaut à **10 mg/L de carbonate de calcium** (CaCO₃). Une eau à 30 °f contient donc l'équivalent de 300 mg de calcaire par litre, qui se déposera surtout à chaud dans les ballons, résistances et robinets. Le sodium n'entre pas dans le calcul de la dureté.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Titre_hydrotim%C3%A9trique"
+    },
+    {
+      "question": "Sur quel principe fonctionne un **adoucisseur** d'eau domestique classique ?",
+      "answer": "L'échange d'ions calcium et magnésium contre du sodium",
+      "wrong": [
+        "La filtration du calcaire par une membrane d'osmose",
+        "La précipitation du calcaire par un champ magnétique",
+        "L'ajout d'acide pour dissoudre le calcaire en continu"
+      ],
+      "explanation": "L'eau traverse une **résine** qui capte les ions calcium et magnésium (responsables du calcaire) et libère à la place des ions sodium. Quand la résine est saturée, l'appareil la **régénère** avec de la saumure, d'où le bac à sel à remplir régulièrement. L'osmose inverse est un autre procédé (membrane très fine, surtout pour l'eau de boisson), et les boîtiers « magnétiques » ne retirent pas le calcium de l'eau.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Adoucisseur_d%27eau"
+    },
+    {
+      "question": "Pourquoi déconseille-t-on de régler un adoucisseur pour obtenir une eau à **0 °f** ?",
+      "answer": "Une eau trop douce devient agressive pour les tuyaux",
+      "wrong": [
+        "Le sel de régénération deviendrait toxique",
+        "La résine se boucherait en quelques jours",
+        "L'eau ne pourrait plus dépasser 40 °C"
+      ],
+      "explanation": "Une eau totalement adoucie est **corrosive** : elle attaque peu à peu les métaux des canalisations (cuivre, acier galvanisé) au lieu de les protéger par une fine couche de calcaire. On conserve donc une dureté résiduelle de quelques degrés grâce à la vanne de mitigeage de l'adoucisseur. On conseille aussi souvent de garder un robinet d'eau non adoucie pour la boisson, l'eau adoucie étant plus riche en sodium.",
+      "difficulty": 3
+    },
+    {
+      "question": "À quoi sert un **filtre à sédiments** installé juste après le compteur ?",
+      "answer": "À retenir sable, rouille et particules en suspension",
+      "wrong": [
+        "À éliminer le calcaire dissous dans l'eau",
+        "À supprimer le goût de chlore de l'eau",
+        "À réduire la pression de l'eau du réseau"
+      ],
+      "explanation": "C'est un filtre **mécanique** (tamis ou cartouche) qui arrête les grains de sable et de rouille, protégeant robinets, cartouches de mitigeurs, adoucisseur et électroménager. Il ne retient pas le calcaire, qui est **dissous** dans l'eau, ni le goût de chlore (rôle d'un filtre à charbon actif). Sa cartouche doit être changée ou rincée régulièrement, sinon elle se colmate et fait chuter le débit.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qui provoque typiquement un **coup de bélier** dans une installation d'eau ?",
+      "answer": "La fermeture brutale d'un robinet ou d'une électrovanne",
+      "wrong": [
+        "L'entartrage progressif des tuyaux en cuivre",
+        "Une pression du réseau public trop faible",
+        "La présence d'air dans le siphon d'un évier"
+      ],
+      "explanation": "Quand une colonne d'eau en mouvement est stoppée net (mitigeur refermé d'un coup, électrovanne de lave-linge ou de lave-vaisselle), son énergie se transforme en **surpression** qui se propage dans les tuyaux : on entend un claquement et les fixations souffrent. Une pression trop élevée aggrave le phénomène, alors qu'une pression faible le réduit. Remèdes : fermer doucement, poser un antibélier, abaisser la pression avec un réducteur, bien fixer les tuyaux.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Coup_de_b%C3%A9lier"
+    },
+    {
+      "question": "Quel petit équipement pose-t-on près d'un lave-linge pour absorber les coups de bélier ?",
+      "answer": "Un antibélier",
+      "wrong": [
+        "Un disconnecteur",
+        "Un clapet anti-retour",
+        "Un purgeur d'air"
+      ],
+      "explanation": "L'**antibélier** contient un coussin d'air ou de gaz (séparé de l'eau par une membrane ou un piston à ressort) qui se comprime pour encaisser la surpression lors de la fermeture brutale de l'électrovanne. Il se pose au plus près de l'appareil responsable. Le disconnecteur et le clapet anti-retour protègent le réseau contre les retours d'eau, et le purgeur évacue l'air d'un circuit : aucun n'amortit la surpression.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur un robinet d'arrêt **quart de tour** (à boisseau sphérique), comment est la poignée quand l'eau passe ?",
+      "answer": "Parallèle au tuyau",
+      "wrong": [
+        "Perpendiculaire au tuyau",
+        "Inclinée à 45° du tuyau",
+        "Pointée vers le sol"
+      ],
+      "explanation": "La poignée est alignée avec le passage percé dans la bille : **parallèle au tuyau**, le robinet est ouvert ; perpendiculaire, il est fermé. Ces robinets sont faits pour être complètement ouverts ou complètement fermés. Comme ils se ferment en un quart de tour, on les manœuvre sans brutalité pour éviter les coups de bélier.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi conseille-t-on de manœuvrer de temps en temps le robinet d'arrêt général ?",
+      "answer": "Pour éviter qu'il se grippe avec le calcaire",
+      "wrong": [
+        "Pour purger l'air accumulé dans le compteur",
+        "Pour recalibrer le réducteur de pression",
+        "Pour remettre à zéro l'index du compteur"
+      ],
+      "explanation": "Un robinet qui reste ouvert pendant des années peut se **gripper** (calcaire, corrosion) et refuser de se fermer le jour d'une fuite, ou casser quand on force dessus. Le fermer et le rouvrir de temps en temps garantit qu'il fonctionnera en cas d'urgence. Repère aussi son emplacement à l'avance : chercher le robinet général pendant une inondation fait perdre un temps précieux.",
+      "difficulty": 1
+    },
+    {
+      "question": "Depuis quelle année la pose de canalisations en **plomb** pour l'eau potable est-elle interdite en France ?",
+      "answer": "1995",
+      "wrong": [
+        "1945",
+        "1975",
+        "2015"
+      ],
+      "explanation": "Un décret du 5 avril 1995 a interdit l'utilisation du **plomb** dans les nouvelles installations de distribution d'eau potable, car ce métal se dissout dans l'eau stagnante et s'accumule dans l'organisme. Depuis fin 2013, la teneur maximale autorisée au robinet est de 10 µg/L, valeur difficile à respecter avec de vieux tuyaux en plomb. Les logements anciens peuvent encore en contenir : tuyaux gris, mous, avec des renflements aux jonctions.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Saturnisme"
+    },
+    {
+      "question": "Quelle intoxication peut provoquer une exposition prolongée au plomb libéré par de vieilles canalisations ?",
+      "answer": "Le saturnisme",
+      "wrong": [
+        "La légionellose",
+        "La leptospirose",
+        "Le botulisme"
+      ],
+      "explanation": "Le **saturnisme** est l'intoxication chronique au plomb ; il touche surtout le système nerveux et est particulièrement grave chez les jeunes enfants et les femmes enceintes. La **légionellose** est une infection due à une bactérie qui prolifère dans l'eau tiède des réseaux d'eau chaude, autre risque sanitaire de la plomberie. En présence de tuyaux en plomb, on laisse couler l'eau avant de la boire et on prévoit leur remplacement.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Saturnisme"
+    },
+    {
+      "question": "Que signifie le sigle **ACS** apposé sur un tube ou un raccord destiné à l'eau potable ?",
+      "answer": "Attestation de conformité sanitaire",
+      "wrong": [
+        "Attestation de contrôle de sécurité",
+        "Agrément de conformité structurelle",
+        "Accréditation canalisations et sanitaires"
+      ],
+      "explanation": "L'**Attestation de conformité sanitaire** certifie qu'un matériau ou un accessoire en contact avec l'eau destinée à la consommation humaine (tubes PER ou multicouche, joints, raccords…) ne libère pas de substances indésirables dans l'eau. Elle concerne la santé, pas la résistance mécanique ni la sécurité électrique. C'est un critère à vérifier en achetant du matériel d'alimentation en eau potable.",
+      "difficulty": 3
+    },
+    {
+      "question": "Une maison utilise l'**eau de pluie** récupérée pour ses WC. Quelle règle est impérative ?",
+      "answer": "Aucune connexion avec le réseau d'eau potable",
+      "wrong": [
+        "Un raccord sur le réseau potable avec un clapet",
+        "Un adoucisseur sur le circuit d'eau de pluie",
+        "Une pression d'au moins 6 bar dans le circuit"
+      ],
+      "explanation": "L'eau de pluie n'est pas potable : son réseau doit être **totalement séparé** de celui de l'eau potable et repéré (mention « eau non potable » aux points de puisage), pour qu'aucun retour ne puisse contaminer le réseau public. Si l'on veut compléter la cuve avec l'eau du réseau, l'appoint se fait par **surverse** (l'eau tombe d'un orifice situé au-dessus du niveau maximal), avec un espace d'air qui interdit tout contact. Un simple clapet n'est pas une protection suffisante.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel est l'ordre de grandeur de la consommation d'eau domestique d'une personne en France, par jour ?",
+      "answer": "Environ 150 litres",
+      "wrong": [
+        "Environ 15 litres",
+        "Environ 1 500 litres",
+        "Environ 5 litres"
+      ],
+      "explanation": "Selon les sources, on estime la consommation domestique entre 120 et 150 litres par personne et par jour, soit environ 50 m³ par an. Les plus gros postes sont la **toilette** (bains, douches) et les **chasses d'eau** ; la boisson ne représente que quelques litres. C'est pourquoi une chasse d'eau qui fuit en permanence peut faire bondir la facture.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quoi sert le **mousseur** (ou aérateur) vissé au bout d'un robinet ?",
+      "answer": "À mêler de l'air au jet pour l'adoucir et économiser l'eau",
+      "wrong": [
+        "À filtrer le chlore et les métaux lourds de l'eau",
+        "À maintenir l'eau à une température constante",
+        "À empêcher le retour de l'eau vers le réseau"
+      ],
+      "explanation": "Le mousseur fractionne le jet et y incorpore de l'air : l'eau éclabousse moins et le débit consommé diminue pour une sensation équivalente. Ses grilles fines s'**entartrent** : un robinet dont le débit faiblit alors que les autres coulent normalement a souvent simplement besoin d'un mousseur détartré (trempage dans du vinaigre blanc). Il ne filtre pas l'eau, et la température constante est l'affaire du mitigeur thermostatique.",
+      "difficulty": 1
+    }
+  ]
 }

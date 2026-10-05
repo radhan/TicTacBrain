@@ -787,6 +787,389 @@
       ],
       "explanation": "En convention récepteur (flèches de U et de I en sens opposés), le produit U × I est la puissance **reçue** par le dipôle. Ici U × I = 5 × (−2) = −10 W : le dipôle reçoit −10 W, c'est-à-dire qu'il en **fournit 10** au reste du circuit. Il se comporte en générateur, comme une batterie qui se décharge. Le signe négatif du courant indique seulement que le courant circule dans le sens opposé à la flèche choisie.",
       "difficulty": 3
+    },
+    {
+      "question": "À longueur égale, on remplace un fil par un fil du même métal dont le diamètre est deux fois plus grand. Sa résistance est…",
+      "answer": "Divisée par 4",
+      "wrong": [
+        "Divisée par 2",
+        "Multipliée par 2",
+        "Divisée par 8"
+      ],
+      "explanation": "La résistance d'un fil vaut **R = ρ × L / S** : elle est inversement proportionnelle à la **section** S, pas au diamètre. Or S = π × d² / 4 : doubler le diamètre multiplie la section par 4, donc divise la résistance par **4**. Le piège « divisée par 2 » oublie que la section dépend du carré du diamètre.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/R%C3%A9sistivit%C3%A9"
+    },
+    {
+      "question": "Quelle est l'unité SI de la résistivité électrique ?",
+      "answer": "L'ohm-mètre (Ω·m)",
+      "wrong": [
+        "L'ohm par mètre (Ω/m)",
+        "L'ohm-mètre carré (Ω·m²)",
+        "Le siemens par mètre (S/m)"
+      ],
+      "explanation": "De R = ρ × L / S on tire ρ = R × S / L, en Ω × m² / m = **Ω·m**. L'ohm par mètre (Ω/m) sert à exprimer la résistance linéique d'un câble donné, pas une propriété du matériau. Le siemens par mètre est l'unité de la **conductivité**, l'inverse de la résistivité.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/R%C3%A9sistivit%C3%A9"
+    },
+    {
+      "question": "Quel métal possède la plus faible résistivité électrique à température ambiante ?",
+      "answer": "L'argent",
+      "wrong": [
+        "Le cuivre",
+        "L'or",
+        "L'aluminium"
+      ],
+      "explanation": "L'**argent** est le meilleur conducteur (environ 1,6 × 10⁻⁸ Ω·m), juste devant le cuivre (environ 1,7 × 10⁻⁸ Ω·m), puis l'or (environ 2,4 × 10⁻⁸ Ω·m) et l'aluminium (environ 2,7 × 10⁻⁸ Ω·m). Le cuivre domine pourtant le câblage, car il est bien moins cher pour une conductivité presque identique. L'or est réservé aux contacts parce qu'il ne s'oxyde pas, et l'aluminium aux lignes aériennes pour sa légèreté.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/R%C3%A9sistivit%C3%A9"
+    },
+    {
+      "question": "Quelle est la résistance d'un fil de cuivre de 10 m de long et de 1,5 mm² de section ? (résistivité ρ ≈ 1,7 × 10⁻⁸ Ω·m)",
+      "answer": "Environ 0,11 Ω",
+      "wrong": [
+        "Environ 1,1 Ω",
+        "Environ 0,011 Ω",
+        "Environ 11 Ω"
+      ],
+      "explanation": "R = ρ × L / S, avec la section en m² : 1,5 mm² = 1,5 × 10⁻⁶ m². D'où R = 1,7 × 10⁻⁸ × 10 / 1,5 × 10⁻⁶ ≈ **0,113 Ω**. Le piège principal est la conversion des mm² (un facteur 10⁶, pas 10³). Pour un circuit, il faut compter l'aller **et** le retour : 20 m de conducteur, soit environ 0,23 Ω.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/R%C3%A9sistivit%C3%A9"
+    },
+    {
+      "question": "Un bobinage en cuivre mesure 10 Ω à 20 °C. Quelle est sa résistance à 70 °C, en prenant un coefficient de température α ≈ 0,004 /°C ?",
+      "answer": "12 Ω",
+      "wrong": [
+        "10,2 Ω",
+        "8 Ω",
+        "14 Ω"
+      ],
+      "explanation": "Pour un métal, R = R₀ × (1 + α × ΔT) = 10 × (1 + 0,004 × 50) = 10 × 1,2 = **12 Ω**. La résistance des métaux **augmente** avec la température, ce qui élimine 8 Ω. Ce phénomène sert à mesurer la température (sondes Pt100 en platine) ou l'échauffement d'un moteur, en comparant la résistance de son bobinage à froid et à chaud.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/R%C3%A9sistivit%C3%A9"
+    },
+    {
+      "question": "Pourquoi le courant d'une ampoule à incandescence est-il bien plus fort à l'allumage qu'en fonctionnement établi ?",
+      "answer": "Son filament froid a une résistance bien plus faible",
+      "wrong": [
+        "Son culot se charge d'abord comme un condensateur",
+        "Le gaz de l'ampoule conduit fortement au démarrage",
+        "La tension du secteur est plus forte à l'allumage"
+      ],
+      "explanation": "La résistance du tungstène **augmente fortement avec la température** : à froid, le filament est plus de dix fois moins résistant qu'à sa température de fonctionnement (environ 2 500 °C). Le courant d'appel à la mise sous tension est donc très supérieur au courant nominal, jusqu'à ce que le filament chauffe, en une fraction de seconde. Ce choc électrique et thermique explique que ces ampoules grillent souvent au moment de l'allumage.",
+      "difficulty": 2
+    },
+    {
+      "question": "La loi des nœuds de Kirchhoff traduit la conservation de quelle grandeur ?",
+      "answer": "La charge électrique",
+      "wrong": [
+        "L'énergie",
+        "La tension",
+        "La puissance"
+      ],
+      "explanation": "En un nœud, les charges ne peuvent ni s'accumuler ni disparaître : tout ce qui entre doit ressortir. La loi des nœuds exprime donc la **conservation de la charge électrique**. C'est l'autre loi de Kirchhoff, la loi des mailles, qui est liée à l'énergie : elle traduit l'existence d'un potentiel électrique, une charge qui fait un tour complet de maille revenant au même potentiel.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Lois_de_Kirchhoff"
+    },
+    {
+      "question": "Par rapport à la masse, le point A est au potentiel 7 V et le point B au potentiel 3 V. Que vaut la tension U_BA ?",
+      "answer": "−4 V",
+      "wrong": [
+        "4 V",
+        "10 V",
+        "−10 V"
+      ],
+      "explanation": "Par convention, **U_BA = V_B − V_A** = 3 − 7 = **−4 V**, alors que U_AB = V_A − V_B = +4 V. Une tension est toujours une **différence** de potentiels, d'où l'absence de sens physique de 10 V (une somme). Elle ne dépend pas du point choisi comme masse, alors que les potentiels, eux, en dépendent.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Tension_%C3%A9lectrique"
+    },
+    {
+      "question": "Une pile de 9 V alimente une lampe placée en série avec un interrupteur **ouvert**. Quelle tension mesure-t-on aux bornes de l'interrupteur ?",
+      "answer": "9 V",
+      "wrong": [
+        "0 V",
+        "4,5 V",
+        "Une valeur qui dépend de la lampe"
+      ],
+      "explanation": "Interrupteur ouvert, aucun courant ne circule : la tension aux bornes de la lampe vaut R × 0 = 0 V, ses deux bornes sont au même potentiel. Toute la tension de la pile se retrouve donc **aux bornes de l'interrupteur : 9 V**. Une fois fermé, c'est l'inverse : 0 V aux bornes de l'interrupteur, 9 V aux bornes de la lampe. Un interrupteur ouvert peut donc présenter une tension dangereuse à ses bornes.",
+      "difficulty": 2
+    },
+    {
+      "question": "Le volt, unité de tension électrique, doit son nom à quel savant ?",
+      "answer": "Alessandro Volta",
+      "wrong": [
+        "André-Marie Ampère",
+        "Georg Simon Ohm",
+        "Charles-Augustin Coulomb"
+      ],
+      "explanation": "Le volt honore le physicien italien **Alessandro Volta**, inventeur en 1800 de la pile électrique, premier générateur capable de fournir un courant continu. Ampère a donné son nom à l'unité d'intensité, Ohm à celle de résistance et Coulomb à celle de charge électrique.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Alessandro_Volta"
+    },
+    {
+      "question": "Dans l'analogie hydraulique d'un circuit électrique, à quoi correspond la tension ?",
+      "answer": "À une différence de pression",
+      "wrong": [
+        "Au débit d'eau dans le tuyau",
+        "Au diamètre du tuyau",
+        "Au volume d'eau stocké"
+      ],
+      "explanation": "Dans cette analogie, la **tension** est une **différence de pression** entre deux points : c'est elle qui pousse l'eau. Le **courant** correspond au débit, la **résistance** à un étranglement du tuyau, le générateur à une pompe et la charge électrique à une quantité d'eau. L'analogie aide à comprendre la loi d'Ohm : à étranglement donné, plus la pression est forte, plus le débit est grand.",
+      "difficulty": 1
+    },
+    {
+      "question": "Un pont de Wheatstone est formé de deux diviseurs alimentés par la même source : R1 (en haut) et R2 (en bas) d'un côté, R3 (en haut) et Rx (en bas) de l'autre. Avec R1 = 1 kΩ, R2 = 2,2 kΩ et R3 = 470 Ω, quelle valeur de Rx annule la tension entre les deux points milieux ?",
+      "answer": "Environ 1 034 Ω",
+      "wrong": [
+        "Environ 214 Ω",
+        "Environ 2 200 Ω",
+        "Environ 4 680 Ω"
+      ],
+      "explanation": "Le pont est **équilibré** quand les deux points milieux sont au même potentiel, c'est-à-dire quand les deux diviseurs ont le même rapport : R2 / R1 = Rx / R3. D'où Rx = R3 × R2 / R1 = 470 × 2,2 = **1 034 Ω**. Le piège 214 Ω inverse le rapport. À l'équilibre, aucun courant ne traverse la branche centrale : c'est ainsi que Wheatstone mesurait précisément une résistance inconnue, avec un simple détecteur de zéro.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Pont_de_Wheatstone"
+    },
+    {
+      "question": "Dans quel cas les lois de Kirchhoff, sous leur forme habituelle, cessent-elles d'être valables ?",
+      "answer": "Quand le circuit n'est plus petit devant la longueur d'onde",
+      "wrong": [
+        "Dès que le circuit contient un condensateur",
+        "Dès que le courant dépasse quelques ampères",
+        "Dès que la tension appliquée est alternative"
+      ],
+      "explanation": "Les lois de Kirchhoff reposent sur l'**approximation des régimes quasi stationnaires** : on suppose que les signaux se propagent instantanément d'un bout à l'autre du circuit. C'est vrai si le circuit est petit devant la longueur d'onde : à 50 Hz, elle vaut environ 6 000 km, mais à 1 GHz, environ 30 cm. En haute fréquence, il faut alors traiter les pistes et câbles comme des **lignes de transmission**. Condensateurs, forts courants et régime alternatif ne posent, eux, aucun problème.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Approximation_des_r%C3%A9gimes_quasi_stationnaires"
+    },
+    {
+      "question": "Douze résistances de 1 Ω forment les arêtes d'un cube. Quelle résistance mesure-t-on entre deux sommets diagonalement opposés du cube ?",
+      "answer": "5/6 Ω",
+      "wrong": [
+        "3/4 Ω",
+        "7/12 Ω",
+        "3 Ω"
+      ],
+      "explanation": "Par symétrie, les trois sommets voisins du point de départ sont au même potentiel, tout comme les trois sommets voisins du point d'arrivée. Le courant traverse donc 3 arêtes en parallèle (1/3 Ω), puis 6 arêtes en parallèle (1/6 Ω), puis à nouveau 3 arêtes en parallèle (1/3 Ω) : 1/3 + 1/6 + 1/3 = **5/6 Ω**. Entre les extrémités d'une diagonale de face, on trouverait 3/4 Ω, et entre celles d'une simple arête, 7/12 Ω.",
+      "difficulty": 3
+    },
+    {
+      "question": "Deux ampoules à incandescence prévues pour 230 V, l'une de 40 W et l'autre de 100 W, sont branchées **en série** sur le 230 V. Laquelle éclaire le plus ?",
+      "answer": "Celle de 40 W",
+      "wrong": [
+        "Celle de 100 W",
+        "Les deux autant",
+        "Aucune : c'est un court-circuit"
+      ],
+      "explanation": "D'après R = U² / P, l'ampoule de 40 W a la plus grande résistance (environ 1 300 Ω à chaud, contre environ 530 Ω pour la 100 W). En série, le **même courant** traverse les deux, et la puissance R × I² est donc plus grande dans la plus résistante : **la 40 W brille davantage**, même si toutes deux éclairent moins que normalement. En parallèle sur le 230 V, ce serait l'inverse : chacune recevrait sa tension nominale et la 100 W l'emporterait.",
+      "difficulty": 3
+    },
+    {
+      "question": "Deux générateurs, bornes + du même côté, alimentent en parallèle une résistance de 4 Ω. Le premier fait 12 V avec une résistance interne de 4 Ω, le second 6 V avec une résistance interne de 2 Ω. Quel courant débite le générateur de 6 V ?",
+      "answer": "0 A",
+      "wrong": [
+        "1,5 A",
+        "3 A",
+        "0,75 A"
+      ],
+      "explanation": "Le théorème de Millman donne la tension commune : V = (12/4 + 6/2 + 0/4) / (1/4 + 1/2 + 1/4) = 6 / 1 = **6 V**. Le générateur de 6 V a donc exactement sa propre force électromotrice à ses bornes : aucune chute de tension dans sa résistance interne, donc **aucun courant**. Le générateur de 12 V fournit (12 − 6) / 4 = 1,5 A, qui passent entièrement dans la résistance de charge (6 / 4 = 1,5 A) : la loi des nœuds est vérifiée.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Millman"
+    },
+    {
+      "question": "Trois résistances de 30 Ω montées en triangle sont remplacées par un montage en étoile équivalent. Quelle valeur doit avoir chacune des résistances de l'étoile ?",
+      "answer": "10 Ω",
+      "wrong": [
+        "90 Ω",
+        "30 Ω",
+        "15 Ω"
+      ],
+      "explanation": "La transformation triangle-étoile (théorème de Kennelly) donne, pour chaque branche de l'étoile, le produit des deux résistances du triangle adjacentes divisé par la somme des trois : 30 × 30 / 90 = **10 Ω**. Avec des résistances égales, on retient R_étoile = R_triangle / 3. Cette transformation permet de simplifier les réseaux qui ne se réduisent pas à des associations série et parallèle, comme un pont déséquilibré.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Kennelly"
+    },
+    {
+      "question": "Depuis la révision du Système international entrée en vigueur en 2019, l'ampère est défini en fixant la valeur exacte de…",
+      "answer": "La charge élémentaire e",
+      "wrong": [
+        "La force entre deux fils parallèles",
+        "La constante de Planck h",
+        "La perméabilité du vide μ₀"
+      ],
+      "explanation": "Depuis le 20 mai 2019, la **charge élémentaire** vaut exactement 1,602 176 634 × 10⁻¹⁹ C : avec la seconde, cela définit l'ampère comme un débit d'un nombre précis de charges élémentaires par seconde. L'ancienne définition (1948) reposait sur la **force entre deux fils parallèles** distants de 1 m, ce qui fixait μ₀ à 4π × 10⁻⁷ ; depuis 2019, μ₀ est une valeur mesurée. La constante de Planck, elle, sert à définir le kilogramme.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Amp%C3%A8re_(unit%C3%A9)"
+    },
+    {
+      "question": "Environ combien d'électrons faut-il pour transporter une charge de 1 coulomb ?",
+      "answer": "6,24 × 10¹⁸",
+      "wrong": [
+        "6,02 × 10²³",
+        "1,60 × 10¹⁹",
+        "1,60 × 10⁻¹⁹"
+      ],
+      "explanation": "Chaque électron porte la charge élémentaire e ≈ 1,602 × 10⁻¹⁹ C. Il en faut donc 1 / e ≈ **6,24 × 10¹⁸** pour faire un coulomb : un courant de 1 A correspond au passage d'environ 6,24 milliards de milliards d'électrons par seconde. 1,60 × 10⁻¹⁹ est la charge d'un seul électron et 6,02 × 10²³ le nombre d'Avogadro, sans rapport ici.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Charge_%C3%A9l%C3%A9mentaire"
+    },
+    {
+      "question": "Un moteur alimenté sous 230 V efficaces absorbe un courant de 5 A efficaces, avec un facteur de puissance de 0,8. Quelle puissance active consomme-t-il ?",
+      "answer": "920 W",
+      "wrong": [
+        "1 150 W",
+        "690 W",
+        "1 438 W"
+      ],
+      "explanation": "En alternatif, la puissance active vaut **P = U × I × cos φ** = 230 × 5 × 0,8 = **920 W**. Le produit U × I = 1 150 VA est la puissance **apparente**, exprimée en voltampères, qui sert à dimensionner câbles et protections. Avec sin φ = 0,6, la puissance **réactive** vaut 690 var : elle fait des allers-retours entre la source et le moteur sans produire de travail.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Facteur_de_puissance"
+    },
+    {
+      "question": "En régime sinusoïdal, comment se situe le courant traversant un condensateur idéal par rapport à la tension à ses bornes ?",
+      "answer": "En avance d'un quart de période (90°)",
+      "wrong": [
+        "En retard d'un quart de période (90°)",
+        "En phase avec la tension",
+        "En opposition de phase (180°)"
+      ],
+      "explanation": "Pour un condensateur, i = C × du/dt : le courant est maximal quand la tension varie le plus vite, c'est-à-dire quand elle passe par zéro. Il atteint donc ses maximums un quart de période **avant** la tension : il est **en avance de 90°**. Pour une bobine idéale, c'est l'inverse (courant en retard de 90°) et pour une résistance, courant et tension sont en phase. Moyen mnémotechnique : « CIVIL », dans C, I vient avant V ; dans L, V vient avant I.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi est-il dangereux de relier la pince de masse d'une sonde d'oscilloscope classique, relié à la terre par sa prise, à un point d'un montage alimenté directement par le secteur, sans transformateur ?",
+      "answer": "Cette masse est reliée à la terre : risque de court-circuit",
+      "wrong": [
+        "La sonde injecte une tension continue dans le montage",
+        "L'oscilloscope inverse la phase et le neutre du secteur",
+        "La sonde multiplie par dix la tension du montage"
+      ],
+      "explanation": "Sur un oscilloscope de table classique, la pince de masse de la sonde est reliée au châssis, lui-même relié à la **terre** par le cordon d'alimentation. Si le point touché se trouve à un potentiel lié au secteur, on crée un **court-circuit vers la terre** à travers la sonde : étincelles, sonde ou montage détruits, danger pour l'opérateur. Les solutions sont une **sonde différentielle** ou un transformateur d'isolement placé sur le montage, jamais la suppression de la terre de l'oscilloscope.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Oscilloscope"
+    },
+    {
+      "question": "Pourquoi une pince ampèremétrique refermée autour d'un câble d'alimentation entier (phase et neutre ensemble) affiche-t-elle environ 0 A, alors que l'appareil fonctionne ?",
+      "answer": "Les courants aller et retour, opposés, se compensent",
+      "wrong": [
+        "La gaine du câble bloque le champ magnétique",
+        "La pince ne mesure que le courant continu",
+        "Le courant est trop faible pour être détecté"
+      ],
+      "explanation": "La pince mesure le **champ magnétique** créé par le courant total qui traverse sa mâchoire. Dans un câble complet, la phase et le neutre transportent des courants égaux et de sens opposés : leurs effets **s'annulent**. Il faut donc n'enserrer qu'**un seul conducteur**. Une lecture non nulle autour des deux conducteurs révèle au contraire un courant de fuite, qui retourne par un autre chemin : c'est le principe du disjoncteur différentiel.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Pince_amp%C3%A8rem%C3%A9trique"
+    },
+    {
+      "question": "Un condensateur de 100 µF se charge à travers une résistance de 10 kΩ. Quelle est la constante de temps τ du circuit ?",
+      "answer": "1 s",
+      "wrong": [
+        "0,1 s",
+        "10 s",
+        "1 ms"
+      ],
+      "explanation": "La constante de temps d'un circuit RC vaut **τ = R × C** = 10 × 10³ Ω × 100 × 10⁻⁶ F = **1 s**. Au bout de τ, le condensateur a atteint environ 63 % de la tension finale ; on le considère chargé après environ 5τ (plus de 99 %). Le piège classique est la conversion des préfixes : µ vaut 10⁻⁶ et k vaut 10³.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Circuit_RC"
+    },
+    {
+      "question": "On ajoute une résistance supplémentaire en parallèle sur un groupement de résistances. Que devient la résistance équivalente du groupement ?",
+      "answer": "Elle diminue, quelle que soit la valeur ajoutée",
+      "wrong": [
+        "Elle augmente, quelle que soit la valeur ajoutée",
+        "Elle diminue seulement si la nouvelle est plus petite",
+        "Elle augmente si la nouvelle est plus grande"
+      ],
+      "explanation": "En parallèle, ce sont les conductances qui s'additionnent : 1/R_eq = 1/R1 + 1/R2 + … Ajouter une branche ajoute un terme positif, donc 1/R_eq augmente et **R_eq diminue toujours** : on offre un chemin de plus au courant. Même une résistance de 1 MΩ ajoutée en parallèle sur 100 Ω abaisse légèrement l'ensemble (environ 99,99 Ω).",
+      "difficulty": 2
+    },
+    {
+      "question": "Deux piles identiques de 1,5 V et 2 000 mAh sont branchées en parallèle. Quelles caractéristiques obtient-on, en théorie ?",
+      "answer": "1,5 V et 4 000 mAh",
+      "wrong": [
+        "3 V et 2 000 mAh",
+        "3 V et 4 000 mAh",
+        "1,5 V et 2 000 mAh"
+      ],
+      "explanation": "En **parallèle**, la tension reste celle d'une pile (1,5 V) et les capacités s'additionnent (**4 000 mAh**). En **série**, ce serait l'inverse : les tensions s'additionnent (3 V) et la capacité reste de 2 000 mAh. Dans les deux cas, l'énergie stockée double. En pratique, on évite de mettre en parallèle des éléments d'état de charge différent, car le plus chargé débite dans l'autre.",
+      "difficulty": 2
+    },
+    {
+      "question": "Deux lampes identiques sont montées en série sur une pile. On relie les deux bornes de l'une d'elles par un fil. Que fait l'autre lampe ?",
+      "answer": "Elle brille plus fort",
+      "wrong": [
+        "Elle s'éteint",
+        "Elle brille pareil",
+        "Elle brille moins fort"
+      ],
+      "explanation": "Le fil **court-circuite** la première lampe : le courant passe par le fil, de résistance quasi nulle, et cette lampe s'éteint. La résistance totale du circuit est alors divisée par deux, donc le courant augmente : la lampe restante reçoit toute la tension de la pile au lieu de la moitié et **brille plus fort**, au risque de griller si elle n'est pas prévue pour cette tension.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la tension nominale d'une pile alcaline AA (LR6) ?",
+      "answer": "1,5 V",
+      "wrong": [
+        "1,2 V",
+        "3,7 V",
+        "9 V"
+      ],
+      "explanation": "Une pile alcaline AA a une tension nominale de **1,5 V**. Les accumulateurs rechargeables NiMH du même format affichent 1,2 V, ce qui suffit en général aux appareils prévus pour des piles. 3,7 V est la tension nominale d'un élément lithium-ion, et 9 V celle de la pile rectangulaire 6LR61, qui contient six éléments de 1,5 V en série.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle tension fournit un port USB standard, en l'absence de négociation de type USB Power Delivery ?",
+      "answer": "5 V",
+      "wrong": [
+        "3,3 V",
+        "12 V",
+        "9 V"
+      ],
+      "explanation": "Depuis les débuts de l'USB, la ligne d'alimentation (VBUS) fournit **5 V** nominaux. Les tensions plus élevées (9 V, 15 V, 20 V…) ne sont délivrées qu'après une **négociation** entre le chargeur et l'appareil (USB Power Delivery ou protocoles de charge rapide). 3,3 V est la tension de fonctionnement de nombreux microcontrôleurs, pas celle du port.",
+      "difficulty": 1
+    },
+    {
+      "question": "Deux lampes sont montées en série sur une pile. Le filament de l'une d'elles casse. Que fait l'autre lampe ?",
+      "answer": "Elle s'éteint aussi",
+      "wrong": [
+        "Elle brille plus fort",
+        "Elle brille comme avant",
+        "Elle brille moins fort"
+      ],
+      "explanation": "Un filament cassé ouvre le circuit. Or, en série, il n'existe qu'**un seul chemin** pour le courant : plus aucun courant ne circule, et l'autre lampe **s'éteint aussi**. C'était le défaut des anciennes guirlandes en série. En **parallèle**, chaque lampe a sa propre branche : les autres continueraient de briller normalement.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle est l'allure de la caractéristique U = f(I) d'un conducteur ohmique ?",
+      "answer": "Une droite passant par l'origine",
+      "wrong": [
+        "Une courbe exponentielle",
+        "Une droite horizontale",
+        "Une parabole"
+      ],
+      "explanation": "Pour un conducteur ohmique, U = R × I : la tension est **proportionnelle** au courant, d'où une **droite passant par l'origine** dont la pente est la résistance R. Une courbe exponentielle est typique d'une diode, et une droite horizontale (tension constante quel que soit le courant) correspond à une source de tension idéale.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Loi_d%27Ohm"
+    },
+    {
+      "question": "Comment un fusible est-il branché par rapport au circuit qu'il protège ?",
+      "answer": "En série avec le circuit",
+      "wrong": [
+        "En parallèle sur la charge",
+        "Entre les deux bornes de l'alimentation",
+        "Entre la masse et la terre"
+      ],
+      "explanation": "Le fusible doit être **traversé par tout le courant** du circuit pour pouvoir l'interrompre : il se place donc **en série**. En cas de surintensité, son fil fond et ouvre le circuit. Placé en parallèle sur la charge ou entre les bornes de l'alimentation, il ne protégerait rien et créerait même un court-circuit, puisque sa résistance est quasi nulle.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Fusible_(%C3%A9lectricit%C3%A9)"
+    },
+    {
+      "question": "Combien d'ohms représente une résistance de 4,7 kΩ ?",
+      "answer": "4 700 Ω",
+      "wrong": [
+        "470 Ω",
+        "47 000 Ω",
+        "0,0047 Ω"
+      ],
+      "explanation": "Le préfixe **kilo** (k) multiplie par 1 000 : 4,7 kΩ = **4 700 Ω**. Attention à la casse des préfixes : **M** (méga) vaut 10⁶, mais **m** (milli) vaut 10⁻³. Une résistance de 4,7 MΩ et une de 4,7 mΩ diffèrent donc d'un facteur un milliard.",
+      "difficulty": 1
     }
   ]
 }

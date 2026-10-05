@@ -4,5 +4,306 @@
   "icon": "🔭",
   "description": "Capteurs, focales, objectifs, autofocus, stabilisation, flash, formats RAW et JPEG : comprendre son équipement.",
   "order": 3,
-  "questions": []
+  "questions": [
+    {
+      "question": "Dans un appareil reflex, quel élément renvoie l'image formée par l'objectif vers le viseur optique ?",
+      "answer": "Un miroir incliné à 45° devant le capteur",
+      "wrong": [
+        "Un écran LCD placé derrière le capteur",
+        "Un second capteur dédié à la visée",
+        "Une fibre optique reliée à l'oculaire"
+      ],
+      "explanation": "Le mot « reflex » vient de ce miroir : incliné à 45° devant le capteur, il réfléchit la lumière vers le verre de visée puis vers un pentaprisme (ou pentamiroir) qui redresse l'image dans l'oculaire. Au déclenchement, le miroir se relève pour laisser la lumière atteindre le capteur, d'où le bref « noir » dans le viseur pendant la prise de vue.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Single-lens_reflex_camera"
+    },
+    {
+      "question": "Qu'est-ce qui distingue fondamentalement un appareil hybride (« mirrorless ») d'un reflex ?",
+      "answer": "L'absence de miroir : la visée passe par le capteur",
+      "wrong": [
+        "Des objectifs fixes, non interchangeables",
+        "Un capteur forcément plus petit qu'un reflex",
+        "L'absence totale de viseur sur le boîtier"
+      ],
+      "explanation": "Dans un hybride, la lumière frappe le capteur en permanence ; l'image est affichée sur l'écran arrière ou dans un viseur électronique. Les objectifs restent interchangeables et beaucoup d'hybrides ont un capteur plein format, comme les reflex haut de gamme. Supprimer le miroir permet un boîtier plus compact et un autofocus réalisé directement sur le capteur.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Mirrorless_camera"
+    },
+    {
+      "question": "Sur un appareil à télémètre (type Leica M), comment le télémètre aide-t-il à faire la mise au point ?",
+      "answer": "On fait coïncider deux images dans le viseur",
+      "wrong": [
+        "On observe l'image à travers l'objectif",
+        "On maximise le contraste affiché à l'écran",
+        "On mesure la distance par un faisceau infrarouge"
+      ],
+      "explanation": "Le télémètre observe la scène depuis deux fenêtres écartées : au centre du viseur apparaît une seconde image décalée, qui se superpose exactement à la première quand la distance réglée sur l'objectif est la bonne (principe de triangulation). Le viseur ne regarde pas à travers l'objectif, contrairement au reflex : il est lumineux et silencieux, mais sujet à la parallaxe de près.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Rangefinder_camera"
+    },
+    {
+      "question": "Pourquoi un appareil à viseur optique séparé de l'objectif (télémètre, compact argentique) cadre-t-il mal les sujets très proches ?",
+      "answer": "Le viseur est décalé de l'objectif : erreur de parallaxe",
+      "wrong": [
+        "Le viseur grossit trop l'image à courte distance",
+        "L'objectif déforme fortement les bords de près",
+        "Le viseur ne peut pas faire la mise au point de près"
+      ],
+      "explanation": "Viseur et objectif ne regardent pas depuis le même point : quelques centimètres les séparent. Ce décalage est négligeable pour un sujet lointain mais devient important de près, si bien que la photo est décalée par rapport à ce qu'on a cadré : c'est l'**erreur de parallaxe**. Certains viseurs la compensent avec des cadres lumineux mobiles ; les reflex et les hybrides, qui visent à travers l'objectif, n'en souffrent pas.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Parallaxe"
+    },
+    {
+      "question": "Comment appelle-t-on un appareil à objectif fixe (non interchangeable), doté d'un très grand zoom et d'une prise en main de type reflex ?",
+      "answer": "Un bridge",
+      "wrong": [
+        "Un hybride",
+        "Un télémètre",
+        "Une chambre"
+      ],
+      "explanation": "Le bridge fait le « pont » entre le compact et le reflex : silhouette et commandes de reflex, mais objectif soudé au boîtier, souvent un superzoom allant du grand-angle au très long téléobjectif. Pour loger ce zoom dans un boîtier raisonnable, il utilise un petit capteur. L'hybride et la chambre acceptent au contraire des objectifs interchangeables.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Bridge_(photographie)"
+    },
+    {
+      "question": "Quel est le principal atout d'une chambre photographique grand format (soufflet, corps avant et arrière mobiles) ?",
+      "answer": "Décentrer et basculer le plan de l'objectif",
+      "wrong": [
+        "Une cadence de rafale très élevée",
+        "Un autofocus rapide et très précis",
+        "Un encombrement et un poids minimes"
+      ],
+      "explanation": "Sur une chambre, l'avant (objectif) et l'arrière (film ou dos) sont reliés par un soufflet et se déplacent indépendamment. Le **décentrement** redresse les verticales d'un bâtiment sans incliner l'appareil ; la **bascule** incline le plan de netteté (principe de Scheimpflug). Ces appareils sont lents, lourds et entièrement manuels : on les choisit pour le contrôle de la perspective et la taille du négatif.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Chambre_photographique"
+    },
+    {
+      "question": "Dans le viseur d'un reflex, quel avantage a un pentaprisme en verre massif sur un pentamiroir ?",
+      "answer": "Une image de visée plus lumineuse",
+      "wrong": [
+        "Un poids et un coût plus faibles",
+        "Une visée sans erreur de parallaxe",
+        "Un autofocus plus rapide en basse lumière"
+      ],
+      "explanation": "Les deux redressent l'image renvoyée par le miroir. Le pentaprisme est un bloc de verre aux faces argentées, avec moins de pertes : la visée est plus claire et souvent plus grande. Le pentamiroir, fait de trois miroirs assemblés, est plus léger et moins cher, d'où sa présence sur les reflex d'entrée de gamme. L'absence de parallaxe, elle, vient de la visée à travers l'objectif, commune aux deux.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Pentaprism"
+    },
+    {
+      "question": "Quel appareil, commercialisé en 1925 et conçu par Oskar Barnack, a popularisé le format 24 × 36 mm sur film de cinéma 35 mm ?",
+      "answer": "Le Leica I",
+      "wrong": [
+        "Le Kodak Brownie",
+        "Le Rolleiflex",
+        "Le Hasselblad 500C"
+      ],
+      "explanation": "Oskar Barnack, ingénieur chez Leitz, a eu l'idée d'utiliser le film 35 mm du cinéma en doublant la taille de l'image (24 × 36 mm au lieu de 18 × 24 mm) ; Leitz a commercialisé le Leica I en 1925. Ce petit format a donné le film 135, puis le « plein format » des capteurs numériques. Le Rolleiflex et le Hasselblad sont des appareils moyen format sur film en rouleau, et le Brownie (1900) un appareil populaire de Kodak.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Oskar_Barnack"
+    },
+    {
+      "question": "Chez quel fabricant l'ingénieur Steven Sasson a-t-il construit, en 1975, le premier prototype d'appareil photo numérique ?",
+      "answer": "Kodak",
+      "wrong": [
+        "Sony",
+        "Canon",
+        "Fujifilm"
+      ],
+      "explanation": "En 1975, Steven Sasson, ingénieur chez Kodak, assemble un prototype d'environ 3,6 kg qui capte une image en noir et blanc de 100 × 100 pixels avec un capteur CCD et l'enregistre sur une cassette audio en 23 secondes. Ironie de l'histoire : Kodak, géant du film argentique, n'a pas su profiter de cette invention et s'est placé sous la protection de la loi sur les faillites en 2012.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Steven_Sasson"
+    },
+    {
+      "question": "Le Rolleiflex est un reflex bi-objectif. Quel est le rôle de ses deux objectifs ?",
+      "answer": "L'un sert à viser, l'autre à exposer le film",
+      "wrong": [
+        "L'un pour le grand-angle, l'autre pour le zoom",
+        "Les deux forment une image en relief",
+        "L'un mesure la lumière, l'autre fait le point"
+      ],
+      "explanation": "Dans un reflex bi-objectif (TLR), l'objectif du haut envoie l'image, via un miroir fixe, sur un verre dépoli observé du dessus ; l'objectif du bas, couplé pour la mise au point, expose le film. La visée n'est jamais interrompue au déclenchement, mais la parallaxe apparaît de près. Les appareils stéréoscopiques ont aussi deux objectifs, mais placés côte à côte, à l'écartement des yeux.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Twin-lens_reflex_camera"
+    },
+    {
+      "question": "En 2008, la Panasonic Lumix G1 est considérée comme le premier appareil hybride à objectifs interchangeables. Quel système de monture a-t-elle inauguré ?",
+      "answer": "Micro Quatre Tiers",
+      "wrong": [
+        "Sony E",
+        "Fujifilm X",
+        "Nikon 1"
+      ],
+      "explanation": "Annoncé par Olympus et Panasonic en 2008, le Micro Quatre Tiers reprend le capteur de 17,3 × 13 mm du Quatre Tiers (facteur de recadrage 2) mais supprime le miroir, ce qui ramène le tirage mécanique à environ 20 mm. La Lumix G1, sortie la même année, en est le premier boîtier. La monture Sony E est arrivée en 2010, Nikon 1 en 2011 et Fujifilm X en 2012.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Micro_Four_Thirds_system"
+    },
+    {
+      "question": "Quel avantage offre un viseur électronique (EVF) par rapport au viseur optique d'un reflex ?",
+      "answer": "Il montre l'image avec l'exposition réglée",
+      "wrong": [
+        "Il ne consomme aucune énergie",
+        "Il n'a aucun décalage d'affichage",
+        "Il reste lisible appareil éteint"
+      ],
+      "explanation": "Le viseur électronique affiche ce que voit le capteur : luminosité, balance des blancs et histogramme sont prévisualisés avant le déclenchement. En contrepartie, il consomme de la batterie, présente un léger temps de latence et s'éteint avec l'appareil, alors qu'un viseur optique montre la scène directement, sans délai ni électricité, mais sans simuler le rendu final.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Electronic_viewfinder"
+    },
+    {
+      "question": "Quelles sont les dimensions d'un capteur « plein format » ?",
+      "answer": "36 × 24 mm",
+      "wrong": [
+        "23,5 × 15,6 mm",
+        "17,3 × 13 mm",
+        "44 × 33 mm"
+      ],
+      "explanation": "Le plein format (*full frame*) reprend la taille de l'image du film 135 : 36 × 24 mm, soit un rapport 3:2 et une diagonale d'environ 43 mm. Le 23,5 × 15,6 mm correspond à l'APS-C, le 17,3 × 13 mm au Micro Quatre Tiers et le 44 × 33 mm au moyen format numérique, plus grand que le « plein » format malgré son nom.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Full-frame_digital_SLR"
+    },
+    {
+      "question": "Un objectif de 50 mm est monté sur un boîtier APS-C au facteur de recadrage 1,5. Quelle focale en plein format donnerait le même angle de champ ?",
+      "answer": "75 mm",
+      "wrong": [
+        "33 mm",
+        "50 mm",
+        "100 mm"
+      ],
+      "explanation": "On multiplie la focale par le facteur de recadrage : 50 × 1,5 = 75 mm. Le capteur APS-C, plus petit, ne « voit » que le centre de l'image projetée par l'objectif, d'où un cadrage plus serré. La focale physique reste de 50 mm (l'objectif ne change pas) : c'est son angle de champ qui équivaut à celui d'un 75 mm sur plein format.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Crop_factor"
+    },
+    {
+      "question": "Quel est le facteur de recadrage du format Micro Quatre Tiers par rapport au plein format ?",
+      "answer": "2",
+      "wrong": [
+        "1,5",
+        "1,6",
+        "2,7"
+      ],
+      "explanation": "Le capteur Micro Quatre Tiers mesure environ 17,3 × 13 mm, soit une diagonale d'environ 21,6 mm, deux fois plus courte que les 43,3 mm du plein format : le facteur vaut donc 2, et un 25 mm y cadre comme un 50 mm. Le facteur 1,5 correspond à l'APS-C de Nikon, Sony ou Fujifilm, 1,6 à l'APS-C de Canon et environ 2,7 au capteur dit « 1 pouce ».",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Crop_factor"
+    },
+    {
+      "question": "Pourquoi un 50 mm est-il traditionnellement considéré comme la focale « normale » du plein format ?",
+      "answer": "Sa focale est proche de la diagonale du capteur",
+      "wrong": [
+        "Il ne présente aucune distorsion optique",
+        "Il reproduit exactement l'angle de vision humain",
+        "Sa focale est égale à la largeur du capteur"
+      ],
+      "explanation": "Par convention, la focale « normale » d'un format est voisine de la diagonale de son capteur : √(36² + 24²) ≈ 43,3 mm pour le plein format. Elle restitue des proportions entre les plans qui paraissent naturelles à distance de lecture habituelle. Le 50 mm s'est imposé historiquement, mais les 40 à 55 mm sont tous qualifiés de normaux ; le champ visuel humain, lui, est bien plus large que les quelque 47° de diagonale d'un 50 mm.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Normal_lens"
+    },
+    {
+      "question": "Quel est le rapport largeur/hauteur natif d'un capteur Micro Quatre Tiers ?",
+      "answer": "4:3",
+      "wrong": [
+        "3:2",
+        "16:9",
+        "1:1"
+      ],
+      "explanation": "Le capteur Micro Quatre Tiers mesure 17,3 × 13 mm, soit un rapport 4:3, le même que la plupart des capteurs de smartphones. Le plein format et l'APS-C héritent du 3:2 du film 24 × 36 ; le 16:9 et le 1:1 sont en général obtenus par recadrage. À noter : le nom « Quatre Tiers » vient en réalité de la désignation « 4/3 de pouce » héritée des tubes vidéo, mais le format d'image est bien 4:3.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Micro_Four_Thirds_system"
+    },
+    {
+      "question": "Un capteur dit « 1 pouce » (environ 13,2 × 8,8 mm) n'a pas une diagonale de 25,4 mm. D'où vient cette appellation ?",
+      "answer": "Du diamètre des anciens tubes de caméra vidéo",
+      "wrong": [
+        "De la largeur de la monture d'objectif associée",
+        "De la diagonale de l'écran arrière de l'appareil",
+        "D'une erreur de conversion dans une norme"
+      ],
+      "explanation": "Les tailles en fractions de pouce (1\", 1/2,3\", 1/1,7\"…) sont un héritage des tubes vidéo de type vidicon : on désignait le tube par son diamètre extérieur, la zone sensible n'en couvrant qu'environ les deux tiers. Un capteur « 1 pouce » a ainsi une diagonale d'environ 16 mm, avec un facteur de recadrage d'environ 2,7. Cette convention rend trompeuses les tailles de tous les petits capteurs.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Image_sensor_format"
+    },
+    {
+      "question": "Dans une matrice de Bayer classique, quelle proportion des photosites porte un filtre vert ?",
+      "answer": "50 %",
+      "wrong": [
+        "33 %",
+        "25 %",
+        "75 %"
+      ],
+      "explanation": "Le motif de Bayer répète un carré de 2 × 2 photosites : deux verts, un rouge et un bleu. Le vert est doublé parce que l'œil humain est le plus sensible à cette partie du spectre, qui porte l'essentiel de la luminosité perçue. Chaque photosite ne mesure qu'une couleur ; les deux autres sont reconstituées par interpolation. Ce motif a été breveté par Bryce Bayer, ingénieur chez Kodak, en 1976.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Bayer_filter"
+    },
+    {
+      "question": "Comment appelle-t-on l'étape qui reconstitue les trois couleurs de chaque pixel à partir des données d'un capteur à matrice de Bayer ?",
+      "answer": "Le dématriçage",
+      "wrong": [
+        "Le suréchantillonnage",
+        "La quantification",
+        "Le tramage"
+      ],
+      "explanation": "Chaque photosite ne mesurant qu'une couleur, le processeur de l'appareil (pour un JPEG) ou le logiciel de développement (pour un RAW) estime les deux composantes manquantes à partir des voisins : c'est le dématriçage (*demosaicing*). Sa qualité influe sur le piqué, le moiré et les fausses couleurs dans les détails fins. Un fichier RAW contient justement les données d'avant cette étape.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Dématriçage"
+    },
+    {
+      "question": "Quelle particularité a la matrice X-Trans de Fujifilm par rapport à la matrice de Bayer ?",
+      "answer": "Un motif couleur plus irrégulier, sur 6 × 6 photosites",
+      "wrong": [
+        "Trois couches de silicium superposées pour R, V et B",
+        "Des photosites dépourvus de tout filtre couleur",
+        "Un seul filtre vert pour deux filtres rouges"
+      ],
+      "explanation": "La X-Trans, introduite en 2012 avec le X-Pro1, répartit rouge, vert et bleu de façon moins régulière, selon un motif de 6 × 6 photosites où chaque ligne et chaque colonne contient les trois couleurs. Cette irrégularité réduit le risque de moiré, ce qui permet à Fujifilm de se passer de filtre passe-bas. Les trois couches de silicium superposées sont, elles, le principe du capteur Foveon de Sigma.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Fujifilm_X-Trans_sensor"
+    },
+    {
+      "question": "Quelle est la particularité des capteurs Foveon X3 utilisés par Sigma ?",
+      "answer": "Trois couches superposées captant chacune une couleur",
+      "wrong": [
+        "Un motif de filtres couleur répété sur 6 × 6 photosites",
+        "Un photosite sur deux réservé à l'autofocus",
+        "Une lecture simultanée de tous les pixels"
+      ],
+      "explanation": "Le Foveon exploite le fait que le silicium absorbe les longueurs d'onde à des profondeurs différentes : le bleu près de la surface, le vert plus bas, le rouge plus profondément. Chaque emplacement mesure ainsi les trois couleurs, sans dématriçage. Le rendu des détails est très fin, mais la montée en sensibilité est plus limitée qu'avec une matrice de filtres. La lecture simultanée de tous les pixels définit, elle, l'obturation globale.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Foveon_X3_sensor"
+    },
+    {
+      "question": "À quoi sert le filtre passe-bas (anti-aliasing) placé devant certains capteurs ?",
+      "answer": "Réduire le moiré sur les motifs très fins",
+      "wrong": [
+        "Accentuer le piqué des détails fins",
+        "Réduire le bruit en basse lumière",
+        "Limiter les reflets sur le capteur"
+      ],
+      "explanation": "Le filtre passe-bas optique floute très légèrement l'image en dédoublant chaque rayon, pour que les détails plus fins que la grille des photosites ne créent pas d'artefacts : moiré sur les tissus, fausses couleurs. Le prix à payer est une légère perte de piqué ; c'est pourquoi beaucoup de boîtiers à haute définition s'en passent, misant sur leur résolution et sur la correction logicielle.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Anti-aliasing_filter"
+    },
+    {
+      "question": "Qu'apporte un capteur rétro-éclairé (BSI, *back-side illuminated*) ?",
+      "answer": "Le câblage passe derrière les photodiodes, qui captent plus de lumière",
+      "wrong": [
+        "Une petite LED éclaire le capteur pour l'autofocus de nuit",
+        "Les photosites sont lus du dernier au premier, plus vite",
+        "Un rétroéclairage rend l'écran arrière lisible en plein soleil"
+      ],
+      "explanation": "Dans un capteur CMOS classique, éclairé par l'avant, les pistes métalliques de câblage sont au-dessus des photodiodes et masquent une partie de la lumière. Le capteur BSI est retourné : la lumière arrive par la face arrière amincie, directement sur les photodiodes, le câblage se trouvant derrière. Le gain est surtout sensible sur les petits photosites, d'où son adoption d'abord dans les smartphones, puis dans les grands capteurs.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Back-illuminated_sensor"
+    },
+    {
+      "question": "En 2023, Sony a présenté l'α9 III, premier hybride plein format à capteur à obturation globale (*global shutter*). Quel défaut ce type de capteur élimine-t-il ?",
+      "answer": "L'effet « rolling shutter » sur les sujets rapides",
+      "wrong": [
+        "Le bruit numérique aux hautes sensibilités",
+        "Le vignettage des objectifs grand-angle",
+        "Le moiré sur les motifs très fins"
+      ],
+      "explanation": "Un capteur CMOS classique en obturation électronique lit ses lignes l'une après l'autre (*rolling shutter*) : si le sujet ou l'appareil bouge pendant cette lecture, les verticales penchent et les hélices se tordent. Un capteur à obturation globale lit tous les pixels au même instant, ce qui supprime ces déformations et permet de synchroniser le flash à toutes les vitesses. Il ne règle en rien le bruit, le vignettage ou le moiré.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Rolling_shutter"
+    }
+  ]
 }
