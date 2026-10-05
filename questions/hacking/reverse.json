@@ -1,0 +1,338 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Reverse Engineering",
+  "icon": "🔬",
+  "description": "Assembleur, désassemblage, débogage, formats PE/ELF et outils comme Ghidra ou IDA : comprendre un binaire sans son code source.",
+  "order": 5,
+  "questions": [
+    {
+      "question": "Qu'est-ce que le **reverse engineering** (rétro-ingénierie) appliqué à un logiciel ?",
+      "answer": "Analyser un binaire pour comprendre son fonctionnement sans son code source",
+      "wrong": [
+        "Compiler un code source en un exécutable optimisé",
+        "Chiffrer un programme pour protéger sa propriété intellectuelle",
+        "Traduire un programme d'un langage de programmation vers un autre"
+      ],
+      "explanation": "La rétro-ingénierie part du produit fini (un exécutable, un firmware) pour en reconstituer la logique, les algorithmes ou le format de données, alors qu'on n'a pas le code source. C'est l'inverse de la compilation, qui transforme le source en binaire. Elle sert à l'analyse de malwares, à l'interopérabilité ou aux CTF.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/R%C3%A9tro-ing%C3%A9nierie"
+    },
+    {
+      "question": "En assembleur x86, dans quel registre une fonction place-t-elle par convention sa **valeur de retour** ?",
+      "answer": "`EAX`",
+      "wrong": ["`ESP`", "`EIP`", "`EBP`"],
+      "explanation": "Par convention (cdecl, stdcall…), l'entier ou le pointeur renvoyé par une fonction x86 32 bits est placé dans `EAX`. `ESP` est le pointeur de pile, `EIP` le pointeur d'instruction et `EBP` le pointeur de base de la trame de pile : aucun ne sert à transmettre la valeur de retour.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quoi sert le registre `ESP` en assembleur x86 ?",
+      "answer": "Il pointe vers le sommet de la pile",
+      "wrong": [
+        "Il contient l'adresse de la prochaine instruction à exécuter",
+        "Il stocke la valeur de retour des fonctions",
+        "Il pointe vers le début du segment de code"
+      ],
+      "explanation": "`ESP` (Stack Pointer) désigne toujours le sommet de la pile ; `push` le décrémente et `pop` l'incrémente, car la pile x86 croît vers les adresses basses. L'adresse de la prochaine instruction est dans `EIP`, et la valeur de retour dans `EAX`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que fait la commande `strings` appliquée à un binaire ?",
+      "answer": "Elle extrait les suites de caractères imprimables du fichier",
+      "wrong": [
+        "Elle désassemble le code en instructions machine",
+        "Elle décompile le binaire en pseudo-code C",
+        "Elle liste les fonctions importées par le programme"
+      ],
+      "explanation": "`strings` parcourt le fichier et affiche les séquences de caractères imprimables (par défaut au moins 4). C'est un premier réflexe d'analyse : on y repère des messages, des URL, des clés ou des noms de fonctions. Elle ne désassemble ni ne décompile rien ; lister les imports est le rôle d'outils comme `objdump` ou `dumpbin`.",
+      "difficulty": 1,
+      "source": "https://man7.org/linux/man-pages/man1/strings.1.html"
+    },
+    {
+      "question": "Dans l'écosystème Linux, qu'est-ce que `gdb` ?",
+      "answer": "Un débogueur",
+      "wrong": [
+        "Un désassembleur autonome",
+        "Un décompilateur vers du code C",
+        "Un éditeur hexadécimal"
+      ],
+      "explanation": "`gdb` (GNU Debugger) permet d'exécuter un programme pas à pas, de poser des points d'arrêt, d'inspecter la mémoire et les registres : c'est un débogueur. Il sait désassembler une zone de code, mais ce n'est pas sa fonction première, et il ne reconstruit pas de code source de haut niveau.",
+      "difficulty": 1,
+      "source": "https://www.sourceware.org/gdb/"
+    },
+    {
+      "question": "Qu'est-ce qu'un **point d'arrêt** (breakpoint) dans un débogueur ?",
+      "answer": "Un marqueur qui suspend l'exécution à une adresse ou une ligne donnée",
+      "wrong": [
+        "Une instruction qui termine définitivement le programme",
+        "Une erreur qui provoque le plantage du programme analysé",
+        "Un endroit du code chiffré par un packer"
+      ],
+      "explanation": "Un point d'arrêt indique au débogueur de stopper le programme quand l'exécution atteint une adresse précise, pour inspecter alors les registres, la pile et la mémoire. Il ne met pas fin au programme et n'a rien à voir avec un plantage ou un chiffrement : on peut reprendre l'exécution après l'arrêt.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle est la sortie produite par un **désassembleur** ?",
+      "answer": "Du code en langage assembleur",
+      "wrong": [
+        "Du pseudo-code proche du langage C",
+        "Le code source original du programme",
+        "La liste des chaînes de caractères du binaire"
+      ],
+      "explanation": "Un désassembleur traduit les octets du code machine en instructions assembleur lisibles (`mov`, `push`, `call`…). Produire un pseudo-code proche du C est le travail d'un décompilateur, plus abstrait. Aucun des deux ne restitue le code source d'origine à l'identique, perdu à la compilation.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qui a développé l'outil de rétro-ingénierie **Ghidra** ?",
+      "answer": "La NSA, l'agence de renseignement américaine",
+      "wrong": [
+        "Hex-Rays, l'éditeur d'IDA",
+        "Vector 35, l'éditeur de Binary Ninja",
+        "La fondation Mozilla"
+      ],
+      "explanation": "Ghidra a été développé par la NSA, qui l'a publié en logiciel libre et open source en 2019. Il inclut désassembleur et décompilateur multi-architectures. IDA est édité par Hex-Rays et Binary Ninja par Vector 35, deux produits commerciaux concurrents.",
+      "difficulty": 1,
+      "source": "https://ghidra-sre.org/"
+    },
+    {
+      "question": "Sous Linux, quel est le format standard des fichiers exécutables et des bibliothèques partagées ?",
+      "answer": "ELF",
+      "wrong": ["PE", "Mach-O", "COFF"],
+      "explanation": "Linux utilise le format **ELF** (Executable and Linkable Format) pour ses exécutables, objets et bibliothèques `.so`. **PE** (Portable Executable) est le format de Windows, **Mach-O** celui de macOS, et **COFF** un ancien format dont ELF dérive mais qui n'est plus le format natif de Linux.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Executable_and_Linkable_Format"
+    },
+    {
+      "question": "Qu'est-ce qui distingue l'architecture **ARM** de l'architecture **x86** ?",
+      "answer": "ARM est une architecture de type RISC, x86 de type CISC",
+      "wrong": [
+        "ARM est de type CISC, x86 de type RISC",
+        "ARM ne gère que le 16 bits, x86 uniquement le 64 bits",
+        "ARM impose le big-endian, x86 n'a pas de notion de boutisme"
+      ],
+      "explanation": "ARM suit une philosophie **RISC** (jeu d'instructions réduit, instructions de taille régulière), tandis que x86 est **CISC** (jeu d'instructions riche, instructions de longueur variable). Les deux existent en 32 et 64 bits. ARM peut fonctionner dans les deux boutismes, et x86 est fondamentalement little-endian.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Reduced_instruction_set_computer"
+    },
+    {
+      "question": "Sur une architecture **little-endian** comme le x86, comment la valeur 32 bits `0x12345678` est-elle rangée en mémoire ?",
+      "answer": "Octets `78 56 34 12` (poids faible en premier)",
+      "wrong": [
+        "Octets `12 34 56 78` (poids fort en premier)",
+        "Octets `87 65 43 21` (chaque octet inversé bit à bit)",
+        "Octets `56 78 12 34` (mots de 16 bits échangés)"
+      ],
+      "explanation": "En little-endian, l'octet de poids faible est stocké à l'adresse la plus basse : `0x12345678` donne donc, en mémoire, `78 56 34 12`. L'ordre `12 34 56 78` correspond au big-endian. C'est une source classique d'erreurs quand on lit un dump mémoire d'un binaire x86.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Endianness"
+    },
+    {
+      "question": "Qu'est-ce que l'**analyse dynamique** d'un programme en rétro-ingénierie ?",
+      "answer": "L'étudier en l'exécutant et en observant son comportement réel",
+      "wrong": [
+        "L'étudier uniquement à partir de son code, sans l'exécuter",
+        "Lire seulement les chaînes de caractères du binaire",
+        "Comparer le binaire à une base de signatures antivirus"
+      ],
+      "explanation": "L'analyse dynamique consiste à lancer le programme (souvent dans une machine virtuelle ou un bac à sable) et à observer ses appels système, son trafic réseau, ses écritures disque, etc. Elle s'oppose à l'analyse statique, qui examine le binaire sans jamais l'exécuter. Les deux sont complémentaires.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que contient la section `.text` d'un exécutable PE ou ELF ?",
+      "answer": "Le code machine exécutable du programme",
+      "wrong": [
+        "Les variables globales initialisées",
+        "Les chaînes de caractères et constantes en lecture seule",
+        "La table des symboles de débogage"
+      ],
+      "explanation": "La section `.text` regroupe les instructions machine exécutables ; elle est généralement marquée en lecture et exécution, mais pas en écriture. Les variables globales initialisées vont dans `.data`, les constantes et chaînes dans `.rodata`, et les symboles de débogage dans des sections dédiées comme `.symtab` ou `.debug_*`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que signifie qu'un binaire a été **strippé** (stripped) ?",
+      "answer": "Sa table des symboles a été retirée",
+      "wrong": [
+        "Son code a été chiffré par un packer",
+        "Il a été compilé avec le niveau d'optimisation maximal",
+        "Toutes ses chaînes de caractères ont été supprimées"
+      ],
+      "explanation": "Stripper un binaire (via la commande `strip`) enlève la table des symboles et les informations de débogage. Les noms de fonctions et de variables disparaissent, ce qui complique nettement la rétro-ingénierie. Le code et les chaînes, eux, restent présents : c'est différent d'un chiffrement par packer.",
+      "difficulty": 2,
+      "source": "https://man7.org/linux/man-pages/man1/strip.1.html"
+    },
+    {
+      "question": "À quoi sert principalement l'outil **UPX** ?",
+      "answer": "Compresser un exécutable pour réduire sa taille",
+      "wrong": [
+        "Chiffrer un exécutable pour le rendre indétectable",
+        "Signer numériquement un exécutable",
+        "Retirer les symboles de débogage d'un binaire"
+      ],
+      "explanation": "UPX (Ultimate Packer for eXecutables) est un packer qui compresse l'exécutable ; au lancement, un petit stub le décompresse en mémoire avant de l'exécuter. Les malwares s'en servent parfois pour gêner l'analyse, mais sa fonction de base est la compression, pas le chiffrement furtif (rôle d'un crypter) ni la signature.",
+      "difficulty": 2,
+      "source": "https://upx.github.io/"
+    },
+    {
+      "question": "Quel outil de rétro-ingénierie est édité par **Hex-Rays** et réputé pour son décompilateur ?",
+      "answer": "IDA",
+      "wrong": ["Ghidra", "radare2", "OllyDbg"],
+      "explanation": "IDA (Interactive DisAssembler) est le produit phare de Hex-Rays, dont le décompilateur fait référence dans l'industrie. Ghidra est édité par la NSA, radare2 est un framework libre et OllyDbg est un ancien débogueur Windows 32 bits : aucun n'est édité par Hex-Rays.",
+      "difficulty": 2,
+      "source": "https://hex-rays.com/ida-pro"
+    },
+    {
+      "question": "Sur quel système d'exploitation s'utilise le débogueur **x64dbg** ?",
+      "answer": "Windows",
+      "wrong": ["Linux", "macOS", "Android"],
+      "explanation": "x64dbg est un débogueur open source dédié aux exécutables Windows, en 32 et 64 bits. Il est très utilisé pour l'analyse de malwares PE. Sous Linux on utilise plutôt `gdb` ; macOS a `lldb`, et l'analyse Android passe par d'autres outils.",
+      "difficulty": 2,
+      "source": "https://x64dbg.com/"
+    },
+    {
+      "question": "Dans la convention d'appel **cdecl** (courante en C sur x86), qui nettoie la pile des arguments après l'appel ?",
+      "answer": "L'appelant (caller)",
+      "wrong": [
+        "L'appelé (la fonction appelée)",
+        "Le système d'exploitation au retour",
+        "Le ramasse-miettes (garbage collector)"
+      ],
+      "explanation": "En cdecl, l'appelant empile les arguments puis, une fois la fonction revenue, remet lui-même le pointeur de pile en place. Cela autorise les fonctions à nombre variable d'arguments comme `printf`. En stdcall, au contraire, c'est l'appelé qui nettoie la pile. Reconnaître ce détail aide à retrouver la convention d'une fonction.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/X86_calling_conventions"
+    },
+    {
+      "question": "Sur un processeur x86-64, comment nomme-t-on la version 64 bits du registre `EAX` ?",
+      "answer": "`RAX`",
+      "wrong": ["`XAX`", "`EAX64`", "`AX64`"],
+      "explanation": "En passant au 64 bits, Intel et AMD ont préfixé les registres généraux par `R` : `EAX` devient `RAX`, `EBX` devient `RBX`, etc. Le registre reste accessible en 32 bits via `EAX`, en 16 bits via `AX` et en 8 bits via `AL` ou `AH`. Les autres noms proposés n'existent pas.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/X86-64"
+    },
+    {
+      "question": "Qu'est-ce que **radare2** ?",
+      "answer": "Un framework de rétro-ingénierie en ligne de commande, libre et open source",
+      "wrong": [
+        "Un antivirus en ligne de commande pour Linux",
+        "Un compilateur C optimisé pour les systèmes embarqués",
+        "Un format de fichier exécutable propre à l'ARM"
+      ],
+      "explanation": "radare2 (ou r2) est une boîte à outils libre pilotée en ligne de commande : désassemblage, débogage, analyse et édition de binaires de nombreuses architectures. Son interface graphique associée s'appelle Cutter. Ce n'est ni un antivirus, ni un compilateur, ni un format de fichier.",
+      "difficulty": 2,
+      "source": "https://rada.re/n/"
+    },
+    {
+      "question": "Quelle commande `gdb` pose un **point d'arrêt** sur la fonction `main` ?",
+      "answer": "`break main`",
+      "wrong": ["`run main`", "`step main`", "`watch main`"],
+      "explanation": "`break main` (abrégé `b main`) installe un point d'arrêt à l'entrée de `main`. `run` lance le programme, `step` exécute une ligne en entrant dans les appels, et `watch` pose un point d'arrêt sur la modification d'une donnée, pas sur une fonction.",
+      "difficulty": 2,
+      "source": "https://sourceware.org/gdb/current/onlinedocs/gdb/"
+    },
+    {
+      "question": "Comment la fonction Windows `IsDebuggerPresent()` détecte-t-elle qu'un débogueur est attaché ?",
+      "answer": "Elle lit le drapeau `BeingDebugged` du PEB du processus",
+      "wrong": [
+        "Elle recherche des instructions `INT 3` dans la mémoire du code",
+        "Elle mesure le temps écoulé entre deux instructions",
+        "Elle énumère les processus à la recherche de `gdb` ou `x64dbg`"
+      ],
+      "explanation": "`IsDebuggerPresent` se contente de lire l'octet `BeingDebugged` dans le PEB (Process Environment Block) du processus courant. C'est la technique anti-debug la plus simple, et donc la plus facile à contourner : il suffit de forcer ce drapeau à zéro. Les autres méthodes citées sont de vraies techniques anti-debug, mais pas celle de cette API.",
+      "difficulty": 3,
+      "source": "https://learn.microsoft.com/en-us/windows/win32/api/debugapi/nf-debugapi-isdebuggerpresent"
+    },
+    {
+      "question": "Pour quel type de binaires l'outil **dnSpy** est-il conçu ?",
+      "answer": "Les assemblys .NET",
+      "wrong": [
+        "Les binaires natifs x86 compilés en C",
+        "Les applications Android au format APK",
+        "Les scripts Python compilés en `.pyc`"
+      ],
+      "explanation": "dnSpy est un débogueur et décompilateur d'assemblys .NET : il reconstruit un code C# ou VB.NET très proche de l'original à partir du bytecode CIL, et permet même de l'éditer. Pour du natif on utilise IDA ou Ghidra, pour Android jadx, et pour `.pyc` des décompilateurs Python dédiés.",
+      "difficulty": 3,
+      "source": "https://github.com/dnSpy/dnSpy"
+    },
+    {
+      "question": "Que produit l'outil **jadx** à partir d'un fichier `.dex` ou `.apk` Android ?",
+      "answer": "Du code source Java lisible",
+      "wrong": [
+        "Du bytecode Dalvik brut commenté",
+        "Un rapport d'analyse antivirus de l'application",
+        "Un exécutable natif ARM"
+      ],
+      "explanation": "jadx décompile le bytecode Dalvik contenu dans les `.dex`/`.apk` en code source Java lisible, ce qui facilite grandement la rétro-ingénierie d'applications Android. Il va plus loin qu'un simple désassemblage en smali (le bytecode Dalvik textuel) et ne produit ni rapport antivirus ni binaire natif.",
+      "difficulty": 3,
+      "source": "https://github.com/skylot/jadx"
+    },
+    {
+      "question": "Dans la convention d'appel **stdcall** (API Win32), qui nettoie la pile des arguments ?",
+      "answer": "L'appelé, au moyen d'un `ret N`",
+      "wrong": [
+        "L'appelant, après le retour de la fonction",
+        "Personne : la pile n'est jamais nettoyée",
+        "Le chargeur du système au déchargement du module"
+      ],
+      "explanation": "En stdcall, c'est la fonction appelée qui dépile les arguments, grâce à la forme `ret N` qui ajoute N octets à `ESP` lors du retour. En cdecl, à l'inverse, c'est l'appelant. Voir un `ret 8` plutôt qu'un simple `ret` est donc un indice fort qu'une fonction suit la convention stdcall.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/X86_calling_conventions"
+    },
+    {
+      "question": "Que fait précisément l'instruction `ret` en assembleur x86 ?",
+      "answer": "Elle dépile l'adresse de retour et la charge dans le pointeur d'instruction",
+      "wrong": [
+        "Elle empile l'adresse de l'instruction suivante puis saute",
+        "Elle restaure le registre `EBP` depuis la pile",
+        "Elle remet à zéro le registre `EAX`"
+      ],
+      "explanation": "`ret` retire du sommet de la pile l'adresse de retour (placée là par le `call` correspondant) et la met dans `EIP`/`RIP`, reprenant l'exécution juste après l'appel. Empiler l'adresse puis sauter, c'est le rôle de `call` ; restaurer `EBP` est l'affaire de `leave` ou d'un `pop ebp`.",
+      "difficulty": 3,
+      "source": "https://www.felixcloutier.com/x86/ret"
+    },
+    {
+      "question": "Qu'empile l'instruction `call` juste avant de transférer l'exécution à la fonction appelée ?",
+      "answer": "L'adresse de retour, c'est-à-dire l'adresse de l'instruction qui suit le `call`",
+      "wrong": [
+        "L'adresse de la fonction appelée",
+        "La valeur courante du registre `EBP`",
+        "Les arguments passés à la fonction"
+      ],
+      "explanation": "`call` empile l'adresse de l'instruction suivante (l'adresse de retour) puis saute vers la cible ; c'est ce que `ret` ira rechercher ensuite. L'adresse de la fonction est la destination du saut, pas ce qui est empilé. La sauvegarde de `EBP` est faite par le prologue de la fonction, et les arguments sont empilés par l'appelant avant le `call`.",
+      "difficulty": 3,
+      "source": "https://www.felixcloutier.com/x86/call"
+    },
+    {
+      "question": "Que contient typiquement la section `.data` d'un binaire ?",
+      "answer": "Les variables globales et statiques initialisées",
+      "wrong": [
+        "Le code machine exécutable",
+        "Les variables globales non initialisées",
+        "La table des bibliothèques importées"
+      ],
+      "explanation": "La section `.data` stocke les données globales et statiques qui ont une valeur initiale non nulle, inscrite dans le fichier. Les variables globales non initialisées (mises à zéro) vont dans `.bss`, qui n'occupe pas de place sur le disque. Le code exécutable est dans `.text`, et les imports dans des sections dédiées (`.idata` sous PE).",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi un **packer** complique-t-il fortement l'analyse statique d'un malware ?",
+      "answer": "Le vrai code n'apparaît qu'en mémoire, après décompression à l'exécution",
+      "wrong": [
+        "Il chiffre uniquement les communications réseau du malware",
+        "Il empêche totalement l'exécution dans une machine virtuelle",
+        "Il efface le malware du disque juste après son lancement"
+      ],
+      "explanation": "Un packer stocke sur le disque le code utile sous forme compressée ou chiffrée, accompagné d'un petit stub. Ce n'est qu'au lancement que le stub reconstitue le code original en mémoire. L'analyse statique du fichier sur disque ne voit donc que le stub ; il faut souvent passer par l'analyse dynamique pour récupérer le code dépaqueté (dump mémoire).",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Executable_compression"
+    },
+    {
+      "question": "Qu'est-ce que **Binary Ninja** ?",
+      "answer": "Une plateforme de rétro-ingénierie commerciale dotée d'un décompilateur",
+      "wrong": [
+        "Un débogueur de noyau intégré à Windows",
+        "Un format de conteneur utilisé par les malwares",
+        "Un désassembleur en ligne gratuit publié par la NSA"
+      ],
+      "explanation": "Binary Ninja est une plateforme d'analyse de binaires éditée par Vector 35, concurrente d'IDA et de Ghidra, appréciée pour ses représentations intermédiaires (ILs) et son décompilateur. Ce n'est ni un débogueur noyau, ni un format de fichier ; l'outil gratuit de la NSA, lui, s'appelle Ghidra.",
+      "difficulty": 3,
+      "source": "https://binary.ninja/"
+    }
+  ]
+}

@@ -1,0 +1,369 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Python",
+  "icon": "🐍",
+  "description": "Mutabilité, slicing, générateurs, décorateurs, GIL : les mécanismes et les pièges du langage à la syntaxe limpide.",
+  "order": 7,
+  "questions": [
+    {
+      "question": "Parmi ces types natifs, lequel est **immuable** (on ne peut pas modifier son contenu après création) ?",
+      "answer": "`tuple`",
+      "wrong": [
+        "`list`",
+        "`dict`",
+        "`set`"
+      ],
+      "explanation": "Un `tuple` est figé une fois créé : aucune méthode ne permet d'ajouter, retirer ou remplacer un élément. `list`, `dict` et `set` sont au contraire mutables (`append`, affectation par clé, `add`…). Cette immuabilité rend le tuple hachable, donc utilisable comme clé de dictionnaire ou élément d'un `set`, ce qu'une liste ne peut pas faire.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nnombres = [10, 20, 30, 40, 50]\nprint(nombres[1:4])\n```",
+      "answer": "`[20, 30, 40]`",
+      "wrong": [
+        "`[20, 30, 40, 50]`",
+        "`[10, 20, 30]`",
+        "`[20, 30]`"
+      ],
+      "explanation": "Le slicing `[1:4]` renvoie les éléments d'indice 1 inclus à 4 **exclu**, soit les indices 1, 2 et 3. La borne de fin n'est jamais incluse en Python, ce qui garantit que la longueur de la tranche vaut `fin - début` quand les bornes sont dans les limites.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/tutorial/introduction.html"
+    },
+    {
+      "question": "Que valent `17 // 5` et `17 % 5` ?",
+      "answer": "`3` et `2`",
+      "wrong": [
+        "`3` et `3`",
+        "`2` et `3`",
+        "`3.4` et `0`"
+      ],
+      "explanation": "`//` est la division entière (floor) : 17 divisé par 5 donne 3 (partie entière vers le bas). `%` est le reste de cette division : 5 × 3 = 15, et 17 − 15 = 2. On a toujours la relation `(a // b) * b + (a % b) == a`, soit ici `3 * 5 + 2 == 17`.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/reference/expressions.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nnom = \"Ana\"\nprint(f\"Bonjour {nom} !\")\n```",
+      "answer": "`Bonjour Ana !`",
+      "wrong": [
+        "`Bonjour {nom} !`",
+        "`Bonjour nom !`",
+        "`f\"Bonjour Ana !\"`"
+      ],
+      "explanation": "Une f-string (préfixe `f`) évalue les expressions placées entre accolades et insère leur valeur dans la chaîne. Ici `{nom}` est remplacé par `Ana`. Sans le préfixe `f`, la chaîne serait affichée littéralement avec les accolades. Les f-strings existent depuis Python 3.6.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/reference/lexical_analysis.html#f-strings"
+    },
+    {
+      "question": "Que vaut `bool([])` (la valeur de vérité d'une liste vide) ?",
+      "answer": "`False`",
+      "wrong": [
+        "`True`",
+        "`None`",
+        "Une `TypeError`"
+      ],
+      "explanation": "En Python, les conteneurs vides sont « falsy » : `[]`, `{}`, `()`, `\"\"`, `0` et `None` valent tous `False` dans un contexte booléen. Une liste non vide comme `[0]` vaut `True`, même si son unique élément est `0`. C'est pourquoi on écrit `if ma_liste:` plutôt que `if len(ma_liste) > 0:`.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html#truth-value-testing"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ncarres = [x * x for x in range(4)]\nprint(carres)\n```",
+      "answer": "`[0, 1, 4, 9]`",
+      "wrong": [
+        "`[1, 4, 9, 16]`",
+        "`[0, 1, 4, 9, 16]`",
+        "`[0, 2, 4, 6]`"
+      ],
+      "explanation": "`range(4)` produit 0, 1, 2 et 3 (la borne 4 est exclue). La compréhension élève chaque valeur au carré : 0, 1, 4 et 9. Une compréhension de liste construit une nouvelle liste en une seule expression, de façon plus concise et souvent plus rapide qu'une boucle `for` avec `append`.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/tutorial/datastructures.html#list-comprehensions"
+    },
+    {
+      "question": "Quelle est la différence entre les opérateurs `==` et `is` ?",
+      "answer": "`==` compare les valeurs, `is` compare l'identité (même objet en mémoire)",
+      "wrong": [
+        "`is` compare les valeurs, `==` compare l'identité",
+        "Aucune différence, ce sont des synonymes",
+        "`is` ne fonctionne qu'avec les nombres, `==` avec tout"
+      ],
+      "explanation": "`==` appelle la méthode `__eq__` et teste l'égalité des valeurs ; `is` teste si deux noms désignent le **même** objet en mémoire. Deux listes `[1, 2]` distinctes sont égales (`==` vaut `True`) mais ne sont pas le même objet (`is` vaut `False`). On réserve `is` à la comparaison avec `None` : `x is None`.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/reference/expressions.html#is"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nages = {\"Ana\": 30}\nprint(ages.get(\"Bob\", 0))\n```",
+      "answer": "`0`",
+      "wrong": [
+        "Une `KeyError`",
+        "`None`",
+        "`Bob`"
+      ],
+      "explanation": "La méthode `dict.get(cle, defaut)` renvoie la valeur associée à la clé si elle existe, sinon la valeur par défaut fournie (ici `0`), **sans** lever d'exception. En revanche, l'accès direct `ages[\"Bob\"]` lèverait une `KeyError`. Sans second argument, `get` renvoie `None` pour une clé absente.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html#dict.get"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nprint(len({1, 1, 2, 2, 3}))\n```",
+      "answer": "`3`",
+      "wrong": [
+        "`5`",
+        "`6`",
+        "`1`"
+      ],
+      "explanation": "Un `set` (ensemble) ne stocke jamais de doublon : les valeurs répétées sont automatiquement fusionnées à la création. L'ensemble ne contient donc que `1`, `2` et `3`, soit 3 éléments. C'est la façon idiomatique de dédupliquer : `list(set(ma_liste))`.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/tutorial/datastructures.html#sets"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ndef f(*args, **kwargs):\n    return len(args), len(kwargs)\n\nprint(f(1, 2, 3, x=10, y=20))\n```",
+      "answer": "`(3, 2)`",
+      "wrong": [
+        "`(2, 3)`",
+        "`(5, 0)`",
+        "`(3, 0)`"
+      ],
+      "explanation": "`*args` collecte les arguments **positionnels** dans un tuple : ici `1, 2, 3`, soit 3 éléments. `**kwargs` collecte les arguments **nommés** dans un dictionnaire : `x=10` et `y=20`, soit 2 éléments. Ces deux syntaxes permettent d'écrire des fonctions acceptant un nombre variable d'arguments.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/tutorial/controlflow.html#arbitrary-argument-lists"
+    },
+    {
+      "question": "À quoi sert un **décorateur** (`@deco`) placé au-dessus d'une fonction ?",
+      "answer": "Il remplace la fonction par le résultat de `deco(fonction)`, enveloppant son comportement",
+      "wrong": [
+        "Il exécute la fonction une fois au moment de sa définition",
+        "Il rend la fonction privée au module",
+        "Il met en cache automatiquement toutes les valeurs de retour"
+      ],
+      "explanation": "`@deco` au-dessus de `def f()` équivaut exactement à `f = deco(f)` : le décorateur reçoit la fonction, en renvoie généralement une version « enveloppée » qui ajoute un comportement (log, mesure du temps, contrôle d'accès…) autour de l'appel. La mise en cache n'est le fait que de décorateurs spécifiques comme `functools.lru_cache`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/glossary.html#term-decorator"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ndef g():\n    yield 1\n    yield 2\n    yield 3\n\nprint(sum(g()))\n```",
+      "answer": "`6`",
+      "wrong": [
+        "`[1, 2, 3]`",
+        "`<generator object>`",
+        "`3`"
+      ],
+      "explanation": "Une fonction contenant `yield` est un générateur : chaque appel à `yield` produit une valeur et suspend l'exécution jusqu'à la demande suivante. `sum()` consomme le générateur en additionnant les valeurs produites : 1 + 2 + 3 = 6. Les générateurs sont paresseux : ils calculent les valeurs à la demande sans tout stocker en mémoire.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/reference/expressions.html#yield-expressions"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\na = [[1, 2], [3, 4]]\nb = a.copy()\nb[0].append(99)\nprint(a)\n```",
+      "answer": "`[[1, 2, 99], [3, 4]]`",
+      "wrong": [
+        "`[[1, 2], [3, 4]]`",
+        "`[[1, 2, 99], [3, 4, 99]]`",
+        "Une `TypeError`"
+      ],
+      "explanation": "`a.copy()` réalise une copie **superficielle** : `b` est une nouvelle liste, mais ses éléments sont les mêmes objets que ceux de `a`. La sous-liste `b[0]` est donc la même que `a[0]` ; y ajouter `99` modifie aussi `a`. Pour copier aussi les objets imbriqués, il faut `copy.deepcopy(a)`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/copy.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nimport copy\na = [[1, 2], [3, 4]]\nb = copy.deepcopy(a)\nb[0].append(99)\nprint(a)\n```",
+      "answer": "`[[1, 2], [3, 4]]`",
+      "wrong": [
+        "`[[1, 2, 99], [3, 4]]`",
+        "`[[1, 2, 99], [3, 4, 99]]`",
+        "`[[1, 2], [3, 4], 99]`"
+      ],
+      "explanation": "`copy.deepcopy` copie récursivement la structure entière : `b` et ses sous-listes sont des objets totalement indépendants de `a`. Modifier `b[0]` n'a donc aucun effet sur `a`, qui reste inchangé. C'est la différence clé avec la copie superficielle, où les objets imbriqués restent partagés.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/copy.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nmots = [\"banane\", \"kiwi\", \"fraise\"]\nprint(sorted(mots, key=len))\n```",
+      "answer": "`['kiwi', 'banane', 'fraise']`",
+      "wrong": [
+        "`['banane', 'fraise', 'kiwi']`",
+        "`['banane', 'kiwi', 'fraise']`",
+        "`['fraise', 'banane', 'kiwi']`"
+      ],
+      "explanation": "L'argument `key` indique une fonction appliquée à chaque élément pour produire la valeur de tri. Avec `key=len`, on trie par longueur croissante : `kiwi` (4), `banane` (6), `fraise` (6). À longueur égale, `sorted` est stable et conserve l'ordre d'origine (`banane` avant `fraise`).",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/howto/sorting.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\npaires = [(\"Ana\", 3), (\"Bob\", 1), (\"Eve\", 2)]\nprint(sorted(paires, key=lambda p: p[1]))\n```",
+      "answer": "`[('Bob', 1), ('Eve', 2), ('Ana', 3)]`",
+      "wrong": [
+        "`[('Ana', 3), ('Bob', 1), ('Eve', 2)]`",
+        "`[('Ana', 3), ('Eve', 2), ('Bob', 1)]`",
+        "`[('Bob', 1), ('Ana', 3), ('Eve', 2)]`"
+      ],
+      "explanation": "La `lambda p: p[1]` est une petite fonction anonyme qui renvoie le deuxième élément de chaque tuple. Le tri s'effectue donc sur ces nombres, par ordre croissant : 1, 2, 3. Les `lambda` sont pratiques comme clé de tri jetable, sans avoir à définir une fonction nommée avec `def`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/howto/sorting.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nprint({x: x ** 2 for x in range(4)})\n```",
+      "answer": "`{0: 0, 1: 1, 2: 4, 3: 9}`",
+      "wrong": [
+        "`{0, 1, 4, 9}`",
+        "`[0, 1, 4, 9]`",
+        "`{1: 1, 2: 4, 3: 9, 4: 16}`"
+      ],
+      "explanation": "C'est une compréhension de **dictionnaire** : la syntaxe `cle: valeur for …` construit un `dict`. Chaque entier de `range(4)` (0 à 3) devient une clé associée à son carré. À ne pas confondre avec `{x for x in …}`, qui produirait un `set` sans clés.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/tutorial/datastructures.html#dictionaries"
+    },
+    {
+      "question": "Dans l'instruction `with open(\"f.txt\") as fichier:`, que garantit le gestionnaire de contexte (`with`) ?",
+      "answer": "La fermeture du fichier à la sortie du bloc, même si une exception survient",
+      "wrong": [
+        "Que le fichier existe forcément avant l'ouverture",
+        "Que le fichier est chargé entièrement en mémoire",
+        "Que le bloc sera réessayé en cas d'erreur"
+      ],
+      "explanation": "Un gestionnaire de contexte définit `__enter__` (exécuté à l'entrée du bloc) et `__exit__` (exécuté à la sortie, y compris en cas d'exception). Pour un fichier, `__exit__` appelle `close()`, ce qui libère la ressource de façon fiable sans avoir à écrire un `try/finally` manuel.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/reference/datamodel.html#context-managers"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ntry:\n    x = 1\nexcept Exception:\n    print(\"except\")\nelse:\n    print(\"else\")\nfinally:\n    print(\"finally\")\n```",
+      "answer": "`else` puis `finally`",
+      "wrong": [
+        "`finally` seulement",
+        "`except` puis `finally`",
+        "`else` seulement"
+      ],
+      "explanation": "Le bloc `try` ne lève aucune exception, donc `except` est ignoré. Le bloc `else` s'exécute précisément quand le `try` a réussi, affichant `else`. Le bloc `finally` s'exécute **toujours**, quoi qu'il arrive, affichant `finally` en dernier.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/tutorial/errors.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\na, *b, c = [1, 2, 3, 4, 5]\nprint(b)\n```",
+      "answer": "`[2, 3, 4]`",
+      "wrong": [
+        "`[2, 3, 4, 5]`",
+        "`[1, 2, 3, 4]`",
+        "`(2, 3, 4)`"
+      ],
+      "explanation": "Le dépaquetage avec une étoile (`*b`) capture tous les éléments « du milieu » dans une **liste**. `a` reçoit le premier élément (1), `c` le dernier (5), et `*b` tout ce qui reste : `[2, 3, 4]`. Le résultat du dépaquetage étoilé est toujours une liste, même si la source est un tuple.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/reference/simple_stmts.html#assignment-statements"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nprint(0 or \"défaut\")\nprint(\"valeur\" and 42)\n```",
+      "answer": "`défaut` puis `42`",
+      "wrong": [
+        "`True` puis `True`",
+        "`0` puis `valeur`",
+        "`défaut` puis `valeur`"
+      ],
+      "explanation": "`or` et `and` ne renvoient pas un booléen mais l'un des opérandes. `or` renvoie le premier opérande vrai, ou le dernier si tous sont faux : `0` étant falsy, `0 or \"défaut\"` donne `\"défaut\"`. `and` renvoie le premier opérande faux, ou le dernier si tous sont vrais : `\"valeur\"` étant vrai, `\"valeur\" and 42` donne `42`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html#boolean-operations-and-or-not"
+    },
+    {
+      "question": "À quoi correspond le **GIL** (Global Interpreter Lock) de CPython ?",
+      "answer": "Un verrou qui n'autorise qu'un seul thread à exécuter du bytecode Python à la fois",
+      "wrong": [
+        "Un ramasse-miettes qui libère la mémoire inutilisée",
+        "Une limite sur le nombre de variables globales d'un programme",
+        "Un cache qui accélère l'import des modules"
+      ],
+      "explanation": "Le GIL de l'implémentation CPython garantit qu'un seul thread exécute du bytecode Python à un instant donné, ce qui simplifie la gestion mémoire mais empêche le vrai parallélisme CPU entre threads. Pour les tâches limitées par le processeur, on utilise `multiprocessing` (plusieurs processus) ; les threads restent utiles pour les tâches d'entrées/sorties, où le GIL est relâché pendant l'attente.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/glossary.html#term-global-interpreter-lock"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ndef ajoute(valeur, liste=[]):\n    liste.append(valeur)\n    return liste\n\nprint(ajoute(1))\nprint(ajoute(2))\n```",
+      "answer": "`[1]` puis `[1, 2]`",
+      "wrong": [
+        "`[1]` puis `[2]`",
+        "`[1]` puis `[1]`",
+        "`[1, 2]` puis `[1, 2]`"
+      ],
+      "explanation": "La valeur par défaut `liste=[]` n'est évaluée **qu'une seule fois**, à la définition de la fonction, pas à chaque appel. La même liste est donc réutilisée et accumule les valeurs entre les appels. C'est un piège classique : on écrit `liste=None` puis `if liste is None: liste = []` à l'intérieur de la fonction.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/tutorial/controlflow.html#default-argument-values"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ndonnees = [1, 2, 3, 4, 5]\nif (n := len(donnees)) > 3:\n    print(n)\n```",
+      "answer": "`5`",
+      "wrong": [
+        "`True`",
+        "`3`",
+        "Une `SyntaxError`"
+      ],
+      "explanation": "L'opérateur morse `:=` (walrus, Python 3.8+) affecte une valeur à une variable **dans** une expression. Ici `n` reçoit `len(donnees)`, soit 5, et cette valeur est aussitôt comparée à 3. La condition étant vraie, le bloc affiche `n`, c'est-à-dire 5. Cela évite d'appeler `len(donnees)` deux fois.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/reference/expressions.html#assignment-expressions"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ndef statut(code):\n    match code:\n        case 200:\n            return \"OK\"\n        case 404:\n            return \"Introuvable\"\n        case _:\n            return \"Autre\"\n\nprint(statut(404))\n```",
+      "answer": "`Introuvable`",
+      "wrong": [
+        "`OK`",
+        "`Autre`",
+        "`404`"
+      ],
+      "explanation": "L'instruction `match/case` (Python 3.10+) compare la valeur aux motifs dans l'ordre et exécute le premier qui correspond. `code` vaut 404, donc le deuxième `case` s'applique et renvoie `\"Introuvable\"`. Le motif `case _` est le joker attrape-tout, équivalent d'un `else`, atteint seulement si aucun motif précédent ne correspond.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/tutorial/controlflow.html#match-statements"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nimport asyncio\n\nasync def double(x):\n    return x * 2\n\nasync def main():\n    r = await asyncio.gather(double(1), double(2), double(3))\n    print(r)\n\nasyncio.run(main())\n```",
+      "answer": "`[2, 4, 6]`",
+      "wrong": [
+        "`[1, 2, 3]`",
+        "`6`",
+        "`[<coroutine>, <coroutine>, <coroutine>]`"
+      ],
+      "explanation": "`asyncio.gather` lance les coroutines de façon concurrente et renvoie la **liste** de leurs résultats, dans l'ordre des arguments passés (et non dans l'ordre d'achèvement). Chaque `double` renvoie le double de son entrée : 2, 4 et 6. `asyncio.run` crée la boucle d'événements, exécute la coroutine `main` et la referme.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/library/asyncio-task.html#asyncio.gather"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nclass Point:\n    def __init__(self, x):\n        self.x = x\n    def __repr__(self):\n        return f\"Point({self.x})\"\n\nprint([Point(1), Point(2)])\n```",
+      "answer": "`[Point(1), Point(2)]`",
+      "wrong": [
+        "`[1, 2]`",
+        "`[<Point object>, <Point object>]`",
+        "`Point(1) Point(2)`"
+      ],
+      "explanation": "Quand on affiche une liste, Python affiche le `repr` de chaque élément, pas son `str`. En définissant `__repr__`, la classe contrôle cette représentation : chaque point s'affiche `Point(1)`, `Point(2)`. Sans `__repr__`, on obtiendrait la forme par défaut du type `<Point object at 0x…>`.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/reference/datamodel.html#object.__repr__"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nfonctions = [lambda: i for i in range(3)]\nprint([f() for f in fonctions])\n```",
+      "answer": "`[2, 2, 2]`",
+      "wrong": [
+        "`[0, 1, 2]`",
+        "`[0, 0, 0]`",
+        "`[3, 3, 3]`"
+      ],
+      "explanation": "Les closures capturent la **variable** `i`, pas sa valeur au moment de la création de la lambda. Les trois lambdas partagent le même `i`, qui vaut 2 (sa dernière valeur) une fois la compréhension terminée. Pour figer la valeur, on écrit `lambda i=i: i`, où l'argument par défaut est évalué immédiatement.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/faq/programming.html#why-do-lambdas-defined-in-a-loop-with-different-values-all-return-the-same-result"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ng = (x for x in range(3))\nprint(list(g))\nprint(list(g))\n```",
+      "answer": "`[0, 1, 2]` puis `[]`",
+      "wrong": [
+        "`[0, 1, 2]` puis `[0, 1, 2]`",
+        "`[]` puis `[0, 1, 2]`",
+        "Une `StopIteration`"
+      ],
+      "explanation": "Un générateur est un itérateur à usage **unique** : le premier `list(g)` le parcourt entièrement et le vide. Au second appel, il n'y a plus rien à produire, d'où une liste vide. Contrairement à une liste, un générateur ne peut pas être « rembobiné » : il faut le recréer pour le reparcourir.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/glossary.html#term-generator"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nprint(-7 // 2, -7 % 2)\n```",
+      "answer": "`-4 1`",
+      "wrong": [
+        "`-3 -1`",
+        "`-4 -1`",
+        "`-3 1`"
+      ],
+      "explanation": "En Python, `//` arrondit **vers le bas** (floor), pas vers zéro : `-7 / 2` vaut -3,5, dont le plancher est -4. Le reste suit la relation `(a // b) * b + (a % b) == a`, soit `-4 * 2 + r == -7`, donc `r = 1`. Résultat : le `%` d'un nombre négatif par un positif est toujours positif en Python, à la différence du C.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/reference/expressions.html#binary-arithmetic-operations"
+    }
+  ]
+}

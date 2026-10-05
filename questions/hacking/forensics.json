@@ -1,0 +1,369 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Forensics",
+  "icon": "🔎",
+  "description": "Investigation numérique : imagerie disque, intégrité, systèmes de fichiers, mémoire vive, artefacts Windows et Linux, pcap et timeline.",
+  "order": 6,
+  "questions": [
+    {
+      "question": "En investigation numérique, à quoi sert la **chaîne de custody** (chain of custody) ?",
+      "answer": "Tracer qui a détenu la preuve, quand et pourquoi, du prélèvement au tribunal",
+      "wrong": [
+        "Chiffrer la preuve pour qu'elle reste confidentielle",
+        "Supprimer définitivement les données après l'analyse",
+        "Accélérer la copie d'un disque vers un support externe"
+      ],
+      "explanation": "La chaîne de custody est la traçabilité documentée d'une preuve : chaque personne qui l'a manipulée, à quelle date, dans quel but et comment elle a été stockée. Une rupture dans cette traçabilité peut rendre la preuve irrecevable, car on ne peut plus garantir qu'elle n'a pas été altérée ou substituée.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Chain_of_custody"
+    },
+    {
+      "question": "À quoi sert un **bloqueur en écriture** (write blocker) lors de l'acquisition d'un disque à analyser ?",
+      "answer": "Empêcher toute modification du disque source pendant sa lecture",
+      "wrong": [
+        "Chiffrer le disque source pour protéger son contenu",
+        "Accélérer la copie en désactivant le cache",
+        "Effacer de façon sécurisée le disque de destination"
+      ],
+      "explanation": "Le simple fait de brancher un disque peut déclencher des écritures (montage, horodatages, journaux). Un bloqueur en écriture, matériel ou logiciel, laisse passer les lectures mais bloque les écritures vers le support d'origine. La preuve reste ainsi intacte, ce qui est indispensable pour que son hachage d'intégrité reste vérifiable.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Forensic_disk_controller"
+    },
+    {
+      "question": "Sous Linux, quel type de copie la commande `dd` réalise-t-elle pour l'imagerie d'un disque ?",
+      "answer": "Une copie bit à bit de l'intégralité du support",
+      "wrong": [
+        "Une copie des seuls fichiers visibles du système",
+        "Une copie incrémentale des fichiers modifiés",
+        "Une copie compressée qui ignore l'espace libre"
+      ],
+      "explanation": "`dd` lit le périphérique bloc par bloc et en produit une image brute (raw) identique au secteur près : fichiers visibles, fichiers supprimés non écrasés, slack space et espace non alloué. Une copie de fichiers, elle, ignorerait tout ce qui n'est plus référencé par le système de fichiers, c'est-à-dire une grande partie des preuves potentielles.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Dd_(Unix)"
+    },
+    {
+      "question": "Pourquoi calcule-t-on le **hachage** (MD5, SHA-256) d'une image disque juste après l'acquisition ?",
+      "answer": "Pour prouver plus tard que l'image n'a pas été modifiée",
+      "wrong": [
+        "Pour chiffrer l'image et la rendre illisible sans clé",
+        "Pour compresser l'image et gagner de l'espace",
+        "Pour indexer le contenu et accélérer les recherches"
+      ],
+      "explanation": "Un hachage est une empreinte de taille fixe qui change dès qu'un seul bit de l'image bouge. En recalculant ce hachage à tout moment et en le comparant à celui d'origine, on démontre que la copie analysée est strictement identique au support saisi. Le hachage ne chiffre rien et ne réduit pas la taille : il ne sert qu'à vérifier l'intégrité.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Cryptographic_hash_function"
+    },
+    {
+      "question": "Que peut contenir le bloc de **métadonnées EXIF** d'une photo prise avec un smartphone ?",
+      "answer": "La date de prise de vue, le modèle d'appareil et parfois les coordonnées GPS",
+      "wrong": [
+        "Le mot de passe du compte utilisateur de l'appareil",
+        "La liste des contacts enregistrés sur le téléphone",
+        "L'historique de navigation du navigateur web"
+      ],
+      "explanation": "Les métadonnées EXIF sont intégrées au fichier image par l'appareil : horodatage, marque et modèle, réglages optiques et, si la géolocalisation est active, latitude et longitude. En forensics, elles aident à situer une photo dans le temps et l'espace. Elles ne contiennent ni mots de passe, ni contacts, ni historique de navigation.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Exif"
+    },
+    {
+      "question": "Le framework **Volatility** est spécialisé dans l'analyse de quel type de preuve ?",
+      "answer": "Les captures de la mémoire vive (RAM)",
+      "wrong": [
+        "Les images de disques dur chiffrés",
+        "Les captures de trafic réseau au format pcap",
+        "Les journaux d'événements Windows uniquement"
+      ],
+      "explanation": "Volatility analyse les dumps de mémoire vive. Il y retrouve les processus en cours, les connexions réseau, les commandes lancées, les clés de chiffrement ou le code malveillant injecté, qui n'existent souvent que dans la RAM et disparaissent à l'extinction. L'analyse de disque ou de pcap relève d'autres outils (Sleuth Kit, Wireshark).",
+      "difficulty": 1,
+      "source": "https://volatilityfoundation.org/"
+    },
+    {
+      "question": "Sur un système Linux, dans quel répertoire se trouvent par convention les journaux système (authentification, noyau, services) ?",
+      "answer": "`/var/log`",
+      "wrong": [
+        "`/etc/log`",
+        "`/home/log`",
+        "`/tmp/log`"
+      ],
+      "explanation": "`/var/log` regroupe les journaux : `auth.log` ou `secure` pour les connexions, `syslog`/`messages` pour le système, `dmesg` pour le noyau, et les logs des services. `/etc` contient la configuration, `/home` les données utilisateur et `/tmp` des fichiers temporaires effacés au redémarrage. C'est donc `/var/log` que l'on examine en priorité.",
+      "difficulty": 1,
+      "source": "https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch05s10.html"
+    },
+    {
+      "question": "Quelle est la relation entre **Autopsy** et **The Sleuth Kit** ?",
+      "answer": "Autopsy est une interface graphique bâtie au-dessus de The Sleuth Kit",
+      "wrong": [
+        "Ce sont deux noms d'un même outil en ligne de commande",
+        "Autopsy est un antivirus, Sleuth Kit un pare-feu",
+        "Sleuth Kit est une interface graphique au-dessus d'Autopsy"
+      ],
+      "explanation": "The Sleuth Kit (TSK) est un ensemble d'outils en ligne de commande (`fls`, `icat`, `mmls`…) qui lisent systèmes de fichiers et images disque. Autopsy fournit par-dessus une interface graphique qui orchestre ces outils, gère les affaires et présente les résultats. C'est bien Autopsy qui s'appuie sur TSK, et non l'inverse.",
+      "difficulty": 1,
+      "source": "https://www.sleuthkit.org/"
+    },
+    {
+      "question": "Sous Windows, que prouvent principalement les fichiers du dossier **Prefetch** (`.pf`) en investigation ?",
+      "answer": "Qu'un exécutable a été lancé sur la machine",
+      "wrong": [
+        "Qu'un fichier a été envoyé par e-mail",
+        "Qu'un disque a été chiffré par un rançongiciel",
+        "Qu'un utilisateur s'est connecté à distance"
+      ],
+      "explanation": "Le Prefetcher de Windows crée un fichier `.pf` par programme exécuté pour accélérer ses lancements suivants. En forensics, leur présence atteste qu'un binaire a bien tourné, et leurs horodatages renseignent sur la date et le nombre d'exécutions. C'est un artefact d'exécution de programme, pas une preuve d'envoi de mail ou de connexion distante.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Prefetcher"
+    },
+    {
+      "question": "Dans un volume **NTFS**, quel rôle joue la **MFT** (Master File Table) ?",
+      "answer": "Un index décrivant chaque fichier et dossier du volume",
+      "wrong": [
+        "Une zone de mémoire vive réservée au cache disque",
+        "Un journal chiffrant les fichiers à la volée",
+        "Une partition de secours contenant le système"
+      ],
+      "explanation": "La MFT est la base de NTFS : chaque fichier ou dossier y possède au moins un enregistrement regroupant son nom, ses horodatages, ses permissions et l'emplacement de ses données. L'analyser permet de lister les fichiers, y compris supprimés, et de reconstruire l'historique du volume. Elle réside sur le disque, pas en RAM.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/NTFS"
+    },
+    {
+      "question": "En forensics, qu'appelle-t-on le **slack space** (espace résiduel) d'un fichier ?",
+      "answer": "L'espace entre la fin des données du fichier et la fin du dernier cluster qu'il occupe",
+      "wrong": [
+        "L'espace totalement libre et non alloué du disque",
+        "La zone réservée au système de fichiers pour ses métadonnées",
+        "La partie d'un fichier stockée dans la mémoire vive"
+      ],
+      "explanation": "Un fichier occupe des clusters entiers ; s'il ne remplit pas le dernier, l'espace restant (le file slack) n'est pas remis à zéro et peut contenir des fragments d'anciens fichiers ou de mémoire. C'est une source de preuves classique. Il se distingue de l'espace non alloué, qui, lui, n'appartient à aucun fichier actif.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Slack_space"
+    },
+    {
+      "question": "Qu'est-ce que le **file carving** en récupération de données ?",
+      "answer": "Reconstituer des fichiers d'après leurs signatures, sans se fier aux métadonnées du système de fichiers",
+      "wrong": [
+        "Découper un gros fichier en plusieurs archives pour l'envoyer",
+        "Chiffrer les fichiers un par un avant de les supprimer",
+        "Lister les fichiers à partir de la table d'allocation"
+      ],
+      "explanation": "Quand la table du système de fichiers est corrompue ou effacée, le carving parcourt l'espace brut à la recherche de motifs connus : en-têtes et pieds de fichiers (par exemple `FF D8` pour un JPEG). Il reconstruit ainsi des fichiers sans aucune métadonnée. S'appuyer sur la table d'allocation serait au contraire la méthode classique, inopérante ici.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/File_carving"
+    },
+    {
+      "question": "À quoi sert la base **NSRL** (National Software Reference Library) du NIST en investigation ?",
+      "answer": "Écarter les fichiers logiciels connus pour se concentrer sur les fichiers inconnus",
+      "wrong": [
+        "Recenser les signatures de virus pour un antivirus",
+        "Stocker les empreintes digitales des suspects",
+        "Fournir des exploits à tester sur les cibles"
+      ],
+      "explanation": "La NSRL publie des listes de hachages de fichiers appartenant à des logiciels connus (systèmes, applications). En comparant les hachages d'une image à cette base, l'enquêteur met de côté les fichiers légitimes et standards, réduisant fortement le volume à examiner manuellement. Ce n'est ni une base antivirale, ni un fichier de suspects.",
+      "difficulty": 2,
+      "source": "https://www.nist.gov/itl/ssd/software-quality-group/national-software-reference-library-nsrl"
+    },
+    {
+      "question": "Que cherche-t-on à construire quand on établit une **timeline** (chronologie) lors d'une investigation ?",
+      "answer": "La séquence ordonnée dans le temps des événements et modifications du système",
+      "wrong": [
+        "La liste des utilisateurs disposant de droits administrateur",
+        "La cartographie des machines présentes sur le réseau",
+        "Le classement des fichiers par taille décroissante"
+      ],
+      "explanation": "Une timeline agrège les horodatages de nombreuses sources (système de fichiers, journaux, registre, artefacts) pour reconstituer, minute par minute, le déroulé d'un incident : quand un fichier est apparu, un programme a tourné, une connexion a eu lieu. C'est l'outil central pour comprendre l'enchaînement d'une attaque, pas un simple inventaire d'utilisateurs ou de tailles.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Digital_forensic_process"
+    },
+    {
+      "question": "Dans les horodatages **MACB** d'un système de fichiers, que désignent les quatre lettres ?",
+      "answer": "Modified, Accessed, Changed, Born",
+      "wrong": [
+        "Moved, Allocated, Copied, Backed-up",
+        "Modified, Archived, Created, Blocked",
+        "Mounted, Accessed, Checked, Burned"
+      ],
+      "explanation": "MACB : M = dernière modification des données, A = dernier accès, C = dernière modification des métadonnées de l'entrée (Changed), B = création (Born). Distinguer C de B est essentiel : C bouge quand on renomme ou change les permissions, alors que B marque la naissance du fichier. Ces quatre dates alimentent la timeline.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/MAC_times"
+    },
+    {
+      "question": "Qu'est-ce qu'un fichier au format **pcap** en analyse réseau ?",
+      "answer": "Un enregistrement des paquets réseau capturés, lisible par Wireshark ou tcpdump",
+      "wrong": [
+        "Une image disque compressée d'une machine",
+        "Un vidage de la mémoire vive d'un serveur",
+        "Un export des clés de la base de registre"
+      ],
+      "explanation": "Le format pcap (packet capture) stocke les trames réseau telles qu'elles ont circulé, avec leur horodatage. Des outils comme `tcpdump`, Wireshark ou Zeek le relisent pour reconstituer sessions, requêtes DNS, transferts de fichiers ou communications d'un malware. Il ne concerne ni le disque, ni la RAM, ni le registre.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Pcap"
+    },
+    {
+      "question": "Où se trouvent, par défaut, les principales **ruches de la base de registre** Windows (SYSTEM, SOFTWARE, SAM, SECURITY) sur le disque ?",
+      "answer": "Dans `C:\\Windows\\System32\\config`",
+      "wrong": [
+        "Dans `C:\\Users\\Public`",
+        "Uniquement en mémoire vive, jamais sur disque",
+        "Dans `C:\\Program Files\\Registry`"
+      ],
+      "explanation": "Les ruches machine (SYSTEM, SOFTWARE, SAM, SECURITY) sont des fichiers stockés dans `C:\\Windows\\System32\\config`, tandis que la ruche d'un utilisateur se trouve dans `NTUSER.DAT` de son profil. Les extraire d'une image permet d'analyser la configuration, les comptes et les traces d'exécution hors ligne. Le registre est bien chargé en RAM à l'exécution, mais il est persisté sur disque.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Windows_Registry"
+    },
+    {
+      "question": "Par rapport à FAT, quelle caractéristique du système de fichiers **ext4** aide à retrouver un état cohérent après un arrêt brutal ?",
+      "answer": "Sa journalisation (journaling)",
+      "wrong": [
+        "Son chiffrement intégral activé par défaut",
+        "Sa compression automatique de tous les fichiers",
+        "Sa limitation à des partitions de moins de 2 Go"
+      ],
+      "explanation": "ext4 tient un journal où il consigne les opérations avant de les appliquer. Après une coupure, le système rejoue ou annule les opérations en cours pour retrouver un état cohérent, sans long contrôle d'intégrité. FAT, non journalisé, est plus exposé aux corruptions. La journalisation laisse d'ailleurs des traces exploitables en forensics.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Ext4"
+    },
+    {
+      "question": "Sur un système de fichiers **FAT**, que se passe-t-il dans l'entrée de répertoire lorsqu'un fichier est supprimé ?",
+      "answer": "Le premier octet du nom est remplacé par `0xE5` et les clusters sont marqués libres",
+      "wrong": [
+        "L'entrée et les données du fichier sont écrasées par des zéros",
+        "Le fichier est déplacé dans une corbeille cachée du volume",
+        "Tout le répertoire est reconstruit sans l'entrée"
+      ],
+      "explanation": "Sous FAT, supprimer un fichier ne l'efface pas : le premier caractère de son nom devient `0xE5` (marqueur « libre ») et ses clusters repassent comme disponibles dans la table d'allocation. Tant qu'ils ne sont pas réécrits, les données restent récupérables. C'est pourquoi une suppression n'équivaut jamais à un effacement sécurisé.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Design_of_the_FAT_file_system"
+    },
+    {
+      "question": "Selon le principe de l'**ordre de volatilité** (RFC 3227), quelle donnée faut-il collecter en premier sur une machine en fonctionnement ?",
+      "answer": "Le contenu de la mémoire vive et l'état des processus",
+      "wrong": [
+        "Le contenu du disque dur dans son intégralité",
+        "Les fichiers de configuration sauvegardés",
+        "Les archives présentes sur un support externe"
+      ],
+      "explanation": "L'ordre de volatilité recommande de recueillir d'abord ce qui disparaît le plus vite : registres du processeur et cache, puis mémoire vive, connexions et processus, avant de passer au disque, plus stable. Éteindre ou laisser tourner la machine fait perdre la RAM et ses secrets (clés, malware en mémoire). Le disque, lui, peut attendre l'imagerie.",
+      "difficulty": 3,
+      "source": "https://www.rfc-editor.org/rfc/rfc3227"
+    },
+    {
+      "question": "Combien de caractères hexadécimaux compte une empreinte **MD5** affichée en notation hexadécimale ?",
+      "answer": "32",
+      "wrong": [
+        "16",
+        "40",
+        "64"
+      ],
+      "explanation": "MD5 produit un condensé de 128 bits. En hexadécimal, chaque caractère code 4 bits, donc 128 ÷ 4 = 32 caractères. À titre de comparaison, SHA-1 (160 bits) s'écrit sur 40 caractères et SHA-256 (256 bits) sur 64. Reconnaître ces longueurs aide à identifier d'un coup d'œil l'algorithme d'un hachage trouvé dans un rapport.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/MD5"
+    },
+    {
+      "question": "Que traduit l'**effet avalanche** d'une bonne fonction de hachage, utile pour vérifier l'intégrité d'une preuve ?",
+      "answer": "Changer un seul bit de l'entrée modifie radicalement l'empreinte produite",
+      "wrong": [
+        "L'empreinte permet de reconstituer le fichier d'origine",
+        "Deux fichiers différents donnent toujours la même empreinte",
+        "L'empreinte grandit avec la taille du fichier haché"
+      ],
+      "explanation": "Avec l'effet avalanche, la moindre modification de l'entrée (un bit) bouleverse l'empreinte, qui n'a plus rien de commun avec la précédente. C'est ce qui rend le hachage utile en forensics : toute altération de l'image saute aux yeux. Un hachage n'est pas réversible, vise à éviter les collisions et produit une empreinte de taille fixe.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Avalanche_effect"
+    },
+    {
+      "question": "Dans NTFS, que signifie le fait que les données d'un petit fichier soient **résidentes** ?",
+      "answer": "Elles tiennent directement dans l'enregistrement MFT du fichier, sans cluster externe",
+      "wrong": [
+        "Elles sont chargées en permanence dans la mémoire vive",
+        "Elles sont chiffrées par le système de fichiers EFS",
+        "Elles sont dupliquées sur une seconde partition de secours"
+      ],
+      "explanation": "Si les données d'un fichier sont assez petites pour tenir dans la place libre de son enregistrement MFT, NTFS les y stocke directement : l'attribut `$DATA` est dit résident, sans allouer de cluster séparé. Pour l'analyste, ces données vivent entièrement dans la MFT, ce qui change la façon de les récupérer. « Résident » ne signifie ni « en RAM », ni « chiffré ».",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/NTFS"
+    },
+    {
+      "question": "Pourquoi comparer les horodatages de l'attribut `$FILE_NAME` à ceux de `$STANDARD_INFORMATION` d'une entrée MFT ?",
+      "answer": "Pour détecter un **timestomping**, car les dates de `$FILE_NAME` sont plus difficiles à falsifier",
+      "wrong": [
+        "Pour retrouver le mot de passe du propriétaire du fichier",
+        "Pour mesurer le taux de fragmentation du volume",
+        "Pour savoir si le fichier est compressé ou non"
+      ],
+      "explanation": "Les outils d'anti-forensique modifient surtout les dates de `$STANDARD_INFORMATION`, les plus visibles. Celles de `$FILE_NAME`, mises à jour par le noyau, sont bien plus coûteuses à altérer. Une incohérence flagrante entre les deux jeux d'horodatages trahit donc une manipulation (timestomping) et non un simple usage normal du fichier.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/NTFS"
+    },
+    {
+      "question": "Dans Volatility, quelle différence essentielle oppose les plugins `pslist` et `psscan` pour lister les processus ?",
+      "answer": "`pslist` suit la liste chaînée du noyau, `psscan` balaie la mémoire à la recherche de structures de processus",
+      "wrong": [
+        "`pslist` analyse le disque, `psscan` analyse la mémoire",
+        "`pslist` liste les fichiers, `psscan` liste les connexions réseau",
+        "`pslist` fonctionne sous Linux, `psscan` seulement sous Windows"
+      ],
+      "explanation": "`pslist` parcourt la liste doublement chaînée des processus actifs tenue par le noyau. `psscan` ignore cette liste et scanne toute la mémoire pour y repérer les signatures de structures de processus (pool tags). Il retrouve ainsi des processus terminés ou délibérément masqués d'un rootkit, qu'un attaquant aurait pu décrocher de la liste chaînée.",
+      "difficulty": 3,
+      "source": "https://volatilityfoundation.org/"
+    },
+    {
+      "question": "Lors d'un file carving à la main, quelle suite d'octets marque le début (signature) d'un fichier **JPEG** ?",
+      "answer": "`FF D8 FF`",
+      "wrong": [
+        "`50 4B 03 04`",
+        "`25 50 44 46`",
+        "`89 50 4E 47`"
+      ],
+      "explanation": "Un JPEG commence toujours par les octets `FF D8 FF` (marqueur SOI). Les autres signatures correspondent à d'autres formats : `50 4B 03 04` = `PK..` d'une archive ZIP, `25 50 44 46` = `%PDF` d'un PDF, `89 50 4E 47` = PNG. Reconnaître ces magic bytes permet de retrouver et de typer des fichiers dans l'espace brut d'un disque.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/JPEG"
+    },
+    {
+      "question": "Quelle est la taille par défaut d'un **enregistrement de la MFT** sur un volume NTFS courant ?",
+      "answer": "1024 octets (1 Kio)",
+      "wrong": [
+        "512 octets",
+        "4096 octets",
+        "64 octets"
+      ],
+      "explanation": "Par défaut, NTFS alloue 1024 octets à chaque enregistrement de la MFT, indépendamment de la taille des clusters du volume. Cela laisse de la place pour les attributs d'un fichier et, pour les petits fichiers, pour leurs données résidentes. Connaître cette taille fixe aide à parser la MFT octet par octet lors d'une analyse bas niveau.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/NTFS"
+    },
+    {
+      "question": "Dans le journal de sécurité Windows, quel **Event ID** correspond à une ouverture de session réussie ?",
+      "answer": "4624",
+      "wrong": [
+        "4625",
+        "4634",
+        "4688"
+      ],
+      "explanation": "L'Event ID 4624 enregistre une connexion réussie (avec le type de logon, le compte et la source). À ne pas confondre : 4625 marque un échec de connexion, 4634 une fermeture de session et 4688 la création d'un nouveau processus. Corréler ces identifiants permet de reconstituer qui s'est connecté, quand et comment lors d'un incident.",
+      "difficulty": 3,
+      "source": "https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4624"
+    },
+    {
+      "question": "Parmi ces techniques d'**anti-forensique**, laquelle vise spécifiquement à tromper l'analyse d'une timeline ?",
+      "answer": "Le timestomping, qui falsifie les horodatages des fichiers",
+      "wrong": [
+        "Le phishing, qui piège l'utilisateur par un faux e-mail",
+        "Le fuzzing, qui envoie des entrées aléatoires à un programme",
+        "Le sniffing, qui capture le trafic réseau"
+      ],
+      "explanation": "Le timestomping modifie délibérément les dates MACB d'un fichier (souvent via `$STANDARD_INFORMATION`) pour qu'il semble ancien ou antérieur à l'intrusion, brouillant la chronologie reconstruite par l'enquêteur. Le phishing, le fuzzing et le sniffing sont des techniques offensives ou de capture, sans rapport direct avec la falsification d'une timeline.",
+      "difficulty": 3,
+      "source": "https://attack.mitre.org/techniques/T1070/006/"
+    },
+    {
+      "question": "Pourquoi la récupération d'un fichier supprimé est-elle souvent plus difficile sous **ext4** que sous FAT ou ext2 ?",
+      "answer": "À la suppression, ext4 met à zéro les pointeurs de blocs (extents) de l'inode",
+      "wrong": [
+        "ext4 chiffre systématiquement les fichiers avant de les supprimer",
+        "ext4 écrase aussitôt les blocs de données avec des zéros",
+        "ext4 déplace le fichier dans une corbeille interne illisible"
+      ],
+      "explanation": "Sous ext2 ou FAT, l'entrée conserve la trace des blocs occupés, ce qui facilite la récupération tant qu'ils ne sont pas réécrits. ext4, lui, efface les pointeurs d'extents de l'inode lors de la suppression : les données brutes restent souvent sur le disque, mais plus rien ne dit où elles se trouvent. On se rabat alors sur le carving ou sur le journal.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Ext4"
+    }
+  ]
+}

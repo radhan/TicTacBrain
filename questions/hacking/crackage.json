@@ -1,0 +1,369 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Mots de passe & Hashs",
+  "icon": "🔑",
+  "description": "Hachage, salage, bcrypt et Argon2, cassage avec hashcat et John, entropie, 2FA : comprendre pour mieux protéger les mots de passe.",
+  "order": 7,
+  "questions": [
+    {
+      "question": "Quelle est la différence fondamentale entre **hacher** et **chiffrer** un mot de passe ?",
+      "answer": "Le hachage est à sens unique (irréversible) ; le chiffrement est réversible avec la clé",
+      "wrong": [
+        "Le hachage est réversible avec la clé ; le chiffrement est irréversible",
+        "Le hachage utilise une clé secrète ; le chiffrement n'en utilise jamais",
+        "Hacher et chiffrer désignent exactement la même opération"
+      ],
+      "explanation": "Une fonction de hachage comme SHA-256 transforme une entrée en empreinte de taille fixe sans moyen de revenir en arrière : c'est une opération à sens unique. Le chiffrement, lui, est conçu pour être déchiffré avec la bonne clé. C'est pourquoi on stocke des hashs de mots de passe, jamais les mots de passe chiffrés.",
+      "difficulty": 1,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "Qu'est-ce qu'un **sel** (salt) en stockage de mots de passe ?",
+      "answer": "Une valeur aléatoire ajoutée au mot de passe avant hachage, différente pour chaque compte",
+      "wrong": [
+        "Une clé secrète commune à tous les comptes, stockée hors de la base",
+        "Le nombre d'itérations appliquées à la fonction de hachage",
+        "Un second mot de passe demandé à l'utilisateur à la connexion"
+      ],
+      "explanation": "Le sel est une donnée aléatoire, unique par utilisateur, concaténée au mot de passe avant le hachage, puis stockée à côté du hash. Grâce à lui, deux comptes ayant le même mot de passe obtiennent des empreintes différentes, ce qui casse les tables précalculées.",
+      "difficulty": 1,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "Combien de caractères hexadécimaux compte une empreinte **MD5** ?",
+      "answer": "32",
+      "wrong": [
+        "16",
+        "40",
+        "64"
+      ],
+      "explanation": "MD5 produit un condensé de 128 bits. Comme chaque caractère hexadécimal encode 4 bits, cela donne 128 / 4 = 32 caractères. SHA-1 (160 bits) en affiche 40 et SHA-256 (256 bits) en affiche 64.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/MD5"
+    },
+    {
+      "question": "À quoi sert l'outil **John the Ripper** ?",
+      "answer": "Casser des mots de passe en testant des candidats contre leurs empreintes",
+      "wrong": [
+        "Intercepter et modifier le trafic HTTP d'une application web",
+        "Scanner les ports ouverts et les services d'une machine distante",
+        "Chiffrer un disque dur pour protéger les données au repos"
+      ],
+      "explanation": "John the Ripper (JtR) est un casseur de mots de passe : il génère des candidats (dictionnaire, règles, mode incrémental), les hache et compare au hash cible. C'est l'équivalent historique en CPU de hashcat, davantage tourné vers le GPU.",
+      "difficulty": 1,
+      "source": "https://www.openwall.com/john/"
+    },
+    {
+      "question": "Qu'est-ce qu'une **rainbow table** ?",
+      "answer": "Une table précalculée reliant des mots de passe à leurs empreintes pour inverser un hash",
+      "wrong": [
+        "Une liste des mots de passe les plus utilisés dans le monde",
+        "Un algorithme de hachage conçu pour être lent et coûteux",
+        "Un historique des mots de passe déjà utilisés par un compte"
+      ],
+      "explanation": "Une rainbow table est une structure précalculée qui associe empreintes et mots de passe (via des chaînes de réduction) pour retrouver rapidement l'entrée d'origine d'un hash non salé. Ajouter un sel unique par compte rend ces tables inutilisables.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Rainbow_table"
+    },
+    {
+      "question": "Dans une distribution Linux, quel fichier contient les **empreintes des mots de passe** des comptes ?",
+      "answer": "`/etc/shadow`",
+      "wrong": [
+        "`/etc/passwd`",
+        "`/etc/group`",
+        "`/etc/hosts`"
+      ],
+      "explanation": "Historiquement les hashs se trouvaient dans `/etc/passwd`, lisible par tous. Ils ont été déplacés dans `/etc/shadow`, accessible au seul root, tandis que `/etc/passwd` ne garde que les informations de compte (UID, shell, etc.).",
+      "difficulty": 1,
+      "source": "https://man7.org/linux/man-pages/man5/shadow.5.html"
+    },
+    {
+      "question": "Qu'est-ce que l'**authentification à deux facteurs** (2FA) ?",
+      "answer": "Exiger deux preuves de catégories différentes, par exemple un mot de passe et un code temporaire",
+      "wrong": [
+        "Exiger deux mots de passe distincts à la connexion",
+        "Hacher le mot de passe deux fois avant de le stocker",
+        "Demander le mot de passe sur deux pages successives"
+      ],
+      "explanation": "La 2FA combine deux facteurs de natures différentes : quelque chose que l'on sait (mot de passe), que l'on possède (téléphone, clé) ou que l'on est (biométrie). Deux mots de passe restent un seul facteur « ce que l'on sait » et n'apportent donc pas de vraie 2FA.",
+      "difficulty": 1,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Multifactor_Authentication_Cheat_Sheet.html"
+    },
+    {
+      "question": "En cassage de mots de passe, qu'est-ce qui distingue une attaque par **dictionnaire** d'une attaque par **force brute** ?",
+      "answer": "Le dictionnaire teste une liste de mots probables ; la force brute essaie toutes les combinaisons possibles",
+      "wrong": [
+        "Le dictionnaire essaie toutes les combinaisons ; la force brute teste une liste de mots",
+        "Le dictionnaire cible les hashs salés ; la force brute seulement les non salés",
+        "Le dictionnaire s'applique en ligne ; la force brute uniquement hors ligne"
+      ],
+      "explanation": "L'attaque par dictionnaire parcourt une liste finie de candidats plausibles (mots courants, fuites) et est donc rapide mais limitée. La force brute énumère systématiquement tout l'espace des combinaisons : exhaustive, mais vite impraticable quand la longueur augmente.",
+      "difficulty": 1,
+      "source": "https://hashcat.net/wiki/doku.php?id=dictionary_attack"
+    },
+    {
+      "question": "Qu'est-ce que le fichier **`rockyou.txt`**, très utilisé pour casser des mots de passe ?",
+      "answer": "Une liste de mots de passe réels issus d'une fuite, servant de dictionnaire",
+      "wrong": [
+        "Une table arc-en-ciel d'empreintes MD5 précalculées",
+        "Un outil en ligne de commande pour générer des hashs",
+        "Le fichier de configuration par défaut de hashcat"
+      ],
+      "explanation": "`rockyou.txt` provient de la fuite du service RockYou (2009) et regroupe environ 14 millions de mots de passe réels en clair. C'est le dictionnaire de référence pour les attaques par liste, car il reflète les choix réels des utilisateurs.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/RockYou"
+    },
+    {
+      "question": "Pourquoi **bcrypt** est-il préférable à SHA-256 pour stocker des mots de passe ?",
+      "answer": "Il intègre un facteur de coût réglable qui le rend volontairement lent, freinant le cassage",
+      "wrong": [
+        "Il produit une empreinte plus longue, donc plus difficile à inverser",
+        "Il chiffre le mot de passe au lieu de le hacher, ce qui est réversible",
+        "Il n'a jamais besoin de sel, contrairement à SHA-256"
+      ],
+      "explanation": "bcrypt est une fonction de hachage adaptative : son facteur de coût (work factor) fixe le nombre d'itérations, ce qui la rend lente à dessein. Les fonctions rapides comme SHA-256 permettent des milliards d'essais par seconde sur GPU, idéales pour casser mais inadaptées au stockage.",
+      "difficulty": 2,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "Pourquoi un **sel unique par utilisateur** rend-il les rainbow tables inefficaces ?",
+      "answer": "L'attaquant devrait précalculer une table entière par sel, ce qui annule l'intérêt du précalcul",
+      "wrong": [
+        "Le sel chiffre le hash, qui devient alors indéchiffrable sans clé",
+        "Le sel allonge le mot de passe au-delà de la limite des tables",
+        "Le sel force l'emploi d'un algorithme que les tables ne couvrent pas"
+      ],
+      "explanation": "Une rainbow table est précalculée pour un algorithme donné sur des mots de passe non salés. Avec un sel aléatoire propre à chaque compte, il faudrait une table différente pour chaque sel, ce qui supprime tout gain par rapport à une attaque directe. Le sel ne chiffre rien : il diversifie l'entrée.",
+      "difficulty": 2,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "Dans hashcat, que teste une **attaque par masque** (mask attack) comme `?u?l?l?l?d?d` ?",
+      "answer": "Les candidats suivant un motif précis de catégories de caractères position par position",
+      "wrong": [
+        "Chaque mot d'un dictionnaire auquel on applique des règles de transformation",
+        "Uniquement les mots de passe déjà présents dans une fuite connue",
+        "Toutes les empreintes possibles jusqu'à trouver une collision"
+      ],
+      "explanation": "Le masque décrit la structure attendue : `?u` une majuscule, `?l` une minuscule, `?d` un chiffre, `?s` un symbole. `?u?l?l?l?d?d` ne teste que les candidats de type « Majuscule + 3 minuscules + 2 chiffres », réduisant fortement l'espace par rapport à une force brute aveugle.",
+      "difficulty": 2,
+      "source": "https://hashcat.net/wiki/doku.php?id=mask_attack"
+    },
+    {
+      "question": "Sur un système **Windows**, sur quel algorithme repose le hash **NTLM** d'un mot de passe ?",
+      "answer": "MD4 appliqué au mot de passe encodé en UTF-16LE, sans sel",
+      "wrong": [
+        "SHA-1 appliqué au mot de passe, avec un sel par compte",
+        "bcrypt avec un facteur de coût fixé par le domaine",
+        "MD5 appliqué au mot de passe concaténé au nom d'utilisateur"
+      ],
+      "explanation": "Le hash NT (NTLM) est simplement le MD4 du mot de passe encodé en UTF-16 little-endian. Il n'utilise aucun sel, si bien que deux comptes partageant un mot de passe ont le même hash : c'est l'une des grandes faiblesses du schéma.",
+      "difficulty": 2,
+      "source": "https://hashcat.net/wiki/doku.php?id=example_hashes"
+    },
+    {
+      "question": "En quoi consiste une attaque **pass-the-hash** ?",
+      "answer": "S'authentifier en présentant directement le hash volé, sans connaître le mot de passe en clair",
+      "wrong": [
+        "Inverser le hash avec une rainbow table pour retrouver le mot de passe",
+        "Intercepter le mot de passe en clair pendant son envoi au serveur",
+        "Deviner le mot de passe en testant des millions de hashs par seconde"
+      ],
+      "explanation": "Avec des protocoles comme NTLM, le hash tient lieu de preuve d'identité : un attaquant qui le récupère peut le rejouer tel quel pour s'authentifier, sans jamais casser le mot de passe. On ne retrouve pas le clair, on réutilise directement l'empreinte.",
+      "difficulty": 2,
+      "source": "https://attack.mitre.org/techniques/T1550/002/"
+    },
+    {
+      "question": "En sécurité des mots de passe, que mesure l'**entropie**, exprimée en bits ?",
+      "answer": "L'imprévisibilité du mot de passe, c'est-à-dire la taille de l'espace à explorer pour le deviner",
+      "wrong": [
+        "La longueur en octets de l'empreinte produite par le hachage",
+        "Le nombre d'itérations de la fonction de dérivation de clé",
+        "Le temps que met le serveur à vérifier le mot de passe"
+      ],
+      "explanation": "L'entropie quantifie l'incertitude d'un mot de passe : n bits d'entropie correspondent à 2^n possibilités à essayer en moyenne. Elle dépend de la façon dont le mot de passe est généré (taille de l'alphabet, longueur), pas de l'algorithme de hachage utilisé ensuite.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Password_strength"
+    },
+    {
+      "question": "Qu'est-ce qu'une attaque par **credential stuffing** ?",
+      "answer": "Rejouer en masse des couples identifiant/mot de passe fuités d'un site sur d'autres services",
+      "wrong": [
+        "Tester toutes les combinaisons possibles d'un mot de passe sur un même compte",
+        "Saturer un formulaire de connexion de requêtes pour le rendre indisponible",
+        "Injecter du code dans le champ mot de passe pour contourner la vérification"
+      ],
+      "explanation": "Le credential stuffing exploite la réutilisation des mots de passe : des identifiants volés lors d'une fuite sont automatiquement essayés sur de nombreux autres sites. La défense principale est de ne jamais réutiliser un mot de passe et d'activer la 2FA.",
+      "difficulty": 2,
+      "source": "https://owasp.org/www-community/attacks/Credential_stuffing"
+    },
+    {
+      "question": "Sur quoi repose un code **TOTP** (comme ceux de Google Authenticator) ?",
+      "answer": "Un secret partagé combiné à l'heure courante pour générer un code valable quelques secondes",
+      "wrong": [
+        "Un compteur incrémenté à chaque code et synchronisé avec le serveur",
+        "Un SMS contenant un code envoyé à chaque connexion",
+        "Une empreinte du mot de passe recalculée à chaque fois"
+      ],
+      "explanation": "TOTP (RFC 6238) dérive un code à partir d'un secret partagé et de l'horodatage actuel, découpé en fenêtres (souvent 30 s). Le code change avec le temps sans échange réseau. HOTP, lui, s'appuie sur un compteur plutôt que sur l'heure.",
+      "difficulty": 2,
+      "source": "https://datatracker.ietf.org/doc/html/rfc6238"
+    },
+    {
+      "question": "En cassage de mots de passe, que désigne le **keyspace** (espace de clés) d'une attaque ?",
+      "answer": "Le nombre total de candidats que l'attaque peut générer et devra tester",
+      "wrong": [
+        "La quantité de mémoire vive consommée par l'outil de cassage",
+        "La longueur en bits de l'empreinte produite par l'algorithme",
+        "Le nombre de GPU utilisés en parallèle pour l'attaque"
+      ],
+      "explanation": "Le keyspace est l'ensemble des candidats couverts par une attaque, par exemple 95^8 pour tous les mots de passe de 8 caractères imprimables. Plus il est grand, plus l'attaque est longue : c'est lui qu'on cherche à réduire avec des masques ou des dictionnaires.",
+      "difficulty": 2,
+      "source": "https://hashcat.net/wiki/doku.php?id=mask_attack"
+    },
+    {
+      "question": "À quoi servent les **itérations** dans une fonction comme PBKDF2 ?",
+      "answer": "Répéter le hachage des milliers de fois pour ralentir chaque essai de cassage",
+      "wrong": [
+        "Produire une empreinte plus longue et donc plus difficile à inverser",
+        "Générer un sel différent à chaque tentative de connexion",
+        "Chiffrer le mot de passe autant de fois qu'il y a d'itérations"
+      ],
+      "explanation": "PBKDF2 applique une fonction de base (HMAC-SHA-256 par ex.) un grand nombre de fois : c'est l'étirement de clé (key stretching). Chaque vérification coûte ainsi plus cher, ce qui effondre le débit d'un attaquant. La longueur de l'empreinte, elle, ne change pas.",
+      "difficulty": 2,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "Quel algorithme a remporté la **Password Hashing Competition** en 2015 et est aujourd'hui recommandé par l'OWASP ?",
+      "answer": "Argon2",
+      "wrong": [
+        "scrypt",
+        "PBKDF2",
+        "bcrypt"
+      ],
+      "explanation": "Argon2 a gagné la Password Hashing Competition en 2015. C'est une fonction « memory-hard » : elle exige beaucoup de mémoire, ce qui limite l'avantage des GPU et ASIC. L'OWASP recommande en priorité sa variante Argon2id pour le stockage des mots de passe.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Argon2"
+    },
+    {
+      "question": "Combien de caractères hexadécimaux affiche une empreinte **SHA-256** ?",
+      "answer": "64",
+      "wrong": [
+        "32",
+        "40",
+        "128"
+      ],
+      "explanation": "SHA-256 produit 256 bits. À raison de 4 bits par caractère hexadécimal, l'empreinte compte 256 / 4 = 64 caractères. Une empreinte de 128 caractères hexadécimaux correspondrait à 512 bits (SHA-512).",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/SHA-2"
+    },
+    {
+      "question": "Quelle est la différence entre un **poivre** (pepper) et un **sel** (salt) ?",
+      "answer": "Le poivre est un secret stocké séparément de la base, tandis que le sel est conservé avec le hash",
+      "wrong": [
+        "Le poivre est unique par compte, alors que le sel est partagé par tous",
+        "Le poivre est aléatoire, alors que le sel est toujours une valeur fixe",
+        "Le poivre rend le hachage réversible, contrairement au sel"
+      ],
+      "explanation": "Le sel est aléatoire, propre à chaque compte, et stocké à côté du hash dans la base. Le poivre est un secret (souvent commun) conservé ailleurs, par exemple dans la configuration de l'application ou un HSM. Ainsi, une base volée sans le poivre reste plus difficile à attaquer.",
+      "difficulty": 3,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "Pourquoi **scrypt** et Argon2 sont-ils qualifiés de fonctions **memory-hard** ?",
+      "answer": "Elles exigent beaucoup de mémoire, ce qui limite la parallélisation massive sur GPU et ASIC",
+      "wrong": [
+        "Elles stockent l'empreinte en mémoire protégée pour éviter sa lecture",
+        "Elles chiffrent le mot de passe directement en mémoire vive",
+        "Elles vérifient que la machine dispose d'assez de RAM avant de hacher"
+      ],
+      "explanation": "Une fonction memory-hard impose un coût mémoire élevé en plus du coût CPU. Comme GPU et ASIC disposent de peu de mémoire rapide par cœur, ce besoin casse leur avantage de calcul massivement parallèle, contrairement à des fonctions comme bcrypt ou PBKDF2 peu gourmandes en mémoire.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Scrypt"
+    },
+    {
+      "question": "Un mot de passe de **8 caractères** tirés aléatoirement parmi les **95 caractères ASCII imprimables** offre une entropie d'environ :",
+      "answer": "53 bits",
+      "wrong": [
+        "26 bits",
+        "40 bits",
+        "95 bits"
+      ],
+      "explanation": "L'entropie vaut L × log₂(R), ici 8 × log₂(95) ≈ 8 × 6,57 ≈ 52,6 bits, soit environ 53 bits. L'entropie croît linéairement avec la longueur et de façon logarithmique avec la taille de l'alphabet : allonger le mot de passe est plus efficace qu'élargir le jeu de caractères.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Password_strength"
+    },
+    {
+      "question": "Combien de candidats compte le **keyspace** d'un code PIN de **4 chiffres** ?",
+      "answer": "10 000",
+      "wrong": [
+        "40",
+        "4 096",
+        "100 000"
+      ],
+      "explanation": "Chaque position prend l'une des 10 valeurs de 0 à 9, et il y a 4 positions indépendantes : 10^4 = 10 000 combinaisons, de 0000 à 9999. C'est un espace minuscule, cassable instantanément hors ligne, d'où l'intérêt des limites de tentatives côté matériel.",
+      "difficulty": 3,
+      "source": "https://hashcat.net/wiki/doku.php?id=mask_attack"
+    },
+    {
+      "question": "Quelle limite particulière faut-il connaître avec **bcrypt** sur la longueur de l'entrée ?",
+      "answer": "Il ne prend en compte que les 72 premiers octets du mot de passe",
+      "wrong": [
+        "Il refuse tout mot de passe de plus de 16 caractères",
+        "Il tronque le sel à 8 octets quelle que soit l'entrée",
+        "Il n'accepte que des caractères ASCII, jamais d'Unicode"
+      ],
+      "explanation": "bcrypt, dérivé de Blowfish, ignore ce qui dépasse 72 octets en entrée : au-delà, les caractères n'influencent plus le hash. Avec de longues phrases de passe ou de l'UTF-8 multioctet, on pré-hache souvent le mot de passe (ex. SHA-256) avant de le passer à bcrypt.",
+      "difficulty": 3,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "Dans un hash `/etc/shadow` commençant par **`$6$`**, que signifie le préfixe `$6$` ?",
+      "answer": "La fonction de hachage utilisée est SHA-512 (crypt)",
+      "wrong": [
+        "Le mot de passe a été salé 6 fois de suite",
+        "Le hachage a subi 6 000 itérations",
+        "Le compte a déjà changé 6 fois de mot de passe"
+      ],
+      "explanation": "Le champ suit le format `$id$sel$hash`. L'identifiant `$6$` désigne sha512crypt, `$1$` l'ancien MD5crypt, `$5$` SHA-256crypt et `$2b$` bcrypt. Le préfixe indique donc l'algorithme, pas un nombre de salages ni d'itérations.",
+      "difficulty": 3,
+      "source": "https://man7.org/linux/man-pages/man5/crypt.5.html"
+    },
+    {
+      "question": "Dans hashcat, quel mode d'attaque (`-a`) correspond à l'**attaque par masque / force brute** ?",
+      "answer": "`-a 3`",
+      "wrong": [
+        "`-a 0`",
+        "`-a 1`",
+        "`-a 6`"
+      ],
+      "explanation": "Dans hashcat, `-a 3` lance l'attaque par masque (brute force). `-a 0` est l'attaque par dictionnaire (straight), `-a 1` la combinaison de deux listes, et `-a 6`/`-a 7` les attaques hybrides mêlant dictionnaire et masque.",
+      "difficulty": 3,
+      "source": "https://hashcat.net/wiki/doku.php?id=hashcat"
+    },
+    {
+      "question": "Pourquoi un hash **NTLM** est-il particulièrement vulnérable aux rainbow tables, contrairement à un hash `/etc/shadow` moderne ?",
+      "answer": "NTLM n'emploie aucun sel, donc le même précalcul s'applique à tous les comptes",
+      "wrong": [
+        "NTLM utilise un sel trop court pour être efficace",
+        "NTLM est chiffré avec une clé connue de l'attaquant",
+        "NTLM limite les mots de passe à 8 caractères"
+      ],
+      "explanation": "Le hash NT est un simple MD4 sans sel : des comptes au même mot de passe ont le même hash, et une seule table précalculée les vise tous. Les schémas de `/etc/shadow` comme sha512crypt intègrent un sel aléatoire, ce qui rend ces tables inopérantes.",
+      "difficulty": 3,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "Quelle variante d'Argon2 l'**OWASP** recommande-t-elle en priorité pour le stockage des mots de passe ?",
+      "answer": "Argon2id",
+      "wrong": [
+        "Argon2d",
+        "Argon2i",
+        "Argon2e"
+      ],
+      "explanation": "Argon2 existe en trois variantes : Argon2d (résistant au cassage GPU mais sensible aux attaques par canaux auxiliaires), Argon2i (résistant à ces canaux) et Argon2id, un hybride des deux. L'OWASP recommande Argon2id. « Argon2e » n'existe pas.",
+      "difficulty": 3,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    }
+  ]
+}

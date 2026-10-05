@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schemas/theme.schema.json",
+  "name": "Marketing & Web",
+  "icon": "📣",
+  "description": "SEO, growth et marketing digital.",
+  "color": "#ec4899",
+  "order": 6
+}

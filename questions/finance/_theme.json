@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schemas/theme.schema.json",
+  "name": "Finance & Éco",
+  "icon": "💰",
+  "description": "Économie, bourse, marchés et analyse technique.",
+  "color": "#14b8a6",
+  "order": 5
+}
