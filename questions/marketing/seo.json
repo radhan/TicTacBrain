@@ -638,6 +638,305 @@
       "explanation": "Avec **IndexNow**, le site envoie une simple requête HTTP (avec une clé de vérification hébergée chez lui) pour signaler un changement d'URL, au lieu d'attendre le passage d'un robot ; les moteurs participants se partagent ces notifications. Le protocole a été lancé en octobre 2021 par Microsoft Bing et Yandex, puis rejoint par d'autres moteurs comme Seznam ou Naver. WebSub est un protocole de notification d'abonnements à des flux, et Open Graph un balisage pour les réseaux sociaux.",
       "difficulty": 3,
       "source": "https://en.wikipedia.org/wiki/IndexNow"
+    },
+    {
+      "question": "Comment appelle-t-on le texte cliquable d'un lien hypertexte ?",
+      "answer": "L'ancre (texte d'ancrage)",
+      "wrong": [
+        "La cible du lien",
+        "L'attribut `rel` du lien",
+        "Le titre de la page liée"
+      ],
+      "explanation": "L'**ancre** (ou texte d'ancrage, *anchor text*) est le texte visible et cliquable placé entre `<a>` et `</a>`. Elle indique aux visiteurs comme à Google le sujet de la page liée : « tarifs de la formation SEO » est bien plus informatif que « cliquez ici ». En netlinking, une sur-optimisation des ancres (toujours le même mot-clé exact) est en revanche un signal de manipulation.",
+      "difficulty": 1,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable"
+    },
+    {
+      "question": "Quel élément de navigation affiche le chemin d'une page dans l'arborescence du site, par exemple « Accueil > Chaussures > Running » ?",
+      "answer": "Le fil d'Ariane",
+      "wrong": [
+        "Le méga-menu",
+        "La pagination",
+        "Le pied de page"
+      ],
+      "explanation": "Le **fil d'Ariane** (*breadcrumb*) montre où se situe la page dans la hiérarchie et permet de remonter d'un clic vers les niveaux supérieurs. Il renforce le maillage interne vers les catégories et peut être balisé avec le type schema.org `BreadcrumbList`, qui aide Google à comprendre la structure du site. Le méga-menu présente toutes les rubriques d'un coup, la pagination découpe une longue liste en plusieurs pages.",
+      "difficulty": 1,
+      "source": "https://developers.google.com/search/docs/appearance/structured-data/breadcrumb"
+    },
+    {
+      "question": "À quoi sert l'annotation `hreflang` ?",
+      "answer": "Indiquer à Google les versions d'une page destinées à d'autres langues ou pays",
+      "wrong": [
+        "Traduire automatiquement la page dans la langue de l'internaute",
+        "Rediriger chaque visiteur vers la version de son pays",
+        "Définir la langue utilisée par Googlebot pour explorer la page"
+      ],
+      "explanation": "`hreflang` relie entre elles les variantes linguistiques ou régionales d'un même contenu (`fr`, `fr-BE`, `en-GB`…), afin que Google affiche la bonne version à chaque internaute dans ses résultats. Il ne traduit rien et ne redirige personne : c'est une simple indication pour le moteur. Sans lui, un internaute belge risque par exemple de tomber sur la version française, avec des prix ou une livraison inadaptés.",
+      "difficulty": 1,
+      "source": "https://developers.google.com/search/docs/specialty/international/localized-versions"
+    },
+    {
+      "question": "Quel code de statut HTTP indique qu'une page a été servie normalement ?",
+      "answer": "200",
+      "wrong": [
+        "301",
+        "403",
+        "500"
+      ],
+      "explanation": "Le code **200 OK** signifie que la requête a abouti et que le contenu est renvoyé : c'est le statut attendu pour toute page à indexer. 301 indique une redirection permanente, 403 un accès interdit et 500 une erreur interne du serveur. Les codes sont regroupés par familles : 2xx succès, 3xx redirection, 4xx erreur côté client, 5xx erreur côté serveur.",
+      "difficulty": 1,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/http-network-errors"
+    },
+    {
+      "question": "Pour séparer les mots dans une URL, que recommande Google ?",
+      "answer": "Des tirets : `/chaussures-de-running`",
+      "wrong": [
+        "Des underscores : `/chaussures_de_running`",
+        "Des espaces encodés : `/chaussures%20de%20running`",
+        "Aucun séparateur : `/chaussuresderunning`"
+      ],
+      "explanation": "Google recommande les **tirets** (`-`) plutôt que les underscores (`_`) pour séparer les mots d'une URL, car ils sont plus lisibles pour les humains comme pour les moteurs. Les espaces encodés en `%20` rendent l'URL illisible, et des mots collés empêchent de distinguer les termes. Une URL courte, lisible et descriptive aide aussi l'internaute à savoir où il va cliquer.",
+      "difficulty": 1,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/url-structure"
+    },
+    {
+      "question": "Par quels moyens peut-on indiquer à Google l'adresse de son sitemap ?",
+      "answer": "Via la Search Console ou une ligne `Sitemap:` dans le `robots.txt`",
+      "wrong": [
+        "Via la balise meta description de la page d'accueil",
+        "Via un attribut `hreflang` sur chaque page du site",
+        "Via un en-tête HTTP `X-Sitemap` sur la page d'accueil"
+      ],
+      "explanation": "On soumet un sitemap dans le rapport **Sitemaps** de la Search Console, ou on le déclare avec une ligne `Sitemap: https://exemple.fr/sitemap.xml` dans `robots.txt`, ce qui le rend aussi visible pour les autres moteurs. L'ancienne méthode du « ping » HTTP vers Google a été abandonnée en 2023, car ces soumissions anonymes servaient surtout aux spammeurs. Un en-tête `X-Sitemap`, lui, n'existe pas.",
+      "difficulty": 1,
+      "source": "https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping"
+    },
+    {
+      "question": "Que mesure la **profondeur** d'une page dans un site ?",
+      "answer": "Le nombre de clics nécessaires pour l'atteindre depuis l'accueil",
+      "wrong": [
+        "Le nombre de mots de son contenu principal",
+        "La position moyenne de la page dans la SERP",
+        "Le temps moyen passé par les visiteurs sur la page"
+      ],
+      "explanation": "La **profondeur** (ou profondeur de clic) correspond au nombre minimal de clics depuis la page d'accueil. Plus une page est profonde, moins elle reçoit de popularité interne et moins elle est explorée souvent : on cherche donc à garder les pages importantes à quelques clics de l'accueil. Elle ne dépend pas du nombre de dossiers dans l'URL : une page en `/a/b/c/` peut très bien être liée directement depuis l'accueil.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel code HTTP signale qu'une ressource a été **supprimée définitivement**, sans adresse de remplacement ?",
+      "answer": "410 Gone",
+      "wrong": [
+        "404 Not Found",
+        "301 Moved Permanently",
+        "503 Service Unavailable"
+      ],
+      "explanation": "Le code **410 Gone** dit explicitement que la ressource a disparu pour de bon, alors que **404** dit seulement qu'elle est introuvable, sans préciser si c'est définitif. Pour Google, la différence est minime : les deux entraînent la sortie de l'URL de l'index. Si un contenu équivalent existe ailleurs, mieux vaut une redirection 301 vers lui.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/http-network-errors"
+    },
+    {
+      "question": "Un site est en maintenance pendant quelques heures. Quel code HTTP renvoyer pour ne pas nuire à son indexation ?",
+      "answer": "503 Service Unavailable",
+      "wrong": [
+        "200 OK avec une page « En maintenance »",
+        "404 Not Found",
+        "301 vers une page de maintenance"
+      ],
+      "explanation": "Le code **503** indique une indisponibilité temporaire : Google ralentit son exploration et revient plus tard, sans retirer les pages de l'index (un en-tête `Retry-After` peut préciser quand revenir). Servir une page de maintenance en 200 risque de la faire indexer à la place du vrai contenu, et une 404 annonce des pages inexistantes. Une 503 ne doit toutefois pas durer : des erreurs serveur persistantes finissent par faire sortir les URL de l'index.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/http-network-errors"
+    },
+    {
+      "question": "Google respecte-t-il toujours l'URL indiquée dans une balise `rel=\"canonical\"` ?",
+      "answer": "Non, c'est un signal fort, mais il peut retenir une autre URL",
+      "wrong": [
+        "Oui, c'est une directive qu'il applique sans exception",
+        "Oui, à condition que la page soit aussi dans le sitemap",
+        "Non, il l'ignore dès que la page reçoit des backlinks"
+      ],
+      "explanation": "La balise canonique est une **indication**, pas une directive : Google la combine avec d'autres signaux (redirections, liens internes, sitemap, HTTPS, similarité des contenus) pour choisir l'URL canonique. Si ces signaux se contredisent, ou si la page désignée est très différente, il peut en choisir une autre ; l'outil d'inspection d'URL affiche alors la « canonique sélectionnée par Google ». D'où l'intérêt de signaux cohérents partout.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls"
+    },
+    {
+      "question": "Quelles sont les limites d'un fichier sitemap XML ?",
+      "answer": "50 000 URL et 50 Mo non compressé",
+      "wrong": [
+        "10 000 URL et 10 Mo non compressé",
+        "1 000 URL et 5 Mo non compressé",
+        "100 000 URL et 100 Mo non compressé"
+      ],
+      "explanation": "Un sitemap ne peut pas dépasser **50 000 URL** ni **50 Mo** non compressé. Au-delà, on le découpe en plusieurs fichiers que l'on regroupe dans un **index de sitemaps**, lui-même soumis à Google. Découper par type de contenu (produits, catégories, articles) permet en plus de suivre l'indexation de chaque section dans la Search Console.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap"
+    },
+    {
+      "question": "Quelles URL faut-il lister dans un sitemap XML ?",
+      "answer": "Les URL canoniques et indexables qui répondent en 200",
+      "wrong": [
+        "Toutes les URL du site, redirections comprises",
+        "Uniquement les pages publiées dans le mois",
+        "Les URL bloquées par le `robots.txt`"
+      ],
+      "explanation": "Le sitemap sert à signaler les pages que l'on souhaite voir indexées : il doit contenir les URL **canoniques**, accessibles en **200** et sans `noindex`. Y glisser des redirections, des erreurs ou des doublons envoie des signaux contradictoires et dilue la confiance de Google dans le fichier. Toutes les pages importantes y ont leur place, pas seulement les plus récentes.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap"
+    },
+    {
+      "question": "Dans des annotations `hreflang`, que désigne la valeur `x-default` ?",
+      "answer": "La page à proposer quand aucune langue ou région ne correspond",
+      "wrong": [
+        "La version rédigée dans la langue d'origine du site",
+        "La page canonique de l'ensemble des versions",
+        "La version destinée aux robots d'exploration"
+      ],
+      "explanation": "`hreflang=\"x-default\"` désigne la page de repli, servie aux internautes dont la langue ou la région ne correspond à aucune version déclarée : typiquement un sélecteur de langue ou une page d'accueil internationale. Ce n'est ni une canonique ni forcément la langue d'origine du site. Elle s'ajoute simplement à la liste des autres annotations `hreflang`.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/specialty/international/localized-versions"
+    },
+    {
+      "question": "La page française déclare sa version anglaise avec `hreflang`, mais la page anglaise ne déclare pas la française en retour. Que se passe-t-il ?",
+      "answer": "Les annotations risquent d'être ignorées : le lien doit être réciproque",
+      "wrong": [
+        "Google ajoute automatiquement le lien de retour manquant",
+        "La page anglaise devient la canonique de la page française",
+        "Seule la page anglaise est alors affichée dans les résultats"
+      ],
+      "explanation": "Google exige des **liens de retour** : si la page X déclare Y comme variante, Y doit aussi déclarer X, sinon les annotations peuvent être ignorées. Cette réciprocité empêche un site tiers de se proclamer « version traduite » de vos pages. Chaque version doit aussi se citer elle-même dans la liste complète des variantes.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/specialty/international/localized-versions"
+    },
+    {
+      "question": "Sur un site e-commerce, quel est le principal risque SEO d'une **navigation à facettes** (filtres couleur, taille, prix…) mal maîtrisée ?",
+      "answer": "Créer une multitude d'URL quasi dupliquées qui gaspillent le crawl",
+      "wrong": [
+        "Empêcher Google d'accéder aux fiches produits du catalogue",
+        "Ralentir fortement l'affichage des images des produits",
+        "Déclencher une pénalité manuelle pour contenu caché"
+      ],
+      "explanation": "Chaque combinaison de filtres (`?couleur=bleu&taille=42&tri=prix`) peut créer une nouvelle URL : sur un gros catalogue, on obtient des millions de pages quasi dupliquées. Les robots y épuisent leur budget d'exploration au détriment des pages utiles, et les signaux se dispersent. On limite donc les combinaisons explorables (liens non crawlables, règles `robots.txt`, canoniques) et on ne laisse indexables que les facettes qui répondent à une vraie demande.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/crawling-managing-faceted-navigation"
+    },
+    {
+      "question": "L'URL A redirige en 301 vers B, qui redirige elle-même en 301 vers C. Que recommande-t-on ?",
+      "answer": "Rediriger directement A vers C",
+      "wrong": [
+        "Remplacer la redirection de A vers B par une 302",
+        "Ajouter une canonique de B vers A",
+        "Ne rien changer : les chaînes sont sans effet"
+      ],
+      "explanation": "Une **chaîne de redirections** ralentit l'utilisateur, consomme des requêtes d'exploration et multiplie les risques d'erreur. Googlebot suit jusqu'à 10 sauts, mais on recommande de faire pointer chaque ancienne URL directement vers sa destination finale, et de mettre à jour les liens internes pour qu'ils visent C sans redirection. Ces chaînes apparaissent souvent après plusieurs refontes successives.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/http-network-errors"
+    },
+    {
+      "question": "Pour cibler la France, quelle structure d'URL envoie à Google le signal géographique le plus explicite ?",
+      "answer": "Un domaine national : `exemple.fr`",
+      "wrong": [
+        "Un sous-dossier : `exemple.com/fr/`",
+        "Un sous-domaine : `fr.exemple.com`",
+        "Un paramètre : `exemple.com/?pays=fr`"
+      ],
+      "explanation": "Un **domaine national** (ccTLD) comme `.fr` ou `.de` est rattaché à un pays : c'est, selon Google, un signal fort que le site vise ce pays. Sous-dossiers et sous-domaines d'un `.com` sont valables mais neutres géographiquement, et doivent s'appuyer sur d'autres signaux comme `hreflang` ; les paramètres d'URL sont déconseillés pour séparer les versions. Exception notable : Google traite certains ccTLD comme `.io`, `.co` ou `.tv` comme des domaines génériques.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites"
+    },
+    {
+      "question": "Laquelle de ces méthodes **ne permet pas** de déclarer des annotations `hreflang` à Google ?",
+      "answer": "Une directive dans le fichier `robots.txt`",
+      "wrong": [
+        "Des balises `<link rel=\"alternate\">` dans le `<head>`",
+        "Un en-tête HTTP `Link` dans la réponse",
+        "Des balises `xhtml:link` dans le sitemap XML"
+      ],
+      "explanation": "Google accepte trois méthodes équivalentes pour `hreflang` : des éléments `<link rel=\"alternate\" hreflang=\"…\">` dans le `<head>`, un en-tête HTTP `Link` (pratique pour les PDF) ou des entrées `xhtml:link` dans le sitemap XML. Le `robots.txt`, lui, ne gère que l'exploration et ne connaît pas `hreflang`. Sur un gros site multilingue, passer par le sitemap évite d'alourdir chaque page.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/specialty/international/localized-versions"
+    },
+    {
+      "question": "Quel code `hreflang` cible correctement les anglophones du **Royaume-Uni** ?",
+      "answer": "`en-GB`",
+      "wrong": [
+        "`en-UK`",
+        "`gb-EN`",
+        "`eng-GB`"
+      ],
+      "explanation": "Une valeur `hreflang` combine un code de langue **ISO 639-1** (`en`, sur deux lettres) et, en option, un code de pays **ISO 3166-1 alpha-2** : celui du Royaume-Uni est `GB`. `UK` est un code réservé, que Google ignore dans `hreflang`, tout comme `EU` ou `UN`. L'ordre compte aussi : la langue d'abord, le pays ensuite, et un code de pays seul n'est pas valide.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/specialty/international/localized-versions"
+    },
+    {
+      "question": "Une liste de produits est paginée en `?page=1`, `?page=2`, `?page=3`… Quelle URL canonique Google recommande-t-il pour la page 2 ?",
+      "answer": "Elle-même : `?page=2`",
+      "wrong": [
+        "La première page de la série",
+        "La dernière page de la série",
+        "La page d'accueil du site"
+      ],
+      "explanation": "Google recommande de donner à chaque page paginée **sa propre URL canonique**, et non de toutes les canoniser vers la page 1 : les produits listés en page 2 ou 3 sont différents, et une canonique vers la page 1 risquerait d'empêcher leur découverte. Chaque page doit aussi être liée à la suivante par un vrai lien `<a href>`. Pour signaler la page 1 comme meilleure page d'atterrissage, il suffit que toutes les pages de la série la lient.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/specialty/ecommerce/pagination-and-incremental-page-loading"
+    },
+    {
+      "question": "Comment Google traite-t-il une redirection HTTP **308** ?",
+      "answer": "Comme une 301 : une redirection permanente",
+      "wrong": [
+        "Comme une 302 : une redirection temporaire",
+        "Comme une erreur, faute de prise en charge",
+        "Comme une 304 : un contenu inchangé"
+      ],
+      "explanation": "Le code **308 Permanent Redirect** est, pour Google, l'équivalent d'une **301** : la cible a vocation à devenir l'URL canonique. De même, **307** est traité comme une 302. La différence tient au protocole HTTP : 307 et 308 interdisent au navigateur de changer la méthode de la requête (un `POST` reste un `POST`), alors que 301 et 302 le tolèrent historiquement.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/http-network-errors"
+    },
+    {
+      "question": "Comment Google interprète-t-il une redirection `meta refresh` **instantanée** (délai de 0 seconde) ?",
+      "answer": "Comme une redirection permanente",
+      "wrong": [
+        "Comme une redirection temporaire",
+        "Comme une soft 404",
+        "Comme du cloaking à sanctionner"
+      ],
+      "explanation": "Google distingue deux cas : un `meta refresh` **instantané** est traité comme une redirection permanente, un `meta refresh` **différé** (après quelques secondes) comme une redirection temporaire. Les redirections côté serveur (301, 308) restent préférables ; le `meta refresh` est une solution de repli quand on n'a pas accès au serveur. Les redirections JavaScript viennent en dernier recours, car elles dépendent du rendu.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/301-redirects"
+    },
+    {
+      "question": "Parmi ces signaux de canonicalisation, lequel Google considère-t-il comme le plus **faible** ?",
+      "answer": "L'inclusion de l'URL dans le sitemap",
+      "wrong": [
+        "Une redirection 301 vers l'URL",
+        "Une balise `rel=\"canonical\"` vers l'URL",
+        "Un en-tête HTTP `Link` avec `rel=\"canonical\"`"
+      ],
+      "explanation": "Selon la documentation de Google, les **redirections** et les annotations `rel=\"canonical\"` (balise ou en-tête HTTP) sont des signaux forts, tandis que la présence d'une URL dans le **sitemap** n'est qu'un signal faible. Les signaux s'additionnent : ils doivent donc tous désigner la même URL. Un sitemap qui liste une URL alors que la canonique en désigne une autre envoie un message contradictoire.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls"
+    },
+    {
+      "question": "Dans un sitemap XML, quelles balises Google déclare-t-il **ignorer** ?",
+      "answer": "`<priority>` et `<changefreq>`",
+      "wrong": [
+        "`<loc>` et `<lastmod>`",
+        "`<lastmod>` et `<priority>`",
+        "`<loc>` et `<changefreq>`"
+      ],
+      "explanation": "Google indique ignorer `<priority>` et `<changefreq>`, souvent remplies automatiquement et peu fiables. Il utilise en revanche `<lastmod>`, à condition que cette date soit exacte de façon constante et vérifiable, c'est-à-dire qu'elle reflète une vraie modification significative de la page. `<loc>`, l'URL elle-même, est la seule balise obligatoire de chaque entrée.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap"
+    },
+    {
+      "question": "Comment Google détermine-t-il la langue d'une page ?",
+      "answer": "En analysant son contenu visible",
+      "wrong": [
+        "En lisant l'attribut `lang` de la balise `<html>`",
+        "En lisant les annotations `hreflang` de la page",
+        "En se fiant à la langue indiquée dans l'URL"
+      ],
+      "explanation": "Google indique utiliser le **contenu visible** de la page pour en déterminer la langue, et non les informations techniques comme l'attribut `lang` ou l'URL. `hreflang` sert à relier des variantes entre elles, pas à détecter la langue de la page. Mélanger plusieurs langues dans le texte principal, ou juxtaposer original et traduction, brouille donc ce signal.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites"
     }
   ]
 }

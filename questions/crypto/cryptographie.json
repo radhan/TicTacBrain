@@ -556,6 +556,281 @@
       ],
       "explanation": "**SLH-DSA** (Stateless Hash-based Digital Signature Algorithm) ne suppose que la sécurité de **fonctions de hachage**, une hypothèse très prudente, au prix de signatures volumineuses (de quelques kilo-octets à plusieurs dizaines). Les réseaux euclidiens sont la base de son voisin **ML-DSA** (FIPS 204, ex-Dilithium), publié le même jour d'août 2024. Le NIST dispose ainsi d'une signature de secours fondée sur une hypothèse mathématique différente.",
       "difficulty": 3
+    },
+    {
+      "question": "Qu'est-ce qui caractérise un chiffrement par transposition ?",
+      "answer": "Il change l'ordre des lettres sans les remplacer",
+      "wrong": [
+        "Il remplace chaque lettre par une autre lettre",
+        "Il remplace chaque lettre par un nombre",
+        "Il ajoute des lettres inutiles au message"
+      ],
+      "explanation": "Une **transposition** mélange les positions des lettres : le chiffré est une anagramme du message, avec exactement les mêmes lettres. Une **substitution** (César, Vigenère…) remplace au contraire chaque lettre par un autre symbole, lettre ou nombre. Les chiffrements modernes comme AES combinent les deux idées, en substituant des octets et en les déplaçant à chaque tour.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans les scénarios classiques de cryptographie, quel est le rôle d'Eve face à Alice et Bob ?",
+      "answer": "Elle écoute leurs échanges sans les modifier",
+      "wrong": [
+        "Elle modifie activement leurs messages",
+        "Elle sert de tiers de confiance entre eux",
+        "Elle reçoit une copie chiffrée pour archivage"
+      ],
+      "explanation": "**Eve** vient de l'anglais « eavesdropper » : c'est l'**espion passif** qui écoute la ligne. Celui qui intercepte et modifie les messages est traditionnellement **Mallory** (de « malicious »), l'attaquant actif, et le tiers de confiance s'appelle souvent Trent. Alice et Bob, apparus dans l'article de RSA en 1978, permettent de décrire un protocole sans ambiguïté : « Alice envoie à Bob… ».",
+      "difficulty": 1
+    },
+    {
+      "question": "Comment fonctionne un chiffrement par flot (stream cipher) ?",
+      "answer": "Il combine le message, bit à bit, avec une suite pseudo-aléatoire",
+      "wrong": [
+        "Il découpe le message en blocs de taille fixe",
+        "Il chiffre le message avec la clé publique du destinataire",
+        "Il compresse le message avant de le transmettre"
+      ],
+      "explanation": "Un **chiffrement par flot** génère, à partir de la clé (et d'un nonce), une longue suite pseudo-aléatoire, le **flux de clé**, qu'il combine au message par XOR, au fil de l'eau. C'est une version pratique du masque jetable, où une clé courte remplace une clé aussi longue que le message. ChaCha20 en est l'exemple moderne ; le découpage en blocs de taille fixe caractérise au contraire les chiffrements par blocs comme AES.",
+      "difficulty": 1
+    },
+    {
+      "question": "D'où vient le nom de l'algorithme RSA, publié en 1977 ?",
+      "answer": "De Rivest, Shamir et Adleman, ses inventeurs",
+      "wrong": [
+        "De « Random Secure Algorithm »",
+        "De « Robust Signature Authority »",
+        "De Rabin, Schnorr et Ajtai, ses inventeurs"
+      ],
+      "explanation": "**Ron Rivest**, **Adi Shamir** et **Leonard Adleman**, chercheurs au MIT, ont publié RSA en 1977, un an après l'article de Diffie et Hellman sur la cryptographie à clé publique ; ils ont reçu le prix Turing en 2002. On a appris en 1997 que Clifford Cocks, au GCHQ britannique, avait conçu un système équivalent dès 1973, resté classé secret. Rabin, Schnorr et Ajtai sont d'autres grands noms de la cryptographie.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que désigne le terme « nonce » en cryptographie ?",
+      "answer": "Une valeur qui ne doit servir qu'une seule fois",
+      "wrong": [
+        "Une clé secrète partagée à long terme",
+        "Un très grand nombre premier public",
+        "L'empreinte finale d'un message haché"
+      ],
+      "explanation": "Le terme est souvent lu comme « number used once » : une valeur, aléatoire ou issue d'un compteur, qui ne doit jamais être réutilisée avec la même clé. Elle permet de chiffrer deux fois le même message en obtenant des résultats différents, ou d'empêcher le rejeu d'un ancien message. Sa réutilisation est une faute grave, qui peut ruiner la sécurité d'un chiffrement ou d'une signature.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelles garanties une signature numérique apporte-t-elle sur un document ?",
+      "answer": "Authenticité, intégrité et non-répudiation",
+      "wrong": [
+        "Confidentialité, intégrité et disponibilité",
+        "Confidentialité et anonymat de l'auteur",
+        "Compression et archivage du document"
+      ],
+      "explanation": "Vérifiée avec la clé publique du signataire, une **signature numérique** prouve qui a signé (**authenticité**), que le document n'a pas changé depuis (**intégrité**) et que le signataire ne peut pas nier l'avoir fait, puisque lui seul détient la clé privée (**non-répudiation**). Elle ne chiffre rien : le document reste lisible par tous. Le trio confidentialité, intégrité, disponibilité est celui de la sécurité de l'information en général.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi un navigateur affiche-t-il une alerte face à un certificat auto-signé ?",
+      "answer": "Aucune autorité de confiance ne l'a signé",
+      "wrong": [
+        "Il utilise forcément un chiffrement faible",
+        "Il est obligatoirement expiré",
+        "Il ne contient aucune clé publique"
+      ],
+      "explanation": "Un certificat **auto-signé** est signé par sa propre clé : n'importe qui peut en fabriquer un au nom de n'importe quel domaine. Le navigateur ne peut donc pas savoir s'il parle au vrai site ou à un imposteur, faute de chaîne remontant à une **autorité de certification** de son magasin de confiance. Le chiffrement peut être tout aussi solide : c'est l'authentification qui manque. Les certificats racines des CA sont d'ailleurs eux-mêmes auto-signés.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle machine, en service à Bletchley Park dès 1944 pour attaquer le chiffre Lorenz du haut commandement allemand, est souvent présentée comme le premier calculateur électronique programmable ?",
+      "answer": "Colossus",
+      "wrong": [
+        "ENIAC",
+        "La Bombe",
+        "Harvard Mark I"
+      ],
+      "explanation": "Conçu par l'ingénieur **Tommy Flowers**, **Colossus** utilisait environ 1 600 tubes électroniques (2 400 pour le Mark 2) pour tester à grande vitesse les réglages des roues de la machine **Lorenz**, surnommée « Tunny ». La **Bombe** de Turing, électromécanique, servait contre Enigma. L'ENIAC américain n'a fonctionné qu'en 1945-1946 et le Harvard Mark I était électromécanique. Colossus est resté secret jusque dans les années 1970.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans son article fondateur de 1949, quels deux principes Claude Shannon propose-t-il pour concevoir un chiffrement résistant à l'analyse statistique ?",
+      "answer": "La confusion et la diffusion",
+      "wrong": [
+        "L'authenticité et l'intégrité",
+        "Le secret et l'obscurité",
+        "La rapidité et la simplicité"
+      ],
+      "explanation": "Dans « Communication Theory of Secrecy Systems » (1949), **Shannon** définit la **confusion**, qui rend la relation entre la clé et le chiffré aussi complexe que possible, et la **diffusion**, qui répartit l'influence de chaque bit du clair sur tout le chiffré. Les chiffrements par blocs modernes les mettent en œuvre en alternant substitutions (les S-box) et permutations, tour après tour.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sous quel nom l'algorithme AES a-t-il été proposé au concours du NIST par deux cryptographes belges ?",
+      "answer": "Rijndael",
+      "wrong": [
+        "Twofish",
+        "Serpent",
+        "Blowfish"
+      ],
+      "explanation": "**Rijndael**, de **Joan Daemen** et **Vincent Rijmen** (son nom mêle les leurs), a été choisi en 2000 parmi cinq finalistes, dont **Serpent**, **Twofish**, MARS et RC6, puis publié comme norme AES (FIPS 197) en 2001. Blowfish, conçu par Bruce Schneier en 1993, n'était pas candidat, mais son successeur Twofish l'était. Le concours, ouvert et international, a beaucoup contribué à la confiance dans le standard.",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment le mode CTR transforme-t-il un chiffrement par blocs comme AES ?",
+      "answer": "Il chiffre un compteur pour produire un flux de clé",
+      "wrong": [
+        "Il chaîne chaque bloc au bloc chiffré précédent",
+        "Il chiffre chaque bloc indépendamment des autres",
+        "Il ajoute un compteur à la fin du message"
+      ],
+      "explanation": "En mode **CTR** (compteur), on chiffre les valeurs successives nonce‖0, nonce‖1, nonce‖2… et on XOR le résultat avec le message : AES devient un **chiffrement par flot**. Les blocs se calculent en parallèle et aucun remplissage n'est nécessaire. Le chaînage au bloc précédent caractérise CBC, et le chiffrement indépendant de chaque bloc, ECB. AES-GCM repose sur CTR, auquel il ajoute une authentification.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'apporte un chiffrement authentifié comme AES-GCM par rapport à AES-CBC utilisé seul ?",
+      "answer": "Il détecte toute modification du message chiffré",
+      "wrong": [
+        "Il double la longueur effective de la clé",
+        "Il supprime le besoin de vecteur d'initialisation",
+        "Il masque aussi la taille du message"
+      ],
+      "explanation": "AES-CBC seul assure la **confidentialité**, mais un attaquant peut modifier le chiffré sans que le destinataire s'en aperçoive (et parfois en tirer des informations). Un mode **AEAD** comme **GCM** ou ChaCha20-Poly1305 ajoute une **étiquette d'authentification** (tag) : toute modification du chiffré ou des données associées fait échouer la vérification. GCM a lui aussi besoin d'un nonce unique, et aucun de ces modes ne cache la longueur du message.",
+      "difficulty": 2
+    },
+    {
+      "question": "Passer d'une clé de 128 bits à une clé de 129 bits multiplie le nombre de clés possibles par combien ?",
+      "answer": "Par 2",
+      "wrong": [
+        "Par environ 1,008",
+        "Par 129",
+        "Par 2¹²⁸"
+      ],
+      "explanation": "Chaque bit supplémentaire **double** le nombre de clés : 2¹²⁹ = 2 × 2¹²⁸. Le piège « 1,008 » (129/128) confond la longueur de la clé avec le nombre de clés, qui croît de façon **exponentielle**. C'est pourquoi passer de 56 bits (DES) à 128 bits (AES) multiplie l'effort d'une recherche exhaustive par 2⁷², soit environ 4,7 × 10²¹.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur quoi reposent les codes à 6 chiffres renouvelés toutes les 30 secondes par une application d'authentification (TOTP) ?",
+      "answer": "Un secret partagé et l'heure courante, passés dans un HMAC",
+      "wrong": [
+        "Un SMS envoyé par le serveur à chaque connexion",
+        "Une liste de codes tirés à l'avance et stockés",
+        "Le numéro de série du téléphone, chiffré en AES"
+      ],
+      "explanation": "Lors de l'activation (souvent via un QR code), le serveur et l'application partagent une **clé secrète**. Ensuite, chacun calcule un **HMAC** (SHA-1 par défaut) de cette clé et du nombre de périodes de 30 secondes écoulées depuis 1970, puis en extrait 6 chiffres (RFC 6238). Les deux côtés obtiennent le même code sans rien échanger, d'où le besoin d'horloges à peu près synchronisées : l'application fonctionne même hors ligne.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur quel problème mathématique repose la sécurité de l'échange de clés Diffie-Hellman ?",
+      "answer": "Le logarithme discret",
+      "wrong": [
+        "La factorisation de grands entiers",
+        "Le problème du sac à dos",
+        "Le problème du voyageur de commerce"
+      ],
+      "explanation": "Calculer A = gᵃ mod p est rapide, mais retrouver a à partir de A, g et p est le **problème du logarithme discret**, réputé difficile pour des p bien choisis de plus de 2 000 bits. La **factorisation** est, elle, le socle de RSA. La variante sur **courbes elliptiques** (ECDH) repose sur le logarithme discret dans le groupe des points d'une courbe, plus difficile encore, d'où des clés bien plus courtes. Les deux problèmes tomberaient face à l'algorithme quantique de Shor.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi des collisions existent-elles forcément pour SHA-256, même si personne n'en a jamais trouvé ?",
+      "answer": "Il y a bien plus d'entrées possibles que d'empreintes",
+      "wrong": [
+        "SHA-256 contient une porte dérobée connue de la NSA",
+        "Son algorithme est public, donc il est réversible",
+        "L'empreinte dépend aussi de l'heure du calcul"
+      ],
+      "explanation": "SHA-256 accepte des entrées de taille quasi illimitée mais ne produit que 2²⁵⁶ empreintes différentes : par le **principe des tiroirs**, d'innombrables messages partagent forcément une même empreinte. Une fonction de hachage sûre ne promet donc pas l'absence de collisions, seulement qu'il est **impossible en pratique d'en trouver**. Et le fait que l'algorithme soit public ne permet pas pour autant de l'inverser.",
+      "difficulty": 2
+    },
+    {
+      "question": "Avec le chiffre « rail fence » à 2 rails, on écrit le message en zigzag sur deux lignes, puis on lit la première ligne et enfin la seconde. Que donne `SECRET` ?",
+      "answer": "`SCEERT`",
+      "wrong": [
+        "`TERCES`",
+        "`SEERTC`",
+        "`ESCRTE`"
+      ],
+      "explanation": "Les lettres de rang impair (S, C, E) vont sur la première ligne, celles de rang pair (E, R, T) sur la seconde : on lit `SCE` puis `ERT`. `SEERTC` correspond à 3 rails et `TERCES` au mot inversé. Comme la scytale, la **rail fence** est une **transposition** : le chiffré contient exactement les mêmes lettres, et leurs fréquences restent celles de la langue, ce qui la trahit immédiatement.",
+      "difficulty": 2
+    },
+    {
+      "question": "Le « Grand Chiffre » de Louis XIV, conçu par les Rossignol, est resté impénétrable pendant deux siècles. Qui l'a finalement percé dans les années 1890 ?",
+      "answer": "Étienne Bazeries",
+      "wrong": [
+        "Georges Painvin",
+        "Auguste Kerckhoffs",
+        "Jean-François Champollion"
+      ],
+      "explanation": "Le commandant **Étienne Bazeries**, cryptologue de l'armée française, a compris après des années d'efforts que le Grand Chiffre ne codait pas des lettres mais des **syllabes**, par environ 600 nombres, avec des pièges comme un nombre qui annulait le précédent. Antoine et Bonaventure Rossignol étaient les cryptologues de Louis XIII et Louis XIV. Painvin s'est illustré pendant la Grande Guerre, et Champollion a déchiffré les hiéroglyphes, qui n'étaient pas un code secret.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle méthode, publiée par Friedrich Kasiski en 1863, permet de trouver la longueur de la clé d'un chiffre de Vigenère ?",
+      "answer": "Mesurer l'écart entre des séquences répétées du chiffré",
+      "wrong": [
+        "Essayer successivement les 25 décalages possibles",
+        "Repérer les lettres jamais chiffrées en elles-mêmes",
+        "Comparer le chiffré à un dictionnaire de mots"
+      ],
+      "explanation": "Quand un même fragment du clair tombe sous la même portion de la clé, il produit le même fragment chiffré. Les **distances entre ces répétitions** sont alors des multiples de la longueur de la clé : leurs diviseurs communs la trahissent. On découpe ensuite le chiffré en autant de colonnes, chacune étant un simple César à casser par analyse des fréquences. Charles Babbage avait trouvé la méthode vers 1854, sans la publier.",
+      "difficulty": 3
+    },
+    {
+      "question": "Combien de tours (rounds) AES effectue-t-il avec une clé de 128 bits ?",
+      "answer": "10",
+      "wrong": [
+        "12",
+        "14",
+        "16"
+      ],
+      "explanation": "AES-128 effectue **10 tours**, AES-192 en fait 12 et AES-256 en fait 14. Chaque tour enchaîne SubBytes (substitution par la S-box), ShiftRows (décalage des lignes), MixColumns (mélange des colonnes) et AddRoundKey (XOR avec une sous-clé), le dernier tour omettant MixColumns. Les 16 tours sont ceux du DES. Les meilleures attaques connues sur AES complet ne gagnent qu'environ deux bits sur la recherche exhaustive.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle structure interne permet au DES de déchiffrer avec le même circuit que pour chiffrer, même si sa fonction de tour n'est pas inversible ?",
+      "answer": "Un réseau de Feistel",
+      "wrong": [
+        "Un réseau de substitution-permutation",
+        "Une construction en éponge",
+        "Une construction de Merkle-Damgård"
+      ],
+      "explanation": "Dans un **réseau de Feistel**, le bloc est coupé en deux moitiés G et D ; à chaque tour, G est remplacée par D, et D par G ⊕ f(D, sous-clé). Pour inverser un tour, il suffit de recalculer f dans le même sens, sans jamais inverser f : on déchiffre en appliquant les sous-clés dans l'ordre inverse. AES utilise au contraire un **réseau de substitution-permutation**, dont chaque étape doit être inversible. L'éponge (SHA-3) et Merkle-Damgård (SHA-2) sont des constructions de fonctions de hachage.",
+      "difficulty": 3
+    },
+    {
+      "question": "Avec AES-CBC et le remplissage PKCS#7, quelle est la taille du chiffré (sans compter l'IV) d'un message d'exactement 16 octets ?",
+      "answer": "32 octets",
+      "wrong": [
+        "16 octets",
+        "17 octets",
+        "24 octets"
+      ],
+      "explanation": "Le remplissage **PKCS#7** ajoute N octets valant chacun N pour compléter le dernier bloc. Si le message remplit déjà exactement ses blocs, on ajoute quand même un **bloc entier** de 16 octets valant `0x10` : sinon, au déchiffrement, on ne saurait pas si le dernier octet fait partie du message ou du remplissage. 16 octets de données donnent donc 32 octets de chiffré. Le mode CTR, lui, n'a besoin d'aucun remplissage.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pour un niveau de sécurité d'environ 128 bits, une clé sur courbe elliptique de 256 bits équivaut à peu près à une clé RSA de quelle taille ?",
+      "answer": "3 072 bits",
+      "wrong": [
+        "256 bits",
+        "1 024 bits",
+        "15 360 bits"
+      ],
+      "explanation": "Les meilleurs algorithmes de factorisation (crible algébrique) sont **sous-exponentiels**, alors qu'on ne connaît que des attaques **exponentielles** contre le logarithme discret sur une courbe bien choisie. Selon les tables du NIST, 128 bits de sécurité demandent ainsi environ **3 072 bits** en RSA contre 256 bits en ECC, et 256 bits de sécurité environ 15 360 bits en RSA contre 512 bits en ECC. RSA-1024 n'offre qu'environ 80 bits de sécurité.",
+      "difficulty": 3
+    },
+    {
+      "question": "En 2012, quel logiciel espion a exploité une collision MD5 pour faire passer ses modules pour des mises à jour signées par Microsoft ?",
+      "answer": "Flame",
+      "wrong": [
+        "Stuxnet",
+        "Conficker",
+        "WannaCry"
+      ],
+      "explanation": "**Flame** a utilisé une variante inédite d'**attaque par collision à préfixe choisi** sur MD5 pour forger un certificat qui semblait émis par une autorité de Microsoft, puis se propager via un faux Windows Update sur les réseaux locaux. Stuxnet, deux ans plus tôt, utilisait lui des certificats légitimes **volés** à des fabricants taïwanais. Microsoft a dû révoquer en urgence les certificats intermédiaires concernés.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un secret est partagé avec le schéma de Shamir à seuil 3 parmi 5 (3 parts suffisent à le reconstituer). Que peut en déduire quelqu'un qui ne détient que 2 parts ?",
+      "answer": "Rien du tout sur le secret",
+      "wrong": [
+        "Environ deux tiers du secret",
+        "Le secret, après quelques essais",
+        "La parité du secret"
+      ],
+      "explanation": "Le secret est le terme constant d'un **polynôme de degré 2** tiré au hasard dans un corps fini ; chaque part est un point de ce polynôme. Trois points déterminent une parabole de façon unique, mais par deux points passent autant de paraboles que de valeurs possibles du secret : deux parts ne révèlent **strictement aucune information**. Cette sécurité est inconditionnelle, comme celle du masque jetable, quelle que soit la puissance de calcul de l'attaquant.",
+      "difficulty": 3
     }
   ]
 }

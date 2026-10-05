@@ -1192,6 +1192,281 @@
       "explanation": "Chaque fois que le circuit entre dans un sommet, il doit en ressortir par une autre arête : les arêtes de chaque sommet vont donc par paires, d'où un degré pair. Avec exactement deux sommets de degré impair, on obtient seulement un **chemin** eulérien, qui commence sur l'un et finit sur l'autre sans revenir au départ. À Königsberg, les quatre zones avaient un degré impair : ni circuit ni chemin n'était possible.",
       "difficulty": 3,
       "source": "https://fr.wikipedia.org/wiki/Graphe_eul%C3%A9rien"
+    },
+    {
+      "question": "Qu'est-ce qui caractérise un algorithme **glouton** (greedy) ?",
+      "answer": "Il fait à chaque étape le choix localement le meilleur",
+      "wrong": [
+        "Il essaie systématiquement toutes les combinaisons",
+        "Il découpe toujours le problème en deux moitiés",
+        "Il revient en arrière dès qu'une impasse apparaît"
+      ],
+      "explanation": "Un algorithme glouton construit sa solution pas à pas en prenant à chaque étape l'option qui paraît la meilleure sur le moment, sans jamais remettre ce choix en question. C'est rapide et simple, et parfois optimal (Dijkstra, Kruskal, Prim), mais pas toujours. Revenir en arrière en cas d'impasse décrit le **retour sur trace**, et tout essayer décrit la **force brute**.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Algorithme_glouton"
+    },
+    {
+      "question": "Quelle technique construit une solution pas à pas et revient en arrière dès qu'un choix mène à une impasse, comme pour résoudre un sudoku ou placer huit dames sur un échiquier ?",
+      "answer": "Le retour sur trace (backtracking)",
+      "wrong": [
+        "L'algorithme glouton (greedy)",
+        "La recherche dichotomique",
+        "Le tri topologique"
+      ],
+      "explanation": "Le retour sur trace explore l'arbre des choix possibles en profondeur : il place une valeur, continue tant que les contraintes sont respectées, et défait le dernier choix pour en essayer un autre dès qu'une contrainte est violée. En élaguant tôt les branches sans issue, il évite de tester toutes les combinaisons. Un algorithme glouton, lui, ne revient jamais sur ses choix.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Retour_sur_trace"
+    },
+    {
+      "question": "Combien de déplacements faut-il **au minimum** pour résoudre les **tours de Hanoï** avec 3 disques ?",
+      "answer": "7",
+      "wrong": [
+        "3",
+        "6",
+        "9"
+      ],
+      "explanation": "Pour déplacer `n` disques, on déplace récursivement les `n − 1` du dessus sur le piquet intermédiaire, puis le plus grand, puis à nouveau les `n − 1` par-dessus : `T(n) = 2T(n − 1) + 1`, soit `2ⁿ − 1` coups. Avec 3 disques, cela fait 7 ; avec 64 disques, il faudrait environ 585 milliards d'années à raison d'un coup par seconde. C'est un exemple classique de récursion et de croissance exponentielle.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Tours_de_Hano%C3%AF"
+    },
+    {
+      "question": "Qu'affiche ce code, qui implémente l'**algorithme d'Euclide** ?\n```python\ndef pgcd(a, b):\n    while b:\n        a, b = b, a % b\n    return a\n\nprint(pgcd(48, 18))\n```",
+      "answer": "`6`",
+      "wrong": [
+        "`3`",
+        "`144`",
+        "`12`"
+      ],
+      "explanation": "L'algorithme d'Euclide remplace `(a, b)` par `(b, a mod b)` jusqu'à ce que `b` vaille 0 : (48, 18) → (18, 12) → (12, 6) → (6, 0). Le dernier reste non nul, 6, est le plus grand commun diviseur. `144` serait le PPCM, qu'on obtient d'ailleurs par `48 × 18 / pgcd(48, 18)`. Vieux de plus de 2 000 ans, cet algorithme ne demande qu'un nombre logarithmique d'étapes.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide"
+    },
+    {
+      "question": "À quoi sert le **crible d'Ératosthène** ?",
+      "answer": "Trouver tous les nombres premiers jusqu'à une limite",
+      "wrong": [
+        "Trier une liste d'entiers sans les comparer",
+        "Calculer le plus grand diviseur commun",
+        "Chercher un motif à l'intérieur d'un texte"
+      ],
+      "explanation": "On écrit les entiers de 2 à `n`, puis, pour chaque nombre encore non barré, on barre tous ses multiples : les nombres restants sont premiers. On peut commencer à barrer à partir du carré de chaque nombre premier et s'arrêter à `√n`. La complexité est en `O(n log log n)`, presque linéaire, au prix d'un tableau de `n` booléens.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Crible_d%27%C3%89ratosth%C3%A8ne"
+    },
+    {
+      "question": "Quelle est la complexité, dans le pire cas, d'une **recherche séquentielle** (parcourir un tableau non trié élément par élément jusqu'à trouver la valeur) ?",
+      "answer": "`O(n)`",
+      "wrong": [
+        "`O(log n)`",
+        "`O(1)`",
+        "`O(n²)`"
+      ],
+      "explanation": "Si la valeur est en dernière position ou absente, il faut examiner les `n` éléments. Sur un tableau non trié, on ne peut pas faire mieux, car aucun élément ne renseigne sur la position des autres. La recherche dichotomique en `O(log n)` n'est possible que si le tableau est trié.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Recherche_s%C3%A9quentielle"
+    },
+    {
+      "question": "Qu'apporte une liste **doublement** chaînée par rapport à une liste simplement chaînée ?",
+      "answer": "Chaque nœud pointe aussi vers le nœud précédent",
+      "wrong": [
+        "Chaque élément est stocké deux fois par sécurité",
+        "On accède à n'importe quel indice en `O(1)`",
+        "Les éléments restent triés automatiquement"
+      ],
+      "explanation": "Chaque nœud d'une liste doublement chaînée contient deux pointeurs, vers le suivant et vers le précédent. On peut alors la parcourir dans les deux sens et retirer un nœud dont on connaît l'adresse en `O(1)`, sans chercher son prédécesseur. Le prix est un pointeur de plus par nœud ; l'accès au k-ième élément reste en `O(n)`.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ndef f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)\n\nprint(f(5))\n```",
+      "answer": "`120`",
+      "wrong": [
+        "`15`",
+        "`24`",
+        "`25`"
+      ],
+      "explanation": "La fonction calcule la **factorielle** : `f(5) = 5 × f(4) = 5 × 4 × f(3)`… jusqu'au cas de base `f(1) = 1`, soit `5 × 4 × 3 × 2 × 1 = 120`. Les appels s'empilent jusqu'au cas de base, puis les multiplications se font en remontant. `15` serait la somme `5 + 4 + 3 + 2 + 1`, et `24` vaut `f(4)`.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Factorielle"
+    },
+    {
+      "question": "Que cherche-t-on dans le **problème du voyageur de commerce** ?",
+      "answer": "La plus courte tournée passant par toutes les villes",
+      "wrong": [
+        "Le plus court chemin entre deux villes données",
+        "Le réseau de routes le moins cher reliant les villes",
+        "La ville la plus proche de toutes les autres"
+      ],
+      "explanation": "Le voyageur doit visiter chaque ville une seule fois et revenir à son point de départ en parcourant la distance totale la plus courte. Avec `n` villes, il existe `(n − 1)!/2` tournées possibles, et aucun algorithme polynomial n'est connu : le problème est **NP-difficile**. Le plus court chemin entre deux villes (Dijkstra) et le réseau le moins cher (arbre couvrant minimal) sont, eux, des problèmes faciles.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce"
+    },
+    {
+      "question": "On dispose de pièces de 1, 3 et 4. Pour rendre 6, combien de pièces donne la stratégie **gloutonne** qui prend toujours la plus grosse pièce possible ?",
+      "answer": "3",
+      "wrong": [
+        "2",
+        "4",
+        "6"
+      ],
+      "explanation": "L'algorithme glouton prend 4, puis il reste 2, qu'il rend avec 1 + 1 : soit 3 pièces. Pourtant, 3 + 3 n'en utilise que 2 ! Le glouton n'est optimal que pour certains systèmes de pièces, dits **canoniques**, comme celui de l'euro. Dans le cas général, il faut passer par la programmation dynamique pour garantir le minimum.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_rendu_de_monnaie"
+    },
+    {
+      "question": "Que signifie qu'un problème de décision appartient à la classe **NP** ?",
+      "answer": "Une solution proposée se vérifie en temps polynomial",
+      "wrong": [
+        "Il est impossible de le résoudre en temps polynomial",
+        "Aucun algorithme ne peut le résoudre en temps fini",
+        "Il se résout en temps constant sur une machine réelle"
+      ],
+      "explanation": "NP signifie « polynomial non déterministe » et non « non polynomial » : ce sont les problèmes dont on peut **vérifier** rapidement une solution (par exemple, contrôler une grille de sudoku remplie). Tous les problèmes de P en font partie, puisqu'on peut les résoudre, donc a fortiori vérifier, en temps polynomial. Savoir si P = NP, c'est-à-dire si tout problème vérifiable vite est aussi soluble vite, reste une question ouverte majeure.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/NP_(complexit%C3%A9)"
+    },
+    {
+      "question": "Dans un tableau **trié**, on cherche deux éléments dont la somme vaut une cible donnée. On place un indice à chaque extrémité et on les rapproche selon que la somme est trop petite ou trop grande. Quelle est la complexité ?",
+      "answer": "`O(n)`",
+      "wrong": [
+        "`O(n²)`",
+        "`O(n log n)`",
+        "`O(log n)`"
+      ],
+      "explanation": "Si la somme est trop petite, on avance l'indice de gauche ; si elle est trop grande, on recule celui de droite. À chaque étape, un indice bouge et ils ne se croisent qu'une fois : au plus `n` étapes. C'est la technique des **deux pointeurs**, qui exploite le tri pour éviter de tester les `n(n − 1)/2` paires possibles en `O(n²)`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Combien de multiplications faut-il, en ordre de grandeur, pour calculer `xⁿ` par **exponentiation rapide** (élévations au carré successives) ?",
+      "answer": "`O(log n)`",
+      "wrong": [
+        "`O(n)`",
+        "`O(√n)`",
+        "`O(n log n)`"
+      ],
+      "explanation": "L'idée est que `xⁿ = (x^(n/2))²` si `n` est pair, et `x × xⁿ⁻¹` sinon : l'exposant est divisé par deux au moins une fois sur deux. Par exemple, `x¹⁶` s'obtient en 4 mises au carré au lieu de 15 multiplications. Cette technique est indispensable en cryptographie (RSA), où les exposants comptent des centaines de chiffres.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Exponentiation_rapide"
+    },
+    {
+      "question": "En programmation dynamique, qu'est-ce qui distingue la **mémoïsation** de la **tabulation** ?",
+      "answer": "Approche descendante récursive contre ascendante itérative",
+      "wrong": [
+        "Résultat exact contre résultat seulement approché",
+        "Stockage en mémoire contre stockage sur disque",
+        "Choix glouton contre exploration exhaustive"
+      ],
+      "explanation": "La mémoïsation part du problème initial, appelle récursivement les sous-problèmes et met leurs résultats en cache au fur et à mesure (top-down). La tabulation remplit un tableau en partant des plus petits cas jusqu'au problème complet, avec des boucles (bottom-up). Les deux donnent le même résultat exact ; la tabulation évite la pile d'appels, la mémoïsation ne calcule que les sous-problèmes réellement utiles.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/M%C3%A9mo%C3%AFsation"
+    },
+    {
+      "question": "Quel algorithme détecte un cycle dans une liste chaînée à l'aide de deux pointeurs avançant l'un d'un pas, l'autre de deux pas, avec une mémoire en `O(1)` ?",
+      "answer": "L'algorithme du lièvre et de la tortue (Floyd)",
+      "wrong": [
+        "L'algorithme de plus court chemin de Dijkstra",
+        "L'algorithme d'arbre couvrant de Kruskal",
+        "L'algorithme du sous-tableau maximal de Kadane"
+      ],
+      "explanation": "La tortue avance d'un nœud à la fois, le lièvre de deux. S'il n'y a pas de cycle, le lièvre atteint la fin de la liste ; s'il y en a un, il finit forcément par rattraper la tortue à l'intérieur de la boucle. On évite ainsi de mémoriser tous les nœuds visités dans un ensemble, qui coûterait `O(n)` en mémoire.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Algorithme_du_li%C3%A8vre_et_de_la_tortue"
+    },
+    {
+      "question": "Qu'a démontré Alan Turing en 1936 au sujet du **problème de l'arrêt** (savoir si un programme donné finit par s'arrêter sur une entrée donnée) ?",
+      "answer": "Qu'il est indécidable",
+      "wrong": [
+        "Qu'il est NP-complet",
+        "Qu'il appartient à la classe P",
+        "Qu'il se résout en temps exponentiel"
+      ],
+      "explanation": "Turing a prouvé qu'aucun algorithme ne peut répondre correctement à cette question pour **tous** les programmes et toutes les entrées : le problème est indécidable, peu importe le temps de calcul accordé. La preuve, par l'absurde, construit un programme qui fait le contraire de ce que le prétendu détecteur prédit à son sujet. Un problème NP-complet, lui, est toujours décidable, puisqu'il appartient à NP.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt"
+    },
+    {
+      "question": "Qu'est-ce qu'une **récursion terminale** ?",
+      "answer": "L'appel récursif est la dernière opération de la fonction",
+      "wrong": [
+        "La fonction ne s'appelle qu'une seule fois au total",
+        "Le cas de base est écrit à la fin de la fonction",
+        "La récursion s'arrête d'office après 1 000 appels"
+      ],
+      "explanation": "Dans une récursion terminale, la fonction renvoie directement le résultat de l'appel récursif, sans calcul après coup. Le cadre de pile courant devient alors inutile, et un compilateur peut transformer la récursion en simple boucle : c'est l'optimisation des appels terminaux, imposée par Scheme mais absente de Python. La factorielle `n * f(n - 1)` n'est pas terminale, car la multiplication a lieu après le retour de l'appel.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/R%C3%A9cursion_terminale"
+    },
+    {
+      "question": "Pour implémenter un cache **LRU** (on évince l'élément utilisé le moins récemment) avec lecture et insertion en `O(1)`, quelle combinaison de structures est classique ?",
+      "answer": "Une table de hachage et une liste doublement chaînée",
+      "wrong": [
+        "Un tas binaire et une pile de taille fixe",
+        "Un arbre AVL et une file circulaire",
+        "Un tableau trié et une recherche dichotomique"
+      ],
+      "explanation": "La liste doublement chaînée garde les éléments dans l'ordre d'utilisation : à chaque accès, on déplace le nœud en tête en `O(1)`, et on évince celui de la queue. La table de hachage associe chaque clé à son nœud, ce qui évite de parcourir la liste pour le retrouver. C'est exactement ce que propose `LinkedHashMap` en Java avec l'ordre d'accès.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Cache_replacement_policies"
+    },
+    {
+      "question": "Le **problème du sac à dos** 0/1 se résout par programmation dynamique en `O(n × W)`, où `W` est la capacité du sac. Pourquoi ne le considère-t-on pas pour autant comme résolu en temps polynomial ?",
+      "answer": "`W` est exponentiel par rapport à sa taille en bits",
+      "wrong": [
+        "La table de calcul ne tient jamais en mémoire",
+        "L'algorithme ne fournit qu'une solution approchée",
+        "Le résultat dépend de l'ordre de lecture des objets"
+      ],
+      "explanation": "La taille d'une entrée se mesure en nombre de bits : la capacité `W` s'écrit avec environ `log₂ W` bits seulement. Un coût proportionnel à `W` est donc exponentiel en la taille de cette donnée : doubler le nombre de chiffres de `W` peut multiplier le temps par un facteur énorme. On parle d'algorithme **pseudo-polynomial**, et la version décisionnelle du sac à dos reste NP-complète.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos"
+    },
+    {
+      "question": "Quelle complexité atteint l'algorithme de **Kadane** pour trouver le sous-tableau contigu de somme maximale d'un tableau de `n` entiers ?",
+      "answer": "`O(n)`",
+      "wrong": [
+        "`O(n log n)`",
+        "`O(n²)`",
+        "`O(n³)`"
+      ],
+      "explanation": "Kadane parcourt le tableau une seule fois en retenant la meilleure somme d'un sous-tableau **se terminant** à la position courante : soit on prolonge le sous-tableau précédent, soit on repart de l'élément courant s'il fait mieux à lui seul. Sur `[-2, 1, -3, 4, -1, 2, 1, -5, 4]`, il trouve 6 (`4, -1, 2, 1`). Tester tous les sous-tableaux coûterait `O(n²)` avec des sommes cumulées, et `O(n³)` naïvement.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Maximum_subarray_problem"
+    },
+    {
+      "question": "Quelle est la complexité **moyenne** de l'algorithme **quickselect**, qui trouve le k-ième plus petit élément d'un tableau non trié en partitionnant autour d'un pivot ?",
+      "answer": "`O(n)`",
+      "wrong": [
+        "`O(n log n)`",
+        "`O(log n)`",
+        "`O(n²)`"
+      ],
+      "explanation": "Comme le tri rapide, quickselect partitionne autour d'un pivot, mais il ne poursuit que dans **la seule** partie qui contient le k-ième élément. En moyenne, la taille est divisée par deux à chaque étape : `n + n/2 + n/4 + … ≈ 2n`, soit `O(n)`. Trier d'abord le tableau coûterait `O(n log n)`. Le pire cas reste en `O(n²)` avec de mauvais pivots, sauf avec la méthode de la médiane des médianes.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Quickselect"
+    },
+    {
+      "question": "En Java, `Arrays.sort` trie les tableaux d'**objets** avec un tri stable (dérivé de TimSort), mais les tableaux de `int` avec un tri rapide à double pivot, non stable. Pourquoi ce choix ne pose-t-il aucun problème ?",
+      "answer": "Deux valeurs primitives égales sont indiscernables",
+      "wrong": [
+        "Deux primitifs ne sont jamais égaux entre eux",
+        "Un tri stable ne sait pas comparer des primitifs",
+        "Les tableaux de primitifs sont toujours petits"
+      ],
+      "explanation": "La stabilité ne compte que si des éléments égaux pour le tri peuvent être distingués autrement, comme deux personnes de même âge mais de noms différents. Deux `int` égaux sont parfaitement identiques : peu importe lequel arrive en premier. Java peut donc choisir pour eux un tri rapide à double pivot, très performant, et réserver le tri stable aux objets, où l'ordre des éléments égaux peut avoir du sens.",
+      "difficulty": 3,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Arrays.html"
+    },
+    {
+      "question": "Quelle structure de données probabiliste superpose des listes chaînées de plus en plus clairsemées pour offrir une recherche en `O(log n)` en moyenne, et sert par exemple aux ensembles triés de Redis ?",
+      "answer": "La skip list (liste à enjambements)",
+      "wrong": [
+        "Le filtre de Bloom (Bloom filter)",
+        "Le tas binomial (binomial heap)",
+        "Le tampon circulaire (ring buffer)"
+      ],
+      "explanation": "Dans une skip list, chaque élément figure au niveau le plus bas, puis est promu à chaque niveau supérieur avec une probabilité fixe, souvent 1/2. Une recherche commence au niveau le plus haut, avance tant qu'elle ne dépasse pas la cible, puis descend d'un niveau : environ `log n` étapes en moyenne, comme un arbre équilibré mais sans rotations. Inventée par William Pugh en 1989, elle est simple à implémenter et à rendre concurrente.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Skip_list"
     }
   ]
 }

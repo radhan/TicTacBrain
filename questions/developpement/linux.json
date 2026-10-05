@@ -882,6 +882,251 @@
       "explanation": "Linus Torvalds, alors étudiant à l'université d'Helsinki, a annoncé son noyau en août 1991 sur Usenet comme « juste un passe-temps ». Richard Stallman avait lancé en 1983 le projet GNU, dont les outils (bash, gcc, coreutils) forment avec le noyau Linux les systèmes souvent appelés « GNU/Linux ». Ken Thompson et Dennis Ritchie ont créé Unix aux laboratoires Bell à partir de 1969.",
       "difficulty": 1,
       "source": "https://fr.wikipedia.org/wiki/Linus_Torvalds"
+    },
+    {
+      "question": "À quoi sert la première ligne `#!/bin/bash` d'un script ?",
+      "answer": "À indiquer l'interpréteur qui doit exécuter le script",
+      "wrong": [
+        "À rendre le script exécutable sans passer par `chmod`",
+        "À désactiver les commentaires dans le reste du script",
+        "À demander les droits root au lancement du script"
+      ],
+      "explanation": "Cette ligne, appelée *shebang* (`#!` suivi d'un chemin), est lue par le noyau quand on lance `./script` : il exécute alors en réalité `/bin/bash script`. On écrit de la même façon des scripts Python avec `#!/usr/bin/env python3`. Le shebang ne remplace pas le droit d'exécution, qu'il faut toujours donner avec `chmod +x`. Pour le shell lui-même, c'est un simple commentaire, puisqu'elle commence par `#`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans la sortie de `ls -l`, que signifie le `d` au début de `drwxr-xr-x` ?",
+      "answer": "L'entrée est un répertoire",
+      "wrong": [
+        "L'entrée est un fichier de données",
+        "L'entrée est un périphérique (*device*)",
+        "L'entrée est un fichier caché"
+      ],
+      "explanation": "Le premier caractère de `ls -l` indique le type de l'entrée : `-` pour un fichier ordinaire, `d` pour un répertoire, `l` pour un lien symbolique, `c` et `b` pour des périphériques (mode caractère ou bloc), `s` pour une socket et `p` pour un tube nommé. Les neuf caractères suivants sont les permissions du propriétaire, du groupe et des autres.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle commande ouvre ta table de tâches planifiées (**crontab**) personnelle pour la modifier ?",
+      "answer": "`crontab -e`",
+      "wrong": [
+        "`crontab -l`",
+        "`crontab -r`",
+        "`cron --edit`"
+      ],
+      "explanation": "`crontab -e` ouvre ta crontab dans l'éditeur défini par la variable `EDITOR` (ou `VISUAL`), puis la vérifie et l'installe à l'enregistrement. `crontab -l` se contente de l'afficher, et `crontab -r` la **supprime** entièrement, sans confirmation par défaut. Les touches `r` et `e` étant voisines sur les claviers AZERTY comme QWERTY, cette erreur est un classique.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle commande génère une nouvelle paire de clés SSH, privée et publique ?",
+      "answer": "`ssh-keygen`",
+      "wrong": [
+        "`ssh-copy-id`",
+        "`ssh-agent`",
+        "`ssh-add`"
+      ],
+      "explanation": "`ssh-keygen` crée la paire : par exemple `ssh-keygen -t ed25519` produit `~/.ssh/id_ed25519` (la clé privée) et `~/.ssh/id_ed25519.pub` (la clé publique), en proposant de protéger la clé privée par une phrase de passe. `ssh-copy-id` copie ensuite la clé publique sur un serveur, `ssh-agent` garde les clés déchiffrées en mémoire pendant la session, et `ssh-add` les lui confie.",
+      "difficulty": 1
+    },
+    {
+      "question": "Le dossier `a` n'existe pas encore. Quelle commande crée d'un coup `a/b/c`, avec tous les dossiers intermédiaires ?",
+      "answer": "`mkdir -p a/b/c`",
+      "wrong": [
+        "`mkdir a/b/c`",
+        "`mkdir -r a/b/c`",
+        "`touch a/b/c`"
+      ],
+      "explanation": "Sans option, `mkdir a/b/c` échoue avec « No such file or directory », car le parent `a/b` n'existe pas. L'option `-p` (*parents*) crée tous les dossiers manquants du chemin, et ne signale aucune erreur si le dossier existe déjà, ce qui est pratique dans les scripts. `mkdir` n'a pas d'option `-r`, et `touch` crée des fichiers, pas des dossiers.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que contient la variable spéciale `$?` juste après l'exécution d'une commande ?",
+      "answer": "Le code de sortie de cette commande",
+      "wrong": [
+        "Le PID du processus de cette commande",
+        "Le nombre d'arguments passés au script",
+        "Le nom du script en cours d'exécution"
+      ],
+      "explanation": "`$?` vaut le code de retour de la dernière commande : 0 pour un succès, une valeur de 1 à 255 pour un échec. Il est remplacé après chaque commande, même un simple `echo` : il faut donc le lire ou le sauvegarder tout de suite (`code=$?`). Le PID du shell est dans `$$`, celui de la dernière tâche lancée en arrière-plan dans `$!`, le nombre d'arguments dans `$#` et le nom du script dans `$0`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que fait `echo bonjour | tee sortie.txt` ?",
+      "answer": "Il affiche `bonjour` et l'écrit aussi dans `sortie.txt`",
+      "wrong": [
+        "Il écrit `bonjour` dans `sortie.txt` sans rien afficher",
+        "Il ajoute `bonjour` à la fin de `sortie.txt`, sans l'écraser",
+        "Il affiche le contenu de `sortie.txt`, puis `bonjour`"
+      ],
+      "explanation": "`tee`, nommé d'après le raccord de plomberie en T, copie son entrée standard à la fois vers sa sortie standard et vers un ou plusieurs fichiers. Par défaut il écrase le fichier, et `tee -a` ajoute à la fin. C'est utile pour garder une trace tout en suivant l'affichage, par exemple `make 2>&1 | tee build.log`, ou pour enregistrer une étape intermédiaire d'un pipeline.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche la commande suivante ?\n```bash\necho \"/home/alice/docs/rapport.pdf\" | awk -F/ '{print $NF}'\n```",
+      "answer": "`rapport.pdf`",
+      "wrong": [
+        "`5`",
+        "`/home/alice/docs`",
+        "`home`"
+      ],
+      "explanation": "`-F/` fait de `/` le séparateur de champs. La variable `NF` contient le **nombre** de champs de la ligne (ici 5, le premier étant vide puisque la ligne commence par `/`) ; `$NF` désigne donc le dernier champ. Sans le `$`, `print NF` afficherait 5. Pour l'avant-dernier champ, on écrit `$(NF-1)`, qui donnerait `docs`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que fait `sed -i 's/80/8080/' conf.ini` ?",
+      "answer": "Il modifie `conf.ini` sur place, en y remplaçant `80` par `8080`",
+      "wrong": [
+        "Il affiche le résultat sans modifier `conf.ini`",
+        "Il écrit le résultat dans un nouveau fichier `conf.ini.new`",
+        "Il demande une confirmation avant chaque remplacement"
+      ],
+      "explanation": "Sans option, `sed` écrit le texte transformé sur la sortie standard et laisse le fichier intact. `-i` (*in place*) réécrit directement le fichier. Avec GNU sed, `-i.bak` garde en plus une copie de l'original nommée `conf.ini.bak`, une précaution utile puisqu'il n'y a pas d'annulation. Attention : le `sed` de macOS (BSD) exige un argument après `-i`, par exemple `sed -i '' 's/80/8080/' conf.ini`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que fait `grep -rn \"TODO\" src/` ?",
+      "answer": "Il cherche « TODO » dans tout `src/`, avec les numéros de ligne",
+      "wrong": [
+        "Il cherche « TODO » dans les noms des fichiers de `src/`",
+        "Il remplace « TODO » par rien dans les fichiers de `src/`",
+        "Il compte les fichiers de `src/` qui contiennent « TODO »"
+      ],
+      "explanation": "`-r` parcourt récursivement le dossier et ses sous-dossiers, et `-n` préfixe chaque résultat par son numéro de ligne, ce qui donne des lignes comme `src/sub/b.js:1:TODO: test`. `grep` cherche toujours dans le **contenu** des fichiers ; pour chercher dans leurs noms, on utilise `find -name`. `grep -l` n'afficherait que les noms des fichiers concernés, et `grep -c` le nombre de lignes correspondantes par fichier.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel fichier permet de définir un raccourci pour qu'un simple `ssh prod` se connecte à `deploy@203.0.113.10` sur le port 2222, avec une clé précise ?",
+      "answer": "`~/.ssh/config`",
+      "wrong": [
+        "`/etc/hosts`",
+        "`~/.ssh/known_hosts`",
+        "`~/.ssh/authorized_keys`"
+      ],
+      "explanation": "Le fichier de configuration du client SSH accepte des blocs comme `Host prod`, suivis de `HostName 203.0.113.10`, `User deploy`, `Port 2222` et `IdentityFile ~/.ssh/id_prod`. Ces réglages profitent aussi à `scp`, `rsync` et `git`, qui passent par `ssh`. `/etc/hosts` pourrait associer un nom à l'adresse IP, mais ni l'utilisateur, ni le port, ni la clé.",
+      "difficulty": 2
+    },
+    {
+      "question": "SSH refuse d'utiliser ta clé privée et affiche « WARNING: UNPROTECTED PRIVATE KEY FILE! ». Que faut-il faire ?",
+      "answer": "Retirer tout droit d'accès hors propriétaire (`chmod 600`)",
+      "wrong": [
+        "La rendre exécutable par son propriétaire (`chmod u+x`)",
+        "La protéger par une phrase de passe (`ssh-keygen -p`)",
+        "La rendre lisible par le service SSH (`chmod 644`)"
+      ],
+      "explanation": "Le client SSH ignore une clé privée accessible à d'autres que son propriétaire, avec un message du type « Permissions 0644 for '...' are too open ». `chmod 600 ~/.ssh/id_ed25519` (lecture-écriture pour le propriétaire seul) règle le problème ; le dossier `~/.ssh` est en général en 700. Une phrase de passe chiffre le contenu de la clé, mais ne change rien à ses permissions, et une clé n'a jamais besoin d'être exécutable.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans quel répertoire l'administrateur doit-il placer ses propres fichiers d'unité systemd, prioritaires sur ceux installés par les paquets ?",
+      "answer": "`/etc/systemd/system/`",
+      "wrong": [
+        "`/usr/lib/systemd/system/`",
+        "`/etc/init.d/`",
+        "`/var/lib/systemd/`"
+      ],
+      "explanation": "Les paquets installent leurs unités dans `/usr/lib/systemd/system/` (historiquement `/lib/systemd/system/` sur Debian), un dossier réécrit lors des mises à jour. Les unités de `/etc/systemd/system/` sont prioritaires : on y place ses propres services et ses surcharges. `systemctl edit nginx` y crée par exemple `nginx.service.d/override.conf`. `/etc/init.d/` contient les anciens scripts de démarrage SysV, et `/var/lib/systemd/` des données d'état internes.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quoi sert le fichier `/etc/fstab` ?",
+      "answer": "À lister les systèmes de fichiers à monter et leurs points de montage",
+      "wrong": [
+        "À lister les tâches planifiées exécutées au démarrage",
+        "À définir les règles du pare-feu appliquées au démarrage",
+        "À associer les noms de machines à leurs adresses IP"
+      ],
+      "explanation": "Chaque ligne de `/etc/fstab` (*file systems table*) décrit un montage : périphérique ou UUID, point de montage, type (`ext4`, `xfs`, `nfs`…), options, puis deux champs pour la sauvegarde et l'ordre de vérification. Ces montages sont effectués au démarrage, et `mount -a` monte tout ce qui y figure. Une erreur dans ce fichier peut bloquer le démarrage : on teste avec `mount -a` avant de redémarrer. L'association nom/adresse IP, elle, se fait dans `/etc/hosts`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quand s'exécute une tâche cron planifiée avec `0 9 * * 1-5` ?",
+      "answer": "À 9 h 00, du lundi au vendredi",
+      "wrong": [
+        "À 9 h 00, du 1er au 5 de chaque mois",
+        "Toutes les 9 minutes, de janvier à mai",
+        "À 0 h 09, du lundi au vendredi"
+      ],
+      "explanation": "Les champs se lisent minute, heure, jour du mois, mois, jour de la semaine : minute 0, heure 9, n'importe quel jour du mois et n'importe quel mois, et les jours de la semaine 1 à 5. Pour cron, 0 (ou 7) désigne le dimanche, 1 le lundi… et 5 le vendredi. Une exécution du 1er au 5 de chaque mois s'écrirait `0 9 1-5 * *`.",
+      "difficulty": 2,
+      "source": "https://man7.org/linux/man-pages/man5/crontab.5.html"
+    },
+    {
+      "question": "Le script `env.sh` contient `cd /srv/app` et `export MODE=prod`. Quel est l'effet sur ton terminal de `source env.sh`, comparé à `./env.sh` ?",
+      "answer": "Avec `source`, dossier et `MODE` restent changés ; avec `./env.sh`, non",
+      "wrong": [
+        "Les deux laissent le dossier et `MODE` changés dans le terminal",
+        "Avec `./env.sh`, dossier et `MODE` restent changés ; avec `source`, non",
+        "Les deux gardent `MODE`, mais aucun ne garde le changement de dossier"
+      ],
+      "explanation": "`./env.sh` lance un **nouveau processus** bash : ses `cd` et `export` s'appliquent à ce processus, qui disparaît à la fin du script sans toucher au terminal. `source env.sh` (ou son équivalent `. env.sh`) exécute les commandes dans le shell **courant**, d'où la persistance. C'est ainsi qu'on recharge `~/.bashrc` après l'avoir modifié, ou qu'on active un environnement virtuel Python avec `source venv/bin/activate`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans une crontab, la ligne `0 3 * * * tar czf /sauv/$(date +%F).tgz /srv` ne crée pas l'archive attendue. Pourquoi ?",
+      "answer": "Le `%` a un sens spécial dans une crontab et doit être échappé en `\\%`",
+      "wrong": [
+        "cron n'accepte pas `$(...)`, il faut utiliser des accents graves",
+        "cron lance les commandes avec `zsh`, qui ignore la syntaxe `$(...)`",
+        "cron exige que le chemin `/sauv` soit placé entre guillemets"
+      ],
+      "explanation": "Dans la partie commande d'une ligne de crontab, un `%` non échappé est transformé en retour à la ligne, et tout ce qui suit le premier `%` est envoyé à la commande sur son entrée standard. Ici, la commande réellement exécutée est tronquée à `tar czf /sauv/$(date +`, d'où une erreur de syntaxe. Il faut écrire `\\%F`, ou placer la commande dans un script appelé par cron. Par défaut, cron utilise `/bin/sh`, qui comprend très bien `$(...)`.",
+      "difficulty": 3,
+      "source": "https://man7.org/linux/man-pages/man5/crontab.5.html"
+    },
+    {
+      "question": "Quand s'exécute une tâche cron planifiée avec `0 0 13 * 5` ?",
+      "answer": "À minuit, chaque 13 du mois **et** chaque vendredi",
+      "wrong": [
+        "À minuit, uniquement les vendredis tombant un 13",
+        "À minuit, le 13 mai de chaque année uniquement",
+        "À 13 h 00, chaque vendredi de chaque mois"
+      ],
+      "explanation": "Piège connu : quand le jour du mois **et** le jour de la semaine sont tous deux restreints (aucun des deux n'est `*`), cron lance la tâche dès que **l'un ou l'autre** correspond. Ici : tous les 13 du mois, plus tous les vendredis. Pour ne viser que les vendredis 13, on planifie le 13 et on teste le jour dans la commande, par exemple `[ \"$(date +\\%u)\" = 5 ] && ...` (le `%` doit être échappé dans une crontab).",
+      "difficulty": 3,
+      "source": "https://man7.org/linux/man-pages/man5/crontab.5.html"
+    },
+    {
+      "question": "Qu'affiche ce code, exécuté avec bash ?\n```bash\nn=0\nprintf 'a\\nb\\nc\\n' | while read l; do n=$((n+1)); done\necho $n\n```",
+      "answer": "`0`",
+      "wrong": [
+        "`3`",
+        "`2`",
+        "Une ligne vide"
+      ],
+      "explanation": "Dans bash, chaque commande d'un pipeline s'exécute dans un **sous-shell**, y compris la boucle `while`. Elle incrémente bien sa propre copie de `n`, qui disparaît à la fin du pipeline : le shell principal garde `n=0`. Solutions : rediriger l'entrée de la boucle (`done < fichier`), utiliser une substitution de processus (`done < <(commande)`), ou activer `shopt -s lastpipe` dans un script. zsh, lui, exécute la dernière commande d'un pipeline dans le shell courant et afficherait 3.",
+      "difficulty": 3
+    },
+    {
+      "question": "Avec `f=/var/log/nginx/access.log`, qu'affiche `echo \"${f##*/}\"` en bash ?",
+      "answer": "`access.log`",
+      "wrong": [
+        "`/var/log/nginx`",
+        "`var/log/nginx/access.log`",
+        "`log`"
+      ],
+      "explanation": "`${var##motif}` retire le plus **long** préfixe correspondant au motif : `*/` englobe tout jusqu'au dernier `/`, il reste donc le nom du fichier, comme avec `basename`. Avec un seul `#`, c'est le préfixe le plus court qui est retiré (`var/log/nginx/access.log`). Symétriquement, `%` et `%%` retirent un suffixe : `${f%/*}` donne le dossier `/var/log/nginx`, et `${f##*.}` l'extension `log`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi `ln /mnt/usb/photo.jpg photo.jpg` (lien **physique**) échoue-t-il avec « Invalid cross-device link » quand la clé USB est un autre système de fichiers ?",
+      "answer": "Un numéro d'inode n'a de sens qu'à l'intérieur de son système de fichiers",
+      "wrong": [
+        "Les liens physiques sont interdits sur tous les supports amovibles",
+        "Il faut les droits root pour lier un fichier situé sur un autre disque",
+        "Un lien physique ne peut viser qu'un fichier du répertoire courant"
+      ],
+      "explanation": "Un lien physique est une entrée de répertoire qui pointe vers un numéro d'inode, or chaque système de fichiers numérote ses propres inodes : l'entrée ne peut désigner qu'un inode du même système de fichiers. Un lien symbolique, qui stocke simplement un **chemin**, n'a pas cette limite : `ln -s /mnt/usb/photo.jpg photo.jpg` fonctionne. Autre restriction des liens physiques : ils ne peuvent pas viser un répertoire.",
+      "difficulty": 3
+    },
+    {
+      "question": "Le répertoire partagé `/srv/projet` appartient au groupe `dev` et a les permissions `drwxrwsr-x`. Quel est l'effet du `s` à la place du `x` du groupe ?",
+      "answer": "Les fichiers créés dedans appartiennent au groupe `dev`",
+      "wrong": [
+        "Chacun ne peut y supprimer que ses propres fichiers",
+        "Seuls les membres de `dev` peuvent en lister le contenu",
+        "Les fichiers créés dedans reçoivent les permissions `rwxrwsr-x`"
+      ],
+      "explanation": "Sur un répertoire, le bit setgid (`chmod g+s` ou `chmod 2775`) fait que les fichiers et sous-dossiers créés à l'intérieur prennent le groupe du répertoire, et non le groupe principal de leur créateur ; les sous-dossiers héritent aussi du bit. C'est la base des dossiers d'équipe : les membres de `dev` gardent l'accès aux fichiers de leurs collègues. Les permissions restent fixées par le umask de chacun, et la restriction de suppression est le rôle du sticky bit.",
+      "difficulty": 3
     }
   ]
 }

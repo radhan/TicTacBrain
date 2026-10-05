@@ -534,6 +534,259 @@
       ],
       "explanation": "Une transaction à court de gas est bien **incluse dans un bloc**, mais toutes ses modifications d'état sont annulées, à l'exception du paiement des frais et de l'incrémentation du nonce. L'expéditeur paie la totalité du gas qu'il avait autorisé, car ce calcul a réellement été effectué par le réseau. On ne peut pas « recharger » une transaction : il faut en envoyer une nouvelle avec une limite de gas plus haute.",
       "difficulty": 3
+    },
+    {
+      "question": "Qu'est-ce qu'une « dApp » ?",
+      "answer": "Une application dont la logique repose sur des smart contracts",
+      "wrong": [
+        "Une application mobile qui fonctionne hors ligne",
+        "Une application de paiement par carte bancaire",
+        "Une application réservée aux mineurs de cryptos"
+      ],
+      "explanation": "Une **dApp** (application décentralisée) associe une interface classique, souvent un site web, à des **smart contracts** qui portent sa logique et ses fonds : Uniswap ou OpenSea en sont des exemples. L'utilisateur s'y connecte avec son portefeuille (MetaMask, par exemple) et signe lui-même ses transactions. L'interface peut être hébergée de façon centralisée, mais les contrats restent utilisables même si le site disparaît.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que désigne une « couche 2 » (layer 2) dans l'écosystème Ethereum ?",
+      "answer": "Un réseau bâti au-dessus d'Ethereum pour le désengorger",
+      "wrong": [
+        "La deuxième version du protocole Ethereum",
+        "Le deuxième bloc de la chaîne principale",
+        "Une copie de secours de la blockchain"
+      ],
+      "explanation": "Une **couche 2** traite les transactions en dehors du réseau principal (la **couche 1**), puis s'appuie sur lui pour sa sécurité, par exemple en y publiant les données de ses lots de transactions. Arbitrum, Optimism, Base, zkSync ou Starknet en sont des exemples. Les frais y sont bien plus faibles, car le coût d'utilisation de la couche 1 est partagé entre de nombreux utilisateurs.",
+      "difficulty": 1
+    },
+    {
+      "question": "Sur un réseau de test comme Sepolia, à quoi sert un « faucet » (robinet) ?",
+      "answer": "À distribuer gratuitement des jetons de test",
+      "wrong": [
+        "À détruire les jetons envoyés par erreur",
+        "À accélérer la validation des transactions",
+        "À convertir des euros en ether réel"
+      ],
+      "explanation": "Un **réseau de test** (testnet) reproduit le fonctionnement d'Ethereum, mais son ether n'a **aucune valeur** : les développeurs y déploient et testent leurs contrats sans risquer d'argent réel. Pour payer le gas, ils obtiennent quelques jetons gratuits auprès d'un **faucet**, un service qui en « goutte » une petite quantité à qui en fait la demande.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quoi sert l'Ethereum Name Service (ENS) ?",
+      "answer": "À associer des noms lisibles en .eth à des adresses",
+      "wrong": [
+        "À chiffrer les messages entre portefeuilles",
+        "À enregistrer des noms de domaine en .com",
+        "À vérifier l'identité légale des utilisateurs"
+      ],
+      "explanation": "L'**ENS** fonctionne comme un annuaire géré par des smart contracts : un nom comme `vitalik.eth` renvoie vers une adresse `0x…` de 40 caractères hexadécimaux, bien plus difficile à retenir et à recopier sans erreur. C'est l'équivalent, pour Ethereum, du DNS qui traduit les noms de domaine en adresses IP. Un nom ENS ne prouve rien sur l'identité civile de son détenteur.",
+      "difficulty": 1
+    },
+    {
+      "question": "Sur Ethereum, quel standard définit l'interface des jetons fongibles comme USDC ou LINK ?",
+      "answer": "ERC-20",
+      "wrong": [
+        "ERC-721",
+        "EIP-1559",
+        "ERC-4337"
+      ],
+      "explanation": "**ERC-20**, proposé en 2015, fixe les fonctions que doit offrir un contrat de jeton fongible : `balanceOf`, `transfer`, `approve`, `transferFrom`… Grâce à cette interface commune, un portefeuille ou une plateforme d'échange peut gérer n'importe quel jeton sans code spécifique. **ERC-721** concerne les NFT, EIP-1559 le mécanisme de frais et ERC-4337 l'abstraction de compte.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie le sigle ICO, au cœur de la vague de levées de fonds en cryptomonnaies de 2017 ?",
+      "answer": "Initial Coin Offering",
+      "wrong": [
+        "International Crypto Organization",
+        "Initial Contract Operation",
+        "Internal Coin Order"
+      ],
+      "explanation": "Une **ICO** est une levée de fonds où un projet vend ses propres jetons au public, le plus souvent contre de l'ETH ou du BTC, par analogie avec l'introduction en bourse (IPO). En 2017, des centaines de projets ont levé des milliards de dollars ainsi, souvent sur la seule base d'un livre blanc ; beaucoup ont échoué ou se sont révélés frauduleux, ce qui a attiré l'attention des régulateurs.",
+      "difficulty": 1
+    },
+    {
+      "question": "Au niveau du protocole, dans quelle monnaie paie-t-on les frais de transaction sur Ethereum ?",
+      "answer": "En ether (ETH)",
+      "wrong": [
+        "En gas, un jeton qu'on achète à part",
+        "En USDC, le stablecoin du réseau",
+        "En n'importe quel jeton ERC-20"
+      ],
+      "explanation": "Les frais sont toujours réglés en **ether**, la monnaie native d'Ethereum. Le **gas** n'est pas un jeton : c'est une unité de mesure du calcul, dont le prix s'exprime en gwei (milliardièmes d'ether). Certains portefeuilles permettent de payer en apparence avec un autre jeton, mais un intermédiaire règle alors les frais en ETH à votre place.",
+      "difficulty": 1
+    },
+    {
+      "question": "Tu fixes la limite de gas de ta transaction nettement au-dessus de ce qu'elle consommera réellement. Que se passe-t-il ?",
+      "answer": "Le gas non utilisé t'est remboursé",
+      "wrong": [
+        "Tout le gas prévu t'est facturé",
+        "La transaction est rejetée d'office",
+        "Le surplus est brûlé avec la base fee"
+      ],
+      "explanation": "La **limite de gas** est un plafond : on ne paie que le gas réellement consommé. Le montant maximal est réservé sur le solde au départ, puis la part inutilisée est restituée en fin d'exécution. Une limite généreuse protège donc contre l'échec « out of gas » sans coûter plus cher. Seule contrainte : elle ne peut pas dépasser le plafond autorisé par le protocole, sinon la transaction est refusée.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle mise à jour d'Ethereum, en avril 2023, a enfin permis aux validateurs de retirer leur ETH misé ?",
+      "answer": "Shapella (Shanghai et Capella)",
+      "wrong": [
+        "The Merge (Paris et Bellatrix)",
+        "London (EIP-1559)",
+        "Dencun (Cancun et Deneb)"
+      ],
+      "explanation": "Les premiers dépôts de staking datent de fin 2020, mais l'ETH misé est resté bloqué même après **The Merge** (septembre 2022). C'est **Shapella**, la combinaison de la mise à jour **Shanghai** côté exécution et **Capella** côté consensus, qui a activé les retraits le 12 avril 2023. London, en 2021, avait introduit le mécanisme de frais EIP-1559, et Dencun date de mars 2024.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle grande nouveauté la mise à jour Dencun (mars 2024) a-t-elle apportée à Ethereum, avec EIP-4844 ?",
+      "answer": "Les blobs, un espace de données bon marché pour les rollups",
+      "wrong": [
+        "La fin de la preuve de travail au profit de l'enjeu",
+        "Les retraits de l'ETH misé par les validateurs",
+        "La combustion d'une partie des frais de transaction"
+      ],
+      "explanation": "**EIP-4844**, ou **proto-danksharding**, ajoute aux blocs des « blobs » : de gros paquets de données que l'EVM ne peut pas lire, dotés de leur propre marché de frais. Les rollups y publient leurs lots de transactions bien moins cher qu'auparavant dans les données d'appel (calldata), et leurs frais ont chuté fortement après l'activation, le 13 mars 2024. La fin de la preuve de travail date de The Merge (2022), les retraits de Shapella (2023) et la combustion des frais d'EIP-1559 (2021).",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel cofondateur d'Ethereum a rédigé le « Yellow Paper », la spécification formelle du protocole, avant de lancer Polkadot ?",
+      "answer": "Gavin Wood",
+      "wrong": [
+        "Vitalik Buterin",
+        "Joseph Lubin",
+        "Charles Hoskinson"
+      ],
+      "explanation": "En 2014, **Gavin Wood** a décrit précisément le fonctionnement de l'EVM et du protocole dans le **Yellow Paper**, complément technique du livre blanc de Vitalik Buterin. Il a aussi codé l'un des premiers clients d'Ethereum et proposé le langage Solidity. Il a ensuite fondé Parity Technologies puis **Polkadot**, et on lui attribue l'expression « Web3 ».",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment le développement d'Ethereum a-t-il été financé en 2014, avant le lancement du réseau ?",
+      "answer": "Par une prévente d'ether payée en bitcoins",
+      "wrong": [
+        "Par une subvention de la Banque nationale suisse",
+        "Par une levée de fonds auprès de Google",
+        "Par des récompenses de minage anticipées"
+      ],
+      "explanation": "À l'été 2014, la **prévente d'Ethereum** a cédé des ether au public contre des **bitcoins** : environ 31 000 BTC ont été récoltés, soit près de 18 millions de dollars à l'époque. Ce fut l'une des premières grandes levées de ce type, modèle des ICO qui ont fleuri en 2017. Les ether vendus ont été attribués dès le bloc genèse, en juillet 2015.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pour un smart contract sur l'EVM, quelle zone de données est de loin la plus coûteuse en gas à écrire ?",
+      "answer": "Le stockage (storage)",
+      "wrong": [
+        "La mémoire (memory)",
+        "La pile (stack)",
+        "Les données d'appel (calldata)"
+      ],
+      "explanation": "Le **storage** est persistant : chaque nœud doit le conserver dans l'état d'Ethereum tant que le contrat existe. Écrire une valeur non nulle dans un emplacement vide coûte environ 20 000 gas, contre quelques gas pour une écriture en **memory**, effacée à la fin de l'appel. D'où les astuces d'optimisation : regrouper plusieurs petites variables dans un même emplacement de 32 octets, ou garder les calculs intermédiaires en mémoire. Les données d'appel (calldata), elles, sont en lecture seule.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel type d'architecture l'EVM, la machine virtuelle d'Ethereum, utilise-t-elle ?",
+      "answer": "Une machine à pile",
+      "wrong": [
+        "Une machine à registres",
+        "Une machine à ruban, comme celle de Turing",
+        "Une machine à flux de données"
+      ],
+      "explanation": "L'EVM est une **machine à pile** : ses instructions (`PUSH1`, `ADD`, `SSTORE`…) prennent leurs opérandes au sommet d'une pile et y déposent leurs résultats, sans registres nommés. Cette pile peut contenir jusqu'à 1 024 éléments. La JVM de Java ou la machine virtuelle de CPython reposent sur le même principe, alors que Lua ou Dalvik (l'ancien moteur d'Android) utilisent des registres.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi ne peut-on pas écrire n'importe quel programme en Bitcoin Script, contrairement au code exécuté par l'EVM ?",
+      "answer": "Ce langage n'est volontairement pas Turing-complet",
+      "wrong": [
+        "Ce langage ne gère pas les signatures numériques",
+        "Ce langage s'exécute hors de la blockchain",
+        "Ce langage change à chaque halving"
+      ],
+      "explanation": "**Bitcoin Script** est un langage à pile minimaliste, **sans boucles** : chaque script s'exécute en un temps borné, ce qui limite les risques pour le réseau. L'EVM est au contraire **Turing-complète** (dans la limite du gas) : elle accepte boucles et logique arbitraire, et c'est le **gas** qui empêche un programme de tourner indéfiniment. Les signatures sont, elles, au cœur de Bitcoin Script, avec des instructions comme `OP_CHECKSIG`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel langage de smart contracts pour l'EVM a une syntaxe inspirée de Python et renonce volontairement à certaines fonctionnalités, comme l'héritage ?",
+      "answer": "Vyper",
+      "wrong": [
+        "Yul",
+        "Move",
+        "Cairo"
+      ],
+      "explanation": "**Vyper** privilégie la lisibilité et la sécurité : syntaxe à la Python, ni héritage ni modificateurs, pour que le code soit facile à auditer. **Yul** est un langage intermédiaire proche de l'assembleur utilisé avec Solidity, **Move** vient de l'écosystème Diem (repris par Aptos et Sui) et **Cairo** sert à écrire des programmes prouvables pour Starknet.",
+      "difficulty": 2
+    },
+    {
+      "question": "Les « blobs » ajoutés par EIP-4844 pour les rollups sont-ils conservés indéfiniment par les nœuds Ethereum ?",
+      "answer": "Non, environ 18 jours, puis ils peuvent être effacés",
+      "wrong": [
+        "Oui, comme toutes les autres données des blocs",
+        "Non, environ une heure, puis ils sont effacés",
+        "Non, un an, puis la Fondation les archive"
+      ],
+      "explanation": "Les nœuds de consensus ne sont tenus de conserver les blobs que **4 096 epochs**, soit environ **18 jours** : assez longtemps pour que chacun puisse récupérer les données, par exemple pour contester un rollup optimiste, sans alourdir indéfiniment le stockage. Seul un engagement cryptographique (KZG) de chaque blob reste dans la chaîne. C'est l'une des raisons pour lesquelles l'espace de blob est bien moins cher que les données d'appel (calldata), qui font partie de l'historique des blocs.",
+      "difficulty": 3
+    },
+    {
+      "question": "À quoi sert EIP-7702, activé avec la mise à jour Pectra en mai 2025 ?",
+      "answer": "Permettre à un EOA de déléguer à du code de contrat",
+      "wrong": [
+        "Permettre à un validateur de miser 2 048 ETH",
+        "Permettre aux rollups de publier des blobs",
+        "Permettre à un contrat de s'autodétruire"
+      ],
+      "explanation": "**EIP-7702** permet à un EOA, le compte contrôlé par une clé privée, de désigner un contrat dont le code s'exécutera pour lui. Un portefeuille ordinaire gagne ainsi des fonctions de **portefeuille intelligent** : regrouper plusieurs opérations en une transaction, faire payer ses frais par un tiers, ajouter des règles de dépense… sans changer d'adresse. Le plafond de 2 048 ETH par validateur vient d'une autre proposition de Pectra (EIP-7251), et les blobs d'EIP-4844 (Dencun, 2024).",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle est la particularité d'ERC-4337, déployé en 2023 pour apporter l'« abstraction de compte » à Ethereum ?",
+      "answer": "Il fonctionne sans modifier le protocole de consensus",
+      "wrong": [
+        "Il a nécessité un hard fork de tout le réseau",
+        "Il remplace les clés privées par des mots de passe",
+        "Il réserve les portefeuilles intelligents aux validateurs"
+      ],
+      "explanation": "**ERC-4337** construit l'abstraction de compte **au-dessus** du protocole : les utilisateurs signent des « UserOperations » envoyées dans une mempool dédiée, des **bundlers** les regroupent dans de vraies transactions, et un contrat **EntryPoint** les exécute via les portefeuilles intelligents. Des **paymasters** peuvent même payer le gas à la place de l'utilisateur. Aucune modification du consensus n'a été nécessaire, d'où son statut d'ERC (standard applicatif) et non de hard fork.",
+      "difficulty": 3
+    },
+    {
+      "question": "Le code d'un smart contract déployé est immuable. Comment rend-on malgré tout un contrat « évolutif » (upgradeable) ?",
+      "answer": "Via un proxy qui délègue à une implémentation remplaçable",
+      "wrong": [
+        "En modifiant son bytecode par une transaction spéciale",
+        "En demandant un hard fork aux validateurs",
+        "En éditant son code depuis l'explorateur Etherscan"
+      ],
+      "explanation": "Dans le motif **proxy**, les utilisateurs appellent toujours la même adresse : un petit contrat qui conserve les données et transmet chaque appel, via l'instruction `delegatecall`, à un contrat d'**implémentation**. Pour mettre à jour la logique, l'administrateur fait pointer le proxy vers une nouvelle implémentation. C'est pratique pour corriger un bug, mais cela suppose de faire confiance à celui qui détient ce droit de mise à jour.",
+      "difficulty": 3
+    },
+    {
+      "question": "En novembre 2017, un utilisateur a pris par accident le contrôle d'une bibliothèque partagée puis l'a détruite, gelant environ 500 000 ETH. Quels portefeuilles étaient touchés ?",
+      "answer": "Les portefeuilles multisignatures de Parity",
+      "wrong": [
+        "Les portefeuilles de la plateforme Mt. Gox",
+        "Les comptes de l'organisation The DAO",
+        "Les portefeuilles matériels de Ledger"
+      ],
+      "explanation": "Les portefeuilles **multisig de Parity** déléguaient leur logique à un contrat **bibliothèque** commun. Celui-ci n'avait jamais été initialisé : un utilisateur a pu s'en déclarer propriétaire, puis a appelé sa fonction d'autodestruction (`selfdestruct`). Privés de leur code, environ 500 000 ETH répartis dans des centaines de portefeuilles se sont retrouvés bloqués, et une proposition de les récupérer par un changement de protocole (EIP-999) n'a pas abouti. Le piratage de The DAO, en 2016, relevait d'une autre faille : la réentrance.",
+      "difficulty": 3
+    },
+    {
+      "question": "En Solidity 0.8 ou plus récent, que se passe-t-il quand une addition sur un `uint256` dépasse la valeur maximale ?",
+      "answer": "La transaction échoue (revert)",
+      "wrong": [
+        "La valeur repart de zéro",
+        "La valeur reste bloquée au maximum",
+        "Le résultat devient négatif"
+      ],
+      "explanation": "Depuis la version **0.8.0** (fin 2020), Solidity vérifie automatiquement les dépassements d'entiers : l'opération déclenche une erreur et toute la transaction est annulée. Avant, la valeur « faisait le tour » et repartait de zéro, une source de failles célèbres qu'on évitait avec la bibliothèque **SafeMath**. On peut retrouver l'ancien comportement, moins coûteux en gas, dans un bloc `unchecked { … }`. Un `uint256` étant non signé, il ne peut jamais devenir négatif.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi déconseille-t-on de vérifier le propriétaire d'un contrat avec `require(tx.origin == owner)` ?",
+      "answer": "Un contrat piège appelé par le propriétaire peut l'usurper",
+      "wrong": [
+        "`tx.origin` change à chaque nouveau bloc produit",
+        "`tx.origin` coûte beaucoup trop de gas à lire",
+        "`tx.origin` est toujours l'adresse du validateur"
+      ],
+      "explanation": "`tx.origin` désigne le compte (EOA) qui a **lancé** la transaction, quel que soit le nombre de contrats traversés, alors que `msg.sender` désigne l'appelant **direct**. Si le propriétaire interagit avec un contrat malveillant, celui-ci peut appeler le contrat victime : `tx.origin` vaut toujours l'adresse du propriétaire, et la vérification passe. Pour l'authentification, on utilise donc `msg.sender`.",
+      "difficulty": 3
     }
   ]
 }
