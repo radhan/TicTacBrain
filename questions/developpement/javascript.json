@@ -1160,6 +1160,304 @@
       "explanation": "`Object.create(proto)` crée un objet dont le prototype est `proto`. Avec `null`, l'objet n'a **aucun prototype** : il n'hérite pas de `Object.prototype`, donc ni de `toString` ni de `hasOwnProperty`. Or `instanceof` parcourt la chaîne des prototypes à la recherche de `Object.prototype` : il ne le trouve pas et renvoie `false`. Ces objets « nus » servent de dictionnaires sans risque de collision avec des clés comme `\"toString\"`.",
       "difficulty": 3,
       "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create"
+    },
+    {
+      "question": "Sans Web Worker, combien de fils d'exécution (threads) exécutent le code JavaScript d'une page ?",
+      "answer": "Un seul",
+      "wrong": [
+        "Un par cœur du processeur",
+        "Un par fonction `async`",
+        "Un par balise `<script>`"
+      ],
+      "explanation": "Le code JavaScript d'une page s'exécute sur un **seul fil**, le fil principal, qui gère aussi l'affichage et les interactions : une longue boucle de calcul fige donc la page. L'asynchronisme (`setTimeout`, promesses, `fetch`) ne crée pas de threads : il planifie des callbacks que la **boucle d'événements** exécute un par un, quand la pile d'appels est vide. Pour du vrai parallélisme, on utilise des Web Workers, qui tournent chacun dans leur propre thread.",
+      "difficulty": 1
+    },
+    {
+      "question": "Combien d'exports **par défaut** (`export default`) un module ES peut-il contenir ?",
+      "answer": "Un seul au maximum",
+      "wrong": [
+        "Autant qu'on veut",
+        "Exactement deux",
+        "Aucun : c'est propre à CommonJS"
+      ],
+      "explanation": "Un module peut avoir **au plus un** export par défaut, qu'on importe sans accolades et sous le nom de son choix : `import Truc from \"./truc.js\"`. Il peut en revanche avoir autant d'exports nommés que nécessaire, importés entre accolades avec leur nom exact : `import { a, b } from \"./outils.js\"`. Deux `export default` dans le même fichier provoquent une `SyntaxError`.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export"
+    },
+    {
+      "question": "Quelle instruction met l'exécution en pause à cet endroit quand les outils de développement du navigateur sont ouverts ?",
+      "answer": "`debugger;`",
+      "wrong": [
+        "`pause;`",
+        "`breakpoint;`",
+        "`console.stop();`"
+      ],
+      "explanation": "L'instruction `debugger;` agit comme un point d'arrêt écrit dans le code : si un débogueur est actif (outils de développement du navigateur, ou Node.js lancé avec `--inspect`), l'exécution s'y arrête et l'on peut inspecter les variables puis avancer pas à pas. Sans débogueur, elle n'a aucun effet. Il faut bien sûr penser à la retirer avant la mise en production.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger"
+    },
+    {
+      "question": "Que fait l'expression `!!valeur` ?",
+      "answer": "Elle convertit `valeur` en booléen",
+      "wrong": [
+        "Elle renvoie `valeur` inchangée",
+        "Elle lève une erreur si `valeur` est `undefined`",
+        "Elle vérifie que `valeur` est un nombre"
+      ],
+      "explanation": "Le premier `!` convertit la valeur en booléen et l'inverse, le second rétablit le sens : on obtient `true` pour toute valeur truthy et `false` pour une valeur falsy. Ainsi, `!!\"texte\"` vaut `true` et `!!0` vaut `false`. C'est l'équivalent compact de `Boolean(valeur)`, que beaucoup jugent plus lisible.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_NOT"
+    },
+    {
+      "question": "Que vaut `\"JavaScript\".slice(-6)` ?",
+      "answer": "`\"Script\"`",
+      "wrong": [
+        "`\"JavaSc\"`",
+        "`\"tpircS\"`",
+        "`\"\"`"
+      ],
+      "explanation": "Un indice négatif est compté depuis la fin de la chaîne : `slice(-6)` extrait les 6 derniers caractères. La méthode voisine `substring` traite au contraire les indices négatifs comme 0 : `\"JavaScript\".substring(-6)` renvoie la chaîne entière. `slice` fonctionne de la même façon sur les tableaux : `[1, 2, 3].slice(-1)` donne `[3]`.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice"
+    },
+    {
+      "question": "Après avoir atteint le bouton cliqué, l'événement `click` remonte vers ses ancêtres (la `<div>` parente, puis `<body>`…). Comment s'appelle cette remontée ?",
+      "answer": "Le bouillonnement (bubbling)",
+      "wrong": [
+        "La capture (capturing)",
+        "La délégation (delegation)",
+        "Le hissage (hoisting)"
+      ],
+      "explanation": "Un événement DOM traverse trois phases : la **capture** (descente depuis `window` jusqu'à la cible), la cible elle-même, puis le **bouillonnement** (remontée vers les ancêtres). Par défaut, `addEventListener` écoute la phase de bouillonnement ; on écoute la capture avec l'option `{ capture: true }`. C'est le bouillonnement qui rend possible la délégation d'événements : un seul écouteur sur un parent gère les clics de tous ses enfants. `event.stopPropagation()` interrompt cette remontée.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/Event/bubbles"
+    },
+    {
+      "question": "Que fait l'instruction `a ??= 5` ?",
+      "answer": "Elle affecte 5 à `a` si `a` vaut `null` ou `undefined`",
+      "wrong": [
+        "Elle affecte 5 à `a` seulement si `a` est falsy",
+        "Elle compare `a` à 5 sans conversion de type",
+        "Elle affecte 5 à `a` dans tous les cas"
+      ],
+      "explanation": "`??=` est l'opérateur d'**affectation de coalescence des nuls** (ES2021) : `a ??= 5` équivaut à `a ?? (a = 5)`. Si `a` vaut déjà `0`, `\"\"` ou `false`, il est conservé. Son cousin `||=` affecte dès que `a` est falsy (y compris `0`), et `&&=` seulement si `a` est truthy. C'est pratique pour compléter une option manquante : `options.delai ??= 1000`.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_assignment"
+    },
+    {
+      "question": "Au bout de combien de temps environ « tic » s'affiche-t-il ?\n```js\nconst debut = Date.now();\nsetTimeout(() => console.log(\"tic\"), 10);\nwhile (Date.now() - debut < 1000) {}\n```",
+      "answer": "Environ 1 seconde",
+      "wrong": [
+        "Environ 10 millisecondes",
+        "Jamais : le délai est dépassé",
+        "Environ 2 secondes"
+      ],
+      "explanation": "Le délai de `setTimeout` est un **minimum**, pas une garantie. Après 10 ms, le callback est prêt, mais il ne peut s'exécuter que lorsque la pile d'appels est vide : la boucle `while` occupe le fil unique pendant une seconde, et la boucle d'événements ne reprend la main qu'ensuite. C'est pour cela qu'un calcul long bloque aussi les clics et l'affichage d'une page : on le découpe en morceaux, ou on le confie à un Web Worker.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout"
+    },
+    {
+      "question": "Quand « Bonjour » s'affiche-t-il ?\n```js\nfunction hello() {\n  console.log(\"Bonjour\");\n}\nsetTimeout(hello(), 1000);\n```",
+      "answer": "Immédiatement",
+      "wrong": [
+        "Au bout d'une seconde",
+        "Toutes les secondes",
+        "Jamais"
+      ],
+      "explanation": "Les parenthèses de `hello()` **appellent** la fonction tout de suite, pendant l'évaluation des arguments : « Bonjour » s'affiche immédiatement, et c'est sa valeur de retour, `undefined`, qui est transmise à `setTimeout` à la place d'une fonction (Node.js lève d'ailleurs une `TypeError` dans ce cas). Il faut passer la fonction elle-même, `setTimeout(hello, 1000)`, ou une fonction fléchée quand il y a des arguments : `setTimeout(() => saluer(\"Ada\"), 1000)`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nPromise.reject(new Error(\"panne\"))\n  .catch(() => \"récupéré\")\n  .then((v) => console.log(v));\n```",
+      "answer": "`récupéré`",
+      "wrong": [
+        "`Error: panne`",
+        "`undefined`",
+        "Rien : la chaîne reste rejetée"
+      ],
+      "explanation": "`.catch(f)` renvoie une **nouvelle promesse**, tenue avec la valeur que renvoie `f` : une fois l'erreur traitée, la chaîne repart dans l'état « tenu ». Le `.then` suivant reçoit donc `\"récupéré\"`. Pour que l'erreur continue de se propager, il faut la relancer dans le `catch` (`throw err`) ou renvoyer `Promise.reject(err)`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch"
+    },
+    {
+      "question": "Combien de temps durent environ `a()` et `b()` ?\n```js\nconst attendre = (ms) => new Promise((r) => setTimeout(r, ms));\nasync function a() { await attendre(100); await attendre(100); }\nasync function b() { await Promise.all([attendre(100), attendre(100)]); }\n```",
+      "answer": "200 ms pour `a`, 100 ms pour `b`",
+      "wrong": [
+        "100 ms pour les deux",
+        "200 ms pour les deux",
+        "100 ms pour `a`, 200 ms pour `b`"
+      ],
+      "explanation": "Dans `a`, le second `attendre` n'est **lancé** qu'une fois le premier terminé : les attentes s'additionnent. Dans `b`, les deux minuteurs démarrent immédiatement (les promesses sont créées avant d'être passées à `Promise.all`) et s'écoulent en parallèle : on n'attend que le plus long. Enchaîner des `await` sur des opérations indépendantes, comme plusieurs requêtes `fetch`, est donc une perte de temps classique.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"
+    },
+    {
+      "question": "Que fait la promesse renvoyée par `fetch(url)` si le serveur répond avec un statut **404** ?",
+      "answer": "Elle est tenue : il faut tester `response.ok`",
+      "wrong": [
+        "Elle est rejetée avec une `TypeError`",
+        "Elle reste en attente indéfiniment",
+        "Elle est rejetée avec le code `404`"
+      ],
+      "explanation": "`fetch` ne rejette sa promesse qu'en cas d'**échec réseau** (serveur injoignable, requête bloquée par CORS, requête annulée…). Une réponse HTTP, même 404 ou 500, reste une réponse valide : la promesse est tenue avec un objet `Response`. C'est au code de vérifier `response.ok` (vrai pour un statut de 200 à 299) ou `response.status`, et de lever une erreur si besoin. La bibliothèque axios, à l'inverse, rejette par défaut sur les statuts d'erreur.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch"
+    },
+    {
+      "question": "Après `localStorage.setItem(\"panier\", { total: 3 })`, que renvoie `localStorage.getItem(\"panier\")` ?",
+      "answer": "`\"[object Object]\"`",
+      "wrong": [
+        "`{ total: 3 }`",
+        "`'{\"total\":3}'`",
+        "`null`"
+      ],
+      "explanation": "Le Web Storage (`localStorage`, `sessionStorage`) ne stocke que des **chaînes** : toute valeur est convertie avec `String()`, et un objet devient `\"[object Object]\"`, perdant son contenu. Il faut sérialiser soi-même : `setItem(\"panier\", JSON.stringify(panier))`, puis `JSON.parse(localStorage.getItem(\"panier\"))` à la lecture. Même un nombre revient sous forme de chaîne : `\"3\"` et non `3`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"
+    },
+    {
+      "question": "Que renvoie `JSON.stringify({ a: undefined, b: () => 1, c: null })` ?",
+      "answer": "`'{\"c\":null}'`",
+      "wrong": [
+        "`'{\"a\":null,\"b\":null,\"c\":null}'`",
+        "`'{\"a\":undefined,\"c\":null}'`",
+        "`'{}'`"
+      ],
+      "explanation": "JSON ne connaît ni `undefined`, ni les fonctions, ni les symboles : dans un **objet**, les propriétés qui ont ces valeurs sont tout simplement omises. `null`, lui, existe en JSON et est conservé. Dans un **tableau**, ces mêmes valeurs sont remplacées par `null` pour préserver les positions : `JSON.stringify([undefined])` donne `\"[null]\"`. `NaN` et `Infinity` deviennent également `null`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nfunction* gen() {\n  yield 1;\n  yield 2;\n}\nconst it = gen();\nconsole.log(it.next());\n```",
+      "answer": "`{ value: 1, done: false }`",
+      "wrong": [
+        "`1`",
+        "`{ value: 1, done: true }`",
+        "`[1, 2]`"
+      ],
+      "explanation": "Appeler une fonction génératrice (`function*`) n'exécute pas son corps : cela renvoie un **itérateur**. Chaque appel à `next()` reprend l'exécution jusqu'au `yield` suivant et renvoie un objet `{ value, done }`. Ici, on obtient la première valeur avec `done: false`, car le générateur n'est pas terminé ; ce n'est qu'au troisième appel qu'on obtiendra `{ value: undefined, done: true }`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*"
+    },
+    {
+      "question": "Quel mois désigne `new Date(2024, 1, 15)` ?",
+      "answer": "Février",
+      "wrong": [
+        "Janvier",
+        "Mars",
+        "Aucun : une `RangeError` est levée"
+      ],
+      "explanation": "Dans l'objet `Date`, les mois sont **numérotés à partir de 0** : 0 pour janvier, 1 pour février… 11 pour décembre. Les jours du mois, eux, commencent bien à 1, d'où des bugs fréquents. Autre surprise : les débordements sont acceptés et reportés, si bien que `new Date(2024, 1, 30)` désigne le 1er mars 2024. Enfin, `getDay()` renvoie le jour de la semaine (0 = dimanche), alors que `getDate()` renvoie le jour du mois.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date"
+    },
+    {
+      "question": "Dans quel ordre les nombres s'affichent-ils ?\n```js\nconsole.log(1);\nsetTimeout(() => console.log(2));\nnew Promise((resolve) => {\n  console.log(3);\n  resolve();\n}).then(() => console.log(4));\nconsole.log(5);\n```",
+      "answer": "1, 3, 5, 4, 2",
+      "wrong": [
+        "1, 5, 3, 4, 2",
+        "1, 3, 5, 2, 4",
+        "1, 5, 4, 3, 2"
+      ],
+      "explanation": "La fonction passée au constructeur `new Promise` (l'exécuteur) s'exécute **immédiatement et de façon synchrone** : `3` s'affiche juste après `1`. Puis vient `5`, qui termine le code synchrone. La boucle d'événements vide alors la file des microtâches, où attend le callback du `.then` : `4`. Le callback de `setTimeout`, une tâche (macrotâche), passe en dernier : `2`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise"
+    },
+    {
+      "question": "Dans quel ordre les lettres s'affichent-elles ?\n```js\nsetTimeout(() => {\n  console.log(\"A\");\n  Promise.resolve().then(() => console.log(\"B\"));\n}, 0);\nsetTimeout(() => console.log(\"C\"), 0);\n```",
+      "answer": "A, B, C",
+      "wrong": [
+        "A, C, B",
+        "C, A, B",
+        "B, A, C"
+      ],
+      "explanation": "Après **chaque** tâche (ici, chaque callback de `setTimeout`), la boucle d'événements vide entièrement la file des microtâches avant de passer à la tâche suivante. Le premier minuteur affiche `A` et programme une microtâche ; celle-ci s'exécute (`B`) avant que le second minuteur ne soit traité (`C`). Les microtâches ne sont donc pas gardées pour « la fin » : elles passent devant toute nouvelle tâche.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nconst attendre = (ms) => new Promise((r) => setTimeout(r, ms));\nasync function run() {\n  [1, 2].forEach(async (n) => {\n    await attendre(10);\n    console.log(n);\n  });\n  console.log(\"fin\");\n}\nrun();\n```",
+      "answer": "`fin`, puis `1`, puis `2`",
+      "wrong": [
+        "`1`, puis `2`, puis `fin`",
+        "`fin` seulement",
+        "`1`, puis `fin`, puis `2`"
+      ],
+      "explanation": "`forEach` appelle le callback pour chaque élément **sans attendre** la promesse qu'il renvoie : les deux callbacks `async` démarrent, se suspendent à leur `await`, et `forEach` se termine aussitôt. `fin` s'affiche donc en premier, puis les deux nombres une fois les minuteurs écoulés. Pour attendre chaque élément, on écrit `for (const n of [1, 2]) { await ... }` (en séquence) ou `await Promise.all(tableau.map(async (n) => ...))` (en parallèle).",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nPromise.resolve(1)\n  .finally(() => 2)\n  .then((v) => console.log(v));\n```",
+      "answer": "`1`",
+      "wrong": [
+        "`2`",
+        "`undefined`",
+        "`[1, 2]`"
+      ],
+      "explanation": "Le callback de `finally` ne reçoit aucun argument et sa valeur de retour est **ignorée** : la promesse suivante est tenue avec la valeur d'origine, `1`. `finally` est conçu pour le nettoyage (masquer un indicateur de chargement, fermer une connexion) sans altérer le résultat. Seule exception : si le callback lève une erreur ou renvoie une promesse rejetée, ce rejet remplace le résultat.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally"
+    },
+    {
+      "question": "Que renvoie `f()` ?\n```js\nfunction f() {\n  try {\n    return \"try\";\n  } finally {\n    return \"finally\";\n  }\n}\n```",
+      "answer": "`\"finally\"`",
+      "wrong": [
+        "`\"try\"`",
+        "`[\"try\", \"finally\"]`",
+        "Une `SyntaxError`"
+      ],
+      "explanation": "Le bloc `finally` s'exécute **toujours**, même après un `return` dans le `try`. La valeur `\"try\"` est mise de côté, puis le `finally` s'exécute ; s'il contient lui-même un `return`, celui-ci remplace la valeur prévue. Un `return` dans `finally` peut même faire disparaître une exception levée dans le `try` ou le `catch`. C'est pourquoi on évite d'y placer un `return`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch"
+    },
+    {
+      "question": "Si toutes les promesses passées à `Promise.any` sont rejetées, que se passe-t-il ?",
+      "answer": "Elle est rejetée avec une `AggregateError`",
+      "wrong": [
+        "Elle est tenue avec `undefined`",
+        "Elle est rejetée avec la première erreur",
+        "Elle est rejetée avec la dernière erreur"
+      ],
+      "explanation": "`Promise.any` (ES2021) est tenue dès que **la première** promesse est tenue, en ignorant les rejets. Si toutes échouent, aucune erreur n'est plus légitime qu'une autre : elle est rejetée avec une `AggregateError`, dont la propriété `errors` contient toutes les raisons, dans l'ordre des promesses. À ne pas confondre avec `Promise.race`, qui adopte le résultat de la première promesse **établie**, qu'elle soit tenue ou rejetée.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nconst re = /a/g;\nconsole.log(re.test(\"a\"), re.test(\"a\"));\n```",
+      "answer": "`true false`",
+      "wrong": [
+        "`true true`",
+        "`false false`",
+        "`false true`"
+      ],
+      "explanation": "Avec le drapeau `g` (ou `y`), une expression régulière est **à état** : `test()` et `exec()` reprennent la recherche à partir de `re.lastIndex` et le mettent à jour. Après le premier succès, `lastIndex` vaut 1 ; le second appel cherche à partir de la position 1 de `\"a\"`, ne trouve rien, renvoie `false` et remet `lastIndex` à 0. Un troisième appel renverrait donc à nouveau `true`. Pour un simple test, on se passe du drapeau `g`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/lastIndex"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nfunction config() {\n  return\n  {\n    ok: true\n  };\n}\nconsole.log(config());\n```",
+      "answer": "`undefined`",
+      "wrong": [
+        "`{ ok: true }`",
+        "`true`",
+        "Une `SyntaxError`"
+      ],
+      "explanation": "C'est l'**insertion automatique de point-virgule** (ASI) : la grammaire interdit un retour à la ligne juste après `return`, donc JavaScript y insère un `;` et la fonction renvoie `undefined`. Les accolades suivantes forment un simple bloc, jamais atteint, qui contient l'étiquette `ok:`. La règle est donc d'ouvrir l'accolade sur la même ligne que le `return` : `return {`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#automatic_semicolon_insertion"
+    },
+    {
+      "question": "Avec ces deux modules ES, qu'affiche `main.js` ?\n```js\n// compteur.js\nexport let count = 0;\nexport function incremente() { count++; }\n\n// main.js\nimport { count, incremente } from \"./compteur.js\";\nincremente();\nincremente();\nconsole.log(count);\n```",
+      "answer": "`2`",
+      "wrong": [
+        "`0`",
+        "Une `TypeError`",
+        "`undefined`"
+      ],
+      "explanation": "Les imports ES sont des **liaisons vivantes** (live bindings) : `count` dans `main.js` n'est pas une copie, mais une vue en lecture seule sur la variable du module `compteur.js`. Après deux incréments, on lit donc `2`. En CommonJS, `const { count } = require(\"./compteur\")` copierait la valeur au moment de l'import, et l'on obtiendrait `0`. En revanche, `main.js` ne peut pas réaffecter `count` : `count = 10` y lèverait une `TypeError`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import"
     }
   ]
 }

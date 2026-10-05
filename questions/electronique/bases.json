@@ -4,5 +4,260 @@
   "icon": "⚡",
   "description": "Tension, courant, résistance, loi d'Ohm, lois de Kirchhoff, puissance, montages série et parallèle, mesures au multimètre.",
   "order": 1,
-  "questions": []
+  "questions": [
+    {
+      "question": "Quelle est l'unité de la résistance électrique ?",
+      "answer": "L'ohm (Ω)",
+      "wrong": [
+        "Le siemens (S)",
+        "Le henry (H)",
+        "Le farad (F)"
+      ],
+      "explanation": "La résistance se mesure en **ohms** (Ω), en hommage à Georg Simon Ohm : 1 Ω est la résistance d'un dipôle qui laisse passer 1 A sous 1 V (1 Ω = 1 V/A). Le **siemens** est l'unité de la conductance, l'inverse de la résistance (1 S = 1/Ω). Le henry mesure l'inductance d'une bobine et le farad la capacité d'un condensateur.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Ohm_(unit%C3%A9)"
+    },
+    {
+      "question": "Selon la loi d'Ohm, quelle relation lie la tension U aux bornes d'une résistance R au courant I qui la traverse ?",
+      "answer": "`U = R × I`",
+      "wrong": [
+        "`U = R / I`",
+        "`U = I / R`",
+        "`U = R × I²`"
+      ],
+      "explanation": "La loi d'Ohm s'écrit **U = R × I** (volts = ohms × ampères). On en tire `I = U / R` et `R = U / I`. La forme `R × I²` ne donne pas une tension mais une **puissance** (P = R × I², en watts) : c'est la loi de Joule.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Loi_d%27Ohm"
+    },
+    {
+      "question": "On applique 11 V aux bornes d'une résistance de 220 Ω. Quel courant la traverse ?",
+      "answer": "50 mA",
+      "wrong": [
+        "20 mA",
+        "5 mA",
+        "500 mA"
+      ],
+      "explanation": "D'après la loi d'Ohm, I = U / R = 11 / 220 = **0,05 A, soit 50 mA**. Astuce de calcul : des volts divisés par des kiloohms donnent directement des milliampères (11 V / 0,22 kΩ = 50 mA).",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Loi_d%27Ohm"
+    },
+    {
+      "question": "Comment branche-t-on un voltmètre pour mesurer la tension aux bornes d'une lampe ?",
+      "answer": "En parallèle, aux bornes de la lampe",
+      "wrong": [
+        "En série, juste avant la lampe",
+        "En série, juste après la lampe",
+        "En série, dans n'importe quelle branche"
+      ],
+      "explanation": "Une tension est une **différence de potentiel entre deux points** : le voltmètre se branche donc **en dérivation (en parallèle)**, une pointe de chaque côté du dipôle, sans ouvrir le circuit. C'est l'ampèremètre qui se place en série, car il doit être traversé par le courant à mesurer.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Voltm%C3%A8tre"
+    },
+    {
+      "question": "Pourquoi ne faut-il jamais brancher un multimètre réglé en ampèremètre directement aux bornes d'une pile ?",
+      "answer": "Sa résistance quasi nulle crée un court-circuit",
+      "wrong": [
+        "Sa résistance très élevée bloque tout le courant",
+        "Il inverse la polarité de la pile en quelques secondes",
+        "Il affiche une tension au lieu d'un courant"
+      ],
+      "explanation": "Un ampèremètre est conçu pour être placé **en série** : sa résistance interne est donc très faible (quelques dixièmes d'ohm, voire moins). Branché directement sur une source, il la **court-circuite** : le courant n'est plus limité que par la résistance interne de la source, ce qui fait griller le fusible du multimètre, voire endommage l'appareil ou la source.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle grandeur électrique se mesure en coulombs (C) ?",
+      "answer": "La charge électrique",
+      "wrong": [
+        "L'intensité du courant",
+        "La capacité électrique",
+        "L'énergie électrique"
+      ],
+      "explanation": "Le **coulomb** est l'unité de **charge électrique**. 1 C correspond à la charge transportée par un courant de 1 A pendant 1 s (1 C = 1 A·s). L'intensité, elle, est un débit de charges (en ampères), la capacité se mesure en farads et l'énergie en joules.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Coulomb_(unit%C3%A9)"
+    },
+    {
+      "question": "Un courant constant de 2 A circule pendant 1 minute. Quelle charge électrique a traversé le circuit ?",
+      "answer": "120 C",
+      "wrong": [
+        "2 C",
+        "30 C",
+        "7 200 C"
+      ],
+      "explanation": "L'intensité est un débit de charges : **Q = I × t**, avec t en secondes. Ici Q = 2 A × 60 s = **120 C**. Le piège de 7 200 C vient d'une conversion d'unités ratée (60 × 60 × 2) ; 30 C revient à diviser au lieu de multiplier.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un appareil alimenté en 12 V consomme un courant de 2 A. Quelle puissance absorbe-t-il ?",
+      "answer": "24 W",
+      "wrong": [
+        "6 W",
+        "14 W",
+        "144 W"
+      ],
+      "explanation": "En courant continu, la puissance vaut **P = U × I** = 12 V × 2 A = **24 W**. 6 W reviendrait à diviser la tension par le courant (ce qui donne en fait une résistance de 6 Ω), et 144 W correspond à U², sans rapport avec la puissance consommée ici.",
+      "difficulty": 1
+    },
+    {
+      "question": "Une résistance de 100 Ω est parcourue par un courant de 0,2 A. Quelle puissance dissipe-t-elle ?",
+      "answer": "4 W",
+      "wrong": [
+        "20 W",
+        "2 W",
+        "0,4 W"
+      ],
+      "explanation": "La puissance dissipée par effet Joule vaut **P = R × I²** = 100 × 0,2² = 100 × 0,04 = **4 W**. Le piège de 20 W vient d'un oubli du carré (100 × 0,2). On peut vérifier : U = R × I = 20 V, et P = U × I = 20 × 0,2 = 4 W.",
+      "difficulty": 2
+    },
+    {
+      "question": "Si l'on double le courant qui traverse une résistance donnée, la puissance qu'elle dissipe est…",
+      "answer": "Multipliée par 4",
+      "wrong": [
+        "Multipliée par 2",
+        "Inchangée",
+        "Divisée par 2"
+      ],
+      "explanation": "Avec P = R × I², la puissance dépend du **carré** du courant : (2I)² = 4I², donc la puissance est **multipliée par 4**. C'est pour cela qu'une résistance peut chauffer bien plus qu'on ne l'imagine quand le courant augmente, et que les pertes en ligne grimpent vite avec l'intensité.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la résistance équivalente d'une résistance de 470 Ω et d'une résistance de 330 Ω montées en série ?",
+      "answer": "800 Ω",
+      "wrong": [
+        "194 Ω",
+        "140 Ω",
+        "400 Ω"
+      ],
+      "explanation": "En série, les résistances **s'additionnent** : 470 + 330 = **800 Ω**. La valeur de 194 Ω (environ) est celle du montage en **parallèle** (470 × 330 / 800), et 140 Ω est leur différence, qui n'a pas de sens physique ici.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle est la résistance équivalente de deux résistances identiques de 1 kΩ montées en parallèle ?",
+      "answer": "500 Ω",
+      "wrong": [
+        "2 kΩ",
+        "1 kΩ",
+        "250 Ω"
+      ],
+      "explanation": "Pour deux résistances en parallèle, R_eq = R1 × R2 / (R1 + R2). Avec deux valeurs identiques, cela donne **la moitié** : 1 000 × 1 000 / 2 000 = **500 Ω**. Plus généralement, n résistances identiques R en parallèle valent R / n. 2 kΩ serait le résultat du montage en série.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle est la résistance équivalente d'une résistance de 6 Ω et d'une résistance de 3 Ω montées en parallèle ?",
+      "answer": "2 Ω",
+      "wrong": [
+        "9 Ω",
+        "4,5 Ω",
+        "0,5 Ω"
+      ],
+      "explanation": "En parallèle : R_eq = (6 × 3) / (6 + 3) = 18 / 9 = **2 Ω**. On peut aussi additionner les conductances : 1/6 + 1/3 = 1/2, donc R_eq = 2 Ω. Bon réflexe de vérification : la résistance équivalente d'un montage parallèle est **toujours plus petite que la plus petite** des résistances (ici 3 Ω), ce qui élimine 9 Ω et 4,5 Ω.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que dit la loi des nœuds de Kirchhoff ?",
+      "answer": "La somme des courants entrants égale celle des sortants",
+      "wrong": [
+        "La somme des tensions le long d'une maille est nulle",
+        "Le courant se partage à parts égales entre les branches",
+        "La tension est identique de part et d'autre du nœud"
+      ],
+      "explanation": "En un nœud (point où se rejoignent au moins trois conducteurs), les charges ne s'accumulent pas : **la somme des courants qui arrivent est égale à la somme des courants qui repartent**. La somme algébrique nulle des tensions dans une boucle fermée, c'est l'autre loi de Kirchhoff, la **loi des mailles**. Le partage du courant, lui, dépend des résistances des branches.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Lois_de_Kirchhoff"
+    },
+    {
+      "question": "Trois fils se rejoignent en un nœud. Un courant de 3 A arrive par le premier et un courant de 1,2 A repart par le deuxième. Que se passe-t-il dans le troisième fil ?",
+      "answer": "1,8 A en sort",
+      "wrong": [
+        "1,8 A y entre",
+        "4,2 A en sort",
+        "4,2 A y entre"
+      ],
+      "explanation": "Loi des nœuds : courants entrants = courants sortants. Il entre 3 A et il ne sort que 1,2 A par le deuxième fil : les **1,8 A** restants (3 − 1,2) doivent **sortir** par le troisième. Si l'on trouvait une valeur négative en supposant un sens, cela signifierait simplement que le courant circule dans l'autre sens.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Lois_de_Kirchhoff"
+    },
+    {
+      "question": "Une pile de 9 V (supposée idéale) alimente deux résistances en série. On mesure 5,7 V aux bornes de la première. Quelle tension règne aux bornes de la seconde ?",
+      "answer": "3,3 V",
+      "wrong": [
+        "5,7 V",
+        "14,7 V",
+        "4,5 V"
+      ],
+      "explanation": "Loi des mailles : le long de la boucle, la tension du générateur se répartit entre les récepteurs en série, donc 9 V = 5,7 V + U2, soit **U2 = 3,3 V**. 4,5 V supposerait deux résistances égales, ce que contredit la mesure de 5,7 V. Cette répartition proportionnelle aux résistances est le principe du diviseur de tension.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Lois_de_Kirchhoff"
+    },
+    {
+      "question": "Que peut-on dire des tensions aux bornes de plusieurs dipôles branchés en parallèle ?",
+      "answer": "Elles sont toutes égales",
+      "wrong": [
+        "Elles s'additionnent",
+        "Elles sont proportionnelles aux résistances",
+        "Elles sont nulles en régime continu"
+      ],
+      "explanation": "Des dipôles en parallèle sont reliés aux **deux mêmes nœuds** : ils ont donc forcément **la même tension** à leurs bornes. C'est pourquoi tous les appareils d'une maison reçoivent la même tension secteur. Ce sont les **courants** qui se répartissent entre les branches (et s'additionnent), selon leurs résistances.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans un circuit série comportant une pile et plusieurs lampes, comment se comporte le courant ?",
+      "answer": "Il a la même valeur en tout point",
+      "wrong": [
+        "Il diminue après chaque lampe",
+        "Il est plus fort près de la borne +",
+        "Il se partage entre les lampes"
+      ],
+      "explanation": "Dans un circuit série, il n'y a qu'un seul chemin et aucun nœud : les charges ne peuvent ni s'accumuler ni disparaître, donc **le courant est le même partout** (c'est la loi des nœuds appliquée à chaque point). L'idée que le courant « s'use » en traversant les lampes est une erreur classique : c'est l'**énergie** qui est cédée aux lampes, pas le courant.",
+      "difficulty": 1
+    },
+    {
+      "question": "En courant continu, dans un fil métallique, comment se déplacent les électrons par rapport au sens conventionnel du courant ?",
+      "answer": "En sens inverse du sens conventionnel",
+      "wrong": [
+        "Dans le même sens que le sens conventionnel",
+        "Perpendiculairement à l'axe du fil",
+        "Ils restent immobiles autour d'un point fixe"
+      ],
+      "explanation": "Le sens conventionnel du courant (de la borne + vers la borne − à l'extérieur du générateur) a été choisi **avant la découverte de l'électron** (1897). Or les électrons portent une charge **négative** : ils circulent donc **en sens inverse**, de la borne − vers la borne + à l'extérieur du générateur. Les calculs restent justes avec la convention, puisque déplacer des charges négatives dans un sens équivaut à déplacer des charges positives dans l'autre.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Courant_%C3%A9lectrique"
+    },
+    {
+      "question": "Un fil de cuivre de section 1 mm² est parcouru par un courant continu de 1 A. Quel est l'ordre de grandeur de la vitesse de dérive (vitesse moyenne d'ensemble) des électrons ?",
+      "answer": "Environ 0,07 mm par seconde",
+      "wrong": [
+        "Environ 7 m par seconde",
+        "Environ 1 500 km par seconde",
+        "Environ 300 000 km par seconde"
+      ],
+      "explanation": "La vitesse de dérive vaut v = I / (n·e·S), avec n ≈ 8,5 × 10²⁸ électrons libres par m³ dans le cuivre : v ≈ 1 / (8,5 × 10²⁸ × 1,6 × 10⁻¹⁹ × 10⁻⁶) ≈ 7 × 10⁻⁵ m/s, soit **moins d'un dixième de millimètre par seconde**. Environ 1 500 km/s est l'ordre de grandeur de la vitesse d'agitation désordonnée des électrons (vitesse de Fermi), qui ne transporte rien en moyenne. Si la lampe s'allume instantanément, c'est que le **champ électrique** se propage dans le circuit à une fraction notable de la vitesse de la lumière et met en mouvement tous les électrons à la fois.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Drift_velocity"
+    },
+    {
+      "question": "Sur un multimètre à calibres manuels, quel calibre choisir pour mesurer une tension dont on ignore l'ordre de grandeur ?",
+      "answer": "Le plus grand, puis descendre",
+      "wrong": [
+        "Le plus petit, puis monter",
+        "Toujours celui du milieu",
+        "N'importe lequel, le résultat est le même"
+      ],
+      "explanation": "On commence par le **calibre le plus élevé** pour ne pas dépasser la plage de mesure (l'appareil afficherait un dépassement, et une entrée trop sollicitée peut être endommagée), puis on **descend** jusqu'au plus petit calibre supérieur à la valeur mesurée. On obtient ainsi la meilleure résolution : 4,73 V se lit plus finement sur le calibre 20 V que sur le calibre 200 V.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Multim%C3%A8tre"
+    },
+    {
+      "question": "En quelle année Georg Simon Ohm publie-t-il l'ouvrage dans lequel il énonce la loi qui porte son nom ?",
+      "answer": "1827",
+      "wrong": [
+        "1785",
+        "1800",
+        "1845"
+      ],
+      "explanation": "Ohm publie *Die galvanische Kette, mathematisch bearbeitet* (le circuit galvanique étudié mathématiquement) en **1827**. Les autres dates sont aussi des jalons de l'électricité : 1785 pour les mesures de Coulomb sur la force électrostatique, 1800 pour la pile de Volta et 1845 pour les lois de Kirchhoff. Les travaux d'Ohm furent d'abord mal accueillis en Allemagne avant d'être reconnus.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Georg_Simon_Ohm"
+    }
+  ]
 }

@@ -1082,6 +1082,249 @@
       ],
       "explanation": "Le bridge Ronin exigeait **5 signatures sur 9 validateurs** pour autoriser un retrait. Les attaquants, attribués par le FBI au groupe nord-coréen Lazarus, ont compromis quatre clés de Sky Mavis et en ont obtenu une cinquième grâce à une autorisation restée active pour l'Axie DAO : de quoi valider seuls le retrait d'environ 173 600 ETH et 25,5 millions d'USDC. Un multisig n'est sûr que si ses signataires sont réellement indépendants.",
       "difficulty": 3
+    },
+    {
+      "question": "Sur quelle blockchain la DeFi à base de contrats intelligents s'est-elle d'abord développée, avec MakerDAO, Compound ou Uniswap ?",
+      "answer": "Ethereum",
+      "wrong": [
+        "Bitcoin",
+        "Solana",
+        "Cardano"
+      ],
+      "explanation": "Les premiers grands protocoles DeFi (MakerDAO dès 2017, Compound et Uniswap en 2018) ont été déployés sur **Ethereum**, la première blockchain à proposer des contrats intelligents généralistes. Solana (2020) et les contrats intelligents de Cardano (2021) sont arrivés bien plus tard, et le langage de script de Bitcoin est volontairement limité.",
+      "difficulty": 1
+    },
+    {
+      "question": "Avant qu'un DEX puisse échanger tes jetons **ERC-20**, quelle opération dois-tu généralement valider une première fois ?",
+      "answer": "Une autorisation `approve` donnant au contrat accès à ces jetons",
+      "wrong": [
+        "Un transfert de tes clés privées vers le contrat du DEX",
+        "Une vérification d'identité auprès de l'équipe du DEX",
+        "Un dépôt de garantie en ETH bloqué pendant 24 heures"
+      ],
+      "explanation": "Un contrat ne peut pas prélever tes jetons ERC-20 de lui-même : tu dois d'abord appeler la fonction **`approve`** du jeton pour fixer un montant que le contrat du DEX a le droit de dépenser (*allowance*). L'échange se fait ensuite via `transferFrom`. L'ETH natif, qui n'est pas un ERC-20, n'a pas besoin de cette étape. Tu ne confies jamais tes clés privées.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qu'un service DeFi « **non-custodial** » (non dépositaire) ?",
+      "answer": "Un service où tu gardes seul le contrôle de tes clés et de tes fonds",
+      "wrong": [
+        "Un service où une société conserve tes fonds pour toi",
+        "Un service où les fonds sont assurés par une banque",
+        "Un service réservé aux investisseurs institutionnels"
+      ],
+      "explanation": "**Non-custodial** signifie que personne ne détient tes fonds à ta place : tu signes toi-même tes transactions avec tes clés, et les actifs restent dans ton portefeuille ou dans des contrats que tu peux quitter seul. C'est l'opposé d'une plateforme centralisée, qui conserve les fonds de ses clients. Revers de la médaille : en cas d'erreur ou de perte de clés, il n'y a personne vers qui se tourner.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi de nombreux protocoles DeFi se sont-ils déployés sur des **rollups** comme Arbitrum, Optimism ou Base ?",
+      "answer": "Pour offrir des frais de transaction bien plus bas qu'Ethereum",
+      "wrong": [
+        "Pour échapper à toute forme de réglementation financière",
+        "Pour ne plus dépendre du tout de la sécurité d'Ethereum",
+        "Pour pouvoir créer des jetons sans contrat intelligent"
+      ],
+      "explanation": "Les **rollups** exécutent les transactions hors du réseau principal puis publient leurs données sur Ethereum, dont ils héritent largement la sécurité. Les frais y sont bien plus faibles, ce qui rend rentables des opérations modestes (petits swaps, réinvestissements fréquents) que le coût du gas sur le réseau principal rendrait absurdes.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel protocole DeFi est avant tout connu pour le **prêt et l'emprunt** de cryptoactifs ?",
+      "answer": "Aave",
+      "wrong": [
+        "Uniswap",
+        "Chainlink",
+        "Lido"
+      ],
+      "explanation": "**Aave** (anciennement ETHLend) est l'un des principaux marchés monétaires de la DeFi : les déposants y prêtent leurs actifs contre intérêts, et les emprunteurs y empruntent en déposant un collatéral. Uniswap est un DEX, Chainlink un réseau d'oracles et Lido un protocole de liquid staking.",
+      "difficulty": 1
+    },
+    {
+      "question": "Lors d'une **liquidation** sur un protocole de prêt, que perd l'emprunteur ?",
+      "answer": "Une partie de son collatéral, pénalité de liquidation comprise",
+      "wrong": [
+        "Tout son collatéral, sans que sa dette soit réduite",
+        "Uniquement les intérêts accumulés sur son emprunt",
+        "Rien : seule sa dette est annulée par le protocole"
+      ],
+      "explanation": "Le liquidateur rembourse une partie de la dette et reçoit en échange du collatéral de valeur équivalente **plus un bonus** (souvent quelques pour cent). L'emprunteur garde les fonds empruntés et le reste de son collatéral, et sa dette diminue d'autant ; mais la pénalité lui fait perdre de l'argent par rapport à un remboursement volontaire.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quels frais **Uniswap v2** prélève-t-il sur chaque échange ?",
+      "answer": "0,3 %",
+      "wrong": [
+        "0,03 %",
+        "1 %",
+        "3 %"
+      ],
+      "explanation": "Chaque swap sur Uniswap v2 paie **0,3 %** du montant apporté. Ces frais rémunèrent les fournisseurs de liquidité ; le code prévoit aussi un interrupteur (*fee switch*), activable par la gouvernance, pour en reverser une part au protocole. Uniswap v3 a ensuite introduit plusieurs niveaux de frais selon les paires, par exemple 0,05 % pour des paires très stables et 1 % pour les plus exotiques.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi de nombreux protocoles DeFi utilisent-ils du **WETH** plutôt que de l'ETH ?",
+      "answer": "L'ETH natif n'est pas un jeton ERC-20, contrairement au WETH",
+      "wrong": [
+        "Le WETH rapporte des récompenses de staking, pas l'ETH",
+        "Le WETH est garanti par la Fondation Ethereum",
+        "Le WETH est une version plus rapide de l'ETH sur un rollup"
+      ],
+      "explanation": "L'ETH est la monnaie native d'Ethereum et ne respecte pas l'interface **ERC-20** (`approve`, `transferFrom`…) utilisée par la plupart des contrats. Le **WETH** (*Wrapped Ether*) est un contrat qui reçoit de l'ETH et émet le même nombre de jetons ERC-20, rachetables 1 pour 1 à tout moment. Les protocoles peuvent ainsi traiter l'ETH comme n'importe quel autre jeton.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi est-il conseillé de **révoquer** les autorisations (`approve`) illimitées que tu n'utilises plus ?",
+      "answer": "Un contrat piraté pourrait encore prélever tes jetons autorisés",
+      "wrong": [
+        "Elles te font payer des frais de gas chaque jour",
+        "Elles bloquent tes jetons, qui ne sont plus transférables",
+        "Elles expirent et saisissent alors tes jetons à l'échéance"
+      ],
+      "explanation": "Une autorisation reste valable tant qu'on ne la révoque pas, même si tu n'utilises plus le site. Si le contrat autorisé est piraté ou malveillant, il peut appeler `transferFrom` et vider **tous** les jetons couverts par une autorisation illimitée, sans nouvelle signature de ta part. Révoquer (remettre l'autorisation à zéro) coûte une transaction mais supprime ce risque. Une autorisation ne bloque pas les jetons et ne coûte rien tant qu'elle dort.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi un contrat **upgradable** (derrière un proxy) représente-t-il un risque pour ses utilisateurs ?",
+      "answer": "Ses administrateurs peuvent remplacer sa logique après ton dépôt",
+      "wrong": [
+        "Son code ne peut plus jamais être corrigé en cas de bug",
+        "Il coûte deux fois plus de gas à chaque transaction",
+        "Il ne peut pas recevoir de jetons ERC-20"
+      ],
+      "explanation": "Avec un **proxy**, l'adresse du contrat reste fixe mais le code exécuté peut être remplacé. C'est pratique pour corriger un bug, mais quiconque contrôle la mise à jour (une équipe, un multisig, une gouvernance) peut aussi introduire un code malveillant, ou se faire voler ce pouvoir. D'où l'importance de savoir *qui* détient ce droit et s'il est soumis à un timelock.",
+      "difficulty": 2
+    },
+    {
+      "question": "En juin 2022, la plateforme **Celsius** a gelé les retraits de ses clients avant de faire faillite. Pourquoi est-ce un exemple de CeFi plutôt que de DeFi ?",
+      "answer": "Les clients avaient confié la garde de leurs fonds à une entreprise",
+      "wrong": [
+        "Celsius n'utilisait aucune blockchain dans ses opérations",
+        "Celsius ne proposait que des comptes en euros",
+        "Celsius ne versait aucun rendement à ses clients"
+      ],
+      "explanation": "Celsius promettait des rendements élevés, mais les clients lui **remettaient** leurs cryptos : l'entreprise les prêtait et les investissait à sa guise, y compris dans des protocoles DeFi. Quand elle a gelé les retraits, les clients n'avaient aucun moyen de récupérer leurs actifs. Dans un protocole DeFi non dépositaire, l'utilisateur peut au contraire retirer seul ses fonds, dans la limite de la liquidité disponible.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'appelle-t-on le **capital mercenaire** en yield farming ?",
+      "answer": "Des liquidités qui partent dès que de meilleures récompenses apparaissent",
+      "wrong": [
+        "Des fonds prêtés par des sociétés de sécurité privées",
+        "Le capital investi par l'équipe fondatrice du protocole",
+        "Des liquidités bloquées pour plusieurs années par contrat"
+      ],
+      "explanation": "Un protocole qui attire de la liquidité à coups de récompenses en jetons attire souvent des farmers qui **ne restent que pour le rendement** : ils vendent les jetons reçus et migrent vers la ferme suivante dès que les émissions baissent. La liquidité s'évapore alors aussi vite qu'elle est venue, et le prix du jeton souffre de cette vente continue.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que désigne l'expression « **real yield** » en DeFi ?",
+      "answer": "Un rendement tiré des revenus du protocole, pas de l'émission de jetons",
+      "wrong": [
+        "Un rendement fixe garanti, quelle que soit l'activité du protocole",
+        "Un rendement versé uniquement en monnaie fiduciaire",
+        "Un rendement calculé sans tenir compte des frais de gas"
+      ],
+      "explanation": "Beaucoup de fermes paient leurs déposants en **émettant de nouveaux jetons**, ce qui dilue les détenteurs et ne tient que tant que le jeton garde sa valeur. Le **real yield** désigne au contraire un rendement prélevé sur des **revenus effectifs** du protocole (frais d'échange, intérêts payés par les emprunteurs, frais de trading) puis redistribué. L'expression s'est popularisée pendant le marché baissier de 2022, après l'effondrement de nombreux rendements inflationnistes.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans le modèle « **vote-escrow** » de Curve (veCRV), qu'obtient-on en verrouillant ses CRV plus longtemps ?",
+      "answer": "Davantage de pouvoir de vote et de récompenses",
+      "wrong": [
+        "Un taux d'intérêt fixe garanti en stablecoins",
+        "Le droit de retirer ses CRV à tout moment",
+        "Une réduction des frais de gas sur Ethereum"
+      ],
+      "explanation": "Les CRV verrouillés deviennent des **veCRV**, non transférables, dont le poids dépend de la durée de verrouillage restante : 4 ans au maximum pour le poids complet, qui décroît à mesure que la date de déblocage approche. Les veCRV donnent du pouvoir de vote (notamment sur la répartition des émissions de CRV entre pools), une part des frais du protocole et un bonus sur les récompenses de liquidité. Le modèle récompense l'engagement à long terme.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qui distingue une pool **Balancer** pondérée d'une pool Uniswap v2 ?",
+      "answer": "Elle peut réunir plusieurs jetons avec des poids différents, comme 80/20",
+      "wrong": [
+        "Elle ne contient que des stablecoins indexés sur le dollar",
+        "Elle fixe ses prix grâce à un oracle de prix externe",
+        "Elle exige un dépôt minimal en jeton de gouvernance"
+      ],
+      "explanation": "Uniswap v2 impose deux jetons à parts égales (50/50). Balancer généralise le produit constant à **plusieurs jetons** (jusqu'à huit dans ses pools pondérées) avec des **poids** librement choisis, par exemple 80 % d'un jeton et 20 % d'ETH. La pool fonctionne alors comme un portefeuille indiciel que les arbitragistes rééquilibrent en permanence, et une pondération déséquilibrée réduit la perte impermanente par rapport à une pool 50/50.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qui a créé **Uniswap**, lancé en novembre 2018 ?",
+      "answer": "Hayden Adams",
+      "wrong": [
+        "Vitalik Buterin",
+        "Andre Cronje",
+        "Stani Kulechov"
+      ],
+      "explanation": "**Hayden Adams**, un ingénieur en mécanique qui s'était formé à Solidity après un licenciement, a lancé Uniswap en novembre 2018, en s'inspirant d'écrits de Vitalik Buterin sur les teneurs de marché automatisés. Andre Cronje est le fondateur de Yearn Finance, et Stani Kulechov celui d'Aave.",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment un fournisseur de liquidité d'**Uniswap v2** perçoit-il concrètement les frais d'échange ?",
+      "answer": "Ils grossissent les réserves, donc la valeur de chaque jeton LP",
+      "wrong": [
+        "Ils sont versés chaque jour en UNI sur son portefeuille",
+        "Ils sont envoyés en ETH sur son adresse à chaque swap",
+        "Ils s'accumulent à part et doivent être réclamés à la main"
+      ],
+      "explanation": "Dans Uniswap v2, les frais prélevés sur chaque swap sont simplement **ajoutés aux réserves** de la pool, sans création de nouveaux jetons LP. Chaque jeton LP représente donc une part d'un gâteau qui grossit (le produit `k` augmente au fil des échanges) : au retrait, le LP récupère sa quote-part, frais compris. En v3, au contraire, les frais d'une position sont comptabilisés à part et doivent être réclamés.",
+      "difficulty": 3
+    },
+    {
+      "question": "Une pool `x · y = k` contient **100 ETH et 200 000 USDC**. Un trader y vend **100 ETH** d'un coup (frais ignorés). Quel prix moyen obtient-il par ETH ?",
+      "answer": "1 000 USDC",
+      "wrong": [
+        "2 000 USDC",
+        "500 USDC",
+        "1 500 USDC"
+      ],
+      "explanation": "k = 100 × 200 000 = 20 000 000. Après la vente, la pool contient 200 ETH, donc 20 000 000 / 200 = 100 000 USDC : le trader a reçu **100 000 USDC** pour 100 ETH, soit 1 000 USDC par ETH, moitié moins que le prix affiché de 2 000. Le piège 500 USDC correspond au nouveau prix marginal de la pool après l'échange (100 000 / 200). C'est l'**impact de prix** : plus l'ordre est gros face aux réserves, plus il coûte cher.",
+      "difficulty": 3
+    },
+    {
+      "question": "En juillet 2023, plusieurs pools **Curve** ont été vidées. Quelle en était la cause ?",
+      "answer": "Un bug du compilateur Vyper qui cassait la protection anti-réentrance",
+      "wrong": [
+        "Une manipulation d'oracle financée par un flash loan",
+        "Le vol des clés privées du multisig de l'équipe Curve",
+        "Un vote de gouvernance malveillant adopté en urgence"
+      ],
+      "explanation": "Certaines versions du compilateur **Vyper** (0.2.15, 0.2.16 et 0.3.0) produisaient un verrou anti-réentrance défectueux. Des pools compilées avec ces versions, dont des pools de JPEG'd, d'Alchemix ou de Curve elle-même, ont été exploitées par **réentrance** le 30 juillet 2023, pour plusieurs dizaines de millions de dollars. Le code source des contrats était correct : c'est l'outil qui le traduisait qui était fautif.",
+      "difficulty": 3
+    },
+    {
+      "question": "En octobre 2022, comment **Mango Markets** a-t-il été vidé de plus de 100 millions de dollars ?",
+      "answer": "En gonflant le cours du jeton MNGO pour emprunter contre lui",
+      "wrong": [
+        "En volant les clés du multisig qui gérait la trésorerie",
+        "En exploitant une faille de réentrance dans le contrat",
+        "En falsifiant les signatures d'un bridge vers Ethereum"
+      ],
+      "explanation": "Avraham Eisenberg a pris une énorme position sur le jeton **MNGO**, puis en a fait grimper le cours sur les marchés dont les oracles tiraient leur prix. Sa position, soudain évaluée très cher, lui a servi de collatéral pour **emprunter** presque toutes les liquidités du protocole. Les oracles avaient fonctionné comme prévu : c'est le prix d'un actif peu liquide qui était manipulable.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel standard Ethereum définit une interface commune pour les **coffres de rendement tokenisés** (vaults) ?",
+      "answer": "ERC-4626",
+      "wrong": [
+        "ERC-721",
+        "ERC-777",
+        "ERC-1155"
+      ],
+      "explanation": "L'**ERC-4626** (2022) standardise les vaults : on y dépose un jeton ERC-20 (`deposit`) et on reçoit des parts, elles-mêmes ERC-20, dont la valeur croît avec les gains de la stratégie. Des fonctions communes (`convertToAssets`, `redeem`…) permettent à n'importe quel protocole d'intégrer n'importe quel coffre sans code sur mesure. ERC-721 décrit les NFT, ERC-1155 les contrats multi-jetons et ERC-777 une évolution des jetons fongibles.",
+      "difficulty": 3,
+      "source": "https://eips.ethereum.org/EIPS/eip-4626"
+    },
+    {
+      "question": "Quelle nouveauté majeure **Uniswap v4**, lancé début 2025, a-t-il apportée ?",
+      "answer": "Les hooks : du code sur mesure branché sur la vie des pools",
+      "wrong": [
+        "La liquidité concentrée sur une fourchette de prix choisie",
+        "Les flash swaps, pour emprunter des jetons dans une pool",
+        "Des pools pondérées pouvant regrouper jusqu'à huit jetons"
+      ],
+      "explanation": "Uniswap v4 permet d'attacher à une pool des **hooks**, des contrats appelés à des moments clés (avant ou après un swap, un ajout de liquidité…) pour y greffer des fonctions : frais dynamiques, ordres à cours limité, oracles… Toutes les pools vivent en outre dans un contrat unique (*singleton*), ce qui réduit le gas. La liquidité concentrée vient de la v3, les flash swaps de la v2, et les pools pondérées multi-jetons sont la marque de Balancer.",
+      "difficulty": 3
     }
   ]
 }
