@@ -8,7 +8,11 @@
     {
       "question": "Quel modèle de service cloud fournit des machines virtuelles dont vous administrez vous-même le système d'exploitation ?",
       "answer": "IaaS",
-      "wrong": ["SaaS", "PaaS", "FaaS"],
+      "wrong": [
+        "SaaS",
+        "PaaS",
+        "FaaS"
+      ],
       "explanation": "En **IaaS** (Infrastructure as a Service), le fournisseur gère le matériel, le réseau et la virtualisation ; vous gérez l'OS, le middleware et les applications. Exemples : Amazon EC2, Azure Virtual Machines, Google Compute Engine. En **PaaS**, le fournisseur gère aussi l'OS et le runtime : vous ne déployez que votre code.",
       "difficulty": 1,
       "source": "https://en.wikipedia.org/wiki/Infrastructure_as_a_service"
@@ -16,7 +20,11 @@
     {
       "question": "Une entreprise utilise une messagerie en ligne comme Gmail directement dans le navigateur, sans rien installer ni administrer. De quel modèle de service s'agit-il ?",
       "answer": "SaaS",
-      "wrong": ["IaaS", "PaaS", "FaaS"],
+      "wrong": [
+        "IaaS",
+        "PaaS",
+        "FaaS"
+      ],
       "explanation": "En **SaaS** (Software as a Service), l'éditeur fournit une application complète et gère tout : infrastructure, mises à jour, disponibilité. L'utilisateur se contente de s'en servir et de configurer son compte. Le **FaaS** (Function as a Service, comme AWS Lambda) s'adresse aux développeurs qui déploient des fonctions, pas aux utilisateurs finaux.",
       "difficulty": 1,
       "source": "https://fr.wikipedia.org/wiki/Software_as_a_service"
@@ -24,7 +32,11 @@
     {
       "question": "Quel service AWS fournit un stockage d'objets (fichiers et métadonnées) accessible via une API HTTP ?",
       "answer": "Amazon S3",
-      "wrong": ["Amazon EBS", "Amazon EC2", "Amazon RDS"],
+      "wrong": [
+        "Amazon EBS",
+        "Amazon EC2",
+        "Amazon RDS"
+      ],
       "explanation": "**Amazon S3** (Simple Storage Service) stocke des objets identifiés par une clé, rangés dans des *buckets*, et accessibles via une API HTTP. **Amazon EBS**, lui, fournit des volumes en mode **bloc** attachés aux instances EC2, comme un disque dur virtuel. EC2 fournit des machines virtuelles et RDS des bases de données relationnelles managées.",
       "difficulty": 1,
       "source": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html"
@@ -32,7 +44,11 @@
     {
       "question": "Quel service AWS est un réseau de diffusion de contenu (CDN) qui met en cache vos contenus au plus près des utilisateurs ?",
       "answer": "Amazon CloudFront",
-      "wrong": ["Amazon Route 53", "AWS CloudTrail", "Amazon CloudWatch"],
+      "wrong": [
+        "Amazon Route 53",
+        "AWS CloudTrail",
+        "Amazon CloudWatch"
+      ],
       "explanation": "**Amazon CloudFront** est le CDN d'AWS : il sert les contenus depuis des points de présence (*edge locations*) répartis dans le monde, ce qui réduit la latence et soulage l'origine (un bucket S3, un load balancer…). **Route 53** est le service DNS, **CloudTrail** l'audit des appels d'API et **CloudWatch** la supervision.",
       "difficulty": 1,
       "source": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html"
@@ -40,14 +56,22 @@
     {
       "question": "Votre application ralentit sous la charge. Vous ajoutez des instances supplémentaires derrière le load balancer. Comment s'appelle cette approche ?",
       "answer": "La scalabilité horizontale",
-      "wrong": ["La scalabilité verticale", "La mise en cache", "La conteneurisation"],
+      "wrong": [
+        "La scalabilité verticale",
+        "La mise en cache",
+        "La conteneurisation"
+      ],
       "explanation": "La **scalabilité horizontale** (*scale out*) consiste à ajouter des machines ; la **scalabilité verticale** (*scale up*) consiste à donner plus de CPU ou de RAM à une même machine. L'horizontal est privilégié dans le cloud : il n'a pas de plafond matériel et s'automatise facilement avec l'autoscaling, qui ajoute ou retire des instances selon une métrique (CPU, nombre de requêtes…).",
       "difficulty": 1
     },
     {
       "question": "Sur AWS, comment s'appellent les emplacements isolés les uns des autres, composés d'un ou plusieurs datacenters, qui forment une région ?",
       "answer": "Les zones de disponibilité",
-      "wrong": ["Les points de présence", "Les sous-réseaux", "Les groupes de placement"],
+      "wrong": [
+        "Les points de présence",
+        "Les sous-réseaux",
+        "Les groupes de placement"
+      ],
       "explanation": "Chaque **région** AWS (par exemple `eu-west-3`, Paris) regroupe plusieurs **zones de disponibilité** (*Availability Zones*), physiquement séparées, avec leur propre alimentation et leur propre réseau, mais reliées entre elles par des liaisons à faible latence. Déployer sur plusieurs AZ permet de survivre à la panne d'un datacenter entier. Azure et Google Cloud utilisent le même concept de *zones*.",
       "difficulty": 1,
       "source": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html"
@@ -55,7 +79,11 @@
     {
       "question": "Quel type de base de données est Amazon DynamoDB ?",
       "answer": "NoSQL clé-valeur et document",
-      "wrong": ["Relationnelle compatible MySQL", "Entrepôt de données en colonnes", "Base orientée graphe"],
+      "wrong": [
+        "Relationnelle compatible MySQL",
+        "Entrepôt de données en colonnes",
+        "Base orientée graphe"
+      ],
       "explanation": "**DynamoDB** est une base **NoSQL** serverless et entièrement gérée : chaque élément est accessible par sa clé de partition (et éventuellement une clé de tri), avec des latences de l'ordre de la milliseconde. Pour du relationnel, AWS propose **RDS** et **Aurora** ; pour l'entrepôt de données, **Redshift** ; pour les graphes, **Neptune**.",
       "difficulty": 1,
       "source": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html"
@@ -63,7 +91,11 @@
     {
       "question": "Quel service AWS permet de créer des utilisateurs, des rôles et des policies pour contrôler qui peut accéder à quelles ressources du compte ?",
       "answer": "AWS IAM",
-      "wrong": ["AWS KMS", "Amazon Inspector", "AWS Shield"],
+      "wrong": [
+        "AWS KMS",
+        "Amazon Inspector",
+        "AWS Shield"
+      ],
       "explanation": "**IAM** (Identity and Access Management) gère les identités (utilisateurs, groupes, rôles) et leurs permissions, décrites dans des *policies* JSON. Bonne pratique : appliquer le **principe du moindre privilège** et préférer des rôles à identifiants temporaires plutôt que des clés d'accès longue durée. **KMS** gère les clés de chiffrement, **Inspector** scanne les vulnérabilités et **Shield** protège contre les DDoS.",
       "difficulty": 1,
       "source": "https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html"
@@ -71,7 +103,11 @@
     {
       "question": "Selon le modèle de responsabilité partagée d'AWS, qui doit appliquer les correctifs de sécurité du système d'exploitation d'une instance EC2 ?",
       "answer": "Le client",
-      "wrong": ["AWS", "AWS et le client, à parts égales", "L'éditeur du système d'exploitation"],
+      "wrong": [
+        "AWS",
+        "AWS et le client, à parts égales",
+        "L'éditeur du système d'exploitation"
+      ],
       "explanation": "AWS est responsable de la sécurité **du** cloud (datacenters, matériel, hyperviseur, réseau physique) ; le client est responsable de la sécurité **dans** le cloud. Sur EC2 (IaaS), l'OS invité, ses correctifs, la configuration réseau et les données sont donc à la charge du client. Sur un service managé comme RDS ou Lambda, c'est en revanche AWS qui patche l'OS sous-jacent.",
       "difficulty": 2,
       "source": "https://aws.amazon.com/compliance/shared-responsibility-model/"
@@ -79,7 +115,11 @@
     {
       "question": "Pour quelle **durabilité** annuelle des objets la classe Amazon S3 Standard est-elle conçue ?",
       "answer": "99,999999999 % (11 neuf)",
-      "wrong": ["99,99 % (4 neuf)", "99,999 % (5 neuf)", "99,9999 % (6 neuf)"],
+      "wrong": [
+        "99,99 % (4 neuf)",
+        "99,999 % (5 neuf)",
+        "99,9999 % (6 neuf)"
+      ],
       "explanation": "S3 est conçu pour une **durabilité** de 99,999999999 % (« 11 neuf ») : sur 10 millions d'objets stockés, on s'attend statistiquement à en perdre un tous les 10 000 ans. Piège classique : la **disponibilité** de S3 Standard, elle, est conçue pour 99,99 %. La durabilité mesure le risque de perdre la donnée, la disponibilité la capacité à y accéder à un instant donné.",
       "difficulty": 2,
       "source": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/DataDurability.html"
@@ -87,7 +127,11 @@
     {
       "question": "Plusieurs instances EC2 Linux doivent monter simultanément le même système de fichiers partagé via NFS. Quel service AWS choisir ?",
       "answer": "Amazon EFS",
-      "wrong": ["Amazon EBS", "Amazon FSx for Windows", "EC2 Instance Store"],
+      "wrong": [
+        "Amazon EBS",
+        "Amazon FSx for Windows",
+        "EC2 Instance Store"
+      ],
       "explanation": "**Amazon EFS** (Elastic File System) est un stockage **fichier** NFS, montable en même temps par de nombreuses instances. **EBS** fournit du stockage **bloc** (un disque virtuel, en général attaché à une seule instance), l'**instance store** un disque local éphémère, et **FSx for Windows File Server** des partages de fichiers accessibles en **SMB**, pas en NFS.",
       "difficulty": 2,
       "source": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html"
@@ -95,7 +139,11 @@
     {
       "question": "En serverless (AWS Lambda, Azure Functions…), qu'appelle-t-on un « cold start » ?",
       "answer": "Le délai d'initialisation d'un nouvel environnement",
-      "wrong": ["Le redémarrage automatique d'une fonction après un plantage", "Le tout premier déploiement d'une fonction dans un compte", "La mise en veille d'une fonction restée inactive"],
+      "wrong": [
+        "Le redémarrage automatique d'une fonction après un plantage",
+        "Le tout premier déploiement d'une fonction dans un compte",
+        "La mise en veille d'une fonction restée inactive"
+      ],
       "explanation": "Quand aucun environnement « chaud » n'est disponible, la plateforme doit en créer un, charger le code et exécuter l'initialisation (imports, connexions…) avant de traiter la requête : c'est le **cold start**. Les invocations suivantes réutilisent cet environnement et sont plus rapides. Pour le réduire : un code et des dépendances légers, un runtime rapide à démarrer, ou de la concurrence provisionnée.",
       "difficulty": 2,
       "source": "https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtime-environment.html"
@@ -103,7 +151,11 @@
     {
       "question": "Quel mode d'achat d'instances EC2 offre les plus fortes remises, mais permet à AWS de récupérer l'instance avec un préavis de deux minutes ?",
       "answer": "Les instances Spot",
-      "wrong": ["Les instances réservées", "Les instances à la demande", "Les Savings Plans"],
+      "wrong": [
+        "Les instances réservées",
+        "Les instances à la demande",
+        "Les Savings Plans"
+      ],
       "explanation": "Les **instances Spot** exploitent la capacité EC2 inutilisée à prix très réduit, mais AWS peut les interrompre (avec un avertissement de 2 minutes) s'il a besoin de cette capacité. Elles conviennent aux charges tolérantes aux interruptions : traitements batch, CI, calcul distribué. Les **instances réservées** et les **Savings Plans** offrent des remises en échange d'un engagement sur 1 ou 3 ans, sans risque d'interruption.",
       "difficulty": 2,
       "source": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html"
@@ -111,7 +163,11 @@
     {
       "question": "Selon la méthodologie **Twelve-Factor App**, où une application doit-elle lire sa configuration (URL de base de données, identifiants…) ?",
       "answer": "Dans les variables d'environnement",
-      "wrong": ["Dans un fichier de config versionné avec le code", "Dans des constantes du code source", "Dans une table dédiée de la base de données"],
+      "wrong": [
+        "Dans un fichier de config versionné avec le code",
+        "Dans des constantes du code source",
+        "Dans une table dédiée de la base de données"
+      ],
       "explanation": "Le facteur III (*Config*) impose une séparation stricte entre code et configuration : tout ce qui varie d'un déploiement à l'autre (staging, prod…) est lu depuis des **variables d'environnement**. Test simple : le code pourrait-il être publié en open source sur-le-champ sans exposer le moindre secret ? Les fichiers de config versionnés risquent de fuiter et se multiplient avec les environnements.",
       "difficulty": 2,
       "source": "https://12factor.net/fr/config"
@@ -119,7 +175,11 @@
     {
       "question": "Quel service Google Cloud est l'équivalent d'Amazon EC2 pour créer des machines virtuelles ?",
       "answer": "Compute Engine",
-      "wrong": ["App Engine", "Cloud Run", "Google Kubernetes Engine"],
+      "wrong": [
+        "App Engine",
+        "Cloud Run",
+        "Google Kubernetes Engine"
+      ],
       "explanation": "**Compute Engine** est l'offre IaaS de Google Cloud : des VM que vous configurez et administrez. **App Engine** est une plateforme PaaS, **Cloud Run** exécute des conteneurs en mode serverless et **GKE** fournit des clusters Kubernetes managés. Chez Azure, l'équivalent est **Azure Virtual Machines**.",
       "difficulty": 2,
       "source": "https://cloud.google.com/compute/docs"
@@ -127,7 +187,11 @@
     {
       "question": "Vous migrez d'AWS vers Azure. Quel service Azure est l'équivalent le plus direct d'Amazon S3 ?",
       "answer": "Azure Blob Storage",
-      "wrong": ["Azure Files", "Azure Disk Storage", "Azure Cosmos DB"],
+      "wrong": [
+        "Azure Files",
+        "Azure Disk Storage",
+        "Azure Cosmos DB"
+      ],
       "explanation": "**Azure Blob Storage** est le stockage objet d'Azure : des *blobs* rangés dans des *containers*, comme les objets dans les buckets S3. **Azure Files** propose des partages de fichiers SMB/NFS (proche d'Amazon EFS) et **Azure Disk Storage** des disques managés en mode bloc pour les VM (proche d'EBS). Chez Google Cloud, l'équivalent de S3 est **Cloud Storage**.",
       "difficulty": 2,
       "source": "https://learn.microsoft.com/fr-fr/azure/storage/blobs/storage-blobs-introduction"
@@ -135,7 +199,11 @@
     {
       "question": "Derrière un même load balancer AWS, vous devez router `/api/*` vers un groupe de serveurs et `/images/*` vers un autre. Quel type de load balancer choisir ?",
       "answer": "Application Load Balancer",
-      "wrong": ["Network Load Balancer", "Gateway Load Balancer", "Classic Load Balancer"],
+      "wrong": [
+        "Network Load Balancer",
+        "Gateway Load Balancer",
+        "Classic Load Balancer"
+      ],
       "explanation": "L'**Application Load Balancer** (ALB) travaille en couche 7 (HTTP/HTTPS) : il peut router selon le chemin, l'en-tête `Host`, les paramètres de requête… Le **Network Load Balancer** opère en couche 4 (TCP/UDP) sans inspecter le contenu HTTP, le **Gateway Load Balancer** sert à insérer des appliances réseau (pare-feu…), et le **Classic Load Balancer**, l'ancienne génération, ne sait pas router par chemin.",
       "difficulty": 2,
       "source": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html"
@@ -143,7 +211,11 @@
     {
       "question": "Quel service AWS natif permet de décrire son infrastructure dans des modèles YAML ou JSON, déployés sous forme de « stacks » ?",
       "answer": "AWS CloudFormation",
-      "wrong": ["AWS CloudTrail", "AWS Config", "AWS Systems Manager"],
+      "wrong": [
+        "AWS CloudTrail",
+        "AWS Config",
+        "AWS Systems Manager"
+      ],
       "explanation": "**CloudFormation** est l'outil d'**Infrastructure as Code** natif d'AWS : un *template* YAML ou JSON décrit les ressources, que CloudFormation crée, met à jour ou supprime ensemble au sein d'une *stack*. Azure propose l'équivalent avec les templates ARM et Bicep, et Terraform est une alternative multi-cloud. **AWS Config**, lui, ne crée rien : il inventorie et audite la configuration des ressources existantes.",
       "difficulty": 2,
       "source": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html"
@@ -151,7 +223,11 @@
     {
       "question": "Lequel de ces éléments n'est **pas** un pilier du AWS Well-Architected Framework ?",
       "answer": "La portabilité",
-      "wrong": ["La fiabilité", "La durabilité", "L'optimisation des coûts"],
+      "wrong": [
+        "La fiabilité",
+        "La durabilité",
+        "L'optimisation des coûts"
+      ],
       "explanation": "Le Well-Architected Framework repose sur six piliers : **excellence opérationnelle**, **sécurité**, **fiabilité**, **efficacité des performances**, **optimisation des coûts** et **durabilité** (*sustainability*, ajouté en 2021). La portabilité entre clouds n'en fait pas partie. Azure et Google Cloud proposent leur propre framework construit sur le même modèle.",
       "difficulty": 3,
       "source": "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html"
@@ -159,7 +235,11 @@
     {
       "question": "Selon la méthodologie **Twelve-Factor App**, comment une application doit-elle gérer ses logs ?",
       "answer": "Les écrire sur la sortie standard, en flux continu",
-      "wrong": ["Les écrire dans des fichiers locaux avec rotation", "Les envoyer elle-même à un service de centralisation", "Les stocker dans sa base de données"],
+      "wrong": [
+        "Les écrire dans des fichiers locaux avec rotation",
+        "Les envoyer elle-même à un service de centralisation",
+        "Les stocker dans sa base de données"
+      ],
       "explanation": "Le facteur XI traite les logs comme des **flux d'événements** : l'application écrit simplement sur `stdout`, sans gérer de fichiers ni de routage. C'est l'environnement d'exécution (Docker, Kubernetes, l'agent de la plateforme…) qui capture ce flux et l'achemine vers un outil de centralisation. Envoyer soi-même les logs à un service couplerait l'application à son infrastructure.",
       "difficulty": 3,
       "source": "https://12factor.net/fr/logs"
@@ -167,7 +247,11 @@
     {
       "question": "Dans un VPC AWS, qu'est-ce qui fait d'un sous-réseau un sous-réseau **public** ?",
       "answer": "Sa table de routage a une route vers une Internet Gateway",
-      "wrong": ["Sa table de routage a une route vers une NAT Gateway", "Toutes ses instances ont une adresse IP publique", "Son security group autorise le trafic depuis 0.0.0.0/0"],
+      "wrong": [
+        "Sa table de routage a une route vers une NAT Gateway",
+        "Toutes ses instances ont une adresse IP publique",
+        "Son security group autorise le trafic depuis 0.0.0.0/0"
+      ],
       "explanation": "Par définition, un sous-réseau est **public** si sa table de routage contient une route directe (généralement `0.0.0.0/0`) vers une **Internet Gateway** ; une instance doit en plus avoir une IP publique pour être joignable. Un sous-réseau dont la route par défaut pointe vers une **NAT Gateway** reste **privé** : ses instances peuvent sortir vers Internet mais ne sont pas joignables depuis l'extérieur.",
       "difficulty": 3,
       "source": "https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html"
@@ -175,7 +259,11 @@
     {
       "question": "Sur AWS, quelle affirmation est correcte à propos des security groups et des network ACL ?",
       "answer": "Les security groups sont stateful, les network ACL stateless",
-      "wrong": ["Les security groups sont stateless, les network ACL stateful", "Les deux sont stateful", "Les deux sont stateless"],
+      "wrong": [
+        "Les security groups sont stateless, les network ACL stateful",
+        "Les deux sont stateful",
+        "Les deux sont stateless"
+      ],
       "explanation": "Un **security group** (appliqué à l'interface réseau de l'instance) est **stateful** : si une requête entrante est autorisée, la réponse repart automatiquement, quelles que soient les règles sortantes. Une **network ACL** (appliquée au sous-réseau) est **stateless** : il faut autoriser explicitement le trafic retour, ports éphémères compris. Autre différence : les security groups n'ont que des règles « allow », les NACL ont aussi des règles « deny ».",
       "difficulty": 3,
       "source": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html"
@@ -183,7 +271,11 @@
     {
       "question": "Un bucket S3 a été supprimé hier. Quel service AWS enregistre l'historique des appels d'API et permet de savoir quelle identité a appelé `DeleteBucket` ?",
       "answer": "AWS CloudTrail",
-      "wrong": ["Amazon CloudWatch", "AWS Trusted Advisor", "Amazon Inspector"],
+      "wrong": [
+        "Amazon CloudWatch",
+        "AWS Trusted Advisor",
+        "Amazon Inspector"
+      ],
       "explanation": "**CloudTrail** enregistre les appels d'API effectués dans le compte (console, CLI, SDK) : qui, quoi, quand, depuis quelle IP. C'est l'outil d'audit de référence. **CloudWatch**, souvent confondu avec lui, collecte des métriques et des logs et déclenche des alarmes : il répond à « comment se porte mon système ? » plutôt qu'à « qui a fait quoi ? ».",
       "difficulty": 3,
       "source": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html"
@@ -191,7 +283,11 @@
     {
       "question": "Dans un plan de reprise d'activité, que mesure le **RPO** (Recovery Point Objective) ?",
       "answer": "La perte de données maximale acceptable, exprimée en durée",
-      "wrong": ["La durée maximale acceptable d'interruption du service", "Le délai maximal entre deux tests du plan de reprise", "Le pourcentage de disponibilité visé sur une année"],
+      "wrong": [
+        "La durée maximale acceptable d'interruption du service",
+        "Le délai maximal entre deux tests du plan de reprise",
+        "Le pourcentage de disponibilité visé sur une année"
+      ],
       "explanation": "Le **RPO** indique jusqu'à quel point dans le passé on accepte de revenir : un RPO d'une heure signifie qu'on tolère de perdre au plus une heure de données, ce qui impose des sauvegardes ou une réplication au moins aussi fréquentes. Le **RTO** (Recovery Time Objective), souvent confondu avec lui, est la durée maximale acceptable pour rétablir le service.",
       "difficulty": 3,
       "source": "https://en.wikipedia.org/wiki/Disaster_recovery"
@@ -199,10 +295,576 @@
     {
       "question": "Quelle fonctionnalité d'AWS Lambda maintient un nombre défini d'environnements d'exécution déjà initialisés, pour éviter les cold starts ?",
       "answer": "Provisioned Concurrency",
-      "wrong": ["Reserved Concurrency", "Lambda Layers", "Lambda@Edge"],
+      "wrong": [
+        "Reserved Concurrency",
+        "Lambda Layers",
+        "Lambda@Edge"
+      ],
       "explanation": "La **Provisioned Concurrency** garde des environnements initialisés, prêts à répondre immédiatement, et se paie même sans trafic. La **Reserved Concurrency**, souvent confondue, ne préchauffe rien : elle réserve (et plafonne) une part de la concurrence du compte pour une fonction. Les **Layers** servent à partager du code ou des dépendances entre fonctions, et **Lambda@Edge** exécute des fonctions au niveau de CloudFront.",
       "difficulty": 3,
       "source": "https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html"
+    },
+    {
+      "question": "Vous déployez votre application web en poussant simplement votre code sur une plateforme comme Heroku ou Google App Engine : elle gère les serveurs, le système d'exploitation et le runtime. De quel modèle de service s'agit-il ?",
+      "answer": "PaaS",
+      "wrong": [
+        "IaaS",
+        "SaaS",
+        "DaaS"
+      ],
+      "explanation": "En **PaaS** (Platform as a Service), le fournisseur gère l'infrastructure, le système d'exploitation, le runtime et souvent la mise à l'échelle : le développeur ne fournit que son code et sa configuration. Heroku, Google App Engine, AWS Elastic Beanstalk ou Azure App Service en sont des exemples. En **IaaS**, il aurait fallu installer et maintenir soi-même l'OS des machines virtuelles ; le **DaaS** (Desktop as a Service) fournit des postes de travail virtuels.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Platform_as_a_service"
+    },
+    {
+      "question": "Une entreprise conserve une partie de ses applications dans son propre datacenter et en héberge d'autres chez un fournisseur de cloud public, les deux environnements étant interconnectés et gérés ensemble. Comment appelle-t-on ce modèle de déploiement ?",
+      "answer": "Le cloud hybride",
+      "wrong": [
+        "Le multi-cloud",
+        "Le cloud communautaire",
+        "Le cloud privé"
+      ],
+      "explanation": "Le **cloud hybride** combine une infrastructure privée (sur site ou hébergée) et un ou plusieurs clouds publics, reliés (VPN, liaison dédiée) pour que charges et données puissent circuler entre eux. Le **multi-cloud** désigne l'usage de plusieurs fournisseurs de cloud public, sans forcément d'infrastructure privée. Le **cloud communautaire**, défini par le NIST, est partagé par plusieurs organisations ayant des besoins communs.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Cloud_computing"
+    },
+    {
+      "question": "Une start-up héberge son application sur AWS, mais réalise ses analyses de données dans BigQuery, sur Google Cloud. Elle ne possède aucun datacenter. Comment qualifie-t-on cette stratégie ?",
+      "answer": "Le multi-cloud",
+      "wrong": [
+        "Le cloud hybride",
+        "Le cloud privé",
+        "Le cloud communautaire"
+      ],
+      "explanation": "Le **multi-cloud** consiste à utiliser plusieurs fournisseurs de cloud public, pour profiter du meilleur service de chacun, réduire la dépendance à un seul fournisseur ou répondre à des contraintes réglementaires. Le terme **cloud hybride** désigne, lui, la combinaison d'une infrastructure privée (le datacenter de l'entreprise, par exemple) avec du cloud public. Le multi-cloud a un coût : compétences, outils et transferts de données à multiplier.",
+      "difficulty": 1
+    },
+    {
+      "question": "Votre application repose massivement sur des services propriétaires d'un fournisseur cloud, au point qu'en changer coûterait très cher. Comment appelle-t-on cette dépendance ?",
+      "answer": "L'enfermement propriétaire (vendor lock-in)",
+      "wrong": [
+        "La dette technique (technical debt)",
+        "L'informatique fantôme (shadow IT)",
+        "L'obsolescence programmée"
+      ],
+      "explanation": "Le **vendor lock-in** apparaît quand une application dépend d'API, de services managés ou de formats propres à un fournisseur : migrer impose de réécrire du code, de transférer les données (transferts sortants souvent facturés) et de refaire l'outillage. On le limite avec des standards ouverts (conteneurs, Kubernetes, bases open source, Terraform), au prix de renoncer parfois à des services managés pratiques. La **dette technique**, elle, désigne le coût futur des raccourcis pris dans le code.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie concrètement « serverless » pour un développeur qui utilise AWS Lambda ?",
+      "answer": "Il ne gère aucun serveur et paie à l'exécution",
+      "wrong": [
+        "Le code s'exécute sans aucun serveur physique",
+        "Le code s'exécute dans le navigateur du client",
+        "Il loue un serveur dédié à prix fixe"
+      ],
+      "explanation": "Malgré son nom, le **serverless** utilise bien des serveurs : c'est le fournisseur qui les provisionne, les met à jour et les fait monter en charge. Le développeur ne fournit que son code, exécuté en réponse à des événements, et paie à l'usage (nombre d'invocations et durée d'exécution), avec une mise à l'échelle jusqu'à zéro quand il n'y a pas de trafic. AWS Lambda, Azure Functions et Google Cloud Run en sont des exemples.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Serverless_computing"
+    },
+    {
+      "question": "Que signifie le nom du service **Amazon EC2** ?",
+      "answer": "Elastic Compute Cloud",
+      "wrong": [
+        "Elastic Container Cluster",
+        "Enterprise Compute Cloud",
+        "Elastic Cloud Computing"
+      ],
+      "explanation": "**EC2** signifie *Elastic Compute Cloud* : le « 2 » remplace les deux « C » de *Compute Cloud*. Lancé en 2006, c'est le service de machines virtuelles (instances) d'AWS, facturées à l'usage. Le même principe de nommage a donné **S3**, pour *Simple Storage Service* (trois « S »).",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Amazon_Elastic_Compute_Cloud"
+    },
+    {
+      "question": "Sur AWS, comment s'appelle l'image (système d'exploitation, logiciels préinstallés, configuration) à partir de laquelle on lance une instance EC2 ?",
+      "answer": "Une AMI (Amazon Machine Image)",
+      "wrong": [
+        "Un snapshot EBS",
+        "Une stack CloudFormation",
+        "Un instance profile"
+      ],
+      "explanation": "Une **AMI** (*Amazon Machine Image*) contient ce qu'il faut pour démarrer une instance : un ou plusieurs snapshots EBS (dont le volume racine avec l'OS), les permissions de lancement et le mappage des périphériques. On peut utiliser les AMI d'AWS, de la communauté ou de la Marketplace, ou créer les siennes à partir d'une instance configurée : ce sont les « golden images ». Un **instance profile**, lui, sert à attacher un rôle IAM à une instance.",
+      "difficulty": 1,
+      "source": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html"
+    },
+    {
+      "question": "Un site de billetterie voit son trafic multiplié par 50 à l'ouverture des ventes, puis retomber. Quelle caractéristique du cloud lui permet d'ajouter, puis de **retirer** automatiquement des ressources pour suivre cette demande ?",
+      "answer": "L'élasticité",
+      "wrong": [
+        "La haute disponibilité",
+        "La tolérance aux pannes",
+        "La redondance géographique"
+      ],
+      "explanation": "L'**élasticité** est la capacité à allouer et à libérer des ressources automatiquement, à la hausse comme à la baisse, pour coller à la demande ; le NIST la range parmi les caractéristiques essentielles du cloud (*rapid elasticity*). Elle va plus loin que la simple **scalabilité**, qui désigne la capacité à absorber une charge croissante, sans impliquer de retour automatique en arrière. La **haute disponibilité**, elle, vise à rester en service malgré les pannes.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur le plan financier, quel changement le passage d'un datacenter interne au cloud public entraîne-t-il le plus souvent ?",
+      "answer": "Les investissements (CapEx) deviennent des charges (OpEx)",
+      "wrong": [
+        "Les charges (OpEx) deviennent des investissements (CapEx)",
+        "Les coûts deviennent fixes et payés d'avance",
+        "Les licences logicielles deviennent gratuites"
+      ],
+      "explanation": "Avec un datacenter interne, il faut acheter serveurs, baies et climatisation à l'avance : ce sont des **dépenses d'investissement** (CapEx), amorties sur plusieurs années. Dans le cloud, on paie à l'usage, chaque mois : ce sont des **dépenses d'exploitation** (OpEx), qui suivent la consommation réelle. Cela évite le surdimensionnement, mais impose de surveiller la facture, d'où l'essor du FinOps.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur un serveur physique partagé entre plusieurs clients du cloud, la VM d'un client consomme énormément de disque et de réseau, ce qui dégrade les performances des autres VM. Comment appelle-t-on ce phénomène ?",
+      "answer": "L'effet « voisin bruyant » (noisy neighbor)",
+      "wrong": [
+        "L'effet de troupeau (thundering herd)",
+        "La contention de verrous (lock contention)",
+        "Le démarrage à froid (cold start)"
+      ],
+      "explanation": "Le **noisy neighbor** est un risque inhérent à la **mutualisation** (*multi-tenancy*) : plusieurs clients partagent le même matériel, et l'un d'eux peut accaparer CPU, disque ou bande passante. Les fournisseurs le limitent avec des quotas, des performances garanties (IOPS provisionnées) ou des instances dédiées. Le **thundering herd**, lui, désigne une foule de clients qui se réveillent ou réessaient tous en même temps.",
+      "difficulty": 2
+    },
+    {
+      "question": "Une entreprise fait tourner ses applications dans son cloud privé, mais déborde automatiquement vers un cloud public lors des pics de charge. Comment s'appelle cette technique ?",
+      "answer": "Le cloud bursting",
+      "wrong": [
+        "Le cloud brokering",
+        "Le load shedding",
+        "Le lift and shift"
+      ],
+      "explanation": "Le **cloud bursting** (« débordement vers le cloud ») est un cas d'usage typique du cloud hybride : la capacité privée absorbe la charge normale, et le cloud public ne sert, et n'est payé, que pendant les pics. Il suppose des applications portables et une bonne interconnexion réseau. Le **load shedding** consiste au contraire à rejeter volontairement une partie des requêtes pour protéger le système, et le **lift and shift** est une méthode de migration.",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment désigne-t-on couramment les très grands fournisseurs de cloud public, comme AWS, Microsoft Azure et Google Cloud, qui opèrent des millions de serveurs dans le monde ?",
+      "answer": "Les hyperscalers",
+      "wrong": [
+        "Les hébergeurs mutualisés",
+        "Les intégrateurs systèmes",
+        "Les opérateurs de colocation"
+      ],
+      "explanation": "Les **hyperscalers** sont les fournisseurs capables de faire grandir leur infrastructure à très grande échelle (*hyperscale*) : dizaines de régions, datacenters conçus sur mesure, matériel et réseau souvent développés en interne. On y range généralement AWS, Microsoft Azure et Google Cloud, parfois Alibaba Cloud ou Oracle. Un **opérateur de colocation**, lui, loue de l'espace, de l'énergie et du refroidissement dans un datacenter, où le client installe ses propres serveurs.",
+      "difficulty": 1
+    },
+    {
+      "question": "Lors d'une migration vers le cloud, vous déplacez une application telle quelle de vos serveurs vers des machines virtuelles cloud, sans modifier son code ni son architecture. Quelle stratégie appliquez-vous ?",
+      "answer": "Le rehosting (lift and shift)",
+      "wrong": [
+        "Le refactoring (re-architecture)",
+        "Le repurchasing (passage au SaaS)",
+        "Le replatforming (lift and reshape)"
+      ],
+      "explanation": "Le **rehosting**, ou *lift and shift*, est la plus rapide des stratégies de migration (les « 7 R » popularisés par AWS) : on reproduit l'existant sur des VM cloud, sans le transformer. Il permet de quitter vite un datacenter, mais tire peu parti du cloud (services managés, élasticité). Le **replatforming** apporte quelques optimisations sans toucher à l'architecture, le **refactoring** réécrit l'application pour la rendre *cloud-native*, et le **repurchasing** la remplace par un produit SaaS.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans un plan de reprise d'activité, que mesure le **RTO** (Recovery Time Objective) ?",
+      "answer": "La durée maximale acceptable d'interruption du service",
+      "wrong": [
+        "La perte de données maximale acceptable, en durée",
+        "Le délai moyen entre deux pannes du système",
+        "La fréquence minimale des sauvegardes complètes"
+      ],
+      "explanation": "Le **RTO** fixe le temps maximal pour rétablir le service après un incident : avec un RTO de 4 heures, l'application doit être de nouveau opérationnelle dans les 4 heures. Le **RPO**, lui, mesure la quantité de données qu'on accepte de perdre, exprimée en durée depuis le dernier point de restauration, et le délai moyen entre deux pannes s'appelle le MTBF. Plus RTO et RPO sont courts, plus l'architecture de secours coûte cher (réplication continue, site de secours actif en permanence…).",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Recovery_time_objective"
+    },
+    {
+      "question": "Sur AWS, lequel de ces transferts de données est en principe **gratuit** ?",
+      "answer": "Le trafic entrant depuis Internet",
+      "wrong": [
+        "Le trafic sortant vers Internet",
+        "Le trafic entre deux régions AWS",
+        "Le trafic EC2 entre deux zones de disponibilité"
+      ],
+      "explanation": "AWS, comme la plupart des fournisseurs, ne facture pas le trafic **entrant** (*ingress*) : faire venir des données chez lui est gratuit. En revanche, le trafic **sortant** vers Internet (*egress*) est facturé au gigaoctet, tout comme les transferts entre régions et, pour EC2, entre zones de disponibilité. Ces frais de sortie pèsent lourd dans une architecture mal conçue et freinent les migrations vers un autre fournisseur.",
+      "difficulty": 2
+    },
+    {
+      "question": "La définition du cloud computing publiée par le NIST en 2011 (SP 800-145) énumère cinq caractéristiques essentielles. Laquelle de ces propriétés **n'en fait pas partie** ?",
+      "answer": "L'interopérabilité entre fournisseurs",
+      "wrong": [
+        "Le libre-service à la demande",
+        "La mutualisation des ressources",
+        "Le service mesuré"
+      ],
+      "explanation": "Les cinq caractéristiques du NIST sont : le **libre-service à la demande** (*on-demand self-service*), l'**accès réseau étendu** (*broad network access*), la **mutualisation des ressources** (*resource pooling*), l'**élasticité rapide** (*rapid elasticity*) et le **service mesuré** (*measured service*), c'est-à-dire une consommation mesurée, contrôlée et facturable. L'**interopérabilité** entre fournisseurs est un vrai enjeu, mais elle ne figure pas dans cette définition, qui décrit aussi trois modèles de service (IaaS, PaaS, SaaS) et quatre modèles de déploiement.",
+      "difficulty": 3,
+      "source": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf"
+    },
+    {
+      "question": "Plan de reprise : vous répliquez en continu votre base de données dans une autre région, mais les serveurs d'application n'y sont que préconfigurés, éteints, et ne seront démarrés qu'en cas de sinistre. Comment s'appelle cette stratégie ?",
+      "answer": "Pilot light (veilleuse)",
+      "wrong": [
+        "Warm standby (secours tiède)",
+        "Multi-site actif/actif",
+        "Backup and restore"
+      ],
+      "explanation": "En **pilot light**, seul le cœur indispensable (les données répliquées) tourne en permanence dans la région de secours, comme la veilleuse d'une chaudière ; le reste est démarré ou déployé au moment du basculement. C'est moins cher qu'un **warm standby**, où une version réduite mais fonctionnelle de toute l'application tourne déjà, mais le RTO est plus long. Le **backup and restore** est la stratégie la plus économique et la plus lente ; le **multi-site actif/actif**, la plus rapide et la plus chère.",
+      "difficulty": 3
+    },
+    {
+      "question": "Votre application web garde les sessions utilisateur en mémoire, sur chaque serveur. Derrière un load balancer avec autoscaling, des utilisateurs sont déconnectés au hasard. Quelle est la solution la plus robuste ?",
+      "answer": "Stocker les sessions dans un cache partagé (Redis…)",
+      "wrong": [
+        "Augmenter la mémoire vive de chaque serveur",
+        "Désactiver l'autoscaling et fixer le nombre de serveurs",
+        "Réduire la durée d'expiration des sessions"
+      ],
+      "explanation": "Pour monter en charge horizontalement, les serveurs doivent être **sans état** (*stateless*) : n'importe lequel doit pouvoir traiter n'importe quelle requête. On externalise donc l'état (sessions, fichiers téléversés) dans un stockage partagé : cache Redis ou Memcached (Amazon ElastiCache…), base de données, stockage objet. Les **sessions persistantes** (*sticky sessions*) du load balancer contournent le problème, mais les sessions d'un serveur sont perdues dès que l'autoscaling le retire.",
+      "difficulty": 2
+    },
+    {
+      "question": "Vous voulez générer automatiquement une miniature chaque fois qu'une image est déposée dans un bucket S3, sans gérer le moindre serveur. Quel service AWS utiliser pour exécuter ce code ?",
+      "answer": "AWS Lambda",
+      "wrong": [
+        "Amazon EC2",
+        "Amazon Lightsail",
+        "Amazon EMR"
+      ],
+      "explanation": "**AWS Lambda** exécute du code en réponse à des événements, ici une notification S3 de type `s3:ObjectCreated:*` : la fonction reçoit le nom du bucket et la clé de l'objet, crée la miniature et l'enregistre. Pas de serveur à administrer, et l'on ne paie que les invocations et leur durée. **EC2** et **Lightsail** fournissent des serveurs qu'il faudrait gérer en permanence, et **EMR** sert aux traitements big data (Spark, Hadoop).",
+      "difficulty": 1,
+      "source": "https://docs.aws.amazon.com/lambda/latest/dg/with-s3.html"
+    },
+    {
+      "question": "Quel service AWS fournit des **files d'attente de messages** managées, pour découpler un producteur et un consommateur qui ne travaillent pas au même rythme ?",
+      "answer": "Amazon SQS",
+      "wrong": [
+        "Amazon SNS",
+        "Amazon SES",
+        "Amazon EFS"
+      ],
+      "explanation": "**Amazon SQS** (*Simple Queue Service*) conserve les messages jusqu'à ce qu'un consommateur les lise puis les supprime : si les consommateurs sont lents ou en panne, les messages attendent dans la file au lieu d'être perdus. C'est l'un des plus anciens services d'AWS. **Amazon SNS** fait du *publish/subscribe* (un message poussé vers plusieurs abonnés, sans file durable) et **Amazon SES** envoie des e-mails.",
+      "difficulty": 1,
+      "source": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html"
+    },
+    {
+      "question": "Quel principe de sécurité recommande de n'accorder à un utilisateur ou à un service **que** les permissions strictement nécessaires à sa tâche ?",
+      "answer": "Le moindre privilège",
+      "wrong": [
+        "La défense en profondeur",
+        "La séparation des tâches",
+        "Le chiffrement au repos"
+      ],
+      "explanation": "Le **principe du moindre privilège** limite les dégâts en cas d'erreur ou de compromission : une clé d'accès volée ne permet que ce qu'elle autorise. Sur AWS, il se traduit par des policies IAM ciblées, listant des actions et des ressources précises plutôt que le joker `*`. La **défense en profondeur**, elle, consiste à empiler plusieurs couches de protection indépendantes, et la **séparation des tâches** à répartir une opération sensible entre plusieurs personnes.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle est la bonne pratique recommandée par AWS pour l'utilisateur **root** (l'adresse e-mail qui a créé le compte) ?",
+      "answer": "Activer la MFA et ne pas s'en servir au quotidien",
+      "wrong": [
+        "Le partager entre les administrateurs",
+        "Lui créer des clés d'accès pour les scripts",
+        "Le supprimer juste après la création"
+      ],
+      "explanation": "L'utilisateur **root** a tous les droits sur le compte, et aucune policy IAM du compte ne peut le restreindre. AWS recommande de le protéger par une **authentification multifacteur** (MFA), de ne pas lui créer de clés d'accès et de réserver son usage aux rares tâches qui l'exigent (fermer le compte, par exemple). Au quotidien, on utilise des identités IAM ou IAM Identity Center aux droits limités.",
+      "difficulty": 1,
+      "source": "https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html"
+    },
+    {
+      "question": "Un volume EBS a été créé dans la zone `eu-west-3a`. Vous voulez l'attacher à une instance EC2 située dans `eu-west-3b`. Comment faire ?",
+      "answer": "Créer un snapshot, puis un nouveau volume dans `eu-west-3b`",
+      "wrong": [
+        "Le détacher, puis l'attacher directement à l'instance",
+        "Activer l'option Multi-Attach sur le volume",
+        "Modifier la zone du volume dans ses paramètres"
+      ],
+      "explanation": "Un volume **EBS** est une ressource **zonale** : il est répliqué au sein de sa zone de disponibilité et ne peut être attaché qu'à des instances de cette même zone. Pour le déplacer, on crée un **snapshot** (stocké au niveau de la région), puis on restaure un nouveau volume à partir de ce snapshot dans la zone voulue. **Multi-Attach** (réservé à certains volumes io1/io2) permet d'attacher un volume à plusieurs instances, mais toujours dans la même zone.",
+      "difficulty": 3,
+      "source": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes.html"
+    },
+    {
+      "question": "Dans un déploiement Amazon RDS **Multi-AZ** classique, avec une seule instance de secours (*standby*), à quoi sert cette instance ?",
+      "answer": "À reprendre la main en cas de panne, sans servir de lectures",
+      "wrong": [
+        "À répartir les lectures pour soulager l'instance principale",
+        "À conserver les sauvegardes automatiques de la base",
+        "À tester les mises à jour avant la production"
+      ],
+      "explanation": "En Multi-AZ avec une instance de secours, RDS réplique les données de façon **synchrone** vers une autre zone de disponibilité ; si l'instance principale tombe, RDS bascule automatiquement le nom DNS de la base vers le secours. Cette instance ne reçoit aucun trafic : pour répartir les lectures, on crée des **réplicas en lecture** (*read replicas*), alimentés de façon **asynchrone**. AWS propose aussi des clusters Multi-AZ à deux secours lisibles, d'où la précision « classique ».",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur AWS, quel type d'adresse permet d'obtenir une adresse IPv4 publique **fixe**, que l'on peut réassocier à une autre instance EC2 en cas de panne ?",
+      "answer": "Une adresse IP Elastic",
+      "wrong": [
+        "Une adresse IP publique automatique",
+        "Une adresse IP privée secondaire",
+        "Une adresse IPv6 lien-local"
+      ],
+      "explanation": "Une **adresse IP Elastic** (*Elastic IP address*) est une IPv4 publique statique allouée à votre compte : elle reste la vôtre jusqu'à ce que vous la libériez, et vous pouvez la réassocier en quelques secondes à une autre instance ou interface réseau. À l'inverse, l'IPv4 publique attribuée automatiquement à une instance change si l'instance est arrêtée puis redémarrée. Depuis 2024, AWS facture toutes les IPv4 publiques : on place souvent un load balancer ou un nom DNS devant les instances plutôt que de multiplier les adresses.",
+      "difficulty": 1,
+      "source": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html"
+    },
+    {
+      "question": "Vous voulez être prévenu par e-mail lorsque l'utilisation CPU d'une instance EC2 dépasse 80 % pendant 10 minutes. Quel service AWS permet de définir cette alarme ?",
+      "answer": "Amazon CloudWatch",
+      "wrong": [
+        "AWS CloudTrail",
+        "AWS Trusted Advisor",
+        "AWS Artifact"
+      ],
+      "explanation": "**Amazon CloudWatch** collecte les métriques des services AWS (dont `CPUUtilization` pour EC2), ainsi que des journaux et des événements. Une **alarme CloudWatch** surveille une métrique selon un seuil et une durée, puis déclenche une action : notification via Amazon SNS (e-mail, SMS), action d'autoscaling, arrêt ou redémarrage de l'instance. **CloudTrail**, lui, journalise les appels d'API, et **Trusted Advisor** formule des recommandations de bonnes pratiques.",
+      "difficulty": 1,
+      "source": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html"
+    },
+    {
+      "question": "Sur AWS, quel service managé sert de registre privé pour stocker et versionner vos images de conteneurs Docker ?",
+      "answer": "Amazon ECR",
+      "wrong": [
+        "Amazon ECS",
+        "Amazon EKS",
+        "AWS Fargate"
+      ],
+      "explanation": "**Amazon ECR** (*Elastic Container Registry*) est un registre d'images compatible Docker et OCI : on y pousse ses images (`docker push`), puis ECS, EKS ou Lambda les récupèrent pour les exécuter. Il peut aussi analyser les images à la recherche de vulnérabilités. **ECS** et **EKS** sont des orchestrateurs qui *exécutent* les conteneurs, et **Fargate** fournit la capacité de calcul serverless sur laquelle ils tournent.",
+      "difficulty": 1,
+      "source": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html"
+    },
+    {
+      "question": "Vous créez un nouvel utilisateur IAM sans lui attacher aucune policy, ni l'ajouter à aucun groupe. Quelles ressources du compte AWS peut-il consulter ou modifier ?",
+      "answer": "Aucune : tout est refusé par défaut",
+      "wrong": [
+        "Toutes en lecture, aucune en écriture",
+        "Toutes, sauf la facturation du compte",
+        "Uniquement celles qu'il a lui-même créées"
+      ],
+      "explanation": "Dans IAM, tout est **refusé implicitement** par défaut : une action n'est permise que si une policy l'autorise explicitement. Un utilisateur sans policy ne peut donc rien faire sur les ressources, pas même lister les buckets S3, sauf si une policy de ressource (une bucket policy, par exemple) le désigne nommément. On lui donne ensuite des droits en l'ajoutant à un groupe ou en lui attachant des policies, en respectant le moindre privilège.",
+      "difficulty": 1,
+      "source": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html"
+    },
+    {
+      "question": "Quel est le moyen le plus simple, sur AWS, d'héberger un site web purement statique (HTML, CSS, JavaScript) sans gérer de serveur ?",
+      "answer": "Un bucket S3 en mode site web statique",
+      "wrong": [
+        "Une instance EC2 avec un serveur Apache",
+        "Une table DynamoDB exposée en HTTP",
+        "Un volume EBS publié en lecture seule"
+      ],
+      "explanation": "Amazon S3 peut servir directement un site statique : on active l'**hébergement de site web statique** sur le bucket, on indique le document d'index (`index.html`) et la page d'erreur, puis on autorise la lecture des objets. En pratique, on place souvent **CloudFront** devant le bucket pour le HTTPS, le cache et un nom de domaine personnalisé. Une instance EC2 fonctionnerait aussi, mais il faudrait administrer et mettre à jour le serveur.",
+      "difficulty": 1,
+      "source": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html"
+    },
+    {
+      "question": "Quel est le délai d'expiration (*timeout*) maximal configurable pour une fonction AWS Lambda classique, c'est-à-dire hors Lambda Managed Instances ?",
+      "answer": "15 minutes",
+      "wrong": [
+        "5 minutes",
+        "1 heure",
+        "24 heures"
+      ],
+      "explanation": "Le *timeout* d'une fonction Lambda se règle de 1 seconde à **900 secondes, soit 15 minutes** (la limite était de 5 minutes avant fin 2018). Au-delà, l'invocation est interrompue. Pour des traitements plus longs, on découpe le travail et on l'orchestre avec AWS Step Functions, ou l'on passe à des conteneurs (ECS sur Fargate, AWS Batch). Les Lambda Managed Instances, qui exécutent les fonctions sur des instances EC2 choisies par le client, ont leurs propres limites.",
+      "difficulty": 2,
+      "source": "https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html"
+    },
+    {
+      "question": "Dans son modèle classique (à la demande), sur quelle base AWS Lambda facture-t-il l'exécution d'une fonction ?",
+      "answer": "Le nombre de requêtes et la durée × mémoire allouée",
+      "wrong": [
+        "Le nombre d'heures où la fonction est déployée",
+        "Le nombre de lignes de code de la fonction",
+        "Un forfait mensuel par fonction créée"
+      ],
+      "explanation": "Lambda facture d'une part le **nombre de requêtes** (invocations), d'autre part la **durée d'exécution** pondérée par la mémoire allouée, exprimée en gigaoctets-secondes (Go-s), avec une granularité à la milliseconde. Une fonction déployée mais jamais appelée ne coûte donc rien (hors options comme la Provisioned Concurrency). Ce modèle est très avantageux pour un trafic irrégulier, mais peut revenir plus cher qu'une instance pour une charge élevée et constante.",
+      "difficulty": 2,
+      "source": "https://aws.amazon.com/lambda/pricing/"
+    },
+    {
+      "question": "Chaque commande passée doit être traitée par trois systèmes indépendants (facturation, stock, e-mail), chacun lisant sa propre file SQS. Quel service AWS placer en amont pour diffuser chaque message aux trois files ?",
+      "answer": "Amazon SNS",
+      "wrong": [
+        "Amazon SES",
+        "AWS Glue",
+        "AWS Batch"
+      ],
+      "explanation": "C'est le motif du **fan-out** : le producteur publie une seule fois dans un **topic SNS**, et SNS pousse une copie du message à chaque abonné, ici trois files SQS. Chaque système consomme ensuite sa file à son rythme, et la panne de l'un n'affecte pas les autres. **Amazon SES** sert à envoyer des e-mails, **AWS Glue** aux traitements ETL et **AWS Batch** aux calculs par lots ; Amazon EventBridge permettrait aussi un fan-out, avec un filtrage plus riche.",
+      "difficulty": 2,
+      "source": "https://docs.aws.amazon.com/sns/latest/dg/sns-sqs-as-subscriber.html"
+    },
+    {
+      "question": "Un message SQS fait planter le consommateur à chaque tentative et revient sans cesse dans la file. Quel mécanisme permet de l'isoler automatiquement après un certain nombre d'échecs ?",
+      "answer": "Une file de lettres mortes (dead-letter queue)",
+      "wrong": [
+        "Une file FIFO avec déduplication",
+        "Une file à délai (delay queue)",
+        "Une interrogation longue (long polling)"
+      ],
+      "explanation": "Une **dead-letter queue** reçoit les messages reçus trop de fois sans être supprimés : on fixe ce seuil (`maxReceiveCount`) dans la *redrive policy* de la file source. Le message « empoisonné » cesse ainsi de bloquer le traitement ; on l'analyse à part, puis on le réinjecte une fois le bug corrigé. Le **long polling** réduit les réponses vides lors de la lecture, et la **delay queue** retarde la première remise des messages.",
+      "difficulty": 2,
+      "source": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html"
+    },
+    {
+      "question": "Vous devez conserver dix ans d'archives réglementaires sur Amazon S3, presque jamais consultées ; une restauration en quelques heures est acceptable. Quelle classe de stockage est la moins chère ?",
+      "answer": "S3 Glacier Deep Archive",
+      "wrong": [
+        "S3 Standard-IA",
+        "S3 One Zone-IA",
+        "S3 Glacier Instant Retrieval"
+      ],
+      "explanation": "**S3 Glacier Deep Archive** offre le stockage le moins cher d'Amazon S3, en échange d'une restauration lente (jusqu'à 12 heures en mode standard, 48 heures en mode *bulk*) et d'une durée minimale facturée de 180 jours. **Glacier Instant Retrieval** donne un accès en millisecondes à des archives consultées environ une fois par trimestre, pour un stockage plus cher. **Standard-IA** et **One Zone-IA** visent des données peu consultées mais à accès immédiat.",
+      "difficulty": 2,
+      "source": "https://aws.amazon.com/s3/storage-classes/"
+    },
+    {
+      "question": "Un bucket S3 est privé. Vous voulez permettre à un client de télécharger **un** fichier précis pendant 15 minutes, sans lui créer d'identité AWS. Que générer ?",
+      "answer": "Une URL présignée",
+      "wrong": [
+        "Une bucket policy publique",
+        "Un rôle IAM temporaire",
+        "Une ACL de lecture publique"
+      ],
+      "explanation": "Une **URL présignée** (*presigned URL*) est signée avec les identifiants de celui qui la génère : elle autorise une opération précise (télécharger ou envoyer un objet donné) jusqu'à son expiration, sans rendre le bucket public. Quiconque possède l'URL peut s'en servir pendant sa validité, d'où l'intérêt d'une durée courte. Une **bucket policy** ou une **ACL** publique exposerait l'objet à tout Internet, sans limite de durée.",
+      "difficulty": 2,
+      "source": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html"
+    },
+    {
+      "question": "Dans votre compte AWS tout neuf, vous essayez de créer un bucket S3 nommé simplement `photos`, et AWS refuse : ce nom est déjà pris. Pourquoi ?",
+      "answer": "Ces noms sont partagés par tous les comptes AWS",
+      "wrong": [
+        "Les noms de moins de 8 caractères sont réservés",
+        "Un compte neuf doit d'abord vérifier son domaine",
+        "Le nom `photos` est un mot réservé par AWS"
+      ],
+      "explanation": "Les buckets S3 « à usage général » vivent par défaut dans un **espace de noms global** : un nom doit être unique parmi tous les comptes AWS de toutes les régions d'une même partition (la partition standard, la Chine, GovCloud…). Un nom aussi courant que `photos` a donc été pris il y a longtemps par quelqu'un d'autre. AWS propose désormais aussi un espace de noms propre au compte et à la région, avec un suffixe imposé (identifiant de compte, région, `-an`) qui garantit qu'aucun autre compte ne peut prendre ces noms.",
+      "difficulty": 2,
+      "source": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html"
+    },
+    {
+      "question": "Une instance EC2 écrit des fichiers temporaires sur un volume **instance store**. Que deviennent ces données si l'on **arrête** (stop) l'instance, puis qu'on la redémarre ?",
+      "answer": "Elles sont perdues",
+      "wrong": [
+        "Elles sont conservées",
+        "Elles sont sauvegardées dans S3",
+        "Elles sont copiées sur un volume EBS"
+      ],
+      "explanation": "Un **instance store** est un disque physiquement attaché au serveur hôte : très rapide, mais **éphémère**. Ses données survivent à un simple redémarrage (*reboot*), mais sont perdues si l'instance est arrêtée, mise en veille prolongée ou résiliée, car elle peut alors repartir sur un autre hôte. Pour des données persistantes, on utilise un volume **EBS**, stocké indépendamment de l'hôte.",
+      "difficulty": 2,
+      "source": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html"
+    },
+    {
+      "question": "Une application qui tourne sur une instance EC2 doit lire des objets dans un bucket S3. Quelle est la méthode recommandée pour lui donner ces droits ?",
+      "answer": "Attacher à l'instance un rôle IAM autorisant cette lecture",
+      "wrong": [
+        "Écrire des clés d'accès IAM dans le code de l'application",
+        "Stocker des clés d'accès dans un fichier sur l'instance",
+        "Rendre le bucket public en lecture seule"
+      ],
+      "explanation": "Un **rôle IAM**, attaché à l'instance via un *instance profile*, fournit des **identifiants temporaires** que les SDK AWS récupèrent automatiquement et qui sont renouvelés sans intervention. Aucune clé à longue durée de vie ne traîne alors dans le code, un fichier ou un dépôt Git, où elle risquerait de fuiter. Rendre le bucket public exposerait les données à tout Internet.",
+      "difficulty": 2,
+      "source": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html"
+    },
+    {
+      "question": "Un utilisateur IAM a une policy qui autorise `s3:*` sur un bucket, et une autre qui **refuse explicitement** `s3:DeleteObject` sur ce même bucket. Peut-il supprimer un objet de ce bucket ?",
+      "answer": "Non, un refus explicite l'emporte toujours",
+      "wrong": [
+        "Oui, l'autorisation la plus large l'emporte",
+        "Oui, la policy attachée en dernier l'emporte",
+        "Cela dépend de l'ordre des policies dans IAM"
+      ],
+      "explanation": "Lors de l'évaluation, AWS part d'un refus implicite et cherche les autorisations, mais un **Deny explicite** présent dans n'importe quelle policy applicable l'emporte sur tous les Allow. L'ordre de création ou d'attachement des policies n'a aucune importance. Ce mécanisme permet de poser des garde-fous fiables, par exemple interdire la suppression d'objets même aux utilisateurs qui disposent de `s3:*`.",
+      "difficulty": 2,
+      "source": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html"
+    },
+    {
+      "question": "Combien de copies de vos données le stockage d'Amazon Aurora conserve-t-il, et sur combien de zones de disponibilité ?",
+      "answer": "6 copies réparties sur 3 zones",
+      "wrong": [
+        "3 copies réparties sur 3 zones",
+        "2 copies réparties sur 2 zones",
+        "4 copies réparties sur 2 zones"
+      ],
+      "explanation": "Le volume de stockage d'**Aurora** est distribué et partagé par toutes les instances du cluster : chaque donnée y est écrite en **six copies, deux dans chacune de trois zones de disponibilité**. Une écriture est validée dès que 4 copies sur 6 l'ont confirmée, et une lecture de récupération s'appuie sur 3 copies : Aurora continue d'écrire malgré la perte d'une zone entière, et ne perd aucune donnée même si un nœud supplémentaire tombe. Ce nombre de copies ne dépend pas du nombre d'instances du cluster.",
+      "difficulty": 3
+    },
+    {
+      "question": "Le versioning est activé sur un bucket S3. Vous supprimez un objet avec une simple requête `DELETE`, sans préciser d'identifiant de version. Que se passe-t-il ?",
+      "answer": "S3 ajoute un marqueur de suppression, les versions restent",
+      "wrong": [
+        "S3 supprime définitivement toutes les versions de l'objet",
+        "S3 supprime seulement la version la plus récente",
+        "S3 refuse la requête tant qu'aucune version n'est précisée"
+      ],
+      "explanation": "Avec le versioning, un `DELETE` sans `versionId` ne détruit rien : S3 crée un **marqueur de suppression** (*delete marker*), qui devient la version courante, si bien qu'un `GET` simple renvoie une erreur 404. Les versions précédentes sont toujours là : supprimer le marqueur suffit à « restaurer » l'objet. Pour effacer définitivement une version, il faut la supprimer en précisant son identifiant, ce qu'on peut encore verrouiller avec MFA Delete ou S3 Object Lock.",
+      "difficulty": 3,
+      "source": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/DeleteMarker.html"
+    },
+    {
+      "question": "Depuis décembre 2020, quel modèle de cohérence Amazon S3 garantit-il après l'écriture d'un nouvel objet ou l'écrasement d'un objet existant ?",
+      "answer": "Une cohérence forte en lecture après écriture",
+      "wrong": [
+        "Une cohérence à terme, de quelques secondes",
+        "Une cohérence forte, mais seulement dans la même AZ",
+        "Une cohérence forte pour les nouveaux objets seulement"
+      ],
+      "explanation": "Depuis décembre 2020, S3 offre automatiquement, sans surcoût, une **cohérence forte en lecture après écriture** pour les `PUT` et les `DELETE`, y compris pour les listages : une lecture effectuée après une écriture réussie reflète cette écriture. Auparavant, seuls les nouveaux objets bénéficiaient de cette garantie, tandis que les écrasements, les suppressions et les listages étaient **cohérents à terme**, ce qui obligeait certains outils de l'écosystème Hadoop à des contournements.",
+      "difficulty": 3,
+      "source": "https://aws.amazon.com/s3/consistency/"
+    },
+    {
+      "question": "Un consommateur reçoit un message d'une file Amazon SQS, puis plante avant de l'avoir supprimé. Que devient ce message ?",
+      "answer": "Il redevient visible à la fin du délai de visibilité",
+      "wrong": [
+        "Il est perdu, car il a déjà été remis",
+        "Il est immédiatement renvoyé à un autre consommateur",
+        "Il part directement dans la dead-letter queue"
+      ],
+      "explanation": "Recevoir un message SQS ne le supprime pas : il devient seulement **invisible** pendant le **délai de visibilité** (*visibility timeout*, 30 secondes par défaut, jusqu'à 12 heures). Si le consommateur ne l'a pas supprimé (`DeleteMessage`) avant la fin de ce délai, le message réapparaît et un autre consommateur peut le traiter. Il ne part en dead-letter queue qu'après avoir dépassé le nombre maximal de réceptions fixé par la *redrive policy*, si elle existe.",
+      "difficulty": 3,
+      "source": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html"
+    },
+    {
+      "question": "Quelles garanties de remise une file Amazon SQS **Standard** (non FIFO) offre-t-elle ?",
+      "answer": "Au moins une fois, sans ordre strict garanti",
+      "wrong": [
+        "Exactement une fois, dans l'ordre d'envoi",
+        "Au plus une fois, dans l'ordre d'envoi",
+        "Exactement une fois, sans ordre garanti"
+      ],
+      "explanation": "Une file **Standard** offre un débit quasi illimité, en échange de deux concessions : un message est remis **au moins une fois** (un doublon reste possible) et l'ordre n'est respecté qu'au mieux (*best-effort ordering*). Les consommateurs doivent donc être **idempotents**, c'est-à-dire supporter de traiter deux fois le même message. Les files **FIFO** garantissent l'ordre au sein d'un groupe de messages et un traitement sans doublon, avec un débit plus limité.",
+      "difficulty": 3,
+      "source": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues.html"
+    },
+    {
+      "question": "Votre fonction AWS Lambda classique (sans Managed Instances) est limitée par le CPU. Quel réglage permet de lui donner davantage de puissance de calcul ?",
+      "answer": "Augmenter la mémoire allouée à la fonction",
+      "wrong": [
+        "Augmenter la taille du stockage éphémère `/tmp`",
+        "Augmenter le délai d'expiration (timeout)",
+        "Augmenter la concurrence réservée"
+      ],
+      "explanation": "Une fonction Lambda classique ne laisse régler que la **mémoire** (de 128 Mo à 10 240 Mo) : la puissance CPU est allouée **proportionnellement** à cette mémoire, et la fonction dispose de l'équivalent d'un vCPU complet à 1 769 Mo. Augmenter la mémoire peut donc réduire la durée d'exécution, au point parfois de baisser le coût total. Le *timeout* ne fait qu'autoriser une exécution plus longue, et la concurrence réservée garantit un nombre d'exécutions simultanées.",
+      "difficulty": 3,
+      "source": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-memory.html"
+    },
+    {
+      "question": "Sur AWS, combien d'adresses IP pouvez-vous attribuer à vos ressources dans un sous-réseau `10.0.1.0/24` d'un VPC ?",
+      "answer": "251",
+      "wrong": [
+        "256",
+        "254",
+        "253"
+      ],
+      "explanation": "Un /24 compte 256 adresses, mais AWS en **réserve 5** dans chaque sous-réseau : la première (adresse réseau, `10.0.1.0`), les trois suivantes (`.1` pour le routeur du VPC, `.2` pour le DNS fourni par AWS, `.3` réservée pour un usage futur) et la dernière (`.255`, adresse de diffusion, non prise en charge dans un VPC). Il reste donc 251 adresses. Le piège classique est 254, le résultat habituel d'un réseau IPv4 traditionnel.",
+      "difficulty": 3,
+      "source": "https://docs.aws.amazon.com/vpc/latest/userguide/subnet-sizing.html"
+    },
+    {
+      "question": "Le VPC A est appairé (*VPC peering*) avec le VPC B, et B est appairé avec le VPC C. Une instance de A peut-elle joindre une instance de C en passant par B ?",
+      "answer": "Non, le peering VPC n'est pas transitif",
+      "wrong": [
+        "Oui, si les tables de routage le prévoient",
+        "Oui, automatiquement, via le VPC B",
+        "Oui, si les trois VPC sont dans la même région"
+      ],
+      "explanation": "Le **VPC peering** relie deux VPC et seulement deux : le trafic ne peut pas transiter par un VPC intermédiaire, quelles que soient les routes configurées. Pour que A joigne C, il faut un peering direct entre A et C, ce qui devient vite ingérable (n VPC demandent jusqu'à n(n−1)/2 liaisons). C'est pourquoi on utilise plutôt un **AWS Transit Gateway**, un routeur central en étoile auquel tous les VPC se raccordent.",
+      "difficulty": 3,
+      "source": "https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-basics.html"
+    },
+    {
+      "question": "Dans AWS Organizations, une SCP (*Service Control Policy*) attachée à un compte membre autorise `ec2:*`. Un utilisateur IAM de ce compte n'a **aucune** policy IAM. Peut-il lancer une instance EC2 ?",
+      "answer": "Non, une SCP n'accorde aucune permission",
+      "wrong": [
+        "Oui, la SCP lui donne le droit d'agir sur EC2",
+        "Oui, mais seulement dans la région par défaut",
+        "Oui, si le compte a été créé par l'organisation"
+      ],
+      "explanation": "Une **SCP** ne donne jamais de droits : elle fixe le **plafond** des permissions possibles dans les comptes de l'organisation. Une action n'est permise que si la SCP **et** une policy IAM l'autorisent ; ici, l'utilisateur sans policy reste bloqué par le refus implicite. Les SCP servent de garde-fous, par exemple pour interdire certaines régions ou empêcher la désactivation de CloudTrail ; elles ne s'appliquent pas au compte de gestion de l'organisation.",
+      "difficulty": 3,
+      "source": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html"
     }
   ]
 }

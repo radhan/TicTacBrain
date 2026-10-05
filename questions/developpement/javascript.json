@@ -304,6 +304,575 @@
       "explanation": "L'ordre des clés d'un objet est fixé par la spécification : d'abord les clés qui ressemblent à des **indices entiers** (`\"0\"`, `\"1\"`…), dans l'ordre croissant, puis les autres chaînes dans l'**ordre d'insertion**. Les clés numériques sont par ailleurs converties en chaînes, d'où `\"1\"` et `\"2\"`. Un `Map`, lui, conserve strictement l'ordre d'insertion pour toutes ses clés.",
       "difficulty": 3,
       "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Object/keys"
+    },
+    {
+      "question": "Laquelle de ces valeurs est **truthy** (considérée comme vraie dans un `if`) ?",
+      "answer": "`\"0\"`",
+      "wrong": [
+        "`0`",
+        "`\"\"`",
+        "`NaN`"
+      ],
+      "explanation": "Les valeurs falsy sont peu nombreuses : `false`, `0`, `-0`, `0n`, `\"\"` (chaîne vide), `null`, `undefined` et `NaN`. Tout le reste est truthy, y compris la chaîne `\"0\"` (c'est une chaîne non vide), la chaîne `\"false\"`, un tableau vide `[]` ou un objet vide `{}`. Piège classique : un champ de formulaire contenant `\"0\"` passe le test `if (valeur)`.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Glossary/Falsy"
+    },
+    {
+      "question": "Que vaut `1 / 0` en JavaScript ?",
+      "answer": "`Infinity`",
+      "wrong": [
+        "`NaN`",
+        "Une `RangeError`",
+        "`undefined`"
+      ],
+      "explanation": "La division par zéro ne lève pas d'erreur en JavaScript : conformément à la norme IEEE 754 des nombres flottants, `1 / 0` vaut `Infinity` et `-1 / 0` vaut `-Infinity`. Seul `0 / 0` donne `NaN`, car le résultat est indéterminé. Pour vérifier qu'un calcul a produit un nombre utilisable, on emploie `Number.isFinite(x)`, qui renvoie `false` pour `Infinity`, `-Infinity` et `NaN`.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity"
+    },
+    {
+      "question": "Qui a créé le langage JavaScript, en 1995, chez Netscape ?",
+      "answer": "Brendan Eich",
+      "wrong": [
+        "Douglas Crockford",
+        "Ryan Dahl",
+        "Tim Berners-Lee"
+      ],
+      "explanation": "Brendan Eich a conçu JavaScript chez Netscape en 1995 pour rendre interactives les pages du navigateur Netscape Navigator. Douglas Crockford a popularisé le format JSON et le livre « JavaScript: The Good Parts », Ryan Dahl a créé Node.js en 2009, et Tim Berners-Lee a inventé le World Wide Web (HTML, HTTP) au CERN.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Brendan_Eich"
+    },
+    {
+      "question": "Quelle version d'ECMAScript a introduit `let`, `const`, les classes et les fonctions fléchées ?",
+      "answer": "ES2015 (ES6)",
+      "wrong": [
+        "ES5 (2009)",
+        "ES3 (1999)",
+        "ES2020 (ES11)"
+      ],
+      "explanation": "ES2015, aussi appelée ES6, est la plus grosse mise à jour de l'histoire du langage : `let` et `const`, classes, fonctions fléchées, promesses, modules `import`/`export`, déstructuration, `Map` et `Set`, gabarits de chaînes… Depuis, une nouvelle version sort chaque année et porte le nom de son année (ES2016, ES2017…). ES5, en 2009, avait surtout apporté le mode strict, l'objet `JSON` et des méthodes de tableau comme `forEach` et `map`.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/ECMAScript"
+    },
+    {
+      "question": "Sur quel moteur JavaScript repose Node.js ?",
+      "answer": "V8, de Google",
+      "wrong": [
+        "SpiderMonkey, de Mozilla",
+        "JavaScriptCore, d'Apple",
+        "Chakra, de Microsoft"
+      ],
+      "explanation": "Node.js, créé par Ryan Dahl en 2009, embarque V8, le moteur open source développé par Google pour Chrome. SpiderMonkey est le moteur de Firefox (héritier du tout premier moteur écrit chez Netscape), JavaScriptCore celui de Safari, et Chakra celui de l'ancien Edge. Node ajoute à V8 une boucle d'événements (fournie par la bibliothèque libuv) et des API système : fichiers, réseau, processus…",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/V8_(JavaScript_engine)"
+    },
+    {
+      "question": "Quelle affirmation sur Java et JavaScript est correcte ?",
+      "answer": "Ce sont deux langages distincts au nom proche",
+      "wrong": [
+        "JavaScript est un sous-ensemble de Java",
+        "Java est le successeur de JavaScript",
+        "Les deux ont été créés par Sun Microsystems"
+      ],
+      "explanation": "Malgré leur nom, ce sont deux langages différents : Java est typé statiquement, compilé en bytecode pour la JVM et orienté classes, alors que JavaScript est typé dynamiquement et fondé sur les prototypes. Le nom « JavaScript » a été choisi en 1995, dans le cadre d'un partenariat entre Netscape et Sun Microsystems (le créateur de Java), pour profiter de la popularité de Java. JavaScript lui a seulement emprunté une partie de sa syntaxe, elle-même héritée du C.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pour afficher dans la page un texte saisi par un utilisateur, sans risque d'injection de HTML, que faut-il écrire ?",
+      "answer": "`element.textContent = texte`",
+      "wrong": [
+        "`element.innerHTML = texte`",
+        "`element.outerHTML = texte`",
+        "`document.write(texte)`"
+      ],
+      "explanation": "`textContent` insère la valeur comme du **texte brut** : une chaîne comme `<img src=x onerror=alert(1)>` s'affiche telle quelle au lieu d'être interprétée. `innerHTML`, `outerHTML` et `document.write` analysent la chaîne comme du HTML, ce qui ouvre la porte aux failles XSS si la donnée vient de l'utilisateur. Si l'on doit vraiment insérer du HTML d'origine externe, il faut d'abord l'assainir, par exemple avec la bibliothèque DOMPurify.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent"
+    },
+    {
+      "question": "Que se passe-t-il quand on évalue `typeof variableJamaisDeclaree` ?",
+      "answer": "Cela renvoie `\"undefined\"`",
+      "wrong": [
+        "Cela lève une `ReferenceError`",
+        "Cela renvoie `\"null\"`",
+        "Cela lève une `SyntaxError`"
+      ],
+      "explanation": "`typeof` est le seul opérateur qui tolère un identifiant jamais déclaré : il renvoie `\"undefined\"` au lieu de lever une erreur, alors qu'une simple lecture de la variable lèverait une `ReferenceError`. C'est pourquoi on voyait souvent `typeof window !== \"undefined\"` pour détecter si le code tourne dans un navigateur. Exception : une variable `let` ou `const` déclarée plus bas, encore dans sa zone morte temporelle, fait bien échouer `typeof` avec une `ReferenceError`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof"
+    },
+    {
+      "question": "Que vaut `typeof typeof 42` ?",
+      "answer": "`\"string\"`",
+      "wrong": [
+        "`\"number\"`",
+        "`\"typeof\"`",
+        "`\"undefined\"`"
+      ],
+      "explanation": "L'opérateur le plus à droite s'applique d'abord : `typeof 42` vaut la chaîne `\"number\"`. Puis `typeof \"number\"` vaut `\"string\"`. Comme `typeof` renvoie **toujours** une chaîne, `typeof typeof x` vaut `\"string\"` quel que soit `x`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof"
+    },
+    {
+      "question": "Que vaut `true + true + \"1\"` ?",
+      "answer": "`\"21\"`",
+      "wrong": [
+        "`\"truetrue1\"`",
+        "`3`",
+        "`\"11\"`"
+      ],
+      "explanation": "L'addition s'évalue de gauche à droite. `true + true` : aucun opérande n'est une chaîne, donc les booléens sont convertis en nombres (`true` → 1) et on obtient `2`. Puis `2 + \"1\"` : un opérande est une chaîne, donc `+` concatène et donne `\"21\"`. L'ordre compte : `\"1\" + true + true` donne `\"1truetrue\"`, car la concaténation commence dès le premier `+`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que vaut `\"b\" + \"a\" + +\"a\" + \"a\"` ?",
+      "answer": "`\"baNaNa\"`",
+      "wrong": [
+        "`\"baaa\"`",
+        "`\"ba+aa\"`",
+        "`NaN`"
+      ],
+      "explanation": "Le piège est le `+` **unaire** placé devant le deuxième `\"a\"` : `+\"a\"` tente de convertir la chaîne en nombre, échoue et donne `NaN`. L'expression devient `\"ba\" + NaN + \"a\"`, et comme on concatène avec des chaînes, `NaN` est converti en texte : `\"baNaNa\"`. Le `+` unaire est un raccourci courant (mais peu lisible) pour `Number(x)`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que vaut `3 > 2 > 1` ?",
+      "answer": "`false`",
+      "wrong": [
+        "`true`",
+        "`NaN`",
+        "Une `SyntaxError`"
+      ],
+      "explanation": "Les comparaisons s'évaluent de gauche à droite et ne se chaînent pas comme en mathématiques (contrairement à Python). `3 > 2` vaut `true`, puis `true > 1` convertit `true` en `1` : `1 > 1` est faux. À l'inverse, `1 < 2 < 3` vaut `true`… par chance, car `true < 3`. Pour un encadrement, on écrit `a > b && b > c`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que vaut `[Number(\"\"), Number(\"12px\"), parseInt(\"12px\")]` ?",
+      "answer": "`[0, NaN, 12]`",
+      "wrong": [
+        "`[NaN, NaN, 12]`",
+        "`[0, 12, 12]`",
+        "`[NaN, 12, 12]`"
+      ],
+      "explanation": "`Number()` convertit la chaîne **entière** : le moindre caractère parasite donne `NaN`, et la chaîne vide (ou ne contenant que des espaces) donne étrangement `0`. `parseInt()`, lui, lit les chiffres du début et s'arrête au premier caractère invalide : `\"12px\"` donne `12`, pratique pour une valeur CSS. Une chaîne qui ne commence pas par un chiffre, comme `\"px12\"`, donne en revanche `NaN`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/Number"
+    },
+    {
+      "question": "Que vaut `[1, 2] + [3, 4]` ?",
+      "answer": "`\"1,23,4\"`",
+      "wrong": [
+        "`[1, 2, 3, 4]`",
+        "`[4, 6]`",
+        "`\"1,2,3,4\"`"
+      ],
+      "explanation": "L'opérateur `+` ne sait qu'additionner des nombres ou concaténer des chaînes. Les tableaux sont donc convertis en primitives via leur `toString()`, qui joint les éléments par des virgules : `\"1,2\"` et `\"3,4\"`. La concaténation donne `\"1,23,4\"`, sans virgule entre le 2 et le 3. Pour fusionner deux tableaux, on écrit `[...a, ...b]` ou `a.concat(b)`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que renvoie `Math.max()` appelé sans argument ?",
+      "answer": "`-Infinity`",
+      "wrong": [
+        "`0`",
+        "`Infinity`",
+        "`undefined`"
+      ],
+      "explanation": "`-Infinity` est l'élément neutre du maximum : n'importe quel nombre est plus grand, donc `Math.max(-Infinity, x)` vaut toujours `x`. Sans argument, il n'y a rien pour le remplacer. Symétriquement, `Math.min()` renvoie `Infinity`. Conséquence pratique : `Math.max(...tableau)` sur un tableau vide renvoie `-Infinity`, sans lever d'erreur.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max"
+    },
+    {
+      "question": "Que renvoie `(3.14159).toFixed(2)` ?",
+      "answer": "La chaîne `\"3.14\"`",
+      "wrong": [
+        "Le nombre `3.14`",
+        "Le nombre `3.15`",
+        "La chaîne `\"3.15\"`"
+      ],
+      "explanation": "`toFixed(n)` sert à l'**affichage** : il arrondit à `n` décimales et renvoie une chaîne, pas un nombre. Du coup, `(3.14159).toFixed(2) + 1` donne `\"3.141\"` et non `4.14`. Pour réutiliser la valeur dans un calcul, il faut la reconvertir avec `Number(...)`. Attention aussi aux arrondis binaires : `(1.005).toFixed(2)` donne `\"1.00\"`, car 1,005 est en réalité stocké comme 1,00499999…",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed"
+    },
+    {
+      "question": "Que vaut `Number.MAX_SAFE_INTEGER` ?",
+      "answer": "`2 ** 53 - 1`",
+      "wrong": [
+        "`2 ** 31 - 1`",
+        "`2 ** 63 - 1`",
+        "`2 ** 64 - 1`"
+      ],
+      "explanation": "Les nombres JavaScript sont des flottants IEEE 754 en double précision, qui offrent 53 bits de précision. Jusqu'à 2^53 − 1 (9 007 199 254 740 991), tous les entiers sont représentables exactement ; au-delà, certains sont sautés : `2 ** 53 + 1 === 2 ** 53` vaut `true`. `2 ** 31 - 1` est la limite des entiers 32 bits signés (utilisés par les opérateurs bit à bit), `2 ** 63 - 1` celle du `long` de Java. Pour des entiers plus grands, on utilise `BigInt`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER"
+    },
+    {
+      "question": "Que renvoie `parseInt(0.0000005)` ?",
+      "answer": "`5`",
+      "wrong": [
+        "`0`",
+        "`NaN`",
+        "`0.0000005`"
+      ],
+      "explanation": "`parseInt` attend une **chaîne** : son argument est d'abord converti en texte. Or JavaScript écrit les nombres inférieurs à 10⁻⁶ en notation scientifique : `String(0.0000005)` vaut `\"5e-7\"`. `parseInt` lit alors les chiffres du début, s'arrête au `e` et renvoie `5`. Pour tronquer un nombre, on utilise `Math.trunc()` (ou `Math.floor()`), jamais `parseInt`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt"
+    },
+    {
+      "question": "Parmi ces appels et comparaisons, lequel renvoie `true` ?",
+      "answer": "`Object.is(NaN, NaN)`",
+      "wrong": [
+        "`Object.is(0, -0)`",
+        "`NaN === NaN`",
+        "`Object.is([], [])`"
+      ],
+      "explanation": "`Object.is` applique l'algorithme **SameValue**, qui ne diffère de `===` que sur deux cas : il considère `NaN` égal à lui-même, et il distingue `0` de `-0` (alors que `0 === -0` vaut `true`). Pour les objets, il compare les références comme `===` : deux tableaux créés séparément ne sont jamais égaux. React s'en sert par exemple pour décider si un état a changé.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is"
+    },
+    {
+      "question": "Que vaut `[Math.round(2.5), Math.round(-2.5)]` ?",
+      "answer": "`[3, -2]`",
+      "wrong": [
+        "`[3, -3]`",
+        "`[2, -2]`",
+        "`[2, -3]`"
+      ],
+      "explanation": "`Math.round` arrondit à l'entier le plus proche et, en cas d'égalité parfaite (partie décimale de 0,5), elle arrondit **vers +∞**, et non « en s'éloignant de zéro » comme on l'apprend souvent. `2.5` monte donc à `3`, mais `-2.5` monte à `-2`. Les langages ne sont pas d'accord entre eux : Python arrondit au pair le plus proche (`round(2.5)` vaut 2), alors que `Math.round` de Java se comporte comme celui de JavaScript.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round"
+    },
+    {
+      "question": "Que se passe-t-il quand on évalue `10n + 1` ?",
+      "answer": "Une `TypeError` est levée",
+      "wrong": [
+        "Le résultat vaut `11n`",
+        "Le résultat vaut `11`",
+        "Le résultat vaut `\"10n1\"`"
+      ],
+      "explanation": "Le suffixe `n` crée un `BigInt`, un entier de précision arbitraire (`typeof 10n` vaut `\"bigint\"`). JavaScript refuse de mélanger implicitement `BigInt` et `Number` dans un calcul, car l'un ou l'autre risquerait de perdre de la précision : il lève une `TypeError`. Il faut convertir explicitement : `10n + BigInt(1)` donne `11n`, `Number(10n) + 1` donne `11`. Les comparaisons, elles, sont permises : `10n > 1` et `10n == 10` valent `true`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nconst ok = new Boolean(false);\nconsole.log(ok ? \"oui\" : \"non\");\n```",
+      "answer": "`oui`",
+      "wrong": [
+        "`non`",
+        "`false`",
+        "Une `TypeError`"
+      ],
+      "explanation": "`new Boolean(false)` ne crée pas un booléen mais un **objet** enveloppe (`typeof ok` vaut `\"object\"`). Or tout objet est truthy, quelle que soit la valeur qu'il contient : la condition est donc vraie. C'est pourquoi on n'utilise jamais `new Boolean`, `new Number` ni `new String`. Sans `new`, `Boolean(false)` renvoie bien le booléen primitif `false`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"
+    },
+    {
+      "question": "Que vaut `\"😀\".length` ?",
+      "answer": "`2`",
+      "wrong": [
+        "`1`",
+        "`3`",
+        "`4`"
+      ],
+      "explanation": "Les chaînes JavaScript sont des suites d'**unités de code UTF-16**, et `length` compte ces unités, pas les caractères. Les emojis comme 😀 sont hors du plan multilingue de base : ils sont codés par une paire de substitution (surrogate pair), soit deux unités. Pour compter les points de code, on écrit `[...\"😀\"].length`, qui vaut `1`, car l'itération d'une chaîne se fait par point de code. Quant à 4, c'est la taille de cet emoji en octets en UTF-8.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nconst a = [];\nconsole.log(a == false, a ? \"vrai\" : \"faux\");\n```",
+      "answer": "`true vrai`",
+      "wrong": [
+        "`false vrai`",
+        "`true faux`",
+        "`false faux`"
+      ],
+      "explanation": "Les deux opérations ne convertissent pas de la même façon. Dans une condition, on teste la **véracité** : tout objet, même un tableau vide, est truthy, d'où `vrai`. Avec `==`, en revanche, `false` est converti en `0`, puis le tableau en primitive : `[].toString()` donne `\"\"`, qui devient `0`. On compare alors `0 == 0` : `true`. Un tableau vide est donc à la fois « égal à `false` » et vrai dans un `if` ; raison de plus pour préférer `===`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Laquelle de ces méthodes de tableau **modifie** le tableau d'origine ?",
+      "answer": "`splice()`",
+      "wrong": [
+        "`slice()`",
+        "`map()`",
+        "`concat()`"
+      ],
+      "explanation": "`splice(début, nombre, ...ajouts)` retire et/ou insère des éléments **en place**, et renvoie les éléments retirés. `slice(début, fin)` renvoie au contraire une copie partielle sans toucher l'original, tout comme `map` et `concat`, qui créent de nouveaux tableaux. Les autres méthodes qui modifient le tableau sont notamment `push`, `pop`, `shift`, `unshift`, `sort`, `reverse` et `fill`.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice"
+    },
+    {
+      "question": "Que vaut `[...new Set([1, 2, 2, 3, 1])]` ?",
+      "answer": "`[1, 2, 3]`",
+      "wrong": [
+        "`[1, 2, 2, 3, 1]`",
+        "`[3, 2, 1]`",
+        "`[2, 1]`"
+      ],
+      "explanation": "Un `Set` ne conserve qu'un exemplaire de chaque valeur et garde l'ordre de **première insertion**. La décomposition `[...set]` le reconvertit en tableau : c'est l'idiome le plus court pour dédoublonner un tableau de primitives. Attention : pour des objets, l'unicité porte sur les références, donc deux objets `{ id: 1 }` créés séparément sont conservés tous les deux.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set"
+    },
+    {
+      "question": "Que vaut `[10, 20, 30].at(-1)` ?",
+      "answer": "`30`",
+      "wrong": [
+        "`10`",
+        "`undefined`",
+        "`20`"
+      ],
+      "explanation": "La méthode `at()` (ES2022) accepte des indices négatifs, comptés depuis la fin : `-1` désigne le dernier élément. Avec les crochets, en revanche, `[10, 20, 30][-1]` vaut `undefined`, car `-1` est traité comme un nom de propriété (`\"-1\"`) qui n'existe pas. Avant `at()`, on écrivait `arr[arr.length - 1]`.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/at"
+    },
+    {
+      "question": "Comment vérifier de manière fiable qu'une variable `x` contient un tableau ?",
+      "answer": "`Array.isArray(x)`",
+      "wrong": [
+        "`typeof x === \"array\"`",
+        "`typeof x === \"object\"`",
+        "`x.length >= 0`"
+      ],
+      "explanation": "`typeof` ne distingue pas les tableaux des autres objets : `typeof []` vaut `\"object\"`, et la valeur `\"array\"` n'existe pas. `Array.isArray(x)` est la méthode prévue pour cela ; elle fonctionne même pour un tableau venant d'une autre fenêtre ou d'une iframe, contrairement à `x instanceof Array`. Tester `x.length` ne prouve rien : les chaînes, par exemple, ont aussi une longueur.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray"
+    },
+    {
+      "question": "Après `const [a, , b] = [1, 2, 3];`, que valent `a` et `b` ?",
+      "answer": "`a` vaut 1 et `b` vaut 3",
+      "wrong": [
+        "`a` vaut 1 et `b` vaut 2",
+        "`a` vaut 1 et `b` vaut `undefined`",
+        "Une `SyntaxError` est levée"
+      ],
+      "explanation": "Dans une déstructuration de tableau, les éléments sont associés par **position**, et une virgule sans nom saute simplement un élément. `a` reçoit donc le premier élément, le deuxième est ignoré, et `b` reçoit le troisième. On peut aussi récupérer la suite avec `const [premier, ...reste] = tableau`, où `reste` est un nouveau tableau.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring"
+    },
+    {
+      "question": "Quelle instruction échange les valeurs de deux variables `a` et `b` déclarées avec `let` ?",
+      "answer": "`[a, b] = [b, a];`",
+      "wrong": [
+        "`a, b = b, a;`",
+        "`{a, b} = {b, a};`",
+        "`a = b; b = a;`"
+      ],
+      "explanation": "La déstructuration permet l'échange sans variable temporaire : le membre de droite crée d'abord le tableau `[b, a]` avec les **anciennes** valeurs, puis le membre de gauche les répartit. `a, b = b, a`, inspiré de Python, est valide mais trompeur : c'est l'opérateur virgule, et seule l'affectation `b = b` a lieu. Quant à `a = b; b = a;`, il écrase `a` avant de l'avoir sauvegardé : les deux variables finissent avec la valeur de `b`.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring"
+    },
+    {
+      "question": "En JavaScript, qu'est-ce qu'une **closure** (fermeture) ?",
+      "answer": "Une fonction qui retient les variables de sa portée",
+      "wrong": [
+        "Une fonction exécutée dès sa déclaration",
+        "Une fonction sans aucun effet de bord",
+        "Une fonction qui s'appelle elle-même"
+      ],
+      "explanation": "Une closure est une fonction accompagnée de l'environnement dans lequel elle a été créée : même après la fin de la fonction englobante, elle continue d'accéder à ses variables (et à leurs valeurs **actuelles**). En JavaScript, toute fonction est une closure. C'est ce qui permet de créer un compteur privé : `function compteur() { let n = 0; return () => ++n; }`. Les leurres décrivent d'autres notions : fonction immédiatement invoquée (IIFE), fonction pure, fonction récursive.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures"
+    },
+    {
+      "question": "Hors mode strict, qu'affiche ce code ?\n```js\nlet s = \"chat\";\ns[0] = \"r\";\nconsole.log(s);\n```",
+      "answer": "`chat`",
+      "wrong": [
+        "`rhat`",
+        "`r`",
+        "`rchat`"
+      ],
+      "explanation": "Les chaînes sont **immuables** : on ne peut pas modifier un de leurs caractères. Hors mode strict, l'affectation `s[0] = \"r\"` est silencieusement ignorée ; en mode strict, elle lève une `TypeError`. Pour obtenir `\"rhat\"`, il faut créer une nouvelle chaîne, par exemple `\"r\" + s.slice(1)`, et la réaffecter à `s`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que vaut `\"Zebre\" < \"abeille\"` ?",
+      "answer": "`true`",
+      "wrong": [
+        "`false`",
+        "`NaN`",
+        "`undefined`"
+      ],
+      "explanation": "Les chaînes sont comparées caractère par caractère selon leurs **unités de code UTF-16**, pas selon l'ordre du dictionnaire. Or toutes les majuscules (A = 65 … Z = 90) ont des codes inférieurs à ceux des minuscules (a = 97 … z = 122) : `\"Z\"` est donc « plus petit » que `\"a\"`. Pour un tri naturel qui tient compte de la langue (casse, accents), on utilise `a.localeCompare(b, \"fr\")` ou `Intl.Collator`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare"
+    },
+    {
+      "question": "Que vaut `\"a-b-c\".replace(\"-\", \"+\")` ?",
+      "answer": "`\"a+b-c\"`",
+      "wrong": [
+        "`\"a+b+c\"`",
+        "`\"a-b+c\"`",
+        "`\"a-b-c\"`"
+      ],
+      "explanation": "Quand le motif est une **chaîne**, `replace` ne remplace que la première occurrence. Pour toutes les remplacer, on utilise `replaceAll(\"-\", \"+\")` (ES2021) ou une expression régulière avec le drapeau `g` : `replace(/-/g, \"+\")`. Comme les chaînes sont immuables, la chaîne d'origine n'est jamais modifiée : `replace` en renvoie une nouvelle.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nconst arr = [1, 2, 3];\narr.length = 1;\nconsole.log(arr);\n```",
+      "answer": "`[1]`",
+      "wrong": [
+        "`[1, 2, 3]`",
+        "`[3]`",
+        "Une `TypeError`"
+      ],
+      "explanation": "La propriété `length` d'un tableau est modifiable : la réduire **tronque** le tableau, et les éléments au-delà sont définitivement supprimés. `arr.length = 0` est d'ailleurs une façon classique de vider un tableau en place (toutes les variables qui le référencent le voient vide). À l'inverse, augmenter `length` ajoute des cases vides. Le `const` n'y change rien : il empêche de réaffecter `arr`, pas de modifier le tableau.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length"
+    },
+    {
+      "question": "Que renvoie `[1, [2, [3, [4]]]].flat()` ?",
+      "answer": "`[1, 2, [3, [4]]]`",
+      "wrong": [
+        "`[1, 2, 3, 4]`",
+        "`[1, [2, [3, [4]]]]`",
+        "`[1, 2, 3, [4]]`"
+      ],
+      "explanation": "Par défaut, `flat()` n'aplatit qu'**un seul niveau** d'imbrication : seul le tableau `[2, [...]]` est déplié. On peut préciser la profondeur, par exemple `flat(2)`, ou tout aplatir avec `flat(Infinity)`, qui donne `[1, 2, 3, 4]`. La méthode cousine `flatMap(f)` équivaut à `map(f).flat()`, donc toujours sur un seul niveau.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nconst f = () => { name: \"Ada\" };\nconsole.log(f());\n```",
+      "answer": "`undefined`",
+      "wrong": [
+        "`{ name: \"Ada\" }`",
+        "`Ada`",
+        "Une `SyntaxError`"
+      ],
+      "explanation": "Après `=>`, une accolade ouvrante est toujours interprétée comme le début d'un **corps de fonction**, pas comme un objet. `name:` devient alors une étiquette (label), suivie de l'expression `\"Ada\"`, qui n'est pas renvoyée : sans `return`, la fonction renvoie `undefined`. Pour renvoyer un objet littéral, on l'entoure de parenthèses : `() => ({ name: \"Ada\" })`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions"
+    },
+    {
+      "question": "Dans `tableau.forEach(x => { ... })`, que fait un `return` placé dans le callback ?",
+      "answer": "Il passe simplement à l'élément suivant",
+      "wrong": [
+        "Il arrête toute la boucle `forEach`",
+        "Il fait sortir de la fonction englobante",
+        "Il lève une `SyntaxError`"
+      ],
+      "explanation": "`return` ne fait sortir que du callback, c'est-à-dire de l'appel en cours pour cet élément : `forEach` appelle ensuite le callback suivant comme si de rien n'était. Il n'existe aucun moyen propre d'interrompre un `forEach` (et `break` y est une erreur de syntaxe). Pour pouvoir s'arrêter, on utilise une boucle `for...of` avec `break`, ou des méthodes qui s'arrêtent d'elles-mêmes, comme `some`, `every` ou `find`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nconst t = [1, 2, 3];\ndelete t[1];\nconsole.log(t.length, t[1]);\n```",
+      "answer": "`3 undefined`",
+      "wrong": [
+        "`2 3`",
+        "`2 undefined`",
+        "`3 null`"
+      ],
+      "explanation": "`delete` retire la propriété `\"1\"` de l'objet tableau, mais il ne décale pas les éléments suivants et ne modifie pas `length` : il laisse un **trou** (case vide), qui se lit comme `undefined`. Pour retirer vraiment un élément et réindexer les suivants, on utilise `t.splice(1, 1)`, ou `filter` pour obtenir une copie sans lui.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nconst nombres = [1, 2];\nconst r = nombres.push(3);\nconsole.log(r);\n```",
+      "answer": "`3`",
+      "wrong": [
+        "`[1, 2, 3]`",
+        "`undefined`",
+        "`true`"
+      ],
+      "explanation": "`push` modifie le tableau en place et renvoie sa **nouvelle longueur**, pas le tableau. Écrire `liste = liste.push(x)` est donc un bug classique : `liste` devient un nombre. `unshift` renvoie aussi la nouvelle longueur, tandis que `pop` et `shift` renvoient l'élément retiré. Pour obtenir un nouveau tableau sans modifier l'original, on écrit `[...nombres, 3]`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nfor (const i in [\"a\", \"b\"]) {\n  console.log(i, typeof i);\n}\n```",
+      "answer": "`0 string` puis `1 string`",
+      "wrong": [
+        "`a string` puis `b string`",
+        "`0 number` puis `1 number`",
+        "Une `TypeError`"
+      ],
+      "explanation": "`for...in` énumère les **noms de propriétés** énumérables d'un objet, y compris celles héritées : sur un tableau, ce sont les indices, sous forme de chaînes (`\"0\"`, `\"1\"`). D'où des bugs comme `i + 1` qui donne `\"01\"`. Pour parcourir les valeurs d'un tableau, on utilise `for...of` (ou `forEach`) ; `for...in` est fait pour les propriétés des objets ordinaires.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in"
+    },
+    {
+      "question": "Que vaut `[[NaN].includes(NaN), [NaN].indexOf(NaN)]` ?",
+      "answer": "`[true, -1]`",
+      "wrong": [
+        "`[true, 0]`",
+        "`[false, -1]`",
+        "`[false, 0]`"
+      ],
+      "explanation": "`indexOf` compare avec l'égalité stricte `===`, or `NaN === NaN` est faux : il ne trouve donc jamais `NaN` et renvoie `-1`. `includes`, ajouté en ES2016, utilise l'algorithme **SameValueZero**, qui considère `NaN` égal à lui-même (et `0` égal à `-0`). C'est la même règle que pour les clés d'un `Map` et les éléments d'un `Set`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes"
+    },
+    {
+      "question": "Que vaut `\"\".split(\",\").length` ?",
+      "answer": "`1`",
+      "wrong": [
+        "`0`",
+        "`-1`",
+        "Une `TypeError`"
+      ],
+      "explanation": "Quand le séparateur est introuvable, `split` renvoie un tableau contenant la chaîne entière. Pour une chaîne vide, on obtient donc `[\"\"]` : un tableau contenant une chaîne vide, de longueur 1. Piège classique en découpant une liste de tags vide : on croit avoir zéro élément, on en a un. Seul `\"\".split(\"\")` renvoie un tableau vide.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nconst t = Array(3).map((_, i) => i);\nconsole.log(t);\n```",
+      "answer": "Un tableau de 3 cases vides (des trous)",
+      "wrong": [
+        "`[0, 1, 2]`",
+        "`[]`",
+        "`[undefined, undefined, undefined]`"
+      ],
+      "explanation": "`Array(3)` crée un tableau de longueur 3 **sans aucun élément** : ses cases sont des trous, pas des `undefined`. Or `map`, `forEach`, `filter`… sautent les trous : le callback n'est jamais appelé, et `map` renvoie un nouveau tableau de 3 trous (Node l'affiche `[ <3 empty items> ]`). Pour générer `[0, 1, 2]`, on écrit `Array.from({ length: 3 }, (_, i) => i)` ou `[...Array(3).keys()]`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections#sparse_arrays"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nconst grille = Array(3).fill([]);\ngrille[0].push(\"x\");\nconsole.log(grille[2].length);\n```",
+      "answer": "`1`",
+      "wrong": [
+        "`0`",
+        "`3`",
+        "`undefined`"
+      ],
+      "explanation": "`fill(valeur)` place **la même valeur** dans chaque case. Ici, cette valeur est un tableau : les trois cases référencent donc le même et unique tableau, et un `push` via `grille[0]` est visible via `grille[2]`. Pour créer des lignes indépendantes, il faut un nouvel objet par case : `Array.from({ length: 3 }, () => [])`. Avec une primitive, comme `fill(0)`, le problème ne se pose pas.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill"
+    },
+    {
+      "question": "Que se passe-t-il avec `[].reduce((acc, x) => acc + x)` ?",
+      "answer": "Une `TypeError` est levée",
+      "wrong": [
+        "Le résultat vaut `0`",
+        "Le résultat vaut `undefined`",
+        "Le résultat vaut `NaN`"
+      ],
+      "explanation": "Sans valeur initiale, `reduce` prend le premier élément comme accumulateur de départ. Sur un tableau vide, il n'y en a pas : `reduce` lève une `TypeError` (« Reduce of empty array with no initial value »). Il faut donc fournir la valeur initiale dès que le tableau peut être vide : `[].reduce((acc, x) => acc + x, 0)` vaut `0`. Autre subtilité : sur un tableau à un seul élément et sans valeur initiale, le callback n'est jamais appelé.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce"
+    },
+    {
+      "question": "Depuis ES2019, que garantit la spécification au sujet de `Array.prototype.sort` ?",
+      "answer": "Que le tri est stable",
+      "wrong": [
+        "Que le tri renvoie une copie",
+        "Que le tri est numérique par défaut",
+        "Que le tri est en temps linéaire"
+      ],
+      "explanation": "Un tri **stable** conserve l'ordre d'origine des éléments considérés comme égaux : si l'on trie des personnes par âge, deux personnes du même âge restent dans leur ordre initial. Avant ES2019, ce n'était pas garanti, et V8 utilisait par exemple un tri instable pour les grands tableaux ; depuis, la spécification l'impose. En revanche, `sort` trie toujours en place, et compare des chaînes par défaut.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort"
+    },
+    {
+      "question": "Que vaut `(function (a, b = 1, c) {}).length` ?",
+      "answer": "`1`",
+      "wrong": [
+        "`3`",
+        "`2`",
+        "`0`"
+      ],
+      "explanation": "La propriété `length` d'une fonction indique le nombre de paramètres « attendus » : elle compte les paramètres situés **avant** le premier qui a une valeur par défaut (ou avant un paramètre du reste `...args`). Ici, le décompte s'arrête à `b = 1` : seul `a` est compté. Les fonctions de curryfication qui s'appuient sur `length` pour savoir combien d'arguments attendre sont donc trompées par les paramètres par défaut.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/length"
     }
   ]
 }

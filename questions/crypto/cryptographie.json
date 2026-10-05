@@ -281,6 +281,281 @@
       ],
       "explanation": "La **résistance aux collisions** porte sur n'importe quelle paire de messages, tous deux choisis librement par l'attaquant. Pour la **seconde préimage**, le premier message est imposé et il faut en trouver un autre de même empreinte ; la **préimage** consiste à retrouver un message à partir d'une empreinte donnée. Grâce au paradoxe des anniversaires, une collision sur `n` bits coûte environ `2^(n/2)` essais.",
       "difficulty": 3
+    },
+    {
+      "question": "D'où vient le mot « cryptographie » ?",
+      "answer": "Du grec : « écriture cachée »",
+      "wrong": [
+        "Du latin : « calcul secret »",
+        "Du grec : « nombre caché »",
+        "De l'arabe : « message codé »"
+      ],
+      "explanation": "Le mot vient du grec **kryptos** (« caché ») et **graphein** (« écrire »). La **cryptologie** regroupe la cryptographie, qui conçoit les procédés de chiffrement, et la **cryptanalyse**, qui cherche à les casser. Le mot « chiffre », lui, vient bien de l'arabe « sifr » (« vide », puis « zéro »), passé par le latin médiéval.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel instrument les Spartiates utilisaient-ils pour chiffrer leurs messages, en enroulant une bande de cuir autour d'un bâton ?",
+      "answer": "La scytale",
+      "wrong": [
+        "Le disque d'Alberti",
+        "La grille de Cardan",
+        "Le cylindre de Jefferson"
+      ],
+      "explanation": "On écrivait le message sur la lanière enroulée autour d'un bâton ; une fois déroulée, elle ne montrait qu'une suite de lettres en désordre. Seul un bâton de **même diamètre**, qui joue le rôle de clé, permettait de relire le message. La **scytale** est un chiffrement par **transposition** : les lettres sont conservées, seul leur ordre change.",
+      "difficulty": 1
+    },
+    {
+      "question": "En analyse de fréquences, quelle lettre est de loin la plus fréquente dans un texte en français ?",
+      "answer": "E",
+      "wrong": [
+        "A",
+        "S",
+        "T"
+      ],
+      "explanation": "Le **E** représente plus de 12 % des lettres d'un texte français (davantage encore si l'on compte é, è et ê), soit près du double de A, S, I, N ou T. Dans un chiffre par substitution monoalphabétique comme César, le symbole le plus fréquent du chiffré correspond donc très probablement au E : c'est la base de l'**analyse des fréquences**, qui casse ces chiffres sans chercher la clé.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que vaut `1010 XOR 0110` (opération bit à bit) ?",
+      "answer": "`1100`",
+      "wrong": [
+        "`1110`",
+        "`0010`",
+        "`0101`"
+      ],
+      "explanation": "Le **XOR** (ou exclusif) donne 1 quand les deux bits **diffèrent** : 1⊕0 = 1, 0⊕1 = 1, 1⊕1 = 0 et 0⊕0 = 0, d'où `1100`. `1110` est le résultat d'un OU, `0010` celui d'un ET. Le XOR est omniprésent en cryptographie car il est son propre inverse : (M ⊕ K) ⊕ K = M, si bien qu'on chiffre et déchiffre avec la même opération.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans une messagerie chiffrée de bout en bout, qui peut lire le contenu des messages ?",
+      "answer": "Uniquement l'expéditeur et le destinataire",
+      "wrong": [
+        "L'expéditeur, le destinataire et le serveur",
+        "Uniquement le serveur de la messagerie",
+        "Toute personne sur le même réseau Wi-Fi"
+      ],
+      "explanation": "Avec le **chiffrement de bout en bout**, les messages sont chiffrés sur l'appareil de l'expéditeur et ne sont déchiffrés que sur celui du destinataire : les serveurs relaient des données qu'ils ne peuvent pas lire. C'est plus fort qu'un simple chiffrement « en transit » (TLS entre l'appareil et le serveur), où le fournisseur voit les messages en clair. Les métadonnées (qui parle à qui, et quand) restent en revanche souvent visibles.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelles longueurs de clé la norme AES prévoit-elle ?",
+      "answer": "128, 192 ou 256 bits",
+      "wrong": [
+        "64, 128 ou 256 bits",
+        "128, 256 ou 512 bits",
+        "56, 112 ou 168 bits"
+      ],
+      "explanation": "AES accepte des clés de **128, 192 ou 256 bits** (AES-128, AES-192, AES-256), avec un bloc toujours de 128 bits. Les longueurs 56, 112 et 168 bits correspondent au DES et aux variantes du Triple DES. Même AES-128 reste hors de portée d'une recherche exhaustive : 2¹²⁸, c'est environ 3,4 × 10³⁸ clés possibles.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que garantit le cadenas affiché par le navigateur sur un site en HTTPS ?",
+      "answer": "La connexion avec ce domaine est chiffrée et authentifiée",
+      "wrong": [
+        "Le site est honnête et ne peut pas être une arnaque",
+        "Le site a été vérifié et approuvé par le navigateur",
+        "Les données sont stockées chiffrées sur le serveur"
+      ],
+      "explanation": "Le cadenas indique que la connexion utilise **TLS** avec un certificat valide pour ce nom de domaine : personne sur le trajet ne peut lire ou modifier les échanges, et tu parles bien au serveur de ce domaine. Mais il ne dit rien de l'honnêteté du site : un site de phishing peut très bien obtenir un certificat gratuit pour son propre domaine. Il ne dit rien non plus de la façon dont le serveur stocke tes données.",
+      "difficulty": 1
+    },
+    {
+      "question": "En français, que signifie précisément « décrypter » un message chiffré ?",
+      "answer": "Retrouver le message clair sans connaître la clé",
+      "wrong": [
+        "Le déchiffrer légitimement grâce à la bonne clé",
+        "Le chiffrer une seconde fois avec une autre clé",
+        "Le convertir en texte lisible depuis du Base64"
+      ],
+      "explanation": "**Déchiffrer**, c'est retrouver le clair avec la clé, comme le fait le destinataire légitime. **Décrypter**, c'est y parvenir **sans** la clé : c'est le travail du cryptanalyste ou de l'attaquant. Quant à « crypter », le mot n'a pas vraiment de sens (chiffrer sans clé ?) : les cryptologues francophones recommandent de dire **chiffrer**.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quel savant arabe du IXᵉ siècle attribue-t-on la plus ancienne description connue de l'analyse des fréquences ?",
+      "answer": "Al-Kindi",
+      "wrong": [
+        "Al-Khwarizmi",
+        "Ibn Sina (Avicenne)",
+        "Al-Biruni"
+      ],
+      "explanation": "Dans son « Manuscrit sur le déchiffrement des messages cryptographiques », **Al-Kindi** (vers 801-873) explique comment casser une substitution en comparant la fréquence des symboles du chiffré à celle des lettres de la langue. Ce traité, redécouvert à Istanbul dans les années 1980, fait de lui l'un des pères de la **cryptanalyse**. Al-Khwarizmi, son contemporain, a laissé son nom au mot « algorithme ».",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la longueur effective de la clé du DES, devenue trop courte face à la recherche exhaustive ?",
+      "answer": "56 bits",
+      "wrong": [
+        "64 bits",
+        "128 bits",
+        "40 bits"
+      ],
+      "explanation": "La clé du **DES** occupe 64 bits, mais 8 d'entre eux sont des bits de parité : seuls **56 bits** comptent, soit environ 7,2 × 10¹⁶ clés. En 1998, la machine **Deep Crack** de l'EFF a retrouvé une clé DES en 56 heures. On s'est alors tourné vers le Triple DES, puis vers AES. Les 40 bits correspondent aux anciens chiffrements « export », bridés par la réglementation américaine des années 1990.",
+      "difficulty": 2
+    },
+    {
+      "question": "En mode CBC, avec quoi chaque bloc de texte clair est-il combiné (par XOR) avant d'être chiffré ?",
+      "answer": "Le bloc chiffré précédent",
+      "wrong": [
+        "Le bloc clair précédent",
+        "Un compteur incrémenté à chaque bloc",
+        "La clé de chiffrement elle-même"
+      ],
+      "explanation": "En **CBC** (Cipher Block Chaining), chaque bloc clair est XORé avec le **bloc chiffré précédent**, et le premier avec un **vecteur d'initialisation** (IV) aléatoire. Deux blocs clairs identiques donnent ainsi des chiffrés différents, contrairement au mode ECB. Le compteur incrémenté caractérise le mode CTR. Revers du chaînage : le chiffrement CBC ne peut pas être parallélisé.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la faiblesse d'un échange de clés Diffie-Hellman réalisé sans aucune authentification ?",
+      "answer": "Un attaquant actif peut s'interposer entre les deux parties",
+      "wrong": [
+        "Un espion passif retrouve la clé en écoutant l'échange",
+        "La clé partagée finit par circuler en clair sur le réseau",
+        "Le calcul oblige à transmettre les exposants secrets"
+      ],
+      "explanation": "Diffie-Hellman résiste à l'**écoute passive** : voir passer les valeurs publiques ne suffit pas pour calculer le secret, qui ne circule jamais. Mais rien ne prouve à qui l'on parle : un attaquant **actif** peut mener un échange séparé avec chacun et relayer les messages, c'est l'**attaque de l'homme du milieu**. C'est pourquoi TLS ou SSH authentifient l'échange avec des signatures, des certificats ou des clés déjà connues.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle propriété d'une fonction de hachage garantit qu'à partir d'une empreinte donnée, on ne peut pas retrouver en pratique un message qui la produit ?",
+      "answer": "La résistance à la préimage",
+      "wrong": [
+        "La résistance aux collisions",
+        "La résistance à la seconde préimage",
+        "La propriété d'avalanche"
+      ],
+      "explanation": "La **résistance à la préimage** fait d'un hachage une fonction **à sens unique** : connaissant h, impossible de trouver m tel que H(m) = h autrement qu'en essayant au hasard (de l'ordre de 2²⁵⁶ essais pour SHA-256). La **seconde préimage** part au contraire d'un message imposé dont on cherche un « jumeau », et les **collisions** portent sur deux messages quelconques. L'effet avalanche décrit seulement le fait qu'un bit modifié change toute l'empreinte.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que permet de vérifier un HMAC calculé avec une clé secrète partagée entre deux parties ?",
+      "answer": "Que le message est intact et vient d'un détenteur de la clé",
+      "wrong": [
+        "Que le message est resté confidentiel pendant le transfert",
+        "Que l'expéditeur ne pourra jamais nier l'avoir envoyé",
+        "Que le message a été envoyé à une heure précise"
+      ],
+      "explanation": "Un **HMAC** (code d'authentification de message à base de hachage) garantit l'**intégrité** et l'**authenticité** : seul quelqu'un qui connaît la clé a pu le calculer. Il ne chiffre rien, donc n'apporte aucune confidentialité. Et comme les deux parties partagent la même clé, le destinataire aurait pu produire lui-même le HMAC : contrairement à une signature numérique, il n'offre pas de **non-répudiation**.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel protocole de chiffrement de bout en bout WhatsApp a-t-il généralisé à tous ses utilisateurs en 2016 ?",
+      "answer": "Le protocole Signal",
+      "wrong": [
+        "OpenPGP",
+        "MTProto",
+        "Le protocole OTR"
+      ],
+      "explanation": "En avril 2016, WhatsApp a annoncé avoir activé le chiffrement de bout en bout pour tous grâce au **protocole Signal**, conçu par Open Whisper Systems (Moxie Marlinspike et Trevor Perrin) et utilisé aussi par l'application Signal. **MTProto** est le protocole maison de Telegram, **OTR** (Off-the-Record) un ancêtre utilisé sur les messageries instantanées des années 2000, et **OpenPGP** sert surtout à chiffrer des e-mails.",
+      "difficulty": 2
+    },
+    {
+      "question": "Avec le chiffre Atbash, qui remplace chaque lettre par son « miroir » dans l'alphabet (A↔Z, B↔Y…), comment s'écrit `BONJOUR` ?",
+      "answer": "`YLMQLFI`",
+      "wrong": [
+        "`OBAWBHE`",
+        "`ERQMRXU`",
+        "`CPOKPVS`"
+      ],
+      "explanation": "Atbash associe la 1ʳᵉ lettre à la dernière, la 2ᵉ à l'avant-dernière, etc. : B→Y, O→L, N→M, J→Q, U→F, R→I. `OBAWBHE` est du ROT13, `ERQMRXU` un César de 3 et `CPOKPVS` un décalage de 1. Né avec l'alphabet hébreu (on en trouve dans la Bible), Atbash n'a **aucune clé** : connaître la méthode suffit à déchiffrer, et chiffrer deux fois redonne le message d'origine.",
+      "difficulty": 2
+    },
+    {
+      "question": "100 personnes veulent toutes pouvoir communiquer deux à deux en privé avec un chiffrement symétrique. Combien de clés secrètes distinctes faut-il ?",
+      "answer": "4 950",
+      "wrong": [
+        "100",
+        "200",
+        "10 000"
+      ],
+      "explanation": "Chaque paire de personnes a besoin de sa propre clé : il y a 100 × 99 / 2 = **4 950** paires. Ce nombre croît comme n², ce qui rend la gestion de clés purement symétrique ingérable à grande échelle. Avec la cryptographie asymétrique, chacun n'a besoin que d'**une paire de clés** (100 au total), dont la partie publique peut être diffusée librement.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel humaniste italien a décrit vers 1467 un disque à chiffrer, considéré comme le premier système de substitution polyalphabétique ?",
+      "answer": "Leon Battista Alberti",
+      "wrong": [
+        "Blaise de Vigenère",
+        "Giovan Battista Bellaso",
+        "Giambattista Della Porta"
+      ],
+      "explanation": "Dans son traité « De cifris » (vers 1467), **Alberti** décrit deux disques concentriques : en tournant le disque intérieur au fil du message, on change d'alphabet de substitution, ce qui brouille l'analyse des fréquences. C'est le premier chiffre **polyalphabétique** connu. Bellaso (1553) puis Vigenère (1586) ont perfectionné l'idée avec une clé littérale, d'où le nom, un peu usurpé, de « chiffre de Vigenère ».",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle particularité d'Enigma, due à son réflecteur, aidait les cryptanalystes alliés à positionner un mot probable dans un message chiffré ?",
+      "answer": "Une lettre n'était jamais chiffrée en elle-même",
+      "wrong": [
+        "Le rotor rapide ne tournait qu'une fois par message",
+        "Une même lettre était toujours chiffrée pareil",
+        "Les espaces entre les mots restaient visibles"
+      ],
+      "explanation": "Le **réflecteur** renvoyait le courant à travers les rotors : Enigma devenait réciproque (mêmes réglages pour chiffrer et déchiffrer), mais une lettre ne pouvait jamais être chiffrée en elle-même. Quand les cryptanalystes de Bletchley Park soupçonnaient un mot présent dans le message (un « crib », comme WETTERBERICHT, « bulletin météo »), ils écartaient toutes les positions où une lettre du mot tombait face à la même lettre du chiffré. Ces cribs alimentaient ensuite les Bombes de Turing.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi a-t-on adopté le Triple DES plutôt qu'un « double DES » chiffrant deux fois avec deux clés de 56 bits ?",
+      "answer": "Le double DES tombe face à l'attaque par le milieu",
+      "wrong": [
+        "Le double DES équivaut à un DES simple à une clé",
+        "Le double DES est plus lent que le Triple DES",
+        "Le double DES exige des clés de 128 bits"
+      ],
+      "explanation": "L'**attaque par le milieu** (meet-in-the-middle) chiffre un clair connu avec toutes les premières clés, déchiffre le chiffré avec toutes les secondes, puis cherche les valeurs communes au milieu. Elle casse le double DES en environ 2⁵⁷ opérations (au prix de beaucoup de mémoire) au lieu des 2¹¹² espérées. Contrairement à une idée reçue, deux DES successifs ne se réduisent pas à un seul : on a démontré en 1992 que DES ne forme pas un groupe. Le Triple DES offre, lui, environ 112 bits de sécurité.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pour une fonction de hachage idéale produisant des empreintes de 256 bits, combien d'essais faut-il environ pour trouver une collision par l'attaque des anniversaires ?",
+      "answer": "2¹²⁸",
+      "wrong": [
+        "2²⁵⁶",
+        "2²⁵⁵",
+        "2⁶⁴"
+      ],
+      "explanation": "Le **paradoxe des anniversaires** dit qu'avec 23 personnes, il y a déjà plus d'une chance sur deux que deux d'entre elles partagent leur anniversaire. De même, en hachant environ **2^(n/2)** messages, on a de bonnes chances d'obtenir deux empreintes égales : 2¹²⁸ pour 256 bits. Trouver une préimage coûte, lui, de l'ordre de 2²⁵⁶ essais. Une empreinte de n bits n'offre donc que n/2 bits de sécurité contre les collisions.",
+      "difficulty": 3
+    },
+    {
+      "question": "Petit RSA : p = 5, q = 11 et l'exposant public e = 3. Quel est l'exposant privé d, inverse de e modulo φ(n) ?",
+      "answer": "27",
+      "wrong": [
+        "13",
+        "17",
+        "37"
+      ],
+      "explanation": "Ici n = 55 et φ(n) = (5 − 1) × (11 − 1) = 40. On cherche d tel que 3 × d ≡ 1 (mod 40) : 3 × 27 = 81 = 2 × 40 + 1, donc **d = 27**. Vérification : le message 2 se chiffre en 2³ mod 55 = 8, et 8²⁷ mod 55 redonne bien 2. Dans un vrai RSA, p et q comptent chacun plus de 1 000 bits, et calculer d sans connaître la factorisation de n est impraticable.",
+      "difficulty": 3
+    },
+    {
+      "question": "Fin 2010, le groupe fail0verflow a extrait la clé privée avec laquelle Sony signait le logiciel de la PlayStation 3. Quelle erreur dans l'usage d'ECDSA l'a permis ?",
+      "answer": "Le même nombre « aléatoire » k pour chaque signature",
+      "wrong": [
+        "Une clé privée ECDSA de seulement 40 bits",
+        "L'emploi d'une courbe elliptique non standard",
+        "Des signatures calculées sur des empreintes MD5"
+      ],
+      "explanation": "Chaque signature **ECDSA** doit utiliser un nombre secret **k** (le nonce) neuf et imprévisible. Sony réutilisait toujours la même valeur : avec deux signatures partageant le même k, deux équations suffisent pour retrouver k, puis la **clé privée**. Le même type d'erreur a permis de vider des portefeuilles Bitcoin créés par des applications au générateur aléatoire défaillant. On dérive désormais souvent k de façon déterministe à partir du message et de la clé (RFC 6979).",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi est-il dangereux d'authentifier un message avec `SHA-256(clé || message)` plutôt qu'avec HMAC ?",
+      "answer": "On peut prolonger le message sans connaître la clé",
+      "wrong": [
+        "La clé se retrouve lisible dans l'empreinte",
+        "SHA-256 refuse les clés de plus de 32 octets",
+        "L'empreinte obtenue est trop courte pour un MAC"
+      ],
+      "explanation": "SHA-256 suit la construction de **Merkle-Damgård** : l'empreinte publiée est l'état interne final. Un attaquant peut repartir de cet état pour hacher des données supplémentaires et obtenir l'empreinte valide de `clé || message || remplissage || ajout` sans connaître la clé : c'est l'**attaque par extension de longueur**. **HMAC** imbrique deux hachages avec la clé pour l'éviter, et SHA-3, construit en éponge, n'y est pas vulnérable.",
+      "difficulty": 3
+    },
+    {
+      "question": "Le standard de signature post-quantique SLH-DSA (FIPS 205, ex-SPHINCS+), publié par le NIST en 2024, repose uniquement sur quelle brique ?",
+      "answer": "Des fonctions de hachage",
+      "wrong": [
+        "Des réseaux euclidiens",
+        "Des isogénies de courbes elliptiques",
+        "Des codes correcteurs d'erreurs"
+      ],
+      "explanation": "**SLH-DSA** (Stateless Hash-based Digital Signature Algorithm) ne suppose que la sécurité de **fonctions de hachage**, une hypothèse très prudente, au prix de signatures volumineuses (de quelques kilo-octets à plusieurs dizaines). Les réseaux euclidiens sont la base de son voisin **ML-DSA** (FIPS 204, ex-Dilithium), publié le même jour d'août 2024. Le NIST dispose ainsi d'une signature de secours fondée sur une hypothèse mathématique différente.",
+      "difficulty": 3
     }
   ]
 }

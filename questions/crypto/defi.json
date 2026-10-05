@@ -8,212 +8,838 @@
     {
       "question": "Que signifie l'acronyme **DeFi** ?",
       "answer": "Finance décentralisée (Decentralized Finance)",
-      "wrong": ["Finance par défaut (Default Finance)", "Finance définie (Defined Finance)", "Finance déférée (Deferred Finance)"],
+      "wrong": [
+        "Finance par défaut (Default Finance)",
+        "Finance définie (Defined Finance)",
+        "Finance déférée (Deferred Finance)"
+      ],
       "explanation": "**DeFi** est la contraction de *Decentralized Finance* : un ensemble de services financiers (prêt, échange, épargne) fonctionnant via des contrats intelligents sur une blockchain, sans intermédiaire centralisé comme une banque ou un courtier.",
       "difficulty": 1
     },
     {
       "question": "En DeFi, que désigne l'abréviation **TVL** ?",
       "answer": "La valeur totale verrouillée dans un protocole",
-      "wrong": ["Le volume total échangé sur une journée", "Le nombre total de jetons en circulation", "La valeur totale prêtée aux emprunteurs"],
+      "wrong": [
+        "Le volume total échangé sur une journée",
+        "Le nombre total de jetons en circulation",
+        "La valeur totale prêtée aux emprunteurs"
+      ],
       "explanation": "**TVL** signifie *Total Value Locked* : la valeur, exprimée en dollars, de tous les actifs déposés dans un protocole (liquidité, collatéraux, dépôts). C'est un indicateur de taille et d'adoption, à ne pas confondre avec le volume de transactions.",
       "difficulty": 1
     },
     {
       "question": "Que désigne l'**ancrage** (peg) d'un stablecoin, par exemple « 1 jeton ≈ 1 $ » ?",
       "answer": "La valeur de référence que le stablecoin cherche à maintenir",
-      "wrong": ["Le nombre total de jetons pouvant être émis", "La commission prélevée à chaque transfert", "Le délai de blocage des fonds avant retrait"],
+      "wrong": [
+        "Le nombre total de jetons pouvant être émis",
+        "La commission prélevée à chaque transfert",
+        "Le délai de blocage des fonds avant retrait"
+      ],
       "explanation": "L'**ancrage** (ou *peg*) est la parité qu'un stablecoin s'efforce de conserver face à un actif de référence, le plus souvent le dollar. Quand le cours s'écarte de cette cible, on parle de *depeg* : un signal d'alerte qui peut révéler un problème de réserve ou de confiance.",
       "difficulty": 1
     },
     {
       "question": "En DeFi, que désigne un **LP** (Liquidity Provider) ?",
       "answer": "Un utilisateur qui dépose des actifs dans une pool de liquidité",
-      "wrong": ["Un emprunteur qui met en gage ses cryptoactifs", "Un contrat qui fixe le prix des jetons", "Un validateur qui sécurise la blockchain"],
+      "wrong": [
+        "Un emprunteur qui met en gage ses cryptoactifs",
+        "Un contrat qui fixe le prix des jetons",
+        "Un validateur qui sécurise la blockchain"
+      ],
       "explanation": "Un **Liquidity Provider** dépose une paire d'actifs dans une pool de liquidité d'un AMM. En échange, il reçoit des **jetons LP** représentant sa part et touche une fraction des frais de transaction prélevés sur les échanges.",
       "difficulty": 1
     },
     {
       "question": "À quoi sert principalement un **jeton de gouvernance** dans un protocole DeFi ?",
       "answer": "À voter sur les décisions et paramètres du protocole",
-      "wrong": ["À payer les frais de transaction du réseau", "À garantir la valeur du stablecoin du protocole", "À rémunérer directement les développeurs"],
+      "wrong": [
+        "À payer les frais de transaction du réseau",
+        "À garantir la valeur du stablecoin du protocole",
+        "À rémunérer directement les développeurs"
+      ],
       "explanation": "Un **jeton de gouvernance** confère un droit de vote : ses détenteurs décident collectivement des évolutions du protocole (paramètres de risque, répartition des frais, nouvelles fonctionnalités), généralement au sein d'une DAO. Le poids du vote est souvent proportionnel au nombre de jetons détenus.",
       "difficulty": 1
     },
     {
       "question": "Qu'est-ce que le **WBTC** (Wrapped Bitcoin) ?",
       "answer": "Un jeton sur Ethereum adossé à du Bitcoin conservé en réserve",
-      "wrong": ["Une version plus rapide de Bitcoin sur sa propre blockchain", "Un stablecoin indexé sur le prix du Bitcoin", "Un Bitcoin miné avec de l'énergie renouvelable"],
+      "wrong": [
+        "Une version plus rapide de Bitcoin sur sa propre blockchain",
+        "Un stablecoin indexé sur le prix du Bitcoin",
+        "Un Bitcoin miné avec de l'énergie renouvelable"
+      ],
       "explanation": "Le **WBTC** est un jeton ERC-20 adossé 1:1 à du Bitcoin déposé auprès d'un dépositaire. Il permet d'utiliser la valeur d'un BTC dans l'écosystème Ethereum (prêts, AMM) ; chaque WBTC émis correspond à un BTC réellement conservé en réserve.",
       "difficulty": 1
     },
     {
       "question": "Qu'est-ce que la **surcollatéralisation** dans un prêt DeFi ?",
       "answer": "Déposer une garantie dont la valeur dépasse le montant emprunté",
-      "wrong": ["Emprunter plusieurs actifs en une seule transaction", "Rembourser un prêt avant son échéance", "Déposer une garantie égale au montant emprunté"],
+      "wrong": [
+        "Emprunter plusieurs actifs en une seule transaction",
+        "Rembourser un prêt avant son échéance",
+        "Déposer une garantie égale au montant emprunté"
+      ],
       "explanation": "En DeFi, l'emprunteur reste anonyme : pour couvrir le risque, le protocole exige une **garantie supérieure** à la somme empruntée. Par exemple, déposer 150 $ de cryptoactifs pour emprunter 100 $. Ce coussin protège le prêteur en cas de baisse du collatéral.",
       "difficulty": 1
     },
     {
       "question": "Le stablecoin **USDC** appartient à quelle catégorie ?",
       "answer": "Adossé à des réserves en monnaie fiduciaire détenues par un émetteur",
-      "wrong": ["Adossé à des cryptoactifs déposés en surcollatéralisation", "Algorithmique, sans aucune réserve", "Adossé à des réserves d'or physique"],
+      "wrong": [
+        "Adossé à des cryptoactifs déposés en surcollatéralisation",
+        "Algorithmique, sans aucune réserve",
+        "Adossé à des réserves d'or physique"
+      ],
       "explanation": "L'**USDC** est un stablecoin *fiat-collateralisé* : son émetteur conserve des réserves (dollars, bons du Trésor) censées couvrir chaque jeton en circulation. C'est un modèle centralisé, par opposition au DAI (adossé à des cryptoactifs) ou aux stablecoins algorithmiques.",
       "difficulty": 1
     },
     {
       "question": "Qu'appelle-t-on le **risque de smart contract** en DeFi ?",
       "answer": "Le risque qu'un bug ou une faille dans le code entraîne une perte de fonds",
-      "wrong": ["Le risque que le prix du jeton de gouvernance baisse", "Le risque que les frais de transaction augmentent", "Le risque que le protocole change de blockchain"],
+      "wrong": [
+        "Le risque que le prix du jeton de gouvernance baisse",
+        "Le risque que les frais de transaction augmentent",
+        "Le risque que le protocole change de blockchain"
+      ],
       "explanation": "Les protocoles DeFi reposent sur du code public et immuable. Une **faille** (erreur de logique, fonction mal protégée) peut être exploitée pour vider le protocole, sans recours possible. C'est pourquoi les audits de code et les primes de bug (*bug bounties*) sont essentiels.",
       "difficulty": 1
     },
     {
       "question": "Sur quelle formule repose un **AMM à produit constant** comme Uniswap v2 ?",
       "answer": "x · y = k",
-      "wrong": ["x + y = k", "x / y = k", "x² + y² = k"],
+      "wrong": [
+        "x + y = k",
+        "x / y = k",
+        "x² + y² = k"
+      ],
       "explanation": "Dans un *Automated Market Maker* à produit constant, le produit des deux réserves de la pool reste constant : **x · y = k**. Chaque échange déplace le ratio le long de cette courbe, ce qui fait automatiquement varier le prix sans carnet d'ordres ni teneur de marché humain.",
       "difficulty": 2
     },
     {
       "question": "Qu'est-ce que la **perte impermanente** (impermanent loss) pour un fournisseur de liquidité ?",
       "answer": "La moins-value subie par rapport au simple fait de conserver les actifs",
-      "wrong": ["La perte définitive causée par le piratage d'une pool", "Les frais de gas payés à chaque échange de la pool", "La perte due à la baisse du jeton de gouvernance reçu"],
+      "wrong": [
+        "La perte définitive causée par le piratage d'une pool",
+        "Les frais de gas payés à chaque échange de la pool",
+        "La perte due à la baisse du jeton de gouvernance reçu"
+      ],
       "explanation": "Quand le prix des actifs d'une pool diverge, l'AMM rééquilibre automatiquement les réserves : le LP se retrouve avec plus de l'actif qui a baissé. Résultat, il détient moins de valeur que s'il avait simplement **gardé** ses jetons. La perte est dite « impermanente » car elle s'annule si les prix reviennent à leur ratio initial.",
       "difficulty": 2
     },
     {
       "question": "Dans un protocole de prêt comme Aave, qu'est-ce qui déclenche la **liquidation** d'une position ?",
       "answer": "La valeur du collatéral passe sous le seuil requis par rapport à la dette",
-      "wrong": ["L'emprunteur ne paie pas les intérêts à la date prévue", "Le protocole manque de liquidité pour de nouveaux prêts", "L'emprunteur dépasse la durée maximale du prêt"],
+      "wrong": [
+        "L'emprunteur ne paie pas les intérêts à la date prévue",
+        "Le protocole manque de liquidité pour de nouveaux prêts",
+        "L'emprunteur dépasse la durée maximale du prêt"
+      ],
       "explanation": "Les prêts DeFi n'ont pas d'échéance fixe : ce qui compte est le ratio entre collatéral et dette. Si le collatéral perd de la valeur (ou la dette en gagne) et franchit le **seuil de liquidation**, un liquidateur peut rembourser une partie de la dette et saisir le collatéral correspondant, avec une décote en sa faveur.",
       "difficulty": 2
     },
     {
       "question": "Quelle est la caractéristique essentielle d'un **flash loan** ?",
       "answer": "Il est emprunté et remboursé à l'intérieur d'une seule transaction",
-      "wrong": ["Il est remboursé en moins de 24 heures", "Il exige un collatéral mais à taux réduit", "Il est réservé aux détenteurs du jeton de gouvernance"],
+      "wrong": [
+        "Il est remboursé en moins de 24 heures",
+        "Il exige un collatéral mais à taux réduit",
+        "Il est réservé aux détenteurs du jeton de gouvernance"
+      ],
       "explanation": "Un **flash loan** permet d'emprunter sans collatéral à condition que le prêt soit remboursé (avec frais) **dans la même transaction**. Si ce n'est pas le cas, toute la transaction est annulée (*revert*) comme si rien ne s'était passé, ce qui garantit au prêteur de ne jamais perdre ses fonds.",
       "difficulty": 2
     },
     {
       "question": "À quoi sert un **oracle** dans un protocole DeFi ?",
       "answer": "À fournir aux contrats intelligents des données externes, comme les prix",
-      "wrong": ["À exécuter les transactions plus rapidement", "À conserver les clés privées des utilisateurs", "À mélanger l'ordre des transactions pour l'anonymat"],
+      "wrong": [
+        "À exécuter les transactions plus rapidement",
+        "À conserver les clés privées des utilisateurs",
+        "À mélanger l'ordre des transactions pour l'anonymat"
+      ],
       "explanation": "Une blockchain ne peut pas lire seule le monde extérieur. Un **oracle** achemine des données off-chain (prix d'un actif, taux, résultat d'un événement) vers les contrats intelligents. Les protocoles de prêt l'utilisent par exemple pour savoir si un collatéral doit être liquidé.",
       "difficulty": 2
     },
     {
       "question": "En quoi consiste le **yield farming** ?",
       "answer": "Déployer ses cryptoactifs dans des protocoles pour maximiser les rendements",
-      "wrong": ["Miner de nouveaux blocs pour toucher la récompense", "Acheter des jetons lors d'une prévente à prix réduit", "Créer un nouveau stablecoin adossé au dollar"],
+      "wrong": [
+        "Miner de nouveaux blocs pour toucher la récompense",
+        "Acheter des jetons lors d'une prévente à prix réduit",
+        "Créer un nouveau stablecoin adossé au dollar"
+      ],
       "explanation": "Le **yield farming** consiste à placer activement ses actifs (apport de liquidité, dépôt dans un protocole de prêt, *staking*) pour accumuler intérêts et récompenses, souvent versées en jetons de gouvernance. Les rendements affichés s'accompagnent de risques réels : perte impermanente, faille de contrat, chute du jeton reçu.",
       "difficulty": 2
     },
     {
       "question": "Dans un protocole comme Compound, comment est généralement déterminé le **taux d'intérêt** d'un actif ?",
       "answer": "Automatiquement par l'offre et la demande, via le taux d'utilisation de la pool",
-      "wrong": ["Fixé à l'avance par l'équipe du protocole", "Négocié individuellement entre prêteur et emprunteur", "Indexé sur le taux directeur d'une banque centrale"],
+      "wrong": [
+        "Fixé à l'avance par l'équipe du protocole",
+        "Négocié individuellement entre prêteur et emprunteur",
+        "Indexé sur le taux directeur d'une banque centrale"
+      ],
       "explanation": "Les protocoles de prêt utilisent des **courbes de taux algorithmiques** : plus la part des fonds empruntés (le taux d'utilisation) est élevée, plus le taux grimpe pour attirer des dépôts et inciter aux remboursements. Tout se fait par le code, sans négociation individuelle.",
       "difficulty": 2
     },
     {
       "question": "Qu'est-ce qui distingue le **DAI** de l'USDC ?",
       "answer": "Le DAI est émis contre des cryptoactifs déposés en surcollatéralisation",
-      "wrong": ["Le DAI n'a aucune garantie et repose uniquement sur un algorithme", "Le DAI est émis par une banque centrale", "Le DAI est adossé à des réserves d'or"],
+      "wrong": [
+        "Le DAI n'a aucune garantie et repose uniquement sur un algorithme",
+        "Le DAI est émis par une banque centrale",
+        "Le DAI est adossé à des réserves d'or"
+      ],
       "explanation": "Le **DAI** est un stablecoin décentralisé : il est créé lorsqu'un utilisateur verrouille des cryptoactifs (ETH, etc.) en surcollatéralisation dans le protocole MakerDAO. À l'inverse, l'USDC est adossé à des réserves fiduciaires gérées par un émetteur centralisé.",
       "difficulty": 2
     },
     {
       "question": "Qu'est-ce qu'un **stablecoin algorithmique** ?",
       "answer": "Un stablecoin qui maintient son ancrage par des mécanismes de marché, sans réserve équivalente",
-      "wrong": ["Un stablecoin dont la valeur est calculée par une IA", "Un stablecoin adossé à 100 % de dollars en banque", "Un stablecoin dont le prix est fixé par un oracle"],
+      "wrong": [
+        "Un stablecoin dont la valeur est calculée par une IA",
+        "Un stablecoin adossé à 100 % de dollars en banque",
+        "Un stablecoin dont le prix est fixé par un oracle"
+      ],
       "explanation": "Un **stablecoin algorithmique** ne détient pas de réserve couvrant chaque jeton : il s'appuie sur des règles d'offre et de demande (frappe/destruction, jeton auxiliaire) pour tenir son ancrage. Ce modèle est fragile : s'il perd la confiance du marché, il peut s'effondrer en spirale, comme l'a montré l'effondrement de l'UST en 2022.",
       "difficulty": 2
     },
     {
       "question": "Lorsqu'on transfère un actif via un **bridge** vers une autre blockchain, que se passe-t-il généralement ?",
       "answer": "L'actif est verrouillé d'un côté et une version « wrappée » est émise de l'autre",
-      "wrong": ["L'actif est physiquement déplacé de bloc en bloc", "L'actif est converti en stablecoin pendant le transfert", "L'actif est détruit puis racheté sur un marché"],
+      "wrong": [
+        "L'actif est physiquement déplacé de bloc en bloc",
+        "L'actif est converti en stablecoin pendant le transfert",
+        "L'actif est détruit puis racheté sur un marché"
+      ],
       "explanation": "Un **bridge** verrouille l'actif d'origine dans un contrat sur la chaîne de départ, puis émet un jeton représentatif (« wrappé ») sur la chaîne de destination. Les fonds verrouillés concentrent de grosses sommes, ce qui fait des bridges une cible privilégiée des attaques.",
       "difficulty": 2
     },
     {
       "question": "Dans une gouvernance DAO classique, comment est le plus souvent pondéré le vote sur une proposition ?",
       "answer": "Proportionnellement au nombre de jetons de gouvernance détenus",
-      "wrong": ["Une adresse égale une voix, quel que soit le solde", "Selon l'ancienneté de l'adresse sur la blockchain", "Selon le montant de frais de gas déjà payés"],
+      "wrong": [
+        "Une adresse égale une voix, quel que soit le solde",
+        "Selon l'ancienneté de l'adresse sur la blockchain",
+        "Selon le montant de frais de gas déjà payés"
+      ],
       "explanation": "La plupart des DAO appliquent le principe **un jeton, une voix** : le poids d'un vote est proportionnel au nombre de jetons de gouvernance détenus (ou délégués). Ce modèle est efficace mais critiqué, car il concentre le pouvoir entre les mains des plus gros détenteurs (« baleines »).",
       "difficulty": 2
     },
     {
       "question": "Dans Aave, que signifie un **facteur de santé** (health factor) qui chute vers 1 ?",
       "answer": "La position s'approche du seuil de liquidation",
-      "wrong": ["Le protocole va bientôt rembourser l'emprunteur", "Le taux d'intérêt va automatiquement baisser", "La position a atteint son rendement maximal"],
+      "wrong": [
+        "Le protocole va bientôt rembourser l'emprunteur",
+        "Le taux d'intérêt va automatiquement baisser",
+        "La position a atteint son rendement maximal"
+      ],
       "explanation": "Le **facteur de santé** mesure la marge de sécurité d'une position : il combine la valeur du collatéral, les seuils de liquidation et la dette. Quand il descend **sous 1**, la position devient liquidable. Un emprunteur prudent garde ce facteur largement au-dessus de 1 pour absorber la volatilité.",
       "difficulty": 2
     },
     {
       "question": "Une pool AMM à produit constant contient **10 ETH et 20 000 USDC**. En ignorant les frais, combien d'ETH reçoit-on en déposant **5 000 USDC** ?",
       "answer": "2 ETH",
-      "wrong": ["2,5 ETH", "1,67 ETH", "5 ETH"],
+      "wrong": [
+        "2,5 ETH",
+        "1,67 ETH",
+        "5 ETH"
+      ],
       "explanation": "On garde `x · y = k = 10 × 20 000 = 200 000`. Après le dépôt, la pool contient `20 000 + 5 000 = 25 000` USDC, donc `200 000 / 25 000 = 8` ETH. L'acheteur reçoit `10 − 8 = 2 ETH`. Le prix moyen payé (2 500 $/ETH) est supérieur au prix initial (2 000 $) : c'est le **slippage**, d'autant plus fort que l'échange est gros face à la pool.",
       "difficulty": 3
     },
     {
       "question": "Pour une pool AMM 50/50, si le prix d'un des deux actifs **double** par rapport à l'autre, la perte impermanente est d'environ :",
       "answer": "5,7 %",
-      "wrong": ["0 %", "25 %", "50 %"],
+      "wrong": [
+        "0 %",
+        "25 %",
+        "50 %"
+      ],
       "explanation": "La perte impermanente suit la formule `2·√r / (1 + r) − 1`. Pour un prix qui double (`r = 2`) : `2·√2 / 3 − 1 ≈ 0,9428 − 1 ≈ −5,7 %`. Autrement dit, le LP détient environ 5,7 % de valeur en moins qu'un simple « hold ». Pour une multiplication par 4, la perte grimpe à 20 %.",
       "difficulty": 3
     },
     {
       "question": "Comment un attaquant utilise-t-il souvent un **flash loan** pour piller un protocole ?",
       "answer": "Il emprunte une somme énorme pour manipuler le prix d'un oracle et en profiter",
-      "wrong": ["Il emprunte puis refuse de rembourser pour voler les fonds", "Il devine la clé privée du contrat avec la somme empruntée", "Il sature le réseau pour bloquer les autres utilisateurs"],
+      "wrong": [
+        "Il emprunte puis refuse de rembourser pour voler les fonds",
+        "Il devine la clé privée du contrat avec la somme empruntée",
+        "Il sature le réseau pour bloquer les autres utilisateurs"
+      ],
       "explanation": "Avec un flash loan, un attaquant mobilise temporairement un capital colossal sans collatéral. Il s'en sert pour **fausser un oracle de prix** qui s'appuie sur le cours instantané d'un AMM, puis exploite le protocole-victime qui lit ce prix manipulé, avant de rembourser le prêt — le tout dans une seule transaction. Ne pas rembourser est impossible : la transaction serait annulée.",
       "difficulty": 3
     },
     {
       "question": "Pourquoi les prêts DeFi exigent-ils une **surcollatéralisation** là où une banque peut prêter sans garantie ?",
       "answer": "Parce que l'emprunteur est anonyme : sans identité ni recours légal, seule la garantie protège le prêteur",
-      "wrong": ["Parce que les contrats intelligents ne savent pas calculer d'intérêts", "Parce que la réglementation l'impose à tous les protocoles", "Parce que la blockchain ne permet pas de prêter la totalité d'une somme"],
+      "wrong": [
+        "Parce que les contrats intelligents ne savent pas calculer d'intérêts",
+        "Parce que la réglementation l'impose à tous les protocoles",
+        "Parce que la blockchain ne permet pas de prêter la totalité d'une somme"
+      ],
       "explanation": "Une banque évalue la solvabilité et peut poursuivre un emprunteur défaillant. En DeFi, il n'y a ni identité ni tribunal : si la dette n'est pas remboursée, le protocole ne peut que saisir le **collatéral**. Exiger plus de garantie que le montant prêté est donc le seul moyen de rester couvert malgré la volatilité des cryptoactifs.",
       "difficulty": 3
     },
     {
       "question": "Lors d'une liquidation, pourquoi un **liquidateur** accepte-t-il de rembourser la dette d'un inconnu ?",
       "answer": "Il récupère le collatéral avec une décote, ce qui lui procure un gain",
-      "wrong": ["Le protocole lui verse un salaire fixe en stablecoins", "Il obtient des droits de vote supplémentaires dans la DAO", "Il est tiré au sort et récompensé aléatoirement"],
+      "wrong": [
+        "Le protocole lui verse un salaire fixe en stablecoins",
+        "Il obtient des droits de vote supplémentaires dans la DAO",
+        "Il est tiré au sort et récompensé aléatoirement"
+      ],
       "explanation": "Pour que les liquidations soient rapides, le protocole offre un **bonus** au liquidateur : il rembourse une partie de la dette et reçoit en échange du collatéral valant un peu plus (par exemple +5 à +10 %). Cette incitation rend la liquidation rentable et garantit que les positions risquées sont fermées sans intervention centrale.",
       "difficulty": 3
     },
     {
       "question": "À quel moment la **perte impermanente** d'un fournisseur de liquidité devient-elle définitive ?",
       "answer": "Quand il retire sa liquidité alors que le ratio de prix a divergé",
-      "wrong": ["Dès que le prix d'un actif bouge, même d'un cent", "Uniquement si la pool est piratée", "Au bout d'un an de dépôt, par règle du protocole"],
+      "wrong": [
+        "Dès que le prix d'un actif bouge, même d'un cent",
+        "Uniquement si la pool est piratée",
+        "Au bout d'un an de dépôt, par règle du protocole"
+      ],
       "explanation": "Tant que le LP laisse ses fonds dans la pool, la perte reste « sur le papier » : si les prix reviennent à leur ratio d'origine, elle s'annule. Elle ne se **matérialise** qu'au retrait, en cristallisant la composition déséquilibrée. Les frais accumulés peuvent par ailleurs compenser tout ou partie de cette perte.",
       "difficulty": 3
     },
     {
       "question": "Pourquoi un **stablecoin algorithmique** peut-il s'effondrer en « spirale de la mort » ?",
       "answer": "La perte de confiance fait chuter le jeton de soutien, qui ne peut plus défendre l'ancrage",
-      "wrong": ["Les réserves fiduciaires sont saisies par un régulateur", "Le dépositaire du collatéral fait faillite", "L'oracle de prix cesse d'être mis à jour"],
+      "wrong": [
+        "Les réserves fiduciaires sont saisies par un régulateur",
+        "Le dépositaire du collatéral fait faillite",
+        "L'oracle de prix cesse d'être mis à jour"
+      ],
       "explanation": "Un stablecoin algorithmique maintient son ancrage via un jeton auxiliaire frappé ou détruit au gré du marché. Si la confiance s'effrite, les détenteurs vendent : le mécanisme émet toujours plus de jeton auxiliaire pour défendre l'ancrage, ce qui écroule son prix et accélère la fuite. N'ayant pas de réserve équivalente, il n'y a aucun plancher — c'est le scénario UST/LUNA de 2022.",
       "difficulty": 3
     },
     {
       "question": "Pourquoi le **TVL** affiché d'un écosystème peut-il surestimer les fonds réellement présents ?",
       "answer": "Un même actif peut être compté plusieurs fois en circulant de protocole en protocole",
-      "wrong": ["Le TVL inclut toujours les jetons qui n'existent pas encore", "Le TVL est converti dans une monnaie dévaluée", "Le TVL additionne les volumes échangés chaque jour"],
+      "wrong": [
+        "Le TVL inclut toujours les jetons qui n'existent pas encore",
+        "Le TVL est converti dans une monnaie dévaluée",
+        "Le TVL additionne les volumes échangés chaque jour"
+      ],
       "explanation": "Un actif déposé dans un protocole peut y générer un jeton de dépôt lui-même redéposé ailleurs, puis réutilisé comme collatéral, etc. Chaque étape ajoute au TVL global alors qu'il s'agit du **même capital de base** : c'est le *double counting*. Le TVL reste un indicateur utile, mais il peut gonfler la taille apparente de la DeFi.",
       "difficulty": 3
     },
     {
       "question": "Pourquoi un oracle qui lit le **prix instantané** d'un seul AMM est-il dangereux pour un protocole de prêt ?",
       "answer": "Ce prix peut être manipulé en un bloc, par exemple via un flash loan",
-      "wrong": ["Ce prix est toujours en retard de plusieurs jours", "Ce prix ne tient pas compte des frais de gas", "Ce prix est fixé par l'équipe du protocole"],
+      "wrong": [
+        "Ce prix est toujours en retard de plusieurs jours",
+        "Ce prix ne tient pas compte des frais de gas",
+        "Ce prix est fixé par l'équipe du protocole"
+      ],
       "explanation": "Le cours instantané d'un AMM se déplace dès qu'une transaction assez grosse touche la pool. Un attaquant peut donc le fausser le temps d'un bloc (souvent avec un flash loan) et tromper un protocole qui s'y fie pour évaluer des collatéraux. Pour s'en prémunir, on utilise des oracles robustes : moyennes pondérées dans le temps (TWAP) ou agrégateurs multi-sources.",
       "difficulty": 3
+    },
+    {
+      "question": "Que signifie l'acronyme **AMM**, au cœur des DEX comme Uniswap ?",
+      "answer": "Automated Market Maker (teneur de marché automatisé)",
+      "wrong": [
+        "Asset Management Module (module de gestion d'actifs)",
+        "Atomic Multi-Swap Mechanism (échange atomique multiple)",
+        "Algorithmic Margin Market (marché de marge algorithmique)"
+      ],
+      "explanation": "Un **AMM** (*Automated Market Maker*) remplace le carnet d'ordres et les teneurs de marché humains par un contrat intelligent : les prix sont calculés automatiquement à partir des réserves d'une pool de liquidité. N'importe qui peut échanger contre la pool à tout moment, et n'importe qui peut y apporter de la liquidité.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans une pool AMM ETH/USDC, que se passe-t-il pour le prix de l'ETH quand de nombreux traders en achètent ?",
+      "answer": "Il augmente, car la réserve d'ETH de la pool diminue",
+      "wrong": [
+        "Il baisse, car la réserve d'USDC de la pool augmente",
+        "Il reste fixe jusqu'à la prochaine mise à jour d'un oracle",
+        "Il reste celui qui a été fixé à la création de la pool"
+      ],
+      "explanation": "Acheter de l'ETH, c'est verser des USDC dans la pool et en retirer de l'ETH. L'ETH s'y raréfie et les USDC y abondent : le prix de l'ETH, donné par le rapport des réserves, **monte**. C'est ainsi qu'un AMM ajuste ses prix tout seul, sans oracle ni carnet d'ordres.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que reçois-tu en échange de ton dépôt de liquidité dans une pool **Uniswap v2** ?",
+      "answer": "Des jetons LP qui représentent ta part de la pool",
+      "wrong": [
+        "Des jetons UNI versés automatiquement à chaque bloc",
+        "Un NFT qui enregistre la fourchette de prix choisie",
+        "Un reçu en USDC égal à la valeur de ton dépôt"
+      ],
+      "explanation": "Dans Uniswap v2, un dépôt de liquidité est matérialisé par des **jetons LP** (des ERC-20) proportionnels à ta part des réserves. Tu les rends au contrat pour récupérer ta quote-part des deux actifs, frais accumulés compris. Les NFT de position n'arrivent qu'avec Uniswap v3, où chaque position a sa propre fourchette de prix.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pour ajouter de la liquidité à une pool **Uniswap v2** ETH/USDC, que dois-tu déposer ?",
+      "answer": "Les deux jetons, en valeurs égales au prix actuel de la pool",
+      "wrong": [
+        "Les deux jetons, en quantités égales (autant d'ETH que d'USDC)",
+        "Un seul des deux jetons, la pool achetant elle-même l'autre",
+        "Des jetons UNI, qui servent de garantie à la pool"
+      ],
+      "explanation": "Une pool Uniswap v2 doit conserver le ratio de ses réserves, qui fixe le prix. Tu apportes donc les **deux** actifs en **valeur égale** au prix courant : par exemple 1 ETH et 2 000 USDC si l'ETH y vaut 2 000 USDC. Déposer autant d'unités de chaque jeton n'aurait pas de sens, puisque leurs prix diffèrent.",
+      "difficulty": 1
+    },
+    {
+      "question": "Tu déposes des USDC sur **Aave** sans rien emprunter. D'où proviennent les intérêts que tu perçois ?",
+      "answer": "Des intérêts payés par ceux qui empruntent ces USDC",
+      "wrong": [
+        "De nouveaux USDC créés par le protocole Aave",
+        "Des frais de gas payés par les utilisateurs d'Ethereum",
+        "Des réserves bancaires qui garantissent l'USDC"
+      ],
+      "explanation": "Un protocole de prêt est un marché : les déposants fournissent la liquidité, les emprunteurs paient un intérêt, et cet intérêt est reversé aux déposants (moins une petite part, le *reserve factor*, conservée par le protocole). Plus la pool est empruntée, plus le rendement des déposants est élevé. Aave ne crée pas d'USDC : seul son émetteur, Circle, le peut.",
+      "difficulty": 1
+    },
+    {
+      "question": "Tu as déposé de l'ETH sur Aave **sans rien emprunter**, puis l'ETH chute de 40 %. Ta position peut-elle être liquidée ?",
+      "answer": "Non, une liquidation ne touche que les positions endettées",
+      "wrong": [
+        "Oui, dès que l'ETH perd plus de 20 % de sa valeur",
+        "Oui, si l'ETH passe sous son prix au moment du dépôt",
+        "Oui, mais seulement si un vote de la DAO l'autorise"
+      ],
+      "explanation": "La liquidation sert à rembourser une **dette** dont la garantie devient insuffisante : sans dette, le facteur de santé est considéré comme infini. Un simple déposant subit la baisse de l'ETH comme s'il le gardait dans son portefeuille, mais personne ne peut saisir son dépôt. Le risque de liquidation n'apparaît que lorsqu'on emprunte contre ce dépôt.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi un détenteur d'ETH emprunterait-il des stablecoins **en gageant** son ETH plutôt que de le vendre ?",
+      "answer": "Pour obtenir des liquidités tout en gardant son exposition à l'ETH",
+      "wrong": [
+        "Pour ne plus jamais payer d'intérêts sur ses emprunts",
+        "Pour être certain de ne jamais perdre son ETH",
+        "Pour doubler automatiquement la quantité d'ETH détenue"
+      ],
+      "explanation": "Emprunter contre son ETH permet de disposer de dollars numériques sans céder ses ETH : si l'ETH monte, l'emprunteur en profite toujours. En contrepartie, il paie des intérêts et s'expose à la **liquidation** si l'ETH baisse trop : l'opération n'est donc pas sans risque.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que propose un **agrégateur de DEX** comme 1inch ?",
+      "answer": "Répartir un ordre entre plusieurs DEX pour obtenir le meilleur prix",
+      "wrong": [
+        "Regrouper les jetons de gouvernance de plusieurs DAO",
+        "Garder les fonds des utilisateurs pour trader à leur place",
+        "Fusionner plusieurs pools en un seul nouveau jeton"
+      ],
+      "explanation": "Un **agrégateur** interroge de nombreuses sources de liquidité (Uniswap, Curve, Balancer…) et calcule l'itinéraire le plus avantageux, quitte à découper l'ordre entre plusieurs pools pour limiter l'impact sur le prix. L'utilisateur garde la main sur ses fonds : le contrat de l'agrégateur exécute les échanges en une seule transaction.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans une pool à produit constant contenant **x ETH** et **y USDC**, quel est le prix marginal d'un ETH, exprimé en USDC ?",
+      "answer": "`y / x`",
+      "wrong": [
+        "`x / y`",
+        "`x · y`",
+        "`y − x`"
+      ],
+      "explanation": "Le prix instantané d'un actif dans une pool x·y=k est le **rapport des réserves** : avec 10 ETH et 20 000 USDC, un ETH vaut 20 000 / 10 = 2 000 USDC. Le piège `x / y` donne l'inverse, c'est-à-dire le prix d'un USDC exprimé en ETH. Ce prix ne vaut que pour un échange infinitésimal : un vrai échange déplace les réserves et obtient un prix moyen moins bon.",
+      "difficulty": 2
+    },
+    {
+      "question": "Une pool contient **40 ETH et 80 000 USDC**, et tu détiens **25 %** de ses jetons LP. Si tu retires toute ta liquidité, que reçois-tu ?",
+      "answer": "10 ETH et 20 000 USDC",
+      "wrong": [
+        "20 ETH et 40 000 USDC",
+        "10 ETH et 40 000 USDC",
+        "Ton dépôt initial, à l'identique"
+      ],
+      "explanation": "Les jetons LP donnent droit à une **quote-part** des réserves au moment du retrait : 25 % de 40 ETH = 10 ETH et 25 % de 80 000 USDC = 20 000 USDC. Ce n'est pas forcément ton dépôt initial : si le prix a bougé, la composition de la pool a changé (c'est la perte impermanente), et les frais accumulés ont grossi les réserves.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans quel type de pool la **perte impermanente** reste-t-elle quasi nulle ?",
+      "answer": "Une pool de deux stablecoins qui restent ancrés au dollar",
+      "wrong": [
+        "Une pool ETH/USDC pendant un fort marché haussier",
+        "Une pool contenant un jeton volatil tout juste lancé",
+        "Une pool ETH/WBTC pendant un krach du seul bitcoin"
+      ],
+      "explanation": "La perte impermanente naît de la **divergence de prix** entre les deux actifs de la pool. Si USDC et USDT valent tous deux 1 $, leur rapport ne bouge presque pas et la perte reste négligeable. C'est pourquoi les pools de stablecoins (comme celles de Curve) sont jugées peu risquées sur ce point… tant qu'aucun des deux ne perd son ancrage.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi un fournisseur de liquidité peut-il finir **gagnant** malgré une perte impermanente ?",
+      "answer": "Les frais d'échange perçus peuvent dépasser cette perte",
+      "wrong": [
+        "Le protocole rembourse toujours cette perte au retrait",
+        "La perte impermanente ne frappe que les traders",
+        "Ses jetons LP sont garantis par un oracle de prix"
+      ],
+      "explanation": "Chaque échange paie des frais qui reviennent aux LP. Sur une pool très active, ces revenus peuvent **compenser** la perte impermanente, voire la dépasser. À l'inverse, sur une pool peu utilisée et volatile, la perte l'emporte : fournir de la liquidité n'offre aucun rendement garanti, et aucun protocole classique ne rembourse cette perte.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est l'innovation majeure d'**Uniswap v3**, lancé en 2021 ?",
+      "answer": "La liquidité concentrée sur une fourchette de prix choisie",
+      "wrong": [
+        "Les flash loans proposés pour la première fois sur un DEX",
+        "Le remplacement de la formule x·y=k par x+y=k",
+        "Des pools pouvant contenir jusqu'à huit jetons"
+      ],
+      "explanation": "Avec Uniswap v3 (mai 2021), chaque LP choisit une **fourchette de prix** dans laquelle sa liquidité est active. Concentrer le capital là où le prix évolue réellement le rend bien plus efficace qu'en v2, où la liquidité était étalée de zéro à l'infini. Les emprunts éclair existaient déjà dans Uniswap v2 (*flash swaps*), et les pools multi-jetons pondérées sont la marque de Balancer.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi une position de liquidité **Uniswap v3** est-elle représentée par un NFT plutôt que par des jetons LP classiques ?",
+      "answer": "Chaque position a sa propre fourchette : elle n'est pas fongible",
+      "wrong": [
+        "Les NFT coûtent moins de gas que les jetons ERC-20",
+        "Un NFT permet de toucher des frais deux fois plus élevés",
+        "La réglementation interdit les jetons LP fongibles"
+      ],
+      "explanation": "En v2, toutes les parts d'une pool sont identiques : un jeton ERC-20 fongible suffit. En v3, deux LP ayant choisi des fourchettes ou des niveaux de frais différents détiennent des positions **non interchangeables** ; chaque position est donc un NFT (ERC-721) unique, qui enregistre sa fourchette et sa liquidité.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur Uniswap v3, que se passe-t-il pour un LP de la pool ETH/USDC lorsque le prix de l'ETH dépasse la **borne haute** de sa fourchette ?",
+      "answer": "Sa position est entièrement en USDC et ne touche plus de frais",
+      "wrong": [
+        "Sa position est entièrement en ETH et ne touche plus de frais",
+        "Sa position est automatiquement recentrée sur le nouveau prix",
+        "Sa position touche des frais doublés tant qu'elle est hors fourchette"
+      ],
+      "explanation": "Quand l'ETH monte, les acheteurs retirent de l'ETH de la pool et y versent des USDC : la position du LP vend progressivement ses ETH. Au-delà de la borne haute, elle ne contient **plus que des USDC** et devient inactive : elle ne participe plus aux échanges et ne perçoit **aucun frais**. Rien ne la recentre automatiquement : c'est au LP (ou à un gestionnaire externe) d'agir.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi **Curve** utilise-t-il une courbe spéciale (StableSwap) plutôt que x·y=k pour ses pools de stablecoins ?",
+      "answer": "Pour offrir un glissement très faible autour de l'équilibre 1:1",
+      "wrong": [
+        "Pour supprimer toute perte impermanente, même en cas de dépeg",
+        "Pour pouvoir fixer le prix des stablecoins par un vote",
+        "Pour se passer complètement de fournisseurs de liquidité"
+      ],
+      "explanation": "Des stablecoins en dollars valent normalement tous environ 1 $. Avec x·y=k, même un échange modeste déplacerait sensiblement le prix. La courbe **StableSwap** se comporte presque comme une somme constante près de l'équilibre (prix quasi fixe, glissement minime) et se rapproche d'un produit constant quand la pool se déséquilibre. Elle ne protège pas d'un dépeg : les LP se retrouvent alors chargés du stablecoin défaillant.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi une pool reposant sur une pure **somme constante** (`x + y = k`) serait-elle dangereuse pour ses fournisseurs de liquidité ?",
+      "answer": "Son prix ne bouge jamais : on peut vider entièrement une réserve",
+      "wrong": [
+        "Ses frais d'échange tomberaient mécaniquement à zéro",
+        "Elle ne pourrait accepter que des dépôts en stablecoins",
+        "Son prix varierait trop violemment à chaque échange"
+      ],
+      "explanation": "Avec `x + y = k`, un jeton s'échange toujours à 1 pour 1, quelle que soit la composition de la pool. Si l'un des deux actifs perd de la valeur ailleurs, les arbitragistes l'apportent et **retirent tout l'autre** au prix fixe : la pool finit vidée d'un côté, et les LP restent coincés avec l'actif déprécié. Le produit constant, lui, fait monter le prix à mesure qu'une réserve se raréfie.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans une pool `x · y = k`, combien faudrait-il verser pour retirer la **totalité** d'une des deux réserves ?",
+      "answer": "Une quantité infinie : la réserve ne peut jamais tomber à zéro",
+      "wrong": [
+        "Exactement la valeur de la réserve au prix affiché",
+        "Le double de la valeur de la réserve au prix affiché",
+        "Rien de plus que la valeur de ses jetons LP"
+      ],
+      "explanation": "Si `x` tend vers 0, alors `y = k / x` tend vers l'infini : chaque unité restante coûte de plus en plus cher. La courbe ne touche jamais les axes, si bien qu'un AMM à produit constant propose toujours un prix, même extrême, et ne peut pas être vidé par un échange. C'est une différence clé avec une somme constante `x + y = k`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans un protocole de prêt, comment calcule-t-on le **taux d'utilisation** d'une pool ?",
+      "answer": "Le montant emprunté divisé par le total déposé",
+      "wrong": [
+        "Le nombre d'emprunteurs divisé par le nombre de prêteurs",
+        "Les intérêts payés divisés par le montant emprunté",
+        "Le collatéral déposé divisé par la dette totale"
+      ],
+      "explanation": "Le **taux d'utilisation** mesure la part des fonds de la pool effectivement prêtée : 80 M$ empruntés sur 100 M$ déposés donnent 80 %. Il pilote les taux d'intérêt : plus il est élevé, plus l'emprunt coûte cher et plus les déposants sont rémunérés. Le rapport entre collatéral et dette, lui, concerne la santé d'une position individuelle.",
+      "difficulty": 2
+    },
+    {
+      "question": "Les USDC d'une pool de prêt sont empruntés à **100 %**. Que risque un déposant qui veut récupérer ses USDC ?",
+      "answer": "Ne pas pouvoir retirer avant que des emprunts soient remboursés",
+      "wrong": [
+        "Perdre automatiquement une partie de son capital",
+        "Être liquidé pour rétablir l'équilibre de la pool",
+        "Être remboursé en jetons de gouvernance à la place"
+      ],
+      "explanation": "Les fonds prêtés ne sont plus dans le contrat : si tout est emprunté, il ne reste rien à rendre. Le déposant ne perd rien sur le papier, mais doit attendre que des emprunteurs remboursent ou que de nouveaux dépôts arrivent. C'est pour éviter cette situation que les taux s'envolent à forte utilisation : ils incitent à rembourser et à déposer.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans le modèle de taux « à coude » (*kink*) d'Aave ou de Compound, que se passe-t-il au-delà du **taux d'utilisation optimal** ?",
+      "answer": "Le taux d'emprunt grimpe beaucoup plus vite",
+      "wrong": [
+        "Le taux d'emprunt reste bloqué à son plafond",
+        "Les nouveaux dépôts sont refusés par le contrat",
+        "Le taux d'emprunt redescend pour attirer la demande"
+      ],
+      "explanation": "Le taux d'intérêt suit deux pentes : une pente douce jusqu'au taux d'utilisation optimal (fixé par exemple à 80 ou 90 %), puis une pente **très raide** au-delà. Cette envolée rend l'emprunt coûteux et le dépôt très attractif, ce qui fait redescendre l'utilisation et préserve de la liquidité pour les retraits.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans **Aave**, quelle différence y a-t-il entre le **LTV maximal** et le **seuil de liquidation** d'un collatéral ?",
+      "answer": "Le LTV plafonne l'emprunt ; le seuil, plus haut, déclenche la liquidation",
+      "wrong": [
+        "Le seuil plafonne l'emprunt ; le LTV, plus haut, déclenche la liquidation",
+        "Ce sont deux noms différents pour le même pourcentage",
+        "Le LTV vaut pour les stablecoins, le seuil pour les autres actifs"
+      ],
+      "explanation": "Un collatéral peut par exemple avoir un **LTV** de 80 % (on peut emprunter jusqu'à 80 % de sa valeur) et un **seuil de liquidation** de 82,5 % (la liquidation n'intervient qu'au-delà). Cet écart laisse une marge de sécurité : une position ouverte au maximum n'est pas liquidable au moindre mouvement de prix.",
+      "difficulty": 3
+    },
+    {
+      "question": "Tu déposes **10 000 $** d'ETH (seuil de liquidation : 80 %) sur Aave et empruntes **4 000 $** d'USDC. Quel est ton **facteur de santé** ?",
+      "answer": "2",
+      "wrong": [
+        "2,5",
+        "1,25",
+        "0,4"
+      ],
+      "explanation": "Le facteur de santé vaut (collatéral × seuil de liquidation) / dette = (10 000 × 0,8) / 4 000 = **2**. Le piège 2,5 oublie le seuil en divisant simplement le collatéral par la dette. Ici, la position deviendrait liquidable (facteur inférieur à 1) si la valeur de l'ETH était divisée par plus de deux.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle entreprise émet le stablecoin **USDC** ?",
+      "answer": "Circle",
+      "wrong": [
+        "Tether",
+        "Paxos",
+        "Binance"
+      ],
+      "explanation": "L'**USDC** est émis par la société américaine **Circle**, qui détient des réserves en dollars et en bons du Trésor à court terme pour couvrir les jetons. Lancé en 2018 via le consortium Centre, cofondé avec Coinbase, il est passé entièrement sous la gouvernance de Circle en 2023. Tether, de son côté, émet l'USDT, et Paxos a émis le BUSD pour le compte de Binance.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel protocole est à l'origine du stablecoin décentralisé **DAI** ?",
+      "answer": "MakerDAO",
+      "wrong": [
+        "Aave",
+        "Compound",
+        "Uniswap"
+      ],
+      "explanation": "Le **DAI** a été créé par **MakerDAO** : on le génère en déposant du collatéral dans un coffre (*vault*) du protocole. Lancé fin 2017 avec l'ETH comme seul collatéral, il est devenu multi-collatéral en 2019. En 2024, MakerDAO a été rebaptisé Sky.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel stablecoin **algorithmique**, couplé au jeton LUNA, s'est effondré en mai 2022 ?",
+      "answer": "UST (TerraUSD)",
+      "wrong": [
+        "USDD (Tron)",
+        "FRAX (Frax Finance)",
+        "DAI (MakerDAO)"
+      ],
+      "explanation": "L'**UST** de Terra tenait son ancrage grâce à un mécanisme de frappe et de destruction avec le jeton **LUNA**. En mai 2022, des retraits massifs ont déclenché une spirale : l'UST a perdu son ancrage et la LUNA s'est effondrée presque à zéro, effaçant des dizaines de milliards de dollars de valeur en quelques jours.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie l'acronyme **DAO** ?",
+      "answer": "Decentralized Autonomous Organization",
+      "wrong": [
+        "Digital Asset Operator",
+        "Distributed Account Owner",
+        "Decentralized Asset Oracle"
+      ],
+      "explanation": "Une **DAO** (*Decentralized Autonomous Organization*, organisation autonome décentralisée) est une organisation dont les règles sont inscrites dans des contrats intelligents et dont les décisions sont prises par les votes de ses membres, généralement les détenteurs de son jeton de gouvernance. Beaucoup de protocoles DeFi, comme Uniswap, Aave ou MakerDAO, sont pilotés ainsi.",
+      "difficulty": 1
+    },
+    {
+      "question": "Un protocole DeFi affiche fièrement « **audité** ». Qu'est-ce que cela garantit ?",
+      "answer": "Que des experts ont relu le code, sans exclure toute faille",
+      "wrong": [
+        "Que les fonds déposés sont assurés en cas de piratage",
+        "Que le code est mathématiquement prouvé sans aucun bug",
+        "Que le protocole est agréé par une autorité financière"
+      ],
+      "explanation": "Un **audit** est une revue du code par une société spécialisée, qui signale les failles trouvées. C'est utile, mais ce n'est **pas une garantie** : de nombreux protocoles audités ont été piratés, à cause d'une faille manquée, d'un code modifié après l'audit ou d'une interaction imprévue avec d'autres protocoles. Un audit n'est ni une assurance ni un agrément réglementaire.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi dit-on que les protocoles DeFi sont des « **money legos** » ?",
+      "answer": "Parce qu'ils sont composables et s'emboîtent librement",
+      "wrong": [
+        "Parce qu'ils ont été conçus par la société Lego",
+        "Parce qu'ils ne gèrent que de petites sommes d'argent",
+        "Parce que chacun tourne sur sa propre blockchain"
+      ],
+      "explanation": "Les contrats DeFi sont publics et peuvent s'appeler les uns les autres sans autorisation : un jeton LP d'Uniswap peut servir de collatéral sur un protocole de prêt, lui-même utilisé par un vault de rendement. Cette **composabilité** permet de bâtir vite des produits complexes, mais elle propage aussi les risques : une faille dans une brique peut toucher toutes celles qui en dépendent.",
+      "difficulty": 1
+    },
+    {
+      "question": "En mars 2023, pourquoi l'**USDC** a-t-il brièvement perdu son ancrage, tombant sous 0,90 $ ?",
+      "answer": "Une partie de ses réserves était bloquée à la Silicon Valley Bank",
+      "wrong": [
+        "Son contrat sur Ethereum avait été piraté et en partie vidé",
+        "La SEC avait ordonné le gel de tous les USDC en circulation",
+        "Circle avait suspendu définitivement les rachats en dollars"
+      ],
+      "explanation": "Le 10 mars 2023, la **Silicon Valley Bank** a fait faillite alors que Circle y détenait environ 3,3 milliards de dollars des réserves de l'USDC. Craignant de ne pas être remboursés intégralement, des détenteurs ont vendu et l'USDC est tombé vers 0,88 $. L'ancrage est revenu quelques jours plus tard, quand les autorités américaines ont garanti tous les dépôts de la banque.",
+      "difficulty": 2
+    },
+    {
+      "question": "Lors du décrochage de l'USDC en mars 2023, pourquoi le **DAI** a-t-il lui aussi perdu son ancrage ?",
+      "answer": "Une grande part de son collatéral était constituée d'USDC",
+      "wrong": [
+        "Son oracle Chainlink avait cessé de publier le prix",
+        "Une faille a permis d'en créer sans aucune garantie",
+        "Les détenteurs de MKR avaient voté une baisse de sa parité"
+      ],
+      "explanation": "Via son *Peg Stability Module* et d'autres coffres, MakerDAO détenait alors beaucoup d'USDC pour adosser le DAI. Quand l'USDC a vacillé, le DAI, dont une grosse fraction des réserves en dépendait, a suivi et est tombé vers 0,90 $. L'épisode a illustré le paradoxe d'un stablecoin « décentralisé » très exposé à un stablecoin centralisé.",
+      "difficulty": 3
+    },
+    {
+      "question": "À quoi sert le **Peg Stability Module** (PSM) de MakerDAO ?",
+      "answer": "À échanger DAI et USDC à parité fixe pour tenir l'ancrage",
+      "wrong": [
+        "À liquider les coffres dont le collatéral est insuffisant",
+        "À fixer par vote le taux d'épargne versé sur les DAI",
+        "À convertir les frais de stabilité en MKR brûlés"
+      ],
+      "explanation": "Le **PSM** permet de déposer un stablecoin comme l'USDC pour recevoir la même quantité de DAI, et inversement (avec, selon les périodes, de petits frais). Si le DAI cote au-dessus de 1 $, les arbitragistes y créent du DAI pour le vendre ; s'il cote en dessous, ils le rachètent pour récupérer des USDC. C'est efficace pour l'ancrage, mais cela rend le DAI dépendant de l'USDC.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans MakerDAO, comment appelle-t-on l'intérêt payé par ceux qui génèrent des DAI contre leur collatéral ?",
+      "answer": "Les frais de stabilité (stability fee)",
+      "wrong": [
+        "Le taux d'épargne DAI (DSR)",
+        "La pénalité de liquidation",
+        "Le facteur de réserve"
+      ],
+      "explanation": "Ouvrir un coffre Maker revient à emprunter des DAI : la dette grossit au fil du temps selon les **frais de stabilité** (*stability fee*), un taux annuel fixé par la gouvernance pour chaque type de collatéral. Le **DSR**, à l'inverse, est le taux *versé* aux détenteurs qui placent leurs DAI dans le contrat d'épargne, et la pénalité de liquidation ne s'applique qu'en cas de liquidation. Le facteur de réserve est une notion d'Aave et de Compound.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans MakerDAO (avant son passage à Sky en 2024), que se passait-il en dernier recours si le système accumulait une dette non couverte (*bad debt*) ?",
+      "answer": "Du MKR était créé et vendu aux enchères pour la combler",
+      "wrong": [
+        "Le solde de chaque détenteur de DAI était réduit d'autant",
+        "La Fondation Ethereum remboursait la dette manquante",
+        "Les DAI non garantis étaient gelés par l'oracle"
+      ],
+      "explanation": "Si la vente du collatéral ne couvrait pas la dette, Maker puisait d'abord dans son excédent. En dernier recours, des **enchères de dette** créaient de nouveaux **MKR** vendus contre des DAI : les détenteurs de MKR étaient dilués. C'était la contrepartie de leur pouvoir de gouvernance : ils assumaient le risque d'un système mal géré. C'est arrivé après le « Jeudi noir » de mars 2020.",
+      "difficulty": 3
+    },
+    {
+      "question": "Lors du « **Jeudi noir** » du 12 mars 2020, qu'est-il arrivé à certaines enchères de liquidation de MakerDAO ?",
+      "answer": "Des ETH ont été adjugés pour 0 DAI, faute d'autres enchères",
+      "wrong": [
+        "Les enchères ont été annulées par un vote d'urgence",
+        "Les ETH ont été vendus au double de leur prix de marché",
+        "Les coffres ont été remboursés intégralement par la DAO"
+      ],
+      "explanation": "Le 12 mars 2020, l'ETH a chuté brutalement et le réseau Ethereum s'est engorgé : beaucoup de robots liquidateurs (*keepers*) n'ont pas pu enchérir. Certains participants ont ainsi remporté du collatéral avec des offres à **0 DAI**, pour plus de 8 millions de dollars d'ETH. Le système s'est retrouvé avec une dette non couverte, comblée par une émission de MKR.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle particularité distinguait le stablecoin **LUSD** de Liquity (v1), lancé en 2021 ?",
+      "answer": "On l'empruntait sans intérêt contre de l'ETH, avec un frais unique",
+      "wrong": [
+        "Il n'était adossé à aucun collatéral, seulement à un algorithme",
+        "Il était garanti par des bons du Trésor américain",
+        "On l'empruntait à taux fixe contre n'importe quel jeton ERC-20"
+      ],
+      "explanation": "**Liquity v1** permettait d'emprunter des LUSD contre de l'**ETH uniquement**, **sans taux d'intérêt** : seuls des frais ponctuels étaient prélevés à l'emprunt. Le protocole était immuable (sans gouvernance) et acceptait un ratio de collatéralisation minimal de 110 %, bien plus bas que ceux de Maker, grâce à un *Stability Pool* qui absorbe les liquidations.",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment l'**USDe** d'Ethena maintient-il une valeur proche de 1 $ ?",
+      "answer": "En couvrant ses cryptos par des positions courtes sur des perpétuels",
+      "wrong": [
+        "En détenant un dollar en banque pour chaque jeton émis",
+        "En brûlant un jeton de soutien quand son cours baisse",
+        "En empruntant des USDC sur Aave pour chaque jeton créé"
+      ],
+      "explanation": "Ethena détient des cryptoactifs (ETH, bitcoin, ETH staké…) et ouvre en face des **positions courtes** de même taille sur des contrats perpétuels : si le prix monte ou baisse, gains et pertes se compensent (position *delta neutre*). Le rendement vient du staking et des taux de financement, souvent positifs. Ses risques principaux : des taux de financement durablement négatifs ou la défaillance d'une plateforme d'échange.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un stablecoin adossé à des dollars cote **0,99 $** sur le marché, alors que l'émetteur rachète chaque jeton 1 $. Que fait un arbitragiste ayant accès au rachat ?",
+      "answer": "Il achète à 0,99 $ et se fait rembourser 1 $ par l'émetteur",
+      "wrong": [
+        "Il vend ses jetons avant qu'ils ne tombent plus bas",
+        "Il émet de nouveaux jetons pour les revendre 1 $",
+        "Il attend que l'oracle ramène le cours à 1 $"
+      ],
+      "explanation": "L'arbitragiste **achète** les jetons décotés à 0,99 $ et les présente à l'émetteur, qui les rembourse 1 $ : il gagne 1 % sans risque de marché. Ces achats font remonter le cours vers 1 $. Inversement, au-dessus de 1 $, il fait créer des jetons à 1 $ pour les vendre plus cher. Ce mécanisme ne fonctionne que tant que la capacité de rachat de l'émetteur inspire confiance.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel règlement européen encadre, depuis juin 2024, l'émission de stablecoins dans l'Union européenne ?",
+      "answer": "MiCA (Markets in Crypto-Assets)",
+      "wrong": [
+        "RGPD (protection des données)",
+        "DSP2 (services de paiement)",
+        "MiFID II (instruments financiers)"
+      ],
+      "explanation": "Le règlement **MiCA** (*Markets in Crypto-Assets*) encadre les crypto-actifs dans l'UE. Ses règles sur les stablecoins (jetons de monnaie électronique et jetons se référant à des actifs) s'appliquent depuis le 30 juin 2024, le reste du texte depuis le 30 décembre 2024. Un émetteur de stablecoin doit notamment être agréé et détenir des réserves.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi un réseau d'oracles comme Chainlink agrège-t-il les prix fournis par **plusieurs nœuds** indépendants ?",
+      "answer": "Pour qu'un nœud défaillant ou malveillant ne puisse pas fausser le prix",
+      "wrong": [
+        "Pour que la blockchain traite davantage de transactions",
+        "Pour répartir les frais de gas entre tous les nœuds",
+        "Pour publier un prix différent sur chaque blockchain"
+      ],
+      "explanation": "Si un seul serveur fournissait le prix, il suffirait de le pirater ou de le corrompre pour tromper tous les protocoles qui s'y fient. Un réseau d'oracles combine les réponses de nombreux opérateurs, eux-mêmes alimentés par plusieurs sources de données, et retient une valeur agrégée (par exemple la médiane) : quelques valeurs aberrantes ne suffisent plus à la déplacer.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quand un flux de prix **Chainlink** classique (*Data Feed*) est-il mis à jour sur la blockchain ?",
+      "answer": "Dès qu'un seuil d'écart est franchi ou qu'un délai maximal s'écoule",
+      "wrong": [
+        "À chaque nouveau bloc, quelle que soit l'évolution du prix",
+        "Uniquement quand un utilisateur paie pour demander le prix",
+        "Une fois par jour, à heure fixe, comme un cours de clôture"
+      ],
+      "explanation": "Les *Data Feeds* de Chainlink publient le prix selon deux déclencheurs : un **seuil d'écart** (par exemple 0,5 % de variation depuis la dernière valeur publiée) et un **heartbeat**, délai maximal au bout duquel une mise à jour est publiée même si le prix n'a pas bougé. Publier à chaque bloc coûterait trop cher en gas. Le modèle où l'utilisateur apporte lui-même le prix dans sa transaction est celui des oracles *pull*, comme Pyth.",
+      "difficulty": 3
+    },
+    {
+      "question": "Avec un oracle de type **pull** comme Pyth, qui publie le prix sur la blockchain où il est utilisé ?",
+      "answer": "L'utilisateur ou l'application, au moment où il en a besoin",
+      "wrong": [
+        "Les nœuds de l'oracle, à chaque nouveau bloc produit",
+        "Les validateurs, directement dans l'en-tête du bloc",
+        "La fondation de l'oracle, une fois par heure"
+      ],
+      "explanation": "Avec un oracle *pull*, les prix signés sont produits hors chaîne en continu ; c'est l'utilisateur (ou l'application) qui joint la mise à jour à sa propre transaction et la fait vérifier on-chain juste avant de s'en servir. On ne paie ainsi que les mises à jour utiles, et le prix peut être très récent. Dans le modèle *push* classique, ce sont les opérateurs de l'oracle qui publient régulièrement.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel est le principal inconvénient d'un oracle **TWAP** calculé sur une longue fenêtre de temps ?",
+      "answer": "Il réagit avec retard aux mouvements réels du prix",
+      "wrong": [
+        "Il peut être manipulé en un seul bloc par un flash loan",
+        "Il ne fonctionne que pour des paires de stablecoins",
+        "Il exige qu'un opérateur central signe chaque prix"
+      ],
+      "explanation": "Un **TWAP** (*Time-Weighted Average Price*) fait la moyenne du prix sur une période : pour le fausser, un attaquant devrait maintenir un prix manipulé pendant de nombreux blocs, ce qui coûte très cher. Revers de la médaille : lors d'un krach rapide, la moyenne **traîne** derrière le prix réel, si bien qu'un protocole de prêt peut liquider trop tard ou accepter un collatéral surévalué. La manipulation en un bloc menace au contraire les prix instantanés.",
+      "difficulty": 3
+    },
+    {
+      "question": "Tu as déposé **10 ETH** à 2 000 $ (seuil de liquidation : 80 %) et emprunté **8 000 USDC**. En dessous de quel prix de l'ETH deviens-tu liquidable ?",
+      "answer": "1 000 $",
+      "wrong": [
+        "1 600 $",
+        "800 $",
+        "1 200 $"
+      ],
+      "explanation": "La liquidation devient possible quand le facteur de santé passe sous 1, c'est-à-dire quand collatéral × seuil = dette : 10 × P × 0,8 = 8 000, d'où **P = 1 000 $**. Le piège 800 $ oublie le seuil de 80 % (il correspond à un collatéral valant exactement la dette), et 1 600 $ applique le seuil au prix de départ au lieu de le relier à la dette.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans **Aave v2**, quelle part maximale de la dette d'une position un liquidateur peut-il rembourser en une seule liquidation ?",
+      "answer": "50 %",
+      "wrong": [
+        "100 %",
+        "25 %",
+        "10 %"
+      ],
+      "explanation": "Dans Aave v2 (comme dans Compound v2), le *close factor* limite chaque liquidation à **50 %** de la dette : la position est ramenée vers la zone saine sans être soldée d'un coup, ce qui limite la pénalité payée par l'emprunteur. Aave v3 a assoupli la règle : la totalité de la dette peut être liquidée si le facteur de santé tombe sous 0,95.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que fait un utilisateur qui « **boucle** » (*looping*) : il dépose de l'ETH, emprunte des stablecoins, rachète de l'ETH et le redépose, plusieurs fois de suite ?",
+      "answer": "Il augmente son exposition à l'ETH par effet de levier",
+      "wrong": [
+        "Il réduit son risque de liquidation à chaque tour",
+        "Il couvre totalement sa position contre une baisse",
+        "Il transforme son ETH en stablecoin sans risque"
+      ],
+      "explanation": "Chaque tour ajoute de l'ETH en collatéral financé par de la dette : l'utilisateur détient au final **plus d'ETH que son capital initial**, soit une position à levier. Les gains sont amplifiés si l'ETH monte, mais le facteur de santé se dégrade à chaque boucle et une baisse modérée peut suffire à déclencher la liquidation.",
+      "difficulty": 2
     }
   ]
 }

@@ -8,212 +8,862 @@
     {
       "question": "Dans le jargon crypto, que désigne familièrement un « shitcoin » ?",
       "answer": "Une cryptomonnaie sans utilité ni valeur réelle, souvent purement spéculative",
-      "wrong": ["Une cryptomonnaie adossée au dollar américain", "Le jeton de gouvernance d'un grand protocole établi", "Une pièce physique en métal représentant un bitcoin"],
+      "wrong": [
+        "Une cryptomonnaie adossée au dollar américain",
+        "Le jeton de gouvernance d'un grand protocole établi",
+        "Une pièce physique en métal représentant un bitcoin"
+      ],
       "explanation": "Un **shitcoin** est un terme péjoratif pour un token jugé sans projet solide, sans adoption ni utilité, dont le cours ne repose que sur la spéculation et le battage. Beaucoup sont créés en quelques minutes dans un seul but d'enrichissement rapide des fondateurs, ce qui en fait un terrain propice aux arnaques.",
       "difficulty": 1
     },
     {
       "question": "Qu'est-ce qu'un « memecoin » ?",
       "answer": "Un token inspiré d'une blague, d'un mème ou d'une mascotte, sans utilité technique particulière",
-      "wrong": ["Un stablecoin garanti par des réserves en euros", "Un token qui récompense la création de mèmes sur les réseaux sociaux", "Une cryptomonnaie officielle émise par une banque centrale"],
+      "wrong": [
+        "Un stablecoin garanti par des réserves en euros",
+        "Un token qui récompense la création de mèmes sur les réseaux sociaux",
+        "Une cryptomonnaie officielle émise par une banque centrale"
+      ],
       "explanation": "Un **memecoin** tire sa notoriété d'un mème ou d'une communauté plutôt que d'une innovation technique. Sa valeur dépend presque entièrement de l'attention et de la viralité, ce qui le rend extrêmement volatil et vulnérable aux manipulations.",
       "difficulty": 1
     },
     {
       "question": "Comment calcule-t-on la capitalisation boursière (market cap) d'une cryptomonnaie ?",
       "answer": "Prix d'un token × nombre de tokens en circulation",
-      "wrong": ["Prix d'un token × nombre maximal de tokens possibles", "Volume échangé sur 24 h × prix d'un token", "Prix le plus haut historique × prix actuel"],
+      "wrong": [
+        "Prix d'un token × nombre maximal de tokens possibles",
+        "Volume échangé sur 24 h × prix d'un token",
+        "Prix le plus haut historique × prix actuel"
+      ],
       "explanation": "La **market cap** = prix unitaire × **circulating supply** (tokens réellement en circulation). Elle donne une idée de la taille du projet, bien mieux que le prix unitaire seul : un token à 0,01 $ avec des milliards d'unités peut valoir plus qu'un token à 100 $ rare. Le calcul fondé sur le nombre maximal de tokens donne la FDV, pas la market cap.",
       "difficulty": 1
     },
     {
       "question": "Que signifie l'acronyme **DYOR**, souvent vu dans les communautés crypto ?",
       "answer": "Do Your Own Research (fais tes propres recherches)",
-      "wrong": ["Don't Yield On Risk", "Double Your Online Return", "Decentralized Yield Operations Reserve"],
+      "wrong": [
+        "Don't Yield On Risk",
+        "Double Your Online Return",
+        "Decentralized Yield Operations Reserve"
+      ],
       "explanation": "**DYOR** rappelle de vérifier soi-même un projet avant d'y mettre de l'argent, au lieu de se fier aux promesses d'influenceurs. C'est un réflexe de prudence : lire le livre blanc, examiner l'équipe, la répartition des tokens et la liquidité. Attention, certains escrocs l'emploient aussi pour se dédouaner (« tu aurais dû DYOR »).",
       "difficulty": 1
     },
     {
       "question": "Que décrit le terme **FOMO** dans un contexte de trading ?",
       "answer": "La peur de rater une opportunité, qui pousse à acheter dans la précipitation",
-      "wrong": ["Une stratégie de diversification du portefeuille", "Un type d'ordre d'achat automatique", "La peur de perdre tout son capital d'un coup"],
+      "wrong": [
+        "Une stratégie de diversification du portefeuille",
+        "Un type d'ordre d'achat automatique",
+        "La peur de perdre tout son capital d'un coup"
+      ],
       "explanation": "**FOMO** = Fear Of Missing Out. Voir un cours grimper fait craindre de « louper le train » et pousse à acheter impulsivement, souvent près d'un sommet. Les escrocs exploitent ce biais avec des comptes à rebours et de faux signaux d'urgence pour forcer des décisions irréfléchies.",
       "difficulty": 1
     },
     {
       "question": "Que signifie l'abréviation **ATH** pour un actif ?",
       "answer": "All-Time High : le prix le plus élevé jamais atteint",
-      "wrong": ["Average Trading Hours : les heures moyennes d'échange", "Automated Trading Hub : une plateforme de trading automatisé", "All The Holders : l'ensemble des détenteurs"],
+      "wrong": [
+        "Average Trading Hours : les heures moyennes d'échange",
+        "Automated Trading Hub : une plateforme de trading automatisé",
+        "All The Holders : l'ensemble des détenteurs"
+      ],
       "explanation": "L'**ATH** (All-Time High) est le record de prix historique d'un actif ; son opposé est l'**ATL** (All-Time Low), le plus bas historique. Ces repères servent à situer un cours, mais un ATH passé ne garantit rien pour l'avenir.",
       "difficulty": 1
     },
     {
       "question": "Quelle est la différence entre une plateforme **CEX** et une plateforme **DEX** ?",
       "answer": "Une CEX est centralisée et conserve vos fonds, une DEX est décentralisée et vous gardez vos clés",
-      "wrong": ["Une CEX ne traite que le bitcoin, une DEX tous les autres tokens", "Une CEX est réservée aux professionnels, une DEX aux particuliers", "Une CEX est gratuite, une DEX facture toujours des frais fixes"],
+      "wrong": [
+        "Une CEX ne traite que le bitcoin, une DEX tous les autres tokens",
+        "Une CEX est réservée aux professionnels, une DEX aux particuliers",
+        "Une CEX est gratuite, une DEX facture toujours des frais fixes"
+      ],
       "explanation": "Sur une **CEX** (Centralized Exchange, ex. une plateforme classique), un intermédiaire détient vos fonds et exécute les ordres via un carnet d'ordres. Sur une **DEX** (Decentralized Exchange), les échanges se font par contrats intelligents, de portefeuille à portefeuille : vous gardez le contrôle de vos clés, mais vous êtes seul responsable en cas d'erreur.",
       "difficulty": 1
     },
     {
       "question": "Qu'est-ce qu'un **stablecoin** ?",
       "answer": "Une cryptomonnaie conçue pour garder une valeur stable, souvent indexée sur une monnaie comme le dollar",
-      "wrong": ["Une cryptomonnaie dont le prix ne peut jamais baisser", "Le token le plus ancien d'une blockchain", "Une cryptomonnaie réservée à l'épargne à long terme et non échangeable"],
+      "wrong": [
+        "Une cryptomonnaie dont le prix ne peut jamais baisser",
+        "Le token le plus ancien d'une blockchain",
+        "Une cryptomonnaie réservée à l'épargne à long terme et non échangeable"
+      ],
       "explanation": "Un **stablecoin** vise à maintenir une parité stable (par ex. 1 token ≈ 1 $), via des réserves en monnaie, d'autres actifs, ou des mécanismes algorithmiques. Il sert à se mettre « à l'abri » de la volatilité sans sortir de l'écosystème crypto. Stable ne veut pas dire sans risque : certains ont déjà perdu leur ancrage (depeg).",
       "difficulty": 1
     },
     {
       "question": "Quelle est la différence entre un ordre **au marché** et un ordre **à cours limité** (limit) ?",
       "answer": "L'ordre au marché s'exécute immédiatement au meilleur prix disponible, l'ordre limité attend un prix fixé",
-      "wrong": ["L'ordre au marché est gratuit, l'ordre limité est payant", "L'ordre au marché n'achète que des stablecoins", "L'ordre au marché est réservé aux ventes, l'ordre limité aux achats"],
+      "wrong": [
+        "L'ordre au marché est gratuit, l'ordre limité est payant",
+        "L'ordre au marché n'achète que des stablecoins",
+        "L'ordre au marché est réservé aux ventes, l'ordre limité aux achats"
+      ],
       "explanation": "Un **ordre au marché** privilégie la rapidité : il se remplit tout de suite au prix courant, quitte à subir du slippage sur un marché peu liquide. Un **ordre limité** ne s'exécute qu'au prix choisi ou mieux : vous maîtrisez le prix, mais l'ordre peut ne jamais partir si le marché ne l'atteint pas.",
       "difficulty": 1
     },
     {
       "question": "Que désigne la **FDV** (Fully Diluted Valuation) d'un token ?",
       "answer": "La valeur du projet si tous les tokens prévus étaient déjà en circulation : prix × supply maximale",
-      "wrong": ["La valeur des seuls tokens actuellement en circulation", "La valeur totale verrouillée dans les protocoles DeFi", "Le volume d'échange cumulé depuis le lancement"],
+      "wrong": [
+        "La valeur des seuls tokens actuellement en circulation",
+        "La valeur totale verrouillée dans les protocoles DeFi",
+        "Le volume d'échange cumulé depuis le lancement"
+      ],
       "explanation": "La **FDV** = prix × nombre total (ou maximal) de tokens, émis ou non. Un écart énorme entre market cap et FDV signale que beaucoup de tokens restent à débloquer : leur arrivée progressive (vesting) peut diluer et faire pression à la baisse sur le cours. C'est un indicateur clé à examiner avant d'investir.",
       "difficulty": 2
     },
     {
       "question": "Un token se vend 0,50 $ avec 200 millions de tokens en circulation et une supply maximale de 1 milliard. Quelle est sa capitalisation boursière (market cap) ?",
       "answer": "100 millions de dollars",
-      "wrong": ["500 millions de dollars", "200 millions de dollars", "1 milliard de dollars"],
+      "wrong": [
+        "500 millions de dollars",
+        "200 millions de dollars",
+        "1 milliard de dollars"
+      ],
       "explanation": "Market cap = prix × circulating supply = 0,50 $ × 200 000 000 = **100 M$**. Le piège à 500 M$ est la **FDV** (0,50 $ × 1 milliard), qui suppose tous les tokens déjà émis. Confondre les deux fait croire qu'un projet est bien plus gros qu'il ne l'est réellement.",
       "difficulty": 2
     },
     {
       "question": "Qu'est-ce qu'un **rug pull** ?",
       "answer": "Une arnaque où les créateurs d'un projet retirent les fonds et disparaissent, laissant le token sans valeur",
-      "wrong": ["Un ajustement de la quantité de tokens par le protocole", "Une chute de prix due à une mauvaise nouvelle du marché", "Un rachat massif de tokens par l'équipe pour soutenir le cours"],
+      "wrong": [
+        "Un ajustement de la quantité de tokens par le protocole",
+        "Une chute de prix due à une mauvaise nouvelle du marché",
+        "Un rachat massif de tokens par l'équipe pour soutenir le cours"
+      ],
       "explanation": "Dans un **rug pull** (littéralement « tirer le tapis »), les porteurs vident la liquidité ou vendent leur énorme réserve d'un coup, puis abandonnent le projet. Le cours s'effondre à zéro et les détenteurs ne peuvent plus revendre. Une liquidité non verrouillée et une équipe anonyme sont des signaux d'alerte majeurs.",
       "difficulty": 2
     },
     {
       "question": "Dans une DEX à market maker automatisé (AMM), qu'est-ce qu'un **pool de liquidité** ?",
       "answer": "Une réserve de deux tokens déposés dans un contrat, contre laquelle les utilisateurs échangent",
-      "wrong": ["Un classement des portefeuilles les plus riches", "Une file d'attente des ordres d'achat et de vente", "Un fonds commun géré par la plateforme centralisée"],
+      "wrong": [
+        "Un classement des portefeuilles les plus riches",
+        "Une file d'attente des ordres d'achat et de vente",
+        "Un fonds commun géré par la plateforme centralisée"
+      ],
       "explanation": "Un **pool de liquidité** contient une paire de tokens (ex. TOKEN/USDC) fournie par des **liquidity providers (LP)**. Les échanges puisent dans ce pool et un algorithme fixe le prix selon le ratio des réserves. En échange, les LP touchent une part des frais de transaction, mais s'exposent au risque d'impermanent loss.",
       "difficulty": 2
     },
     {
       "question": "Pourquoi un projet verrouille-t-il (lock) sa liquidité pendant une durée donnée ?",
       "answer": "Pour empêcher l'équipe de retirer la liquidité et rassurer sur le risque de rug pull",
-      "wrong": ["Pour geler le prix du token et l'empêcher de varier", "Pour augmenter automatiquement le rendement du staking", "Pour interdire tout achat du token pendant la période"],
+      "wrong": [
+        "Pour geler le prix du token et l'empêcher de varier",
+        "Pour augmenter automatiquement le rendement du staking",
+        "Pour interdire tout achat du token pendant la période"
+      ],
       "explanation": "Verrouiller la liquidité confie les jetons LP à un contrat tiers qui empêche de les récupérer avant l'échéance. Cela réduit le risque qu'un fondateur vide le pool du jour au lendemain. Attention : un lock court, ou qui ne couvre qu'une partie de la liquidité, offre une fausse impression de sécurité.",
       "difficulty": 2
     },
     {
       "question": "Qu'est-ce qu'un **airdrop** dans l'univers crypto ?",
       "answer": "Une distribution gratuite de tokens à des portefeuilles, souvent pour récompenser ou promouvoir un projet",
-      "wrong": ["Un transfert accidentel de fonds vers une mauvaise adresse", "La vente anticipée de tokens à prix réduit", "Un retrait automatique de frais sur chaque transaction"],
+      "wrong": [
+        "Un transfert accidentel de fonds vers une mauvaise adresse",
+        "La vente anticipée de tokens à prix réduit",
+        "Un retrait automatique de frais sur chaque transaction"
+      ],
       "explanation": "Un **airdrop** envoie des tokens gratuitement, par exemple aux premiers utilisateurs ou détenteurs d'un autre token, pour amorcer une communauté. Prudence : de faux airdrops déposent des tokens piégés dans votre portefeuille pour vous inciter à interagir avec un site malveillant et signer une transaction dangereuse.",
       "difficulty": 2
     },
     {
       "question": "Que provoque un **burn** de tokens ?",
       "answer": "Il retire définitivement des tokens de la circulation en les envoyant à une adresse inutilisable",
-      "wrong": ["Il crée de nouveaux tokens distribués aux détenteurs", "Il convertit les tokens en stablecoins", "Il met les tokens en pause le temps d'une mise à jour"],
+      "wrong": [
+        "Il crée de nouveaux tokens distribués aux détenteurs",
+        "Il convertit les tokens en stablecoins",
+        "Il met les tokens en pause le temps d'une mise à jour"
+      ],
       "explanation": "Un **burn** envoie des tokens vers une adresse dont personne ne possède la clé (adresse « morte ») : ils deviennent irrécupérables, ce qui réduit la supply en circulation. Certains protocoles brûlent régulièrement des tokens par conception. Un burn ne garantit en rien une hausse du prix, contrairement à ce que promettent certains marketings.",
       "difficulty": 2
     },
     {
       "question": "Qu'est-ce que le **staking** d'une cryptomonnaie ?",
       "answer": "Immobiliser des tokens pour aider au fonctionnement du réseau et recevoir des récompenses",
-      "wrong": ["Vendre ses tokens à découvert pour parier sur la baisse", "Échanger un token contre un autre sur une DEX", "Emprunter des tokens en déposant une garantie"],
+      "wrong": [
+        "Vendre ses tokens à découvert pour parier sur la baisse",
+        "Échanger un token contre un autre sur une DEX",
+        "Emprunter des tokens en déposant une garantie"
+      ],
       "explanation": "Le **staking** consiste à bloquer des tokens, souvent dans un réseau en preuve d'enjeu (Proof of Stake), pour participer à la validation et toucher des récompenses. Les fonds peuvent être soumis à une période de déblocage. Méfiance envers les plateformes promettant des rendements de staking anormalement élevés : c'est un classique des arnaques.",
       "difficulty": 2
     },
     {
       "question": "Quelle est la différence entre **APR** et **APY** pour un rendement ?",
       "answer": "L'APY tient compte des intérêts composés, l'APR non",
-      "wrong": ["L'APR tient compte des intérêts composés, l'APY non", "L'APR s'applique au staking, l'APY uniquement aux stablecoins", "L'APR est mensuel, l'APY est hebdomadaire"],
+      "wrong": [
+        "L'APR tient compte des intérêts composés, l'APY non",
+        "L'APR s'applique au staking, l'APY uniquement aux stablecoins",
+        "L'APR est mensuel, l'APY est hebdomadaire"
+      ],
       "explanation": "L'**APR** (Annual Percentage Rate) est le taux annuel simple, sans réinvestissement des gains. L'**APY** (Annual Percentage Yield) intègre la **composition** : les intérêts génèrent eux-mêmes des intérêts. À taux nominal égal, l'APY est donc toujours supérieur ou égal à l'APR, d'autant plus que la fréquence de composition est élevée.",
       "difficulty": 2
     },
     {
       "question": "En trading, qu'est-ce que le **slippage** (glissement) ?",
       "answer": "L'écart entre le prix attendu d'un ordre et le prix réellement obtenu à l'exécution",
-      "wrong": ["Les frais prélevés par la plateforme sur chaque échange", "Le délai de confirmation d'une transaction sur la blockchain", "La baisse de valeur d'un token pendant la nuit"],
+      "wrong": [
+        "Les frais prélevés par la plateforme sur chaque échange",
+        "Le délai de confirmation d'une transaction sur la blockchain",
+        "La baisse de valeur d'un token pendant la nuit"
+      ],
       "explanation": "Le **slippage** survient quand le marché bouge ou manque de liquidité entre le moment où l'on passe l'ordre et son exécution : on obtient un prix moins favorable que prévu. Sur une DEX, on règle souvent une tolérance de slippage ; la fixer trop haut expose à des exécutions désastreuses, notamment sur les tokens peu liquides.",
       "difficulty": 2
     },
     {
       "question": "Dans le jargon crypto, qui appelle-t-on une **whale** (baleine) ?",
       "answer": "Un détenteur possédant une très grande quantité d'un token, capable d'influencer son cours",
-      "wrong": ["Un trader qui ne réalise que de très petites transactions", "Le fondateur anonyme d'une blockchain", "Un robot qui exécute des ordres automatiquement"],
+      "wrong": [
+        "Un trader qui ne réalise que de très petites transactions",
+        "Le fondateur anonyme d'une blockchain",
+        "Un robot qui exécute des ordres automatiquement"
+      ],
       "explanation": "Une **whale** détient assez de tokens pour que ses mouvements pèsent sur le marché : une grosse vente peut faire chuter un cours peu liquide. Suivre l'activité des whales (via les adresses publiques) est une pratique courante, mais elles peuvent aussi manipuler volontairement le marché.",
       "difficulty": 2
     },
     {
       "question": "En quoi consiste un schéma de **pump and dump** ?",
       "answer": "Gonfler artificiellement le prix d'un token par du battage, puis vendre massivement au détriment des nouveaux acheteurs",
-      "wrong": ["Acheter progressivement un token sur le long terme pour lisser le prix", "Répartir ses achats sur plusieurs plateformes pour réduire les frais", "Verrouiller la liquidité d'un projet pour stabiliser son cours"],
+      "wrong": [
+        "Acheter progressivement un token sur le long terme pour lisser le prix",
+        "Répartir ses achats sur plusieurs plateformes pour réduire les frais",
+        "Verrouiller la liquidité d'un projet pour stabiliser son cours"
+      ],
       "explanation": "Dans un **pump and dump**, des organisateurs accumulent un token peu liquide, orchestrent un battage (groupes, influenceurs) pour attirer les acheteurs et faire grimper le prix (pump), puis revendent tout au sommet (dump). Le cours s'effondre et les derniers entrés perdent. C'est une manipulation de marché illégale dans de nombreux pays.",
       "difficulty": 2
     },
     {
       "question": "Que désigne une **presale** (prévente) dans le lancement d'un token ?",
       "answer": "Une vente de tokens à un prix réduit avant leur mise à disposition du grand public",
-      "wrong": ["La revente de tokens déjà cotés sur une plateforme", "Le remboursement des premiers investisseurs", "Une période où tout achat est interdit avant le lancement"],
+      "wrong": [
+        "La revente de tokens déjà cotés sur une plateforme",
+        "Le remboursement des premiers investisseurs",
+        "Une période où tout achat est interdit avant le lancement"
+      ],
       "explanation": "Lors d'une **presale** (proche des ICO/IDO), on acquiert des tokens avant leur cotation, souvent à prix préférentiel, pour financer le projet. Le risque est élevé : l'équipe peut disparaître avec les fonds, ou les premiers acheteurs peuvent revendre dès la cotation et faire chuter le cours. Les débloquages (vesting) conditionnent fortement l'issue.",
       "difficulty": 3
     },
     {
       "question": "Qu'est-ce qu'un token **honeypot** (pot de miel) ?",
       "answer": "Un token piégé qu'on peut acheter mais que le contrat empêche de revendre",
-      "wrong": ["Un token offrant le rendement de staking le plus élevé du marché", "Un stablecoin garanti par de l'or physique", "Un token qui récompense les premiers acheteurs par un bonus"],
+      "wrong": [
+        "Un token offrant le rendement de staking le plus élevé du marché",
+        "Un stablecoin garanti par de l'or physique",
+        "Un token qui récompense les premiers acheteurs par un bonus"
+      ],
       "explanation": "Un **honeypot** attire les acheteurs avec une courbe de prix alléchante, mais son contrat intelligent contient une règle bloquant la vente pour tout le monde sauf les escrocs. Les victimes se retrouvent avec des tokens invendables. Des outils d'analyse de contrat et de simulation de vente aident à repérer ce piège avant d'acheter.",
       "difficulty": 3
     },
     {
       "question": "Qu'est-ce qu'un **wallet drainer** et comment s'en protéger ?",
       "answer": "Un contrat ou site malveillant qui vide un portefeuille après qu'on a signé une transaction piégée ; on s'en protège en vérifiant chaque signature",
-      "wrong": ["Un outil officiel qui transfère vos fonds vers une CEX ; on l'active dans les réglages pour sécuriser son épargne", "Un virus qui ralentit la synchronisation de la blockchain ; un simple antivirus suffit à s'en débarrasser", "Une taxe prélevée sur les retraits d'une DEX ; on l'évite en ne retirant que de gros montants à la fois"],
+      "wrong": [
+        "Un outil officiel qui transfère vos fonds vers une CEX ; on l'active dans les réglages pour sécuriser son épargne",
+        "Un virus qui ralentit la synchronisation de la blockchain ; un simple antivirus suffit à s'en débarrasser",
+        "Une taxe prélevée sur les retraits d'une DEX ; on l'évite en ne retirant que de gros montants à la fois"
+      ],
       "explanation": "Un **wallet drainer** pousse la victime à signer une approbation ou une transaction qui donne au pirate le droit de transférer ses tokens. Il circule via faux airdrops, sites de phishing ou fausses mint. Protection : ne jamais signer une transaction qu'on ne comprend pas, vérifier le domaine, révoquer les approbations inutiles et se méfier des offres « trop belles ».",
       "difficulty": 3
     },
     {
       "question": "Que signifie le **vesting** des tokens d'une équipe ou d'investisseurs ?",
       "answer": "Un déblocage progressif des tokens selon un calendrier, au lieu d'une disponibilité immédiate",
-      "wrong": ["La destruction définitive des tokens de l'équipe", "L'obligation de reverser une partie des gains aux détenteurs", "L'indexation du prix du token sur un stablecoin"],
+      "wrong": [
+        "La destruction définitive des tokens de l'équipe",
+        "L'obligation de reverser une partie des gains aux détenteurs",
+        "L'indexation du prix du token sur un stablecoin"
+      ],
       "explanation": "Le **vesting** étale la mise en circulation des tokens réservés (équipe, fonds, conseillers) sur des mois ou des années, parfois avec une période de blocage initial (cliff). L'objectif est d'aligner les intérêts sur le long terme et d'éviter une vente massive dès le lancement. Un calendrier de déblocage chargé peut toutefois peser sur le cours à chaque échéance.",
       "difficulty": 3
     },
     {
       "question": "En trading sur **futures**, qu'implique l'utilisation d'un effet de levier de 10x ?",
       "answer": "On expose une position dix fois supérieure à sa mise, multipliant gains et pertes par dix",
-      "wrong": ["On garantit un gain dix fois supérieur à sa mise", "On réduit par dix le risque de perte", "On bloque ses tokens pendant dix jours"],
+      "wrong": [
+        "On garantit un gain dix fois supérieur à sa mise",
+        "On réduit par dix le risque de perte",
+        "On bloque ses tokens pendant dix jours"
+      ],
       "explanation": "Un **levier** de 10x permet de contrôler une position valant dix fois le capital déposé (marge). Les variations de prix sont donc amplifiées dans les deux sens : une hausse de 5 % rapporte 50 % de la marge, mais une baisse de 5 % en détruit autant. Plus le levier est élevé, plus la **liquidation** (perte de la marge) survient tôt.",
       "difficulty": 3
     },
     {
       "question": "Vous ouvrez une position **longue** avec un levier de 10x. En ignorant frais et marge de maintenance, quelle baisse de prix suffit approximativement à vous faire liquider ?",
       "answer": "Environ 10 %",
-      "wrong": ["Environ 1 %", "Environ 50 %", "Environ 100 %"],
+      "wrong": [
+        "Environ 1 %",
+        "Environ 50 %",
+        "Environ 100 %"
+      ],
       "explanation": "Avec un levier de 10x, votre marge ne représente que 1/10 de la position : une baisse d'environ **10 %** efface toute la marge, déclenchant la **liquidation** (fermeture forcée). En pratique, elle survient même un peu avant à cause des frais et de la marge de maintenance. C'est pourquoi un fort levier rend une position très fragile.",
       "difficulty": 3
     },
     {
       "question": "Un protocole annonce un **APR** de 10 %, versé et composé quotidiennement. Quel **APY** cela représente-t-il approximativement ?",
       "answer": "Environ 10,5 %",
-      "wrong": ["Exactement 10 %", "Environ 3,65 %", "Environ 20 %"],
+      "wrong": [
+        "Exactement 10 %",
+        "Environ 3,65 %",
+        "Environ 20 %"
+      ],
       "explanation": "Avec composition quotidienne, APY = (1 + 0,10/365)^365 − 1 ≈ **10,52 %**. L'APY dépasse l'APR grâce aux intérêts réinvestis chaque jour. Afficher un APY plutôt qu'un APR fait paraître le rendement plus élevé à taux nominal égal : il faut toujours comparer la même métrique entre deux offres.",
       "difficulty": 3
     },
     {
       "question": "Vous passez un ordre en vous attendant à un prix de 100 $, mais il s'exécute à 97 $. Quel est le taux de slippage subi ?",
       "answer": "3 %",
-      "wrong": ["0,3 %", "30 %", "97 %"],
+      "wrong": [
+        "0,3 %",
+        "30 %",
+        "97 %"
+      ],
       "explanation": "Slippage = (prix attendu − prix obtenu) / prix attendu = (100 − 97) / 100 = 0,03 = **3 %**. Un tel écart est fréquent sur un token peu liquide ou lors d'un gros ordre. Sur une DEX, régler une tolérance de slippage trop élevée peut même ouvrir la porte à des attaques de type sandwich qui dégradent encore le prix.",
       "difficulty": 3
     },
     {
       "question": "Un token a une market cap de 100 M$ et une FDV de 500 M$. Que faut-il en déduire ?",
       "answer": "Seule une partie des tokens circule ; beaucoup restent à débloquer, source de dilution future",
-      "wrong": ["Le token est garanti par 500 M$ de réserves", "Le cours va forcément quintupler pour rejoindre la FDV", "La liquidité du projet est verrouillée à 80 %"],
+      "wrong": [
+        "Le token est garanti par 500 M$ de réserves",
+        "Le cours va forcément quintupler pour rejoindre la FDV",
+        "La liquidité du projet est verrouillée à 80 %"
+      ],
       "explanation": "FDV cinq fois supérieure à la market cap signifie qu'environ 20 % seulement des tokens circulent (100 / 500). Les 80 % restants arriveront plus tard (vesting, émissions) et peuvent **diluer** les détenteurs et peser sur le prix. La FDV n'est ni une garantie de valeur ni un objectif de cours : c'est un signal de pression vendeuse potentielle à surveiller.",
       "difficulty": 3
+    },
+    {
+      "question": "Dans les communautés crypto, que désigne l'acronyme **FUD** ?",
+      "answer": "Fear, Uncertainty and Doubt : la diffusion de peur et de doute sur un actif",
+      "wrong": [
+        "Fast Unlimited Deposit : un dépôt instantané et sans plafond",
+        "Fund Under Development : un fonds de projet encore en construction",
+        "Full User Disclosure : la publication des avoirs d'un utilisateur"
+      ],
+      "explanation": "**FUD** (Fear, Uncertainty and Doubt) désigne les informations, vraies ou fausses, qui sèment la peur et poussent à vendre. Le terme est utile, mais attention : les promoteurs de projets douteux qualifient volontiers de « FUD » toute critique légitime pour la discréditer. Une alerte argumentée (contrat suspect, équipe anonyme, liquidité non verrouillée) mérite d'être vérifiée, pas balayée d'un revers de main.",
+      "difficulty": 1
+    },
+    {
+      "question": "D'où vient le terme **HODL**, devenu un mot d'ordre pour conserver ses cryptos malgré les chutes ?",
+      "answer": "D'une faute de frappe de « hold » dans un message du forum Bitcointalk en 2013",
+      "wrong": [
+        "D'un acronyme officiel inventé par Satoshi Nakamoto dans le livre blanc",
+        "Du nom d'un célèbre fonds d'investissement new-yorkais spécialisé en crypto",
+        "D'une commande du logiciel Bitcoin Core servant à bloquer des fonds"
+      ],
+      "explanation": "En décembre 2013, en pleine chute du bitcoin, un utilisateur du forum Bitcointalk a publié un message intitulé « I AM HODLING », coquille de « holding ». Le mot est devenu un mème, puis a été réinterprété après coup comme l'acronyme « Hold On for Dear Life ». Il désigne la stratégie qui consiste à conserver ses actifs sur le long terme sans réagir aux variations de court terme.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Hodl"
+    },
+    {
+      "question": "Dans le jargon des marchés, quelle est la différence entre un **bull market** et un **bear market** ?",
+      "answer": "Le bull market est une phase de hausse durable, le bear market une phase de baisse durable",
+      "wrong": [
+        "Le bull market concerne les actions, le bear market uniquement les cryptos",
+        "Le bull market est un marché réglementé, le bear market un marché non réglementé",
+        "Le bull market se déroule en semaine, le bear market la nuit et le week-end"
+      ],
+      "explanation": "Le **taureau** (bull) frappe avec ses cornes de bas en haut, l'**ours** (bear) avec ses pattes de haut en bas : d'où les images de hausse et de baisse. Un bull market est une tendance haussière prolongée, un bear market une baisse durable, souvent définie en Bourse comme un recul d'au moins 20 % depuis un sommet. En crypto, ces cycles sont très marqués : le bitcoin a déjà perdu plus de 70 % entre un sommet et un creux, et les altcoins souvent bien davantage.",
+      "difficulty": 1
+    },
+    {
+      "question": "En trading, que signifie **prendre une position short** sur un actif ?",
+      "answer": "Parier sur la baisse du prix, pour gagner si l'actif chute",
+      "wrong": [
+        "Parier sur la hausse du prix, en achetant l'actif",
+        "Garder l'actif très peu de temps avant de le revendre",
+        "Acheter une petite quantité pour tester la plateforme"
+      ],
+      "explanation": "Une position **short** profite d'une baisse : on vend un actif (souvent emprunté, ou via un produit dérivé) pour le racheter plus tard, si possible moins cher. À l'inverse, une position **long** profite de la hausse. Le mot « short » ne parle pas de durée : une position short peut rester ouverte des mois, et une position long quelques minutes.",
+      "difficulty": 1
+    },
+    {
+      "question": "Tu détiens un token. À quoi te sert un ordre **stop-loss** ?",
+      "answer": "À le vendre automatiquement si le prix descend à un seuil, pour limiter la perte",
+      "wrong": [
+        "À en acheter automatiquement dès que le prix atteint un record",
+        "À bloquer toute vente tant que le prix est en baisse",
+        "À annuler les frais de transaction en cas de perte"
+      ],
+      "explanation": "Un **stop-loss** déclenche la vente quand le cours franchit un seuil fixé à l'avance, ce qui coupe une position perdante avant que la perte ne s'aggrave. C'est un outil de base de la gestion du risque, indispensable avec du levier. Il ne garantit pas le prix exact : en cas de chute brutale ou de marché peu liquide, la vente peut s'exécuter nettement plus bas que le seuil.",
+      "difficulty": 1
+    },
+    {
+      "question": "Tu détiens un token acheté 10 $. Que fait un ordre **take-profit** placé à 15 $ ?",
+      "answer": "Il vend le token si son prix atteint 15 $, pour encaisser le gain",
+      "wrong": [
+        "Il achète davantage de tokens si le prix atteint 15 $, pour renforcer",
+        "Il vend le token si son prix retombe à 10 $, pour limiter la perte",
+        "Il bloque le token jusqu'à ce que son prix atteigne 15 $"
+      ],
+      "explanation": "Un **take-profit** sécurise un gain en vendant automatiquement à un objectif fixé, sans devoir surveiller l'écran. Il se combine souvent avec un **stop-loss** placé sous le prix d'achat : on décide à l'avance où l'on sort, en gain comme en perte. Cela évite de laisser l'avidité ou la panique dicter la décision sur le moment.",
+      "difficulty": 1
+    },
+    {
+      "question": "En quoi consiste la stratégie du **DCA** (Dollar-Cost Averaging) ?",
+      "answer": "Investir une somme fixe à intervalles réguliers, quel que soit le prix",
+      "wrong": [
+        "Investir toute son épargne en une fois au plus bas du marché",
+        "Vendre systématiquement dès que le prix augmente de 10 %",
+        "Emprunter pour acheter davantage chaque fois que le prix baisse"
+      ],
+      "explanation": "Le **DCA** (investissement programmé) consiste par exemple à acheter pour 50 € chaque semaine, que le cours soit haut ou bas. Cela lisse le prix d'achat moyen et évite d'avoir à deviner le « bon moment », ce que personne ne réussit de façon fiable. Le DCA réduit le risque de mauvais timing, mais pas le risque que l'actif lui-même perde toute sa valeur.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que désigne le terme **altcoin** ?",
+      "answer": "Toute cryptomonnaie autre que le bitcoin",
+      "wrong": [
+        "Une cryptomonnaie minée uniquement par des particuliers",
+        "Une copie frauduleuse du bitcoin",
+        "Une cryptomonnaie qui vaut plus cher que le bitcoin"
+      ],
+      "explanation": "**Altcoin** est la contraction d'« alternative coin » : toute cryptomonnaie apparue après le bitcoin et différente de lui (Ether, Solana, memecoins…). La catégorie est immense, des grands projets aux shitcoins. Les altcoins sont en général plus volatils que le bitcoin et chutent souvent plus fort que lui lors des baisses de marché.",
+      "difficulty": 1
+    },
+    {
+      "question": "Sur une plateforme d'échange, qu'est-ce qui caractérise un achat sur le marché **spot** (au comptant) ?",
+      "answer": "Tu paies le prix et reçois réellement le token, livré immédiatement",
+      "wrong": [
+        "Tu paries sur le prix futur sans jamais détenir le token",
+        "Tu achètes le token à crédit avec un effet de levier obligatoire",
+        "Tu réserves le token à un prix fixé, livré dans trois mois"
+      ],
+      "explanation": "Sur le marché **spot**, l'échange est réglé tout de suite : tu possèdes l'actif acheté et tu peux le retirer vers ton propre portefeuille. Les **produits dérivés** (futures, options) permettent au contraire de spéculer sur le prix sans détenir l'actif, souvent avec levier. En spot sans levier, il n'y a pas de liquidation : la perte maximale est la somme investie.",
+      "difficulty": 1
+    },
+    {
+      "question": "Sur une plateforme centralisée, que montre le **carnet d'ordres** (order book) ?",
+      "answer": "La liste des ordres d'achat et de vente en attente, classés par prix",
+      "wrong": [
+        "L'historique des cours du token sur les douze derniers mois",
+        "La liste des tokens détenus par chacun des clients",
+        "Le registre des frais encaissés par la plateforme"
+      ],
+      "explanation": "Le **carnet d'ordres** affiche d'un côté les **bids** (offres d'achat) et de l'autre les **asks** (offres de vente), avec les quantités proposées à chaque prix. Une transaction a lieu quand un acheteur et un vendeur s'accordent sur un prix. Un carnet bien garni signale un marché liquide ; un carnet presque vide annonce de forts écarts de prix au moindre ordre.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans un carnet d'ordres, la meilleure offre d'achat (bid) est à 99,90 $ et la meilleure offre de vente (ask) à 100,10 $. Comment appelle-t-on l'écart de 0,20 $ entre les deux ?",
+      "answer": "Le spread",
+      "wrong": [
+        "Le slippage",
+        "La marge de maintenance",
+        "Le funding rate"
+      ],
+      "explanation": "Le **spread** est l'écart entre le meilleur prix auquel quelqu'un accepte d'acheter (bid) et le meilleur prix auquel quelqu'un accepte de vendre (ask). C'est un coût caché : acheter puis revendre aussitôt fait perdre le spread. Il est minime sur les marchés liquides et peut devenir énorme sur les tokens obscurs. Le **slippage**, lui, est l'écart entre le prix attendu d'un ordre et le prix réellement obtenu.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur une plateforme d'échange, quelle est la différence entre un **maker** et un **taker** ?",
+      "answer": "Le maker ajoute un ordre au carnet, le taker exécute un ordre déjà présent",
+      "wrong": [
+        "Le maker crée de nouveaux tokens, le taker les achète en premier",
+        "Le maker est la plateforme, le taker le client qui paie les frais",
+        "Le maker vend toujours, le taker achète toujours"
+      ],
+      "explanation": "Un **maker** place un ordre qui ne s'exécute pas immédiatement et attend dans le carnet : il « fabrique » de la liquidité. Un **taker** passe un ordre qui se remplit tout de suite contre un ordre existant : il « prend » cette liquidité. Les plateformes facturent généralement des frais plus bas aux makers pour encourager la liquidité. Acheteurs comme vendeurs peuvent être makers ou takers selon leur façon de passer l'ordre.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur une plateforme, la paire **ETH/USDT** est affichée à 3 000. Que représente ce nombre ?",
+      "answer": "Le prix d'un ETH exprimé en USDT",
+      "wrong": [
+        "Le prix d'un USDT exprimé en ETH",
+        "Le nombre d'ETH échangés sur 24 heures",
+        "Le nombre d'USDT disponibles à l'achat"
+      ],
+      "explanation": "Dans une paire **BASE/COTATION**, le prix indique combien d'unités de la devise de cotation (ici l'USDT, un stablecoin) il faut pour obtenir une unité de la devise de base (l'ETH). Acheter sur ETH/USDT, c'est donc payer en USDT pour recevoir de l'ETH. Bien lire le sens de la paire évite des erreurs grossières de montant.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur un graphique en **chandeliers japonais**, quelles sont les quatre valeurs représentées par chaque bougie ?",
+      "answer": "Le prix d'ouverture, le plus haut, le plus bas et le prix de clôture",
+      "wrong": [
+        "Le volume, le nombre de transactions, les frais et le spread",
+        "Le prix moyen, la médiane, l'écart type et la tendance",
+        "Le prix d'achat, le prix de vente, le levier et la marge"
+      ],
+      "explanation": "Chaque bougie résume une période (une minute, une heure, un jour…) par quatre prix : **Open, High, Low, Close** (OHLC). Le corps relie l'ouverture et la clôture, les **mèches** montrent les extrêmes atteints pendant la période. La couleur indique le sens : en général verte si la clôture dépasse l'ouverture, rouge sinon.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur un graphique, une bougie journalière présente une très longue **mèche basse** et un petit corps proche de son sommet. Que signifie cette mèche ?",
+      "answer": "Le prix est descendu très bas pendant la journée, puis est remonté avant la clôture",
+      "wrong": [
+        "Le prix a terminé la journée exactement à son niveau le plus bas",
+        "Le volume d'échange a été très faible pendant toute la journée",
+        "La plateforme a suspendu les échanges pendant une partie de la journée"
+      ],
+      "explanation": "La **mèche** (ou ombre) d'une bougie montre les prix extrêmes atteints pendant la période, au-delà du corps qui relie ouverture et clôture. Une longue mèche basse indique que les vendeurs ont fait chuter le cours, mais que les acheteurs l'ont ramené vers le haut avant la clôture. Sur un token peu liquide, une seule grosse vente peut créer une mèche spectaculaire et déclencher au passage tous les stop-loss placés dans cette zone.",
+      "difficulty": 2
+    },
+    {
+      "question": "En analyse technique, qu'appelle-t-on une **résistance** ?",
+      "answer": "Un niveau de prix où les ventes ont plusieurs fois stoppé la hausse",
+      "wrong": [
+        "Un niveau de prix où les achats ont plusieurs fois stoppé la baisse",
+        "Le prix plancher garanti par la plateforme d'échange",
+        "La capacité d'un token à résister aux piratages"
+      ],
+      "explanation": "Une **résistance** est une zone où le cours a buté à plusieurs reprises, car de nombreux vendeurs s'y manifestent. Son pendant est le **support**, une zone où les achats ont plusieurs fois arrêté la baisse. Ce ne sont pas des murs garantis : ce sont des repères tirés de l'historique des prix, qui finissent souvent par être franchis.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que mesure la **volatilité** d'une cryptomonnaie ?",
+      "answer": "L'ampleur et la fréquence des variations de son prix",
+      "wrong": [
+        "Le nombre de transactions validées par seconde",
+        "La rapidité des retraits vers un compte bancaire",
+        "Le nombre de plateformes où elle est cotée"
+      ],
+      "explanation": "Un actif **volatil** voit son prix varier fortement et souvent, à la hausse comme à la baisse. Les cryptomonnaies sont bien plus volatiles que la plupart des actions ou des devises, et les petits tokens encore plus que le bitcoin. Une forte volatilité signifie de gros gains possibles, mais tout autant de grosses pertes : elle mesure un risque, pas une promesse.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi un token peu **liquide** est-il risqué, même si son prix affiché ne cesse de monter ?",
+      "answer": "Parce qu'il peut être impossible de le revendre sans faire chuter fortement son prix",
+      "wrong": [
+        "Parce que ses transactions sont toujours plus lentes que celles du bitcoin",
+        "Parce que les plateformes bloquent les achats au-delà d'un certain prix",
+        "Parce que ses détenteurs paient un impôt spécial à chaque achat"
+      ],
+      "explanation": "La **liquidité** mesure la facilité d'acheter ou de vendre une quantité sans faire bouger le prix. Sur un token peu liquide, il y a peu d'acheteurs en face : vendre une somme modeste peut faire plonger le cours de 20 ou 50 %. Un gain affiché à l'écran n'est donc pas un gain réalisable. Avant d'acheter, regarde la profondeur du carnet d'ordres ou la taille du pool de liquidité.",
+      "difficulty": 2
+    },
+    {
+      "question": "Tu as acheté un token 1 $ ; il vaut aujourd'hui 3 $ et tu ne l'as pas vendu. Comment qualifie-t-on ce gain ?",
+      "answer": "Un gain latent (non réalisé)",
+      "wrong": [
+        "Un gain réalisé et encaissé",
+        "Un gain garanti par contrat",
+        "Un gain composé annuel"
+      ],
+      "explanation": "Tant que la position n'est pas vendue, le gain est **latent** (unrealized PnL) : il n'existe qu'à l'écran et peut disparaître si le cours rechute. Il devient **réalisé** au moment de la vente. Beaucoup d'investisseurs ont vu des gains latents spectaculaires s'évaporer faute d'avoir encaissé, surtout sur des tokens peu liquides où la vente elle-même fait baisser le prix.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un token perd 50 % de sa valeur. Quelle hausse doit-il ensuite réaliser pour revenir à son prix de départ ?",
+      "answer": "+100 %",
+      "wrong": [
+        "+50 %",
+        "+75 %",
+        "+150 %"
+      ],
+      "explanation": "Après −50 %, un token à 100 $ vaut 50 $ ; pour revenir à 100 $, il doit doubler, soit **+100 %**. Les pourcentages ne sont pas symétriques : plus la chute est forte, plus la remontée nécessaire est énorme (−80 % exige +400 %, −90 % exige +900 %). C'est pourquoi limiter ses pertes compte davantage que viser de gros gains.",
+      "difficulty": 2
+    },
+    {
+      "question": "Avec un capital de 5 000 € et la règle prudente de ne jamais risquer plus de 1 % de son capital par trade, quelle perte maximale acceptes-tu sur une position ?",
+      "answer": "50 €",
+      "wrong": [
+        "5 €",
+        "500 €",
+        "1 000 €"
+      ],
+      "explanation": "1 % de 5 000 € = **50 €**. Cette règle ne limite pas la taille de la position mais la perte possible : on place son stop-loss de sorte que, s'il est touché, on ne perde que 50 €. Ainsi, même une série de dix trades perdants d'affilée ne coûte qu'environ 10 % du capital, ce qui laisse le temps de se corriger.",
+      "difficulty": 1
+    },
+    {
+      "question": "Tu achètes un token à 100 $, places ton stop-loss à 95 $ et ton objectif de vente à 115 $. Quel est le ratio risque/rendement de ce trade ?",
+      "answer": "1 pour 3",
+      "wrong": [
+        "1 pour 1,5",
+        "1 pour 2",
+        "1 pour 5"
+      ],
+      "explanation": "Le risque est de 5 $ par token (100 − 95) et le gain visé de 15 $ (115 − 100) : on risque 1 pour espérer gagner 3, soit un ratio de **1:3**. Avec un tel ratio, il suffit de gagner un trade sur quatre pour être à l'équilibre, hors frais. Un ratio défavorable (risquer 10 pour gagner 2) exige au contraire d'avoir raison presque à chaque fois.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce que le **livre blanc** (whitepaper) d'un projet crypto ?",
+      "answer": "Le document qui présente le projet, sa technologie et l'économie de son token",
+      "wrong": [
+        "Le contrat qui garantit le remboursement intégral des investisseurs",
+        "La liste officielle des plateformes autorisées à coter le token",
+        "Le relevé bancaire qui certifie les réserves du projet"
+      ],
+      "explanation": "Le **whitepaper** expose le problème visé, la solution technique, l'économie du token (tokenomics) et souvent la feuille de route. C'est la première chose à lire avant d'investir. Signaux d'alerte : texte vague bourré de mots à la mode, promesses de rendement, passages copiés d'un autre projet, absence de détails techniques. Ce n'est jamais une garantie : un document soigné peut cacher un projet creux.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que représente le **volume sur 24 h** affiché pour un token ?",
+      "answer": "La valeur totale des achats et ventes du token sur les dernières 24 heures",
+      "wrong": [
+        "Le nombre de nouveaux détenteurs du token sur les dernières 24 heures",
+        "La variation du prix du token sur les dernières 24 heures",
+        "Le nombre de tokens créés par le protocole sur les dernières 24 heures"
+      ],
+      "explanation": "Le **volume** mesure l'activité réelle d'échange : un volume élevé indique en principe un marché actif où l'on peut acheter et vendre facilement. Mais ce chiffre se falsifie : certaines plateformes ou équipes gonflent le volume en s'échangeant des tokens à elles-mêmes (**wash trading**) pour attirer les acheteurs. Un volume énorme sur un token inconnu, sans communauté visible, doit éveiller la méfiance.",
+      "difficulty": 1
+    },
+    {
+      "question": "Une plateforme te promet un rendement **garanti** de 2 % par jour sur tes cryptos. Que faut-il en penser ?",
+      "answer": "C'est un signal d'arnaque : aucun placement ne garantit un tel rendement",
+      "wrong": [
+        "C'est une offre normale pour du staking sur une grande blockchain",
+        "C'est sûr dès lors que la plateforme a un site professionnel",
+        "C'est sans risque tant que l'on retire ses gains chaque semaine"
+      ],
+      "explanation": "2 % par jour, réinvestis, multiplieraient la mise par plus de 1 000 en un an : aucune activité réelle ne produit cela durablement. Un rendement **élevé et garanti** est la signature des chaînes de Ponzi, qui paient les anciens avec l'argent des nouveaux jusqu'à l'effondrement. Retirer régulièrement ne protège pas : ces plateformes bloquent souvent les retraits juste avant de disparaître.",
+      "difficulty": 1
+    },
+    {
+      "question": "Une vidéo en direct montre une célébrité annonçant : « Envoyez 1 ETH à cette adresse, je vous en renverrai 2 ». Que se passe-t-il si tu envoies 1 ETH ?",
+      "answer": "Tu perds ton ETH : c'est une arnaque au faux giveaway",
+      "wrong": [
+        "Tu reçois 2 ETH dans l'heure, comme promis",
+        "Tu reçois 2 ETH, mais seulement après vérification d'identité",
+        "Tu peux annuler la transaction si rien n'arrive"
+      ],
+      "explanation": "L'arnaque au **faux giveaway** usurpe l'image d'une personnalité ou d'une entreprise, souvent avec des vidéos détournées ou des deepfakes, pour réclamer un envoi « à doubler ». Rien n'est jamais renvoyé. Une transaction blockchain est irréversible : aucune banque ni plateforme ne peut l'annuler. Règle simple : personne ne distribue de l'argent gratuit en échange d'un envoi préalable.",
+      "difficulty": 1
+    },
+    {
+      "question": "Après une question posée dans le groupe Telegram d'un projet, un « membre du support » t'écrit en privé et te demande ta phrase de récupération pour régler ton problème. Que faire ?",
+      "answer": "Refuser et le bloquer : aucun support légitime ne demande cette phrase",
+      "wrong": [
+        "La lui donner, puisqu'il a le statut d'administrateur du groupe",
+        "Ne lui donner que la moitié des mots, par précaution",
+        "La lui transmettre par e-mail plutôt que par message privé"
+      ],
+      "explanation": "La **phrase de récupération** (seed phrase) donne le contrôle total du portefeuille : quiconque la connaît peut le vider. Aucun support, administrateur ou plateforme sérieuse ne la demande jamais. Les escrocs surveillent les groupes publics et contactent en privé ceux qui posent des questions, en se faisant passer pour l'équipe. N'en donner qu'une partie n'est pas une protection : c'est déjà céder à la manipulation, et l'escroc réclamera la suite.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qui caractérise une **chaîne de Ponzi** ?",
+      "answer": "Les gains des anciens investisseurs sont payés avec l'argent des nouveaux",
+      "wrong": [
+        "Les gains proviennent des frais de transaction versés aux mineurs",
+        "Les investisseurs prêtent leurs tokens contre une garantie supérieure",
+        "Le prix du token y est indexé en permanence sur celui du bitcoin"
+      ],
+      "explanation": "Une **chaîne de Ponzi** ne produit aucun rendement réel : elle verse aux premiers participants l'argent des nouveaux arrivants, ce qui donne l'illusion d'une activité rentable. Elle s'effondre inévitablement dès que les entrées ralentissent ou que trop de gens veulent retirer. En crypto, elle se cache souvent derrière un prétendu « bot de trading » ou un « arbitrage secret » aux rendements étonnamment réguliers.",
+      "difficulty": 2
+    },
+    {
+      "question": "D'où vient le nom de la **chaîne de Ponzi** ?",
+      "answer": "De Charles Ponzi, escroc qui a ruiné des milliers d'épargnants à Boston en 1920",
+      "wrong": [
+        "D'une ville italienne où se serait produit le premier krach boursier",
+        "D'un économiste qui a décrit mathématiquement le mécanisme en 1950",
+        "D'un jeu de société des années 1930 fondé sur des pyramides de jetons"
+      ],
+      "explanation": "En 1920, à Boston, Charles Ponzi promettait 50 % de gain en 45 jours grâce à un prétendu arbitrage sur les **coupons-réponse internationaux** de la poste. En réalité, il payait les premiers investisseurs avec l'argent des suivants, et le système s'est effondré la même année. Le procédé existait avant lui, mais son nom est resté attaché à ce type de fraude, omniprésent dans les arnaques crypto.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Charles_Ponzi"
+    },
+    {
+      "question": "Un « programme crypto » rémunère surtout le fait de **recruter de nouveaux membres**, avec des commissions sur plusieurs niveaux de filleuls. De quoi s'agit-il très probablement ?",
+      "answer": "D'une vente pyramidale, qui s'effondre quand les recrutements ralentissent",
+      "wrong": [
+        "D'un simple programme de parrainage, sans risque particulier",
+        "D'un mécanisme de staking qui récompense la sécurité du réseau",
+        "D'un airdrop réservé aux membres les plus actifs du projet"
+      ],
+      "explanation": "Quand l'essentiel des gains vient du **recrutement** et non d'un produit réel, on est face à une **vente pyramidale**. Seuls les premiers inscrits gagnent ; la grande majorité perd sa mise quand le flux de nouveaux membres se tarit. Ces schémas sont interdits en France. Des fraudes crypto célèbres comme OneCoin ou BitConnect reposaient largement sur ce marketing de parrainage à plusieurs niveaux.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que désigne l'arnaque dite du **pig butchering** (« abattage du cochon ») ?",
+      "answer": "Gagner la confiance d'une victime en ligne, puis la pousser à investir toujours plus sur une fausse plateforme",
+      "wrong": [
+        "Acheter massivement un memecoin animalier pour faire grimper son prix avant de tout revendre",
+        "Miner des cryptos en détournant en secret la puissance de calcul d'ordinateurs piratés",
+        "Vendre à découvert un token juste avant l'annonce publique d'une mauvaise nouvelle"
+      ],
+      "explanation": "Dans le **pig butchering** (de l'expression chinoise *sha zhu pan*), l'escroc noue pendant des semaines une relation de confiance, souvent amoureuse ou amicale, via une appli de rencontre, un réseau social ou un faux « mauvais numéro ». Il présente ensuite une plateforme d'investissement qui affiche des gains fictifs pour encourager des dépôts toujours plus gros, puis coupe le contact. Le « cochon » est la victime qu'on engraisse avant de l'abattre.",
+      "difficulty": 2
+    },
+    {
+      "question": "Ton compte sur une plateforme d'investissement affiche de gros gains, mais pour retirer, on te demande d'abord de verser des « frais de déblocage » ou des « taxes ». Que faut-il en conclure ?",
+      "answer": "La plateforme est très probablement frauduleuse et les gains affichés sont fictifs",
+      "wrong": [
+        "C'est une procédure normale imposée par l'administration fiscale",
+        "Il suffit de payer une fois pour récupérer la totalité des gains",
+        "C'est une simple vérification d'identité obligatoire en Europe"
+      ],
+      "explanation": "Réclamer un versement pour libérer des fonds est un grand classique des **fausses plateformes** : les soldes affichés ne sont que des chiffres sur une page web, sans rien derrière. Chaque paiement entraîne une nouvelle demande (frais, taxes, « assurance »…), jusqu'à épuisement de la victime. Une plateforme légitime déduit ses frais du montant retiré : elle n'exige pas un nouveau dépôt pour débloquer ton propre argent.",
+      "difficulty": 2
+    },
+    {
+      "question": "Après t'être fait escroquer, un « cabinet spécialisé » te contacte et propose de récupérer tes cryptos volées contre des frais payés d'avance. De quoi s'agit-il le plus souvent ?",
+      "answer": "D'une seconde arnaque visant les victimes, dite arnaque au recouvrement",
+      "wrong": [
+        "D'un service public de restitution géré par la police",
+        "D'une démarche obligatoire pour déclarer le vol au fisc",
+        "D'une assurance automatique fournie par la blockchain"
+      ],
+      "explanation": "Les escrocs revendent et réutilisent les listes de victimes : de faux avocats, « hackers éthiques » ou enquêteurs promettent de récupérer les fonds moyennant des frais d'avance, puis disparaissent. C'est l'**arnaque au recouvrement** (recovery scam). Une victime doit porter plainte auprès des autorités et se méfier de toute sollicitation qu'elle n'a pas demandée, surtout si elle exige un paiement préalable.",
+      "difficulty": 2
+    },
+    {
+      "question": "Ton historique affiche une transaction de 0 USDT impliquant une adresse dont les premiers et derniers caractères sont identiques à ceux d'un ami à qui tu envoies souvent des fonds. Quelle attaque prépare-t-on probablement ?",
+      "answer": "Un empoisonnement d'adresse, pour que tu copies la fausse adresse depuis ton historique",
+      "wrong": [
+        "Un test de connexion envoyé par ton ami pour vérifier ton portefeuille",
+        "Un remboursement automatique de frais de gas effectué par le réseau",
+        "Une attaque à 51 % visant à annuler tes transactions précédentes"
+      ],
+      "explanation": "Dans l'**address poisoning**, l'attaquant génère une adresse qui ressemble à celle d'un de tes destinataires habituels (mêmes premiers et derniers caractères) et fait apparaître une transaction minuscule ou nulle dans ton historique. Il parie que, lors d'un prochain envoi, tu copieras l'adresse depuis l'historique en ne vérifiant que le début et la fin. Parade : utiliser un carnet d'adresses enregistré et vérifier l'adresse complète avant chaque envoi.",
+      "difficulty": 3
+    },
+    {
+      "question": "Tu copies une adresse de destination, la colles dans ton portefeuille… et l'adresse collée est différente. Quel type de logiciel malveillant est probablement en cause ?",
+      "answer": "Un « clipper », qui remplace l'adresse copiée dans le presse-papiers",
+      "wrong": [
+        "Un rançongiciel, qui chiffre le contenu de ton portefeuille",
+        "Un mineur caché, qui utilise ton processeur pour miner",
+        "Un keylogger, qui enregistre les touches que tu tapes"
+      ],
+      "explanation": "Un **clipper** (pirate de presse-papiers) surveille ce que tu copies : dès qu'il reconnaît une adresse crypto, il la remplace par celle de l'attaquant, parfois choisie pour lui ressembler. Si tu ne vérifies pas, tu envoies les fonds au pirate, sans retour possible. D'où la règle : toujours comparer l'adresse collée avec l'originale et, avec un portefeuille matériel, vérifier l'adresse affichée sur l'écran de l'appareil.",
+      "difficulty": 2
+    },
+    {
+      "question": "Des quantités infimes de bitcoin (de la « poussière ») arrivent sur ton adresse sans que tu aies rien demandé. Quel est le but le plus courant de cette **dusting attack** ?",
+      "answer": "Suivre tes futures transactions pour relier tes adresses et t'identifier",
+      "wrong": [
+        "Te rembourser automatiquement les frais de tes anciennes transactions",
+        "Augmenter ton solde pour te rendre éligible à un airdrop",
+        "Tester la vitesse du réseau avant une mise à jour du protocole"
+      ],
+      "explanation": "Une **dusting attack** envoie de minuscules montants à de nombreuses adresses. Sur une blockchain à UTXO comme Bitcoin, si tu dépenses ensuite cette poussière en même temps que tes autres fonds, l'attaquant peut relier plusieurs de tes adresses entre elles et tenter de t'identifier, en vue de phishing ou d'extorsion. Parade : ne pas dépenser ces montants ; certains portefeuilles permettent de les « geler » pour qu'ils ne soient jamais utilisés.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur une DEX, tu signes une **approbation illimitée** (unlimited approve) pour l'un de tes tokens. Quel risque cela crée-t-il ?",
+      "answer": "Le contrat autorisé pourra prendre tout ce token dans ton portefeuille, même plus tard",
+      "wrong": [
+        "Tu ne pourras plus jamais vendre ce token sur une autre plateforme",
+        "Tes frais de gas seront prélevés sans limite à chaque transaction",
+        "Le token restera bloqué dans ton portefeuille jusqu'à la révocation"
+      ],
+      "explanation": "Pour échanger un token ERC-20, tu dois d'abord **approuver** un contrat à le dépenser. Une approbation illimitée lui permet de prélever n'importe quel montant de ce token, à tout moment, tant qu'elle n'est pas révoquée. Si ce contrat est malveillant, ou piraté des mois plus tard, tes fonds peuvent être vidés sans nouvelle signature. Bonne pratique : n'approuver que le montant nécessaire et révoquer régulièrement les approbations inutiles.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un site te demande seulement de **signer un message** (sans transaction ni frais de gas) pour « vérifier ton portefeuille ». Pourquoi rester méfiant ?",
+      "answer": "Une signature comme un « permit » peut autoriser le transfert de tes tokens",
+      "wrong": [
+        "Signer un message transmet ta clé privée au site qui le demande",
+        "Signer un message bloque ton portefeuille pendant 24 heures",
+        "Signer un message déclenche des frais cachés prélevés plus tard"
+      ],
+      "explanation": "Certains standards, comme **permit** (EIP-2612) ou Permit2, permettent d'accorder une autorisation de dépense par simple **signature hors chaîne**, sans payer de gas. L'attaquant soumet ensuite lui-même cette signature à la blockchain et transfère tes tokens. Les drainers exploitent largement ce mécanisme, car la victime croit qu'une signature « gratuite » est sans danger. Signer ne révèle pas ta clé privée, mais peut céder des droits : lis toujours ce que ton portefeuille te demande de signer.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un site NFT te demande de signer une transaction appelant **setApprovalForAll**. Qu'accordes-tu exactement ?",
+      "answer": "Le droit de transférer tous tes NFT de cette collection, présents et futurs",
+      "wrong": [
+        "Le droit de voir la liste de tes NFT, sans pouvoir les déplacer",
+        "Le droit de vendre un seul NFT, au prix que tu as fixé",
+        "Le droit de copier l'image de tes NFT pour les exposer"
+      ],
+      "explanation": "`setApprovalForAll` est une fonction des standards ERC-721 et ERC-1155 qui donne à un opérateur le droit de transférer **l'ensemble** de tes NFT d'une collection, tant que l'autorisation n'est pas révoquée. Les places de marché légitimes l'utilisent, mais c'est aussi une cible de choix pour les sites de phishing : une seule signature suffit à vider toute la collection. Vérifie toujours l'adresse de l'opérateur et le domaine du site.",
+      "difficulty": 3
+    },
+    {
+      "question": "Tu veux acheter un token populaire sur une DEX, mais plusieurs tokens portent exactement le même nom et le même symbole. Comment trouver le bon ?",
+      "answer": "Vérifier l'adresse du contrat sur le site officiel du projet",
+      "wrong": [
+        "Choisir celui dont le prix unitaire est le plus bas",
+        "Choisir celui qui a le plus fort volume dans l'heure",
+        "Choisir celui qui apparaît en premier dans la recherche"
+      ],
+      "explanation": "N'importe qui peut créer un token avec le même nom et le même symbole qu'un projet connu : seule l'**adresse du contrat** est unique. Il faut la récupérer depuis une source officielle (site ou documentation du projet) et la comparer caractère par caractère. Les faux tokens affichent parfois un volume fabriqué pour paraître légitimes, et un prix bas ne prouve rien.",
+      "difficulty": 2
+    },
+    {
+      "question": "Tu reçois un portefeuille matériel accompagné d'une carte où est **déjà imprimée** une phrase de récupération à utiliser. Que faire ?",
+      "answer": "Ne pas l'utiliser : celui qui a imprimé la phrase pourra vider le portefeuille",
+      "wrong": [
+        "L'utiliser : c'est la phrase de secours fournie par le fabricant",
+        "L'utiliser après avoir changé le code PIN de l'appareil",
+        "La recopier sur papier, puis détruire la carte imprimée"
+      ],
+      "explanation": "Un portefeuille matériel légitime **génère lui-même** la phrase de récupération lors de sa configuration et l'affiche sur son écran : elle n'est jamais fournie à l'avance. Une phrase pré-imprimée est connue de quelqu'un d'autre, qui n'attend que tes dépôts pour les voler ; changer le PIN n'y change rien, car le PIN ne protège que l'accès à l'appareil. Achète ces appareils chez le fabricant ou un revendeur officiel et méfie-toi de ceux d'occasion.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un « conseiller en investissement » propose de t'aider à acheter des cryptos et te demande d'installer **AnyDesk** ou **TeamViewer** sur ton ordinateur. Que faut-il comprendre ?",
+      "answer": "Il veut prendre le contrôle de ton ordinateur : c'est une arnaque classique",
+      "wrong": [
+        "C'est l'outil obligatoire pour acheter des cryptos en Europe",
+        "C'est un antivirus qui protégera ton portefeuille des pirates",
+        "C'est un logiciel qui accélère la validation des transactions"
+      ],
+      "explanation": "AnyDesk et TeamViewer sont des logiciels légitimes de **prise en main à distance**, mais les escrocs s'en servent pour piloter l'ordinateur de la victime : ouvrir son portefeuille ou sa banque, valider des virements ou des transferts en son nom. Aucun service sérieux d'investissement n'a besoin de contrôler ton écran. Si tu as installé un tel logiciel à la demande d'un inconnu, désinstalle-le et change tes mots de passe depuis un autre appareil.",
+      "difficulty": 1
+    },
+    {
+      "question": "Une vidéo explique comment gagner des ETH chaque jour avec un « bot d'arbitrage MEV » : il suffit de copier un code de smart contract, de le déployer, puis d'y envoyer des ETH. Que se passe-t-il en général ?",
+      "answer": "Le code caché transfère les ETH déposés vers l'adresse de l'escroc",
+      "wrong": [
+        "Le bot réalise des profits réguliers grâce aux écarts de prix",
+        "Le contrat est bloqué par le réseau, car le MEV y est interdit",
+        "Les ETH sont mis en staking et rapportent quelques % par an"
+      ],
+      "explanation": "Dans cette arnaque répandue, le contrat fourni contient, souvent de façon obscurcie, l'adresse de l'escroc : dès que la victime envoie des ETH et « démarre » le bot, les fonds lui sont transférés. Le **MEV** (valeur extractible par ceux qui ordonnent les transactions) existe bel et bien, mais il est disputé par des acteurs très spécialisés : aucun code copié d'une vidéo ne permet d'en profiter. Ne déploie jamais un contrat que tu ne comprends pas ligne par ligne.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pour la double authentification (2FA) de ton compte sur une plateforme crypto, pourquoi préférer une application d'authentification aux codes reçus par **SMS** ?",
+      "answer": "Parce qu'un escroc peut détourner ton numéro par une fraude à la carte SIM",
+      "wrong": [
+        "Parce que la plateforme facture chaque SMS envoyé lors des connexions",
+        "Parce que les codes SMS expirent souvent avant d'arriver",
+        "Parce que les applications 2FA augmentent les plafonds de retrait"
+      ],
+      "explanation": "Avec le **SIM swapping**, un escroc convainc ton opérateur, en usurpant ton identité, de transférer ton numéro sur une carte SIM qu'il contrôle : il reçoit alors tes codes SMS et peut réinitialiser tes comptes. Une application d'authentification génère les codes sur ton appareil, sans passer par le réseau téléphonique. Une clé de sécurité physique offre une protection encore plus forte.",
+      "difficulty": 2
+    },
+    {
+      "question": "Tu t'apprêtes à envoyer une grosse somme en cryptos vers une adresse que tu n'as jamais utilisée. Quelle précaution simple est recommandée ?",
+      "answer": "Envoyer d'abord un petit montant test et vérifier sa bonne réception",
+      "wrong": [
+        "Envoyer la somme le dimanche, quand les frais de réseau sont nuls",
+        "Répartir la somme entre plusieurs adresses de destination",
+        "Envoyer la somme sans mémo, pour que l'opération soit plus rapide"
+      ],
+      "explanation": "Une transaction blockchain est **irréversible** : une erreur d'adresse ou de réseau fait perdre les fonds définitivement. Envoyer d'abord un petit montant, vérifier qu'il arrive bien, puis envoyer le reste coûte un peu plus de frais mais évite la catastrophe. C'est particulièrement utile pour un premier envoi vers une plateforme ou un nouveau portefeuille.",
+      "difficulty": 1
+    },
+    {
+      "question": "Tu retires des USDT d'une plateforme vers une adresse de dépôt, mais tu choisis un **réseau** que le destinataire ne prend pas en charge. Quel est le risque ?",
+      "answer": "Les fonds risquent d'être perdus, car ils arrivent sur une chaîne non prise en charge",
+      "wrong": [
+        "Aucun : le réseau est converti automatiquement à l'arrivée sur la plateforme",
+        "La transaction est refusée et les fonds reviennent en quelques minutes",
+        "Les USDT sont convertis en ETH à l'arrivée, à un taux défavorable"
+      ],
+      "explanation": "Un même token peut exister sur plusieurs blockchains : l'USDT circule par exemple sur Ethereum, Tron ou Solana. Les réseaux compatibles EVM (Ethereum, BNB Chain, Polygon…) utilisent même des adresses de format identique, ce qui rend l'erreur facile. Si tu envoies sur un réseau que le destinataire ne surveille pas, les fonds arrivent là où il ne les voit pas : au mieux une récupération longue et parfois payante, au pire une perte définitive. Vérifie toujours que le **réseau** de retrait correspond à celui indiqué pour le dépôt.",
+      "difficulty": 2
+    },
+    {
+      "question": "Certaines plateformes utilisent une seule adresse de dépôt pour tous leurs clients et te demandent d'ajouter un **mémo** (ou tag de destination) propre à ton compte. À quoi sert-il ?",
+      "answer": "À identifier ton compte, pour que la plateforme crédite le dépôt au bon client",
+      "wrong": [
+        "À chiffrer la transaction pour qu'elle reste confidentielle",
+        "À réduire les frais de réseau payés pour le dépôt",
+        "À accélérer la confirmation du dépôt par les validateurs"
+      ],
+      "explanation": "Sur des réseaux comme XRP Ledger, Stellar ou Cosmos, les plateformes regroupent souvent les dépôts de tous leurs clients sur une même adresse : le **mémo** indique à qui appartient chaque versement. Si tu l'oublies, les fonds peuvent arriver sur l'adresse commune sans être attribués, et il faut alors passer par le support, parfois longuement, pour les récupérer. Le mémo n'est pas un secret et ne chiffre rien.",
+      "difficulty": 3
+    },
+    {
+      "question": "Tu cherches le site de ton portefeuille crypto sur un moteur de recherche. Le premier résultat est une annonce sponsorisée au nom quasi identique. Quel réflexe adopter ?",
+      "answer": "Vérifier l'adresse exacte du site, ou passer par un favori enregistré",
+      "wrong": [
+        "Cliquer sans crainte : les annonces sont toutes vérifiées par le moteur",
+        "Installer l'extension proposée, puisqu'elle est en tête des résultats",
+        "Saisir sa phrase de récupération pour confirmer que c'est le bon site"
+      ],
+      "explanation": "Les escrocs achètent des **annonces sponsorisées** qui pointent vers des copies parfaites de sites de portefeuilles ou de plateformes, avec un nom de domaine à une lettre près. Ces faux sites volent les identifiants ou proposent de fausses extensions qui dérobent la phrase de récupération. Réflexe : enregistrer l'adresse officielle en favori et l'utiliser systématiquement, et ne jamais saisir sa phrase de récupération sur un site web.",
+      "difficulty": 1
     }
   ]
 }

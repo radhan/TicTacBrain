@@ -8,42 +8,66 @@
     {
       "question": "Que représente une **action** cotée en Bourse ?",
       "answer": "Une part de propriété du capital d'une entreprise",
-      "wrong": ["Un prêt accordé à l'entreprise en échange d'intérêts", "Une garantie de remboursement émise par l'État", "Un droit d'acheter l'entreprise à un prix fixé d'avance"],
+      "wrong": [
+        "Un prêt accordé à l'entreprise en échange d'intérêts",
+        "Une garantie de remboursement émise par l'État",
+        "Un droit d'acheter l'entreprise à un prix fixé d'avance"
+      ],
       "explanation": "Détenir une action, c'est posséder une fraction du capital d'une société et devenir actionnaire : on peut toucher des dividendes et voter en assemblée générale. Prêter de l'argent à l'entreprise contre des intérêts correspond à une obligation, pas à une action.",
       "difficulty": 1
     },
     {
       "question": "Qu'est-ce qu'une **obligation** sur les marchés financiers ?",
       "answer": "Un titre de dette : un prêt accordé à l'émetteur en échange d'intérêts",
-      "wrong": ["Une part du capital d'une entreprise donnant droit de vote", "Un engagement légal de conserver ses titres pendant un an", "Un contrat d'assurance contre la faillite d'une société"],
+      "wrong": [
+        "Une part du capital d'une entreprise donnant droit de vote",
+        "Un engagement légal de conserver ses titres pendant un an",
+        "Un contrat d'assurance contre la faillite d'une société"
+      ],
       "explanation": "Une obligation est une reconnaissance de dette : l'investisseur prête de l'argent à un État ou une entreprise, qui verse des intérêts (le coupon) puis rembourse le capital à l'échéance. Contrairement à l'action, elle ne confère aucune part de propriété ni droit de vote.",
       "difficulty": 1
     },
     {
       "question": "Qu'est-ce qu'un **dividende** ?",
       "answer": "Une part du bénéfice qu'une entreprise reverse à ses actionnaires",
-      "wrong": ["Les intérêts versés aux détenteurs d'obligations", "La commission prélevée par le courtier à chaque ordre", "La plus-value réalisée en revendant une action plus cher"],
+      "wrong": [
+        "Les intérêts versés aux détenteurs d'obligations",
+        "La commission prélevée par le courtier à chaque ordre",
+        "La plus-value réalisée en revendant une action plus cher"
+      ],
       "explanation": "Le dividende est la fraction du bénéfice qu'une société décide de distribuer à ses actionnaires, souvent chaque année. Toutes les entreprises n'en versent pas : certaines réinvestissent la totalité de leurs profits pour croître. À ne pas confondre avec le coupon, qui rémunère une obligation.",
       "difficulty": 1
     },
     {
       "question": "Quel est le rôle d'un **courtier** (broker) en Bourse ?",
       "answer": "Transmettre et exécuter les ordres d'achat et de vente de ses clients sur le marché",
-      "wrong": ["Fixer le cours des actions à l'ouverture de la séance", "Garantir à ses clients un rendement minimum chaque année", "Émettre de nouvelles actions pour le compte des entreprises"],
+      "wrong": [
+        "Fixer le cours des actions à l'ouverture de la séance",
+        "Garantir à ses clients un rendement minimum chaque année",
+        "Émettre de nouvelles actions pour le compte des entreprises"
+      ],
       "explanation": "Le courtier est l'intermédiaire qui donne accès au marché : il transmet et exécute les ordres de ses clients, en général contre des frais de courtage. Il ne décide pas des cours, qui résultent de la confrontation de l'offre et de la demande.",
       "difficulty": 1
     },
     {
       "question": "En Bourse, que désigne un marché « **haussier** » (bull market) ?",
       "answer": "Une période de hausse durable et généralisée des cours",
-      "wrong": ["Une séance qui ouvre en hausse puis clôture en baisse", "Un marché réservé aux achats, où les ventes sont interdites", "Une hausse provoquée uniquement par la banque centrale"],
+      "wrong": [
+        "Une séance qui ouvre en hausse puis clôture en baisse",
+        "Un marché réservé aux achats, où les ventes sont interdites",
+        "Une hausse provoquée uniquement par la banque centrale"
+      ],
       "explanation": "Un marché **haussier** (bull) correspond à une tendance de fond à la hausse et à un climat optimiste ; son opposé est le marché **baissier** (bear), marqué par des cours en baisse durable. Les termes évoquent le taureau qui encorne vers le haut et l'ours qui frappe vers le bas.",
       "difficulty": 1
     },
     {
       "question": "Que regroupe l'indice **CAC 40** ?",
       "answer": "40 des plus grandes sociétés cotées à la Bourse de Paris",
-      "wrong": ["Les 40 premières banques de la zone euro", "40 entreprises tirées au sort chaque année", "Les 40 plus fortes hausses de la séance à Paris"],
+      "wrong": [
+        "Les 40 premières banques de la zone euro",
+        "40 entreprises tirées au sort chaque année",
+        "Les 40 plus fortes hausses de la séance à Paris"
+      ],
       "explanation": "Le CAC 40 est l'indice phare de la Bourse de Paris (Euronext Paris) : il suit un panier de 40 grandes valeurs françaises, pondérées selon leur capitalisation flottante. Il sert de baromètre de la santé des grandes entreprises cotées en France.",
       "difficulty": 1,
       "source": "https://fr.wikipedia.org/wiki/CAC_40"
@@ -51,42 +75,66 @@
     {
       "question": "Que signifie l'introduction en Bourse (**IPO**) d'une entreprise ?",
       "answer": "L'entreprise met pour la première fois ses actions à la disposition du public sur le marché",
-      "wrong": ["L'entreprise rachète la totalité de ses propres actions", "L'entreprise fusionne avec un concurrent déjà coté", "L'entreprise rembourse par anticipation l'ensemble de ses dettes"],
+      "wrong": [
+        "L'entreprise rachète la totalité de ses propres actions",
+        "L'entreprise fusionne avec un concurrent déjà coté",
+        "L'entreprise rembourse par anticipation l'ensemble de ses dettes"
+      ],
       "explanation": "L'**IPO** (Initial Public Offering) est la première vente d'actions d'une société au grand public sur un marché réglementé. Elle permet de lever des fonds et rend le titre librement échangeable. L'opération inverse, sortir de la cote en rachetant ses titres, s'appelle un retrait de la Bourse.",
       "difficulty": 1
     },
     {
       "question": "Qu'est-ce qu'un **ETF** (tracker) ?",
       "answer": "Un fonds coté en Bourse qui réplique la performance d'un indice ou d'un panier d'actifs",
-      "wrong": ["Une action unique sélectionnée par un gérant vedette", "Un compte d'épargne dont le capital est garanti par l'État", "Une obligation émise par une place boursière"],
+      "wrong": [
+        "Une action unique sélectionnée par un gérant vedette",
+        "Un compte d'épargne dont le capital est garanti par l'État",
+        "Une obligation émise par une place boursière"
+      ],
       "explanation": "Un **ETF** (Exchange-Traded Fund) est un fonds indiciel qui s'achète et se revend en Bourse comme une action. En suivant un indice (par exemple un grand indice d'actions), il offre une diversification immédiate à faible coût, sans qu'un gérant choisisse les titres un par un.",
       "difficulty": 1
     },
     {
       "question": "Quel est le but principal de la **diversification** d'un portefeuille ?",
       "answer": "Réduire le risque en répartissant les placements sur plusieurs actifs",
-      "wrong": ["Garantir un gain à chaque opération", "Concentrer tout le capital sur le titre le plus prometteur", "Éviter totalement de payer des frais de courtage"],
+      "wrong": [
+        "Garantir un gain à chaque opération",
+        "Concentrer tout le capital sur le titre le plus prometteur",
+        "Éviter totalement de payer des frais de courtage"
+      ],
       "explanation": "Diversifier, c'est répartir son argent sur de nombreux actifs (secteurs, zones, types de titres) pour qu'une mauvaise surprise sur l'un pèse peu sur l'ensemble. C'est l'idée de « ne pas mettre tous ses œufs dans le même panier ». Cela réduit le risque, sans toutefois le supprimer ni garantir un gain.",
       "difficulty": 1
     },
     {
       "question": "Comment calcule-t-on la **capitalisation boursière** d'une société cotée ?",
       "answer": "Cours d'une action × nombre d'actions en circulation",
-      "wrong": ["Chiffre d'affaires annuel × cours d'une action", "Bénéfice net × nombre d'actionnaires", "Cours d'une action × montant du dividende"],
+      "wrong": [
+        "Chiffre d'affaires annuel × cours d'une action",
+        "Bénéfice net × nombre d'actionnaires",
+        "Cours d'une action × montant du dividende"
+      ],
       "explanation": "La capitalisation boursière mesure la valeur totale d'une entreprise sur le marché : on multiplie le cours d'une action par le nombre d'actions en circulation. Une société de 2 millions d'actions valant 30 € chacune capitalise donc 60 millions d'euros. C'est ce critère qui distingue petites, moyennes et grandes capitalisations.",
       "difficulty": 2
     },
     {
       "question": "Quelle est la différence entre un **ordre au marché** et un **ordre à cours limité** ?",
       "answer": "L'ordre au marché s'exécute au meilleur prix disponible, l'ordre à cours limité fixe un prix à ne pas franchir",
-      "wrong": ["L'ordre au marché est gratuit, l'ordre à cours limité est payant", "L'ordre au marché n'est valable qu'un jour, l'ordre à cours limité est permanent", "L'ordre au marché ne concerne que les actions, l'ordre à cours limité que les obligations"],
+      "wrong": [
+        "L'ordre au marché est gratuit, l'ordre à cours limité est payant",
+        "L'ordre au marché n'est valable qu'un jour, l'ordre à cours limité est permanent",
+        "L'ordre au marché ne concerne que les actions, l'ordre à cours limité que les obligations"
+      ],
       "explanation": "Un **ordre au marché** privilégie la rapidité : il est exécuté immédiatement au meilleur prix offert, mais ce prix n'est pas garanti. Un **ordre à cours limité** privilégie le prix : on fixe un seuil (par exemple acheter à 50 € maximum), au risque que l'ordre ne soit pas exécuté si le cours ne l'atteint pas.",
       "difficulty": 2
     },
     {
       "question": "Que représente l'indice américain **S&P 500** ?",
       "answer": "Environ 500 grandes entreprises cotées aux États-Unis, pondérées par capitalisation",
-      "wrong": ["Les 500 entreprises les plus anciennes du monde", "Les 500 premières valeurs technologiques mondiales", "Les 500 sociétés qui versent les plus gros dividendes"],
+      "wrong": [
+        "Les 500 entreprises les plus anciennes du monde",
+        "Les 500 premières valeurs technologiques mondiales",
+        "Les 500 sociétés qui versent les plus gros dividendes"
+      ],
       "explanation": "Le **S&P 500** suit environ 500 des plus grandes sociétés cotées aux États-Unis, pondérées selon leur capitalisation boursière. Couvrant une large part du marché américain, il est considéré comme un baromètre de référence des actions américaines, plus large qu'un indice purement technologique.",
       "difficulty": 2,
       "source": "https://fr.wikipedia.org/wiki/S%26P_500"
@@ -94,7 +142,11 @@
     {
       "question": "Pour quoi la bourse du **Nasdaq** est-elle particulièrement connue ?",
       "answer": "Pour son indice Nasdaq Composite, à forte proportion de valeurs technologiques",
-      "wrong": ["Pour être la bourse officielle de l'Union européenne", "Pour ne coter que des obligations d'État", "Pour être la place historiquement dédiée aux matières premières"],
+      "wrong": [
+        "Pour être la bourse officielle de l'Union européenne",
+        "Pour ne coter que des obligations d'État",
+        "Pour être la place historiquement dédiée aux matières premières"
+      ],
       "explanation": "Le **Nasdaq** est une grande bourse électronique américaine ; son indice le plus suivi, le Nasdaq Composite, est réputé pour son poids important en entreprises technologiques et de croissance. Cette concentration le rend souvent plus volatil que des indices plus diversifiés.",
       "difficulty": 2,
       "source": "https://fr.wikipedia.org/wiki/Nasdaq"
@@ -102,70 +154,110 @@
     {
       "question": "Que mesure le **PER** (Price Earnings Ratio) d'une action ?",
       "answer": "Combien de fois le bénéfice annuel par action est contenu dans le cours de l'action",
-      "wrong": ["Le pourcentage du bénéfice reversé sous forme de dividendes", "La variation du cours sur les douze derniers mois", "Le nombre d'actions échangées en moyenne chaque jour"],
+      "wrong": [
+        "Le pourcentage du bénéfice reversé sous forme de dividendes",
+        "La variation du cours sur les douze derniers mois",
+        "Le nombre d'actions échangées en moyenne chaque jour"
+      ],
       "explanation": "Le **PER** rapporte le cours d'une action à son bénéfice par action : un PER de 15 signifie qu'on paie 15 fois le bénéfice annuel. Il aide à juger si une action est chère ou bon marché au regard de ses profits, mais doit se comparer entre sociétés d'un même secteur.",
       "difficulty": 2
     },
     {
       "question": "En quoi consiste la **vente à découvert** (short) d'une action ?",
       "answer": "Vendre une action empruntée en pariant sur sa baisse, pour la racheter moins cher ensuite",
-      "wrong": ["Acheter une action en espérant qu'elle monte à long terme", "Vendre une action que l'on possède pour encaisser son dividende", "Acheter une action à crédit afin de la revendre plus cher"],
+      "wrong": [
+        "Acheter une action en espérant qu'elle monte à long terme",
+        "Vendre une action que l'on possède pour encaisser son dividende",
+        "Acheter une action à crédit afin de la revendre plus cher"
+      ],
       "explanation": "Dans une **vente à découvert**, on emprunte un titre pour le vendre aussitôt, en espérant le racheter plus bas puis le rendre en empochant la différence. C'est un pari sur la baisse. Le risque est élevé : si le cours monte au lieu de baisser, la perte peut théoriquement être illimitée.",
       "difficulty": 2
     },
     {
       "question": "Que permet l'**effet de levier** dans un investissement ?",
       "answer": "Prendre une position plus grande que son capital, ce qui amplifie les gains comme les pertes",
-      "wrong": ["Garantir un gain minimum quelle que soit l'évolution du marché", "Supprimer totalement le risque grâce à la diversification", "Réduire automatiquement les frais de courtage"],
+      "wrong": [
+        "Garantir un gain minimum quelle que soit l'évolution du marché",
+        "Supprimer totalement le risque grâce à la diversification",
+        "Réduire automatiquement les frais de courtage"
+      ],
       "explanation": "L'**effet de levier** consiste à s'exposer au-delà de son capital, via de l'emprunt ou des produits dérivés. Il multiplie les gains potentiels, mais aussi les pertes dans la même proportion : un levier x5 transforme une baisse de 10 % du sous-jacent en une perte de 50 % du capital engagé.",
       "difficulty": 2
     },
     {
       "question": "Que désigne le **spread** entre le bid et le ask d'un titre ?",
       "answer": "L'écart entre le meilleur prix d'achat proposé et le meilleur prix de vente proposé",
-      "wrong": ["La différence entre le cours d'ouverture et le cours de clôture", "La commission fixe prélevée par la Bourse à chaque échange", "L'écart entre le plus haut et le plus bas de la journée"],
+      "wrong": [
+        "La différence entre le cours d'ouverture et le cours de clôture",
+        "La commission fixe prélevée par la Bourse à chaque échange",
+        "L'écart entre le plus haut et le plus bas de la journée"
+      ],
       "explanation": "Le **bid** est le meilleur prix auquel des acheteurs sont prêts à acheter, l'**ask** le meilleur prix auquel des vendeurs acceptent de vendre ; le **spread** est leur différence. Plus un titre est liquide, plus ce spread est étroit, ce qui réduit le coût implicite d'une transaction.",
       "difficulty": 2
     },
     {
       "question": "Qu'affiche le **carnet d'ordres** d'une valeur ?",
       "answer": "La liste des ordres d'achat et de vente en attente, classés par niveau de prix",
-      "wrong": ["La liste des dividendes versés depuis la création de l'entreprise", "L'historique de tous les ordres déjà exécutés dans l'année", "Le classement des actionnaires par nombre d'actions détenues"],
+      "wrong": [
+        "La liste des dividendes versés depuis la création de l'entreprise",
+        "L'historique de tous les ordres déjà exécutés dans l'année",
+        "Le classement des actionnaires par nombre d'actions détenues"
+      ],
       "explanation": "Le **carnet d'ordres** recense en temps réel les ordres d'achat et de vente non encore exécutés, rangés par niveau de prix. Il renseigne sur la profondeur du marché : plus il y a d'ordres proches du cours, plus il est facile d'acheter ou de vendre sans faire bouger le prix.",
       "difficulty": 2
     },
     {
       "question": "Que mesure la **volatilité** d'un actif financier ?",
       "answer": "L'ampleur des variations de son cours",
-      "wrong": ["Le rendement garanti qu'il procure chaque année", "Le volume total d'actions échangées sur une séance", "La probabilité que l'entreprise fasse faillite"],
+      "wrong": [
+        "Le rendement garanti qu'il procure chaque année",
+        "Le volume total d'actions échangées sur une séance",
+        "La probabilité que l'entreprise fasse faillite"
+      ],
       "explanation": "La **volatilité** décrit à quel point le prix d'un actif bouge : une forte volatilité signifie de grandes variations, à la hausse comme à la baisse, donc un risque plus élevé. Elle ne dit rien du sens de l'évolution : un actif très volatil peut aussi bien grimper que chuter brutalement.",
       "difficulty": 2
     },
     {
       "question": "Quelle est la différence entre une **plus-value** et un **dividende** sur une action ?",
       "answer": "La plus-value est le gain réalisé en revendant plus cher, le dividende est une part du bénéfice distribuée",
-      "wrong": ["La plus-value est versée chaque trimestre, le dividende seulement à la revente", "La plus-value concerne les obligations, le dividende les actions", "La plus-value est décidée par l'entreprise, le dividende par le marché"],
+      "wrong": [
+        "La plus-value est versée chaque trimestre, le dividende seulement à la revente",
+        "La plus-value concerne les obligations, le dividende les actions",
+        "La plus-value est décidée par l'entreprise, le dividende par le marché"
+      ],
       "explanation": "La **plus-value** est le profit encaissé quand on revend un titre au-dessus de son prix d'achat ; elle n'est réalisée qu'au moment de la vente. Le **dividende**, lui, est une part du bénéfice que l'entreprise verse régulièrement sans qu'on vende ses actions. Ce sont deux sources de gain distinctes pour un actionnaire.",
       "difficulty": 2
     },
     {
       "question": "Qu'est-ce qu'un **OPCVM** ?",
       "answer": "Un organisme qui collecte l'épargne de nombreux investisseurs pour l'investir collectivement en valeurs mobilières",
-      "wrong": ["Un compte bancaire bloqué dont le capital est garanti par l'État", "Un contrat d'assurance-vie en euros sans aucun risque", "Une obligation émise exclusivement par les collectivités locales"],
+      "wrong": [
+        "Un compte bancaire bloqué dont le capital est garanti par l'État",
+        "Un contrat d'assurance-vie en euros sans aucun risque",
+        "Une obligation émise exclusivement par les collectivités locales"
+      ],
       "explanation": "Un **OPCVM** (Organisme de Placement Collectif en Valeurs Mobilières) regroupe l'argent de nombreux épargnants pour le placer en actions, obligations ou autres titres, selon une stratégie définie. Chaque investisseur détient des parts du fonds. Les SICAV et les FCP en sont les deux grandes formes.",
       "difficulty": 2
     },
     {
       "question": "Une action cote **60 €** et son bénéfice par action est de **4 €**. Quel est son **PER** ?",
       "answer": "15",
-      "wrong": ["240", "0,067", "64"],
+      "wrong": [
+        "240",
+        "0,067",
+        "64"
+      ],
       "explanation": "Le PER se calcule en divisant le cours par le bénéfice par action : 60 ÷ 4 = 15. On paie donc 15 fois le bénéfice annuel. Multiplier les deux termes (240) ou les additionner (64) n'a aucun sens financier ; l'inverse (4 ÷ 60 ≈ 0,067) donnerait plutôt le rendement bénéficiaire.",
       "difficulty": 3
     },
     {
       "question": "Quel enchaînement caractérise le **krach boursier de 1929** et ses suites ?",
       "answer": "Un effondrement des cours à Wall Street suivi d'une longue dépression économique mondiale",
-      "wrong": ["Une crise limitée aux banques européennes, sans effet sur l'économie réelle", "Une chute déclenchée par l'éclatement d'une bulle immobilière américaine", "Une baisse d'une seule séance, aussitôt effacée par un rebond durable"],
+      "wrong": [
+        "Une crise limitée aux banques européennes, sans effet sur l'économie réelle",
+        "Une chute déclenchée par l'éclatement d'une bulle immobilière américaine",
+        "Une baisse d'une seule séance, aussitôt effacée par un rebond durable"
+      ],
       "explanation": "Le krach d'octobre 1929 à New York met fin à des années de spéculation effrénée, souvent à crédit. L'effondrement des cours entraîne faillites bancaires et chômage de masse, ouvrant la Grande Dépression des années 1930. C'est l'exemple type d'une bulle spéculative qui éclate ; la crise de 2008, elle, est née de l'immobilier.",
       "difficulty": 3,
       "source": "https://fr.wikipedia.org/wiki/Krach_de_1929"
@@ -173,7 +265,11 @@
     {
       "question": "Quel mécanisme est au cœur de la **crise financière de 2008** ?",
       "answer": "L'effondrement de crédits immobiliers à risque (subprimes) aux États-Unis, propagé au système financier",
-      "wrong": ["Un krach provoqué par la spéculation sur les cryptomonnaies", "La faillite simultanée de plusieurs États de la zone euro", "Une envolée du prix du pétrole asséchant les bourses"],
+      "wrong": [
+        "Un krach provoqué par la spéculation sur les cryptomonnaies",
+        "La faillite simultanée de plusieurs États de la zone euro",
+        "Une envolée du prix du pétrole asséchant les bourses"
+      ],
       "explanation": "La crise de 2008 trouve son origine dans les **subprimes**, des prêts immobiliers américains accordés à des emprunteurs fragiles, puis titrisés et revendus dans le monde entier. Quand ces emprunteurs n'ont plus pu rembourser, la chaîne s'est effondrée, culminant avec la faillite d'une grande banque d'affaires et une crise financière mondiale.",
       "difficulty": 3,
       "source": "https://fr.wikipedia.org/wiki/Crise_des_subprimes"
@@ -181,43 +277,1070 @@
     {
       "question": "Avec un **effet de levier x10**, quelle perte subit votre capital si le sous-jacent baisse de **8 %** ?",
       "answer": "80 %",
-      "wrong": ["8 %", "0,8 %", "18 %"],
+      "wrong": [
+        "8 %",
+        "0,8 %",
+        "18 %"
+      ],
       "explanation": "Un levier x10 applique à votre capital dix fois la variation du sous-jacent : une baisse de 8 % donne 8 % × 10 = 80 % de perte. Le levier amplifie les pertes aussi violemment que les gains ; ici, une baisse de seulement 10 % suffirait à effacer tout le capital engagé.",
       "difficulty": 3
     },
     {
       "question": "Pourquoi la perte potentielle d'une **vente à découvert** est-elle considérée comme illimitée en théorie ?",
       "answer": "Parce que le cours de l'action peut monter sans plafond, alors qu'il faudra la racheter pour la rendre",
-      "wrong": ["Parce que les intérêts de l'emprunt de titres doublent chaque jour", "Parce qu'une action peut tomber bien en dessous de zéro", "Parce que le courtier facture une pénalité proportionnelle au temps écoulé"],
+      "wrong": [
+        "Parce que les intérêts de l'emprunt de titres doublent chaque jour",
+        "Parce qu'une action peut tomber bien en dessous de zéro",
+        "Parce que le courtier facture une pénalité proportionnelle au temps écoulé"
+      ],
       "explanation": "En vendant à découvert, on espère racheter plus bas, mais un cours n'a pas de limite à la hausse : s'il s'envole, le rachat coûte toujours plus cher, d'où une perte potentiellement illimitée. À l'achat classique, au contraire, la perte est bornée, car une action ne peut pas descendre sous zéro.",
       "difficulty": 3
     },
     {
       "question": "En quoi un **ETF indiciel** se distingue-t-il d'un fonds géré activement ?",
       "answer": "Il cherche à répliquer un indice plutôt qu'à le battre par une sélection de titres",
-      "wrong": ["Il garantit un rendement supérieur à l'indice qu'il suit", "Il n'investit que dans une seule action à la fois", "Il ne peut être acheté ou vendu qu'une fois par an"],
+      "wrong": [
+        "Il garantit un rendement supérieur à l'indice qu'il suit",
+        "Il n'investit que dans une seule action à la fois",
+        "Il ne peut être acheté ou vendu qu'une fois par an"
+      ],
       "explanation": "Un **ETF indiciel** relève de la gestion passive : il copie la composition d'un indice pour en suivre la performance, sans chercher à le surpasser. Cela réduit fortement les frais par rapport à un fonds actif, où un gérant sélectionne les titres en espérant faire mieux que le marché, ce qu'il ne réussit pas toujours.",
       "difficulty": 3
     },
     {
       "question": "Vous placez un **ordre d'achat à cours limité à 50 €** alors que l'action cote 52 €. Que se passe-t-il ?",
       "answer": "L'ordre reste en attente et ne s'exécutera que si le cours descend à 50 € ou moins",
-      "wrong": ["L'ordre est exécuté immédiatement au cours de 52 €", "L'ordre est automatiquement annulé car le prix est inatteignable", "L'ordre achète aussitôt au prix moyen entre 50 € et 52 €"],
+      "wrong": [
+        "L'ordre est exécuté immédiatement au cours de 52 €",
+        "L'ordre est automatiquement annulé car le prix est inatteignable",
+        "L'ordre achète aussitôt au prix moyen entre 50 € et 52 €"
+      ],
       "explanation": "Un **ordre à cours limité** à l'achat fixe un prix maximum, ici 50 €. Tant que le marché reste au-dessus (52 €), rien ne se passe : l'ordre patiente dans le carnet et ne sera exécuté que si le cours revient à 50 € ou en dessous. Il protège le prix, au risque de ne jamais être servi.",
       "difficulty": 3
     },
     {
       "question": "Que traduit généralement un **spread bid/ask très large** sur un titre ?",
       "answer": "Une faible liquidité, qui rend l'achat-revente plus coûteux",
-      "wrong": ["Une forte liquidité et des échanges très nombreux", "Une hausse imminente et certaine du cours", "Le versement d'un dividende prévu dans la journée"],
+      "wrong": [
+        "Une forte liquidité et des échanges très nombreux",
+        "Une hausse imminente et certaine du cours",
+        "Le versement d'un dividende prévu dans la journée"
+      ],
       "explanation": "Un spread large signale un grand écart entre le prix demandé à l'achat et à la vente, donc peu d'acheteurs et de vendeurs : c'est le signe d'une **faible liquidité**. Acheter puis revendre un tel titre coûte cher, car on « perd » le spread. Les valeurs très liquides, elles, affichent un spread minime.",
       "difficulty": 3
     },
     {
       "question": "Quand les **taux d'intérêt du marché montent**, comment évolue en général le prix des **obligations déjà émises** ?",
       "answer": "Leur prix baisse, car elles rapportent moins que les nouvelles obligations",
-      "wrong": ["Leur prix monte, car elles deviennent plus recherchées", "Leur prix reste strictement inchangé jusqu'à l'échéance", "Leur coupon augmente automatiquement pour compenser"],
+      "wrong": [
+        "Leur prix monte, car elles deviennent plus recherchées",
+        "Leur prix reste strictement inchangé jusqu'à l'échéance",
+        "Leur coupon augmente automatiquement pour compenser"
+      ],
       "explanation": "Le prix d'une obligation et les taux d'intérêt évoluent en sens inverse. Si les nouveaux emprunts offrent un meilleur taux, une obligation ancienne au coupon fixe devient moins attractive : son prix doit baisser pour que son rendement s'aligne. À l'inverse, quand les taux baissent, les obligations existantes prennent de la valeur.",
+      "difficulty": 3
+    },
+    {
+      "question": "Une obligation de **1 000 €** de valeur nominale verse un coupon annuel de **3 %**. Combien rapporte-t-elle chaque année en intérêts ?",
+      "answer": "30 €",
+      "wrong": [
+        "3 €",
+        "300 €",
+        "103 €"
+      ],
+      "explanation": "Le coupon se calcule sur la valeur nominale : 3 % × 1 000 € = 30 € par an, jusqu'à l'échéance où le nominal est remboursé. Ce montant est fixé à l'émission : même si l'obligation s'échange ensuite à 950 € ou à 1 050 € sur le marché, son porteur touche toujours 30 €.",
+      "difficulty": 1
+    },
+    {
+      "question": "En quoi consiste une **OPA** lancée sur une société cotée ?",
+      "answer": "Proposer publiquement aux actionnaires de racheter leurs titres à un prix fixé",
+      "wrong": [
+        "Introduire pour la première fois la société en Bourse",
+        "Distribuer gratuitement des actions nouvelles aux salariés",
+        "Suspendre la cotation du titre le temps d'une enquête"
+      ],
+      "explanation": "Une offre publique d'achat (OPA) est une proposition faite à tous les actionnaires d'une société cotée de leur racheter leurs actions à un prix déterminé, payé en numéraire, généralement avec une prime sur le cours. Quand le paiement se fait en actions de l'acheteur plutôt qu'en argent, on parle d'offre publique d'échange (OPE).",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel organisme est le régulateur des marchés financiers en **France** ?",
+      "answer": "L'Autorité des marchés financiers (AMF)",
+      "wrong": [
+        "La Cour des comptes",
+        "L'Institut national de la statistique (Insee)",
+        "La Caisse des dépôts et consignations"
+      ],
+      "explanation": "L'AMF, créée en 2003 par la fusion notamment de la Commission des opérations de Bourse (COB) et du Conseil des marchés financiers, veille à la protection de l'épargne, à l'information des investisseurs et au bon fonctionnement des marchés. Elle peut sanctionner les abus comme le délit d'initié. Son équivalent américain est la SEC.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que désigne l'expression **blue chip** en Bourse ?",
+      "answer": "L'action d'une grande entreprise solide, réputée et bien établie",
+      "wrong": [
+        "L'action d'une jeune société technologique non rentable",
+        "Une action qui cote moins d'un dollar sur le marché",
+        "Un titre dont la cotation a été suspendue par l'autorité"
+      ],
+      "explanation": "Le terme vient du poker, où les jetons bleus avaient traditionnellement la plus forte valeur. Une blue chip est une valeur de premier plan, souvent membre des grands indices, réputée pour sa stabilité et la régularité de ses résultats. À l'opposé, une action qui vaut quelques centimes est appelée penny stock.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que regroupe l'indice **Euro Stoxx 50** ?",
+      "answer": "50 grandes sociétés cotées de pays de la zone euro",
+      "wrong": [
+        "Les 50 plus grandes sociétés cotées à Londres",
+        "50 obligations d'États membres de l'Union européenne",
+        "Les 50 premières banques du monde par leur bilan"
+      ],
+      "explanation": "L'Euro Stoxx 50 réunit 50 grandes capitalisations de la zone euro (françaises, allemandes, néerlandaises, italiennes, espagnoles…). Il sert de référence pour les actions de la zone et de sous-jacent à de nombreux ETF et produits dérivés. Les sociétés britanniques ou suisses n'en font pas partie, puisque leur pays n'utilise pas l'euro.",
+      "difficulty": 1
+    },
+    {
+      "question": "L'indice **FTSE 100**, surnommé « Footsie », est l'indice phare de quelle place boursière ?",
+      "answer": "Londres",
+      "wrong": [
+        "Francfort",
+        "Zurich",
+        "Amsterdam"
+      ],
+      "explanation": "Le FTSE 100 regroupe les 100 plus grandes capitalisations cotées à la Bourse de Londres (London Stock Exchange). Chaque grande place a son indice vedette : le DAX à Francfort, le SMI à Zurich, l'AEX à Amsterdam ou le CAC 40 à Paris.",
+      "difficulty": 1
+    },
+    {
+      "question": "Une action cote **50 €** et verse un dividende annuel de **2 €**. Quel est son **rendement du dividende** ?",
+      "answer": "4 %",
+      "wrong": [
+        "2 %",
+        "25 %",
+        "0,4 %"
+      ],
+      "explanation": "Le rendement du dividende se calcule en divisant le dividende par le cours : 2 ÷ 50 = 0,04, soit 4 %. Le résultat de 25 % correspond au calcul inversé (50 ÷ 2), qui n'a pas de sens ici. Attention : un rendement très élevé peut aussi signaler un cours qui s'est effondré ou un dividende qui risque d'être réduit.",
+      "difficulty": 1
+    },
+    {
+      "question": "Selon la convention la plus répandue, à partir de quelle baisse depuis son dernier sommet dit-on qu'un indice entre en **marché baissier** (bear market) ?",
+      "answer": "20 %",
+      "wrong": [
+        "5 %",
+        "10 %",
+        "50 %"
+      ],
+      "explanation": "Par convention, une baisse d'au moins 20 % depuis un plus haut marque l'entrée en bear market. Une baisse de 10 % à 20 % est plutôt qualifiée de **correction**, d'où le piège des 10 %. Ces seuils sont des repères de langage, pas des règles officielles, mais ils sont repris par la plupart des médias financiers.",
+      "difficulty": 2
+    },
+    {
+      "question": "Tu achètes en Bourse des actions **déjà en circulation** d'une grande société cotée. Qui reçoit ton argent ?",
+      "answer": "L'investisseur qui t'a vendu ces actions",
+      "wrong": [
+        "La société dont tu achètes les actions",
+        "L'Autorité des marchés financiers",
+        "L'opérateur de la Bourse, qui le reverse en dividendes"
+      ],
+      "explanation": "La plupart des échanges ont lieu sur le **marché secondaire** : des investisseurs s'y revendent des titres existants, et la société émettrice ne touche rien. Elle ne lève de l'argent que sur le **marché primaire**, lors d'une introduction en Bourse ou d'une augmentation de capital. Le marché secondaire reste vital pour elle, car il rend ses titres liquides et donc attractifs.",
+      "difficulty": 2
+    },
+    {
+      "question": "Une société **divise son action par 2** (split) alors qu'elle cote 100 €. Que devient la situation d'un actionnaire qui détenait 10 actions ?",
+      "answer": "Il a 20 actions d'environ 50 €, pour une valeur inchangée",
+      "wrong": [
+        "Il a 20 actions de 100 €, sa valeur a doublé",
+        "Il a 5 actions d'environ 200 €, pour une valeur inchangée",
+        "Il a 10 actions de 50 €, sa valeur a été divisée par 2"
+      ],
+      "explanation": "Un split multiplie le nombre d'actions et divise le cours dans la même proportion : 10 × 100 € = 20 × 50 € = 1 000 €. La capitalisation et la part de chacun ne bougent pas ; l'opération sert surtout à rendre le titre plus accessible. Passer à 5 actions de 200 € correspondrait à l'opération inverse, le regroupement d'actions (reverse split).",
+      "difficulty": 2
+    },
+    {
+      "question": "À quoi sert un **ordre de vente stop** (à seuil de déclenchement) placé sous le cours actuel ?",
+      "answer": "À vendre automatiquement si le cours chute jusqu'au seuil, pour limiter la perte",
+      "wrong": [
+        "À acheter automatiquement si le cours remonte au-dessus du seuil",
+        "À garantir une vente exactement au prix du seuil quoi qu'il arrive",
+        "À interdire toute vente tant que le cours reste sous le seuil"
+      ],
+      "explanation": "Le stop (stop loss) reste inactif tant que le seuil n'est pas touché ; dès qu'il l'est, il se transforme en ordre au marché et part au meilleur prix disponible. Le prix d'exécution n'est donc pas garanti : si le titre ouvre en forte baisse, sous le seuil, la vente se fera plus bas que prévu.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qu'une **option d'achat** (call) sur une action ?",
+      "answer": "Le droit, sans obligation, d'acheter l'action à un prix fixé d'avance",
+      "wrong": [
+        "L'obligation d'acheter l'action à un prix fixé d'avance à une date donnée",
+        "Le droit, sans obligation, de vendre l'action à un prix fixé d'avance",
+        "Une promesse de dividende minimum garantie par la société émettrice"
+      ],
+      "explanation": "L'acheteur d'un call paie une **prime** pour obtenir le droit d'acheter le sous-jacent au **prix d'exercice** (strike). Il n'exercera que si c'est intéressant, c'est-à-dire si le cours dépasse ce prix. Le droit de vendre correspond à un put, et l'obligation ferme d'acheter à terme à un contrat future.",
+      "difficulty": 2
+    },
+    {
+      "question": "Une entreprise **rachète puis annule** une partie de ses propres actions. À bénéfice net inchangé, que devient son **bénéfice par action** ?",
+      "answer": "Il augmente, car le bénéfice est réparti sur moins d'actions",
+      "wrong": [
+        "Il diminue, car l'entreprise a dû dépenser de la trésorerie",
+        "Il reste identique, car seul le nombre d'actionnaires change",
+        "Il devient nul jusqu'à la prochaine assemblée générale"
+      ],
+      "explanation": "Le bénéfice par action (BPA) est le bénéfice net divisé par le nombre d'actions. Si le nombre d'actions baisse et que le bénéfice reste le même, le BPA monte mécaniquement et chaque actionnaire restant détient une part plus grande de l'entreprise. C'est l'inverse de la dilution provoquée par une augmentation de capital.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que désigne le **flottant** d'une société cotée ?",
+      "answer": "La part du capital réellement disponible aux échanges en Bourse",
+      "wrong": [
+        "La part du bénéfice annuel non encore distribuée",
+        "Le montant des dettes à court terme de la société",
+        "L'écart entre le cours d'ouverture et celui de clôture"
+      ],
+      "explanation": "Le flottant exclut les actions détenues durablement par des actionnaires stables : fondateurs, État, holding familiale, autodétention… Plus il est faible, moins le titre est liquide. Les grands indices comme le CAC 40 pondèrent d'ailleurs les sociétés par leur capitalisation **flottante**, et non par leur capitalisation totale.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la différence entre un ETF **capitalisant** et un ETF **distribuant** ?",
+      "answer": "Le capitalisant réinvestit les dividendes reçus, le distribuant les verse aux porteurs",
+      "wrong": [
+        "Le capitalisant n'achète que de grandes capitalisations, le distribuant des petites",
+        "Le capitalisant est réservé aux institutionnels, le distribuant aux particuliers",
+        "Le capitalisant garantit le capital investi, le distribuant ne le garantit pas"
+      ],
+      "explanation": "Les deux peuvent suivre exactement le même indice. Dans un ETF capitalisant, les dividendes encaissés sont réinvestis dans le fonds et font monter sa valeur ; dans un ETF distribuant, ils sont reversés périodiquement aux porteurs. Le terme « capitalisant » n'a rien à voir avec la taille des entreprises détenues, et aucun des deux ne garantit le capital.",
+      "difficulty": 2
+    },
+    {
+      "question": "En cas de **faillite** d'une entreprise, dans quel ordre ses investisseurs sont-ils remboursés ?",
+      "answer": "Les créanciers, dont les porteurs d'obligations, passent avant les actionnaires",
+      "wrong": [
+        "Les actionnaires passent avant tous les créanciers de l'entreprise",
+        "Actionnaires et obligataires sont remboursés à parts strictement égales",
+        "Les actionnaires les plus récents passent avant les plus anciens"
+      ],
+      "explanation": "Les actionnaires sont propriétaires de l'entreprise : ils ne récupèrent que ce qui reste une fois toutes les dettes payées, c'est-à-dire souvent rien. Les créanciers, dont les obligataires, passent avant eux. C'est une des raisons pour lesquelles une obligation est en général moins risquée qu'une action du même émetteur, et rapporte moins en moyenne.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur Euronext, deux ordres d'achat d'actions sont placés **au même prix limite**. Lequel est servi en premier ?",
+      "answer": "Celui qui est arrivé le premier dans le carnet d'ordres",
+      "wrong": [
+        "Celui qui porte sur la plus grande quantité de titres",
+        "Celui du client qui paie le plus de frais de courtage",
+        "Les deux sont toujours servis à parts égales"
+      ],
+      "explanation": "Le carnet d'ordres applique la règle de **priorité prix-temps** : l'ordre au meilleur prix passe d'abord (le plus haut à l'achat, le plus bas à la vente) et, à prix égal, le plus ancien est servi en premier. Ni la taille de l'ordre ni le client ne changent ce classement. D'autres marchés, notamment de certains dérivés, utilisent parfois une répartition au prorata, mais pas le marché actions d'Euronext.",
+      "difficulty": 3
+    },
+    {
+      "question": "À quelle valeur l'indice **CAC 40** a-t-il été fixé à sa date de base, le 31 décembre 1987 ?",
+      "answer": "1 000 points",
+      "wrong": [
+        "100 points",
+        "40 points",
+        "10 000 points"
+      ],
+      "explanation": "Le CAC 40 a été calculé à partir d'une base de 1 000 points au 31 décembre 1987. Un niveau de 7 500 points signifie donc que l'indice a été multiplié par 7,5 depuis, hors dividendes, puisque le CAC 40 « classique » est un indice de prix. Le chiffre 40 désigne le nombre de valeurs, pas un niveau de départ.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/CAC_40"
+    },
+    {
+      "question": "Quelle particularité de calcul partagent l'indice **Dow Jones Industrial Average** et le **Nikkei 225** ?",
+      "answer": "Ils sont pondérés par le prix des actions, non par la capitalisation",
+      "wrong": [
+        "Ils sont pondérés par le nombre de salariés de chaque société",
+        "Ils donnent strictement le même poids à chaque société incluse",
+        "Ils ne retiennent que les sociétés qui versent un dividende"
+      ],
+      "explanation": "Dans ces deux indices historiques, une action pèse selon son cours : un titre à 400 $ compte plus qu'un titre à 50 $, même si la seconde entreprise vaut bien plus en Bourse. C'est une méthode héritée de l'époque des calculs à la main. Le S&P 500 ou le CAC 40, eux, sont pondérés par la capitalisation boursière flottante.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Dow_Jones_Industrial_Average"
+    },
+    {
+      "question": "Une obligation a une **sensibilité** de 6. Si les taux d'intérêt du marché montent de **1 point**, comment varie approximativement son prix ?",
+      "answer": "Il baisse d'environ 6 %",
+      "wrong": [
+        "Il monte d'environ 6 %",
+        "Il baisse d'environ 1 %",
+        "Il baisse d'environ 0,6 %"
+      ],
+      "explanation": "La sensibilité mesure la variation de prix en pourcentage pour une variation de 1 point des taux, avec un signe négatif : prix et taux évoluent en sens inverse. Une sensibilité de 6 donne donc environ −6 % pour +1 point. Elle est d'autant plus forte que l'échéance est lointaine et le coupon faible : les obligations longues sont les plus exposées au risque de taux.",
+      "difficulty": 3
+    },
+    {
+      "question": "En France, depuis la loi PACTE de 2019, quel seuil de détention permet à un actionnaire majoritaire d'imposer un **retrait obligatoire** (squeeze-out) aux minoritaires d'une société cotée ?",
+      "answer": "90 % du capital et des droits de vote",
+      "wrong": [
+        "95 % du capital et des droits de vote",
+        "75 % du capital et des droits de vote",
+        "66,67 % du capital et des droits de vote"
+      ],
+      "explanation": "À l'issue d'une offre publique, un actionnaire qui détient au moins 90 % du capital et des droits de vote peut forcer les minoritaires restants à lui céder leurs titres, moyennant une indemnisation, et retirer la société de la cote. Le seuil était de 95 % avant que la loi PACTE ne l'abaisse, d'où le piège.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que faut-il faire pour toucher le prochain **dividende** d'une action cotée ?",
+      "answer": "L'avoir achetée au plus tard la veille de la date de détachement",
+      "wrong": [
+        "La détenir encore le jour du versement effectif du dividende",
+        "L'avoir achetée au moins un an avant le versement",
+        "Avoir voté lors de la dernière assemblée générale"
+      ],
+      "explanation": "Le droit au dividende est attaché à l'action jusqu'à la **date de détachement** (ex-date). Celui qui achète ce jour-là ou après ne le touche pas ; celui qui détenait le titre la veille le touche, même s'il le revend dès la date de détachement, avant le paiement. C'est pourquoi le cours baisse d'environ le montant du dividende le jour du détachement.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que mesure l'indice **VIX**, souvent appelé « indice de la peur » ?",
+      "answer": "La volatilité attendue du S&P 500 sur 30 jours, déduite des prix des options",
+      "wrong": [
+        "La volatilité passée du Dow Jones sur les douze derniers mois",
+        "Le volume moyen d'actions échangées chaque jour sur le Nasdaq",
+        "L'écart moyen entre bid et ask des grandes valeurs américaines"
+      ],
+      "explanation": "Calculé par le Cboe, le VIX mesure la volatilité **implicite** du S&P 500 sur les 30 jours à venir, tirée des prix des options sur cet indice. Il monte quand les investisseurs paient cher pour se protéger contre une baisse, d'où son surnom. Il a dépassé 80 lors des paniques de l'automne 2008 et de mars 2020, contre des valeurs proches de 15-20 en période calme.",
+      "difficulty": 3
+    },
+    {
+      "question": "Le nom **Wall Street** est associé à la Bourse de quelle ville ?",
+      "answer": "New York",
+      "wrong": [
+        "Chicago",
+        "Boston",
+        "Washington"
+      ],
+      "explanation": "Wall Street est une rue du sud de Manhattan, où siège le New York Stock Exchange (NYSE). Par extension, le nom désigne toute la finance américaine. L'origine du NYSE remonte à l'accord de Buttonwood, signé en 1792 par 24 courtiers sous un platane de cette même rue.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que vote notamment l'**assemblée générale** annuelle des actionnaires d'une société cotée ?",
+      "answer": "L'approbation des comptes et le dividende proposé",
+      "wrong": [
+        "Le prix d'introduction en Bourse de l'action",
+        "Le salaire de chacun des employés",
+        "Le cours de clôture de l'action du jour"
+      ],
+      "explanation": "Chaque année, l'assemblée générale réunit les actionnaires pour approuver les comptes, décider de l'affectation du résultat (dont le dividende) et nommer ou renouveler les administrateurs. En principe, une action ordinaire donne une voix. Le cours, lui, n'est fixé par personne : il résulte de la rencontre de l'offre et de la demande sur le marché.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie, pour une société cotée, réaliser une **augmentation de capital** ?",
+      "answer": "Émettre des actions nouvelles pour lever des fonds",
+      "wrong": [
+        "Constater la hausse de son cours sur l'année",
+        "Verser à ses actionnaires un dividende exceptionnel",
+        "Racheter une partie de ses propres actions"
+      ],
+      "explanation": "Lors d'une augmentation de capital, la société crée de nouvelles actions et les vend à des investisseurs, ce qui lui apporte de l'argent frais. Le nombre d'actions augmente, si bien que la part de chaque ancien actionnaire baisse s'il ne participe pas : c'est la **dilution**. Une simple hausse du cours, elle, ne fait rentrer aucun argent dans la société.",
+      "difficulty": 1
+    },
+    {
+      "question": "Comment appelle-t-on les obligations à moyen et long terme émises par l'**État français** ?",
+      "answer": "Les OAT",
+      "wrong": [
+        "Les Bunds",
+        "Les Treasuries",
+        "Les Gilts"
+      ],
+      "explanation": "Les OAT (obligations assimilables du Trésor) sont émises par l'Agence France Trésor pour financer l'État. Chaque grand pays a ses propres titres : Bunds pour l'Allemagne, Treasuries pour les États-Unis, Gilts pour le Royaume-Uni. L'écart de taux entre l'OAT et le Bund à 10 ans, très suivi, mesure la prime de risque que les marchés exigent de la France par rapport à l'Allemagne.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que désigne l'**échéance** (ou maturité) d'une obligation ?",
+      "answer": "La date à laquelle l'émetteur rembourse le capital prêté",
+      "wrong": [
+        "La date de versement de chacun des coupons",
+        "La date à partir de laquelle on peut la revendre",
+        "La date de sa toute première cotation en Bourse"
+      ],
+      "explanation": "À l'échéance, l'émetteur rembourse la valeur nominale de l'obligation et cesse de verser des coupons. Avant cette date, rien n'empêche le porteur de revendre son obligation sur le marché, mais à un prix qui dépend des taux du moment. Plus l'échéance est lointaine, plus le prix est sensible aux variations des taux.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que désigne une **small cap** en Bourse ?",
+      "answer": "Une société cotée de petite capitalisation boursière",
+      "wrong": [
+        "Une action dont le cours est inférieur à 1 €",
+        "Une entreprise qui compte moins de dix salariés",
+        "Un fonds qui n'investit qu'en obligations courtes"
+      ],
+      "explanation": "On classe les sociétés cotées selon leur capitalisation : large caps (géants), mid caps (taille moyenne) et small caps (petites). Les seuils varient selon les marchés et les fournisseurs d'indices. Une action à quelques centimes est une penny stock : un cours bas ne dit rien de la taille de l'entreprise, qui dépend aussi du nombre d'actions.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'entend-on par la **liquidité** d'une action ?",
+      "answer": "La facilité à l'échanger vite sans trop faire bouger son cours",
+      "wrong": [
+        "La part du bénéfice versée en espèces aux actionnaires",
+        "La garantie que son cours ne baissera jamais fortement",
+        "Le nombre total d'actionnaires qui la détiennent"
+      ],
+      "explanation": "Un titre liquide s'échange en gros volumes, avec un carnet d'ordres bien garni et un écart bid/ask étroit : on peut entrer ou sortir rapidement à un prix proche du dernier cours. Sur une valeur peu liquide, un ordre important peut faire bouger le prix et il faut parfois attendre pour trouver une contrepartie.",
+      "difficulty": 1
+    },
+    {
+      "question": "Tu achètes une option d'achat (**call**) en payant une prime de **3 €** par action. Quelle est ta perte maximale par action ?",
+      "answer": "3 €, la prime payée",
+      "wrong": [
+        "Illimitée, si le cours monte sans fin",
+        "Le prix d'exercice de l'option",
+        "Le cours de l'action le jour de l'achat"
+      ],
+      "explanation": "L'acheteur d'une option dispose d'un droit, pas une obligation : si le cours ne dépasse pas le prix d'exercice, il laisse simplement l'option expirer et ne perd que la prime. Son risque est donc limité, alors que son gain potentiel est illimité. C'est le **vendeur** d'un call non couvert qui s'expose à une perte illimitée si le cours flambe.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'indique en général un **PER élevé** par rapport à celui des autres sociétés du même secteur ?",
+      "answer": "Le marché anticipe une forte croissance des bénéfices futurs",
+      "wrong": [
+        "L'entreprise verse un dividende particulièrement généreux",
+        "L'action est bon marché au regard de ses bénéfices",
+        "La société a enregistré des pertes cette année"
+      ],
+      "explanation": "Avec un PER élevé, les investisseurs paient de nombreuses années de bénéfice actuel, ce qu'ils n'acceptent que s'ils attendent une forte croissance des profits. C'est typique des valeurs de croissance. Le revers : si cette croissance déçoit, le cours peut chuter fortement. Une action « bon marché » aurait au contraire un PER faible, et une société en perte n'a pas de PER significatif.",
+      "difficulty": 2
+    },
+    {
+      "question": "Une société réalise un bénéfice par action de **5 €** et verse un dividende de **2 €** par action. Quel est son **taux de distribution** ?",
+      "answer": "40 %",
+      "wrong": [
+        "60 %",
+        "250 %",
+        "2,5 %"
+      ],
+      "explanation": "Le taux de distribution (payout ratio) rapporte le dividende au bénéfice par action : 2 ÷ 5 = 40 %. Les 60 % restants sont conservés par l'entreprise pour investir ou se désendetter : c'est la part mise en réserve, d'où le piège. Un taux durablement supérieur à 100 % signifie que la société distribue plus qu'elle ne gagne, ce qui n'est pas tenable.",
+      "difficulty": 2
+    },
+    {
+      "question": "De la fusion de quelles Bourses est né **Euronext** en 2000 ?",
+      "answer": "Paris, Amsterdam et Bruxelles",
+      "wrong": [
+        "Paris, Francfort et Milan",
+        "Paris, Londres et Madrid",
+        "Paris, Zurich et Luxembourg"
+      ],
+      "explanation": "Euronext est né en 2000 du rapprochement des Bourses de Paris, d'Amsterdam et de Bruxelles, rejointes ensuite par Lisbonne puis, plus tard, par Dublin, Oslo et Milan. La Bourse de Francfort (Deutsche Börse) et celle de Londres sont restées indépendantes d'Euronext. Le CAC 40 est calculé par Euronext.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel ensemble d'actions l'indice **MSCI World** couvre-t-il ?",
+      "answer": "Les grandes et moyennes capitalisations des pays développés",
+      "wrong": [
+        "Les grandes et moyennes capitalisations du monde entier, émergents compris",
+        "Les 100 plus grandes entreprises mondiales, tous pays confondus",
+        "Les grandes capitalisations des seuls pays émergents"
+      ],
+      "explanation": "Malgré son nom, le MSCI World n'inclut que les pays **développés** : des marchés comme la Chine, l'Inde ou le Brésil en sont absents. Pour couvrir aussi les émergents, il faut un indice comme le MSCI ACWI (All Country World Index). Pondéré par la capitalisation, le MSCI World est très largement dominé par les actions américaines.",
+      "difficulty": 2
+    },
+    {
+      "question": "Combien de sociétés composent l'indice **Dow Jones Industrial Average** ?",
+      "answer": "30",
+      "wrong": [
+        "40",
+        "100",
+        "500"
+      ],
+      "explanation": "Créé en 1896 par Charles Dow avec seulement 12 valeurs, le Dow Jones Industrial Average compte 30 grandes entreprises américaines depuis 1928. C'est l'un des plus anciens indices boursiers encore calculés. Avec si peu de valeurs, il représente moins bien le marché américain que le S&P 500 et ses quelque 500 sociétés.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qu'une obligation **zéro coupon** ?",
+      "answer": "Une obligation sans coupon, émise sous le prix auquel elle sera remboursée",
+      "wrong": [
+        "Une obligation dont le capital n'est jamais remboursé à l'investisseur",
+        "Une obligation dont le coupon annuel suit le taux d'inflation",
+        "Une obligation garantie par l'État, donc sans aucun risque de défaut"
+      ],
+      "explanation": "Un zéro coupon ne verse aucun intérêt en cours de vie : le gain vient de l'écart entre le prix d'achat, inférieur au nominal, et le remboursement au nominal à l'échéance. Par exemple, on paie 950 € pour recevoir 1 000 € un an plus tard. Comme tout le gain arrive à la fin, ces obligations sont très sensibles aux variations de taux.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelles sont les trois grandes **agences de notation** qui évaluent la solidité financière des États et des entreprises ?",
+      "answer": "S&P Global Ratings, Moody's et Fitch",
+      "wrong": [
+        "Bloomberg, Reuters et Morningstar",
+        "BlackRock, Vanguard et State Street",
+        "Euronext, le Nasdaq et le NYSE"
+      ],
+      "explanation": "Ces trois agences, souvent appelées les « Big Three », dominent la notation de crédit : elles évaluent la capacité d'un émetteur à rembourser ses dettes, du AAA (le plus sûr) jusqu'aux notes de défaut. Une dégradation renchérit le coût d'emprunt de l'émetteur. BlackRock, Vanguard et State Street sont des gestionnaires d'actifs, et Euronext, le Nasdaq et le NYSE des Bourses.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un titre perd **50 %** de sa valeur. Quelle hausse doit-il ensuite réaliser pour revenir à son prix de départ ?",
+      "answer": "100 %",
+      "wrong": [
+        "50 %",
+        "75 %",
+        "150 %"
+      ],
+      "explanation": "Un titre à 100 € qui perd 50 % tombe à 50 € ; pour remonter à 100 €, il doit doubler, soit +100 %. Les pourcentages de hausse et de baisse ne se compensent pas, car ils ne s'appliquent pas à la même base. C'est pourquoi les fortes pertes sont si difficiles à rattraper : après −80 %, il faut même +400 %.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur l'échelle de S&P et de Fitch, quelle est la note la plus basse encore classée **investment grade** (catégorie investissement) ?",
+      "answer": "BBB-",
+      "wrong": [
+        "BB+",
+        "A-",
+        "B"
+      ],
+      "explanation": "L'investment grade va de AAA à BBB- (Baa3 chez Moody's). Juste en dessous, à partir de BB+, on entre dans la catégorie spéculative, dite **high yield** ou « junk ». Ce seuil compte beaucoup : de nombreux fonds n'ont le droit de détenir que des obligations investment grade et doivent vendre celles qui passent sous BBB-.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'est-ce qui distingue le calcul de l'indice allemand **DAX**, tel qu'il est habituellement cité, de celui du CAC 40 ?",
+      "answer": "Il réinvestit les dividendes : c'est un indice de performance",
+      "wrong": [
+        "Il pondère chaque société selon le prix de son action",
+        "Il attribue exactement le même poids à toutes ses valeurs",
+        "Il ne retient que les sociétés qui ne versent aucun dividende"
+      ],
+      "explanation": "Le DAX publié en continu est un indice de **performance** : les dividendes versés par ses sociétés y sont réinvestis. Le CAC 40 habituellement cité est un indice de **prix**, qui baisse mécaniquement lors des détachements de dividendes ; sa variante dividendes réinvestis s'appelle CAC 40 GR. Comparer les deux indices sur longue période sans en tenir compte est donc trompeur.",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment un ETF dit **synthétique** obtient-il la performance de l'indice qu'il suit ?",
+      "answer": "Par un contrat d'échange (swap) avec une banque qui lui verse cette performance",
+      "wrong": [
+        "En achetant tous les titres de l'indice dans les mêmes proportions",
+        "En confiant son argent à des gérants actifs chargés de battre l'indice",
+        "En achetant uniquement des obligations d'État à très court terme"
+      ],
+      "explanation": "Un ETF à réplication **physique** détient réellement les titres de l'indice. Un ETF **synthétique** détient un autre panier de titres et conclut un swap avec une contrepartie bancaire, qui lui verse la performance de l'indice en échange de celle de son panier. Ce mécanisme permet de répliquer des indices difficiles d'accès, mais ajoute un risque de contrepartie, encadré par la réglementation.",
+      "difficulty": 3
+    },
+    {
+      "question": "En France, à partir de quel seuil de détention du capital ou des droits de vote un actionnaire doit-il en principe déposer une **offre publique** sur la totalité d'une société cotée ?",
+      "answer": "30 %",
+      "wrong": [
+        "50 %",
+        "25 %",
+        "10 %"
+      ],
+      "explanation": "Franchir le seuil de 30 % du capital ou des droits de vote oblige en principe à déposer une offre publique visant l'ensemble des titres : c'est l'**offre obligatoire**. Elle évite qu'un acteur prenne le contrôle de fait d'une société sans offrir aux autres actionnaires de sortir. Ce seuil était d'un tiers avant 2011. Des seuils de déclaration plus bas, dès 5 %, imposent seulement d'informer le marché.",
+      "difficulty": 3
+    },
+    {
+      "question": "Lors d'un **fixing** (cotation par confrontation des ordres, comme à l'ouverture d'Euronext), comment le cours d'équilibre est-il déterminé ?",
+      "answer": "C'est le prix qui permet d'échanger le plus grand nombre de titres",
+      "wrong": [
+        "C'est la moyenne des prix de tous les ordres reçus",
+        "C'est le cours de clôture de la séance précédente",
+        "C'est un prix décidé librement par l'opérateur de marché"
+      ],
+      "explanation": "Pendant la pré-ouverture, les ordres s'accumulent sans être exécutés. Au moment du fixing, le système calcule le prix unique qui maximise le volume échangé, puis exécute à ce prix tous les ordres compatibles. Euronext ouvre et clôture ainsi la séance des grandes valeurs, et les titres peu liquides n'y sont cotés qu'au fixing, deux fois par jour.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que signifie une **courbe des taux inversée** sur le marché des obligations d'État ?",
+      "answer": "Les taux à court terme sont plus élevés que les taux à long terme",
+      "wrong": [
+        "Les taux sont devenus négatifs sur toutes les échéances",
+        "Les taux à long terme dépassent nettement les taux à court terme",
+        "Les entreprises empruntent moins cher que l'État"
+      ],
+      "explanation": "Normalement, prêter plus longtemps rapporte plus : la courbe des taux est croissante. Quand les taux courts dépassent les taux longs, on parle d'inversion ; les marchés anticipent alors souvent des baisses de taux futures, liées à un ralentissement. Aux États-Unis, une inversion a précédé la plupart des récessions depuis les années 1970, sans être pour autant un signal infaillible.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un indice gagne **10 %** un jour puis perd **10 %** le lendemain. Quelle est la performance sur ces deux jours d'un ETF qui réplique **deux fois** sa variation **quotidienne**, hors frais ?",
+      "answer": "−4 %",
+      "wrong": [
+        "−2 %",
+        "0 %",
+        "−1 %"
+      ],
+      "explanation": "L'ETF fait +20 % puis −20 % : 1,20 × 0,80 = 0,96, soit −4 %, alors que l'indice n'a perdu que 1 % (1,10 × 0,90 = 0,99). Comme le levier s'applique jour après jour, la performance sur plusieurs jours n'est pas le double de celle de l'indice, et les marchés agités sans tendance érodent la valeur de ces produits. Ils sont conçus pour des positions courtes.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que désigne un **krach** boursier ?",
+      "answer": "Un effondrement brutal et massif des cours en très peu de temps",
+      "wrong": [
+        "Une hausse soudaine et généralisée des cours en une séance",
+        "La fermeture définitive d'une place boursière",
+        "Une suspension de cotation décidée par une entreprise"
+      ],
+      "explanation": "Un krach est une chute violente des cours, souvent de plus de 10 à 20 % en quelques jours, voire en une seule séance, sous l'effet de la panique. Il se distingue d'un marché baissier, qui peut s'étaler sur des mois. Exemples célèbres : octobre 1929, le « lundi noir » d'octobre 1987 ou mars 2020 avec la pandémie de Covid-19.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qu'un **délit d'initié** ?",
+      "answer": "Utiliser une information privilégiée non publique pour opérer en Bourse",
+      "wrong": [
+        "Acheter des actions le jour même de leur introduction en Bourse",
+        "Vendre à découvert une action déjà en forte baisse",
+        "Passer un ordre en dehors des heures officielles de cotation"
+      ],
+      "explanation": "Celui qui achète ou vend un titre en profitant d'une information précise, non encore publique et susceptible de faire bouger le cours (résultats, rachat, fusion…) commet un délit d'initié. C'est interdit car cela fausse l'égalité entre investisseurs. En France, l'AMF enquête et sanctionne, et la justice pénale peut aussi être saisie.",
+      "difficulty": 1
+    },
+    {
+      "question": "En France, que signifie le sigle **PEA** ?",
+      "answer": "Plan d'épargne en actions",
+      "wrong": [
+        "Placement d'épargne assurée",
+        "Portefeuille d'entreprises agréées",
+        "Prêt d'État aux actionnaires"
+      ],
+      "explanation": "Créé en 1992, le PEA est une enveloppe qui permet d'investir principalement en actions de sociétés européennes, directement ou via des fonds et ETF éligibles. Son intérêt est fiscal : après 5 ans de détention, les gains sont exonérés d'impôt sur le revenu, seuls les prélèvements sociaux restant dus.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que fait un investisseur qui pratique l'**investissement programmé** (DCA, dollar-cost averaging) ?",
+      "answer": "Il investit une somme fixe à intervalles réguliers, quel que soit le cours",
+      "wrong": [
+        "Il investit tout son capital en une fois, au plus bas du marché",
+        "Il vend automatiquement dès que son portefeuille gagne 10 %",
+        "Il n'achète que les jours de forte hausse des marchés"
+      ],
+      "explanation": "En investissant par exemple 200 € chaque mois, on achète plus de parts quand les cours sont bas et moins quand ils sont hauts : le prix de revient se lisse. La méthode évite de tout investir au pire moment et supprime la tentation de deviner le bon moment pour entrer, un exercice dans lequel presque tout le monde échoue.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel est le principal atout du **compte-titres ordinaire** (CTO) par rapport au PEA ?",
+      "answer": "On peut y détenir des titres du monde entier, sans plafond de versement",
+      "wrong": [
+        "Ses plus-values sont toujours totalement exonérées d'impôt",
+        "Le capital qui y est investi est garanti par l'État",
+        "Il est le seul compte autorisé pour acheter des ETF"
+      ],
+      "explanation": "Le CTO est l'enveloppe la plus souple : actions américaines ou asiatiques, obligations, produits dérivés… tout y est accessible, sans limite de montant. En contrepartie, il n'offre pas d'avantage fiscal particulier, contrairement au PEA, plafonné et réservé principalement aux actions européennes. On peut d'ailleurs acheter des ETF dans les deux.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie prendre une **position longue** (« être long ») sur une action ?",
+      "answer": "L'acheter en pariant sur la hausse de son cours",
+      "wrong": [
+        "La vendre à découvert en pariant sur sa baisse",
+        "S'engager à la conserver au moins dix ans",
+        "L'acheter grâce à un prêt de plus d'un an"
+      ],
+      "explanation": "Être long, c'est détenir un actif (ou y être exposé) pour profiter de sa hausse. L'inverse est la position courte (short), obtenue par la vente à découvert, qui gagne quand le cours baisse. Le terme ne dit rien de la durée de détention : on peut être long quelques minutes seulement.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel animal symbolise traditionnellement un marché **baissier** ?",
+      "answer": "L'ours",
+      "wrong": [
+        "Le taureau",
+        "Le loup",
+        "Le renard"
+      ],
+      "explanation": "On oppose le **bear** (ours), qui frappe de haut en bas avec ses pattes, au **bull** (taureau), qui projette vers le haut avec ses cornes. D'où les expressions bear market et bull market. La célèbre statue du « Charging Bull », installée près de Wall Street en 1989, incarne l'optimisme des marchés haussiers.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans quel but un actionnaire achète-t-il souvent une option de vente (**put**) sur les titres qu'il détient déjà ?",
+      "answer": "Se protéger contre une baisse en s'assurant un prix de vente minimum",
+      "wrong": [
+        "Augmenter le dividende qu'il touchera à la prochaine échéance",
+        "Pouvoir racheter d'autres titres à un prix fixé d'avance",
+        "Être dispensé des frais de courtage lors de la revente"
+      ],
+      "explanation": "Un put donne le droit de vendre le sous-jacent au prix d'exercice. Si le cours s'effondre, l'actionnaire peut vendre ses titres à ce prix garanti ; s'il monte, il abandonne le put et n'a perdu que la prime. C'est une assurance contre la baisse, appelée put de protection. Le droit d'acheter à prix fixé correspondrait à un call.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la différence essentielle entre un contrat **future** et une **option** ?",
+      "answer": "Le future engage ferme les deux parties, l'option ne donne qu'un droit à l'acheteur",
+      "wrong": [
+        "Le future porte sur des actions, l'option uniquement sur des matières premières",
+        "Le future ne peut jamais être revendu avant l'échéance, l'option le peut",
+        "Le future garantit un gain à l'acheteur, l'option peut lui faire perdre"
+      ],
+      "explanation": "Avec un future, acheteur et vendeur s'engagent à échanger le sous-jacent à un prix et une date fixés : chacun peut perdre gros si le marché va contre lui. Avec une option, seul le vendeur est engagé ; l'acheteur paie une prime pour un droit qu'il exerce ou non. Les deux produits existent sur actions, indices, taux, devises ou matières premières, et se négocient avant l'échéance.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur une position à effet de levier, que se passe-t-il lors d'un **appel de marge** ?",
+      "answer": "Le courtier exige un dépôt supplémentaire, sinon il peut clôturer la position",
+      "wrong": [
+        "Le courtier verse un bonus parce que la position est gagnante",
+        "La Bourse suspend la cotation du titre pendant une journée",
+        "L'émetteur du titre rembourse la position par anticipation"
+      ],
+      "explanation": "Quand on emprunte pour investir, le courtier exige une garantie minimale (la marge). Si les pertes la font passer sous le seuil requis, il lance un appel de marge : il faut remettre des fonds, faute de quoi il ferme d'office la position, au cours du moment. C'est ainsi qu'une position à levier peut être soldée en perte avant tout rebond éventuel.",
+      "difficulty": 2
+    },
+    {
+      "question": "Tu vends à découvert une action à **40 €**. Quel est ton **gain maximal** possible, hors frais ?",
+      "answer": "40 € par action, si le cours tombe à zéro",
+      "wrong": [
+        "Illimité, comme la perte potentielle",
+        "80 € par action, si le cours double",
+        "4 € par action, soit 10 % du cours"
+      ],
+      "explanation": "Le vendeur à découvert gagne la différence entre son prix de vente et son prix de rachat. Une action ne pouvant descendre sous zéro, le gain maximal est de 40 € par action, soit 100 % du prix de vente. À l'inverse, la perte n'a pas de plafond puisque le cours peut monter indéfiniment : gain limité, perte illimitée, c'est l'asymétrie de la vente à découvert.",
+      "difficulty": 2
+    },
+    {
+      "question": "Début 2021, l'action **GameStop** s'envole sous l'impulsion de particuliers coordonnés sur Reddit. Quel phénomène frappe alors les vendeurs à découvert ?",
+      "answer": "Un short squeeze : contraints de racheter, ils accélèrent la hausse",
+      "wrong": [
+        "Un délit d'initié collectif, sanctionné sur-le-champ par la SEC",
+        "Un krach qui fait tomber le titre à zéro en une séance",
+        "Une OPA hostile lancée par les particuliers sur la société"
+      ],
+      "explanation": "GameStop était massivement vendue à découvert. Quand les achats des particuliers ont fait monter le cours, les vendeurs à découvert ont dû racheter des titres pour limiter leurs pertes, ce qui a fait monter le cours encore plus fort : c'est le short squeeze. Plusieurs fonds ont essuyé de lourdes pertes en quelques jours.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel type de risque la **diversification** d'un portefeuille d'actions ne permet-elle **pas** d'éliminer ?",
+      "answer": "Le risque de marché, qui touche toutes les actions à la fois",
+      "wrong": [
+        "Le risque propre à une seule entreprise du portefeuille",
+        "Le risque de faillite d'un émetteur pris isolément",
+        "Le risque lié à un scandale touchant une société précise"
+      ],
+      "explanation": "Le risque d'une action se décompose en risque **spécifique** (propre à l'entreprise : faillite, scandale, mauvais résultats) et en risque **systématique** ou de marché (récession, crise, hausse des taux). En multipliant les lignes, les accidents individuels se compensent et le risque spécifique s'estompe, mais une baisse générale touche tout le portefeuille.",
+      "difficulty": 2
+    },
+    {
+      "question": "Une action a un **bêta** de 1,5 par rapport à son marché. Si le marché monte de 10 %, de combien peut-on s'attendre à ce qu'elle monte, en moyenne ?",
+      "answer": "Environ 15 %",
+      "wrong": [
+        "Environ 10 %",
+        "Environ 1,5 %",
+        "Environ 11,5 %"
+      ],
+      "explanation": "Le bêta mesure la sensibilité d'un titre aux mouvements du marché : avec un bêta de 1,5, l'action amplifie en moyenne les variations de 50 %, soit environ +15 % pour +10 %, mais aussi −15 % pour −10 %. Un bêta inférieur à 1 caractérise un titre moins réactif que le marché, souvent une valeur défensive.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que représente la **valeur liquidative** d'un fonds (OPCVM) ?",
+      "answer": "Le prix d'une part : l'actif net du fonds divisé par le nombre de parts",
+      "wrong": [
+        "Le montant minimal à investir pour entrer dans le fonds",
+        "La somme garantie en cas de faillite de la société de gestion",
+        "Le rendement annuel promis aux porteurs de parts"
+      ],
+      "explanation": "La valeur liquidative est calculée en divisant l'actif net du fonds (titres détenus moins dettes et frais) par le nombre de parts. Pour un fonds classique, elle est publiée en général une fois par jour, et les souscriptions et rachats se font à cette valeur. Un ETF, lui, s'échange en continu en Bourse, à un prix proche de sa valeur liquidative.",
+      "difficulty": 2
+    },
+    {
+      "question": "Parmi ces entreprises, laquelle est typiquement classée comme valeur **défensive** ?",
+      "answer": "Un fabricant de produits alimentaires de base",
+      "wrong": [
+        "Un constructeur automobile grand public",
+        "Un groupe de construction et de BTP",
+        "Une compagnie aérienne internationale"
+      ],
+      "explanation": "Une valeur défensive vend des biens ou services dont la demande résiste aux récessions : alimentation, hygiène, santé, services publics. À l'inverse, les valeurs **cycliques** (automobile, construction, transport aérien…) voient leurs ventes et leurs profits suivre de près la conjoncture : elles souffrent en récession et rebondissent fort en reprise.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel est le rôle d'une **chambre de compensation** (contrepartie centrale) sur un marché financier ?",
+      "answer": "S'interposer entre acheteur et vendeur pour garantir la bonne fin des transactions",
+      "wrong": [
+        "Fixer chaque matin le cours d'ouverture de chaque action cotée",
+        "Vérifier l'exactitude des comptes publiés par les sociétés cotées",
+        "Prêter de l'argent aux particuliers qui achètent des actions"
+      ],
+      "explanation": "La contrepartie centrale devient l'acheteur de chaque vendeur et le vendeur de chaque acheteur. Si l'un des deux fait défaut, c'est elle qui assume, grâce aux dépôts de garantie (marges) qu'elle exige de ses membres. Ce mécanisme supprime le risque de contrepartie entre participants ; LCH et Eurex Clearing figurent parmi les grandes chambres de compensation européennes.",
+      "difficulty": 3
+    },
+    {
+      "question": "Tu as vendu une action à découvert et tu es toujours en position le jour où elle **détache un dividende**. Que se passe-t-il ?",
+      "answer": "Tu dois verser l'équivalent du dividende au prêteur des titres",
+      "wrong": [
+        "Tu touches le dividende à la place du prêteur des titres",
+        "Le dividende est annulé pour l'ensemble des actionnaires",
+        "Ta position est automatiquement soldée par le courtier"
+      ],
+      "explanation": "Pour vendre à découvert, on emprunte des titres. Le prêteur ne doit rien perdre : comme l'acheteur des titres vendus touche le vrai dividende, le vendeur à découvert doit compenser le prêteur en lui versant un montant équivalent. Le jour du détachement, le cours baisse d'à peu près ce montant, ce qui neutralise en grande partie l'opération pour lui.",
+      "difficulty": 3
+    },
+    {
+      "question": "En mai 2024, les États-Unis ont raccourci le délai de **règlement-livraison** des actions. Quel délai y est appliqué depuis ?",
+      "answer": "T+1",
+      "wrong": [
+        "T+0",
+        "T+2",
+        "T+3"
+      ],
+      "explanation": "Le règlement-livraison est l'échange effectif des titres contre l'argent, qui intervient quelques jours ouvrés après la transaction (T). Les États-Unis sont passés de T+2 à T+1 le 28 mai 2024, après être passés de T+3 à T+2 en 2017. L'Union européenne, toujours en T+2, a prévu de passer elle aussi à T+1 en 2027.",
+      "difficulty": 3
+    },
+    {
+      "question": "Aux États-Unis, quelle baisse du **S&P 500** dans la journée déclenche le premier niveau des **coupe-circuits** de marché, qui suspendent toute la cotation pendant 15 minutes ?",
+      "answer": "7 %",
+      "wrong": [
+        "3 %",
+        "10 %",
+        "20 %"
+      ],
+      "explanation": "Les coupe-circuits américains (market-wide circuit breakers) se déclenchent à trois niveaux de baisse du S&P 500 par rapport à la clôture de la veille : 7 % et 13 % entraînent une pause de 15 minutes (si cela arrive avant 15 h 25, heure de New York), 20 % ferme le marché pour le reste de la séance. Le premier niveau a été déclenché quatre fois en mars 2020, au début de la pandémie.",
+      "difficulty": 3
+    },
+    {
+      "question": "Une société cotée affiche un **price-to-book** (cours ÷ capitaux propres par action) de **0,7**. Qu'est-ce que cela signifie ?",
+      "answer": "Elle vaut en Bourse moins que ses capitaux propres comptables",
+      "wrong": [
+        "Elle distribue 70 % de son bénéfice en dividendes",
+        "Son cours a reculé de 30 % sur les douze derniers mois",
+        "Elle se paie 0,7 fois son chiffre d'affaires annuel"
+      ],
+      "explanation": "Le price-to-book (ou PBR) compare la capitalisation boursière à l'actif net comptable. À 0,7, le marché valorise la société 30 % sous la valeur inscrite dans ses comptes : soit l'action est décotée, soit les investisseurs doutent de la valeur réelle de ses actifs ou de sa rentabilité future. C'est fréquent pour les banques et les valeurs en difficulté.",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment calcule-t-on, dans sa forme simplifiée, la **valeur d'entreprise** (VE) d'une société cotée ?",
+      "answer": "Capitalisation boursière + dette financière nette",
+      "wrong": [
+        "Capitalisation boursière − dette financière nette",
+        "Chiffre d'affaires × PER de la société",
+        "Capitaux propres + dividendes versés"
+      ],
+      "explanation": "Racheter une entreprise, c'est payer ses actions mais aussi reprendre ses dettes, diminuées de la trésorerie disponible : d'où VE = capitalisation + dette nette. Elle sert à comparer des sociétés plus ou moins endettées, par exemple via le ratio VE/EBITDA. Soustraire la dette nette reviendrait à faire comme si l'endettement rendait l'entreprise moins chère.",
+      "difficulty": 3
+    },
+    {
+      "question": "Tu achètes une obligation à **110 % de son nominal** et la conserves jusqu'à l'échéance, sans défaut de l'émetteur. Comment ton rendement se compare-t-il à son taux de coupon ?",
+      "answer": "Il est inférieur au taux du coupon",
+      "wrong": [
+        "Il est supérieur au taux du coupon",
+        "Il est exactement égal au taux du coupon",
+        "Il est forcément négatif"
+      ],
+      "explanation": "Le coupon est calculé sur le nominal, mais tu as payé plus cher : 1 100 € pour une obligation qui ne remboursera que 1 000 €. Cette perte de 100 € à l'échéance vient grignoter les coupons, si bien que ton rendement actuariel est inférieur au taux du coupon. Il n'est pas pour autant négatif tant que les coupons cumulés dépassent la prime payée. Acheter sous le pair produit l'effet inverse.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'est-ce qu'un **indice boursier** ?",
+      "answer": "Un indicateur qui suit l'évolution d'un panier de valeurs d'un marché",
+      "wrong": [
+        "Le cours de l'action de la plus grande entreprise d'un pays",
+        "Le taux d'intérêt directeur fixé par la banque centrale",
+        "Le nombre de sociétés cotées sur une place boursière"
+      ],
+      "explanation": "Un indice comme le CAC 40 ou le S&P 500 résume en un seul chiffre l'évolution d'un ensemble de valeurs choisies selon des règles précises (taille, liquidité, secteur, pays). Il sert de baromètre du marché, d'étalon pour juger la performance des gérants et de référence aux ETF qui le répliquent.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'appelle-t-on une **valeur refuge** sur les marchés financiers ?",
+      "answer": "Un actif vers lequel les investisseurs se tournent en temps de crise, comme l'or",
+      "wrong": [
+        "Une action dont la vente à découvert est interdite par la loi",
+        "Une action qui n'a jamais versé le moindre dividende",
+        "Une obligation émise par une entreprise en grande difficulté"
+      ],
+      "explanation": "En période de panique, les investisseurs délaissent les actifs risqués pour ceux censés mieux conserver leur valeur : l'or, certaines devises comme le franc suisse, ou les obligations des États jugés les plus sûrs, comme les États-Unis ou l'Allemagne. Une valeur refuge n'est pas pour autant à l'abri de toute baisse.",
+      "difficulty": 1
+    },
+    {
+      "question": "Un jour de séance normal, à quelle heure (heure de Paris) commence la cotation en continu des actions sur **Euronext Paris** ?",
+      "answer": "9 h 00",
+      "wrong": [
+        "8 h 00",
+        "9 h 30",
+        "10 h 00"
+      ],
+      "explanation": "La séance s'ouvre à 9 h par un fixing d'ouverture, préparé pendant une phase de pré-ouverture où les ordres s'accumulent. La cotation en continu dure ensuite jusqu'à 17 h 30, suivie d'un fixing de clôture à 17 h 35. L'horaire de 9 h 30 est celui de l'ouverture du NYSE, mais à l'heure de New York, soit en général 15 h 30 à Paris.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'appelle-t-on les **intérêts composés** ?",
+      "answer": "Des intérêts réinvestis qui produisent à leur tour des intérêts",
+      "wrong": [
+        "Des intérêts calculés uniquement sur le capital de départ",
+        "Des intérêts versés en plusieurs devises différentes",
+        "Des intérêts prélevés par la banque sur un découvert"
+      ],
+      "explanation": "Avec des intérêts composés, chaque année les gains s'ajoutent au capital et rapportent à leur tour : 1 000 € placés à 5 % deviennent environ 2 653 € en 20 ans, contre 2 000 € avec des intérêts simples, calculés seulement sur le capital de départ. Cet effet « boule de neige » explique pourquoi la durée de placement pèse autant que le taux.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle relation lie en général le **rendement espéré** et le **risque** d'un placement ?",
+      "answer": "Plus le rendement espéré est élevé, plus le risque est élevé",
+      "wrong": [
+        "Plus le rendement espéré est élevé, plus le risque est faible",
+        "Le rendement espéré ne dépend absolument pas du risque pris",
+        "Le risque disparaît dès que le placement dure plus d'un an"
+      ],
+      "explanation": "Pour accepter un risque plus grand, les investisseurs exigent une rémunération plus élevée en moyenne : c'est la **prime de risque**. C'est pourquoi les actions ont historiquement rapporté plus que les obligations ou le livret, au prix de fortes variations. Méfiance donc envers toute offre promettant un rendement élevé « sans risque » : c'est le signe classique d'une arnaque.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que désigne le **ticker** (ou mnémonique) d'une valeur cotée ?",
+      "answer": "Le code court qui l'identifie sur le marché, comme AAPL pour Apple",
+      "wrong": [
+        "Le compteur du nombre d'ordres passés sur la séance",
+        "Le montant minimal à acheter pour passer un ordre",
+        "Le nom de la banque qui a introduit la société en Bourse"
+      ],
+      "explanation": "Le ticker est un code de quelques lettres utilisé pour désigner rapidement une valeur : AAPL pour Apple, MSFT pour Microsoft. Le nom vient des téléscripteurs (tickers) qui imprimaient les cours sur des bandes de papier. Pour identifier un titre sans ambiguïté au niveau international, on utilise plutôt le code ISIN, à 12 caractères.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que mesurent les **frais courants** (TER) d'un ETF ?",
+      "answer": "Les frais annuels de gestion prélevés sur l'actif du fonds",
+      "wrong": [
+        "Les frais de courtage payés à chaque achat de parts",
+        "L'écart entre la performance du fonds et celle de son indice",
+        "La commission de performance reversée au gérant vedette"
+      ],
+      "explanation": "Les frais courants, exprimés en pourcentage annuel (souvent quelques dixièmes de pour cent pour un ETF), sont prélevés directement sur l'actif du fonds : on ne les paie pas à part, ils réduisent la performance. Les frais de courtage, eux, sont facturés par l'intermédiaire à chaque ordre. L'écart de performance avec l'indice est une autre notion, la tracking difference.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel monument parisien, inauguré en 1826, a longtemps abrité la **Bourse de Paris** ?",
+      "answer": "Le palais Brongniart",
+      "wrong": [
+        "Le palais Garnier",
+        "Le palais Bourbon",
+        "Le Grand Palais"
+      ],
+      "explanation": "Le palais Brongniart, du nom de son architecte Alexandre-Théodore Brongniart, a accueilli la Bourse de Paris et ses agents de change autour de la célèbre « corbeille ». La cotation à la criée y a disparu à la fin des années 1980 au profit de la cotation électronique. Le palais Bourbon abrite l'Assemblée nationale et le palais Garnier l'Opéra.",
+      "difficulty": 2
+    },
+    {
+      "question": "La **tulipomanie**, aux Provinces-Unies dans les années 1630, est souvent citée comme l'un des premiers exemples historiques de quel phénomène ?",
+      "answer": "Une bulle spéculative",
+      "wrong": [
+        "Une nationalisation bancaire",
+        "Une introduction en Bourse",
+        "Une offre publique d'achat"
+      ],
+      "explanation": "Dans les Provinces-Unies (actuels Pays-Bas), les prix de certains bulbes de tulipes rares se sont envolés jusqu'à des sommes extravagantes, avant de s'effondrer brutalement en février 1637. L'épisode est devenu le symbole des bulles spéculatives, où l'on achète surtout parce qu'on espère revendre plus cher, même si les historiens en relativisent aujourd'hui l'ampleur.",
+      "difficulty": 2
+    },
+    {
+      "question": "Selon la **règle de 72**, en combien de temps environ un placement rapportant **6 % par an**, intérêts réinvestis, double-t-il ?",
+      "answer": "Environ 12 ans",
+      "wrong": [
+        "Environ 6 ans",
+        "Environ 17 ans",
+        "Environ 9 ans"
+      ],
+      "explanation": "La règle de 72 donne une approximation rapide du temps de doublement d'un capital : 72 ÷ taux annuel, soit 72 ÷ 6 = 12 ans. Le calcul exact le confirme : 1,06 élevé à la puissance 12 donne environ 2,01. Les 17 ans correspondraient à des intérêts simples (100 ÷ 6 ≈ 16,7), sans effet des intérêts composés.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qu'une **obligation convertible** ?",
+      "answer": "Une obligation que son porteur peut échanger contre des actions de l'émetteur",
+      "wrong": [
+        "Une obligation que l'émetteur peut rembourser avant son échéance",
+        "Une obligation dont le coupon varie avec un taux de référence",
+        "Une obligation remboursable dans la devise choisie par le porteur"
+      ],
+      "explanation": "L'obligation convertible verse un coupon comme une obligation classique, mais son porteur peut, selon des conditions fixées à l'émission, la convertir en actions. Il profite ainsi d'une éventuelle hausse du cours tout en gardant un plancher obligataire. En échange de cette option, le coupon est plus faible. Une obligation que l'émetteur peut rembourser par anticipation est dite remboursable ou callable.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que recherche un investisseur qui pratique le **value investing** ?",
+      "answer": "Des actions dont le cours semble inférieur à leur valeur réelle",
+      "wrong": [
+        "Les sociétés qui croissent le plus vite, quel que soit leur prix",
+        "Les actions qui ont le plus monté au cours des derniers mois",
+        "Uniquement des sociétés récemment introduites en Bourse"
+      ],
+      "explanation": "Le value investing consiste à acheter des titres décotés par rapport à leur valeur intrinsèque estimée (bénéfices, actifs, flux de trésorerie), avec une marge de sécurité. Théorisé par Benjamin Graham, il a été popularisé par Warren Buffett. Il s'oppose au **growth investing**, qui accepte de payer cher des sociétés à forte croissance, et diffère du momentum, qui suit les titres déjà en hausse.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle banque d'affaires américaine fait faillite le **15 septembre 2008**, faisant basculer la crise financière dans la panique ?",
+      "answer": "Lehman Brothers",
+      "wrong": [
+        "Goldman Sachs",
+        "JPMorgan Chase",
+        "Morgan Stanley"
+      ],
+      "explanation": "Fortement exposée aux crédits immobiliers, Lehman Brothers dépose le bilan après l'échec des tentatives de sauvetage : c'est la plus grosse faillite de l'histoire américaine. Les autorités ayant laissé tomber une banque de cette taille, la confiance entre établissements s'effondre et les marchés plongent. Goldman Sachs, JPMorgan Chase et Morgan Stanley ont, elles, traversé la crise.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel type de valeurs a gonflé la **bulle internet**, qui éclate au début des années 2000 ?",
+      "answer": "Les jeunes sociétés technologiques et liées à internet",
+      "wrong": [
+        "Les banques et les grandes compagnies d'assurance",
+        "Les producteurs de pétrole et de gaz naturel",
+        "Les obligations des États européens"
+      ],
+      "explanation": "À la fin des années 1990, l'enthousiasme pour internet propulse les « start-up » du secteur, souvent sans bénéfices, à des valorisations extravagantes. Le Nasdaq Composite culmine en mars 2000 puis perd près de 78 % jusqu'en octobre 2002. De nombreuses sociétés disparaissent, tandis que quelques survivantes deviendront des géants.",
+      "difficulty": 2
+    },
+    {
+      "question": "En finance comportementale, que désigne l'**aversion à la perte** ?",
+      "answer": "Le fait qu'une perte fasse plus souffrir qu'un gain de même montant ne réjouit",
+      "wrong": [
+        "La règle qui interdit de revendre un titre acheté plus cher",
+        "La tendance à acheter un titre parce que tout le monde l'achète",
+        "Le refus de principe de tout placement comportant un risque"
+      ],
+      "explanation": "Mise en évidence par Daniel Kahneman et Amos Tversky (théorie des perspectives, 1979), l'aversion à la perte fait qu'une perte pèse psychologiquement environ deux fois plus qu'un gain équivalent. Elle pousse par exemple à garder trop longtemps des titres perdants pour ne pas « matérialiser » la perte. Elle diffère de l'aversion au risque, qui consiste simplement à préférer les placements moins risqués.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle compagnie, fondée en 1602, est souvent présentée comme la première à avoir émis des actions échangées sur une Bourse ?",
+      "answer": "La Compagnie néerlandaise des Indes orientales",
+      "wrong": [
+        "La Compagnie française du Mississippi",
+        "La Compagnie de la baie d'Hudson",
+        "La Banque d'Angleterre"
+      ],
+      "explanation": "La VOC (Vereenigde Oostindische Compagnie), créée à Amsterdam en 1602 pour le commerce des épices, a émis des parts que le public pouvait acheter puis revendre à d'autres investisseurs. Ces échanges ont fait de la Bourse d'Amsterdam l'ancêtre des Bourses modernes. La Compagnie de la baie d'Hudson date de 1670, la Banque d'Angleterre de 1694.",
+      "difficulty": 2
+    },
+    {
+      "question": "Lors du **lundi noir** du 19 octobre 1987, le Dow Jones a subi sa plus forte baisse en une séance, en pourcentage. De combien environ ?",
+      "answer": "Environ −23 %",
+      "wrong": [
+        "Environ −5 %",
+        "Environ −12 %",
+        "Environ −50 %"
+      ],
+      "explanation": "Le Dow Jones a perdu 22,6 % ce jour-là, un record de baisse en une séance qui tient toujours. Les pires séances de 1929 ou de mars 2020 sont restées autour de −13 %. Les ventes automatiques liées aux stratégies d'« assurance de portefeuille » ont amplifié la panique, qui s'est propagée aux Bourses du monde entier.",
+      "difficulty": 3
+    },
+    {
+      "question": "Lors d'une augmentation de capital, à quoi sert le **droit préférentiel de souscription** (DPS) accordé aux actionnaires existants ?",
+      "answer": "Leur permettre de souscrire en priorité aux actions nouvelles pour limiter leur dilution",
+      "wrong": [
+        "Leur garantir un dividende doublé l'année de l'augmentation de capital",
+        "Leur donner un droit de veto individuel sur l'augmentation de capital",
+        "Leur racheter leurs actions anciennes au prix d'introduction en Bourse"
+      ],
+      "explanation": "Le DPS permet aux actionnaires en place d'acheter les actions nouvelles proportionnellement à leur participation, souvent à un prix décoté, afin de conserver leur part du capital. Il est lui-même négociable : un actionnaire qui ne veut pas participer peut vendre ses droits en Bourse et compenser ainsi la perte de valeur liée à l'émission à prix réduit.",
+      "difficulty": 3
+    },
+    {
+      "question": "Une option d'achat (call) a un prix d'exercice de **50 €**, alors que l'action cote **58 €**. Quelle est sa **valeur intrinsèque** ?",
+      "answer": "8 €",
+      "wrong": [
+        "0 €",
+        "58 €",
+        "108 €"
+      ],
+      "explanation": "La valeur intrinsèque d'un call est le gain qu'apporterait un exercice immédiat : acheter à 50 € une action qui vaut 58 €, soit 8 €. L'option est dite « dans la monnaie ». Son prix réel est en général supérieur, car il s'y ajoute une **valeur temps** liée à la durée restante. Pour un put de même prix d'exercice, la valeur intrinsèque serait nulle.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que mesure la **tracking error** d'un ETF ?",
+      "answer": "La variabilité de l'écart entre la performance du fonds et celle de son indice",
+      "wrong": [
+        "Le nombre d'erreurs de cotation relevées sur une séance",
+        "L'écart entre le prix d'achat et le prix de vente de l'ETF",
+        "Le total des frais annuels prélevés par le gestionnaire"
+      ],
+      "explanation": "La tracking error est l'écart-type des différences de performance entre l'ETF et son indice : plus elle est faible, plus la réplication est fidèle. Elle découle des frais, des dividendes, de la gestion de trésorerie ou de l'échantillonnage des titres. L'écart de prix achat/vente est le spread, et les frais annuels sont les frais courants (TER).",
+      "difficulty": 3
+    },
+    {
+      "question": "Selon l'**hypothèse d'efficience des marchés** dans sa forme **semi-forte**, quelle information les cours reflètent-ils déjà ?",
+      "answer": "Toute l'information publique disponible",
+      "wrong": [
+        "Uniquement l'historique des cours passés",
+        "Toute l'information, même privilégiée",
+        "Uniquement les annonces des banques centrales"
+      ],
+      "explanation": "Formalisée par Eugene Fama, l'hypothèse distingue trois formes : **faible** (les cours intègrent l'historique des prix, ce qui rend l'analyse technique inutile), **semi-forte** (ils intègrent toute l'information publique, y compris les résultats publiés) et **forte** (ils intègrent même l'information privilégiée). Si la forme semi-forte est vraie, l'analyse des données publiques ne permet pas de battre durablement le marché.",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment se calcule le **ratio de Sharpe** d'un portefeuille ?",
+      "answer": "(Rendement − taux sans risque) ÷ volatilité",
+      "wrong": [
+        "(Rendement − taux sans risque) × volatilité",
+        "Rendement ÷ nombre de lignes du portefeuille",
+        "Volatilité ÷ rendement du marché"
+      ],
+      "explanation": "Le ratio de Sharpe mesure le rendement obtenu en plus du taux sans risque pour chaque unité de risque prise, le risque étant mesuré par la volatilité. Plus il est élevé, mieux le risque a été rémunéré : deux fonds au même rendement ne se valent pas si l'un a été deux fois plus volatil. William Sharpe a reçu le prix Nobel d'économie en 1990, avec Harry Markowitz et Merton Miller.",
       "difficulty": 3
     }
   ]

@@ -340,6 +340,1061 @@
       ],
       "explanation": "Un **squeeze** correspond à des bandes de Bollinger très rapprochées, signe que la volatilité s’est effondrée et que le marché « comprime ». Historiquement, ces phases calmes précèdent souvent une expansion brutale de la volatilité. Attention : le squeeze indique qu’un gros mouvement approche, mais pas dans quel sens ; il faut d’autres éléments pour trancher.",
       "difficulty": 3
+    },
+    {
+      "question": "Sur une bougie japonaise, que représente le **corps**, la partie épaisse et colorée ?",
+      "answer": "L’écart entre le cours d’ouverture et le cours de clôture",
+      "wrong": [
+        "L’écart entre le plus haut et le plus bas de la période",
+        "Le volume échangé pendant toute la période",
+        "L’écart entre la clôture et la moyenne mobile"
+      ],
+      "explanation": "Le **corps** d’une bougie est délimité par l’ouverture et la clôture de la période : plus il est grand, plus le camp gagnant (acheteurs ou vendeurs) a dominé. L’amplitude totale entre plus haut et plus bas, elle, se lit en ajoutant les mèches au corps. Le volume n’apparaît pas sur la bougie : il est en général tracé à part, sous le graphique.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Chandelier_japonais"
+    },
+    {
+      "question": "Sur une bougie japonaise, jusqu’où s’étendent les **mèches** (aussi appelées ombres) ?",
+      "answer": "Jusqu’au plus haut et au plus bas atteints pendant la période",
+      "wrong": [
+        "Jusqu’aux cours d’ouverture et de clôture de la période",
+        "Jusqu’aux bandes de Bollinger de la même période",
+        "Jusqu’au plus haut et au plus bas de toute l’année"
+      ],
+      "explanation": "Les **mèches** prolongent le corps jusqu’aux extrêmes de la période : la mèche haute atteint le plus haut, la mèche basse le plus bas. Ouverture et clôture, elles, délimitent le corps. Une longue mèche signale un rejet : le prix est allé loin dans une direction puis a été ramené en arrière avant la clôture.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans la convention la plus répandue sur les plateformes occidentales, que signifie une bougie de couleur **verte** ?",
+      "answer": "Que le cours de clôture est supérieur au cours d’ouverture",
+      "wrong": [
+        "Que le cours de clôture est inférieur au cours d’ouverture",
+        "Que le volume a augmenté par rapport à la période précédente",
+        "Que le cours est passé au-dessus de sa moyenne mobile"
+      ],
+      "explanation": "Une bougie **verte** (ou blanche, creuse sur les graphiques en noir et blanc) est haussière : le prix a terminé la période plus haut qu’il ne l’avait commencée. Une bougie rouge (ou noire) indique l’inverse. Attention : cette convention n’est pas universelle, sur les marchés chinois par exemple le rouge signale la hausse.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans sa forme la plus classique, quels prix un **graphique en ligne** relie-t-il entre eux ?",
+      "answer": "Les cours de clôture successifs",
+      "wrong": [
+        "Les cours d’ouverture successifs",
+        "Les plus hauts successifs",
+        "Les volumes successifs"
+      ],
+      "explanation": "Le **graphique en ligne** trace un seul point par période, presque toujours le cours de **clôture**, jugé le plus significatif car c’est le prix sur lequel le marché s’accorde en fin de séance. Il est très lisible pour repérer une tendance, mais il perd l’information sur l’ouverture et les extrêmes que donnent les bougies ou les barres.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie l’acronyme **OHLC**, utilisé pour décrire une bougie ou une barre ?",
+      "answer": "Open, High, Low, Close : ouverture, plus haut, plus bas, clôture",
+      "wrong": [
+        "Order, Hold, Long, Cover : les étapes d’une position",
+        "Open, Hedge, Leverage, Cash : les outils d’un trader",
+        "Overbought, High, Low, Crash : les phases d’un marché"
+      ],
+      "explanation": "**OHLC** désigne les quatre prix qui résument une période : **Open** (ouverture), **High** (plus haut), **Low** (plus bas) et **Close** (clôture). Une bougie japonaise comme une barre OHLC les représentent tous les quatre, alors qu’un graphique en ligne n’en garde qu’un, la clôture.",
+      "difficulty": 1
+    },
+    {
+      "question": "Après une hausse, une bougie présente un petit corps situé en bas de sa plage et une très longue mèche haute. Comment l’appelle-t-on ?",
+      "answer": "Une étoile filante (shooting star)",
+      "wrong": [
+        "Un marteau (hammer)",
+        "Un avalement haussier (engulfing)",
+        "Une étoile du matin (morning star)"
+      ],
+      "explanation": "L’**étoile filante** montre que les acheteurs ont poussé le prix nettement plus haut, puis que les vendeurs l’ont ramené près de l’ouverture : c’est un rejet des prix hauts, signal possible de retournement baissier. Le **marteau** a la forme inverse (longue mèche basse) et apparaît après une baisse. La même silhouette que l’étoile filante, mais après une baisse, s’appelle un marteau inversé.",
+      "difficulty": 2
+    },
+    {
+      "question": "Une bougie a exactement la forme d’un **marteau** (petit corps en haut, longue mèche basse), mais elle apparaît au sommet d’une tendance haussière. Comment la nomme-t-on ?",
+      "answer": "Un pendu (hanging man)",
+      "wrong": [
+        "Une étoile filante (shooting star)",
+        "Un marteau inversé (inverted hammer)",
+        "Un avalement baissier (bearish engulfing)"
+      ],
+      "explanation": "En chandeliers japonais, le **contexte** change le nom et le sens d’une figure. Après une baisse, cette silhouette est un marteau, signal haussier ; au sommet d’une hausse, c’est un **pendu**, qui alerte sur une possible vague de ventes : les vendeurs ont réussi à faire plonger le prix pendant la séance. L’étoile filante et le marteau inversé ont, eux, une longue mèche **haute**.",
+      "difficulty": 3
+    },
+    {
+      "question": "De quoi se compose la figure en **étoile du matin** (morning star) ?",
+      "answer": "Une grande bougie baissière, une petite bougie, puis une grande bougie haussière",
+      "wrong": [
+        "Une grande bougie haussière, une petite bougie, puis une grande bougie baissière",
+        "Une seule bougie au petit corps avec une très longue mèche basse",
+        "Deux grandes bougies baissières consécutives suivies d’un doji"
+      ],
+      "explanation": "L’**étoile du matin** est une figure de retournement haussier en trois bougies : une forte baisse, une petite bougie d’indécision (l’« étoile ») souvent en gap, puis une grande bougie haussière qui clôture profondément dans le corps de la première. La séquence inverse, au sommet d’une hausse, est l’**étoile du soir**, signal baissier.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que désigne la figure des **trois soldats blancs** (three white soldiers) ?",
+      "answer": "Trois grandes bougies haussières consécutives aux clôtures de plus en plus hautes",
+      "wrong": [
+        "Trois grandes bougies baissières consécutives aux clôtures de plus en plus basses",
+        "Trois dojis consécutifs formés exactement au même niveau de prix",
+        "Trois sommets successifs qui butent sur une même ligne de résistance"
+      ],
+      "explanation": "Les **trois soldats blancs** sont trois bougies haussières à grand corps, chacune ouvrant dans le corps de la précédente et clôturant plus haut : ils traduisent une prise de contrôle nette des acheteurs, souvent après une baisse. Leur pendant baissier, trois grandes bougies baissières successives, s’appelle les **trois corbeaux noirs**.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que caractérise un **harami** en chandeliers japonais ?",
+      "answer": "Une petite bougie dont le corps est contenu dans celui de la grande bougie précédente",
+      "wrong": [
+        "Une grande bougie dont le corps recouvre entièrement celui de la petite bougie précédente",
+        "Une bougie qui ouvre en gap au-dessus du plus haut de la bougie précédente",
+        "Trois bougies de même couleur dont les corps sont de taille croissante"
+      ],
+      "explanation": "**Harami** signifie « enceinte » en japonais : la petite bougie est comme logée dans le corps de la grande qui la précède. La figure traduit une perte de dynamisme de la tendance et un possible retournement. C’est l’inverse de l’**avalement** (engulfing), où c’est la seconde bougie, plus grande, qui englobe le corps de la première.",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment appelle-t-on une bougie à grand corps **sans mèche** (ou presque), dont l’ouverture et la clôture coïncident avec les extrêmes de la période ?",
+      "answer": "Un marubozu",
+      "wrong": [
+        "Un doji",
+        "Un harami",
+        "Une toupie"
+      ],
+      "explanation": "Le **marubozu** est une bougie « pleine » : un marubozu haussier ouvre au plus bas et clôture au plus haut, ce qui montre que les acheteurs ont dominé toute la séance (et inversement pour un marubozu baissier). Le **doji** est son opposé : un corps quasi inexistant, signe d’indécision.",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment s’appelle un doji dont l’ouverture et la clôture se situent au **plus bas** de la séance, avec une longue mèche haute ?",
+      "answer": "Un doji pierre tombale (gravestone)",
+      "wrong": [
+        "Un doji libellule (dragonfly)",
+        "Un doji aux longues jambes (long-legged)",
+        "Un doji quatre prix (four price)"
+      ],
+      "explanation": "Le **doji pierre tombale** ressemble à une croix renversée : les acheteurs ont fait monter le prix, mais il est retombé jusqu’à son niveau d’ouverture, au plus bas. Après une hausse, c’est un signal baissier. Le **doji libellule** est son miroir (ouverture et clôture au plus haut, longue mèche basse), le doji aux longues jambes a deux grandes mèches et le doji quatre prix n’a ni corps ni mèche.",
+      "difficulty": 3
+    },
+    {
+      "question": "Une bougie présente un petit corps centré et des mèches haute et basse de longueurs comparables. Comment l’appelle-t-on ?",
+      "answer": "Une toupie (spinning top)",
+      "wrong": [
+        "Un marubozu",
+        "Un marteau",
+        "Une étoile filante"
+      ],
+      "explanation": "La **toupie** traduit l’indécision : le prix est monté et descendu pendant la séance, mais a terminé près de son ouverture. Elle est proche du doji, dont le corps est encore plus réduit. Le marteau et l’étoile filante n’ont qu’une seule longue mèche, et le marubozu n’en a pas du tout.",
+      "difficulty": 2
+    },
+    {
+      "question": "Après une grande bougie baissière, la bougie suivante ouvre en gap sous son plus bas, puis clôture au-dessus du milieu du corps de cette bougie baissière, mais sous son ouverture. Quelle figure est-ce ?",
+      "answer": "Une ligne pénétrante (piercing line)",
+      "wrong": [
+        "Une couverture en nuage noir (dark cloud cover)",
+        "Un avalement haussier (bullish engulfing)",
+        "Un harami haussier (bullish harami)"
+      ],
+      "explanation": "La **ligne pénétrante** est un signal de retournement haussier en deux bougies : l’ouverture en baisse semble prolonger la chute, mais les acheteurs reprennent plus de la moitié du terrain perdu la veille. Si la clôture dépassait l’ouverture de la bougie baissière, on parlerait d’avalement haussier. La **couverture en nuage noir** est la figure miroir, baissière, au sommet d’une hausse.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans quel contexte historique les **chandeliers japonais** sont-ils nés, selon la tradition ?",
+      "answer": "Le commerce du riz au Japon, au XVIIIe siècle",
+      "wrong": [
+        "La Bourse de Londres, au XIXe siècle",
+        "Le commerce de la soie en Chine, au XVIe siècle",
+        "Les marchés à terme de Chicago, au XXe siècle"
+      ],
+      "explanation": "La tradition attribue les chandeliers japonais à **Munehisa Homma**, un négociant en riz du XVIIIe siècle qui aurait étudié la psychologie des marchés du riz, notamment celui de Dojima, à Osaka. La méthode est restée longtemps cantonnée au Japon avant d’être largement diffusée en Occident à partir des années 1990.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Chandelier_japonais"
+    },
+    {
+      "question": "Quel analyste a popularisé les chandeliers japonais en Occident, notamment avec un livre paru en 1991 ?",
+      "answer": "Steve Nison",
+      "wrong": [
+        "John Bollinger",
+        "Charles Dow",
+        "J. Welles Wilder"
+      ],
+      "explanation": "**Steve Nison** a fait connaître les chandeliers aux traders occidentaux avec *Japanese Candlestick Charting Techniques* (1991). Les autres noms sont aussi des figures de l’analyse technique, mais pour d’autres apports : John Bollinger pour ses bandes, Charles Dow pour la théorie qui porte son nom, J. Welles Wilder pour le RSI, l’ATR ou l’ADX.",
+      "difficulty": 3
+    },
+    {
+      "question": "Une période a ouvert à 10, est montée à 16, est descendue à 9 et a clôturé à 13. Que vaut la **clôture Heikin-Ashi** correspondante ?",
+      "answer": "12",
+      "wrong": [
+        "11,5",
+        "12,5",
+        "13"
+      ],
+      "explanation": "En **Heikin-Ashi** (« barre moyenne » en japonais), la clôture est la moyenne des quatre prix OHLC : (10 + 16 + 9 + 13) / 4 = 48 / 4 = **12**. Le piège 11,5 correspond à la moyenne de l’ouverture et de la clôture seules, et 12,5 au milieu entre plus haut et plus bas. Ce calcul lisse les bougies et rend les tendances plus lisibles, au prix d’un affichage qui ne montre plus les vrais prix.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur un graphique en **barres OHLC**, que représente le petit trait horizontal situé à gauche de la barre verticale ?",
+      "answer": "Le cours d’ouverture",
+      "wrong": [
+        "Le cours de clôture",
+        "Le plus haut de la période",
+        "La moyenne de la période"
+      ],
+      "explanation": "Une barre OHLC est une ligne verticale allant du plus bas au plus haut, avec deux petits traits : à **gauche** l’ouverture, à **droite** la clôture. Elle contient donc la même information qu’une bougie japonaise, mais sans corps coloré, ce qui la rend moins lisible au premier coup d’œil.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la particularité d’un graphique **Renko** ?",
+      "answer": "Il trace des briques de taille fixe et ignore le temps écoulé",
+      "wrong": [
+        "Il trace une bougie par séance en lissant les cours",
+        "Il trace uniquement les volumes sous forme de barres",
+        "Il trace des bougies de durée fixe privées de mèches"
+      ],
+      "explanation": "Le **Renko** (du japonais *renga*, « brique ») n’ajoute une nouvelle brique que lorsque le prix a parcouru une distance fixée à l’avance, vers le haut ou vers le bas. Une journée sans mouvement significatif ne produit donc aucune brique. Ce filtre élimine le bruit et fait ressortir les tendances. Le lissage des bougies séance par séance correspond, lui, au Heikin-Ashi.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur un graphique en **points et figures** (point & figure), que représente une colonne de X ?",
+      "answer": "Une phase de hausse des prix",
+      "wrong": [
+        "Une phase de baisse des prix",
+        "Une période de volume exceptionnel",
+        "Une séance de cotation suspendue"
+      ],
+      "explanation": "Le graphique en **points et figures** empile des X tant que le prix monte et des O tant qu’il baisse, une nouvelle colonne n’étant ouverte qu’en cas de retournement d’une ampleur minimale (souvent trois cases). Comme le Renko, il ignore le temps et le volume pour ne garder que les mouvements de prix significatifs.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur un graphique en **échelle logarithmique**, que représentent deux écarts verticaux de même hauteur ?",
+      "answer": "Une même variation en pourcentage",
+      "wrong": [
+        "Une même variation en euros",
+        "Un même volume échangé",
+        "Une même durée écoulée"
+      ],
+      "explanation": "En échelle **logarithmique**, un passage de 10 à 20 € occupe la même hauteur qu’un passage de 100 à 200 € : dans les deux cas, +100 %. En échelle arithmétique, c’est l’écart en euros qui compte, ce qui écrase les mouvements anciens d’un actif qui a beaucoup monté. L’échelle log est donc préférée pour les historiques longs.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu’appelle-t-on un **gap** sur un graphique de cours ?",
+      "answer": "Un intervalle de prix sans cotation entre deux bougies",
+      "wrong": [
+        "L’écart entre le prix acheteur et le prix vendeur",
+        "La distance entre le prix et sa moyenne mobile",
+        "La longueur de la mèche haute d’une bougie"
+      ],
+      "explanation": "Un **gap** (« trou ») apparaît quand tous les prix d’une bougie restent au-dessus du plus haut (ou au-dessous du plus bas) de la précédente, souvent après une annonce publiée marché fermé : aucune transaction n’a eu lieu dans l’intervalle, ce qui laisse un vide sur le graphique. L’écart entre prix acheteur et vendeur, lui, s’appelle le **spread**.",
+      "difficulty": 1
+    },
+    {
+      "question": "Comment trace-t-on une **ligne de tendance haussière** ?",
+      "answer": "En reliant au moins deux creux de plus en plus hauts",
+      "wrong": [
+        "En reliant au moins deux sommets de plus en plus bas",
+        "En reliant les cours d’ouverture de chaque séance",
+        "En traçant une droite horizontale au plus haut"
+      ],
+      "explanation": "Une **ligne de tendance haussière** passe par les points bas successifs, qui montent : elle sert de support oblique, sur lequel le prix rebondit tant que la tendance dure. Plus elle est touchée sans être cassée, plus elle est jugée fiable. Relier des sommets décroissants donne au contraire une ligne de tendance **baissière**, qui joue le rôle de résistance.",
+      "difficulty": 1
+    },
+    {
+      "question": "Comment appelle-t-on un marché qui oscille sans direction nette entre un support et une résistance horizontaux ?",
+      "answer": "Un range (ou trading range)",
+      "wrong": [
+        "Un breakout (cassure)",
+        "Un canal baissier",
+        "Un gap d’épuisement"
+      ],
+      "explanation": "Un **range**, ou tendance latérale, se forme quand acheteurs et vendeurs s’équilibrent : le prix rebondit sur le support et bute sur la résistance. Les stratégies de suivi de tendance y fonctionnent mal, alors que les oscillateurs comme le RSI y donnent leurs meilleurs signaux. Le range prend fin par un **breakout**, la sortie par le haut ou par le bas.",
+      "difficulty": 1
+    },
+    {
+      "question": "Sur quoi repose principalement l’**analyse technique** ?",
+      "answer": "L’étude de l’historique des prix et des volumes échangés",
+      "wrong": [
+        "L’étude des comptes et des perspectives de l’entreprise",
+        "L’étude des taux directeurs fixés par les banques centrales",
+        "L’étude des notes attribuées par les agences de notation"
+      ],
+      "explanation": "L’**analyse technique** cherche à anticiper les mouvements futurs à partir des seules données de marché : cours, volumes et indicateurs qui en sont dérivés. L’étude des comptes, de la stratégie et des perspectives d’une entreprise relève de l’**analyse fondamentale**. Beaucoup d’investisseurs combinent les deux : la fondamentale pour choisir quoi acheter, la technique pour décider quand.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi les **chiffres ronds** (100 €, 1 000 points…) jouent-ils souvent le rôle de support ou de résistance ?",
+      "answer": "Beaucoup d’intervenants y placent leurs ordres, par repère psychologique",
+      "wrong": [
+        "Les bourses y suspendent automatiquement les cotations",
+        "La réglementation y limite le nombre d’ordres possibles",
+        "Les cours ne peuvent pas franchir ces seuils en une séance"
+      ],
+      "explanation": "Les **niveaux psychologiques** fonctionnent parce que les humains raisonnent en chiffres ronds : objectifs de vente, ordres d’achat et stop-loss s’y concentrent. Cette accumulation d’ordres crée de l’offre ou de la demande à ces niveaux. Rien n’empêche toutefois techniquement le prix de les franchir, et leur cassure est souvent très commentée.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que conseille l’adage boursier « **the trend is your friend** » ?",
+      "answer": "De suivre le sens de la tendance plutôt que de parier contre elle",
+      "wrong": [
+        "D’acheter systématiquement juste après une forte chute",
+        "De vendre dès qu’une tendance dure plus de trois séances",
+        "De ne jamais utiliser de graphique pour investir"
+      ],
+      "explanation": "« La tendance est ton amie » résume le principe du **suivi de tendance** : une tendance établie a plus de chances de se prolonger que de se retourner brutalement, et chercher à anticiper son retournement coûte souvent cher. L’adage est souvent complété par « … jusqu’à ce qu’elle se termine », rappel qu’aucune tendance ne dure indéfiniment.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu’est-ce qu’un **canal haussier** en analyse technique ?",
+      "answer": "Une ligne de tendance haussière doublée d’une parallèle passant par les sommets",
+      "wrong": [
+        "Deux droites qui convergent vers un même point au bout de quelques séances",
+        "Une moyenne mobile entourée de deux bandes placées à deux écarts-types",
+        "Une droite horizontale reliant au moins trois sommets de même niveau"
+      ],
+      "explanation": "Un **canal** est formé de deux droites **parallèles** : la ligne de tendance qui relie les creux et une ligne de canal qui relie les sommets. Le prix évolue entre les deux, ce qui donne des zones d’achat (bas du canal) et de prise de bénéfices (haut du canal). Deux droites convergentes forment au contraire un triangle ou un biseau ; la moyenne entourée de deux écarts-types correspond aux bandes de Bollinger.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qui est à l’origine de la **théorie de Dow**, souvent considérée comme le fondement de l’analyse technique moderne ?",
+      "answer": "Charles Dow, cofondateur du Wall Street Journal",
+      "wrong": [
+        "Eugene Fama, lauréat du prix Nobel d’économie",
+        "John Maynard Keynes, économiste britannique",
+        "Benjamin Graham, père de l’investissement value"
+      ],
+      "explanation": "**Charles Dow** (1851-1902), cofondateur de Dow Jones & Company et du *Wall Street Journal*, a exposé ses idées sur le comportement des marchés dans des éditoriaux de la fin du XIXe siècle. Elles ont été rassemblées et formalisées après sa mort, notamment par William Hamilton puis Robert Rhea. Eugene Fama est au contraire associé à l’hypothèse d’efficience des marchés, qui conteste l’analyse technique.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_Dow"
+    },
+    {
+      "question": "Selon la théorie de Dow, quelles sont les trois catégories de tendances, classées selon leur durée ?",
+      "answer": "Primaire, secondaire et mineure",
+      "wrong": [
+        "Haussière, baissière et latérale",
+        "Journalière, hebdomadaire et mensuelle",
+        "Accumulation, participation et distribution"
+      ],
+      "explanation": "Dow comparait le marché à la mer : la tendance **primaire** est la marée (plus d’un an en général), la **secondaire** est la vague qui la corrige (quelques semaines à quelques mois) et la **mineure** est la ride à la surface (moins de trois semaines). Haussière, baissière et latérale décrivent la direction, pas la durée ; accumulation, participation et distribution sont les phases d’une tendance primaire.",
+      "difficulty": 2
+    },
+    {
+      "question": "Selon la théorie de Dow, dans quel ordre se succèdent les trois phases d’un marché haussier primaire ?",
+      "answer": "Accumulation, participation du public, distribution",
+      "wrong": [
+        "Distribution, participation du public, accumulation",
+        "Impulsion, correction, consolidation",
+        "Capitulation, panique, euphorie"
+      ],
+      "explanation": "Pendant l’**accumulation**, des investisseurs avisés achètent alors que le pessimisme domine encore. Vient ensuite la **participation** : les résultats s’améliorent, les suiveurs de tendance entrent et les prix montent nettement. Enfin, lors de la **distribution**, le grand public achète avec enthousiasme tandis que les premiers acheteurs revendent, ce qui prépare le retournement.",
+      "difficulty": 3
+    },
+    {
+      "question": "Selon la théorie de Dow, quels indices devaient se confirmer mutuellement pour valider une tendance ?",
+      "answer": "L’indice des industrielles et celui des transports (chemins de fer)",
+      "wrong": [
+        "L’indice des industrielles et celui des services publics",
+        "Le S&P 500 et l’indice Nasdaq Composite",
+        "L’indice des industrielles et l’indice de volatilité VIX"
+      ],
+      "explanation": "Dow raisonnait en économiste : si les entreprises industrielles produisent davantage, les compagnies de **transport** (à l’époque les chemins de fer) doivent acheminer davantage de marchandises. Un signal haussier de l’indice des industrielles n’était donc jugé valable que s’il était confirmé par l’indice des transports. Le S&P 500, le Nasdaq et le VIX ont été créés bien après sa mort.",
+      "difficulty": 3
+    },
+    {
+      "question": "Parmi les postulats de base de l’analyse technique, que signifie l’idée que « le marché **intègre tout** » ?",
+      "answer": "Le prix reflète déjà toutes les informations connues sur l’actif",
+      "wrong": [
+        "Le prix revient toujours à sa moyenne de long terme",
+        "Le marché finit toujours par monter sur dix ans",
+        "Le volume intègre les ordres de toutes les bourses"
+      ],
+      "explanation": "Pour l’analyste technique, tout ce qui peut influencer un actif (résultats, actualité, anticipations, émotions) est **déjà intégré dans le prix** : étudier le prix suffit donc. Les deux autres postulats classiques, popularisés par John Murphy, sont que les prix évoluent selon des tendances et que l’histoire a tendance à se répéter.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle théorie, associée à Eugene Fama, conteste l’utilité de l’analyse technique dès sa forme dite « faible » ?",
+      "answer": "L’hypothèse d’efficience des marchés",
+      "wrong": [
+        "La théorie des vagues d’Elliott",
+        "La théorie de Dow",
+        "La théorie du chaos"
+      ],
+      "explanation": "Selon l’**hypothèse d’efficience des marchés**, les prix intègrent l’information disponible. Dans sa forme **faible**, toute l’information contenue dans les cours passés est déjà dans le prix actuel : étudier les graphiques ne permettrait donc pas de battre durablement le marché après frais. Les formes semi-forte et forte étendent ce raisonnement à l’information publique, puis à toute l’information.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_des_march%C3%A9s_financiers_efficients"
+    },
+    {
+      "question": "Le prix casse une résistance et attire des acheteurs, puis repasse rapidement sous ce niveau et poursuit sa baisse. Comment appelle-t-on ce piège ?",
+      "answer": "Un bull trap (fausse cassure haussière)",
+      "wrong": [
+        "Un bear trap (fausse cassure baissière)",
+        "Un pullback (retour sur le niveau cassé)",
+        "Un golden cross (croisement haussier)"
+      ],
+      "explanation": "Un **bull trap** (« piège à taureaux ») piège les acheteurs qui ont cru à la cassure : ils se retrouvent en perte et leurs ventes accélèrent la chute. Le **bear trap** est le cas inverse, une fausse cassure de support qui piège les vendeurs. Un pullback, lui, revient sur le niveau cassé puis repart dans le sens de la cassure.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel élément renforce le plus la crédibilité d’une cassure de résistance ?",
+      "answer": "Une nette hausse du volume au moment de la cassure",
+      "wrong": [
+        "Une nette baisse du volume au moment de la cassure",
+        "Un RSI qui reste sous 30 pendant toute la cassure",
+        "Une ouverture inchangée par rapport à la veille"
+      ],
+      "explanation": "Une cassure accompagnée d’un **volume élevé** montre qu’un grand nombre d’intervenants ont acheté au-dessus de la résistance : la demande est réelle. Une cassure sur un volume faible est plus suspecte et finit plus souvent en fausse cassure. C’est un principe ancien de la théorie de Dow : le volume doit confirmer la tendance.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quand un actif dépasse son **plus haut historique**, pourquoi dit-on qu’il n’a plus de résistance au-dessus de lui ?",
+      "answer": "Parce qu’aucun échange n’a jamais eu lieu au-dessus de ce niveau",
+      "wrong": [
+        "Parce que la réglementation interdit d’y vendre à découvert",
+        "Parce que les vendeurs à découvert doivent tous y racheter",
+        "Parce que toutes les moyennes mobiles y deviennent plates"
+      ],
+      "explanation": "Une résistance naît souvent d’acheteurs passés qui attendent de revendre « à prix coûtant », ou de vendeurs qui ont déjà agi à ce niveau. Au-dessus d’un **plus haut historique**, aucun investisseur n’a jamais acheté plus cher : il n’y a pas de niveau passé pour freiner la hausse. Les traders se rabattent alors sur les chiffres ronds ou les extensions de Fibonacci pour fixer des objectifs.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel argument explique en partie qu’un niveau technique très suivi, comme la moyenne mobile à 200 jours, « fonctionne » souvent ?",
+      "answer": "Une prophétie autoréalisatrice : beaucoup de traders y agissent en même temps",
+      "wrong": [
+        "Une loi mathématique qui oblige les prix à rebondir sur ce niveau",
+        "Une règle boursière qui suspend les cotations à ce niveau précis",
+        "Un mécanisme de stabilisation imposé par la banque centrale"
+      ],
+      "explanation": "Quand des milliers d’intervenants surveillent le même niveau et y placent leurs ordres, leurs achats ou leurs ventes simultanés provoquent la réaction attendue : c’est une **prophétie autoréalisatrice**. Aucune loi ni aucune règle de marché n’impose ce comportement, d’où les nombreux cas où le niveau est franchi sans réaction.",
+      "difficulty": 2
+    },
+    {
+      "question": "Après une hausse, le prix ouvre en gap haussier, évolue quelques séances, puis repart en gap baissier, laissant un groupe de bougies isolé. Quelle figure est-ce ?",
+      "answer": "Une île de retournement (island reversal)",
+      "wrong": [
+        "Un gap de continuation (runaway gap)",
+        "Un drapeau haussier (bull flag)",
+        "Un double creux (double bottom)"
+      ],
+      "explanation": "L’**île de retournement** isole un groupe de bougies entre deux gaps de sens opposés : les acheteurs entrés pendant cette « île » se retrouvent tous en perte après le gap baissier. C’est une figure de retournement réputée forte. Un gap de continuation, lui, survient au milieu d’une tendance et la prolonge.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un gap apparaît à la fin d’une longue tendance, sur un volume élevé, puis il est rapidement comblé alors que la tendance s’essouffle. De quel type de gap s’agit-il ?",
+      "answer": "Un gap d’épuisement (exhaustion gap)",
+      "wrong": [
+        "Un gap de rupture (breakaway gap)",
+        "Un gap de continuation (runaway gap)",
+        "Un gap commun (common gap)"
+      ],
+      "explanation": "On distingue classiquement quatre gaps. Le **gap commun** survient dans un range sans grande signification. Le **gap de rupture** marque la sortie d’une zone de consolidation et le début d’un mouvement. Le **gap de continuation** apparaît en pleine tendance. Le **gap d’épuisement** survient en fin de tendance, souvent dans un dernier excès, et son comblement rapide signale l’essoufflement du mouvement.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que signifie l’expression « **combler un gap** » ?",
+      "answer": "Le prix revient couvrir la zone laissée vide par le gap",
+      "wrong": [
+        "Le prix ouvre une seconde fois en gap dans le même sens",
+        "La bourse annule les transactions faites pendant le gap",
+        "Le volume revient à son niveau moyen après le gap"
+      ],
+      "explanation": "Un gap est **comblé** quand le prix revient traverser l’intervalle de prix qu’il avait sauté. Beaucoup de traders surveillent ce comblement, car les gaps ordinaires sont souvent refermés dans les séances qui suivent. Les gaps de rupture et de continuation, en revanche, peuvent rester ouverts longtemps.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans la méthode de **Richard Wyckoff**, quel est l’ordre des quatre phases d’un cycle de marché ?",
+      "answer": "Accumulation, hausse (markup), distribution, baisse (markdown)",
+      "wrong": [
+        "Distribution, hausse (markup), accumulation, baisse (markdown)",
+        "Accumulation, baisse (markdown), distribution, hausse (markup)",
+        "Hausse (markup), accumulation, baisse (markdown), distribution"
+      ],
+      "explanation": "Pour **Wyckoff**, des opérateurs informés achètent discrètement dans un range en bas de cycle (**accumulation**), puis le prix monte (**markup**). En haut, ils revendent progressivement au public dans un nouveau range (**distribution**), avant la baisse (**markdown**). On accumule en bas pour distribuer en haut : c’est ce qui fixe l’ordre.",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment appelle-t-on un analyste qui fonde ses décisions sur l’étude des graphiques de cours ?",
+      "answer": "Un chartiste",
+      "wrong": [
+        "Un actuaire",
+        "Un fondamentaliste",
+        "Un commissaire aux comptes"
+      ],
+      "explanation": "Le **chartiste** (de l’anglais *chart*, « graphique ») repère sur les graphiques des tendances, des supports et résistances ou des figures comme le tête-épaules pour anticiper l’évolution des prix. Le **fondamentaliste**, lui, évalue un actif à partir des comptes et des perspectives de l’émetteur.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quoi sert un **stop-loss** placé sur une position acheteuse ?",
+      "answer": "À limiter la perte en vendant si le prix descend à un seuil donné",
+      "wrong": [
+        "À garantir un gain en vendant au plus haut de la séance",
+        "À bloquer toute cotation de l’actif en cas de forte baisse",
+        "À doubler la position si le prix descend à un seuil donné"
+      ],
+      "explanation": "Le **stop-loss** déclenche automatiquement la vente quand le prix atteint le seuil choisi, ce qui plafonne la perte. Attention : un stop classique devient alors un ordre au marché, et si le cours ouvre en gap sous le seuil, la vente s’exécute plus bas que prévu. Il ne garantit donc pas le prix de sortie.",
+      "difficulty": 1
+    },
+    {
+      "question": "Un trader achète juste au-dessus d’un support solide. Selon l’approche technique classique, où place-t-il logiquement son stop-loss ?",
+      "answer": "Un peu sous le support, pour sortir s’il est franchi",
+      "wrong": [
+        "Au niveau de la résistance la plus proche",
+        "Juste au-dessus de son prix d’achat",
+        "Au double de son prix d’achat"
+      ],
+      "explanation": "L’achat repose sur l’idée que le **support** va tenir : si le prix le casse nettement, ce scénario est invalidé et il faut sortir. Placer le stop **un peu sous** le support évite d’être éjecté par une simple mèche, tout en limitant la perte. La résistance proche sert plutôt d’objectif de prise de bénéfices.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu’est-ce qu’un **stop suiveur** (trailing stop) sur une position acheteuse ?",
+      "answer": "Un stop qui monte avec le prix mais ne redescend jamais",
+      "wrong": [
+        "Un stop qui descend avec le prix mais ne remonte jamais",
+        "Un stop fixé au prix moyen de tous les achats réalisés",
+        "Un stop qui s’annule automatiquement en fin de séance"
+      ],
+      "explanation": "Le **stop suiveur** se maintient à une distance fixe (en euros ou en pourcentage) sous le plus haut atteint : quand le prix monte, il monte aussi ; quand le prix baisse, il reste en place. Il protège ainsi une partie croissante des gains tout en laissant courir la tendance.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi dit-on qu’une moyenne mobile est un indicateur **retardé** (lagging) ?",
+      "answer": "Parce qu’elle est calculée sur les cours passés et réagit après le prix",
+      "wrong": [
+        "Parce que la bourse la publie avec un jour de décalage",
+        "Parce qu’elle anticipe le prix de plusieurs séances",
+        "Parce qu’elle n’est recalculée qu’en fin de mois"
+      ],
+      "explanation": "Une moyenne mobile résume les N derniers cours : un retournement du prix n’apparaît sur elle qu’avec un **décalage**, d’autant plus grand que N est élevé. C’est le prix à payer pour son lissage. Les moyennes mobiles servent donc à **confirmer** une tendance, pas à l’anticiper.",
+      "difficulty": 1
+    },
+    {
+      "question": "En données journalières, quelle moyenne mobile est la plus couramment utilisée pour juger de la tendance de **long terme** ?",
+      "answer": "La moyenne mobile à 200 jours",
+      "wrong": [
+        "La moyenne mobile à 5 jours",
+        "La moyenne mobile à 9 jours",
+        "La moyenne mobile à 20 jours"
+      ],
+      "explanation": "La **MM 200 jours** couvre environ une année de bourse (autour de 250 séances par an) : un prix durablement au-dessus est souvent considéré comme en tendance haussière de fond, en dessous comme en tendance baissière. Les moyennes à 5, 9 ou 20 jours suivent au contraire les mouvements de court terme.",
+      "difficulty": 1
+    },
+    {
+      "question": "Par rapport à une moyenne mobile à 20 jours, comment se comporte une moyenne mobile à 100 jours sur le même actif ?",
+      "answer": "Elle est plus lisse mais réagit plus lentement aux variations",
+      "wrong": [
+        "Elle est plus nerveuse et réagit plus vite aux variations",
+        "Elle est identique, simplement décalée de 80 jours",
+        "Elle reste en permanence au-dessus du cours de l’actif"
+      ],
+      "explanation": "Plus la période est **longue**, plus chaque nouveau cours pèse peu dans la moyenne : la courbe est plus lisse, filtre mieux le bruit, mais met plus de temps à refléter un retournement. C’est le compromis central des moyennes mobiles entre **réactivité** et **fiabilité**. Une moyenne n’est jamais toujours au-dessus du prix : en tendance haussière, elle est même le plus souvent en dessous.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelles moyennes mobiles journalières sont le plus souvent associées au **golden cross** et au **death cross** ?",
+      "answer": "Celles à 50 et à 200 jours",
+      "wrong": [
+        "Celles à 5 et à 10 jours",
+        "Celles à 12 et à 26 jours",
+        "Celles à 9 et à 14 jours"
+      ],
+      "explanation": "Dans leur acception la plus répandue, le **golden cross** et le **death cross** désignent le croisement de la **MM 50 jours** (moyen terme) et de la **MM 200 jours** (long terme). Ce sont des signaux lents, peu fréquents et très médiatisés. Les périodes 12 et 26 sont celles des EMA qui composent le MACD.",
+      "difficulty": 2
+    },
+    {
+      "question": "Une **EMA à 9 périodes** valait 50 hier. Le cours clôture aujourd’hui à 60. Que vaut la nouvelle EMA ?",
+      "answer": "52",
+      "wrong": [
+        "51",
+        "55",
+        "60"
+      ],
+      "explanation": "Le coefficient de lissage d’une EMA à N périodes vaut 2 / (N + 1), soit 2 / 10 = **0,2** pour N = 9. La nouvelle EMA vaut donc ancienne EMA + 0,2 × (clôture − ancienne EMA) = 50 + 0,2 × 10 = **52**. Le piège 55 correspond à la simple moyenne de 50 et 60, qui donnerait bien trop de poids au dernier cours.",
+      "difficulty": 3
+    },
+    {
+      "question": "Une **moyenne mobile pondérée** linéaire (WMA) sur 3 périodes porte sur les clôtures 12, 15 puis 18, la plus récente. Que vaut-elle ?",
+      "answer": "16",
+      "wrong": [
+        "15",
+        "17",
+        "14"
+      ],
+      "explanation": "La WMA linéaire donne le poids 3 au cours le plus récent, 2 au précédent et 1 au plus ancien : (3 × 18 + 2 × 15 + 1 × 12) / (3 + 2 + 1) = 96 / 6 = **16**. La moyenne simple vaudrait 15 : la WMA est plus proche des derniers cours, donc plus réactive, comme l’EMA, mais ses poids décroissent linéairement et s’arrêtent à N périodes.",
+      "difficulty": 3
+    },
+    {
+      "question": "En tendance haussière, quel rôle joue souvent une moyenne mobile suivie par de nombreux traders ?",
+      "answer": "Un support dynamique sur lequel le prix vient rebondir",
+      "wrong": [
+        "Une résistance fixe que le prix ne peut jamais franchir",
+        "Un plafond de volume au-delà duquel les échanges cessent",
+        "Un objectif de cours garanti à une échéance donnée"
+      ],
+      "explanation": "En tendance haussière, le prix évolue au-dessus de ses moyennes mobiles et revient régulièrement les tester lors des corrections : elles servent alors de **support dynamique**, un support qui monte avec le temps. En tendance baissière, elles jouent à l’inverse le rôle de résistance dynamique. Rien n’est garanti : une moyenne peut toujours être cassée.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans quelle situation les croisements de moyennes mobiles donnent-ils le plus de **faux signaux** ?",
+      "answer": "Dans un marché sans tendance qui oscille dans un range",
+      "wrong": [
+        "Dans une tendance haussière forte et régulière",
+        "Dans une tendance baissière forte et régulière",
+        "Quand le volume des échanges est très élevé"
+      ],
+      "explanation": "Les moyennes mobiles sont des outils de **suivi de tendance**. Dans un range, le prix et les moyennes s’entrecroisent sans cesse : chaque croisement déclenche un achat ou une vente vite contredit, ce que les anglophones appellent un **whipsaw**. En tendance nette, au contraire, les croisements sont rares et les signaux tiennent plus longtemps.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que signifie l’acronyme **RSI** ?",
+      "answer": "Relative Strength Index (indice de force relative)",
+      "wrong": [
+        "Relative Stock Indicator (indicateur relatif d’action)",
+        "Rate of Speed Index (indice de vitesse de variation)",
+        "Risk Spread Index (indice d’écart de risque)"
+      ],
+      "explanation": "Le **RSI**, ou **indice de force relative**, compare l’ampleur moyenne des hausses à celle des baisses sur une période donnée. Malgré son nom, il ne compare pas un actif à un indice ou à un autre actif : il mesure la force des mouvements de l’actif par rapport à lui-même.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle est la période de calcul du **RSI** recommandée par son créateur, et restée le réglage par défaut ?",
+      "answer": "14 périodes",
+      "wrong": [
+        "9 périodes",
+        "20 périodes",
+        "200 périodes"
+      ],
+      "explanation": "J. Welles Wilder a proposé un RSI sur **14 périodes** (14 jours sur un graphique journalier), réglage repris par défaut par la plupart des plateformes. Une période plus courte rend l’indicateur plus nerveux et le fait atteindre plus souvent les zones extrêmes ; une période plus longue le lisse.",
+      "difficulty": 1
+    },
+    {
+      "question": "Entre quelles bornes le **RSI** évolue-t-il ?",
+      "answer": "Entre 0 et 100",
+      "wrong": [
+        "Entre −100 et +100",
+        "Entre 0 et 1",
+        "Il n’a aucune borne"
+      ],
+      "explanation": "Le RSI se calcule par la formule 100 − 100 / (1 + RS), où RS est le rapport entre la hausse moyenne et la baisse moyenne. Comme RS est toujours positif ou nul, le résultat reste compris **entre 0 et 100** : 0 si l’actif n’a fait que baisser, 100 s’il n’a fait que monter. Le MACD, lui, n’est pas borné.",
+      "difficulty": 1
+    },
+    {
+      "question": "En analyse technique, qu’est-ce qu’un **oscillateur** ?",
+      "answer": "Un indicateur qui varie entre deux bornes ou autour d’une valeur centrale",
+      "wrong": [
+        "Un graphique qui ne montre que les cours de clôture successifs",
+        "Un ordre de bourse qui se déclenche à un prix fixé à l’avance",
+        "Une figure chartiste en forme de vagues de hauteur croissante"
+      ],
+      "explanation": "Un **oscillateur** est tracé sous le graphique des prix et fluctue entre des bornes (0 et 100 pour le RSI ou le stochastique) ou autour d’une ligne médiane (zéro pour le MACD). Il sert à mesurer le **momentum** et à repérer les excès de surachat ou de survente, surtout utiles quand le marché évolue en range.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie l’acronyme **MACD** ?",
+      "answer": "Moving Average Convergence Divergence",
+      "wrong": [
+        "Market Average Cumulative Delta",
+        "Moving Asset Correlation Distance",
+        "Mean Absolute Change Deviation"
+      ],
+      "explanation": "**MACD** signifie *Moving Average Convergence Divergence* : convergence et divergence de moyennes mobiles. L’indicateur suit l’écart entre deux moyennes mobiles exponentielles, l’une courte (12) et l’autre longue (26) : quand elles s’éloignent, la tendance accélère ; quand elles se rapprochent, elle ralentit.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qui a créé le **RSI** (Relative Strength Index), présenté en 1978 ?",
+      "answer": "J. Welles Wilder",
+      "wrong": [
+        "Gerald Appel",
+        "George Lane",
+        "John Bollinger"
+      ],
+      "explanation": "**J. Welles Wilder** a présenté le RSI dans son livre *New Concepts in Technical Trading Systems* (1978), où il décrivait aussi l’ATR, l’ADX et le Parabolic SAR. Gerald Appel est le père du MACD, George Lane celui de l’oscillateur stochastique et John Bollinger celui des bandes qui portent son nom.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Relative_strength_index"
+    },
+    {
+      "question": "Sur toute sa période de calcul, un actif n’a enregistré **que des clôtures en hausse**. Que vaut son RSI ?",
+      "answer": "100",
+      "wrong": [
+        "0",
+        "50",
+        "70"
+      ],
+      "explanation": "Sans aucune baisse, la baisse moyenne est nulle : le rapport RS tend vers l’infini et 100 − 100 / (1 + RS) tend vers **100**, valeur qu’on retient par convention. On peut aussi l’écrire RSI = 100 × hausse moyenne / (hausse moyenne + baisse moyenne), qui donne directement 100. À l’inverse, un actif qui n’a fait que baisser a un RSI de 0.",
+      "difficulty": 3
+    },
+    {
+      "question": "En pleine tendance haussière très forte, pourquoi un RSI au-dessus de 70 ne suffit-il pas à justifier une vente ?",
+      "answer": "Le RSI peut rester longtemps en surachat tant que la tendance dure",
+      "wrong": [
+        "Le RSI ne peut jamais dépasser 70 en tendance haussière",
+        "Au-dessus de 70, le RSI signale au contraire une survente",
+        "Le RSI ne fonctionne que sur les marchés baissiers"
+      ],
+      "explanation": "« Suracheté » ne veut pas dire « va baisser » : en tendance puissante, les hausses dominent durablement et le RSI peut rester **au-dessus de 70** pendant des semaines pendant que le prix continue de grimper. Vendre au premier franchissement de 70 revient alors à se battre contre la tendance. Beaucoup attendent que le RSI redescende sous 70, ou une divergence, avant d’agir.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans le calcul original de Wilder, avec quel coefficient les moyennes des hausses et des baisses du RSI sont-elles lissées, pour N périodes ?",
+      "answer": "1 / N",
+      "wrong": [
+        "2 / (N + 1)",
+        "1 / (N + 1)",
+        "2 / N"
+      ],
+      "explanation": "Le **lissage de Wilder** calcule chaque nouvelle moyenne comme (ancienne moyenne × (N − 1) + nouvelle valeur) / N, ce qui revient à une moyenne exponentielle de coefficient **1 / N**. C’est plus lent que l’EMA classique, de coefficient 2 / (N + 1) : un lissage de Wilder sur 14 périodes équivaut à une EMA sur 27 périodes. D’où des écarts entre plateformes qui ne calculent pas le RSI de la même manière.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qui a mis au point le **MACD** à la fin des années 1970 ?",
+      "answer": "Gerald Appel",
+      "wrong": [
+        "J. Welles Wilder",
+        "John Bollinger",
+        "Steve Nison"
+      ],
+      "explanation": "Le MACD a été conçu par **Gerald Appel**, gestionnaire de fonds américain, à la fin des années 1970. L’histogramme qui l’accompagne aujourd’hui a été ajouté plus tard, au milieu des années 1980. Wilder a créé le RSI, Bollinger ses bandes, et Nison a popularisé les chandeliers japonais en Occident.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/MACD"
+    },
+    {
+      "question": "Dans le MACD standard (12, 26, 9), comment est obtenue la **ligne de signal** ?",
+      "answer": "C’est l’EMA à 9 périodes de la ligne MACD",
+      "wrong": [
+        "C’est l’EMA à 9 périodes du cours de clôture",
+        "C’est l’écart entre l’EMA 12 et l’EMA 26",
+        "C’est la SMA à 26 périodes de la ligne MACD"
+      ],
+      "explanation": "Le 9 du réglage (12, 26, 9) sert à lisser la ligne MACD elle-même : la **ligne de signal** est une EMA à 9 périodes de la ligne MACD, et non du prix. Le croisement de la ligne MACD au-dessus de sa ligne de signal est lu comme un signal d’achat, le croisement inverse comme un signal de vente. L’écart entre l’EMA 12 et l’EMA 26 est la ligne MACD.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que peut-on affirmer avec certitude quand la ligne MACD (12, 26) est **positive** ?",
+      "answer": "L’EMA à 12 périodes est au-dessus de l’EMA à 26 périodes",
+      "wrong": [
+        "Le prix a monté lors de chacune des 12 dernières séances",
+        "Le RSI à 14 périodes est forcément au-dessus de 50",
+        "La ligne MACD est au-dessus de sa ligne de signal"
+      ],
+      "explanation": "La ligne MACD vaut EMA 12 − EMA 26 : elle est positive **si et seulement si** l’EMA courte dépasse l’EMA longue. Le franchissement de la ligne zéro équivaut donc à un croisement de ces deux moyennes. La position par rapport à la ligne de signal est une autre information : un MACD positif peut très bien être sous sa ligne de signal quand la hausse ralentit.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi le MACD se prête-t-il mal à des seuils fixes de surachat et de survente, contrairement au RSI ?",
+      "answer": "Il n’est pas borné : son amplitude dépend du niveau de prix de l’actif",
+      "wrong": [
+        "Il est borné entre 0 et 1, ce qui écrase toutes ses variations",
+        "Il est calculé sur le volume échangé et non sur le prix",
+        "Il n’est recalculé qu’une seule fois par mois"
+      ],
+      "explanation": "Le MACD est une différence de deux moyennes exprimée **en unités de prix** : quelques centimes pour une action à 10 €, plusieurs dizaines de points pour un indice. Il n’a donc pas de bornes, et une valeur « extrême » pour un actif ne l’est pas pour un autre. Le RSI, normalisé entre 0 et 100, permet au contraire des seuils universels comme 70 et 30.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel analyste a développé l’**oscillateur stochastique** dans les années 1950 ?",
+      "answer": "George Lane",
+      "wrong": [
+        "Gerald Appel",
+        "Charles Dow",
+        "Ralph Elliott"
+      ],
+      "explanation": "L’oscillateur **stochastique** est attribué à **George Lane**. Il repose sur une observation simple : en tendance haussière, les clôtures se font plutôt près des plus hauts de la période ; en tendance baissière, près des plus bas. Gerald Appel a créé le MACD, Charles Dow la théorie de Dow et Ralph Elliott la théorie des vagues.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur 14 périodes, le plus bas est 40 et le plus haut 50. La clôture actuelle est 48. Que vaut le **%K** de l’oscillateur stochastique ?",
+      "answer": "80",
+      "wrong": [
+        "48",
+        "20",
+        "96"
+      ],
+      "explanation": "Le %K situe la clôture dans la fourchette de la période : %K = (clôture − plus bas) / (plus haut − plus bas) × 100 = (48 − 40) / (50 − 40) × 100 = **80**. La clôture se trouve aux quatre cinquièmes de la fourchette, tout en haut de la zone neutre ; au-delà de 80, on parle de surachat. Le piège 96 divise la clôture par le plus haut, sans tenir compte du plus bas.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur quelle échelle évolue le **Williams %R** ?",
+      "answer": "De −100 à 0",
+      "wrong": [
+        "De 0 à 100",
+        "De −1 à +1",
+        "De 0 à 1"
+      ],
+      "explanation": "Le **Williams %R**, créé par Larry Williams, mesure lui aussi la position de la clôture dans la fourchette récente, mais par rapport au **plus haut** : (plus haut − clôture) / (plus haut − plus bas) × (−100). Il évolue donc de −100 à 0 : au-dessus de −20 on parle de surachat, sous −80 de survente. C’est en quelque sorte un stochastique retourné.",
+      "difficulty": 3
+    },
+    {
+      "question": "Il y a 10 séances, l’action valait 120 € ; elle vaut aujourd’hui 132 €. Que vaut son **ROC** (Rate of Change) à 10 périodes ?",
+      "answer": "+10 %",
+      "wrong": [
+        "+12 %",
+        "+9,1 %",
+        "+1,1 %"
+      ],
+      "explanation": "Le **ROC** mesure la variation en pourcentage par rapport au cours d’il y a N périodes : (132 − 120) / 120 × 100 = **+10 %**. Le piège +9,1 % divise par le cours actuel au lieu du cours de départ, et +12 % confond l’écart en euros avec un pourcentage. Le ROC est un indicateur de **momentum** : il oscille autour de zéro, positif quand le prix progresse.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans la suite de Fibonacci (0, 1, 1, 2, 3, 5, 8, 13…), comment obtient-on chaque terme ?",
+      "answer": "En additionnant les deux termes précédents",
+      "wrong": [
+        "En doublant le terme précédent",
+        "En multipliant les deux termes précédents",
+        "En ajoutant 1 au terme précédent"
+      ],
+      "explanation": "Chaque terme de la **suite de Fibonacci** est la somme des deux précédents : 5 + 8 = 13, 8 + 13 = 21, etc. Elle doit son nom à Léonard de Pise, dit Fibonacci, qui l’a décrite en 1202 dans son *Liber abaci* à propos de la reproduction de lapins. Les rapports entre ses termes donnent les ratios utilisés en analyse technique : 61,8 %, 38,2 %, 23,6 %…",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Suite_de_Fibonacci"
+    },
+    {
+      "question": "Vers quelle valeur tend le rapport entre deux termes consécutifs de la suite de Fibonacci, le plus grand divisé par le plus petit ?",
+      "answer": "Environ 1,618, le nombre d’or",
+      "wrong": [
+        "Environ 3,142, le nombre pi",
+        "Environ 2,718, le nombre e",
+        "Environ 1,414, la racine de 2"
+      ],
+      "explanation": "21 / 13 ≈ 1,615, 34 / 21 ≈ 1,619, 55 / 34 ≈ 1,618 : le rapport converge vers le **nombre d’or**, (1 + √5) / 2 ≈ 1,618. Son inverse, environ 0,618, donne le fameux retracement de **61,8 %**, et 1,618 sert d’extension de **161,8 %** pour fixer des objectifs au-delà d’un mouvement.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Nombre_d%27or"
+    },
+    {
+      "question": "À quelle lettre fait penser la figure chartiste du **double creux** (double bottom) ?",
+      "answer": "W",
+      "wrong": [
+        "M",
+        "V",
+        "U"
+      ],
+      "explanation": "Le **double creux** dessine un **W** : deux points bas proches du même niveau, séparés par un rebond. Il signale un possible retournement haussier, confirmé quand le prix dépasse le sommet intermédiaire. Le **M** correspond au double sommet, sa version baissière ; le V évoque un retournement brutal en un seul creux, le U un creux arrondi.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans une figure **tête-épaules**, comment appelle-t-on la droite qui relie les deux creux situés de part et d’autre de la tête ?",
+      "answer": "La ligne de cou",
+      "wrong": [
+        "La ligne de signal",
+        "La ligne de tendance primaire",
+        "La ligne de crête"
+      ],
+      "explanation": "La **ligne de cou** (neckline) relie les deux creux qui encadrent la tête. Tant qu’elle n’est pas cassée, la figure n’est qu’une hypothèse : c’est sa cassure, à la baisse pour un tête-épaules classique, qui valide le signal de retournement. La ligne de signal, elle, appartient au MACD.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu’appelle-t-on un **retracement** en analyse technique ?",
+      "answer": "Un mouvement inverse qui corrige une partie du mouvement précédent",
+      "wrong": [
+        "Un mouvement qui prolonge le précédent au-delà de son point d’arrivée",
+        "Un retour du prix à son niveau d’introduction en bourse",
+        "Un recalcul des cours passés après une division d’action"
+      ],
+      "explanation": "Un **retracement** est une correction partielle : après une hausse de 100 à 200 €, une baisse à 160 € retrace 40 % du mouvement. Les outils de Fibonacci servent à repérer les niveaux où ces corrections s’arrêtent souvent. Un mouvement qui dépasse le point d’arrivée du précédent relève au contraire de l’**extension**.",
+      "difficulty": 1
+    },
+    {
+      "question": "Comment se forme un **triangle symétrique** ?",
+      "answer": "Par des sommets de plus en plus bas et des creux de plus en plus hauts",
+      "wrong": [
+        "Par des sommets de plus en plus hauts et des creux de plus en plus bas",
+        "Par des sommets au même niveau et des creux de plus en plus hauts",
+        "Par des sommets et des creux qui montent de façon parallèle"
+      ],
+      "explanation": "Dans un **triangle symétrique**, les fluctuations se resserrent : la droite des sommets descend et celle des creux monte jusqu’à converger. Il traduit une compression de l’indécision et se résout par une cassure, souvent dans le sens de la tendance précédente. Des sommets au même niveau avec des creux montants forment un triangle **ascendant** ; des oscillations qui s’élargissent forment un « mégaphone ».",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie qu’une figure chartiste est dite **de continuation** ?",
+      "answer": "La tendance en place a de bonnes chances de reprendre après la figure",
+      "wrong": [
+        "La tendance en place a de bonnes chances de s’inverser après la figure",
+        "Le marché va rester bloqué en range pendant une durée illimitée",
+        "Le prix va continuer d’évoluer sans aucune volatilité"
+      ],
+      "explanation": "Une figure **de continuation** (drapeau, fanion, rectangle, souvent triangle) est une pause dans la tendance : le marché « reprend son souffle » avant de repartir dans la même direction. Une figure **de retournement** (tête-épaules, double sommet ou double creux) annonce au contraire un changement de direction. Dans les deux cas, il ne s’agit que de probabilités.",
+      "difficulty": 1
+    },
+    {
+      "question": "De quel pays est originaire la méthode d’analyse **Ichimoku Kinko Hyo** ?",
+      "answer": "Le Japon",
+      "wrong": [
+        "La Chine",
+        "La Corée du Sud",
+        "L’Inde"
+      ],
+      "explanation": "**Ichimoku Kinko Hyo** signifie à peu près « graphique d’équilibre en un coup d’œil ». La méthode a été élaborée à partir des années 1930 par le journaliste japonais Goichi Hosoda, qui l’a publiée à la fin des années 1960. Elle superpose au graphique plusieurs lignes et un « nuage » qui résument tendance, supports et résistances.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Ichimoku_Kink%C5%8D_Hy%C5%8D"
+    },
+    {
+      "question": "Selon la théorie des **vagues d’Elliott**, comment se décompose un cycle de marché complet ?",
+      "answer": "Cinq vagues d’impulsion suivies de trois vagues correctives",
+      "wrong": [
+        "Trois vagues d’impulsion suivies de cinq vagues correctives",
+        "Quatre vagues d’impulsion suivies de quatre vagues correctives",
+        "Sept vagues d’impulsion suivies de deux vagues correctives"
+      ],
+      "explanation": "Ralph Nelson **Elliott** a décrit dans les années 1930 un motif en **5-3** : cinq vagues dans le sens de la tendance (numérotées 1 à 5, dont 2 et 4 sont des corrections) puis trois vagues correctives (A, B, C). Le motif est fractal : chaque vague se décompose elle-même en vagues de degré inférieur.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Principe_de_la_vague_d%27Elliott"
+    },
+    {
+      "question": "Un **triangle ascendant** combine une résistance horizontale et une ligne de support montante. Quelle sortie anticipe-t-on généralement ?",
+      "answer": "Une cassure à la hausse de la résistance",
+      "wrong": [
+        "Une cassure à la baisse du support montant",
+        "Une sortie sans direction privilégiée",
+        "Une stabilisation définitive dans le triangle"
+      ],
+      "explanation": "Dans un **triangle ascendant**, les vendeurs tiennent un même niveau tandis que les acheteurs reviennent de plus en plus tôt, à des prix de plus en plus hauts : la pression acheteuse s’accumule sous la résistance, d’où une sortie attendue par le haut. Ce n’est qu’une probabilité, d’où l’attente de la cassure effective. Le triangle descendant est son miroir baissier ; le triangle symétrique est plus neutre.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel investisseur américain a popularisé la figure haussière de la **tasse avec anse** (cup with handle) ?",
+      "answer": "William O’Neil",
+      "wrong": [
+        "Warren Buffett",
+        "Peter Lynch",
+        "George Soros"
+      ],
+      "explanation": "**William O’Neil**, fondateur du journal *Investor’s Business Daily*, a popularisé la **tasse avec anse** dans *How to Make Money in Stocks* (1988), au cœur de sa méthode CAN SLIM. La figure dessine un creux arrondi en U (la tasse), suivi d’une petite consolidation (l’anse) avant une cassure à la hausse. Buffett, Lynch et Soros sont célèbres pour des approches fondamentales ou macroéconomiques.",
+      "difficulty": 2
+    },
+    {
+      "question": "Lequel de ces niveaux est une **extension de Fibonacci** classique, utilisée comme objectif au-delà du mouvement initial ?",
+      "answer": "161,8 %",
+      "wrong": [
+        "150,0 %",
+        "175,0 %",
+        "133,3 %"
+      ],
+      "explanation": "Les extensions de Fibonacci projettent un objectif au-delà de 100 % du mouvement de référence ; la plus suivie est **161,8 %**, soit le nombre d’or 1,618. Les niveaux 150 %, 175 % ou 133,3 % ne correspondent à aucun ratio de la suite. Les retracements (sous 100 %) servent à repérer les fins de correction, les extensions à fixer des objectifs.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans la méthode Ichimoku, comment interprète-t-on classiquement un prix qui évolue **au-dessus du nuage** (kumo) ?",
+      "answer": "Comme le signe d’une tendance haussière",
+      "wrong": [
+        "Comme le signe d’une tendance baissière",
+        "Comme le signe d’un marché sans tendance",
+        "Comme le signe d’un volume très faible"
+      ],
+      "explanation": "Le **nuage** est la zone colorée entre deux lignes, Senkou Span A et Senkou Span B, projetées en avant sur le graphique. Un prix **au-dessus** du nuage est lu comme haussier, **en dessous** comme baissier, et **dans** le nuage comme une zone d’indécision. Le nuage joue en outre le rôle de support ou de résistance, d’autant plus solide qu’il est épais.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur une séance, 100 actions s’échangent à 10 € puis 300 actions à 12 €. Que vaut le **VWAP** de la séance ?",
+      "answer": "11,50 €",
+      "wrong": [
+        "11,00 €",
+        "12,00 €",
+        "10,50 €"
+      ],
+      "explanation": "Le **VWAP** (Volume Weighted Average Price) est le prix moyen pondéré par les volumes : (100 × 10 + 300 × 12) / (100 + 300) = 4 600 / 400 = **11,50 €**. Le piège 11 € est la moyenne simple des deux prix, qui ignore que la plupart des titres ont changé de mains à 12 €. Les institutionnels s’en servent comme référence pour juger la qualité de leurs exécutions.",
+      "difficulty": 2
+    },
+    {
+      "question": "Une action monte de 100 € à 200 €. À quel prix se situe le **retracement de 38,2 %** de cette hausse ?",
+      "answer": "161,80 €",
+      "wrong": [
+        "138,20 €",
+        "238,20 €",
+        "150,00 €"
+      ],
+      "explanation": "Un retracement se mesure depuis le sommet, en proportion de la hausse : 200 − 0,382 × (200 − 100) = **161,80 €**. Le piège 138,20 € correspond au retracement de 61,8 %, plus profond, et 150 € au retracement de 50 %. Un retracement de 38,2 % est souvent considéré comme une correction modérée dans une tendance solide.",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment évolue l’**OBV** (On-Balance Volume) lors d’une séance qui clôture en baisse par rapport à la veille ?",
+      "answer": "Il diminue du volume total de la séance",
+      "wrong": [
+        "Il augmente du volume total de la séance",
+        "Il diminue de la moitié du volume de la séance",
+        "Il reste inchangé, seul le prix comptant"
+      ],
+      "explanation": "L’**OBV**, popularisé par Joe Granville dans les années 1960, est un cumul : on **ajoute** tout le volume d’une séance qui clôture en hausse, on le **retranche** si elle clôture en baisse, et on ne change rien si la clôture est identique. Sa valeur absolue importe peu : on regarde sa pente et ses divergences avec le prix, selon l’idée que le volume précède le prix.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans un tête-épaules, la tête culmine à 150 € et la ligne de cou, horizontale, se situe à 130 €. Après la cassure de la ligne de cou, quel est l’objectif théorique de baisse ?",
+      "answer": "110 €",
+      "wrong": [
+        "120 €",
+        "100 €",
+        "130 €"
+      ],
+      "explanation": "La règle classique mesure la hauteur de la figure, de la **tête à la ligne de cou** (150 − 130 = 20 €), et la reporte sous le point de cassure : 130 − 20 = **110 €**. C’est un objectif minimal théorique, pas une garantie. Le même raisonnement s’applique aux doubles sommets, aux triangles ou aux rectangles.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un **biseau ascendant** (rising wedge) est formé de deux droites montantes qui convergent. Quelle lecture lui associe-t-on classiquement ?",
+      "answer": "Plutôt baissière, malgré sa pente montante",
+      "wrong": [
+        "Plutôt haussière, grâce à sa pente montante",
+        "Neutre, sans aucune direction privilégiée",
+        "Haussière à condition que le volume augmente"
+      ],
+      "explanation": "Dans un **biseau ascendant**, le prix monte encore, mais chaque nouveau sommet progresse moins que le précédent et les droites se resserrent : la hausse s’essouffle. La sortie se fait le plus souvent **par le bas**, d’où sa réputation baissière, piège classique pour qui s’arrête à la pente. Le biseau descendant est son miroir, de lecture plutôt haussière.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un drapeau haussier se forme après une hausse rapide de 40 € à 60 € (le mât). Le prix casse le haut du drapeau à 56 €. Quel est l’objectif théorique classique ?",
+      "answer": "76 €",
+      "wrong": [
+        "80 €",
+        "66 €",
+        "60 €"
+      ],
+      "explanation": "Pour un **drapeau**, on reporte la hauteur du **mât** (60 − 40 = 20 €) à partir du point de **cassure** du drapeau : 56 + 20 = **76 €**. Le piège 80 € reporte le mât depuis son sommet, en oubliant que le drapeau a corrigé une partie de la hausse. L’idée sous-jacente est que le mouvement qui reprend après la pause est d’ampleur comparable à celui qui l’a précédée.",
+      "difficulty": 3
+    },
+    {
+      "question": "Parmi ces niveaux de retracement affichés par l’outil de Fibonacci, lequel n’est **pas** issu d’un ratio de la suite de Fibonacci ?",
+      "answer": "50 %",
+      "wrong": [
+        "23,6 %",
+        "38,2 %",
+        "61,8 %"
+      ],
+      "explanation": "61,8 % correspond au rapport d’un terme au suivant, 38,2 % au rapport d’un terme à celui situé deux rangs plus loin et 23,6 % à trois rangs plus loin. Le niveau de **50 %** n’en découle pas : il est ajouté par convention, car la théorie de Dow considérait déjà qu’une correction retrace souvent environ la moitié du mouvement précédent.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans une impulsion d’Elliott, quelle règle stricte concerne la **vague 3** ?",
+      "answer": "Elle n’est jamais la plus courte des vagues 1, 3 et 5",
+      "wrong": [
+        "Elle est toujours la plus courte des vagues 1, 3 et 5",
+        "Elle retrace toujours 61,8 % de la vague 2",
+        "Elle est toujours plus courte que la vague 1"
+      ],
+      "explanation": "La théorie d’Elliott pose trois règles intangibles pour une impulsion : la vague 2 ne retrace jamais plus de 100 % de la vague 1, la **vague 3 n’est jamais la plus courte** des trois vagues motrices, et la vague 4 n’entre pas dans la zone de prix de la vague 1. En pratique, la vague 3 est souvent la plus longue et la plus puissante, mais seule l’interdiction d’être la plus courte est une règle.",
+      "difficulty": 3
+    },
+    {
+      "question": "Les bandes de Bollinger sont à 94 (inférieure) et 106 (supérieure) ; le prix vaut 103. Que vaut l’indicateur **%b** ?",
+      "answer": "0,75",
+      "wrong": [
+        "0,25",
+        "0,50",
+        "1,03"
+      ],
+      "explanation": "Le **%b** situe le prix entre les bandes : %b = (prix − bande inférieure) / (bande supérieure − bande inférieure) = (103 − 94) / (106 − 94) = 9 / 12 = **0,75**. Il vaut 0 sur la bande inférieure, 0,5 sur la moyenne centrale et 1 sur la bande supérieure ; il dépasse 1 quand le prix sort par le haut. Le piège 0,25 mesure la distance depuis la bande supérieure.",
+      "difficulty": 3
+    },
+    {
+      "question": "Clôture d’hier : 50. Aujourd’hui, après une ouverture en gap, le plus haut est 58 et le plus bas 54. Que vaut le **True Range** utilisé pour calculer l’ATR ?",
+      "answer": "8",
+      "wrong": [
+        "4",
+        "6",
+        "10"
+      ],
+      "explanation": "Le **True Range** de Wilder est le plus grand de trois écarts : plus haut − plus bas (4), |plus haut − clôture précédente| (8) et |plus bas − clôture précédente| (4). Il vaut donc **8** : il intègre le gap, que le simple écart plus haut − plus bas (4) ignorerait. L’**ATR** est la moyenne lissée de ces True Range ; il mesure la volatilité, sans indiquer de direction, et sert souvent à dimensionner les stops.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un **ADX** à 40 et en hausse : que peut-on en conclure ?",
+      "answer": "La tendance est forte, mais l’ADX ne dit pas si elle monte ou baisse",
+      "wrong": [
+        "Le marché est fortement suracheté et va bientôt baisser",
+        "La tendance est forcément haussière et elle s’accélère",
+        "Le marché est en range, sans aucune tendance marquée"
+      ],
+      "explanation": "L’**ADX** (Average Directional Index), créé par J. Welles Wilder, mesure la **force** d’une tendance sur une échelle de 0 à 100, quel que soit son sens : au-dessus de 25 environ, on parle de tendance marquée, sous 20 de marché sans tendance. Le sens se lit avec ses deux lignes compagnes, +DI et −DI. Un ADX élevé peut donc accompagner une forte baisse.",
+      "difficulty": 3
     }
   ]
 }

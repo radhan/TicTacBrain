@@ -364,6 +364,834 @@
       "explanation": "L'étape de fusion a besoin d'un tableau auxiliaire pour recombiner les deux moitiés triées, ce qui demande un espace proportionnel au nombre d'éléments, soit `O(n)`. C'est le prix de sa régularité : à l'inverse, le tri rapide trie quasiment sur place, avec un surcoût mémoire bien moindre.",
       "difficulty": 3,
       "source": "https://fr.wikipedia.org/wiki/Tri_fusion"
+    },
+    {
+      "question": "Parmi ces complexités, laquelle correspond à l'algorithme le plus efficace quand `n` devient très grand ?",
+      "answer": "`O(log n)`",
+      "wrong": [
+        "`O(n)`",
+        "`O(n log n)`",
+        "`O(n²)`"
+      ],
+      "explanation": "Un logarithme croît extrêmement lentement : pour un million d'éléments, `log₂ n` vaut environ 20, alors que `n²` vaut mille milliards. L'ordre croissant classique est `O(1)` < `O(log n)` < `O(n)` < `O(n log n)` < `O(n²)` < `O(2ⁿ)`. C'est pourquoi la recherche dichotomique, en `O(log n)`, reste quasi instantanée même sur d'énormes tableaux.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Analyse_de_la_complexit%C3%A9_des_algorithmes"
+    },
+    {
+      "question": "Que signifie une complexité en temps en `O(1)` ?",
+      "answer": "Le coût ne dépend pas de la taille des données",
+      "wrong": [
+        "L'algorithme s'exécute en une seconde",
+        "L'algorithme ne traite qu'un seul élément",
+        "L'algorithme ne contient qu'une boucle"
+      ],
+      "explanation": "`O(1)` désigne un temps **constant** : qu'il y ait 10 ou 10 millions d'éléments, le nombre d'opérations est borné par la même constante. Lire la case d'indice `i` d'un tableau ou empiler sur une pile sont des opérations en `O(1)`. Cela ne dit rien de la durée réelle en secondes : une opération constante peut quand même être lente.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Comparaison_asymptotique"
+    },
+    {
+      "question": "Comment se simplifie la complexité `O(3n² + 5n + 100)` ?",
+      "answer": "`O(n²)`",
+      "wrong": [
+        "`O(n)`",
+        "`O(n³)`",
+        "`O(log n)`"
+      ],
+      "explanation": "En notation Big-O, on ne garde que le **terme dominant** et on supprime les constantes multiplicatives : quand `n` grandit, `3n²` écrase `5n` et `100`, et le facteur 3 ne change pas l'ordre de grandeur. Il reste donc `O(n²)`. C'est cette simplification qui permet de comparer des algorithmes sans se soucier de la machine ou des détails d'implémentation.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Comparaison_asymptotique"
+    },
+    {
+      "question": "Quelle est la complexité en temps de ces deux boucles imbriquées ?\n```python\nfor i in range(n):\n    for j in range(i):\n        traiter(i, j)  # coût constant\n```",
+      "answer": "`O(n²)`",
+      "wrong": [
+        "`O(n log n)`",
+        "`O(n)`",
+        "`O(2ⁿ)`"
+      ],
+      "explanation": "La boucle interne fait 0, puis 1, puis 2… jusqu'à `n − 1` tours, soit au total `n(n − 1)/2` appels à `traiter`. Même si c'est « deux fois moins » qu'un double parcours complet, la division par 2 est une constante que Big-O ignore : on reste en `O(n²)`. Le piège classique est de croire que la boucle interne plus courte fait tomber la complexité à `O(n log n)`.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Analyse_de_la_complexit%C3%A9_des_algorithmes"
+    },
+    {
+      "question": "Quelle est la complexité en temps de cette boucle ?\n```python\ni = 1\nwhile i < n:\n    i = i * 2\n```",
+      "answer": "`O(log n)`",
+      "wrong": [
+        "`O(n)`",
+        "`O(n log n)`",
+        "`O(√n)`"
+      ],
+      "explanation": "La variable `i` double à chaque tour : 1, 2, 4, 8… Elle atteint `n` après environ `log₂ n` itérations (pour `n = 100`, il suffit de 7 tours). Chaque fois qu'une quantité est multipliée ou divisée par une constante à chaque étape, on obtient un nombre logarithmique de tours, comme dans la recherche dichotomique.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Analyse_de_la_complexit%C3%A9_des_algorithmes"
+    },
+    {
+      "question": "Quelle est la nature de la complexité en temps de ce calcul naïf de la suite de Fibonacci ?\n```python\ndef fib(n):\n    if n < 2:\n        return n\n    return fib(n - 1) + fib(n - 2)\n```",
+      "answer": "Exponentielle",
+      "wrong": [
+        "Linéaire",
+        "Quadratique",
+        "Logarithmique"
+      ],
+      "explanation": "Chaque appel en déclenche deux autres, et les mêmes valeurs sont recalculées un nombre gigantesque de fois : `fib(n − 2)` est calculé à la fois par `fib(n)` et par `fib(n − 1)`, et ainsi de suite. Le nombre d'appels croît comme `φⁿ` (φ ≈ 1,618), ce qu'on majore souvent par `O(2ⁿ)`. En mémorisant les résultats déjà calculés (mémoïsation), on retombe à un temps linéaire.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Suite_de_Fibonacci"
+    },
+    {
+      "question": "Un algorithme récursif coupe son entrée en deux moitiés, se rappelle sur chacune, puis fait un travail constant pour combiner : `T(n) = 2T(n/2) + O(1)`. Quelle est sa complexité ?",
+      "answer": "`O(n)`",
+      "wrong": [
+        "`O(log n)`",
+        "`O(n log n)`",
+        "`O(n²)`"
+      ],
+      "explanation": "L'arbre des appels compte environ `2n` nœuds (1 + 2 + 4 + … + n), chacun faisant un travail constant : le total est linéaire. Le théorème maître le confirme : avec `a = 2` et `b = 2`, `n^(log_b a) = n` domine le coût de combinaison `O(1)`. Le piège est `O(n log n)`, qui correspond à un travail de combinaison **linéaire** à chaque niveau, comme dans le tri fusion (`T(n) = 2T(n/2) + O(n)`).",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Master_theorem"
+    },
+    {
+      "question": "Ajouter un élément à la fin d'un **tableau dynamique** (`list` en Python, `ArrayList` en Java) coûte, en temps **amorti**...",
+      "answer": "`O(1)`",
+      "wrong": [
+        "`O(n)`",
+        "`O(log n)`",
+        "`O(n log n)`"
+      ],
+      "explanation": "Quand le tableau est plein, il est réalloué avec une capacité multipliée par un facteur (souvent entre 1,5 et 2) et tous les éléments sont copiés, ce qui coûte `O(n)` ponctuellement. Mais ces copies deviennent de plus en plus rares : réparti sur l'ensemble des ajouts, le coût moyen par ajout reste constant. C'est le principe de l'**analyse amortie**.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Tableau_dynamique"
+    },
+    {
+      "question": "Un tableau dynamique mal conçu agrandit sa capacité de **10 cases seulement** chaque fois qu'il est plein (en recopiant tout son contenu). Quel est alors le coût total de `n` ajouts successifs ?",
+      "answer": "`O(n²)`",
+      "wrong": [
+        "`O(n)`",
+        "`O(n log n)`",
+        "`O(log n)`"
+      ],
+      "explanation": "Avec une croissance additive, une recopie a lieu tous les 10 ajouts et recopie 10, puis 20, puis 30… éléments : la somme vaut environ `n²/20`, donc `O(n²)` au total et `O(n)` amorti par ajout. C'est pour cela que les vrais tableaux dynamiques agrandissent leur capacité de façon **multiplicative** (×1,5 ou ×2) : la somme des recopies devient une série géométrique, en `O(n)` au total.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Analyse_amortie"
+    },
+    {
+      "question": "Qu'apporte la notation `Θ(f(n))` (grand thêta) par rapport à `O(f(n))` ?",
+      "answer": "Une borne à la fois supérieure et inférieure",
+      "wrong": [
+        "Une borne valable seulement au meilleur cas",
+        "Une durée d'exécution mesurée en secondes",
+        "Une borne qui ne concerne que la mémoire"
+      ],
+      "explanation": "`O(f(n))` n'est qu'une **majoration** : un algorithme linéaire est, techniquement, aussi en `O(n²)`. `Θ(f(n))` impose que le coût soit à la fois majoré et minoré par `f(n)` à des constantes près, ce qui décrit son ordre de croissance exact. `Ω(f(n))` donne, elle, seulement la borne inférieure. Aucune de ces notations n'est liée par nature au meilleur ou au pire cas : on peut les appliquer à l'un comme à l'autre.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Comparaison_asymptotique"
+    },
+    {
+      "question": "Combien de comparaisons faut-il, au maximum et en ordre de grandeur, pour retrouver une valeur par **recherche dichotomique** dans un tableau trié d'un milliard d'éléments ?",
+      "answer": "Environ 30",
+      "wrong": [
+        "Environ 1 000",
+        "Environ 500 000",
+        "Environ 100"
+      ],
+      "explanation": "Chaque comparaison divise par deux la zone de recherche, donc il en faut environ `log₂(10⁹)` ≈ 30. Un repère utile : `2¹⁰ = 1024 ≈ 10³`, donc un milliard (`10⁹`) correspond à peu près à `2³⁰`. Une recherche linéaire, elle, pourrait demander jusqu'à un milliard de comparaisons.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Recherche_dichotomique"
+    },
+    {
+      "question": "Quelle structure de données est la plus adaptée pour vérifier qu'une expression comme `((a+b)*[c-d])` a des parenthèses et crochets bien équilibrés ?",
+      "answer": "Une pile",
+      "wrong": [
+        "Une file",
+        "Une table de hachage",
+        "Un tas binaire"
+      ],
+      "explanation": "On parcourt l'expression : chaque symbole ouvrant est empilé, et chaque symbole fermant doit correspondre au sommet de la pile, que l'on dépile. L'expression est correcte si la pile est vide à la fin. Le LIFO convient parfaitement, car c'est toujours la **dernière** parenthèse ouverte qui doit être fermée en premier.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Pile_(informatique)"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\npile = []\npile.append(1)\npile.append(2)\npile.append(3)\npile.pop()\npile.append(4)\nprint(pile)\n```",
+      "answer": "`[1, 2, 4]`",
+      "wrong": [
+        "`[1, 2, 3, 4]`",
+        "`[2, 3, 4]`",
+        "`[4, 1, 2]`"
+      ],
+      "explanation": "Une `list` Python utilisée avec `append` et `pop()` se comporte comme une pile : `pop()` sans argument retire le **dernier** élément ajouté, ici `3`. On ajoute ensuite `4` au sommet, d'où `[1, 2, 4]`. Le résultat `[2, 3, 4]` correspondrait à `pop(0)`, qui retire le premier élément comme une file.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/3/tutorial/datastructures.html#using-lists-as-stacks"
+    },
+    {
+      "question": "En Python, pourquoi préfère-t-on `collections.deque` à une `list` pour implémenter une **file** ?",
+      "answer": "Retirer en tête : `O(n)` pour `list`, `O(1)` pour `deque`",
+      "wrong": [
+        "Une `list` est limitée à 1 000 éléments au total",
+        "`deque` garde automatiquement ses éléments triés",
+        "Une `list` refuse de stocker des éléments en double"
+      ],
+      "explanation": "Une `list` est un tableau contigu : retirer le premier élément oblige à décaler tous les suivants d'une case, soit `O(n)`. Une `deque` est conçue pour ajouter et retirer aux deux extrémités en temps constant, ce qui en fait la structure idéale pour une file FIFO, par exemple dans un parcours en largeur.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/3/library/collections.html#collections.deque"
+    },
+    {
+      "question": "On implémente une file avec deux piles : on empile les arrivées dans A ; pour défiler, si B est vide on y transvase toute la pile A, puis on dépile B. Quel est le coût **amorti** d'une opération ?",
+      "answer": "`O(1)`",
+      "wrong": [
+        "`O(n)`",
+        "`O(log n)`",
+        "`O(n²)`"
+      ],
+      "explanation": "Un transvasement peut coûter `O(n)` d'un coup, mais chaque élément n'est déplacé de A vers B **qu'une seule fois** dans toute sa vie : il est empilé dans A, transféré une fois, puis dépilé de B. Sur une suite de `n` opérations, le travail total est donc en `O(n)`, soit `O(1)` amorti par opération. Le transfert inverse aussi l'ordre, ce qui transforme deux LIFO en un FIFO.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Analyse_amortie"
+    },
+    {
+      "question": "Qu'est-ce qu'une **deque** (double-ended queue) ?",
+      "answer": "Une file où l'on ajoute et retire aux deux extrémités",
+      "wrong": [
+        "Une file qui retire toujours le plus petit élément",
+        "Une pile limitée à deux éléments au maximum",
+        "Une file où chaque élément est stocké deux fois"
+      ],
+      "explanation": "Une deque (file à double extrémité) généralise à la fois la pile et la file : on peut ajouter et retirer en tête comme en queue, en temps constant. Retirer toujours le plus petit élément décrit au contraire une **file de priorité**. En Python, `collections.deque` en fournit une implémentation efficace.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/File_%C3%A0_double_extr%C3%A9mit%C3%A9"
+    },
+    {
+      "question": "Qu'est-ce qu'un **tampon circulaire** (ring buffer) ?",
+      "answer": "Un tableau de taille fixe dont les indices reviennent au début",
+      "wrong": [
+        "Une pile qui se vide toute seule quand elle est pleine",
+        "Une table de hachage qui double de taille si besoin",
+        "Un arbre dont chaque feuille pointe vers la racine"
+      ],
+      "explanation": "Un tampon circulaire stocke une file dans un tableau de taille fixe : deux indices (lecture et écriture) avancent et repartent à 0 en arrivant au bout, souvent grâce à un modulo. Ajouts et retraits se font en `O(1)` sans jamais décaler les éléments. On l'utilise beaucoup pour les flux audio, les journaux à taille bornée ou les échanges entre producteur et consommateur.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Circular_buffer"
+    },
+    {
+      "question": "En **notation polonaise inverse**, évaluée à l'aide d'une pile, que vaut l'expression `3 4 + 2 *` ?",
+      "answer": "`14`",
+      "wrong": [
+        "`11`",
+        "`10`",
+        "`24`"
+      ],
+      "explanation": "On empile 3 puis 4 ; l'opérateur `+` dépile les deux, calcule 7 et empile le résultat. On empile 2, puis `*` dépile 7 et 2 et empile 14. Cette notation postfixée n'a pas besoin de parenthèses ni de règles de priorité : `11` serait le résultat de `3 + 4 × 2` en notation habituelle, ce qui s'écrirait `3 4 2 * +`.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Notation_polonaise_inverse"
+    },
+    {
+      "question": "Dans une **file de priorité** implémentée par un tas binaire de `n` éléments, combien coûte l'insertion d'un élément dans le pire cas ?",
+      "answer": "`O(log n)`",
+      "wrong": [
+        "`O(1)`",
+        "`O(n)`",
+        "`O(n log n)`"
+      ],
+      "explanation": "Le nouvel élément est placé à la fin du tableau, puis il « remonte » en s'échangeant avec son parent tant qu'il est plus prioritaire que lui. Le tas étant un arbre binaire presque complet, sa hauteur est d'environ `log₂ n` : au pire, l'élément remonte jusqu'à la racine. Extraire le minimum coûte aussi `O(log n)`, tandis que simplement le consulter est en `O(1)`.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Tas_binaire"
+    },
+    {
+      "question": "Quelle est la borne de complexité la plus fine pour **construire** un tas binaire à partir d'un tableau non trié de `n` éléments, avec la méthode de Floyd (tamisages vers le bas, des derniers nœuds internes jusqu'à la racine) ?",
+      "answer": "`O(n)`",
+      "wrong": [
+        "`O(n log n)`",
+        "`O(log n)`",
+        "`O(n²)`"
+      ],
+      "explanation": "Intuitivement, on pourrait croire à `n` opérations en `O(log n)`, soit `O(n log n)`. Mais la moitié des nœuds sont des feuilles (aucun tamisage), un quart descendent d'au plus un niveau, un huitième d'au plus deux… La somme `Σ n·h/2^(h+1)` converge vers un multiple de `n` : la construction est **linéaire**. C'est ce que fait `heapq.heapify` en Python.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Tas_binaire"
+    },
+    {
+      "question": "Un tas binaire est stocké dans un tableau indexé **à partir de 0**. Où se trouvent les enfants du nœud d'indice `i` ?",
+      "answer": "Aux indices `2i + 1` et `2i + 2`",
+      "wrong": [
+        "Aux indices `2i` et `2i + 1`",
+        "Aux indices `i + 1` et `i + 2`",
+        "Aux indices `i / 2` et `i / 2 + 1`"
+      ],
+      "explanation": "Avec une indexation à partir de 0, la racine est en 0, ses enfants en 1 et 2, ceux du nœud 1 en 3 et 4, etc. : les enfants de `i` sont en `2i + 1` et `2i + 2`, et son parent en `(i − 1) // 2`. La formule `2i` et `2i + 1` est valable pour une indexation à partir de **1**, souvent utilisée dans les manuels. Ce calcul d'indices évite tout pointeur.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Tas_binaire"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nimport heapq\nh = []\nfor x in [5, 1, 8, 3]:\n    heapq.heappush(h, x)\nprint(heapq.heappop(h))\n```",
+      "answer": "`1`",
+      "wrong": [
+        "`5`",
+        "`8`",
+        "`3`"
+      ],
+      "explanation": "Le module `heapq` implémente un **tas min** : `heappop` retire et renvoie toujours le plus petit élément, ici `1`, quel que soit l'ordre d'insertion. `5` correspondrait à une file (premier entré), `3` à une pile (dernier entré) et `8` à un tas max. Pour simuler un tas max avec `heapq`, on insère souvent les valeurs négatives.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/3/library/heapq.html"
+    },
+    {
+      "question": "Dans un arbre, qu'appelle-t-on une **feuille** ?",
+      "answer": "Un nœud qui n'a aucun enfant",
+      "wrong": [
+        "Le nœud situé tout en haut de l'arbre",
+        "Un nœud qui a exactement deux enfants",
+        "Le lien qui relie deux nœuds voisins"
+      ],
+      "explanation": "Une feuille est un nœud terminal, sans descendant. Le nœud tout en haut, sans parent, s'appelle la **racine**, et le lien entre un parent et son enfant est une **arête**. Les nœuds qui ont au moins un enfant sont appelés nœuds internes.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Arbre_enracin%C3%A9"
+    },
+    {
+      "question": "Combien d'arêtes possède un arbre comportant `n` nœuds ?",
+      "answer": "`n − 1`",
+      "wrong": [
+        "`n`",
+        "`2n`",
+        "`n(n − 1)/2`"
+      ],
+      "explanation": "Chaque nœud, sauf la racine, est relié à son parent par exactement une arête : il y en a donc `n − 1`. Plus généralement, en théorie des graphes, un arbre est un graphe connexe sans cycle, et un graphe connexe à `n` sommets en est un si et seulement s'il a `n − 1` arêtes. Ajouter une seule arête crée forcément un cycle. `n(n − 1)/2` est le nombre d'arêtes d'un graphe complet.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Arbre_(th%C3%A9orie_des_graphes)"
+    },
+    {
+      "question": "Quel parcours d'un **arbre binaire de recherche** visite ses valeurs dans l'ordre croissant ?",
+      "answer": "Le parcours infixe (gauche, nœud, droite)",
+      "wrong": [
+        "Le parcours préfixe (nœud, gauche, droite)",
+        "Le parcours postfixe (gauche, droite, nœud)",
+        "Le parcours en largeur, niveau par niveau"
+      ],
+      "explanation": "Dans un ABR, tout le sous-arbre gauche est inférieur au nœud et tout le sous-arbre droit lui est supérieur. Le parcours **infixe** (ou symétrique) visite donc d'abord les plus petites valeurs, puis le nœud, puis les plus grandes : on obtient la liste triée. C'est une façon simple de trier des données ou de vérifier qu'un arbre est bien un ABR.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Arbre_binaire_de_recherche"
+    },
+    {
+      "question": "Dans quel ordre le parcours en profondeur **préfixe** visite-t-il les nœuds de cet arbre ?\n```\n      8\n     / \\\n    3   10\n   / \\    \\\n  1   6    14\n```",
+      "answer": "`8, 3, 1, 6, 10, 14`",
+      "wrong": [
+        "`1, 3, 6, 8, 10, 14`",
+        "`1, 6, 3, 14, 10, 8`",
+        "`8, 3, 10, 1, 6, 14`"
+      ],
+      "explanation": "Le parcours préfixe traite le nœud **avant** ses sous-arbres : 8, puis tout le sous-arbre gauche (3, 1, 6), puis le droit (10, 14). `1, 3, 6, 8, 10, 14` est l'ordre infixe (nœud entre les deux sous-arbres), `1, 6, 3, 14, 10, 8` l'ordre postfixe (nœud après), et `8, 3, 10, 1, 6, 14` le parcours en largeur, niveau par niveau.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Arbre_binaire"
+    },
+    {
+      "question": "Pour supprimer d'un **arbre binaire de recherche** un nœud qui a **deux enfants**, par quelle valeur le remplace-t-on classiquement ?",
+      "answer": "Le minimum de son sous-arbre droit",
+      "wrong": [
+        "Le maximum de son sous-arbre droit",
+        "Le minimum de son sous-arbre gauche",
+        "La valeur portée par son parent"
+      ],
+      "explanation": "Le minimum du sous-arbre droit (le **successeur** dans l'ordre infixe) est plus grand que tout le sous-arbre gauche et plus petit que le reste du sous-arbre droit : le mettre à la place du nœud supprimé préserve la propriété d'ABR. Ce successeur a au plus un enfant (droit), donc le retirer de sa position d'origine est simple. Le maximum du sous-arbre gauche (le prédécesseur) fonctionne aussi, mais pas le maximum du sous-arbre droit.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Arbre_binaire_de_recherche"
+    },
+    {
+      "question": "Quelle propriété un arbre **AVL** maintient-il en chacun de ses nœuds ?",
+      "answer": "Les hauteurs de ses deux sous-arbres diffèrent d'au plus 1",
+      "wrong": [
+        "Ses deux sous-arbres ont autant de nœuds l'un que l'autre",
+        "Chaque nœud a soit zéro, soit exactement deux enfants",
+        "Toutes ses feuilles se trouvent à la même profondeur"
+      ],
+      "explanation": "Un AVL (du nom d'Adelson-Velsky et Landis, 1962) est un arbre binaire de recherche auto-équilibré : le **facteur d'équilibre** de chaque nœud (différence de hauteur entre ses sous-arbres) vaut −1, 0 ou 1. Après une insertion ou une suppression, des **rotations** rétablissent cette propriété. La hauteur reste ainsi en `O(log n)`, ce qui garantit des recherches en `O(log n)` même dans le pire cas.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Arbre_AVL"
+    },
+    {
+      "question": "Laquelle de ces règles fait partie de la définition d'un **arbre rouge-noir** (arbre bicolore) ?",
+      "answer": "Un nœud rouge ne peut pas avoir d'enfant rouge",
+      "wrong": [
+        "Un nœud noir ne peut pas avoir d'enfant noir",
+        "Les couleurs alternent à chaque niveau de l'arbre",
+        "La racine est toujours colorée en rouge"
+      ],
+      "explanation": "Un arbre rouge-noir impose notamment : pas deux nœuds rouges consécutifs, et le **même nombre de nœuds noirs** sur tout chemin d'un nœud vers ses feuilles (la racine étant noire par convention). Le plus long chemin ne peut donc pas dépasser le double du plus court, ce qui borne la hauteur à `2 log₂(n + 1)`. Deux nœuds noirs consécutifs, eux, sont parfaitement autorisés. La `TreeMap` de Java repose sur cette structure.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Arbre_bicolore"
+    },
+    {
+      "question": "Pourquoi les bases de données et les systèmes de fichiers indexent-ils leurs données avec des **arbres B** (B-trees) plutôt qu'avec des arbres binaires ?",
+      "answer": "Leurs gros nœuds réduisent le nombre d'accès disque",
+      "wrong": [
+        "Ils n'ont jamais besoin d'être rééquilibrés",
+        "Ils garantissent une recherche en `O(1)`",
+        "Ils stockent les clés sans aucun ordre"
+      ],
+      "explanation": "Un nœud d'arbre B contient de nombreuses clés (souvent de quoi remplir une page disque) et autant d'enfants : l'arbre est très large et donc très peu profond. Retrouver une clé parmi des millions ne demande alors que 3 ou 4 lectures de pages, là où un arbre binaire en demanderait une vingtaine. Les clés restent triées, ce qui permet aussi les recherches par intervalle, et l'arbre se rééquilibre en découpant ou fusionnant des nœuds.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Arbre_B"
+    },
+    {
+      "question": "Quelle structure de données est spécialement adaptée à l'**autocomplétion**, c'est-à-dire trouver vite tous les mots qui commencent par un préfixe donné ?",
+      "answer": "Un trie (arbre préfixe)",
+      "wrong": [
+        "Un tas binaire",
+        "Une file circulaire",
+        "Une pile"
+      ],
+      "explanation": "Dans un trie, chaque arête correspond à un caractère et chaque chemin depuis la racine à un préfixe. Pour trouver les mots commençant par « algo », on descend de 4 nœuds puis on énumère le sous-arbre atteint : le coût dépend de la longueur du préfixe, pas du nombre total de mots stockés. On l'utilise pour les dictionnaires, les correcteurs orthographiques ou les tables de routage IP.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Trie_(informatique)"
+    },
+    {
+      "question": "Quelle structure de données représente naturellement l'organisation des dossiers et sous-dossiers d'un disque ?",
+      "answer": "Un arbre",
+      "wrong": [
+        "Une file",
+        "Une pile",
+        "Un tableau trié"
+      ],
+      "explanation": "Un système de fichiers forme une **arborescence** : une racine (`/` ou `C:\\`), des dossiers qui contiennent d'autres dossiers (nœuds internes) et des fichiers (feuilles). Chaque élément a un seul parent, ce qui correspond exactement à la définition d'un arbre. Parcourir tous les fichiers revient d'ailleurs à faire un parcours d'arbre, en profondeur ou en largeur.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Arborescence"
+    },
+    {
+      "question": "À quoi sert la **fonction de hachage** dans une table de hachage ?",
+      "answer": "À transformer une clé en indice du tableau interne",
+      "wrong": [
+        "À chiffrer les valeurs pour les protéger",
+        "À trier les clés par ordre alphabétique",
+        "À compresser les valeurs pour gagner de la place"
+      ],
+      "explanation": "La fonction de hachage calcule, à partir de la clé, un nombre que l'on ramène à un indice (souvent par un modulo de la taille du tableau). On sait alors directement dans quelle case chercher ou ranger la valeur, d'où un accès en `O(1)` en moyenne. Elle ne chiffre rien et ne trie rien : l'ordre des clés dans le tableau est au contraire dispersé.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Table_de_hachage"
+    },
+    {
+      "question": "Qu'appelle-t-on le **facteur de charge** d'une table de hachage ?",
+      "answer": "Le nombre d'éléments divisé par le nombre d'alvéoles",
+      "wrong": [
+        "Le temps moyen de calcul d'un hachage",
+        "La proportion de collisions déjà résolues",
+        "La taille en octets d'une alvéole du tableau"
+      ],
+      "explanation": "Le facteur de charge `α = n / m` (éléments stockés sur nombre d'alvéoles) mesure le taux de remplissage. Plus il est élevé, plus les collisions sont fréquentes et plus les opérations ralentissent. Quand il dépasse un seuil, la table est agrandie (souvent doublée) et tous les éléments sont redistribués : c'est le **rehachage**.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Table_de_hachage"
+    },
+    {
+      "question": "En Java, quel est le **facteur de charge par défaut** d'une `HashMap`, au-delà duquel elle double sa capacité ?",
+      "answer": "`0.75`",
+      "wrong": [
+        "`0.5`",
+        "`1.0`",
+        "`0.9`"
+      ],
+      "explanation": "La documentation de `HashMap` indique qu'un facteur de charge de 0,75 offre un bon compromis entre consommation mémoire et rapidité. Avec la capacité initiale par défaut de 16 alvéoles, la table est donc agrandie dès le 13ᵉ élément. Un facteur plus faible réduit les collisions mais gaspille de la mémoire ; un facteur plus élevé fait l'inverse.",
+      "difficulty": 3,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/HashMap.html"
+    },
+    {
+      "question": "Depuis Java 8, que fait une `HashMap` lorsqu'une même alvéole accumule de nombreuses collisions (plus de 8 entrées, dans une table assez grande) ?",
+      "answer": "Elle convertit la liste de l'alvéole en arbre équilibré",
+      "wrong": [
+        "Elle lève une exception signalant la collision",
+        "Elle supprime les entrées les plus anciennes",
+        "Elle tire au hasard une autre fonction de hachage"
+      ],
+      "explanation": "Avant Java 8, une alvéole surchargée était une simple liste chaînée, et un attaquant pouvait forger des clés en collision pour dégrader les recherches en `O(n)`. Depuis la JEP 180, au-delà de 8 entrées dans une alvéole (si la table compte au moins 64 alvéoles, sinon elle est plutôt agrandie), la liste devient un **arbre rouge-noir** : le pire cas passe à `O(log n)`.",
+      "difficulty": 3,
+      "source": "https://openjdk.org/jeps/180"
+    },
+    {
+      "question": "Avec l'**adressage ouvert** par sondage linéaire, que fait-on si l'alvéole calculée pour une nouvelle clé est déjà occupée ?",
+      "answer": "On essaie l'alvéole suivante, et ainsi de suite",
+      "wrong": [
+        "On ajoute la clé à une liste chaînée",
+        "On écrase l'élément déjà présent",
+        "On renonce à insérer la nouvelle clé"
+      ],
+      "explanation": "En adressage ouvert, tous les éléments sont rangés directement dans le tableau : en cas de collision, on parcourt les alvéoles suivantes (`h`, `h+1`, `h+2`… modulo la taille) jusqu'à en trouver une libre. Ranger les collisions dans une liste chaînée correspond à l'autre grande technique, le **chaînage**. Le sondage linéaire est très efficace pour le cache, mais tend à former des grappes d'alvéoles occupées (agrégation primaire).",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Linear_probing"
+    },
+    {
+      "question": "Dans une table de hachage à **adressage ouvert**, pourquoi ne peut-on pas simplement vider une alvéole pour supprimer un élément ?",
+      "answer": "Cela couperait la séquence de sondage d'autres clés",
+      "wrong": [
+        "L'alvéole vidée ne pourrait plus jamais resservir",
+        "Le facteur de charge deviendrait alors négatif",
+        "Il faudrait recalculer le hachage de chaque clé"
+      ],
+      "explanation": "Une recherche s'arrête dès qu'elle tombe sur une alvéole vide. Si une clé B avait été placée plus loin à cause d'une collision avec A, vider l'alvéole de A ferait croire, lors d'une recherche de B, que B est absente. On marque donc l'alvéole comme supprimée avec une **pierre tombale** (tombstone) : la recherche continue au-delà, et une insertion peut réutiliser la place.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Open_addressing"
+    },
+    {
+      "question": "Pourquoi une clé ne doit-elle pas être modifiée après avoir été insérée dans une table de hachage ?",
+      "answer": "Son hachage changerait et on ne la retrouverait plus",
+      "wrong": [
+        "Cela doublerait la taille de la table de hachage",
+        "Cela obligerait à retrier toutes les autres clés",
+        "Cela effacerait les valeurs des autres clés"
+      ],
+      "explanation": "La clé a été rangée dans l'alvéole correspondant à son hachage **au moment de l'insertion**. Si elle change, son nouveau hachage pointe vers une autre alvéole : la recherche regarde au mauvais endroit et l'entrée devient introuvable, tout en restant en mémoire. C'est pourquoi Python refuse les objets modifiables comme les `list` en tant que clés de `dict` (`TypeError: unhashable type`).",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Table_de_hachage"
+    },
+    {
+      "question": "Quelle propriété une fonction de hachage utilisée dans une table de hachage doit-elle **obligatoirement** respecter ?",
+      "answer": "Deux clés égales ont toujours le même hachage",
+      "wrong": [
+        "Deux clés différentes ont toujours des hachages différents",
+        "Le hachage doit être impossible à inverser",
+        "Le hachage doit être plus long que la clé"
+      ],
+      "explanation": "Si deux clés égales pouvaient donner des hachages différents, on chercherait une clé dans la mauvaise alvéole. C'est le contrat `equals`/`hashCode` en Java ou `__eq__`/`__hash__` en Python. L'inverse est impossible à garantir : il y a bien plus de clés possibles que d'alvéoles, donc des collisions finissent toujours par arriver. Le caractère non inversible est une exigence des fonctions de hachage **cryptographiques**, pas des tables de hachage.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Fonction_de_hachage"
+    },
+    {
+      "question": "Le **paradoxe des anniversaires** explique pourquoi les collisions de hachage arrivent tôt. À partir de combien de personnes la probabilité que deux d'entre elles aient le même anniversaire dépasse-t-elle 50 % ?",
+      "answer": "23",
+      "wrong": [
+        "183",
+        "57",
+        "366"
+      ],
+      "explanation": "Avec 23 personnes, la probabilité d'au moins une date commune vaut environ 50,7 %, et elle dépasse 99 % dès 57 personnes. Le nombre de **paires** possibles croît comme le carré du nombre de personnes, d'où ce résultat contre-intuitif. Pour une table de hachage de `m` alvéoles, on doit de même s'attendre à une première collision après un nombre d'insertions de l'ordre de `√m` seulement.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires"
+    },
+    {
+      "question": "Quel type d'erreur un **filtre de Bloom** peut-il commettre lorsqu'on lui demande si un élément fait partie de l'ensemble ?",
+      "answer": "Des faux positifs uniquement",
+      "wrong": [
+        "Des faux négatifs uniquement",
+        "Des faux positifs et des faux négatifs",
+        "Aucune, ses réponses sont exactes"
+      ],
+      "explanation": "Un filtre de Bloom met à 1 plusieurs bits (choisis par plusieurs fonctions de hachage) pour chaque élément ajouté. S'il trouve un de ces bits à 0, l'élément est **certainement absent** ; si tous sont à 1, il est **probablement présent**, car d'autres éléments ont pu allumer ces bits. Il occupe très peu de mémoire et sert à éviter des recherches coûteuses, par exemple sur disque, quand l'élément n'existe pas.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Filtre_de_Bloom"
+    },
+    {
+      "question": "Quelle est la complexité en temps du **tri par insertion** appliqué à un tableau **déjà trié** ?",
+      "answer": "`O(n)`",
+      "wrong": [
+        "`O(n²)`",
+        "`O(n log n)`",
+        "`O(log n)`"
+      ],
+      "explanation": "Le tri par insertion prend chaque élément et le fait reculer tant que son voisin de gauche est plus grand. Si le tableau est déjà trié, chaque élément s'arrête après une seule comparaison : on fait environ `n` comparaisons. C'est pour cela qu'il est excellent sur des données presque triées et qu'on l'utilise sur les petits morceaux dans des tris hybrides comme Timsort, même si son pire cas reste en `O(n²)`.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Tri_par_insertion"
+    },
+    {
+      "question": "Quel tri consiste à chercher le plus petit élément restant, puis à le placer à la suite des éléments déjà triés, et à recommencer ?",
+      "answer": "Le tri par sélection",
+      "wrong": [
+        "Le tri par insertion",
+        "Le tri fusion",
+        "Le tri rapide"
+      ],
+      "explanation": "Le tri par sélection parcourt la partie non triée pour trouver son minimum et l'échange avec le premier élément de cette partie. Il fait toujours environ `n²/2` comparaisons, même sur un tableau déjà trié, mais seulement `n − 1` échanges au maximum. Le tri par insertion, lui, prend les éléments dans l'ordre et les insère à leur place dans la partie déjà triée.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Tri_par_s%C3%A9lection"
+    },
+    {
+      "question": "Le **tri fusion** coupe le tableau en deux, trie chaque moitié récursivement, puis fusionne les résultats. Sur quel paradigme repose-t-il ?",
+      "answer": "Diviser pour régner",
+      "wrong": [
+        "L'algorithme glouton",
+        "Le retour sur trace",
+        "La force brute"
+      ],
+      "explanation": "« Diviser pour régner » consiste à découper un problème en sous-problèmes plus petits de même nature, à les résoudre récursivement, puis à combiner leurs solutions. Le tri fusion, le tri rapide et la recherche dichotomique en sont des exemples classiques. Un algorithme glouton, au contraire, fait à chaque étape le choix qui semble le meilleur sans jamais revenir en arrière.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)"
+    },
+    {
+      "question": "Quelle est la borne inférieure, dans le pire cas, du nombre de comparaisons nécessaires à **tout** algorithme de tri par comparaisons de `n` éléments ?",
+      "answer": "`Ω(n log n)`",
+      "wrong": [
+        "`Ω(n)`",
+        "`Ω(n²)`",
+        "`Ω(log n)`"
+      ],
+      "explanation": "Un tri par comparaisons peut être vu comme un arbre de décision binaire, dont chaque feuille correspond à l'une des `n!` permutations possibles. Un arbre binaire à `n!` feuilles a une hauteur d'au moins `log₂(n!)`, qui est de l'ordre de `n log n`. Aucun tri qui se contente de comparer des éléments ne peut donc faire mieux que le tri fusion ou le tri par tas, asymptotiquement.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Algorithme_de_tri"
+    },
+    {
+      "question": "Comment le **tri par dénombrement** (counting sort) parvient-il à trier des entiers en moins de `O(n log n)` ?",
+      "answer": "Il compte les valeurs au lieu de les comparer",
+      "wrong": [
+        "Il ne trie qu'une moitié du tableau",
+        "Il répartit le travail sur plusieurs cœurs",
+        "Il choisit un pivot au hasard à chaque étape"
+      ],
+      "explanation": "Le tri par dénombrement compte, dans un tableau auxiliaire, combien de fois apparaît chaque valeur possible, puis reconstruit le tableau trié à partir de ces compteurs. Il ne compare jamais deux éléments, donc la borne `Ω(n log n)` des tris par comparaisons ne s'applique pas : il tourne en `O(n + k)`, où `k` est l'étendue des valeurs. Il n'est intéressant que si `k` reste raisonnable, par exemple pour des âges ou des notes.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Tri_comptage"
+    },
+    {
+      "question": "Qu'est-ce qu'un graphe **orienté** ?",
+      "answer": "Un graphe dont les arêtes ont un sens de parcours",
+      "wrong": [
+        "Un graphe dont les arêtes portent chacune un poids",
+        "Un graphe qui ne contient absolument aucun cycle",
+        "Un graphe où chaque sommet est relié à tous les autres"
+      ],
+      "explanation": "Dans un graphe orienté, chaque lien (appelé **arc**) va d'un sommet vers un autre : A → B n'implique pas B → A. C'est le cas des liens hypertextes entre pages web ou des abonnements sur un réseau social. Un graphe dont les arêtes portent une valeur est dit **pondéré**, et un graphe où tous les sommets sont reliés deux à deux est dit **complet**.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Graphe_orient%C3%A9"
+    },
+    {
+      "question": "Dans un graphe **pondéré**, que porte chaque arête ?",
+      "answer": "Une valeur, comme une distance ou un coût",
+      "wrong": [
+        "Un sens de parcours obligatoire",
+        "Le nombre de sommets qu'elle traverse",
+        "Une couleur différente de ses voisines"
+      ],
+      "explanation": "Un graphe pondéré associe à chaque arête un nombre, son **poids** : kilomètres entre deux villes, durée d'un trajet, coût d'une connexion réseau… Les algorithmes de plus court chemin, comme celui de Dijkstra, minimisent la somme de ces poids plutôt que le nombre d'arêtes. Le sens de parcours, lui, caractérise un graphe orienté.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Graphe_pond%C3%A9r%C3%A9"
+    },
+    {
+      "question": "Quelle représentation d'un graphe à `V` sommets utilise un tableau à deux dimensions `V × V`, dont la case `[i][j]` indique s'il existe une arête de `i` vers `j` ?",
+      "answer": "La matrice d'adjacence",
+      "wrong": [
+        "La liste d'adjacence",
+        "La liste d'arêtes",
+        "Le tas binaire"
+      ],
+      "explanation": "La matrice d'adjacence permet de tester en `O(1)` si deux sommets sont reliés, mais elle occupe `V²` cases même si le graphe a très peu d'arêtes. La **liste d'adjacence** stocke, pour chaque sommet, seulement la liste de ses voisins : c'est le choix habituel pour les graphes peu denses, comme un réseau routier.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Matrice_d%27adjacence"
+    },
+    {
+      "question": "À quoi sert l'algorithme de **Dijkstra** ?",
+      "answer": "Calculer les plus courts chemins depuis un sommet",
+      "wrong": [
+        "Trier les sommets d'un graphe par leur degré",
+        "Détecter tous les cycles d'un graphe orienté",
+        "Colorier un graphe avec le moins de couleurs"
+      ],
+      "explanation": "Imaginé par Edsger Dijkstra en 1956 et publié en 1959, l'algorithme calcule la distance minimale entre un sommet de départ et tous les autres, dans un graphe dont les poids sont positifs ou nuls. Il traite à chaque étape le sommet non visité le plus proche du départ. Il est à la base de nombreux calculs d'itinéraires et de protocoles de routage comme OSPF.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra"
+    },
+    {
+      "question": "Quel mathématicien a posé les bases de la théorie des graphes en 1736, en étudiant le problème des **sept ponts de Königsberg** ?",
+      "answer": "Leonhard Euler",
+      "wrong": [
+        "Carl Friedrich Gauss",
+        "Blaise Pascal",
+        "Alan Turing"
+      ],
+      "explanation": "Les habitants de Königsberg se demandaient s'il était possible de faire une promenade traversant chacun des sept ponts de la ville une seule fois. Euler a montré que c'était impossible en modélisant les quartiers par des sommets et les ponts par des arêtes : trop de sommets avaient un nombre impair d'arêtes. Cet article de 1736 est considéré comme l'acte de naissance de la théorie des graphes.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Probl%C3%A8me_des_sept_ponts_de_K%C3%B6nigsberg"
+    },
+    {
+      "question": "On modélise un réseau social par un graphe non orienté : chaque personne est un sommet, chaque amitié une arête. Que représente alors le **degré** d'un sommet ?",
+      "answer": "Le nombre d'amis de cette personne",
+      "wrong": [
+        "La distance à la personne la plus éloignée",
+        "Le nombre total de personnes du réseau",
+        "La position de la personne dans un tri"
+      ],
+      "explanation": "Le degré d'un sommet est le nombre d'arêtes qui le touchent, donc ici le nombre d'amis directs. Dans un graphe orienté, on distingue le degré entrant (par exemple, le nombre d'abonnés) et le degré sortant (le nombre d'abonnements). La plus grande distance d'un sommet aux autres s'appelle son **excentricité**.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Degr%C3%A9_(th%C3%A9orie_des_graphes)"
+    },
+    {
+      "question": "Quelle place mémoire occupe la représentation par **listes d'adjacence** d'un graphe de `V` sommets et `E` arêtes ?",
+      "answer": "`O(V + E)`",
+      "wrong": [
+        "`O(V²)`",
+        "`O(V × E)`",
+        "`O(E²)`"
+      ],
+      "explanation": "On stocke une liste par sommet (`V` listes), et chaque arête apparaît dans une ou deux de ces listes selon que le graphe est orienté ou non : le total est en `O(V + E)`. La matrice d'adjacence, elle, coûte toujours `O(V²)`. Pour un graphe peu dense, comme un réseau routier où chaque carrefour n'a que quelques voisins, la différence est énorme.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Liste_d%27adjacence"
+    },
+    {
+      "question": "Sur quel type de graphe un **tri topologique** (ordonner les sommets pour que chaque arc aille d'un sommet vers un sommet placé plus loin) est-il possible ?",
+      "answer": "Un graphe orienté sans cycle",
+      "wrong": [
+        "Un graphe non orienté connexe",
+        "Un graphe complet, quel qu'il soit",
+        "Un graphe pondéré à poids positifs"
+      ],
+      "explanation": "Si le graphe contenait un cycle A → B → C → A, A devrait être à la fois avant et après C : aucun ordre ne conviendrait. Un graphe orienté acyclique (**DAG**) admet toujours au moins un tri topologique, calculable en `O(V + E)` par un parcours en profondeur ou par l'algorithme de Kahn. On s'en sert pour ordonner des tâches dépendantes : compilation, installation de paquets, planification.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Tri_topologique"
+    },
+    {
+      "question": "Dans un graphe non orienté, que vaut la **somme des degrés** de tous les sommets ?",
+      "answer": "Le double du nombre d'arêtes",
+      "wrong": [
+        "Exactement le nombre d'arêtes",
+        "Le nombre total de sommets",
+        "Le carré du nombre de sommets"
+      ],
+      "explanation": "Chaque arête relie deux sommets, donc elle est comptée deux fois dans la somme des degrés : une fois pour chacune de ses extrémités. C'est le **lemme des poignées de main** : dans une soirée, la somme des mains serrées par chacun est le double du nombre de poignées de main. Conséquence : le nombre de sommets de degré impair est toujours pair.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Lemme_des_poign%C3%A9es_de_main"
+    },
+    {
+      "question": "Combien d'arêtes possède un graphe non orienté **complet** à 10 sommets (chaque sommet relié à tous les autres) ?",
+      "answer": "45",
+      "wrong": [
+        "100",
+        "90",
+        "10"
+      ],
+      "explanation": "Chaque sommet est relié aux 9 autres, ce qui donne `10 × 9 = 90` extrémités d'arêtes, mais chaque arête est ainsi comptée deux fois : il y en a `10 × 9 / 2 = 45`. En général, un graphe complet à `n` sommets compte `n(n − 1)/2` arêtes, soit `O(n²)`. La valeur 90 serait celle d'un graphe **orienté** complet, où A → B et B → A sont deux arcs distincts.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Graphe_complet"
+    },
+    {
+      "question": "Quel algorithme de plus court chemin accepte des arêtes de **poids négatif** et sait détecter un cycle de poids négatif ?",
+      "answer": "Bellman-Ford",
+      "wrong": [
+        "Dijkstra",
+        "Prim",
+        "Kruskal"
+      ],
+      "explanation": "Bellman-Ford relâche toutes les arêtes `V − 1` fois, ce qui suffit à trouver les plus courts chemins même avec des poids négatifs, pour un coût en `O(V × E)`. Si un `V`-ième passage améliore encore une distance, c'est qu'un cycle de poids négatif existe (la distance pourrait alors baisser indéfiniment). Dijkstra est plus rapide mais exige des poids positifs ; Prim et Kruskal calculent des arbres couvrants, pas des plus courts chemins.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford"
+    },
+    {
+      "question": "Qu'est-ce qu'un **arbre couvrant de poids minimal** d'un graphe pondéré connexe ?",
+      "answer": "Des arêtes reliant tous les sommets, sans cycle, au coût minimal",
+      "wrong": [
+        "Le plus court chemin entre les deux sommets les plus éloignés",
+        "Le plus petit groupe de sommets touchant toutes les arêtes",
+        "L'arbre des appels récursifs d'un parcours en profondeur"
+      ],
+      "explanation": "Un arbre couvrant relie tous les sommets avec exactement `V − 1` arêtes et sans cycle ; celui de poids minimal minimise la somme des poids de ces arêtes. C'est par exemple le réseau de câbles le moins cher pour relier toutes les maisons d'un quartier. On le calcule avec les algorithmes gloutons de **Kruskal** ou de **Prim**.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Arbre_couvrant_de_poids_minimal"
+    },
+    {
+      "question": "Qu'ajoute l'algorithme de recherche de chemin **A*** (A étoile) par rapport à celui de Dijkstra ?",
+      "answer": "Une heuristique qui estime la distance restante jusqu'à la cible",
+      "wrong": [
+        "La gestion des cycles de poids négatif dans le graphe",
+        "Le calcul des plus courts chemins entre toutes les paires",
+        "La construction d'un arbre couvrant de poids minimal"
+      ],
+      "explanation": "A* choisit le prochain sommet à explorer en minimisant `g(n) + h(n)` : la distance déjà parcourue plus une **estimation** de ce qui reste, par exemple la distance à vol d'oiseau. Il explore ainsi en priorité les directions prometteuses et atteint la cible bien plus vite que Dijkstra, qui s'étend dans toutes les directions. Il est très utilisé dans les jeux vidéo et les calculs d'itinéraires.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Algorithme_A*"
+    },
+    {
+      "question": "Comment vérifier efficacement qu'un graphe est **biparti** (sommets séparables en deux groupes, sans arête à l'intérieur d'un même groupe) ?",
+      "answer": "Le colorier en deux couleurs lors d'un parcours",
+      "wrong": [
+        "Vérifier qu'il a un nombre pair de sommets",
+        "Vérifier que tous ses degrés sont pairs",
+        "Vérifier qu'il ne contient aucun cycle"
+      ],
+      "explanation": "Lors d'un parcours en largeur ou en profondeur, on donne à chaque voisin la couleur opposée à celle du sommet courant. Si deux sommets reliés se retrouvent de la même couleur, le graphe n'est pas biparti. Un graphe est biparti si et seulement s'il ne contient **aucun cycle de longueur impaire** : l'absence totale de cycle suffit, mais n'est pas nécessaire, puisqu'un carré (cycle de longueur 4) est biparti.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Graphe_biparti"
+    },
+    {
+      "question": "Quelle est la complexité en temps d'un parcours en largeur complet d'un graphe de `V` sommets représenté par une **matrice d'adjacence** ?",
+      "answer": "`O(V²)`",
+      "wrong": [
+        "`O(V + E)`",
+        "`O(V log V)`",
+        "`O(E log V)`"
+      ],
+      "explanation": "Pour trouver les voisins d'un sommet dans une matrice d'adjacence, il faut lire toute sa ligne, soit `V` cases, même s'il n'a qu'un seul voisin. Comme chaque sommet est traité une fois, le total est en `O(V²)`, quel que soit le nombre d'arêtes. Le fameux `O(V + E)` du parcours en largeur suppose une représentation par **listes d'adjacence**.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_largeur"
+    },
+    {
+      "question": "Pourquoi l'algorithme de Dijkstra peut-il donner un résultat faux si le graphe contient des arêtes de **poids négatif** ?",
+      "answer": "Il fige la distance d'un sommet dès qu'il l'a traité",
+      "wrong": [
+        "Il ne sait pas additionner des valeurs négatives",
+        "Il ne fonctionne que sur des graphes non orientés",
+        "Il ne peut traiter que des graphes sans aucun cycle"
+      ],
+      "explanation": "Dijkstra extrait à chaque étape le sommet le plus proche et considère sa distance comme **définitive** : c'est correct seulement si aucun chemin passant par d'autres sommets ne peut ensuite la réduire. Avec une arête négative, un détour plus long au départ peut finalement devenir plus court, mais le sommet déjà figé n'est jamais réexaminé. Bellman-Ford n'a pas ce problème.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra"
+    },
+    {
+      "question": "L'algorithme de **Kruskal** examine les arêtes par poids croissant et garde celles qui ne créent pas de cycle. Quelle structure lui permet de tester rapidement si une arête créerait un cycle ?",
+      "answer": "Une structure Union-Find (ensembles disjoints)",
+      "wrong": [
+        "Une file de priorité de type tas min",
+        "Un filtre de Bloom sur les sommets",
+        "Un trie indexé par nom de sommet"
+      ],
+      "explanation": "Union-Find maintient des groupes de sommets déjà reliés entre eux. Une arête (u, v) crée un cycle si et seulement si `find(u) == find(v)`, c'est-à-dire si u et v sont déjà dans le même groupe ; sinon on la garde et on fusionne les deux groupes avec `union`. Avec ses optimisations, chaque opération est quasi constante, si bien que le coût de Kruskal est dominé par le tri des arêtes, en `O(E log E)`.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal"
+    },
+    {
+      "question": "Avec la compression de chemin et l'union par rang, le coût amorti d'une opération **Union-Find** croît comme l'inverse d'une fonction à croissance extrêmement rapide, ce qui le rend quasi constant. Laquelle ?",
+      "answer": "La fonction d'Ackermann",
+      "wrong": [
+        "La fonction exponentielle",
+        "La fonction factorielle",
+        "La suite de Fibonacci"
+      ],
+      "explanation": "Robert Tarjan a montré en 1975 que le coût amorti est en `O(α(n))`, où `α` est l'inverse de la fonction d'Ackermann. Cette fonction croît si vite que `α(n)` reste inférieur ou égal à 4 pour toute valeur de `n` imaginable en pratique. L'inverse de l'exponentielle serait un simple logarithme, qui croît beaucoup plus vite que `α`.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Union-find"
+    },
+    {
+      "question": "L'algorithme de **Floyd-Warshall** calcule les plus courts chemins entre **toutes les paires** de sommets d'un graphe à `V` sommets. Quelle est sa complexité en temps ?",
+      "answer": "`O(V³)`",
+      "wrong": [
+        "`O(V²)`",
+        "`O(V log V)`",
+        "`O(E log V)`"
+      ],
+      "explanation": "Floyd-Warshall est un algorithme de programmation dynamique fait de trois boucles imbriquées sur les sommets : pour chaque sommet intermédiaire `k`, il vérifie si passer par `k` raccourcit le chemin de `i` à `j`. Cela fait `V³` mises à jour, et une matrice de `V²` distances en mémoire. Il accepte les poids négatifs (sans cycle négatif) et reste simple à coder pour des graphes de taille modeste.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall"
+    },
+    {
+      "question": "Pour que l'algorithme **A*** garantisse de trouver un plus court chemin, son heuristique doit être **admissible**. Que signifie ce terme ?",
+      "answer": "Elle ne surestime jamais la distance restante",
+      "wrong": [
+        "Elle ne sous-estime jamais la distance restante",
+        "Elle se calcule toujours en temps constant",
+        "Elle ignore les poids des arêtes du graphe"
+      ],
+      "explanation": "Une heuristique admissible est **optimiste** : elle donne toujours une valeur inférieure ou égale à la vraie distance restante, comme la distance à vol d'oiseau sur une carte routière. Si elle surestimait, A* pourrait écarter à tort le bon chemin et s'arrêter sur un chemin plus long. Avec une heuristique nulle partout, A* redevient exactement l'algorithme de Dijkstra.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Algorithme_A*"
+    },
+    {
+      "question": "Quelle est la complexité de l'algorithme de **Dijkstra** implémenté avec un **tas binaire** comme file de priorité, sur un graphe de `V` sommets et `E` arêtes ?",
+      "answer": "`O((V + E) log V)`",
+      "wrong": [
+        "`O(V + E)`",
+        "`O(V × E)`",
+        "`O(V³)`"
+      ],
+      "explanation": "Chaque sommet est extrait une fois du tas (`V` extractions en `O(log V)`) et chaque arête peut provoquer une mise à jour de distance dans le tas (`E` opérations en `O(log V)`), d'où `O((V + E) log V)`. Sans tas, en cherchant le minimum par un simple parcours, on obtient `O(V²)`. `O(V + E)` est le coût d'un simple parcours en largeur, qui suffit lorsque toutes les arêtes ont le même poids.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra"
+    },
+    {
+      "question": "Un graphe connexe possède un **cycle eulérien** (un circuit qui emprunte chaque arête exactement une fois) si et seulement si...",
+      "answer": "Tous ses sommets sont de degré pair",
+      "wrong": [
+        "Tous ses sommets sont de degré impair",
+        "Exactement deux sommets sont de degré impair",
+        "Il compte autant d'arêtes que de sommets"
+      ],
+      "explanation": "Chaque fois que le circuit entre dans un sommet, il doit en ressortir par une autre arête : les arêtes de chaque sommet vont donc par paires, d'où un degré pair. Avec exactement deux sommets de degré impair, on obtient seulement un **chemin** eulérien, qui commence sur l'un et finit sur l'autre sans revenir au départ. À Königsberg, les quatre zones avaient un degré impair : ni circuit ni chemin n'était possible.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Graphe_eul%C3%A9rien"
     }
   ]
 }

@@ -304,6 +304,563 @@
       "explanation": "Les génériques sont **invariants** : même si `String` est un sous-type d'`Object`, `List<String>` n'est **pas** un sous-type de `List<Object>`. Sinon, on pourrait glisser un `Integer` dans une liste de `String` via `list.add(42)`. Pour accepter une liste de n'importe quel type, on utilise un joker : `List<?>`. À l'inverse, les tableaux sont covariants : `Object[] t = new String[1];` compile, mais `t[0] = 42` lève une `ArrayStoreException` à l'exécution.",
       "difficulty": 3,
       "source": "https://docs.oracle.com/javase/tutorial/java/generics/inheritance.html"
+    },
+    {
+      "question": "En Java, combien de bits occupe une variable de type `int` ?",
+      "answer": "32 bits, quelle que soit la plateforme",
+      "wrong": [
+        "16 bits, quelle que soit la plateforme",
+        "64 bits, quelle que soit la plateforme",
+        "32 ou 64 bits selon le processeur"
+      ],
+      "explanation": "La spécification du langage fixe la taille de chaque type primitif : `byte` 8 bits, `short` 16, `int` 32, `long` 64. Contrairement au C, où la taille d'un `int` dépend du compilateur et de l'architecture, un `int` Java a partout la même plage : de -2³¹ à 2³¹ - 1 (environ ±2,1 milliards). Cette garantie participe à la portabilité du bytecode.",
+      "difficulty": 1,
+      "source": "https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nSystem.out.println(7 / 2);\n```",
+      "answer": "`3`",
+      "wrong": [
+        "`3.5`",
+        "`4`",
+        "`3.0`"
+      ],
+      "explanation": "Les deux opérandes sont des `int` : Java effectue une **division entière**, qui tronque la partie décimale. Le résultat est l'`int` 3, sans virgule. Pour obtenir 3.5, il faut qu'au moins un opérande soit un `double` : `7 / 2.0` ou `(double) 7 / 2`. Attention, `(double) (7 / 2)` donne 3.0, car la division entière a déjà eu lieu avant la conversion.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle est la principale différence entre `StringBuilder` et `StringBuffer` ?",
+      "answer": "`StringBuffer` est synchronisé, `StringBuilder` ne l'est pas",
+      "wrong": [
+        "`StringBuilder` est immuable, `StringBuffer` est modifiable",
+        "`StringBuffer` ne gère que les caractères ASCII",
+        "`StringBuilder` ne peut pas dépasser 64 Ko de texte"
+      ],
+      "explanation": "Les deux classes représentent une suite de caractères **modifiable**, avec la même API (`append`, `insert`, `reverse`…). `StringBuffer` (Java 1.0) a des méthodes `synchronized` : sûr entre threads, mais plus lent. `StringBuilder` (Java 5) n'est pas synchronisé et c'est lui qu'on utilise dans l'immense majorité des cas, typiquement dans une variable locale. Aucune des deux n'est immuable : c'est `String` qui l'est.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nSystem.out.println(\"java\".substring(1, 3));\n```",
+      "answer": "`av`",
+      "wrong": [
+        "`ava`",
+        "`ja`",
+        "`jav`"
+      ],
+      "explanation": "`substring(debut, fin)` prend l'indice de début **inclus** et l'indice de fin **exclu**, en comptant à partir de 0 : `j` = 0, `a` = 1, `v` = 2. On obtient donc les caractères 1 et 2, soit `av`, et la longueur du résultat vaut toujours `fin - debut`. On retrouve cette convention d'intervalle semi-ouvert dans `List.subList` ou `IntStream.range`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Depuis Java 15, que permet d'écrire la syntaxe `\"\"\"` (trois guillemets doubles) ?",
+      "answer": "Une chaîne littérale sur plusieurs lignes",
+      "wrong": [
+        "Un commentaire sur plusieurs lignes",
+        "Une chaîne qui interpole des variables",
+        "Un tableau de caractères littéral"
+      ],
+      "explanation": "Les **blocs de texte** (text blocks, JEP 378, finalisés en Java 15) permettent d'écrire du JSON, du SQL ou du HTML sur plusieurs lignes sans `\\n` ni concaténations. L'indentation commune due au code source est retirée automatiquement, et les séquences d'échappement restent interprétées. Il n'y a en revanche aucune interpolation de variables : on utilise `formatted()` ou `String.format()` pour insérer des valeurs.",
+      "difficulty": 1,
+      "source": "https://openjdk.org/jeps/378"
+    },
+    {
+      "question": "Depuis Java 16, que fait la condition `if (obj instanceof String s)` ?",
+      "answer": "Elle teste le type et déclare `s`, déjà convertie en `String`",
+      "wrong": [
+        "Elle convertit `obj` en `String`, quel que soit son type",
+        "Elle compare le contenu de `obj` à celui de la chaîne `s`",
+        "Elle déclare `s`, ou lève une exception si le type diffère"
+      ],
+      "explanation": "C'est le **pattern matching pour `instanceof`** (JEP 394). Si `obj` est une `String`, la variable `s` est créée et déjà typée `String` : plus besoin du transtypage explicite `String s = (String) obj;` qu'on écrivait avant. `s` n'est utilisable que là où le test est forcément vrai. Si `obj` vaut `null`, `instanceof` renvoie simplement `false`, sans exception.",
+      "difficulty": 1,
+      "source": "https://openjdk.org/jeps/394"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nSystem.out.println((int) -3.99);\n```",
+      "answer": "`-3`",
+      "wrong": [
+        "`-4`",
+        "`-3.0`",
+        "`-3.99`"
+      ],
+      "explanation": "Convertir un `double` en `int` **tronque** vers zéro : la partie décimale est simplement supprimée, sans arrondi. 3.99 donne donc 3 et -3.99 donne -3. Ce n'est pas un arrondi à l'entier inférieur : `Math.floor(-3.99)` vaudrait -4.0, et `Math.round(-3.99)` vaudrait -4.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nSystem.out.println(5.0 / 0);\nSystem.out.println(5 / 0);\n```",
+      "answer": "`Infinity`, puis une `ArithmeticException`",
+      "wrong": [
+        "Une `ArithmeticException` dès la première ligne",
+        "`Infinity`, puis `Infinity`",
+        "`NaN`, puis une `ArithmeticException`"
+      ],
+      "explanation": "Dès qu'un opérande est un `double`, le calcul suit la norme flottante **IEEE 754** : diviser un nombre positif par zéro donne `Infinity` (et `0.0 / 0` donne `NaN`), sans exception. La division **entière** par zéro, elle, n'a aucun résultat représentable : la JVM lève une `ArithmeticException` avec le message « / by zero ».",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nSystem.out.println(0.1 + 0.2 == 0.3);\n```",
+      "answer": "`false`",
+      "wrong": [
+        "`true`",
+        "`0.30000000000000004`",
+        "Erreur de compilation"
+      ],
+      "explanation": "0.1 et 0.2 n'ont pas de représentation binaire exacte : en `double`, leur somme vaut 0.30000000000000004, qui diffère du `double` le plus proche de 0.3. L'addition est évaluée avant `==`, qui compare donc deux valeurs différentes. On compare des flottants avec une tolérance (`Math.abs(a - b) < 1e-9`), et pour des montants on utilise `BigDecimal` construit à partir de chaînes.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nSystem.out.println(-7 % 3);\n```",
+      "answer": "`-1`",
+      "wrong": [
+        "`2`",
+        "`1`",
+        "`-2`"
+      ],
+      "explanation": "En Java, `%` calcule le **reste** de la division entière, et ce reste prend le signe du dividende (l'opérande de gauche) : -7 = 3 × (-2) + (-1). Piège classique : tester l'imparité avec `n % 2 == 1` échoue pour les nombres négatifs, puisque `-3 % 2` vaut -1 ; on écrit plutôt `n % 2 != 0`. Pour un modulo mathématique toujours positif, il existe `Math.floorMod(-7, 3)`, qui vaut 2.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nSystem.out.println('a' + 'b');\n```",
+      "answer": "`195`",
+      "wrong": [
+        "`ab`",
+        "`9798`",
+        "Erreur de compilation"
+      ],
+      "explanation": "Les apostrophes désignent des `char`, qui sont un type **numérique** en Java. `+` entre deux `char` est donc une addition entière : 97 (code de `a`) + 98 (code de `b`) = 195. Il n'y a concaténation que si l'un des opérandes est une `String` : `\"\" + 'a' + 'b'` ou `\"a\" + \"b\"` donnent bien `ab`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nSystem.out.println(1 + 2 + \"3\" + 4 + 5);\n```",
+      "answer": "`3345`",
+      "wrong": [
+        "`12345`",
+        "`339`",
+        "`15`"
+      ],
+      "explanation": "Les `+` sont évalués de gauche à droite. `1 + 2` est une addition d'entiers : 3. Ensuite, `3 + \"3\"` fait intervenir une `String`, donc on concatène : `\"33\"`. À partir de là, tout est concaténation : `\"334\"`, puis `\"3345\"`. Pour additionner 4 et 5, il faudrait des parenthèses : `... + (4 + 5)` donnerait `339`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche ce code (Java 11+) ?\n```java\nString s = \" \";\nSystem.out.println(s.isEmpty() + \" \" + s.isBlank());\n```",
+      "answer": "`false true`",
+      "wrong": [
+        "`true true`",
+        "`false false`",
+        "`true false`"
+      ],
+      "explanation": "`isEmpty()` ne renvoie `true` que si la longueur vaut 0 : or `s` contient un espace. `isBlank()`, ajoutée en Java 11, renvoie `true` si la chaîne est vide **ou** ne contient que des blancs (espaces, tabulations, retours à la ligne). C'est la méthode adaptée pour rejeter une saisie de formulaire faite uniquement d'espaces.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nString s = null;\nSystem.out.println(\"x\" + s);\n```",
+      "answer": "`xnull`",
+      "wrong": [
+        "`x`",
+        "Une `NullPointerException`",
+        "Erreur de compilation"
+      ],
+      "explanation": "La concaténation convertit chaque opérande en texte via `String.valueOf()`, qui transforme une référence `null` en la chaîne `\"null\"`. Aucune exception n'est donc levée. En revanche, appeler une méthode sur `s` (`s.length()`, `s.concat(\"x\")`…) lèverait une `NullPointerException`. C'est l'origine des « null » qui apparaissent parfois dans des messages affichés à l'utilisateur.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nList<String> l = new ArrayList<>(List.of(\"b\", \"A\", \"a\", \"B\"));\nCollections.sort(l);\nSystem.out.println(l);\n```",
+      "answer": "`[A, B, a, b]`",
+      "wrong": [
+        "`[A, a, B, b]`",
+        "`[a, A, b, B]`",
+        "`[a, b, A, B]`"
+      ],
+      "explanation": "L'ordre naturel des `String` (`compareTo`) compare les codes des caractères un à un : les majuscules `A`-`Z` (65 à 90) passent avant les minuscules `a`-`z` (97 à 122). Toutes les majuscules sont donc triées avant toutes les minuscules. Pour ignorer la casse, on trie avec `String.CASE_INSENSITIVE_ORDER` ; pour du français avec accents, avec un `Collator.getInstance(Locale.FRENCH)`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que se passe-t-il à la compilation de cette ligne ?\n```java\nlong n = 3000000000;\n```",
+      "answer": "Erreur : le littéral est trop grand pour un `int`",
+      "wrong": [
+        "Elle compile : la valeur tient dans un `long`",
+        "Elle compile, mais `n` devient négatif",
+        "Elle compile avec un simple avertissement"
+      ],
+      "explanation": "Un littéral entier sans suffixe est **toujours de type `int`**, même s'il est affecté à un `long`. Or 3 000 000 000 dépasse `Integer.MAX_VALUE` (2 147 483 647) : `javac` refuse avec « integer number too large ». Il faut le suffixe `L` : `3000000000L` (de préférence en majuscule, le `l` minuscule se confond avec le chiffre 1). De même, `float f = 1.5;` ne compile pas sans le suffixe `f`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Combien d'octets occupe une valeur de type `char` en Java ?",
+      "answer": "2 octets (une unité de code UTF-16)",
+      "wrong": [
+        "1 octet (un caractère ASCII)",
+        "4 octets (un point de code Unicode)",
+        "De 1 à 4 octets selon le caractère"
+      ],
+      "explanation": "Un `char` est un entier non signé de **16 bits** (0 à 65 535) qui représente une unité de code **UTF-16**. Les caractères situés au-delà de U+FFFF, comme la plupart des emojis, nécessitent deux `char` (une « paire de substitution ») : `\"😀\".length()` vaut 2. Pour compter les vrais caractères, on utilise `codePointCount()` ou `codePoints()`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nSystem.out.println(Math.round(2.5));\nSystem.out.println(Math.round(-2.5));\n```",
+      "answer": "`3` puis `-2`",
+      "wrong": [
+        "`3` puis `-3`",
+        "`2` puis `-2`",
+        "`3.0` puis `-3.0`"
+      ],
+      "explanation": "`Math.round` arrondit à l'entier le plus proche et, en cas d'égalité, **vers l'infini positif** : 2.5 donne 3, mais -2.5 donne -2. Elle renvoie un `long` pour un `double`, d'où l'absence de décimale. Pour d'autres règles, `Math.rint` arrondit au pair le plus proche (2.5 donne 2.0) et `BigDecimal` propose `RoundingMode.HALF_UP`, qui s'éloigne de zéro.",
+      "difficulty": 3,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Math.html#round(double)"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nSystem.out.println(Math.abs(Integer.MIN_VALUE));\n```",
+      "answer": "`-2147483648`",
+      "wrong": [
+        "`2147483648`",
+        "`2147483647`",
+        "Une `ArithmeticException`"
+      ],
+      "explanation": "La plage d'un `int` est asymétrique : de -2 147 483 648 à +2 147 483 647. L'opposé de `Integer.MIN_VALUE` n'est pas représentable : le calcul déborde et retombe sur `MIN_VALUE` lui-même. `Math.abs` peut donc renvoyer un nombre **négatif** ! D'où le bug classique de `Math.abs(hashCode()) % n`, qui peut produire un indice négatif. Depuis Java 15, `Math.absExact` lève une `ArithmeticException` dans ce cas.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nint i = 5;\ni = i++;\nSystem.out.println(i);\n```",
+      "answer": "`5`",
+      "wrong": [
+        "`6`",
+        "`0`",
+        "Erreur de compilation"
+      ],
+      "explanation": "`i++` est une post-incrémentation : l'expression **vaut l'ancienne valeur** (5), et `i` passe à 6 en effet de bord. Puis l'affectation `i = ...` écrase `i` avec cette ancienne valeur, 5. L'incrémentation est donc perdue. Il suffit d'écrire `i++;` seul, ou `i = i + 1;`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Parmi ces deux lignes, lesquelles compilent ?\n```java\nshort s = 1;\ns = s + 1;   // ligne A\ns += 1;      // ligne B\n```",
+      "answer": "Seulement la ligne B",
+      "wrong": [
+        "Seulement la ligne A",
+        "Les deux lignes",
+        "Aucune des deux lignes"
+      ],
+      "explanation": "Dans un calcul, les `byte`, `short` et `char` sont d'abord **promus en `int`** : `s + 1` est un `int`, et le ranger dans un `short` exigerait un cast explicite (« possible lossy conversion from int to short »). L'affectation composée `s += 1`, elle, est définie comme `s = (short) (s + 1)` : elle contient un **cast implicite**, donc elle compile… et peut déborder silencieusement.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nSystem.out.println(true ? 1 : 2.0);\n```",
+      "answer": "`1.0`",
+      "wrong": [
+        "`1`",
+        "`2.0`",
+        "Erreur de compilation"
+      ],
+      "explanation": "Quand les deux branches de l'opérateur ternaire sont numériques, l'expression a un **type unique**, obtenu par promotion numérique : `int` et `double` donnent `double`. La branche choisie, `1`, est donc convertie en 1.0. Piège voisin : avec `Integer i = null;`, l'expression `cond ? i : 0` est de type `int`, et l'unboxing de `i` lève une `NullPointerException`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nString[] parts = \"a,b,,\".split(\",\");\nSystem.out.println(parts.length);\n```",
+      "answer": "`2`",
+      "wrong": [
+        "`4`",
+        "`3`",
+        "`5`"
+      ],
+      "explanation": "`split(regex)` équivaut à `split(regex, 0)`, qui **supprime les chaînes vides en fin de tableau** : `[\"a\", \"b\", \"\", \"\"]` devient `[\"a\", \"b\"]`. Les chaînes vides en tête sont en revanche conservées : `\",a,b\".split(\",\")` en renvoie 3. Pour tout garder, par exemple en lisant un fichier CSV, on passe une limite négative : `split(\",\", -1)` renvoie bien 4 éléments.",
+      "difficulty": 3,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html#split(java.lang.String)"
+    },
+    {
+      "question": "Que se passe-t-il à l'exécution de `String.valueOf(null)` ?",
+      "answer": "Une `NullPointerException` est levée",
+      "wrong": [
+        "Elle renvoie la chaîne `\"null\"`",
+        "Elle renvoie une chaîne vide `\"\"`",
+        "Elle renvoie la référence `null`"
+      ],
+      "explanation": "`valueOf` est surchargée, notamment en `valueOf(Object)` et `valueOf(char[])`. Avec le littéral `null`, le compilateur choisit la surcharge **la plus spécifique** : `char[]` est plus précis qu'`Object`. Or `valueOf(char[])` lit la longueur du tableau, d'où la `NullPointerException`. Avec une variable de type `Object` valant `null`, ou `String.valueOf((Object) null)`, on obtient bien `\"null\"`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nSystem.out.println(\"Aa\".hashCode() == \"BB\".hashCode());\n```",
+      "answer": "`true`",
+      "wrong": [
+        "`false`",
+        "Erreur de compilation",
+        "Cela varie d'une exécution à l'autre"
+      ],
+      "explanation": "Le `hashCode()` d'une `String` est fixé par la spécification : s[0]×31^(n-1) + … + s[n-1]. Pour `\"Aa\"` : 65 × 31 + 97 = 2112 ; pour `\"BB\"` : 66 × 31 + 66 = 2112. C'est une **collision**, parfaitement légale puisque deux objets différents peuvent partager un même hash. Contrairement au `hashCode()` par défaut d'`Object`, celui de `String` est identique d'une exécution à l'autre.",
+      "difficulty": 3
+    },
+    {
+      "question": "En Java, combien de classes une classe peut-elle étendre directement avec `extends` ?",
+      "answer": "Une seule, mais plusieurs interfaces",
+      "wrong": [
+        "Plusieurs, séparées par des virgules",
+        "Une seule, et une seule interface",
+        "Aucune limite, comme en C++"
+      ],
+      "explanation": "Java interdit l'**héritage multiple de classes** pour éviter les ambiguïtés du « problème du diamant » (deux parents qui fournissent chacun un état ou une implémentation différente). Une classe étend donc au plus une classe (`Object` par défaut), mais peut implémenter autant d'interfaces qu'elle veut : `class Canard extends Animal implements Volant, Nageur`. Depuis Java 8, les méthodes `default` permettent une forme limitée d'héritage multiple de comportement.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie le mot-clé `final` placé devant une déclaration de classe ?",
+      "answer": "La classe ne peut pas avoir de sous-classe",
+      "wrong": [
+        "La classe ne peut pas être instanciée",
+        "Tous ses champs deviennent des constantes",
+        "Toutes ses méthodes deviennent statiques"
+      ],
+      "explanation": "Une classe `final` ne peut pas être étendue : `class X extends String` ne compile pas, car `String` est `final`, tout comme `Integer` et les autres classes enveloppes. Cela garantit qu'aucune sous-classe ne viendra modifier leur comportement, ce qui est essentiel pour leur immuabilité. Une classe qu'on ne peut pas instancier, c'est le rôle d'`abstract`. Sur une méthode, `final` interdit la redéfinition ; sur une variable, la réaffectation.",
+      "difficulty": 1
+    },
+    {
+      "question": "Si le bloc `try` exécute un `return`, le bloc `finally` associé est-il exécuté ?",
+      "answer": "Oui, avant que la méthode ne rende la main",
+      "wrong": [
+        "Non, le `return` quitte la méthode immédiatement",
+        "Seulement si une exception a été levée",
+        "Seulement s'il existe aussi un bloc `catch`"
+      ],
+      "explanation": "Le bloc `finally` s'exécute **quelle que soit la façon** dont on quitte le `try` : fin normale, `return`, `break`, `continue` ou exception. Les seules échappatoires sont l'arrêt brutal de la JVM, par exemple avec `System.exit()` ou un processus tué. C'est pourquoi on y plaçait la libération des ressources (fermeture de fichiers, de connexions), un rôle aujourd'hui souvent confié au try-with-resources.",
+      "difficulty": 1
+    },
+    {
+      "question": "Depuis Java 7, quelle syntaxe permet de capturer deux types d'exceptions dans un même bloc `catch` ?",
+      "answer": "`catch (IOException | SQLException e)`",
+      "wrong": [
+        "`catch (IOException, SQLException e)`",
+        "`catch (IOException & SQLException e)`",
+        "`catch (IOException e, SQLException f)`"
+      ],
+      "explanation": "Le **multi-catch** sépare les types par une barre verticale `|` et évite de dupliquer un même traitement. La variable `e` y est implicitement `final`. Les types listés ne doivent pas être liés par héritage : `catch (IOException | FileNotFoundException e)` ne compile pas, puisque `FileNotFoundException` est déjà une `IOException`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle erreur provoque généralement une méthode récursive qui s'appelle sans fin ?",
+      "answer": "`StackOverflowError`",
+      "wrong": [
+        "`OutOfMemoryError`",
+        "`RecursionError`",
+        "`IllegalStateException`"
+      ],
+      "explanation": "Chaque appel de méthode empile un « cadre » (variables locales, adresse de retour) sur la **pile d'appels** du thread, dont la taille est limitée (réglable avec l'option `-Xss`). Une récursion sans condition d'arrêt finit par la remplir : la JVM lève une `StackOverflowError`. C'est une `Error`, pas une `Exception` : elle signale un problème grave qu'on ne capture normalement pas. `OutOfMemoryError` concerne le tas, et `RecursionError` est l'équivalent… en Python.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qu'une classe abstraite peut contenir, contrairement à une interface ?",
+      "answer": "Des champs d'instance et des constructeurs",
+      "wrong": [
+        "Des méthodes possédant un corps",
+        "Des méthodes déclarées `static`",
+        "Des constantes `static final`"
+      ],
+      "explanation": "Une classe abstraite peut avoir un **état** (champs d'instance) et des constructeurs, appelés par ses sous-classes via `super(...)`. Une interface ne peut avoir ni l'un ni l'autre : ses champs sont forcément des constantes `public static final`. Depuis Java 8, les interfaces acceptent des méthodes `default` et `static` avec un corps (et des méthodes `private` depuis Java 9), si bien que contenir du code n'est plus ce qui les distingue des classes abstraites.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quoi sert l'annotation `@Override` placée sur une méthode ?",
+      "answer": "À faire vérifier qu'elle redéfinit bien une méthode héritée",
+      "wrong": [
+        "À empêcher les sous-classes de la redéfinir à leur tour",
+        "À rendre sa redéfinition obligatoire dans les sous-classes",
+        "À autoriser la redéfinition d'une méthode `final`"
+      ],
+      "explanation": "`@Override` demande au compilateur de vérifier que la méthode **redéfinit** réellement une méthode d'une classe parente ou d'une interface. Sans elle, une faute de frappe (`tostring()`) ou un mauvais type de paramètre (`equals(Point p)` au lieu de `equals(Object o)`) crée silencieusement une nouvelle méthode. Elle est facultative, mais fortement recommandée. Interdire la redéfinition, c'est le rôle de `final` ; l'imposer, celui d'`abstract`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi une méthode `static` ne peut-elle pas lire directement un champ d'instance de sa classe ?",
+      "answer": "Elle n'est liée à aucun objet : il n'y a pas de `this`",
+      "wrong": [
+        "Les champs d'instance sont toujours `private`",
+        "Elle s'exécute avant le chargement de la classe",
+        "Elle s'exécute toujours dans un autre thread"
+      ],
+      "explanation": "Une méthode `static` appartient à la **classe** et s'appelle sans objet (`Math.max(a, b)`). Elle n'a donc pas de `this` : de quel objet faudrait-il lire le champ ? Le compilateur refuse avec « non-static variable cannot be referenced from a static context », erreur classique des débutants dans `main`. Solutions : créer un objet et passer par lui, ou rendre le champ lui-même `static`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle ligne provoque une erreur de compilation ?\n```java\nfinal List<String> noms = new ArrayList<>();\nnoms.add(\"Ada\");          // ligne A\nnoms = new ArrayList<>(); // ligne B\n```",
+      "answer": "Seulement la ligne B",
+      "wrong": [
+        "Seulement la ligne A",
+        "Les lignes A et B",
+        "Aucune des deux lignes"
+      ],
+      "explanation": "`final` rend la **variable** non réaffectable : `noms` désignera toujours la même liste, d'où l'erreur sur la ligne B. En revanche, l'**objet** référencé n'est pas figé pour autant : on peut toujours y ajouter ou retirer des éléments. Pour une liste réellement non modifiable, on utilise `List.of(...)`, `List.copyOf(...)` ou `Collections.unmodifiableList(...)`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que se passe-t-il à la compilation ?\n```java\nclass Vehicule {\n    Vehicule(String nom) { }\n}\nclass Velo extends Vehicule { }\n```",
+      "answer": "Erreur : `Vehicule` n'a pas de constructeur sans argument",
+      "wrong": [
+        "Elle compile : `Velo` hérite du constructeur `Vehicule(String)`",
+        "Elle compile : `nom` reçoit `null` par défaut",
+        "Erreur : une classe vide ne peut pas en étendre une autre"
+      ],
+      "explanation": "Comme `Velo` ne déclare aucun constructeur, le compilateur lui en génère un par défaut : `Velo() { super(); }`. Or `Vehicule` déclare un constructeur avec paramètre, et perd donc le constructeur sans argument implicite : l'appel `super()` est impossible. Les constructeurs ne s'héritent pas ; il faut écrire `Velo(String nom) { super(nom); }`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que se passe-t-il à la compilation ?\n```java\nclass P {\n    public void f() { }\n}\nclass Q extends P {\n    void f() { }\n}\n```",
+      "answer": "Erreur : une redéfinition ne peut pas réduire la visibilité",
+      "wrong": [
+        "Elle compile : `Q.f()` devient simplement package-private",
+        "Elle compile, mais `Q.f()` masque `P.f()` sans la redéfinir",
+        "Erreur : l'annotation `@Override` est obligatoire ici"
+      ],
+      "explanation": "Un objet `Q` doit pouvoir s'utiliser partout où l'on attend un `P` (principe de substitution de Liskov). Si `P.f()` est publique, n'importe qui peut l'appeler sur une référence de type `P`… qui désigne peut-être un `Q`. Une redéfinition peut donc conserver ou **élargir** la visibilité (`protected` vers `public`), jamais la restreindre : `javac` signale « attempting to assign weaker access privileges ». De même, elle ne peut pas déclarer d'exceptions vérifiées plus larges.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que renvoie `toString()` pour un objet dont la classe ne redéfinit pas cette méthode ?",
+      "answer": "Le nom de la classe, `@`, puis un hash en hexadécimal",
+      "wrong": [
+        "La liste de ses champs avec leurs valeurs",
+        "Une chaîne vide `\"\"`",
+        "L'adresse mémoire exacte de l'objet"
+      ],
+      "explanation": "`Object.toString()` renvoie `getClass().getName() + \"@\" + Integer.toHexString(hashCode())`, par exemple `Point@1b6d3586`. Ce nombre n'est pas une adresse mémoire : c'est le hash d'identité de l'objet, et le ramasse-miettes peut de toute façon déplacer les objets. Afficher un tableau donne `[I@…` pour la même raison. Les records, eux, génèrent un `toString()` qui affiche leurs composants.",
+      "difficulty": 2
+    },
+    {
+      "question": "Depuis Java 9, quel type de méthode peut-on également déclarer dans une interface ?",
+      "answer": "Des méthodes `private` avec un corps",
+      "wrong": [
+        "Des méthodes `protected` avec un corps",
+        "Des constructeurs `private`",
+        "Des méthodes `final` avec un corps"
+      ],
+      "explanation": "Les méthodes `private` d'interface (JEP 213) permettent à plusieurs méthodes `default` ou `static` de partager du code utilitaire sans l'exposer aux classes qui implémentent l'interface. `protected` et `final` restent interdits sur une méthode d'interface, et une interface n'a jamais de constructeur, puisqu'on ne l'instancie pas.",
+      "difficulty": 2,
+      "source": "https://openjdk.org/jeps/213"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nclass Ordre {\n    static { System.out.print(\"S \"); }\n    { System.out.print(\"I \"); }\n    Ordre() { System.out.print(\"C \"); }\n}\n// ...\nnew Ordre();\nnew Ordre();\n```",
+      "answer": "`S I C I C`",
+      "wrong": [
+        "`S I C S I C`",
+        "`I S C I C`",
+        "`S C I C I`"
+      ],
+      "explanation": "Le bloc `static` s'exécute **une seule fois**, lors de l'initialisation de la classe, c'est-à-dire à sa première utilisation. Le bloc d'initialisation d'instance (les accolades seules) s'exécute à **chaque** création d'objet, juste avant le corps du constructeur (après l'appel implicite à `super()`). D'où `S`, puis `I C` pour chacun des deux objets.",
+      "difficulty": 2
+    },
+    {
+      "question": "Avec `Res` qui affiche `+nom` à sa création et `-nom` dans `close()`, qu'affiche ce code ?\n```java\ntry (Res a = new Res(\"A\"); Res b = new Res(\"B\")) {\n    System.out.print(\"corps \");\n}\n```",
+      "answer": "`+A +B corps -B -A`",
+      "wrong": [
+        "`+A +B corps -A -B`",
+        "`+A -A +B -B corps`",
+        "`+A +B -B -A corps`"
+      ],
+      "explanation": "Le try-with-resources (Java 7) ouvre les ressources dans l'ordre de déclaration, exécute le corps, puis appelle automatiquement `close()` sur chacune **dans l'ordre inverse**, comme une pile. C'est logique : `b` peut dépendre de `a` (un lecteur ouvert sur un flux), il faut donc le fermer en premier. Toute classe qui implémente `AutoCloseable` peut s'utiliser ainsi.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que se passe-t-il à la compilation (`lire()` déclare `throws IOException`) ?\n```java\ntry {\n    lire();\n} catch (Exception e) {\n    System.out.println(\"erreur\");\n} catch (IOException e) {\n    System.out.println(\"E/S\");\n}\n```",
+      "answer": "Erreur : le second `catch` ne peut jamais être atteint",
+      "wrong": [
+        "Elle compile : le `catch` le plus précis est choisi",
+        "Elle compile, et les deux blocs s'exécutent",
+        "Elle compile, avec un simple avertissement"
+      ],
+      "explanation": "Les clauses `catch` sont examinées **dans l'ordre** et seule la première qui correspond s'exécute. `IOException` étant une sous-classe d'`Exception`, elle serait toujours interceptée par le premier bloc : `javac` refuse ce code mort avec « exception IOException has already been caught ». Il faut donc ordonner les `catch` du plus spécifique au plus général.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'apporte la JEP 358 « Helpful NullPointerExceptions », activée par défaut depuis Java 15 ?",
+      "answer": "Un message qui précise quelle expression valait `null`",
+      "wrong": [
+        "L'interdiction de `null` dans les variables locales",
+        "Une détection des valeurs `null` dès la compilation",
+        "Le remplacement automatique de `null` par `Optional`"
+      ],
+      "explanation": "Auparavant, une `NullPointerException` n'avait pas de message, ce qui rendait les chaînes d'appels comme `a.getB().getC().nom()` difficiles à diagnostiquer. Désormais, la JVM précise l'expression fautive, par exemple : `Cannot invoke \"String.length()\" because \"client.getNom()\" is null`. Le langage, lui, ne change pas : le compilateur ne vérifie toujours pas la nullité.",
+      "difficulty": 2,
+      "source": "https://openjdk.org/jeps/358"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nstatic void afficher(Object o) { System.out.println(\"Object\"); }\nstatic void afficher(String s) { System.out.println(\"String\"); }\n\npublic static void main(String[] args) {\n    Object o = \"texte\";\n    afficher(o);\n}\n```",
+      "answer": "`Object`",
+      "wrong": [
+        "`String`",
+        "Erreur de compilation : appel ambigu",
+        "`Object` puis `String`"
+      ],
+      "explanation": "Le choix entre deux **surcharges** se fait à la **compilation**, d'après le type **déclaré** de l'argument : `o` est déclaré `Object`, donc `afficher(Object)` est retenue, même si l'objet est en réalité une `String`. C'est la différence avec la **redéfinition** (override), résolue à l'exécution selon le type réel de l'objet. Avec `afficher((String) o)`, on obtiendrait `String`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nclass Animal {\n    String nom = \"animal\";\n    String cri() { return \"...\"; }\n}\nclass Chien extends Animal {\n    String nom = \"chien\";\n    String cri() { return \"Wouf\"; }\n}\n// ...\nAnimal a = new Chien();\nSystem.out.println(a.nom + \" \" + a.cri());\n```",
+      "answer": "`animal Wouf`",
+      "wrong": [
+        "`chien Wouf`",
+        "`animal ...`",
+        "`chien ...`"
+      ],
+      "explanation": "Seules les méthodes d'instance sont **polymorphes** : `a.cri()` appelle la version de `Chien`, le type réel de l'objet. Les **champs**, eux, ne se redéfinissent pas : `Chien.nom` **masque** `Animal.nom` sans le remplacer, et c'est le type déclaré de `a` (`Animal`) qui décide quel champ est lu. Les méthodes `static` se comportent de la même façon que les champs. C'est une raison de plus pour garder les champs `private` et passer par des méthodes.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'affiche `new Enfant();` ?\n```java\nclass Parent {\n    Parent() { init(); }\n    void init() { }\n}\nclass Enfant extends Parent {\n    private String nom = \"Alice\";\n    @Override void init() { System.out.println(nom); }\n}\n```",
+      "answer": "`null`",
+      "wrong": [
+        "`Alice`",
+        "Une `NullPointerException`",
+        "Rien du tout"
+      ],
+      "explanation": "Le constructeur de `Parent` s'exécute **avant** l'initialisation des champs d'`Enfant`. Or `init()` est résolue dynamiquement : c'est la version d'`Enfant` qui est appelée, alors que `nom` a encore sa valeur par défaut, `null`. Afficher `null` ne provoque pas d'exception, mais appeler `nom.length()` en provoquerait une. D'où la règle : ne jamais appeler une méthode redéfinissable depuis un constructeur.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nclass Point {\n    int x, y;\n    Point(int x, int y) { this.x = x; this.y = y; }\n    public boolean equals(Point p) { return p.x == x && p.y == y; }\n    public int hashCode() { return 31 * x + y; }\n}\n// ...\nSet<Point> set = new HashSet<>();\nset.add(new Point(1, 2));\nSystem.out.println(set.contains(new Point(1, 2)));\n```",
+      "answer": "`false`",
+      "wrong": [
+        "`true`",
+        "Erreur de compilation",
+        "Une `ClassCastException`"
+      ],
+      "explanation": "`equals(Point p)` ne **redéfinit** pas `equals(Object o)` : elle la **surcharge**, avec une signature différente. Or `HashSet` appelle `equals(Object)`, donc la version héritée d'`Object`, qui compare les références : deux `Point` distincts ne sont jamais égaux. Avec `@Override` sur la méthode, le compilateur aurait signalé l'erreur. Il faut écrire `public boolean equals(Object o)`, puis tester le type de `o`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que renvoie cette méthode ?\n```java\nstatic int f() {\n    try {\n        return 1;\n    } finally {\n        return 2;\n    }\n}\n```",
+      "answer": "`2`",
+      "wrong": [
+        "`1`",
+        "Erreur de compilation",
+        "Une exception à l'exécution"
+      ],
+      "explanation": "Le `return 1` est évalué, mais avant que la méthode ne rende la main, le `finally` s'exécute… et son propre `return` **remplace** la valeur de retour. Un `return` dans un `finally` peut même faire disparaître une exception en cours, d'où l'avertissement « finally clause cannot complete normally » (`javac -Xlint:finally`). Nuance : si le `finally` se contente de modifier la variable renvoyée (`x = 2;` après `return x;`), la valeur déjà évaluée n'est pas affectée.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'affiche ce code, où `close()` lève une `IllegalStateException(\"close\")` ?\n```java\ntry (Ressource r = new Ressource()) {\n    throw new RuntimeException(\"corps\");\n} catch (Exception e) {\n    System.out.println(e.getMessage() + \" / \" + e.getSuppressed().length);\n}\n```",
+      "answer": "`corps / 1`",
+      "wrong": [
+        "`close / 1`",
+        "`corps / 0`",
+        "`close / 0`"
+      ],
+      "explanation": "Quand le corps d'un try-with-resources lève une exception et que `close()` en lève une autre, c'est l'exception du **corps** qui est propagée : celle de `close()` lui est attachée comme exception **supprimée**, accessible via `getSuppressed()` (Java 7). Avec un `try/finally` classique, l'exception levée dans le `finally` aurait au contraire remplacé l'originale, qui aurait été perdue.",
+      "difficulty": 3
+    },
+    {
+      "question": "Les interfaces `A` et `B` déclarent toutes deux `default String hello()`. Que se passe-t-il pour `class C implements A, B { }` ?",
+      "answer": "Erreur : `C` doit redéfinir `hello()`",
+      "wrong": [
+        "Elle compile : la version de `A`, citée en premier, l'emporte",
+        "Elle compile : la version de `B`, citée en dernier, l'emporte",
+        "Elle compile, mais `hello()` lève une exception"
+      ],
+      "explanation": "Face à deux méthodes `default` de même signature venant d'interfaces sans lien, le compilateur refuse de choisir (« class C inherits unrelated defaults »). `C` doit redéfinir `hello()` et peut déléguer explicitement avec la syntaxe `A.super.hello()`. Les règles de résolution : une méthode de classe l'emporte toujours sur une méthode `default`, et l'interface la plus spécifique l'emporte sur son interface parente.",
+      "difficulty": 3
+    },
+    {
+      "question": "Depuis une méthode `static`, comment crée-t-on une instance de `Inner`, classe interne **non statique** déclarée dans `Outer` ?",
+      "answer": "`new Outer().new Inner()`",
+      "wrong": [
+        "`new Outer.Inner()`",
+        "`Outer.new Inner()`",
+        "`new Inner(Outer.this)`"
+      ],
+      "explanation": "Une instance de classe interne non statique est liée à une instance de la classe englobante, dont elle garde une référence cachée (`Outer.this`). Il faut donc un objet `Outer` pour la créer : `outer.new Inner()`. La syntaxe `new Outer.Inner()` ne fonctionne que pour une classe imbriquée `static`. Cette référence cachée peut provoquer des fuites mémoire : on préfère une classe `static` quand l'accès à l'objet englobant est inutile.",
+      "difficulty": 3
     }
   ]
 }

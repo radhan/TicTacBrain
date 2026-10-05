@@ -343,6 +343,301 @@
       ],
       "explanation": "Le contenu dupliqué disperse les signaux (liens, pertinence) entre plusieurs URL et laisse le moteur choisir la version à afficher, parfois la mauvaise. Ce n'est en général pas une pénalité, mais une perte d'efficacité. On l'évite avec une balise canonique ou des redirections 301.",
       "difficulty": 3
+    },
+    {
+      "question": "Comment s'appelle le principal robot d'exploration (crawler) de Google ?",
+      "answer": "Googlebot",
+      "wrong": [
+        "Bingbot",
+        "Applebot",
+        "YandexBot"
+      ],
+      "explanation": "**Googlebot** parcourt le Web en suivant les liens et les sitemaps pour découvrir et récupérer les pages. Il existe en version smartphone et ordinateur ; avec l'indexation mobile-first, c'est surtout la version smartphone qui explore les sites. Bingbot est le robot de Microsoft Bing, Applebot celui d'Apple et YandexBot celui du moteur russe Yandex.",
+      "difficulty": 1,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/googlebot"
+    },
+    {
+      "question": "Dans quel ordre Google traite-t-il une page avant de pouvoir la proposer dans ses résultats ?",
+      "answer": "Exploration, puis indexation, puis classement",
+      "wrong": [
+        "Indexation, puis exploration, puis classement",
+        "Classement, puis exploration, puis indexation",
+        "Exploration, puis classement, puis indexation"
+      ],
+      "explanation": "Le robot doit d'abord **explorer** (crawler) la page pour la récupérer, puis Google l'analyse et la stocke dans son **index**. Ce n'est qu'au moment d'une requête que les pages indexées sont **classées** et affichées. Une page non explorée ne peut pas être indexée, et une page non indexée ne peut jamais apparaître dans les résultats, quelle que soit sa qualité.",
+      "difficulty": 1,
+      "source": "https://developers.google.com/search/docs/fundamentals/how-search-works"
+    },
+    {
+      "question": "Quel opérateur de recherche Google donne un aperçu des pages indexées d'un domaine ?",
+      "answer": "`site:exemple.fr`",
+      "wrong": [
+        "`related:exemple.fr`",
+        "`filetype:exemple.fr`",
+        "`define:exemple.fr`"
+      ],
+      "explanation": "L'opérateur `site:` restreint les résultats à un domaine, voire à un sous-dossier (`site:exemple.fr/blog`). Le nombre de résultats affiché n'est qu'une estimation : pour connaître l'état réel d'indexation, on se fie à la Search Console. `filetype:` filtre par type de fichier (`filetype:pdf`) et `define:` affiche une définition.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans Google Search Console, quel outil permet de vérifier si une URL précise est indexée et d'en demander l'indexation ?",
+      "answer": "L'outil d'inspection d'URL",
+      "wrong": [
+        "Le rapport Signaux Web essentiels",
+        "Le rapport sur les liens",
+        "L'outil de désaveu de liens"
+      ],
+      "explanation": "L'**outil d'inspection d'URL** indique si une page est dans l'index, quelle URL canonique Google a retenue et comment la page a été explorée ; il permet aussi de tester la version en ligne puis de **demander une indexation**. Le rapport Signaux Web essentiels concerne la performance (Core Web Vitals), le rapport sur les liens recense backlinks et liens internes, et l'outil de désaveu sert à faire ignorer des backlinks.",
+      "difficulty": 1
+    },
+    {
+      "question": "En SEO, qu'appelle-t-on une **page orpheline** ?",
+      "answer": "Une page qui ne reçoit aucun lien interne depuis le reste du site",
+      "wrong": [
+        "Une page qui ne contient aucun lien sortant vers d'autres sites",
+        "Une page dont l'auteur n'est indiqué nulle part",
+        "Une page qui n'a reçu aucune visite depuis sa publication"
+      ],
+      "explanation": "Une **page orpheline** existe (elle répond, figure parfois dans le sitemap) mais aucun lien interne ne pointe vers elle : ni les visiteurs ni les robots ne peuvent l'atteindre en naviguant. Elle est donc mal découverte, peu explorée et ne reçoit aucune popularité interne. On les repère en croisant un crawl du site avec le sitemap, les logs serveur ou les données analytics.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie ce fichier `robots.txt` ?\n```\nUser-agent: *\nDisallow:\n```",
+      "answer": "Tous les robots peuvent explorer l'ensemble du site",
+      "wrong": [
+        "Tous les robots sont bloqués sur l'ensemble du site",
+        "Seule la page d'accueil peut être explorée",
+        "Le fichier est invalide et le site n'est pas exploré"
+      ],
+      "explanation": "Une règle `Disallow:` **vide** n'interdit rien : tout le site reste explorable. C'est `Disallow: /` (avec la barre oblique) qui bloque l'intégralité du site. Un seul caractère sépare donc « tout autoriser » de « tout bloquer », une erreur classique lors d'une mise en production depuis un environnement de préproduction.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt"
+    },
+    {
+      "question": "Un fichier `robots.txt` est publié à l'adresse `https://exemple.fr/blog/robots.txt`. Quel effet a-t-il ?",
+      "answer": "Aucun : les robots ne cherchent ce fichier qu'à la racine de l'hôte",
+      "wrong": [
+        "Il s'applique uniquement aux URL commençant par `/blog/`",
+        "Il s'applique à tout le site comme s'il était à la racine",
+        "Il complète les règles du fichier placé à la racine"
+      ],
+      "explanation": "Les robots ne lisent `robots.txt` qu'à un seul emplacement : la racine de l'hôte (`https://exemple.fr/robots.txt`). Un fichier placé dans un sous-dossier n'est jamais consulté. Pour restreindre l'exploration de `/blog/`, il faut ajouter une règle `Disallow: /blog/` dans le fichier racine.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt"
+    },
+    {
+      "question": "Avec ce `robots.txt`, Googlebot peut-il explorer `/dossier/guide.html` ?\n```\nUser-agent: *\nDisallow: /dossier/\nAllow: /dossier/guide.html\n```",
+      "answer": "Oui, car la règle la plus spécifique (au chemin le plus long) l'emporte",
+      "wrong": [
+        "Non, car une règle `Disallow` l'emporte toujours sur `Allow`",
+        "Non, car seule la première règle du groupe est appliquée",
+        "Oui, mais seulement si la page figure aussi dans le sitemap"
+      ],
+      "explanation": "Google applique la règle **la plus spécifique**, c'est-à-dire celle dont le chemin est le plus long : `/dossier/guide.html` est plus précis que `/dossier/`, donc la page est autorisée. L'ordre des lignes n'a aucune importance. En cas d'égalité entre un `Allow` et un `Disallow`, Google retient la règle la moins restrictive, donc `Allow`.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt"
+    },
+    {
+      "question": "Dans un `robots.txt` interprété par Google, que bloque la règle `Disallow: /*.pdf$` ?",
+      "answer": "Les URL qui se terminent par `.pdf`",
+      "wrong": [
+        "Toutes les URL contenant `.pdf` à n'importe quel endroit",
+        "Uniquement le fichier `/.pdf` situé à la racine",
+        "Les dossiers dont le nom commence par `pdf`"
+      ],
+      "explanation": "Google reconnaît deux caractères spéciaux : `*`, qui remplace n'importe quelle suite de caractères, et `$`, qui marque la fin de l'URL. `/*.pdf$` bloque donc `/docs/guide.pdf` mais pas `/docs/guide.pdf?v=2`, qui ne se termine pas par `.pdf`. Sans le `$`, la règle bloquerait toute URL contenant `.pdf`, paramètres compris.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt"
+    },
+    {
+      "question": "Comment empêcher l'indexation d'un fichier **PDF**, qui ne peut pas contenir de balise meta robots ?",
+      "answer": "Envoyer l'en-tête HTTP `X-Robots-Tag: noindex`",
+      "wrong": [
+        "Ajouter `rel=\"noindex\"` sur les liens vers le PDF",
+        "Lister le PDF dans un sitemap séparé",
+        "Ajouter `?noindex` à la fin de l'URL du PDF"
+      ],
+      "explanation": "L'en-tête HTTP `X-Robots-Tag` accepte les mêmes directives que la balise meta robots (`noindex`, `nofollow`, `nosnippet`…) et fonctionne pour tous les types de fichiers : PDF, images, vidéos. Il se configure côté serveur, par exemple dans Apache ou Nginx. Un attribut `rel=\"noindex\"` sur un lien n'existe pas, et un sitemap sert à faire découvrir des URL, pas à les exclure.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag"
+    },
+    {
+      "question": "Qu'est-ce qu'une **soft 404** ?",
+      "answer": "Une page qui affiche « introuvable » mais renvoie le code 200",
+      "wrong": [
+        "Une page qui renvoie 404 puis redirige après quelques secondes",
+        "Une erreur 404 temporaire due à une surcharge du serveur",
+        "Une page 404 personnalisée avec un moteur de recherche interne"
+      ],
+      "explanation": "Une **soft 404** est une page qui, pour l'utilisateur, ressemble à une erreur (« produit introuvable », page vide) mais que le serveur sert avec un code **200 OK**. Google la détecte et la traite comme une erreur, mais elle gaspille de l'exploration et brouille les signaux. Une page inexistante doit renvoyer un vrai code 404 ou 410 ; une page 404 personnalisée est très bien, tant qu'elle renvoie ce code.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/http-network-errors"
+    },
+    {
+      "question": "Lequel de ces liens Googlebot peut-il découvrir et suivre de façon fiable ?",
+      "answer": "`<a href=\"/offres\">Nos offres</a>`",
+      "wrong": [
+        "`<span onclick=\"go('/offres')\">Nos offres</span>`",
+        "`<a onclick=\"go('/offres')\">Nos offres</a>`",
+        "`<a href=\"javascript:go('/offres')\">Nos offres</a>`"
+      ],
+      "explanation": "Google n'extrait de façon fiable que les liens écrits sous la forme d'un élément `<a>` doté d'un attribut `href` contenant une vraie URL. Un `<span>` ou un `<a>` sans `href` qui navigue via `onclick` n'est pas vu comme un lien, et une pseudo-URL `javascript:` ne correspond à aucune adresse explorable. Le JavaScript peut gérer la navigation, à condition que le `href` soit bien présent.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable"
+    },
+    {
+      "question": "Pourquoi déconseille-t-on de bloquer les fichiers CSS et JavaScript dans le `robots.txt` ?",
+      "answer": "Google en a besoin pour effectuer le rendu de la page comme un navigateur",
+      "wrong": [
+        "Ces fichiers transmettent du PageRank aux pages qui les chargent",
+        "Leur blocage déclenche automatiquement une action manuelle",
+        "Google y lit en priorité les mots-clés de la page"
+      ],
+      "explanation": "Pour comprendre une page moderne, Google l'affiche (rendu) avec un Chromium sans interface, ce qui exige d'accéder aux ressources CSS et JavaScript. Si elles sont bloquées, le contenu injecté en JavaScript ou la mise en page mobile peuvent lui échapper, et la page être mal évaluée. Il n'y a pas de pénalité manuelle pour cela, mais une compréhension dégradée de la page.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics"
+    },
+    {
+      "question": "Quel mode de rendu envoie aux robots un HTML déjà complet dès la réponse du serveur, sans attendre l'exécution du JavaScript ?",
+      "answer": "Le rendu côté serveur (SSR)",
+      "wrong": [
+        "Le rendu côté client (CSR)",
+        "Le chargement différé (lazy loading)",
+        "Le préchargement des liens (prefetch)"
+      ],
+      "explanation": "Avec le **rendu côté serveur** (SSR), le serveur exécute le code de l'application et renvoie un HTML contenant déjà le texte et les liens : robots et navigateurs le lisent immédiatement. En **rendu côté client** (CSR), le HTML initial est presque vide et le contenu n'apparaît qu'après l'exécution du JavaScript, ce qui oblige Google à passer par sa file de rendu et fragilise l'indexation. La génération statique (SSG) offre le même avantage que le SSR, avec des pages produites à l'avance.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle directive du `robots.txt` Googlebot ignore-t-il, alors que Bingbot la prend en compte ?",
+      "answer": "`Crawl-delay`",
+      "wrong": [
+        "`Disallow`",
+        "`Allow`",
+        "`Sitemap`"
+      ],
+      "explanation": "Google ne prend en charge que quatre champs dans `robots.txt` : `user-agent`, `allow`, `disallow` et `sitemap`. `Crawl-delay`, qui demande d'espacer les requêtes, est ignoré par Googlebot mais respecté par Bing. Google ajuste lui-même sa vitesse d'exploration selon la santé du serveur : il ralentit notamment lorsqu'il reçoit des erreurs 5xx ou 429.",
+      "difficulty": 2,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt"
+    },
+    {
+      "question": "Le fichier `https://www.exemple.fr/robots.txt` contient `Disallow: /`. Le site `https://boutique.exemple.fr/` est-il concerné ?",
+      "answer": "Non : chaque hôte (sous-domaine, protocole, port) a son propre fichier",
+      "wrong": [
+        "Oui : les règles valent pour tous les sous-domaines du domaine",
+        "Oui, sauf si le sous-domaine déclare son propre sitemap",
+        "Non, sauf si les deux sous-domaines partagent la même IP"
+      ],
+      "explanation": "Un `robots.txt` ne s'applique qu'à l'hôte exact où il est publié : même protocole, même nom d'hôte, même port. `https://www.exemple.fr/robots.txt` ne régit ni `boutique.exemple.fr`, ni `http://www.exemple.fr`, ni `https://www.exemple.fr:8080`. Chaque sous-domaine doit donc disposer de son propre fichier à sa racine.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt"
+    },
+    {
+      "question": "Avec ce `robots.txt`, Googlebot peut-il explorer `/prive/page.html` ?\n```\nUser-agent: *\nDisallow: /prive/\n\nUser-agent: Googlebot\nDisallow: /tmp/\n```",
+      "answer": "Oui : il ne suit que le groupe qui le nomme et ignore le groupe `*`",
+      "wrong": [
+        "Non : les règles du groupe `*` s'ajoutent à celles du groupe Googlebot",
+        "Non : le groupe `*` prime toujours sur les groupes nommés",
+        "Oui, mais uniquement parce que le groupe Googlebot est écrit en dernier"
+      ],
+      "explanation": "Un robot de Google applique **un seul groupe** : celui dont la ligne `User-agent` correspond le plus précisément à son nom. Ici, Googlebot suit le groupe `Googlebot` et ignore entièrement le groupe `*`, donc `/prive/` lui reste accessible. L'ordre des groupes dans le fichier ne compte pas. Pour bloquer aussi `/prive/` à Googlebot, il faut répéter la règle dans son groupe.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt"
+    },
+    {
+      "question": "Le `robots.txt` d'un site renvoie une erreur **404**. Comment Googlebot réagit-il ?",
+      "answer": "Il considère qu'il n'y a aucune restriction et peut explorer tout le site",
+      "wrong": [
+        "Il suspend l'exploration du site jusqu'au retour du fichier",
+        "Il n'explore plus que les URL listées dans le sitemap",
+        "Il n'explore que la page d'accueil et ses liens directs"
+      ],
+      "explanation": "Pour Google, une erreur 4xx (sauf 429) sur `robots.txt` équivaut à l'absence de fichier : aucune restriction ne s'applique. Une erreur serveur 5xx est en revanche prise au sérieux : pendant les 12 premières heures, Google cesse d'explorer le site, puis se rabat sur la dernière version valide du fichier qu'il a en mémoire. Un `robots.txt` qui répond en 503 par erreur peut donc stopper l'exploration de tout un site.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt"
+    },
+    {
+      "question": "Depuis le 1er septembre 2019, comment Google traite-t-il une ligne `Noindex:` écrite dans le `robots.txt` ?",
+      "answer": "Il l'ignore : cette règle non officielle n'est plus prise en charge",
+      "wrong": [
+        "Il désindexe les URL correspondantes sous 24 heures",
+        "Il la traite comme un `Disallow` sur les mêmes chemins",
+        "Il l'applique seulement aux fichiers PDF et aux images"
+      ],
+      "explanation": "Google a longtemps toléré une directive `Noindex` non documentée dans `robots.txt`, mais il a annoncé en juillet 2019 qu'il cesserait de la prendre en charge le 1er septembre 2019, comme les autres règles non standard (`nofollow`, `crawl-delay`). Pour désindexer, il faut utiliser la balise meta robots ou l'en-tête `X-Robots-Tag`, sur des pages laissées accessibles au crawl.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/blog/2019/07/a-note-on-unsupported-rules-in-robotstxt"
+    },
+    {
+      "question": "Dans le rapport d'indexation de la Search Console, que signifie l'état « **Détectée, actuellement non indexée** » ?",
+      "answer": "Google connaît l'URL mais ne l'a pas encore explorée",
+      "wrong": [
+        "Google a exploré l'URL mais a choisi de ne pas l'indexer",
+        "L'URL est exclue par une balise `noindex`",
+        "L'URL est un doublon d'une autre page canonique"
+      ],
+      "explanation": "« **Détectée** » signifie que Google a trouvé l'URL (via un lien ou un sitemap) mais a reporté son exploration, souvent pour ne pas surcharger le serveur. « **Explorée**, actuellement non indexée » est différent : la page a été récupérée, mais Google n'a pas jugé utile de l'indexer pour l'instant. Les pages en `noindex` et les doublons ont leurs propres statuts dans ce rapport.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans une balise meta robots, à quoi équivaut la valeur `none` ?",
+      "answer": "À `noindex, nofollow`",
+      "wrong": [
+        "À `index, follow`",
+        "À `noindex` seul",
+        "À `nofollow` seul"
+      ],
+      "explanation": "Contrairement à ce que son nom suggère, `none` ne veut pas dire « aucune restriction » : c'est la combinaison la plus restrictive, `noindex, nofollow`. Le comportement par défaut, sans balise, est `index, follow` (que l'on peut aussi écrire `all`). Une confusion sur cette valeur peut faire disparaître une page des résultats.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag"
+    },
+    {
+      "question": "Qu'a changé Google en **mai 2019** dans la façon dont Googlebot exécute le JavaScript ?",
+      "answer": "Il effectue le rendu avec un Chromium régulièrement mis à jour",
+      "wrong": [
+        "Il a cessé d'exécuter le JavaScript des pages",
+        "Il utilise désormais le moteur de Firefox pour le rendu",
+        "Il n'exécute plus que le JavaScript placé dans le `<head>`"
+      ],
+      "explanation": "En mai 2019, Google a annoncé un Googlebot **evergreen** : son service de rendu utilise la dernière version de Chromium (la 74 à l'époque) et suit ensuite ses mises à jour. Auparavant, le rendu reposait sur un moteur figé équivalent à Chrome 41, qui ignorait de nombreuses fonctionnalités modernes (ES6, IntersectionObserver…). Les polyfills ajoutés uniquement pour Googlebot sont alors devenus largement inutiles.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/blog/2019/05/the-new-evergreen-googlebot"
+    },
+    {
+      "question": "Une application monopage affiche ses vues via des URL comme `exemple.fr/#/produits` et `exemple.fr/#/contact`. Quel est le problème pour le SEO ?",
+      "answer": "Google ignore ce qui suit le `#` : ces vues ne sont pas des URL distinctes",
+      "wrong": [
+        "Le caractère `#` est interdit dans une URL et provoque une erreur 400",
+        "Google indexe chaque vue deux fois, ce qui crée du contenu dupliqué",
+        "Les fragments imposent un rendu côté serveur pour être explorés"
+      ],
+      "explanation": "Pour Google, la partie qui suit le `#` (le fragment) ne change pas l'URL : `/#/produits` et `/#/contact` désignent la même page `exemple.fr/`, et leurs contenus ne peuvent pas être indexés séparément. Google recommande d'utiliser l'**History API** (`pushState`) pour obtenir de vraies URL comme `exemple.fr/produits`. L'ancien schéma d'exploration AJAX en `#!` n'est d'ailleurs plus recommandé depuis 2015.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics"
+    },
+    {
+      "question": "Le HTML initial d'une page contient `<meta name=\"robots\" content=\"noindex\">`, qu'un script retire ensuite pour rendre la page indexable. Que risque-t-il de se passer ?",
+      "answer": "Google peut ne pas exécuter le script et laisser la page hors de l'index",
+      "wrong": [
+        "Google indexe la page, puisque seule la version rendue compte",
+        "Google indexe la page mais sans afficher d'extrait",
+        "Google y voit du cloaking et applique une action manuelle"
+      ],
+      "explanation": "Quand Google rencontre un `noindex` dans le HTML initial, il peut **sauter l'étape de rendu** : le script qui retire la balise ne s'exécute alors jamais de son point de vue. Sa documentation est explicite : si la page doit être indexée, il ne faut pas mettre de `noindex` dans le code d'origine. L'inverse, ajouter un `noindex` en JavaScript sur une page d'erreur, fonctionne en revanche.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics"
+    },
+    {
+      "question": "Quel protocole, lancé en 2021 par Microsoft Bing et Yandex, permet à un site de notifier immédiatement les moteurs qu'une URL a été ajoutée, modifiée ou supprimée ?",
+      "answer": "IndexNow",
+      "wrong": [
+        "AMP",
+        "WebSub",
+        "Open Graph"
+      ],
+      "explanation": "Avec **IndexNow**, le site envoie une simple requête HTTP (avec une clé de vérification hébergée chez lui) pour signaler un changement d'URL, au lieu d'attendre le passage d'un robot ; les moteurs participants se partagent ces notifications. Le protocole a été lancé en octobre 2021 par Microsoft Bing et Yandex, puis rejoint par d'autres moteurs comme Seznam ou Naver. WebSub est un protocole de notification d'abonnements à des flux, et Open Graph un balisage pour les réseaux sociaux.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/IndexNow"
     }
   ]
 }

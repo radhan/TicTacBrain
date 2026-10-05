@@ -8,14 +8,22 @@
     {
       "question": "Lors de la remontée d'un **squat**, quel groupe musculaire assure l'extension du genou ?",
       "answer": "Le quadriceps",
-      "wrong": ["Les ischio-jambiers", "Les mollets", "Les adducteurs"],
+      "wrong": [
+        "Les ischio-jambiers",
+        "Les mollets",
+        "Les adducteurs"
+      ],
       "explanation": "Le **quadriceps** est le seul extenseur du genou : il réunit quatre chefs (droit fémoral, vaste latéral, vaste médial et vaste intermédiaire) qui s'insèrent sur le tibia via le tendon rotulien. Pendant le squat, le grand fessier et les adducteurs étendent en parallèle la hanche, ce qui fait du squat un exercice polyarticulaire très complet.",
       "difficulty": 1
     },
     {
       "question": "Quel est le format d'un protocole **Tabata** classique ?",
       "answer": "8 × (20 s d'effort, 10 s de repos)",
-      "wrong": ["8 × (30 s d'effort, 30 s de repos)", "10 × (40 s d'effort, 20 s de repos)", "4 × (20 s d'effort, 40 s de repos)"],
+      "wrong": [
+        "8 × (30 s d'effort, 30 s de repos)",
+        "10 × (40 s d'effort, 20 s de repos)",
+        "4 × (20 s d'effort, 40 s de repos)"
+      ],
       "explanation": "Le **Tabata** enchaîne 8 cycles de 20 s d'effort et 10 s de récupération, soit **4 minutes** au total. Issu des travaux d'Izumi Tabata (1996) sur ergocycle, il est une forme de **HIIT** (entraînement fractionné de haute intensité) : les 20 s doivent être réalisées à une intensité quasi maximale pour obtenir les effets décrits.",
       "difficulty": 1,
       "source": "https://en.wikipedia.org/wiki/High-intensity_interval_training"
@@ -23,14 +31,22 @@
     {
       "question": "Selon la formule estimative la plus répandue, quelle est la **fréquence cardiaque maximale** théorique d'une personne de 30 ans ?",
       "answer": "190 bpm",
-      "wrong": ["170 bpm", "200 bpm", "210 bpm"],
+      "wrong": [
+        "170 bpm",
+        "200 bpm",
+        "210 bpm"
+      ],
       "explanation": "La formule la plus connue est **FCmax = 220 − âge**, soit 220 − 30 = **190 battements par minute**. Ce n'est qu'une estimation : l'écart avec la valeur réelle peut dépasser 10 bpm. Pour une valeur fiable, il faut un test d'effort maximal, idéalement encadré médicalement.",
       "difficulty": 1
     },
     {
       "question": "Comment appelle-t-on les douleurs musculaires qui apparaissent **24 à 72 h après** un effort inhabituel ?",
       "answer": "Les courbatures",
-      "wrong": ["Les crampes", "Les contractures", "Les tendinites"],
+      "wrong": [
+        "Les crampes",
+        "Les contractures",
+        "Les tendinites"
+      ],
       "explanation": "Les **courbatures** (DOMS, *Delayed Onset Muscle Soreness*) culminent généralement 24 à 72 h après l'effort. Elles sont liées à des microlésions des fibres et à la réaction inflammatoire qui suit, surtout après des contractions excentriques, et **non à l'acide lactique**, éliminé en moins d'une heure. Elles diminuent nettement quand on répète le même exercice : c'est l'effet de « séance répétée ».",
       "difficulty": 1,
       "source": "https://en.wikipedia.org/wiki/Delayed_onset_muscle_soreness"
@@ -38,7 +54,11 @@
     {
       "question": "En musculation, que désigne le **1RM** ?",
       "answer": "La charge maximale soulevable sur une seule répétition",
-      "wrong": ["Le nombre de répétitions réalisables en 1 minute", "Le temps de repos d'une minute entre deux séries", "La charge utilisée pour l'échauffement"],
+      "wrong": [
+        "Le nombre de répétitions réalisables en 1 minute",
+        "Le temps de repos d'une minute entre deux séries",
+        "La charge utilisée pour l'échauffement"
+      ],
       "explanation": "Le **1RM** (*one-repetition maximum*) est la charge la plus lourde qu'on peut soulever une seule fois avec une technique correcte. Il sert de référence pour doser l'intensité en pourcentage (ex. : 80 % du 1RM). Comme le tester est exigeant, on l'estime souvent à partir d'une série de plusieurs répétitions grâce à des formules comme celles d'Epley ou de Brzycki.",
       "difficulty": 1,
       "source": "https://en.wikipedia.org/wiki/One-repetition_maximum"
@@ -46,21 +66,33 @@
     {
       "question": "Quel muscle du dos est le principal moteur des **tractions** (pull-ups) ?",
       "answer": "Le grand dorsal",
-      "wrong": ["Le trapèze supérieur", "Les érecteurs du rachis", "Le carré des lombes"],
+      "wrong": [
+        "Le trapèze supérieur",
+        "Les érecteurs du rachis",
+        "Le carré des lombes"
+      ],
       "explanation": "Le **grand dorsal** est le plus large muscle du dos : il ramène le bras vers le tronc (adduction et extension de l'épaule), exactement le geste qui hisse le corps à la barre. Les biceps, le grand rond et les rhomboïdes l'assistent. Plus la prise est large, plus l'adduction de l'épaule domine le mouvement.",
       "difficulty": 1
     },
     {
       "question": "Dans un programme **push/pull/legs**, quel exercice appartient à la séance « pull » ?",
       "answer": "Le rowing barre",
-      "wrong": ["Le développé militaire", "Les dips", "La presse à cuisses"],
+      "wrong": [
+        "Le développé militaire",
+        "Les dips",
+        "La presse à cuisses"
+      ],
       "explanation": "Le split **push/pull/legs** regroupe les exercices par schéma de mouvement : **pousser** (pectoraux, épaules, triceps), **tirer** (dos, biceps) et **jambes**. Le **rowing** est un tirage, donc « pull » ; le développé militaire et les dips sont des poussées, la presse à cuisses relève des jambes. Ce découpage permet de travailler chaque groupe musculaire deux fois par semaine en 6 séances.",
       "difficulty": 1
     },
     {
       "question": "Quel principe d'entraînement consiste à augmenter **progressivement** la charge, les répétitions ou le volume pour continuer à progresser ?",
       "answer": "La surcharge progressive",
-      "wrong": ["La spécificité", "La réversibilité", "L'individualisation"],
+      "wrong": [
+        "La spécificité",
+        "La réversibilité",
+        "L'individualisation"
+      ],
       "explanation": "La **surcharge progressive** repose sur un constat simple : l'organisme ne s'adapte que s'il est confronté à une contrainte supérieure à celle qu'il connaît déjà. On peut l'appliquer en ajoutant du poids, des répétitions, des séries ou en réduisant le repos. À ne pas confondre avec la **spécificité** (on progresse dans ce qu'on entraîne) et la **réversibilité** (les acquis se perdent à l'arrêt).",
       "difficulty": 1,
       "source": "https://en.wikipedia.org/wiki/Progressive_overload"
@@ -68,7 +100,11 @@
     {
       "question": "Lors de la descente contrôlée d'un **curl biceps**, le biceps s'allonge tout en restant sous tension. Comment s'appelle cette phase ?",
       "answer": "La phase excentrique",
-      "wrong": ["La phase concentrique", "La phase isométrique", "La phase pliométrique"],
+      "wrong": [
+        "La phase concentrique",
+        "La phase isométrique",
+        "La phase pliométrique"
+      ],
       "explanation": "En phase **excentrique**, le muscle produit de la force **en s'allongeant** pour freiner la charge. La montée, où le muscle se raccourcit, est la phase **concentrique** ; maintenir la charge immobile est une contraction **isométrique**. Contrôler la descente (2 à 3 s) augmente le temps sous tension et la maîtrise technique.",
       "difficulty": 2,
       "source": "https://en.wikipedia.org/wiki/Muscle_contraction"
@@ -76,49 +112,77 @@
     {
       "question": "Lors d'une **planche** (gainage) tenue sans bouger, quel type de contraction réalisent les muscles du tronc ?",
       "answer": "Isométrique",
-      "wrong": ["Concentrique", "Excentrique", "Balistique"],
+      "wrong": [
+        "Concentrique",
+        "Excentrique",
+        "Balistique"
+      ],
       "explanation": "Une contraction **isométrique** produit de la force **sans changement de longueur** du muscle ni mouvement visible. Le gainage sollicite notamment le **transverse de l'abdomen**, le grand droit et les obliques pour stabiliser la colonne. Mieux vaut quelques séries de 20 à 40 s avec un bassin bien placé qu'une planche interminable avec le dos creusé.",
       "difficulty": 2
     },
     {
       "question": "Quel faisceau du **deltoïde** est la cible principale des **élévations latérales** ?",
       "answer": "Le faisceau moyen (latéral)",
-      "wrong": ["Le faisceau antérieur", "Le faisceau postérieur", "Le faisceau inférieur"],
+      "wrong": [
+        "Le faisceau antérieur",
+        "Le faisceau postérieur",
+        "Le faisceau inférieur"
+      ],
       "explanation": "Le deltoïde compte trois faisceaux : **antérieur** (flexion de l'épaule, sollicité par les développés), **moyen** (abduction : lever le bras sur le côté) et **postérieur** (extension, sollicité par l'oiseau et les tirages). Les élévations latérales isolent donc le **faisceau moyen**, celui qui donne de la largeur aux épaules. Il n'existe pas de faisceau « inférieur ».",
       "difficulty": 2
     },
     {
       "question": "Lors d'un **soulevé de terre**, le grand fessier et les ischio-jambiers travaillent surtout pour étendre quelle articulation ?",
       "answer": "La hanche",
-      "wrong": ["Le genou", "La cheville", "L'épaule"],
+      "wrong": [
+        "Le genou",
+        "La cheville",
+        "L'épaule"
+      ],
       "explanation": "Le soulevé de terre est avant tout une **extension de hanche** : le **grand fessier** et les **ischio-jambiers** (qui étendent la hanche et fléchissent le genou) redressent le bassin, pendant que les **érecteurs du rachis** travaillent en isométrie pour garder le dos neutre. C'est l'exercice emblématique de la **chaîne postérieure**.",
       "difficulty": 2
     },
     {
       "question": "Quels muscles les **dips** aux barres parallèles sollicitent-ils principalement ?",
       "answer": "Triceps, pectoraux et deltoïdes antérieurs",
-      "wrong": ["Grand dorsal, biceps et rhomboïdes", "Quadriceps, fessiers et mollets", "Trapèzes, lombaires et obliques"],
+      "wrong": [
+        "Grand dorsal, biceps et rhomboïdes",
+        "Quadriceps, fessiers et mollets",
+        "Trapèzes, lombaires et obliques"
+      ],
       "explanation": "Les **dips** sont un mouvement de poussée vers le bas : le **triceps** étend le coude, tandis que les **pectoraux** (surtout leur partie inférieure) et les **deltoïdes antérieurs** ramènent les bras de l'arrière vers l'avant (flexion de l'épaule). Buste droit, le triceps domine ; buste penché vers l'avant, les pectoraux travaillent davantage.",
       "difficulty": 2
     },
     {
       "question": "Selon le modèle classique des filières énergétiques, quelle filière prédomine lors d'un effort maximal **très bref** (environ 5 s, comme un départ de sprint) ?",
       "answer": "L'anaérobie alactique (ATP-phosphocréatine)",
-      "wrong": ["L'anaérobie lactique (glycolyse)", "L'aérobie (oxydation des glucides)", "L'aérobie (oxydation des lipides)"],
+      "wrong": [
+        "L'anaérobie lactique (glycolyse)",
+        "L'aérobie (oxydation des glucides)",
+        "L'aérobie (oxydation des lipides)"
+      ],
       "explanation": "La filière **anaérobie alactique** régénère l'ATP à partir de la **phosphocréatine** : elle est la plus puissante, mais ses réserves s'épuisent en quelques secondes. La filière **lactique** prend ensuite le relais sur les efforts intenses de quelques dizaines de secondes, et l'**aérobie** domine au-delà de quelques minutes. En réalité, les trois filières fonctionnent toujours simultanément ; seule leur part relative change.",
       "difficulty": 2
     },
     {
       "question": "Quel type de fibres musculaires est le plus **résistant à la fatigue** ?",
       "answer": "Les fibres de type I (lentes)",
-      "wrong": ["Les fibres de type IIa (rapides)", "Les fibres de type IIx (rapides)", "Toutes se fatiguent au même rythme"],
+      "wrong": [
+        "Les fibres de type IIa (rapides)",
+        "Les fibres de type IIx (rapides)",
+        "Toutes se fatiguent au même rythme"
+      ],
       "explanation": "Les fibres de **type I** sont riches en mitochondries, en capillaires et en myoglobine : elles produisent leur énergie surtout par voie **aérobie** et tiennent très longtemps, mais développent peu de force. Les **IIx** sont les plus puissantes et les plus fatigables, les **IIa** sont intermédiaires. Les marathoniens d'élite ont en général une forte proportion de fibres de type I, les sprinteurs de fibres de type II.",
       "difficulty": 2
     },
     {
       "question": "Que représente la **VO2max** ?",
       "answer": "Le débit maximal d'oxygène que l'organisme peut consommer",
-      "wrong": ["La quantité d'oxygène stockée dans les muscles", "Le volume d'air maximal contenu dans les poumons", "La fréquence respiratoire maximale"],
+      "wrong": [
+        "La quantité d'oxygène stockée dans les muscles",
+        "Le volume d'air maximal contenu dans les poumons",
+        "La fréquence respiratoire maximale"
+      ],
       "explanation": "La **VO2max** est le débit maximal d'oxygène que l'organisme peut prélever, transporter et utiliser pendant un effort. On l'exprime souvent en **mL/kg/min** pour comparer des personnes de gabarits différents. C'est un indicateur clé de l'endurance : les meilleurs fondeurs et cyclistes dépassent 80 mL/kg/min.",
       "difficulty": 2,
       "source": "https://en.wikipedia.org/wiki/VO2_max"
@@ -126,21 +190,33 @@
     {
       "question": "Après avoir atteint l'échec sur une série de curls, vous **baissez immédiatement la charge** et continuez sans repos. Quelle est cette technique ?",
       "answer": "Un drop set (série dégressive)",
-      "wrong": ["Un superset", "Une série pyramidale", "Un circuit training"],
+      "wrong": [
+        "Un superset",
+        "Une série pyramidale",
+        "Un circuit training"
+      ],
       "explanation": "Le **drop set** prolonge une série au-delà de l'échec en allégeant la charge sans pause, ce qui permet d'accumuler du volume en peu de temps. À ne pas confondre avec le **superset**, qui enchaîne sans repos deux exercices différents (par exemple curl biceps puis extension triceps). Très éprouvant, le drop set s'utilise plutôt en fin de séance et avec parcimonie.",
       "difficulty": 2
     },
     {
       "question": "Dans le continuum de répétitions classiquement enseigné (NSCA), quelle plage est associée au développement de la **force maximale** ?",
       "answer": "6 répétitions ou moins",
-      "wrong": ["8 à 12 répétitions", "15 à 20 répétitions", "30 répétitions ou plus"],
+      "wrong": [
+        "8 à 12 répétitions",
+        "15 à 20 répétitions",
+        "30 répétitions ou plus"
+      ],
       "explanation": "La NSCA associe la **force maximale** aux charges lourdes : **6 répétitions ou moins** à au moins 85 % du 1RM, l'hypertrophie à environ 6 à 12 répétitions et l'endurance musculaire à 12 répétitions ou plus. Les études récentes nuancent ce schéma : l'hypertrophie peut être obtenue sur une large plage de répétitions si les séries sont proches de l'échec, mais les charges lourdes restent les plus efficaces pour la force.",
       "difficulty": 2
     },
     {
       "question": "Lors d'extensions de mollets **assis** (genou fléchi à 90°), quel muscle du mollet travaille le plus ?",
       "answer": "Le soléaire",
-      "wrong": ["Le gastrocnémien (jumeaux)", "Le tibial antérieur", "Le plantaire grêle"],
+      "wrong": [
+        "Le gastrocnémien (jumeaux)",
+        "Le tibial antérieur",
+        "Le plantaire grêle"
+      ],
       "explanation": "Le **gastrocnémien** s'insère au-dessus du genou : quand le genou est fléchi, il est raccourci et ne peut plus produire beaucoup de force (insuffisance active). Le **soléaire**, qui part du tibia et du fibula sous le genou, prend alors le relais. C'est pourquoi on travaille les mollets **debout** (gastrocnémien et soléaire) et **assis** (surtout le soléaire).",
       "difficulty": 3,
       "source": "https://en.wikipedia.org/wiki/Soleus_muscle"
@@ -148,7 +224,11 @@
     {
       "question": "Quel chef du **triceps brachial** est le seul à croiser l'articulation de l'**épaule** ?",
       "answer": "Le chef long",
-      "wrong": ["Le chef latéral", "Le chef médial", "Le chef court"],
+      "wrong": [
+        "Le chef latéral",
+        "Le chef médial",
+        "Le chef court"
+      ],
       "explanation": "Le **chef long** du triceps prend son origine sur l'omoplate (tubercule infraglénoïdal) : il étend le coude mais participe aussi à l'extension de l'épaule. Les chefs **latéral** et **médial** partent de l'humérus et n'agissent que sur le coude. Les exercices bras au-dessus de la tête (extension nuque) étirent davantage le chef long. Le « chef court » appartient au biceps, pas au triceps.",
       "difficulty": 3,
       "source": "https://en.wikipedia.org/wiki/Triceps"
@@ -156,21 +236,33 @@
     {
       "question": "Dans quel type de contraction un muscle peut-il développer la **force la plus élevée** ?",
       "answer": "Excentrique",
-      "wrong": ["Concentrique", "Isométrique", "La force est identique dans les trois cas"],
+      "wrong": [
+        "Concentrique",
+        "Isométrique",
+        "La force est identique dans les trois cas"
+      ],
       "explanation": "D'après la relation **force-vitesse**, un muscle produit plus de force en freinant une charge (**excentrique**) qu'en la maintenant (**isométrique**), et plus en isométrique qu'en la soulevant (**concentrique**). C'est pourquoi on peut descendre lentement une charge qu'on serait incapable de remonter. Le travail excentrique est aussi celui qui provoque le plus de courbatures.",
       "difficulty": 3
     },
     {
       "question": "À durée et intensité comparables, quelle activité provoque typiquement le **plus de courbatures** aux quadriceps chez une personne non habituée ?",
       "answer": "Courir en descente",
-      "wrong": ["Courir en montée", "Pédaler sur un vélo d'appartement", "Nager le crawl"],
+      "wrong": [
+        "Courir en montée",
+        "Pédaler sur un vélo d'appartement",
+        "Nager le crawl"
+      ],
       "explanation": "En descente, les quadriceps freinent le corps à chaque foulée : ils travaillent en **excentrique**, le mode de contraction qui crée le plus de microlésions et donc de courbatures. La course en descente sert d'ailleurs de modèle expérimental pour étudier les DOMS. Le vélo, à l'inverse, est presque exclusivement concentrique et génère très peu de courbatures.",
       "difficulty": 3
     },
     {
       "question": "Sur l'échelle **RPE** basée sur les répétitions en réserve (RIR), à quoi correspond une série notée **RPE 8** ?",
       "answer": "Il restait environ 2 répétitions en réserve",
-      "wrong": ["Il restait environ 8 répétitions en réserve", "La série a été menée jusqu'à l'échec", "La charge représentait 80 % du 1RM"],
+      "wrong": [
+        "Il restait environ 8 répétitions en réserve",
+        "La série a été menée jusqu'à l'échec",
+        "La charge représentait 80 % du 1RM"
+      ],
       "explanation": "Sur cette échelle de 1 à 10, **RPE 10** signifie l'échec (0 répétition en réserve), **RPE 9** une répétition en réserve et **RPE 8** deux répétitions en réserve (**RIR 2**). Elle permet d'ajuster la charge selon la forme du jour plutôt que selon un pourcentage fixe du 1RM. Le RPE mesure l'effort perçu, pas un pourcentage de charge.",
       "difficulty": 3,
       "source": "https://en.wikipedia.org/wiki/Rating_of_perceived_exertion"
@@ -178,17 +270,303 @@
     {
       "question": "Avec la **méthode de Karvonen**, quelle est la fréquence cardiaque cible à **70 %** pour une personne dont la FCmax est de 190 bpm et la FC de repos de 60 bpm ?",
       "answer": "151 bpm",
-      "wrong": ["133 bpm", "91 bpm", "164 bpm"],
+      "wrong": [
+        "133 bpm",
+        "91 bpm",
+        "164 bpm"
+      ],
       "explanation": "La méthode de **Karvonen** utilise la **fréquence cardiaque de réserve** (FCmax − FC repos = 190 − 60 = 130 bpm). FC cible = FC repos + 70 % × réserve = 60 + 91 = **151 bpm**. Appliquer simplement 70 % à la FCmax donnerait 133 bpm : la méthode de Karvonen tient compte du niveau de forme via la FC de repos.",
       "difficulty": 3
     },
     {
       "question": "Quel est le muscle le **plus profond** de la paroi abdominale ?",
       "answer": "Le transverse de l'abdomen",
-      "wrong": ["Le grand droit de l'abdomen", "L'oblique externe", "L'oblique interne"],
+      "wrong": [
+        "Le grand droit de l'abdomen",
+        "L'oblique externe",
+        "L'oblique interne"
+      ],
       "explanation": "De la surface vers la profondeur, on trouve l'**oblique externe**, l'**oblique interne** puis le **transverse**, tandis que le **grand droit** (les « tablettes ») est en avant. Le transverse, aux fibres horizontales, agit comme une ceinture : il comprime l'abdomen et contribue à stabiliser la colonne. Rentrer le nombril sans bouger le dos (vacuum, gainage) le sollicite particulièrement.",
       "difficulty": 3,
       "source": "https://en.wikipedia.org/wiki/Transverse_abdominal_muscle"
+    },
+    {
+      "question": "Par rapport au développé couché à plat, le **développé incliné** (banc relevé à 30-45°) insiste davantage sur quelle partie du grand pectoral ?",
+      "answer": "Le faisceau claviculaire (haut des pectoraux)",
+      "wrong": [
+        "Le faisceau abdominal (bas des pectoraux)",
+        "Le faisceau sternal (milieu des pectoraux)",
+        "La partie externe, près de l'aisselle"
+      ],
+      "explanation": "Le grand pectoral comporte un faisceau **claviculaire**, attaché à la clavicule, et un large faisceau **sterno-costal**. Incliner le banc rapproche la trajectoire d'une flexion de l'épaule, mouvement auquel participe surtout le faisceau claviculaire : le développé incliné cible donc le « haut des pecs », avec davantage de deltoïde antérieur. À l'inverse, le développé décliné et les dips insistent plutôt sur la partie basse.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel muscle est généralement cité comme le **plus volumineux** du corps humain ?",
+      "answer": "Le grand fessier",
+      "wrong": [
+        "Le grand pectoral",
+        "Le deltoïde",
+        "Le biceps brachial"
+      ],
+      "explanation": "Le **grand fessier** est le plus gros muscle du corps : principal extenseur de la hanche, c'est lui qui propulse le corps quand on monte un escalier, qu'on se relève d'un squat profond ou qu'on sprinte. Sa taille est une particularité de l'espèce humaine, liée à la station debout. Le grand dorsal, dont le nom latin *latissimus* signifie « le plus large », est le plus étendu en surface, mais pas le plus volumineux.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Gluteus_maximus"
+    },
+    {
+      "question": "Quel est le **plus long muscle** du corps humain ?",
+      "answer": "Le sartorius",
+      "wrong": [
+        "Le droit fémoral",
+        "Le grand dorsal",
+        "Le long fibulaire"
+      ],
+      "explanation": "Le **sartorius** descend en diagonale sur toute la cuisse, de l'épine iliaque antérieure jusqu'à la face interne du tibia. Son ancien nom de « couturier » évoque la posture des tailleurs assis jambes croisées : il fléchit, écarte et tourne vers l'extérieur la hanche tout en fléchissant le genou. Le droit fémoral, bien que long lui aussi, est nettement plus court.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Sartorius_muscle"
+    },
+    {
+      "question": "D'où le **deltoïde**, le muscle qui recouvre l'épaule, tire-t-il son nom ?",
+      "answer": "De sa forme triangulaire, comme la lettre grecque Δ",
+      "wrong": [
+        "De sa forme en fer à cheval, comme la lettre grecque Ω",
+        "De sa forme en fourche, comme la lettre grecque Ψ",
+        "De sa forme en croix, comme la lettre grecque Χ"
+      ],
+      "explanation": "Le **deltoïde** doit son nom à la lettre grecque **delta** (Δ) : ce muscle forme un triangle dont la base s'attache sur la clavicule, l'acromion et l'épine de l'omoplate, et dont la pointe se fixe sur l'humérus. Ses trois faisceaux (antérieur, moyen et postérieur) permettent de lever le bras vers l'avant, sur le côté et vers l'arrière. Le trapèze doit lui aussi son nom à sa forme géométrique.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Deltoid_muscle"
+    },
+    {
+      "question": "Quel muscle dessine les fameuses « **tablettes de chocolat** » sur le ventre ?",
+      "answer": "Le grand droit de l'abdomen",
+      "wrong": [
+        "Le transverse de l'abdomen",
+        "L'oblique externe",
+        "Le carré des lombes"
+      ],
+      "explanation": "Le **grand droit de l'abdomen** est un long muscle vertical, du sternum au pubis, recoupé par des **intersections tendineuses** : ce sont elles qui le divisent en « carreaux » visibles lorsque la masse grasse est faible. Le nombre de carreaux dépend de l'anatomie de chacun, pas de l'entraînement. Le transverse, plus profond, n'est pas visible : il gaine et comprime l'abdomen.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle structure relie un **muscle** à un **os** ?",
+      "answer": "Un tendon",
+      "wrong": [
+        "Un ligament",
+        "Un cartilage",
+        "Un ménisque"
+      ],
+      "explanation": "Le **tendon** transmet à l'os la force produite par le muscle : sans lui, la contraction ne déplacerait aucun segment. Le **ligament**, souvent confondu avec lui, relie un os à un autre os et stabilise l'articulation, comme les ligaments croisés du genou. Le cartilage et les ménisques recouvrent ou amortissent les surfaces articulaires.",
+      "difficulty": 1
+    },
+    {
+      "question": "Le **tendon d'Achille**, le plus épais et le plus résistant du corps, relie les muscles du mollet à quel os ?",
+      "answer": "Le calcanéus (os du talon)",
+      "wrong": [
+        "Le talus (astragale)",
+        "Le tibia",
+        "La fibula (péroné)"
+      ],
+      "explanation": "Le tendon d'Achille (ou tendon calcanéen) prolonge le **triceps sural**, c'est-à-dire les deux chefs du gastrocnémien et le soléaire, et s'insère sur le **calcanéus**, l'os du talon. En tirant sur ce levier, le mollet réalise la flexion plantaire qui permet de se hisser sur la pointe des pieds, de sauter et de courir. Le talus, juste au-dessus, s'articule avec le tibia mais ne reçoit l'insertion d'aucun muscle.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Achilles_tendon"
+    },
+    {
+      "question": "Outre la flexion du coude, quelle autre action importante le **biceps brachial** réalise-t-il ?",
+      "answer": "La supination de l'avant-bras (paume vers le haut)",
+      "wrong": [
+        "La pronation de l'avant-bras (paume vers le bas)",
+        "L'extension du poignet (dos de la main relevé)",
+        "La flexion des doigts (fermeture du poing)"
+      ],
+      "explanation": "Le **biceps brachial** est un puissant **supinateur** : il fait pivoter l'avant-bras pour tourner la paume vers le haut, comme lorsqu'on visse de la main droite. C'est pourquoi il travaille au maximum quand on fléchit le coude paume tournée vers le haut, et moins en prise pronation. Grâce à son chef long, il participe aussi légèrement à la flexion de l'épaule.",
+      "difficulty": 2
+    },
+    {
+      "question": "Le **curl marteau** (prise neutre, pouces vers le haut) sollicite davantage qu'un curl classique un muscle situé sur l'avant-bras. Lequel ?",
+      "answer": "Le brachio-radial",
+      "wrong": [
+        "Le rond pronateur",
+        "Le fléchisseur ulnaire du carpe",
+        "L'extenseur commun des doigts"
+      ],
+      "explanation": "Le **brachio-radial** (anciennement « long supinateur ») part du bas de l'humérus et s'insère à l'extrémité du radius : c'est un fléchisseur du coude, particulièrement efficace en **prise neutre**, avant-bras à mi-chemin entre pronation et supination. Le curl marteau le fait donc davantage travailler, tout comme le brachial, situé sous le biceps. Le rond pronateur et le fléchisseur ulnaire du carpe agissent surtout sur la rotation de l'avant-bras et sur le poignet.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Brachioradialis"
+    },
+    {
+      "question": "Quel muscle est à la fois **extenseur du genou** et **fléchisseur de la hanche** ?",
+      "answer": "Le droit fémoral",
+      "wrong": [
+        "Le vaste latéral",
+        "Le sartorius",
+        "Le biceps fémoral"
+      ],
+      "explanation": "Le **droit fémoral** est le seul des quatre chefs du quadriceps à s'attacher sur le bassin : il croise donc deux articulations, étend le genou et fléchit la hanche, comme lors d'un coup de pied dans un ballon. Le vaste latéral n'agit que sur le genou. Le sartorius fléchit lui aussi la hanche, mais il **fléchit** le genou ; quant au biceps fémoral, il fait exactement l'inverse : extension de hanche et flexion de genou.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Rectus_femoris_muscle"
+    },
+    {
+      "question": "Lequel de ces muscles fait partie des **ischio-jambiers** ?",
+      "answer": "Le semi-tendineux",
+      "wrong": [
+        "Le droit fémoral",
+        "Le gracile",
+        "Le sartorius"
+      ],
+      "explanation": "Les **ischio-jambiers**, à l'arrière de la cuisse, regroupent le **biceps fémoral**, le **semi-tendineux** et le **semi-membraneux** : ils partent de l'ischion (seul le chef court du biceps fémoral naît sur le fémur), fléchissent le genou et étendent la hanche. Le droit fémoral appartient au quadriceps, à l'avant de la cuisse. Le gracile et le sartorius se terminent au même endroit que le semi-tendineux, sur la « patte d'oie » du tibia, d'où la confusion fréquente.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Hamstring"
+    },
+    {
+      "question": "En appui sur une seule jambe, quel muscle situé sur le côté de la hanche empêche le bassin de s'affaisser du côté opposé ?",
+      "answer": "Le moyen fessier",
+      "wrong": [
+        "Le grand fessier",
+        "Le piriforme",
+        "Le psoas"
+      ],
+      "explanation": "Le **moyen fessier**, abducteur de la hanche, se contracte à chaque appui sur une jambe (marche, course, fentes) pour garder le bassin horizontal. Lorsqu'il est trop faible, le bassin bascule du côté de la jambe levée : c'est le **signe de Trendelenburg**. Le grand fessier est surtout extenseur de la hanche, le piriforme un petit rotateur externe et le psoas un fléchisseur.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Gluteus_medius"
+    },
+    {
+      "question": "Quel muscle profond, tendu entre la colonne lombaire, le bassin et le fémur, est le plus puissant **fléchisseur de la hanche** ?",
+      "answer": "L'ilio-psoas",
+      "wrong": [
+        "Le grand fessier",
+        "Le carré des lombes",
+        "Le piriforme"
+      ],
+      "explanation": "L'**ilio-psoas** réunit le psoas, qui naît des vertèbres lombaires, et l'iliaque, qui tapisse l'intérieur du bassin ; tous deux se terminent sur le petit trochanter du fémur. Il relève la cuisse lors des montées de genoux, des relevés de jambes ou du sprint. Le grand fessier est son antagoniste direct : il étend la hanche.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Iliopsoas"
+    },
+    {
+      "question": "Quel muscle, situé à l'avant de la jambe, relève la pointe du pied (**flexion dorsale** de la cheville) ?",
+      "answer": "Le tibial antérieur",
+      "wrong": [
+        "Le soléaire",
+        "Le gastrocnémien",
+        "Le long fibulaire"
+      ],
+      "explanation": "Le **tibial antérieur** longe la face externe du tibia et s'insère sur le bord interne du pied : il relève la pointe du pied et l'empêche de « traîner » au sol pendant la marche. Le soléaire et le gastrocnémien, réunis dans le triceps sural, font le mouvement inverse (flexion plantaire). Le long fibulaire, lui, abaisse le bord externe du pied et le tourne vers l'extérieur.",
+      "difficulty": 2
+    },
+    {
+      "question": "Lequel de ces muscles fait partie de la **coiffe des rotateurs** de l'épaule ?",
+      "answer": "Le sous-scapulaire",
+      "wrong": [
+        "Le grand rond",
+        "Le deltoïde",
+        "Le grand pectoral"
+      ],
+      "explanation": "La **coiffe des rotateurs** compte quatre muscles qui maintiennent la tête de l'humérus dans sa cavité : le **supra-épineux**, l'**infra-épineux**, le **petit rond** et le **sous-scapulaire**, seul situé à la face avant de l'omoplate (rotateur interne). Le grand rond est le piège classique : malgré son nom proche du petit rond, il n'en fait pas partie et agit plutôt comme le grand dorsal. Le deltoïde recouvre la coiffe sans en faire partie.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Rotator_cuff"
+    },
+    {
+      "question": "Quel muscle de la coiffe des rotateurs, dont le tendon passe sous l'acromion, participe au **démarrage de l'abduction** du bras ?",
+      "answer": "Le supra-épineux",
+      "wrong": [
+        "L'infra-épineux",
+        "Le petit rond",
+        "Le sous-scapulaire"
+      ],
+      "explanation": "Le **supra-épineux** occupe la fosse située au-dessus de l'épine de l'omoplate et s'insère au sommet de l'humérus en passant sous l'acromion. Il amorce l'écartement du bras, puis assiste le deltoïde. Ce passage étroit explique que son tendon soit le plus souvent touché dans le **conflit sous-acromial** et les ruptures de coiffe. L'infra-épineux et le petit rond sont des rotateurs externes, le sous-scapulaire un rotateur interne.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Supraspinatus_muscle"
+    },
+    {
+      "question": "Quel muscle, surnommé « **muscle du boxeur** », plaque l'omoplate contre les côtes et la fait glisser vers l'avant lors d'un coup de poing ?",
+      "answer": "Le grand dentelé",
+      "wrong": [
+        "Le rhomboïde",
+        "Le trapèze moyen",
+        "Le grand rond"
+      ],
+      "explanation": "Le **grand dentelé** (serratus anterior) s'attache sur les huit ou neuf premières côtes par des digitations en dents de scie, et sur le bord interne de l'omoplate. Il porte l'omoplate vers l'avant (**protraction**) et la maintient plaquée contre le thorax ; quand il est paralysé, l'omoplate se décolle (« scapula alata »). Le rhomboïde et le trapèze moyen font l'inverse : ils rapprochent les omoplates de la colonne.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Serratus_anterior_muscle"
+    },
+    {
+      "question": "Lors d'un **rowing**, quand on serre les omoplates l'une vers l'autre en fin de mouvement, quel mouvement de la scapula les rhomboïdes réalisent-ils ?",
+      "answer": "La rétraction (adduction)",
+      "wrong": [
+        "La protraction (abduction)",
+        "La dépression (abaissement)",
+        "La rotation vers le haut"
+      ],
+      "explanation": "Les **rhomboïdes**, tendus entre la colonne vertébrale et le bord interne de l'omoplate, réalisent la **rétraction** : ils rapprochent les omoplates de la colonne, avec le trapèze moyen. La protraction, mouvement inverse, est assurée par le grand dentelé. Bien rétracter les omoplates en fin de rowing renforce ces muscles posturaux, souvent négligés au profit des pectoraux.",
+      "difficulty": 2
+    },
+    {
+      "question": "Lors d'un **curl biceps**, quel muscle joue le rôle d'**antagoniste** ?",
+      "answer": "Le triceps brachial",
+      "wrong": [
+        "Le brachial",
+        "Le brachio-radial",
+        "Le deltoïde antérieur"
+      ],
+      "explanation": "L'**antagoniste** est le muscle qui produit le mouvement opposé à celui de l'agoniste : ici, le **triceps brachial** étend le coude alors que le biceps le fléchit. Pendant le curl, il se relâche (inhibition réciproque) pour laisser le mouvement se faire. Le brachial et le brachio-radial sont au contraire des **synergistes** du biceps : ils fléchissent eux aussi le coude.",
+      "difficulty": 1
+    },
+    {
+      "question": "Lequel de ces exercices est un mouvement d'**isolation** (monoarticulaire) ?",
+      "answer": "Le leg extension",
+      "wrong": [
+        "Le squat",
+        "La fente avant",
+        "Le soulevé de terre"
+      ],
+      "explanation": "Un exercice d'**isolation** ne mobilise qu'une seule articulation : le **leg extension** ne fait bouger que le genou et cible donc le quadriceps. Le squat, la fente et le soulevé de terre sont **polyarticulaires** : hanches, genoux et chevilles bougent ensemble et de nombreux muscles participent. Les exercices polyarticulaires permettent de soulever plus lourd et forment la base de la plupart des programmes, l'isolation servant de complément.",
+      "difficulty": 1
+    },
+    {
+      "question": "Lequel de ces exercices est réalisé en **chaîne cinétique fermée** ?",
+      "answer": "Les pompes",
+      "wrong": [
+        "Le développé couché",
+        "Le leg extension",
+        "Le curl biceps"
+      ],
+      "explanation": "En **chaîne cinétique fermée**, l'extrémité du membre reste fixe (mains ou pieds en appui) et c'est le corps qui se déplace : c'est le cas des **pompes**, des squats ou des tractions. Le développé couché sollicite à peu près les mêmes muscles que les pompes, mais les mains se déplacent avec la barre : il est en **chaîne ouverte**, comme le leg extension et le curl. Les exercices en chaîne fermée sollicitent davantage la coordination et la stabilisation des articulations.",
+      "difficulty": 3
+    },
+    {
+      "question": "Lequel de ces exercices se déroule principalement dans le **plan frontal** ?",
+      "answer": "Les élévations latérales",
+      "wrong": [
+        "Le curl biceps",
+        "Le squat",
+        "Le russian twist"
+      ],
+      "explanation": "Le **plan frontal** sépare le corps en une moitié avant et une moitié arrière : les mouvements qui s'y déroulent écartent ou rapprochent les membres de l'axe du corps, comme les **élévations latérales** ou les jumping jacks. Le curl et le squat se font dans le **plan sagittal** (flexions et extensions d'avant en arrière), et le russian twist dans le **plan transversal** (rotations du tronc).",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Anatomical_plane"
+    },
+    {
+      "question": "Écarter le bras sur le côté, en l'éloignant de l'axe du corps, est un mouvement…",
+      "answer": "D'abduction",
+      "wrong": [
+        "D'adduction",
+        "De flexion",
+        "De rotation interne"
+      ],
+      "explanation": "L'**abduction** éloigne un membre de l'axe médian du corps (lever le bras sur le côté, écarter la jambe) et l'**adduction** l'en rapproche. Les deux mots ne diffèrent que d'une lettre : on peut retenir que l'**ab**duction « **ab**andonne » le corps. La flexion, elle, amène le membre vers l'avant, comme quand on lève le bras devant soi.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel récepteur sensoriel, logé dans le muscle, détecte son **étirement** et déclenche le **réflexe myotatique** (comme le réflexe rotulien) ?",
+      "answer": "Le fuseau neuromusculaire",
+      "wrong": [
+        "L'organe tendineux de Golgi",
+        "Le corpuscule de Pacini",
+        "Le nocicepteur"
+      ],
+      "explanation": "Les **fuseaux neuromusculaires**, disposés parallèlement aux fibres, sont sensibles à l'allongement du muscle et à sa vitesse : un étirement brusque provoque une contraction réflexe du même muscle, c'est le **réflexe myotatique**, testé par le coup de marteau sous la rotule. L'**organe tendineux de Golgi**, situé à la jonction muscle-tendon, mesure plutôt la **tension** et tend à freiner la contraction. Le corpuscule de Pacini perçoit les vibrations et les pressions.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Muscle_spindle"
     }
   ]
 }

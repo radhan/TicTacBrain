@@ -8,7 +8,11 @@
     {
       "question": "Dans l'arborescence standard de Linux (FHS), quel répertoire contient les fichiers de **configuration** du système ?",
       "answer": "`/etc`",
-      "wrong": ["`/var`", "`/proc`", "`/opt`"],
+      "wrong": [
+        "`/var`",
+        "`/proc`",
+        "`/opt`"
+      ],
       "explanation": "Le répertoire `/etc` regroupe les fichiers de configuration propres à la machine, comme `/etc/fstab`, `/etc/hostname` ou `/etc/ssh/sshd_config`. `/var` contient des données variables (journaux, files d'attente, caches), `/proc` est un système de fichiers virtuel exposant l'état du noyau et des processus, et `/opt` accueille des logiciels tiers optionnels.",
       "difficulty": 1,
       "source": "https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html"
@@ -16,105 +20,165 @@
     {
       "question": "Dans les permissions Unix, que représente le bit `x` sur un fichier ?",
       "answer": "Le droit de l'**exécuter**",
-      "wrong": ["Le droit de le **lire**", "Le droit de le **modifier**", "Le droit de le **supprimer**"],
+      "wrong": [
+        "Le droit de le **lire**",
+        "Le droit de le **modifier**",
+        "Le droit de le **supprimer**"
+      ],
       "explanation": "Les trois bits de permission sont `r` (lecture), `w` (écriture/modification) et `x` (exécution). Sur un fichier, `x` autorise à le lancer comme programme ou script. Sur un répertoire, `x` a un autre sens : il permet d'y entrer (`cd`) et d'accéder à son contenu. La suppression d'un fichier dépend en réalité du droit `w` sur le répertoire qui le contient, pas du fichier lui-même.",
       "difficulty": 1
     },
     {
       "question": "À quoi sert l'opérateur pipe `|`, par exemple dans `ps aux | grep nginx` ?",
       "answer": "Envoyer la sortie standard de la 1re commande dans l'entrée standard de la 2e",
-      "wrong": ["Exécuter les deux commandes en parallèle, indépendamment l'une de l'autre", "Exécuter la 2e commande seulement si la 1re a réussi", "Écrire la sortie de la 1re commande dans un fichier nommé `grep`"],
+      "wrong": [
+        "Exécuter les deux commandes en parallèle, indépendamment l'une de l'autre",
+        "Exécuter la 2e commande seulement si la 1re a réussi",
+        "Écrire la sortie de la 1re commande dans un fichier nommé `grep`"
+      ],
       "explanation": "Le pipe connecte la **sortie standard** (stdout) de la commande de gauche à l'**entrée standard** (stdin) de celle de droite, sans passer par un fichier. Ici, la liste des processus produite par `ps aux` est filtrée par `grep nginx`. Pour n'exécuter la seconde qu'en cas de succès de la première, on utiliserait `&&` ; pour écrire dans un fichier, `>`.",
       "difficulty": 1
     },
     {
       "question": "Que fait `echo bonjour > notes.txt` si le fichier `notes.txt` existe déjà et contient du texte ?",
       "answer": "Elle remplace tout le contenu de `notes.txt` par `bonjour`",
-      "wrong": ["Elle ajoute `bonjour` à la fin de `notes.txt`", "Elle refuse d'écrire car le fichier existe déjà", "Elle affiche une demande de confirmation avant d'écraser"],
+      "wrong": [
+        "Elle ajoute `bonjour` à la fin de `notes.txt`",
+        "Elle refuse d'écrire car le fichier existe déjà",
+        "Elle affiche une demande de confirmation avant d'écraser"
+      ],
       "explanation": "La redirection `>` crée le fichier s'il n'existe pas, et **écrase** entièrement son contenu s'il existe. Pour ajouter à la fin sans effacer l'existant, on utilise `>>`. Certains shells peuvent empêcher l'écrasement si l'option `noclobber` (`set -o noclobber`) est activée, mais ce n'est pas le comportement par défaut.",
       "difficulty": 1
     },
     {
       "question": "Quelle commande affiche un **instantané** des processus en cours à l'instant où on la lance, puis rend la main ?",
       "answer": "`ps`",
-      "wrong": ["`top`", "`cron`", "`jobs`"],
+      "wrong": [
+        "`top`",
+        "`cron`",
+        "`jobs`"
+      ],
       "explanation": "`ps` (par exemple `ps aux`) produit une liste figée des processus au moment de l'appel, puis se termine. `top` (ou `htop`) affiche au contraire une vue qui se rafraîchit en continu jusqu'à ce qu'on la quitte. `jobs` ne liste que les tâches du shell courant, et `cron` est le planificateur de tâches, pas un outil d'affichage de processus.",
       "difficulty": 1
     },
     {
       "question": "À quoi sert la commande `sudo` placée devant une autre, comme dans `sudo apt update` ?",
       "answer": "Exécuter la commande avec les privilèges d'un autre utilisateur, root par défaut",
-      "wrong": ["Exécuter la commande en arrière-plan sans bloquer le terminal", "Installer la commande si elle n'est pas déjà présente", "Lancer la commande de façon planifiée et récurrente"],
+      "wrong": [
+        "Exécuter la commande en arrière-plan sans bloquer le terminal",
+        "Installer la commande si elle n'est pas déjà présente",
+        "Lancer la commande de façon planifiée et récurrente"
+      ],
       "explanation": "`sudo` (*superuser do*) permet à un utilisateur autorisé (via `/etc/sudoers`) d'exécuter une commande avec les droits d'un autre utilisateur, root par défaut. Chaque usage est journalisé et demande en général le mot de passe de l'utilisateur appelant, pas celui de root. Pour lancer en arrière-plan on utilise `&`, et pour planifier une tâche, cron.",
       "difficulty": 1
     },
     {
       "question": "Sur une distribution Debian ou Ubuntu, quelle commande installe le paquet `curl` depuis les dépôts ?",
       "answer": "`apt install curl`",
-      "wrong": ["`yum install curl`", "`make install curl`", "`systemctl install curl`"],
+      "wrong": [
+        "`yum install curl`",
+        "`make install curl`",
+        "`systemctl install curl`"
+      ],
       "explanation": "`apt` est le gestionnaire de paquets des distributions basées sur Debian (Debian, Ubuntu…). `yum` (ou `dnf`) joue le même rôle sur les distributions de la famille Red Hat (RHEL, Fedora, CentOS). `make install` sert à installer un logiciel compilé depuis ses sources, et `systemctl` gère les services, pas l'installation de paquets.",
       "difficulty": 1
     },
     {
       "question": "Que crée la commande `ln -s /etc/nginx/nginx.conf conf` ?",
       "answer": "Un lien symbolique nommé `conf` qui pointe vers `/etc/nginx/nginx.conf`",
-      "wrong": ["Une copie du fichier `nginx.conf` nommée `conf`", "Un lien physique (hard link) partageant le même inode", "Un répertoire `conf` contenant le fichier `nginx.conf`"],
+      "wrong": [
+        "Une copie du fichier `nginx.conf` nommée `conf`",
+        "Un lien physique (hard link) partageant le même inode",
+        "Un répertoire `conf` contenant le fichier `nginx.conf`"
+      ],
       "explanation": "L'option `-s` de `ln` crée un **lien symbolique** : un petit fichier spécial qui contient le chemin de la cible. Sans `-s`, `ln` crée un **lien physique** (hard link), une seconde entrée pointant directement vers le même inode. Un lien symbolique peut traverser les systèmes de fichiers et pointer vers un répertoire, contrairement au lien physique.",
       "difficulty": 1
     },
     {
       "question": "Que fait `grep -i erreur journal.log` ?",
       "answer": "Affiche les lignes de `journal.log` contenant « erreur », sans tenir compte de la casse",
-      "wrong": ["Affiche les lignes de `journal.log` ne contenant pas « erreur »", "Compte le nombre de lignes contenant « erreur »", "Remplace « erreur » par rien dans `journal.log`"],
+      "wrong": [
+        "Affiche les lignes de `journal.log` ne contenant pas « erreur »",
+        "Compte le nombre de lignes contenant « erreur »",
+        "Remplace « erreur » par rien dans `journal.log`"
+      ],
       "explanation": "`grep` affiche les lignes qui correspondent à un motif. L'option `-i` rend la recherche **insensible à la casse**, donc « Erreur », « ERREUR » et « erreur » correspondent toutes. Pour inverser la sélection (lignes qui ne correspondent pas) on utilise `-v`, pour seulement les compter `-c`. `grep` ne modifie jamais le fichier.",
       "difficulty": 1
     },
     {
       "question": "À quelles permissions symboliques correspond `chmod 644 fichier.txt` ?",
       "answer": "`rw-r--r--`",
-      "wrong": ["`rwxr--r--`", "`rw-rw-r--`", "`rwxr-xr-x`"],
+      "wrong": [
+        "`rwxr--r--`",
+        "`rw-rw-r--`",
+        "`rwxr-xr-x`"
+      ],
       "explanation": "En notation octale, chaque chiffre est la somme de 4 (`r`), 2 (`w`) et 1 (`x`), pour le propriétaire, le groupe puis les autres. `6 = 4+2 = rw-` et `4 = r--`. On obtient donc `rw-r--r--` : lecture et écriture pour le propriétaire, lecture seule pour le groupe et les autres. `rwxr-xr-x` correspondrait à `755`.",
       "difficulty": 2
     },
     {
       "question": "Que fait `chown alice:dev rapport.txt` ?",
       "answer": "Attribue le fichier à l'utilisateur `alice` et au groupe `dev`",
-      "wrong": ["Donne à `alice` et à `dev` le droit de lire le fichier", "Change les permissions du fichier en `rw-` pour `alice`", "Renomme le propriétaire du fichier en `alice:dev`"],
+      "wrong": [
+        "Donne à `alice` et à `dev` le droit de lire le fichier",
+        "Change les permissions du fichier en `rw-` pour `alice`",
+        "Renomme le propriétaire du fichier en `alice:dev`"
+      ],
       "explanation": "`chown` modifie le **propriétaire** et, avec la syntaxe `utilisateur:groupe`, le **groupe** propriétaire d'un fichier. Il ne touche pas aux bits de permission (lecture, écriture, exécution), qui relèvent de `chmod`. Pour changer uniquement le groupe, on peut aussi utiliser `chgrp`.",
       "difficulty": 2
     },
     {
       "question": "Quelle est la différence entre `commande > fichier` et `commande >> fichier` ?",
       "answer": "`>` écrase le fichier, `>>` ajoute à la fin sans effacer l'existant",
-      "wrong": ["`>>` écrase le fichier, `>` ajoute à la fin", "`>` écrit la sortie standard, `>>` écrit les erreurs", "`>>` crée le fichier, `>` échoue s'il n'existe pas"],
+      "wrong": [
+        "`>>` écrase le fichier, `>` ajoute à la fin",
+        "`>` écrit la sortie standard, `>>` écrit les erreurs",
+        "`>>` crée le fichier, `>` échoue s'il n'existe pas"
+      ],
       "explanation": "`>` tronque le fichier (le vide) avant d'y écrire la sortie, tandis que `>>` l'ouvre en mode ajout et écrit à la suite du contenu existant. Les deux créent le fichier s'il n'existe pas. Pour rediriger les erreurs plutôt que la sortie standard, on utilise `2>` ou `2>>`.",
       "difficulty": 2
     },
     {
       "question": "Que produit la commande suivante ?\n```bash\necho \"chat chat\" | sed 's/chat/chien/'\n```",
       "answer": "`chien chat`",
-      "wrong": ["`chien chien`", "`chat chien`", "`chat chat`"],
+      "wrong": [
+        "`chien chien`",
+        "`chat chien`",
+        "`chat chat`"
+      ],
       "explanation": "Par défaut, `sed 's/motif/remplacement/'` ne remplace que la **première** occurrence trouvée sur chaque ligne. « chat chat » devient donc « chien chat ». Pour remplacer toutes les occurrences de la ligne, il faut ajouter le drapeau `g` : `s/chat/chien/g` donnerait « chien chien ».",
       "difficulty": 2
     },
     {
       "question": "Que fait `find /var/log -name \"*.log\"` ?",
       "answer": "Liste récursivement les fichiers dont le nom se termine par `.log` sous `/var/log`",
-      "wrong": ["Affiche le contenu de tous les fichiers `.log` de `/var/log`", "Recherche le texte `*.log` à l'intérieur des fichiers", "Liste les fichiers `.log` directement dans `/var/log`, sans les sous-dossiers"],
+      "wrong": [
+        "Affiche le contenu de tous les fichiers `.log` de `/var/log`",
+        "Recherche le texte `*.log` à l'intérieur des fichiers",
+        "Liste les fichiers `.log` directement dans `/var/log`, sans les sous-dossiers"
+      ],
       "explanation": "`find` parcourt une arborescence de façon **récursive** à partir du répertoire indiqué. `-name \"*.log\"` filtre sur le nom (les guillemets empêchent le shell d'interpréter `*` lui-même). `find` affiche les chemins trouvés mais n'ouvre pas les fichiers ; pour chercher du texte à l'intérieur, on utilise `grep`.",
       "difficulty": 2
     },
     {
       "question": "Que produit la commande suivante ?\n```bash\necho \"linux est libre\" | awk '{print $2}'\n```",
       "answer": "`est`",
-      "wrong": ["`linux`", "`libre`", "`linux est libre`"],
+      "wrong": [
+        "`linux`",
+        "`libre`",
+        "`linux est libre`"
+      ],
       "explanation": "`awk` découpe chaque ligne en champs séparés par des espaces (ou tabulations) par défaut. `$2` désigne le **deuxième** champ, ici « est » ; `$1` vaudrait « linux » et `$0` la ligne entière. On peut changer le séparateur avec l'option `-F`, par exemple `-F:` pour un fichier comme `/etc/passwd`.",
       "difficulty": 2
     },
     {
       "question": "Dans une ligne de crontab comme `30 2 * * *`, que représentent les cinq champs, dans l'ordre ?",
       "answer": "Minute, heure, jour du mois, mois, jour de la semaine",
-      "wrong": ["Heure, minute, jour de la semaine, jour du mois, mois", "Seconde, minute, heure, jour du mois, mois", "Minute, heure, jour de la semaine, mois, jour du mois"],
+      "wrong": [
+        "Heure, minute, jour de la semaine, jour du mois, mois",
+        "Seconde, minute, heure, jour du mois, mois",
+        "Minute, heure, jour de la semaine, mois, jour du mois"
+      ],
       "explanation": "Une entrée crontab classique comporte cinq champs : **minute** (0–59), **heure** (0–23), **jour du mois** (1–31), **mois** (1–12) puis **jour de la semaine** (0–7, où 0 et 7 valent dimanche). `30 2 * * *` s'exécute donc tous les jours à 2 h 30. La crontab standard ne comporte pas de champ « secondes ».",
       "difficulty": 2,
       "source": "https://man7.org/linux/man-pages/man5/crontab.5.html"
@@ -122,42 +186,66 @@
     {
       "question": "À quoi sert la variable d'environnement `PATH` ?",
       "answer": "Elle liste les répertoires où le shell cherche les exécutables d'une commande",
-      "wrong": ["Elle indique le répertoire de travail courant", "Elle contient le chemin du dossier personnel de l'utilisateur", "Elle stocke l'historique des commandes tapées"],
+      "wrong": [
+        "Elle indique le répertoire de travail courant",
+        "Elle contient le chemin du dossier personnel de l'utilisateur",
+        "Elle stocke l'historique des commandes tapées"
+      ],
       "explanation": "`PATH` contient une liste de répertoires séparés par `:` (par exemple `/usr/local/bin:/usr/bin:/bin`). Quand on tape une commande sans chemin, le shell la cherche dans ces répertoires, dans l'ordre, et exécute la **première** correspondance trouvée. Le répertoire courant est donné par `pwd`, le dossier personnel par la variable `HOME`.",
       "difficulty": 2
     },
     {
       "question": "Pour se connecter en SSH par clé, laquelle des deux clés de la paire copie-t-on sur le serveur distant ?",
       "answer": "La clé **publique**",
-      "wrong": ["La clé **privée**", "Les deux clés, publique et privée", "Aucune : on y copie seulement une empreinte du mot de passe"],
+      "wrong": [
+        "La clé **privée**",
+        "Les deux clés, publique et privée",
+        "Aucune : on y copie seulement une empreinte du mot de passe"
+      ],
       "explanation": "On place la clé **publique** dans le fichier `~/.ssh/authorized_keys` du serveur ; la clé **privée** reste secrète sur sa machine et ne doit jamais être partagée. Le serveur envoie un défi que seule la clé privée correspondante peut résoudre. La clé privée doit garder des permissions restreintes (par exemple `600`), sinon le client SSH refuse de l'utiliser.",
       "difficulty": 2
     },
     {
       "question": "Quelle est la différence entre `systemctl start nginx` et `systemctl enable nginx` ?",
       "answer": "`start` lance le service maintenant, `enable` le configure pour démarrer au boot",
-      "wrong": ["`enable` lance le service maintenant, `start` le configure pour le boot", "`start` démarre le service, `enable` le redémarre après un plantage", "Les deux sont identiques, `enable` n'est qu'un alias de `start`"],
+      "wrong": [
+        "`enable` lance le service maintenant, `start` le configure pour le boot",
+        "`start` démarre le service, `enable` le redémarre après un plantage",
+        "Les deux sont identiques, `enable` n'est qu'un alias de `start`"
+      ],
       "explanation": "`systemctl start` démarre immédiatement le service, mais ce lancement ne survit pas au redémarrage de la machine. `systemctl enable` crée les liens nécessaires pour que le service soit lancé automatiquement au **démarrage**, sans l'activer tout de suite. On combine souvent les deux, ou on utilise `enable --now` pour faire les deux d'un coup.",
       "difficulty": 2
     },
     {
       "question": "Vous voulez connaître l'**espace libre restant** sur le système de fichiers monté sur `/`. Quelle commande utiliser ?",
       "answer": "`df -h /`",
-      "wrong": ["`du -h /`", "`ls -lh /`", "`free -h`"],
+      "wrong": [
+        "`du -h /`",
+        "`ls -lh /`",
+        "`free -h`"
+      ],
       "explanation": "`df` (*disk free*) affiche, par système de fichiers, l'espace total, utilisé et disponible. `du` (*disk usage*) mesure au contraire la taille occupée par des fichiers ou répertoires précis. `free` concerne la mémoire vive, pas le disque. L'option `-h` montre les tailles dans un format lisible (Ko, Mo, Go).",
       "difficulty": 2
     },
     {
       "question": "Que fait `tar -czf sauvegarde.tar.gz dossier/` ?",
       "answer": "Crée une archive compressée gzip de `dossier/`, nommée `sauvegarde.tar.gz`",
-      "wrong": ["Extrait le contenu de `sauvegarde.tar.gz` dans `dossier/`", "Affiche la liste des fichiers contenus dans `sauvegarde.tar.gz`", "Compresse chaque fichier de `dossier/` séparément en `.gz`"],
+      "wrong": [
+        "Extrait le contenu de `sauvegarde.tar.gz` dans `dossier/`",
+        "Affiche la liste des fichiers contenus dans `sauvegarde.tar.gz`",
+        "Compresse chaque fichier de `dossier/` séparément en `.gz`"
+      ],
       "explanation": "Les options se lisent : `c` = créer une archive, `z` = la compresser avec gzip, `f` = préciser le nom de fichier qui suit. Pour extraire, on remplace `c` par `x` (`tar -xzf`), et pour seulement lister le contenu, par `t` (`tar -tzf`). `tar` regroupe tous les fichiers dans une seule archive, il ne les compresse pas un par un.",
       "difficulty": 2
     },
     {
       "question": "Que fait la redirection `2>&1`, par exemple dans `commande > sortie.log 2>&1` ?",
       "answer": "Elle redirige les erreurs (stderr) vers la même destination que la sortie standard",
-      "wrong": ["Elle redirige la sortie standard vers le flux d'erreurs", "Elle fusionne les deux premières lignes de la sortie", "Elle exécute la commande deux fois de suite"],
+      "wrong": [
+        "Elle redirige la sortie standard vers le flux d'erreurs",
+        "Elle fusionne les deux premières lignes de la sortie",
+        "Elle exécute la commande deux fois de suite"
+      ],
       "explanation": "`2>&1` signifie « rediriger le descripteur 2 (stderr) là où pointe actuellement le descripteur 1 (stdout) ». Dans `> sortie.log 2>&1`, stdout va d'abord vers `sortie.log`, puis stderr est envoyé au même endroit : les deux flux atterrissent dans le fichier. L'ordre des redirections est donc déterminant.",
       "difficulty": 3,
       "source": "https://www.gnu.org/software/bash/manual/html_node/Redirections.html"
@@ -165,21 +253,33 @@
     {
       "question": "Dans `find . -name \"*.tmp\" | xargs rm`, quel est le rôle de `xargs` ?",
       "answer": "Transformer les lignes reçues sur stdin en arguments passés à `rm`",
-      "wrong": ["Exécuter `rm` en arrière-plan pour chaque fichier trouvé", "Demander une confirmation avant de supprimer chaque fichier", "Rediriger la sortie de `find` vers un fichier ensuite lu par `rm`"],
+      "wrong": [
+        "Exécuter `rm` en arrière-plan pour chaque fichier trouvé",
+        "Demander une confirmation avant de supprimer chaque fichier",
+        "Rediriger la sortie de `find` vers un fichier ensuite lu par `rm`"
+      ],
       "explanation": "Beaucoup de commandes, comme `rm`, attendent leurs cibles sous forme d'**arguments**, pas sur l'entrée standard. `xargs` lit les éléments reçus sur stdin et les place en arguments de la commande indiquée. Pour gérer sans risque les noms contenant des espaces ou des sauts de ligne, on combine souvent `find -print0` avec `xargs -0`.",
       "difficulty": 3
     },
     {
       "question": "Que fait `mkdir build && cd build` ?",
       "answer": "Crée le dossier `build`, puis entre dedans seulement si la création a réussi",
-      "wrong": ["Crée le dossier `build` et y entre, que la création réussisse ou non", "Entre dans `build`, puis le crée s'il n'existait pas", "Crée le dossier `build` ou, en cas d'échec, entre dans le dossier courant"],
+      "wrong": [
+        "Crée le dossier `build` et y entre, que la création réussisse ou non",
+        "Entre dans `build`, puis le crée s'il n'existait pas",
+        "Crée le dossier `build` ou, en cas d'échec, entre dans le dossier courant"
+      ],
       "explanation": "`&&` exécute la commande de droite **uniquement si** celle de gauche se termine avec succès (code de sortie 0). Si `mkdir build` échoue (dossier déjà existant, droits insuffisants…), le `cd` n'a pas lieu. L'opérateur complémentaire `||` fait l'inverse : il exécute la partie droite seulement si la gauche a échoué.",
       "difficulty": 3
     },
     {
       "question": "Pourquoi un processus peut-il ignorer un `kill -15` (SIGTERM) mais jamais un `kill -9` (SIGKILL) ?",
       "answer": "SIGKILL ne peut être ni intercepté ni ignoré, il est appliqué par le noyau",
-      "wrong": ["SIGKILL est envoyé en priorité plus haute, donc traité plus vite", "SIGTERM n'arrête que les processus lancés en arrière-plan", "SIGKILL ferme d'abord proprement les fichiers ouverts du processus"],
+      "wrong": [
+        "SIGKILL est envoyé en priorité plus haute, donc traité plus vite",
+        "SIGTERM n'arrête que les processus lancés en arrière-plan",
+        "SIGKILL ferme d'abord proprement les fichiers ouverts du processus"
+      ],
       "explanation": "**SIGTERM** (15) est une demande d'arrêt « polie » : le programme peut l'intercepter pour nettoyer (fermer des fichiers, sauvegarder) avant de quitter, voire l'ignorer. **SIGKILL** (9) est traité directement par le noyau, qui termine le processus immédiatement sans lui rendre la main : il ne peut donc être ni capturé ni ignoré. Le revers est qu'aucun nettoyage n'est effectué.",
       "difficulty": 3,
       "source": "https://man7.org/linux/man-pages/man7/signal.7.html"
@@ -187,7 +287,11 @@
     {
       "question": "Dans `commande 2>&1 > sortie.log`, où vont les messages d'erreur (stderr) de la commande ?",
       "answer": "Vers le terminal, pas dans `sortie.log`",
-      "wrong": ["Dans `sortie.log`, mêlés à la sortie standard", "Dans un fichier séparé nommé `1`", "Ils sont supprimés silencieusement"],
+      "wrong": [
+        "Dans `sortie.log`, mêlés à la sortie standard",
+        "Dans un fichier séparé nommé `1`",
+        "Ils sont supprimés silencieusement"
+      ],
       "explanation": "Les redirections sont évaluées de **gauche à droite**. `2>&1` envoie d'abord stderr là où pointe stdout *à ce moment-là*, c'est-à-dire le terminal. Ensuite seulement `> sortie.log` déplace stdout vers le fichier, mais stderr reste rattaché au terminal. Pour tout capturer dans le fichier, il faut écrire `> sortie.log 2>&1`, dans cet ordre.",
       "difficulty": 3,
       "source": "https://www.gnu.org/software/bash/manual/html_node/Redirections.html"
@@ -195,7 +299,11 @@
     {
       "question": "Un script renvoie le code de sortie `127` après l'appel d'une commande. Qu'indique-t-il le plus souvent ?",
       "answer": "La commande est introuvable (nom inexistant ou absent du `PATH`)",
-      "wrong": ["La commande s'est terminée normalement avec succès", "L'utilisateur n'avait pas les droits d'exécution", "Le script a été interrompu par un `Ctrl-C`"],
+      "wrong": [
+        "La commande s'est terminée normalement avec succès",
+        "L'utilisateur n'avait pas les droits d'exécution",
+        "Le script a été interrompu par un `Ctrl-C`"
+      ],
       "explanation": "Par convention, le code `0` signale un succès et tout code non nul une erreur. Le shell réserve `127` à « commande introuvable » et `126` à « trouvée mais non exécutable » (droits manquants ou fichier non exécutable). Une interruption par `Ctrl-C` (SIGINT) donne généralement le code `130`.",
       "difficulty": 3,
       "source": "https://tldp.org/LDP/abs/html/exitcodes.html"
@@ -203,24 +311,577 @@
     {
       "question": "La variable vaut `fichier=\"mon rapport.txt\"`. Que se passe-t-il avec `rm $fichier` (sans guillemets) ?",
       "answer": "Le shell tente de supprimer deux fichiers : `mon` et `rapport.txt`",
-      "wrong": ["Le shell supprime bien le seul fichier `mon rapport.txt`", "Le shell renvoie une erreur de syntaxe", "Le shell supprime un fichier littéralement nommé `$fichier`"],
+      "wrong": [
+        "Le shell supprime bien le seul fichier `mon rapport.txt`",
+        "Le shell renvoie une erreur de syntaxe",
+        "Le shell supprime un fichier littéralement nommé `$fichier`"
+      ],
       "explanation": "Sans guillemets, le shell applique le **découpage en mots** sur la valeur de la variable : l'espace sépare « mon » de « rapport.txt », traités comme deux arguments distincts. Le shell effectue aussi l'expansion des caractères génériques (`*`, `?`) à cette étape. Pour préserver la valeur entière, il faut écrire `rm \"$fichier\"`.",
       "difficulty": 3
     },
     {
       "question": "Quel descripteur de fichier standard est utilisé pour la sortie d'**erreur** (stderr) ?",
       "answer": "`2`",
-      "wrong": ["`0`", "`1`", "`3`"],
+      "wrong": [
+        "`0`",
+        "`1`",
+        "`3`"
+      ],
       "explanation": "Trois descripteurs sont ouverts par défaut pour chaque processus : `0` pour l'entrée standard (stdin), `1` pour la sortie standard (stdout) et `2` pour la sortie d'erreur (stderr). C'est pourquoi on écrit `2>` pour rediriger les erreurs et `2>&1` pour les joindre à la sortie standard. Un simple `>` agit sur le descripteur `1`.",
       "difficulty": 3
     },
     {
       "question": "Qu'est-ce que le répertoire `/proc` sous Linux ?",
       "answer": "Un système de fichiers virtuel reflétant l'état du noyau et des processus",
-      "wrong": ["Le répertoire où sont installés les programmes de l'utilisateur", "Un dossier de fichiers temporaires effacés à chaque redémarrage", "L'emplacement des journaux système et des caches applicatifs"],
+      "wrong": [
+        "Le répertoire où sont installés les programmes de l'utilisateur",
+        "Un dossier de fichiers temporaires effacés à chaque redémarrage",
+        "L'emplacement des journaux système et des caches applicatifs"
+      ],
       "explanation": "`/proc` est un pseudo-système de fichiers généré en mémoire par le noyau : son contenu n'existe pas sur le disque. On y lit l'état du système, par exemple `/proc/cpuinfo`, `/proc/meminfo`, ou `/proc/<PID>/` pour chaque processus. Les fichiers temporaires vont dans `/tmp`, et les journaux dans `/var/log`.",
       "difficulty": 3,
       "source": "https://man7.org/linux/man-pages/man5/proc.5.html"
+    },
+    {
+      "question": "Sur la plupart des distributions Linux, quel est le répertoire personnel de l'utilisateur **root** ?",
+      "answer": "`/root`",
+      "wrong": [
+        "`/home/root`",
+        "`/etc/root`",
+        "`/usr/root`"
+      ],
+      "explanation": "Le compte root a son dossier personnel à part, `/root`, directement sous la racine et non dans `/home`. L'administrateur garde ainsi un environnement utilisable même si `/home` est sur une partition séparée qui n'a pas pu être montée. Les utilisateurs ordinaires ont, eux, leur dossier dans `/home/<nom>`. À ne pas confondre : `/root` est le dossier de l'utilisateur root, `/` est la racine de toute l'arborescence.",
+      "difficulty": 1,
+      "source": "https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html"
+    },
+    {
+      "question": "Que devient ce qu'une commande écrit dans `/dev/null`, par exemple avec `commande > /dev/null` ?",
+      "answer": "C'est jeté : le périphérique accepte les données et les supprime aussitôt",
+      "wrong": [
+        "C'est conservé dans un tampon jusqu'au prochain redémarrage",
+        "C'est envoyé dans le journal système `/var/log/syslog`",
+        "C'est refusé : la commande échoue avec une erreur d'écriture"
+      ],
+      "explanation": "`/dev/null` est un fichier spécial, surnommé « le trou noir » : toute écriture y réussit mais les données sont perdues, et toute lecture renvoie immédiatement une fin de fichier. On s'en sert pour faire taire une sortie : `commande 2> /dev/null` masque les erreurs, `commande > /dev/null 2>&1` masque tout. La commande ne voit aucune différence avec une écriture dans un vrai fichier.",
+      "difficulty": 1
+    },
+    {
+      "question": "Le dossier courant contient un script exécutable `deploy.sh`. Pourquoi faut-il taper `./deploy.sh` plutôt que `deploy.sh` pour le lancer ?",
+      "answer": "Parce que le dossier courant ne fait pas partie du `PATH`",
+      "wrong": [
+        "Parce que `./` donne temporairement le droit d'exécution au script",
+        "Parce que `./` force le shell à utiliser l'interpréteur bash",
+        "Parce que sans `./` le script s'exécute en arrière-plan"
+      ],
+      "explanation": "Quand un nom de commande ne contient aucun `/`, le shell le cherche uniquement dans les répertoires listés dans `PATH`, et le dossier courant `.` n'y figure pas par défaut. C'est une mesure de sécurité : un fichier piégé nommé `ls` déposé dans un dossier ne doit pas être lancé à la place du vrai `ls`. Écrire `./deploy.sh` donne un chemin explicite, que le shell utilise sans consulter `PATH`. Le droit d'exécution reste nécessaire : `./` ne le donne pas.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que fait `chmod u+x script.sh` ?",
+      "answer": "Ajoute le droit d'exécution pour le propriétaire seulement",
+      "wrong": [
+        "Ajoute le droit d'exécution pour tous les utilisateurs",
+        "Retire le droit d'exécution au propriétaire seulement",
+        "Ajoute le droit d'exécution pour le groupe seulement"
+      ],
+      "explanation": "En notation symbolique, `u` désigne le propriétaire (*user*), `g` le groupe, `o` les autres (*others*) et `a` les trois (*all*). `+` ajoute un droit, `-` le retire et `=` fixe exactement la liste. `chmod u+x` ne touche donc qu'au propriétaire et laisse les autres bits intacts. Sans lettre, `chmod +x` ajoute `x` à tout le monde (sauf les bits masqués par le umask).",
+      "difficulty": 1
+    },
+    {
+      "question": "Avec un `umask` de `027`, quelles permissions reçoit un **répertoire** nouvellement créé par `mkdir` ?",
+      "answer": "`rwxr-x---`",
+      "wrong": [
+        "`rw-r-----`",
+        "`rwxr-xr-x`",
+        "`rwxrwx---`"
+      ],
+      "explanation": "Le umask indique les bits à **retirer** des permissions par défaut : 777 pour un répertoire, 666 pour un fichier ordinaire. Avec 027, on retire `w` au groupe et tout aux autres : un répertoire obtient 750 (`rwxr-x---`). Un fichier obtiendrait 640 (`rw-r-----`), car il ne reçoit jamais `x` par défaut. Avec le umask le plus répandu, 022, on obtient 755 pour les répertoires et 644 pour les fichiers.",
+      "difficulty": 3
+    },
+    {
+      "question": "Le répertoire `/tmp` a les permissions `drwxrwxrwt`. Que garantit le `t` final, le **sticky bit** ?",
+      "answer": "Chacun ne peut supprimer ou renommer que ses propres fichiers",
+      "wrong": [
+        "Les fichiers y sont effacés automatiquement à chaque redémarrage",
+        "Les fichiers créés héritent du groupe propriétaire du répertoire",
+        "Les programmes qu'il contient s'exécutent avec les droits de root"
+      ],
+      "explanation": "`/tmp` est accessible en écriture à tous. Or supprimer ou renommer un fichier dépend du droit `w` sur le **répertoire** : sans sticky bit, n'importe qui pourrait effacer les fichiers des autres. Le sticky bit réserve ces opérations au propriétaire du fichier, au propriétaire du répertoire et à root. Le nettoyage de `/tmp` au démarrage existe sur beaucoup de systèmes, mais il est assuré par d'autres mécanismes (tmpfs, systemd-tmpfiles), pas par ce bit ; l'héritage du groupe, lui, est le rôle du bit setgid.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi le programme `/usr/bin/passwd` a-t-il les permissions `rwsr-xr-x` (bit **SUID**) ?",
+      "answer": "Pour s'exécuter avec les droits de root, son propriétaire, et pouvoir modifier `/etc/shadow`",
+      "wrong": [
+        "Pour être exécutable par root uniquement, et jamais par les autres utilisateurs",
+        "Pour être protégé contre toute suppression, y compris par l'utilisateur root",
+        "Pour se lancer automatiquement à chaque nouvelle connexion d'un utilisateur"
+      ],
+      "explanation": "Le bit SUID (un `s` à la place du `x` du propriétaire, posé par exemple avec `chmod 4755`) fait qu'un programme s'exécute avec l'identité effective de son **propriétaire**, et non de l'utilisateur qui le lance. Un utilisateur ordinaire peut ainsi changer son mot de passe, ce qui exige d'écrire dans `/etc/shadow`, modifiable par root seul. C'est aussi pourquoi les binaires SUID root sont une cible de choix pour l'élévation de privilèges : la moindre faille y donne les droits root.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sous Linux, qu'est-ce qui rend un fichier comme `.bashrc` « caché » dans un `ls` ordinaire ?",
+      "answer": "Son nom commence par un point",
+      "wrong": [
+        "Un attribut « caché » enregistré dans son inode",
+        "Ses droits de lecture sont retirés aux autres",
+        "Il appartient à l'utilisateur root"
+      ],
+      "explanation": "Il n'existe pas d'attribut « caché » sous Unix : par simple convention, `ls` et le joker `*` du shell ignorent les noms commençant par `.`. On les affiche avec `ls -a` (qui montre aussi `.` et `..`) ou `ls -A`. Les fichiers de configuration personnels (`.bashrc`, `.ssh/`, `.gitconfig`) suivent cette convention pour ne pas encombrer le dossier personnel. Conséquence piège : `rm *` laisse ces fichiers en place.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que fait la commande `cd -` ?",
+      "answer": "Elle revient au répertoire où l'on se trouvait juste avant",
+      "wrong": [
+        "Elle remonte au répertoire parent du dossier courant",
+        "Elle revient au dossier personnel de l'utilisateur",
+        "Elle revient à la racine `/` du système de fichiers"
+      ],
+      "explanation": "`cd -` bascule vers le répertoire précédent, mémorisé dans la variable `OLDPWD`, et affiche son chemin. La refaire ramène au point de départ : pratique pour alterner entre deux dossiers éloignés. Le répertoire parent s'atteint avec `cd ..`, et le dossier personnel avec `cd` tout court ou `cd ~`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Le fichier `trois.txt` contient 3 lignes. Qu'affiche `wc -l < trois.txt` ?",
+      "answer": "`3`",
+      "wrong": [
+        "`3 trois.txt`",
+        "`3 -`",
+        "`trois.txt: 3`"
+      ],
+      "explanation": "Avec `<`, c'est le **shell** qui ouvre `trois.txt` et le branche sur l'entrée standard de `wc` : la commande ne reçoit aucun nom de fichier, elle n'affiche donc que le nombre. Avec `wc -l trois.txt`, c'est `wc` qui ouvre lui-même le fichier, et il ajoute son nom : `3 trois.txt`. La forme avec `<` est pratique dans un script pour récupérer le nombre seul, par exemple `n=$(wc -l < trois.txt)`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans `ping -c 1 serveur || echo \"injoignable\"`, quand le message « injoignable » s'affiche-t-il ?",
+      "answer": "Seulement si `ping` échoue (code de sortie non nul)",
+      "wrong": [
+        "Seulement si `ping` réussit (code de sortie 0)",
+        "Toujours, une fois que `ping` est terminé",
+        "Immédiatement, en parallèle de `ping`"
+      ],
+      "explanation": "`||` est le OU logique du shell : la commande de droite ne s'exécute que si celle de gauche renvoie un code non nul, c'est-à-dire un échec. C'est l'inverse de `&&`, qui n'enchaîne qu'en cas de succès (code 0). Pour enchaîner sans condition, on utilise `;`, et pour lancer en parallèle, `&`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'affiche le code suivant ?\n```bash\ntrue && { echo A; false; } || echo B\n```",
+      "answer": "`A` puis `B`",
+      "wrong": [
+        "`A` seulement",
+        "`B` seulement",
+        "Rien du tout"
+      ],
+      "explanation": "`a && b || c` n'est **pas** un si/alors/sinon : `c` s'exécute dès que le résultat de `a && b` est un échec, que l'échec vienne de `a` ou de `b`. Ici `true` réussit, donc le bloc s'exécute et affiche `A`, mais il se termine par `false` : le `||` déclenche alors `echo B`. Pour un vrai branchement, il faut écrire `if true; then ...; else ...; fi`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'affiche `echo '$HOME'`, avec des guillemets **simples** (apostrophes) ?",
+      "answer": "Le texte `$HOME` tel quel",
+      "wrong": [
+        "Le chemin du dossier personnel, par exemple `/home/alice`",
+        "Une ligne vide, car la variable est protégée",
+        "Une erreur indiquant une variable non définie"
+      ],
+      "explanation": "Entre guillemets simples, le shell n'interprète rien : ni `$`, ni `\\`, ni les jokers. Entre guillemets doubles, il développe toujours les variables (`\"$HOME\"` donne `/home/alice`) et les substitutions `$(...)`, mais empêche le découpage en mots et l'expansion des jokers. D'où la règle pratique : des guillemets doubles autour des variables, des simples pour du texte littéral.",
+      "difficulty": 2
+    },
+    {
+      "question": "En bash, qu'affiche `echo fichier{1..3}.txt` ?",
+      "answer": "`fichier1.txt fichier2.txt fichier3.txt`",
+      "wrong": [
+        "`fichier0.txt fichier1.txt fichier2.txt`",
+        "`fichier1.txt fichier2.txt`",
+        "`fichier{1..3}.txt`"
+      ],
+      "explanation": "L'expansion d'accolades génère des mots avant toute autre expansion : `{1..3}` produit une séquence, bornes **incluses**, et `{a,b}` une liste. Elle ne dépend pas des fichiers existants, contrairement aux jokers `*` et `?`. Usages courants : `mkdir -p projet/{src,tests,docs}`, ou `cp config.yml{,.bak}`, qui devient `cp config.yml config.yml.bak` pour faire une sauvegarde.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche `echo $((7 / 2))` en bash ?",
+      "answer": "`3`",
+      "wrong": [
+        "`3.5`",
+        "`4`",
+        "`7 / 2`"
+      ],
+      "explanation": "L'arithmétique de bash, `$(( ))`, ne manipule que des **entiers** : la division est entière et tronque la partie décimale, donc 7 / 2 donne 3 (et `$((7 % 2))` donne le reste, 1). Il n'y a pas d'arrondi au plus proche. Pour des décimaux, on passe par un outil externe comme `bc` (`echo \"7/2\" | bc -l`) ou `awk`.",
+      "difficulty": 2
+    },
+    {
+      "question": "En bash, que renvoie le test `[[ 10 < 9 ]]` ?",
+      "answer": "Vrai, car `<` compare des chaînes dans l'ordre lexicographique",
+      "wrong": [
+        "Faux, car le nombre 10 est plus grand que 9",
+        "Une erreur, car `<` y est lu comme une redirection",
+        "Faux, car `[[ ]]` refuse de comparer des nombres"
+      ],
+      "explanation": "Dans `[[ ]]`, `<` et `>` comparent des **chaînes**, caractère par caractère : « 1 » vient avant « 9 », donc « 10 » est classé avant « 9 » et le test est vrai. Pour comparer des nombres, il faut `-lt`, `-gt`, `-eq`… (`[[ 10 -lt 9 ]]` est faux) ou l'arithmétique `(( 10 < 9 ))`. Avec l'ancien `[ ]`, un `<` non échappé serait en revanche pris pour une redirection depuis un fichier nommé `9`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```bash\nX=42\nbash -c 'echo \"[$X]\"'\n```",
+      "answer": "`[]`",
+      "wrong": [
+        "`[42]`",
+        "`[$X]`",
+        "`bash: X: unbound variable`"
+      ],
+      "explanation": "`X=42` crée une variable **du shell**, invisible pour les processus enfants. Le `bash -c` est un nouveau processus qui ne reçoit que les variables **d'environnement** : `$X` y est vide. Il faudrait `export X` (ou `export X=42`) pour la placer dans l'environnement transmis aux enfants, ou la préfixer à la commande : `X=42 bash -c '...'`. Les apostrophes empêchent le shell parent de remplacer `$X` lui-même avant de lancer l'enfant.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle commande affiche la fin d'un journal **puis continue d'afficher les nouvelles lignes** au fur et à mesure qu'elles y sont écrites ?",
+      "answer": "`tail -f app.log`",
+      "wrong": [
+        "`tail -n 20 app.log`",
+        "`head -n 20 app.log`",
+        "`cat app.log`"
+      ],
+      "explanation": "`tail` affiche par défaut les 10 dernières lignes d'un fichier ; avec `-f` (*follow*), il reste ouvert et affiche chaque ligne ajoutée, jusqu'à un `Ctrl-C`. C'est l'outil classique pour surveiller un journal en direct. `tail -F` fait de même mais retrouve aussi le fichier s'il est renommé ou recréé, par exemple lors d'une rotation des logs. `tail -n 20` et `head` affichent un extrait puis rendent la main.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'affiche la commande suivante ?\n```bash\nprintf 'a\\nb\\na\\n' | uniq\n```",
+      "answer": "Trois lignes : `a`, `b`, `a`",
+      "wrong": [
+        "Deux lignes : `a`, `b`",
+        "Deux lignes : `b`, `a`",
+        "Une seule ligne : `b`"
+      ],
+      "explanation": "`uniq` ne supprime que les doublons **consécutifs** : il compare chaque ligne à la précédente seulement. Ici, les deux `a` ne se suivent pas, donc rien n'est retiré. C'est pourquoi on trie d'abord : `sort | uniq` (ou `sort -u`). L'idiome `sort | uniq -c | sort -rn` compte les occurrences de chaque ligne et place les plus fréquentes en tête.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que produit `cut -d: -f1 /etc/passwd` ?",
+      "answer": "La liste des noms des comptes, un par ligne",
+      "wrong": [
+        "La première ligne du fichier `/etc/passwd`",
+        "Le premier caractère de chaque ligne",
+        "Le fichier entier privé de sa première colonne"
+      ],
+      "explanation": "`cut` découpe chaque ligne : `-d:` fixe le séparateur (ici `:`) et `-f1` garde le premier champ. Dans `/etc/passwd`, chaque ligne décrit un compte sous la forme `nom:x:UID:GID:commentaire:dossier:shell`, on obtient donc les noms des comptes. Pour la première ligne, on utiliserait `head -n 1`, et pour le premier caractère, `cut -c1`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que produit `printf '10\\n9\\n2\\n' | sort` ?",
+      "answer": "`10`, `2`, `9`",
+      "wrong": [
+        "`2`, `9`, `10`",
+        "`10`, `9`, `2`",
+        "`9`, `2`, `10`"
+      ],
+      "explanation": "Par défaut, `sort` compare les lignes comme du **texte**, caractère par caractère : « 10 » commence par « 1 », qui précède « 2 » et « 9 ». Pour un tri numérique, il faut `sort -n` (qui donne 2, 9, 10), et `sort -rn` pour l'ordre décroissant. `sort -h` sait même trier des tailles lisibles comme `512K` ou `2G`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que fait le `&` à la fin de `./long_calcul.sh &` ?",
+      "answer": "Il lance le script en arrière-plan et rend aussitôt la main",
+      "wrong": [
+        "Il lance le script avec les droits de l'administrateur",
+        "Il lance le script seulement si la commande précédente a réussi",
+        "Il lance le script et enregistre sa sortie dans un fichier"
+      ],
+      "explanation": "Avec `&`, le shell démarre la commande sans attendre sa fin : il affiche un numéro de tâche et le PID (par exemple `[1] 4242`), et l'invite revient tout de suite. `jobs` liste ces tâches et `fg %1` en ramène une au premier plan. La tâche reste toutefois liée au terminal et peut être arrêtée à sa fermeture, d'où `nohup` ou `tmux` pour les traitements longs.",
+      "difficulty": 1
+    },
+    {
+      "question": "Tu appuies sur `Ctrl-Z` pendant qu'une commande tourne au premier plan. Que se passe-t-il ?",
+      "answer": "La commande est suspendue ; `fg` ou `bg` permet de la reprendre",
+      "wrong": [
+        "La commande est tuée immédiatement, sans reprise possible",
+        "Le terminal se ferme et la commande continue seule",
+        "La dernière action effectuée par la commande est annulée"
+      ],
+      "explanation": "`Ctrl-Z` envoie le signal SIGTSTP, qui met le processus en pause (état « stopped ») sans le tuer. On peut ensuite le relancer au premier plan avec `fg`, ou en arrière-plan avec `bg`, pratique quand on a oublié le `&`. Pour interrompre une commande, c'est `Ctrl-C`, qui envoie SIGINT.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quand s'exécute une tâche cron planifiée avec `*/15 * * * *` ?",
+      "answer": "Toutes les 15 minutes (à 0, 15, 30 et 45)",
+      "wrong": [
+        "Le 15 de chaque mois, à minuit pile",
+        "Toutes les 15 heures, à partir de minuit",
+        "Une fois par heure, à la 15e minute"
+      ],
+      "explanation": "Le premier champ est la minute ; `*/15` signifie « toute la plage, par pas de 15 », soit 0, 15, 30 et 45. Les quatre `*` suivants laissent libres l'heure, le jour du mois, le mois et le jour de la semaine. Une exécution unique à la 15e minute de chaque heure s'écrirait `15 * * * *`, et le 15 du mois à minuit `0 0 15 * *`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur le serveur, dans quel fichier la clé publique d'un utilisateur doit-elle figurer pour qu'il puisse s'y connecter par clé SSH ?",
+      "answer": "`~/.ssh/authorized_keys`",
+      "wrong": [
+        "`~/.ssh/known_hosts`",
+        "`~/.ssh/id_ed25519`",
+        "`~/.ssh/config`"
+      ],
+      "explanation": "Le serveur SSH compare la clé présentée par le client à celles listées, une par ligne, dans `~/.ssh/authorized_keys` du compte visé ; `ssh-copy-id utilisateur@serveur` automatise cet ajout. `known_hosts` joue le rôle inverse : côté client, il mémorise les clés des **serveurs** déjà rencontrés. `id_ed25519` est la clé privée du client, qui ne doit jamais quitter sa machine, et `config` sert à définir des raccourcis de connexion.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel signal la commande `kill 1234` envoie-t-elle au processus 1234 quand on ne précise **aucun** signal ?",
+      "answer": "`SIGTERM` (15)",
+      "wrong": [
+        "`SIGKILL` (9)",
+        "`SIGINT` (2)",
+        "`SIGHUP` (1)"
+      ],
+      "explanation": "Par défaut, `kill` envoie SIGTERM, une demande d'arrêt « polie » : le programme peut l'intercepter pour sauvegarder ses données et fermer ses connexions avant de quitter. Malgré son nom, `kill` sert à envoyer n'importe quel signal (`kill -HUP`, `kill -STOP`…). La bonne pratique est d'envoyer SIGTERM d'abord, et SIGKILL (`kill -9`) seulement si le processus ne réagit pas.",
+      "difficulty": 2
+    },
+    {
+      "question": "Une commande comme `sleep 100`, lancée au premier plan, est interrompue par `Ctrl-C`. Quel code de sortie le shell place-t-il dans `$?` ?",
+      "answer": "`130`",
+      "wrong": [
+        "`1`",
+        "`2`",
+        "`127`"
+      ],
+      "explanation": "Quand un processus est tué par un signal, le shell rapporte 128 + le numéro du signal. `Ctrl-C` envoie SIGINT, le signal 2 : on obtient 130. De même, 143 (128 + 15) trahit un SIGTERM et 137 (128 + 9) un SIGKILL, code fréquent quand un conteneur est tué faute de mémoire. Le code 127 signifie au contraire « commande introuvable », et 126 « trouvée mais non exécutable ».",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'est-ce qu'un processus **zombie** (état `Z` dans `ps`) ?",
+      "answer": "Un processus terminé dont le parent n'a pas encore lu le code de sortie",
+      "wrong": [
+        "Un processus encore actif dont le parent est mort, adopté par `init`",
+        "Un processus bloqué en attente d'une entrée-sortie sur le disque",
+        "Un processus mis en pause par un signal SIGSTOP ou par `Ctrl-Z`"
+      ],
+      "explanation": "À sa fin, un processus libère sa mémoire mais garde une entrée dans la table des processus (PID, code de sortie) jusqu'à ce que son parent la récupère avec l'appel `wait()`. Entre-temps, il est « zombie » : il ne consomme presque rien mais occupe un PID. On ne peut pas le tuer, il est déjà mort : il faut que le parent fasse son `wait()`, ou que le parent meure, et le zombie est alors adopté puis nettoyé par `init`. Un processus orphelin, lui, est toujours vivant.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur une distribution récente comme Debian, Ubuntu ou Fedora, quel programme tourne avec le **PID 1** ?",
+      "answer": "`systemd`",
+      "wrong": [
+        "`bash`",
+        "`cron`",
+        "`login`"
+      ],
+      "explanation": "Le PID 1 est le premier processus lancé par le noyau au démarrage : le système d'init. Sur la plupart des grandes distributions, c'est systemd depuis le milieu des années 2010 (il a remplacé SysV init et Upstart). Il démarre les services, adopte les processus orphelins et ne doit jamais s'arrêter : sa mort provoque un *kernel panic*. `ps -p 1` permet de le vérifier.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quoi sert `nohup` dans `nohup ./import.sh &` ?",
+      "answer": "À laisser le script tourner même après la fermeture du terminal",
+      "wrong": [
+        "À exécuter le script avec les droits de root sans mot de passe",
+        "À lancer le script avec une priorité processeur réduite",
+        "À relancer le script automatiquement s'il plante"
+      ],
+      "explanation": "À la fermeture d'un terminal, les processus qui y sont rattachés reçoivent le signal SIGHUP (*hang up*), qui les arrête par défaut. `nohup` lance la commande en ignorant ce signal, et redirige sa sortie vers le fichier `nohup.out` si elle allait vers le terminal. Pour baisser la priorité, on utilise `nice` ; pour une relance automatique, un service systemd avec `Restart=`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans la sortie de `uptime` ou de `top`, sur quelles durées sont calculées les trois valeurs de `load average: 0.52, 0.80, 1.10` ?",
+      "answer": "Sur les 1, 5 et 15 dernières minutes",
+      "wrong": [
+        "Sur les 1, 10 et 60 dernières secondes",
+        "Sur les 5, 10 et 15 dernières minutes",
+        "Sur la dernière heure, le jour, la semaine"
+      ],
+      "explanation": "Ce sont des moyennes glissantes du nombre de processus prêts à s'exécuter ou bloqués en entrée-sortie, sur 1, 5 et 15 minutes. Les comparer donne la tendance : ici, la charge récente (0,52) est plus faible que sur 15 minutes (1,10), elle baisse donc. On l'interprète selon le nombre de cœurs : une charge de 4 sur une machine à 4 cœurs signifie qu'ils sont tous occupés en moyenne.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quand tu tapes `ls` dans bash, comment le shell lance-t-il ce programme ?",
+      "answer": "Il se duplique avec `fork()`, puis la copie se remplace par `ls` avec `exec()`",
+      "wrong": [
+        "Il charge le code de `ls` dans sa propre mémoire et l'appelle comme une fonction",
+        "Il demande à systemd de démarrer `ls` comme un service temporaire",
+        "Il se remplace lui-même par `ls` avec `exec()`, puis il est relancé à la fin"
+      ],
+      "explanation": "Sous Unix, lancer un programme se fait en deux temps : `fork()` duplique le processus appelant (le shell), puis l'enfant appelle `exec()`, qui remplace son code par celui de `ls` en gardant le même PID, l'environnement et les fichiers ouverts (c'est ainsi que les redirections sont héritées). Le shell parent attend la fin de l'enfant avec `wait()`. La commande intégrée `exec ls`, elle, remplace le shell sans `fork` : une fois `ls` terminé, le shell a disparu.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi `cd` est-il une commande **intégrée** au shell (*builtin*), et non un programme séparé comme `ls` ?",
+      "answer": "Un processus enfant ne peut pas changer le répertoire courant de son parent",
+      "wrong": [
+        "Pour aller plus vite, car c'est une commande très souvent utilisée",
+        "Parce qu'il doit s'exécuter avec les droits de l'utilisateur root",
+        "Parce qu'un programme séparé ne pourrait pas lire la variable `HOME`"
+      ],
+      "explanation": "Le répertoire courant est un attribut propre à chaque processus. Un programme externe `cd` tournerait dans un processus enfant : il changerait son propre répertoire puis se terminerait, sans aucun effet sur le shell. `cd` doit donc s'exécuter dans le shell lui-même. C'est la même raison pour `export` ou `exit`, qui modifient l'état du shell. `type cd` affiche d'ailleurs « cd is a shell builtin ».",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle commande indique si le service `nginx` est actif, depuis quand, et affiche ses dernières lignes de journal ?",
+      "answer": "`systemctl status nginx`",
+      "wrong": [
+        "`systemctl is-enabled nginx`",
+        "`systemctl enable nginx`",
+        "`systemctl reload nginx`"
+      ],
+      "explanation": "`systemctl status` résume l'état d'une unité : chargée ou non, activée au démarrage ou non, active (*running*) ou en échec, PID principal, mémoire utilisée, puis les dernières lignes de son journal. `is-enabled` indique seulement si le service démarre au boot, `enable` l'active au démarrage et `reload` lui demande de relire sa configuration.",
+      "difficulty": 1
+    },
+    {
+      "question": "Sur un système avec systemd, quelle commande affiche les journaux du service `nginx` ?",
+      "answer": "`journalctl -u nginx`",
+      "wrong": [
+        "`systemctl logs nginx`",
+        "`dmesg -u nginx`",
+        "`syslog --unit nginx`"
+      ],
+      "explanation": "systemd centralise les journaux des services dans son *journal*, que l'on interroge avec `journalctl`. `-u` filtre par unité, `-f` suit les nouvelles lignes en direct comme `tail -f`, `-b` se limite au démarrage en cours et `--since \"1 hour ago\"` restreint la période. `dmesg` affiche les messages du noyau, pas ceux des services.",
+      "difficulty": 2
+    },
+    {
+      "question": "Tu viens de modifier le fichier d'unité `/etc/systemd/system/app.service`. Quelle commande faut-il lancer pour que systemd relise ce fichier ?",
+      "answer": "`systemctl daemon-reload`",
+      "wrong": [
+        "`systemctl reload app`",
+        "`systemctl enable app`",
+        "`systemctl reset-failed app`"
+      ],
+      "explanation": "systemd garde en mémoire les fichiers d'unité qu'il a chargés. Après une modification, `systemctl daemon-reload` lui fait relire tous ces fichiers ; on redémarre ensuite le service (`systemctl restart app`) pour appliquer la nouvelle définition. Le piège : `systemctl reload app` demande au **service** de relire sa propre configuration (celle de nginx, par exemple), sans toucher au fichier d'unité.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans un fichier d'unité systemd, quelle directive de la section `[Service]` fait relancer automatiquement le service lorsqu'il plante ?",
+      "answer": "`Restart=on-failure`",
+      "wrong": [
+        "`RemainAfterExit=yes`",
+        "`WantedBy=multi-user.target`",
+        "`Type=simple`"
+      ],
+      "explanation": "`Restart=` définit quand systemd relance le processus principal : `on-failure` le relance s'il se termine avec un code non nul, est tué par un signal ou dépasse un délai, `always` le relance dans tous les cas. On l'associe souvent à `RestartSec=` pour espacer les tentatives. `WantedBy=` appartient à la section `[Install]` et sert à `systemctl enable`, `RemainAfterExit=` garde le service « actif » après la fin de sa commande, et `Type=` décrit la façon dont il démarre.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que fait `ssh -L 8080:localhost:5432 admin@serveur` ?",
+      "answer": "Il relie le port local 8080 au port 5432 du serveur, à travers SSH",
+      "wrong": [
+        "Il ouvre le port 8080 sur le serveur et le relie au port 5432 local",
+        "Il lance un serveur web sur le port 8080 de la machine distante",
+        "Il se connecte au serveur SSH sur le port 8080 au lieu du port 22"
+      ],
+      "explanation": "`-L port_local:hôte:port_distant` crée un tunnel local : les connexions vers `localhost:8080` sur ta machine passent dans la session SSH, puis le serveur les relaie vers `localhost:5432` **de son point de vue**, par exemple une base PostgreSQL qui n'écoute qu'en local. L'option inverse, `-R`, expose un port du serveur vers ta machine. Pour changer le port de connexion SSH, c'est `-p`.",
+      "difficulty": 3
+    },
+    {
+      "question": "En te connectant à un serveur habituel, SSH affiche « REMOTE HOST IDENTIFICATION HAS CHANGED! » et refuse la connexion. Que signifie ce message ?",
+      "answer": "La clé du serveur ne correspond plus à celle mémorisée dans `known_hosts`",
+      "wrong": [
+        "Ta clé privée a expiré et doit être régénérée avec `ssh-keygen`",
+        "Ton compte a été retiré du fichier `authorized_keys` du serveur",
+        "Le serveur exige désormais une connexion par mot de passe"
+      ],
+      "explanation": "À la première connexion, le client enregistre la clé publique du serveur dans `~/.ssh/known_hosts`. Si elle change ensuite, SSH bloque : c'est peut-être une réinstallation légitime du serveur, mais aussi possiblement une attaque de l'homme du milieu. Une fois la nouvelle empreinte vérifiée par un autre canal, on supprime l'ancienne entrée avec `ssh-keygen -R serveur`. Les clés SSH, elles, n'ont pas de date d'expiration.",
+      "difficulty": 2
+    },
+    {
+      "question": "Laquelle de ces informations n'est **pas** stockée dans l'inode d'un fichier, sur un système de fichiers ext4 ?",
+      "answer": "Le nom du fichier",
+      "wrong": [
+        "La taille du fichier",
+        "Le propriétaire du fichier",
+        "La date de modification"
+      ],
+      "explanation": "L'inode contient les métadonnées d'un fichier (type, permissions, propriétaire, taille, dates, nombre de liens) et l'emplacement de ses données, mais pas son nom. Le nom est stocké dans le **répertoire**, qui n'est qu'une table d'associations « nom → numéro d'inode ». C'est ce qui permet les liens physiques : plusieurs noms, éventuellement dans des dossiers différents, pour un même inode. `ls -i` affiche ces numéros.",
+      "difficulty": 3
+    },
+    {
+      "question": "`b.txt` a été créé comme lien **physique** vers `a.txt` avec `ln a.txt b.txt`. Que se passe-t-il si on supprime `a.txt` ?",
+      "answer": "`b.txt` reste lisible, avec le même contenu",
+      "wrong": [
+        "`b.txt` devient un lien cassé, qui pointe dans le vide",
+        "`b.txt` est automatiquement supprimé lui aussi",
+        "`b.txt` existe toujours mais devient un fichier vide"
+      ],
+      "explanation": "Un lien physique est un second nom pour le même inode : `a.txt` et `b.txt` sont strictement équivalents, aucun n'est « l'original ». `rm` retire seulement un nom et décrémente le compteur de liens de l'inode ; les données ne sont libérées que lorsque ce compteur tombe à 0 et qu'aucun processus ne garde le fichier ouvert. Avec un lien **symbolique** (`ln -s`), au contraire, le lien deviendrait cassé.",
+      "difficulty": 2
+    },
+    {
+      "question": "Le disque est plein. Tu supprimes un énorme fichier de log avec `rm`, mais `df` n'indique aucun espace libéré. Quelle est la cause la plus probable ?",
+      "answer": "Un processus garde le fichier ouvert, donc ses blocs restent occupés",
+      "wrong": [
+        "`df` ne recalcule l'espace libre qu'au prochain redémarrage",
+        "Le fichier a été déplacé dans une corbeille système cachée",
+        "`rm` ne libère l'espace qu'après un `sync` lancé à la main"
+      ],
+      "explanation": "`rm` retire le nom du fichier, mais l'inode et ses données ne sont libérés que lorsque plus aucun processus ne l'a ouvert. Si le service qui écrit ce log tourne encore, l'espace reste occupé. `lsof +L1` liste ces fichiers supprimés mais encore ouverts ; on redémarre alors le service. Pour éviter le problème, on vide plutôt un log en place avec `truncate -s 0 app.log`. Il n'existe pas de corbeille en ligne de commande.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle commande affiche le chemin absolu du répertoire dans lequel tu te trouves ?",
+      "answer": "`pwd`",
+      "wrong": [
+        "`whoami`",
+        "`which`",
+        "`ls`"
+      ],
+      "explanation": "`pwd` (*print working directory*) affiche le chemin absolu du répertoire courant, par exemple `/home/alice/projets`. Il est aussi disponible dans la variable `$PWD`. `whoami` affiche le nom de l'utilisateur courant, `which` le chemin d'un exécutable, et `ls` le contenu d'un répertoire.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle commande **renomme** `brouillon.txt` en `final.txt` ?",
+      "answer": "`mv brouillon.txt final.txt`",
+      "wrong": [
+        "`cp brouillon.txt final.txt`",
+        "`ln brouillon.txt final.txt`",
+        "`touch brouillon.txt final.txt`"
+      ],
+      "explanation": "Renommer, c'est déplacer vers un nouveau nom : on utilise `mv`. Sur un même système de fichiers, `mv` ne copie aucune donnée, il modifie seulement l'entrée du répertoire, ce qui est instantané même pour un très gros fichier. `cp` laisserait l'original en place, `ln` créerait un second nom pour le même fichier, et `touch` créerait un fichier vide `final.txt`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle commande affiche la page de manuel de `grep` ?",
+      "answer": "`man grep`",
+      "wrong": [
+        "`which grep`",
+        "`grep --version`",
+        "`type grep`"
+      ],
+      "explanation": "`man` affiche la documentation de référence d'une commande, organisée en sections (NAME, SYNOPSIS, DESCRIPTION, OPTIONS…). On y navigue comme dans `less` : `/motif` pour chercher, `n` pour l'occurrence suivante, `q` pour quitter. La plupart des commandes acceptent aussi `--help` pour un résumé rapide. `which` et `type` indiquent seulement où se trouve la commande ou ce qu'elle est.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle commande affiche à la fois ton UID, ton groupe principal et la liste de tous tes groupes ?",
+      "answer": "`id`",
+      "wrong": [
+        "`whoami`",
+        "`groups`",
+        "`users`"
+      ],
+      "explanation": "`id` affiche par exemple `uid=1000(alice) gid=1000(alice) groups=1000(alice),27(sudo),998(docker)`. `whoami` n'affiche que le nom d'utilisateur, `groups` seulement la liste des groupes, et `users` les utilisateurs actuellement connectés. Après l'ajout à un nouveau groupe, `id` ne le montre qu'après une reconnexion, car les groupes d'une session sont fixés à son ouverture.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que fait `touch notes.txt` si le fichier `notes.txt` n'existe pas encore ?",
+      "answer": "Il crée un fichier vide nommé `notes.txt`",
+      "wrong": [
+        "Il affiche une erreur « fichier introuvable »",
+        "Il ouvre `notes.txt` dans un éditeur de texte",
+        "Il crée un répertoire nommé `notes.txt`"
+      ],
+      "explanation": "`touch` sert d'abord à mettre à jour les dates d'accès et de modification d'un fichier à l'instant présent ; si le fichier n'existe pas, il le crée vide. C'est la façon la plus rapide de créer un fichier vide. Pour un répertoire, on utilise `mkdir`, et pour éditer un fichier, un éditeur comme `nano` ou `vim`.",
+      "difficulty": 1
+    },
+    {
+      "question": "`rmdir projet` échoue avec le message « Directory not empty ». Quelle commande supprime le dossier **et tout son contenu** ?",
+      "answer": "`rm -r projet`",
+      "wrong": [
+        "`rm projet`",
+        "`rmdir -f projet`",
+        "`unlink projet`"
+      ],
+      "explanation": "Par sécurité, `rmdir` ne supprime que les répertoires vides, et il n'a pas d'option `-f`. `rm -r` (récursif) descend dans le dossier et supprime tout son contenu, puis le dossier lui-même. Sans `-r`, `rm projet` refuse avec « Is a directory ». `rm -rf` supprime en plus sans demander de confirmation : il n'y a pas de corbeille, donc prudence.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qui a créé le noyau Linux, dont la première version a été annoncée en 1991 ?",
+      "answer": "Linus Torvalds",
+      "wrong": [
+        "Richard Stallman",
+        "Ken Thompson",
+        "Dennis Ritchie"
+      ],
+      "explanation": "Linus Torvalds, alors étudiant à l'université d'Helsinki, a annoncé son noyau en août 1991 sur Usenet comme « juste un passe-temps ». Richard Stallman avait lancé en 1983 le projet GNU, dont les outils (bash, gcc, coreutils) forment avec le noyau Linux les systèmes souvent appelés « GNU/Linux ». Ken Thompson et Dennis Ritchie ont créé Unix aux laboratoires Bell à partir de 1969.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Linus_Torvalds"
     }
   ]
 }

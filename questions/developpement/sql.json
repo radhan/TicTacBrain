@@ -302,6 +302,874 @@
       "explanation": "`nom_produit` ne dépend que de `id_produit`, c'est-à-dire d'une **partie** de la clé composite : cette dépendance partielle est interdite par la 2NF (la 1NF est respectée, les valeurs étant atomiques). Conséquence : le nom est répété à chaque ligne de commande et peut devenir incohérent ; il faut le déplacer dans une table `produits`. La 3NF, elle, interdit en plus les dépendances transitives entre colonnes non-clés.",
       "difficulty": 3,
       "source": "https://en.wikipedia.org/wiki/Second_normal_form"
+    },
+    {
+      "question": "Quelle condition sélectionne les noms qui **commencent** par « Du » ?",
+      "answer": "`WHERE nom LIKE 'Du%'`",
+      "wrong": [
+        "`WHERE nom LIKE '%Du'`",
+        "`WHERE nom = 'Du%'`",
+        "`WHERE nom LIKE 'Du_'`"
+      ],
+      "explanation": "Dans un motif `LIKE`, `%` remplace **n'importe quelle suite de caractères** (même vide) et `_` exactement **un** caractère. `'Du%'` trouve donc « Dupont », « Durand » ou « Du » tout court, alors que `'Du_'` n'accepterait que trois caractères (« Dub »…) et `'%Du'` les noms qui **finissent** par « Du ». Avec `=`, le `%` n'est plus un joker : on chercherait littéralement la chaîne « Du% ».",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/functions-matching.html"
+    },
+    {
+      "question": "Sans autre précision, dans quel ordre `ORDER BY prix` trie-t-il les lignes ?",
+      "answer": "Par prix croissant (`ASC`)",
+      "wrong": [
+        "Par prix décroissant (`DESC`)",
+        "Dans l'ordre d'insertion",
+        "Dans un ordre aléatoire"
+      ],
+      "explanation": "Le sens par défaut d'`ORDER BY` est `ASC` (croissant) ; il faut écrire `ORDER BY prix DESC` pour l'ordre décroissant. Le sens se précise **colonne par colonne** : `ORDER BY categorie, prix DESC` trie les catégories par ordre croissant puis, dans chacune, les prix du plus cher au moins cher. Sans `ORDER BY`, en revanche, aucun ordre n'est garanti, pas même l'ordre d'insertion.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/queries-order.html"
+    },
+    {
+      "question": "La table `produits` contient des prix de 10, 15, 20 et 25. Combien de lignes renvoie `WHERE prix BETWEEN 10 AND 20` ?",
+      "answer": "3",
+      "wrong": [
+        "1",
+        "2",
+        "4"
+      ],
+      "explanation": "`BETWEEN a AND b` est **inclusif aux deux bornes** : il équivaut à `prix >= 10 AND prix <= 20`. Les prix 10, 15 et 20 sont donc retenus. Attention aussi à l'ordre des bornes : `BETWEEN 20 AND 10` ne renvoie rien, car aucune valeur n'est à la fois ≥ 20 et ≤ 10.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/functions-comparison.html"
+    },
+    {
+      "question": "À quelle sous-famille du langage SQL appartiennent les commandes `GRANT` et `REVOKE` ?",
+      "answer": "Le DCL (contrôle des accès)",
+      "wrong": [
+        "Le DDL (définition des données)",
+        "Le DML (manipulation des données)",
+        "Le TCL (contrôle des transactions)"
+      ],
+      "explanation": "On découpe souvent SQL en sous-langages : le **DDL** définit la structure (`CREATE`, `ALTER`, `DROP`), le **DML** manipule les lignes (`INSERT`, `UPDATE`, `DELETE`, et `SELECT` qu'on range parfois à part, dans le DQL), le **TCL** gère les transactions (`COMMIT`, `ROLLBACK`) et le **DCL** gère les droits : `GRANT` accorde un privilège, `REVOKE` le retire.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/sql-grant.html"
+    },
+    {
+      "question": "Qui a proposé le **modèle relationnel**, sur lequel reposent les bases SQL, dans un article publié en 1970 ?",
+      "answer": "Edgar F. Codd",
+      "wrong": [
+        "Donald Knuth",
+        "Larry Ellison",
+        "Edsger Dijkstra"
+      ],
+      "explanation": "Edgar F. Codd, chercheur chez IBM, a publié en 1970 « A Relational Model of Data for Large Shared Data Banks » : les données y sont organisées en **relations** (tables) manipulées par une algèbre ensembliste. IBM a ensuite développé SEQUEL, ancêtre de SQL. Larry Ellison a cofondé Oracle, qui a commercialisé l'un des premiers SGBD relationnels ; Knuth et Dijkstra sont célèbres pour leurs travaux en algorithmique.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Edgar_Frank_Codd"
+    },
+    {
+      "question": "Que renvoie `COALESCE(NULL, NULL, 'b', 'c')` ?",
+      "answer": "`'b'`",
+      "wrong": [
+        "`NULL`",
+        "`'c'`",
+        "`'bc'`"
+      ],
+      "explanation": "`COALESCE` renvoie son **premier argument non NULL**, en les examinant de gauche à droite : ici `'b'`. Elle ne renvoie NULL que si tous les arguments le sont. Usage typique : afficher une valeur par défaut, comme `COALESCE(telephone, 'non renseigné')`.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/functions-conditional.html"
+    },
+    {
+      "question": "Comment représente-t-on, dans un schéma relationnel, une relation **plusieurs-à-plusieurs** entre `etudiants` et `cours` ?",
+      "answer": "Par une table d'association portant deux clés étrangères",
+      "wrong": [
+        "Par une clé étrangère vers `cours` dans `etudiants`",
+        "Par une clé étrangère vers `etudiants` dans `cours`",
+        "Par une colonne listant les cours séparés par des virgules"
+      ],
+      "explanation": "Un étudiant suit plusieurs cours et un cours accueille plusieurs étudiants : une seule clé étrangère ne peut exprimer qu'un lien « un-à-plusieurs ». On crée donc une table `inscriptions(etudiant_id, cours_id)`, souvent avec ces deux colonnes comme clé primaire composite. La liste séparée par des virgules viole la première forme normale (valeurs non atomiques) et empêche jointures et contraintes.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle commande affiche le **plan d'exécution** que le SGBD prévoit pour une requête (PostgreSQL, MySQL, SQLite) ?",
+      "answer": "`EXPLAIN`",
+      "wrong": [
+        "`ANALYZE`",
+        "`PREPARE`",
+        "`VACUUM`"
+      ],
+      "explanation": "`EXPLAIN SELECT …` montre comment la requête sera exécutée : parcours séquentiel ou par index, type de jointure, estimation du nombre de lignes. C'est l'outil de base pour diagnostiquer une requête lente. Employé seul, `ANALYZE` collecte des **statistiques** sur les tables (utilisées par l'optimiseur), mais `EXPLAIN ANALYZE` exécute réellement la requête et affiche les temps mesurés.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/using-explain.html"
+    },
+    {
+      "question": "Quel est le principal **inconvénient** de l'ajout d'un index sur une table ?",
+      "answer": "Il ralentit les écritures et occupe de l'espace disque",
+      "wrong": [
+        "Il ralentit les lectures portant sur cette colonne",
+        "Il interdit les doublons dans la colonne indexée",
+        "Il verrouille la table en lecture pour les autres"
+      ],
+      "explanation": "Un index est une structure annexe (souvent un B-tree) qu'il faut **mettre à jour à chaque `INSERT`, `UPDATE` ou `DELETE`** touchant les colonnes indexées, et qu'il faut stocker. Il accélère en revanche les recherches et les tris. Un index n'interdit les doublons que s'il est déclaré `UNIQUE`. D'où la règle : indexer ce qui est réellement filtré ou joint, pas toutes les colonnes.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/indexes-intro.html"
+    },
+    {
+      "question": "Dans `employes(id, nom, id_service, nom_service)`, de clé `id`, `nom_service` dépend de `id_service`, qui dépend lui-même de `id`. Comment s'appelle cette dépendance, interdite par la 3NF ?",
+      "answer": "Une dépendance transitive",
+      "wrong": [
+        "Une dépendance partielle",
+        "Une dépendance multivaluée",
+        "Une dépendance de jointure"
+      ],
+      "explanation": "`id → id_service → nom_service` : `nom_service` dépend de la clé **par l'intermédiaire** d'une colonne non-clé, c'est une dépendance transitive. La 3NF l'interdit, car le nom d'un service serait répété pour chaque employé et pourrait devenir incohérent. On sort donc `nom_service` dans une table `services(id_service, nom_service)`. La dépendance **partielle** (vis-à-vis d'une partie d'une clé composite) relève de la 2NF, et la multivaluée de la 4NF.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Forme_normale_(bases_de_donn%C3%A9es_relationnelles)"
+    },
+    {
+      "question": "À quoi sert typiquement l'expression `total / NULLIF(nb, 0)` ?",
+      "answer": "À obtenir NULL au lieu d'une erreur quand `nb` vaut 0",
+      "wrong": [
+        "À remplacer par 0 les valeurs NULL de `nb`",
+        "À renvoyer 0 quand `nb` vaut NULL",
+        "À ignorer les lignes où `nb` vaut 0"
+      ],
+      "explanation": "`NULLIF(a, b)` renvoie NULL si `a = b`, et `a` sinon. Quand `nb` vaut 0, on divise donc par NULL, ce qui donne NULL au lieu de l'erreur « division by zero » (PostgreSQL). C'est en quelque sorte l'inverse de `COALESCE`, qui remplace un NULL par une valeur : on peut d'ailleurs combiner les deux, `COALESCE(total / NULLIF(nb, 0), 0)`.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/functions-conditional.html"
+    },
+    {
+      "question": "En PostgreSQL, que renvoie `SELECT 7 / 2;` ?",
+      "answer": "3",
+      "wrong": [
+        "3.5",
+        "4",
+        "Une erreur de type"
+      ],
+      "explanation": "Deux entiers divisés donnent une **division entière** : la partie décimale est tronquée, d'où 3 (SQLite et SQL Server font de même). Pour obtenir 3.5, il faut qu'un opérande soit décimal : `7 / 2.0` ou `7::numeric / 2`. MySQL, à l'inverse, renvoie 3.5000 avec `/` et réserve `DIV` à la division entière : un piège classique quand on change de SGBD.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/functions-math.html"
+    },
+    {
+      "question": "On veut les clients qui n'ont passé **aucune** commande. Quelle fin de requête convient, après `SELECT c.* FROM clients c` ?",
+      "answer": "`LEFT JOIN commandes o ON o.client_id = c.id WHERE o.id IS NULL`",
+      "wrong": [
+        "`LEFT JOIN commandes o ON o.client_id = c.id WHERE o.id = NULL`",
+        "`JOIN commandes o ON o.client_id = c.id WHERE o.id IS NULL`",
+        "`LEFT JOIN commandes o ON o.client_id = c.id AND o.id IS NULL`"
+      ],
+      "explanation": "Le `LEFT JOIN` conserve chaque client ; ceux sans commande reçoivent des NULL côté `commandes`, et le `WHERE o.id IS NULL` ne garde qu'eux : c'est une **anti-jointure** (équivalente à `NOT EXISTS`). Avec `= NULL`, rien n'est jamais vrai ; avec une jointure interne, les clients sans commande ont déjà disparu. Placer `o.id IS NULL` dans le `ON` ne filtre rien : aucune commande ne correspond, donc **tous** les clients sortent avec des NULL.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que vaut la comparaison `'10' < '9'` entre deux **chaînes de caractères** ?",
+      "answer": "Vrai",
+      "wrong": [
+        "Faux",
+        "NULL",
+        "Une erreur de type"
+      ],
+      "explanation": "Les chaînes se comparent **caractère par caractère** (ordre lexicographique) : `'1'` est inférieur à `'9'`, donc `'10' < '9'` est vrai, quelle que soit la suite. C'est pourquoi des nombres stockés en texte se trient mal (« 10 » avant « 9 »). Il faut les stocker dans une colonne numérique, ou les convertir avec `CAST(x AS INTEGER)` avant de comparer ou de trier.",
+      "difficulty": 2
+    },
+    {
+      "question": "En MySQL, un index existe sur `date_commande`. Pourquoi `WHERE YEAR(date_commande) = 2024` ne peut-il pas l'exploiter pour une recherche ciblée ?",
+      "answer": "La colonne est enveloppée dans une fonction",
+      "wrong": [
+        "`YEAR()` n'est pas une fonction standard",
+        "Les index B-tree ne gèrent pas les dates",
+        "2024 est un entier et non une date"
+      ],
+      "explanation": "L'index est trié sur les valeurs **brutes** de `date_commande`, pas sur `YEAR(date_commande)` : le moteur devrait calculer la fonction pour chaque ligne. On dit que la condition n'est pas *sargable*. Solution : réécrire en plage, `date_commande >= '2024-01-01' AND date_commande < '2025-01-01'`, ou créer un index sur l'expression elle-même (index fonctionnel). Même piège avec `LOWER(email) = …` sur un index de `email`.",
+      "difficulty": 2,
+      "source": "https://dev.mysql.com/doc/refman/8.0/en/create-index.html"
+    },
+    {
+      "question": "En MySQL, avec un index B-tree sur `nom`, laquelle de ces conditions **ne peut pas** utiliser l'index pour cibler une plage de valeurs ?",
+      "answer": "`WHERE nom LIKE '%son'`",
+      "wrong": [
+        "`WHERE nom LIKE 'Dup%'`",
+        "`WHERE nom = 'Dupont'`",
+        "`WHERE nom >= 'D'`"
+      ],
+      "explanation": "Un B-tree range les noms par ordre alphabétique, comme un dictionnaire. `LIKE 'Dup%'` revient à chercher la plage qui commence par « Dup » : l'index s'y prête parfaitement. Avec un joker **en tête** (`'%son'`), le début du nom est inconnu et les correspondances sont éparpillées dans tout l'index : il faut tout parcourir. Pour ce besoin, on utilise un index plein texte ou trigramme.",
+      "difficulty": 2,
+      "source": "https://dev.mysql.com/doc/refman/8.0/en/index-btree-hash.html"
+    },
+    {
+      "question": "Deux transactions lisent un même solde de 100 €, ajoutent chacune 10 € à la valeur lue, puis écrivent leur résultat. Le solde final vaut 110 €. Quelle anomalie s'est produite ?",
+      "answer": "Une mise à jour perdue (lost update)",
+      "wrong": [
+        "Une lecture sale (dirty read)",
+        "Une lecture fantôme (phantom read)",
+        "Un interblocage (deadlock)"
+      ],
+      "explanation": "La seconde écriture a **écrasé** la première, calculée à partir d'une valeur devenue obsolète : 10 € ont disparu. Rien de « sale » ici, puisque chacune a lu une valeur validée. Remèdes : faire le calcul dans la base (`UPDATE comptes SET solde = solde + 10`), verrouiller la ligne à la lecture (`SELECT … FOR UPDATE`) ou utiliser un verrouillage optimiste avec un numéro de version.",
+      "difficulty": 2
+    },
+    {
+      "question": "Deux transactions attendent chacune un verrou détenu par l'autre (interblocage). Que fait en général le SGBD ?",
+      "answer": "Il annule l'une d'elles pour débloquer l'autre",
+      "wrong": [
+        "Il attend indéfiniment que l'une cède",
+        "Il valide les deux en ignorant les verrous",
+        "Il redémarre le serveur de base de données"
+      ],
+      "explanation": "Les SGBD détectent les cycles d'attente (PostgreSQL vérifie après `deadlock_timeout`, 1 seconde par défaut) et choisissent une **victime** : sa transaction est annulée avec une erreur, et l'autre peut continuer. L'application doit donc savoir relancer une transaction. Pour limiter le risque, on verrouille les ressources toujours dans le **même ordre** et on garde des transactions courtes.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/explicit-locking.html"
+    },
+    {
+      "question": "La table `t(k, v)` contient (1, 10), (2, 20), (2, 30) et (3, 40). Quelle valeur de `cumul` obtient la ligne (2, 20) ?\n```sql\nSELECT k, v, SUM(v) OVER (ORDER BY k) AS cumul\nFROM t;\n```",
+      "answer": "60",
+      "wrong": [
+        "30",
+        "20",
+        "100"
+      ],
+      "explanation": "Avec un `ORDER BY` et sans cadre explicite, la fenêtre vaut par défaut `RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW` : elle inclut toutes les lignes **ex æquo** sur `k` (les *peers*). Les deux lignes où `k = 2` obtiennent donc 10 + 20 + 30 = 60. Pour un vrai cumul ligne à ligne, il faut écrire `ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW`, avec un tri sans égalités pour un résultat déterministe.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS"
+    },
+    {
+      "question": "La table `t` contient des lignes. Que renvoie `SELECT COUNT(*) FROM t WHERE 1 = 0;` ?",
+      "answer": "Une ligne contenant 0",
+      "wrong": [
+        "Aucune ligne",
+        "Une ligne contenant NULL",
+        "Une erreur"
+      ],
+      "explanation": "Un agrégat **sans `GROUP BY`** renvoie toujours exactement une ligne, même si aucune ligne n'a passé le `WHERE`. `COUNT` y vaut 0, tandis que `SUM`, `AVG` ou `MAX` vaudraient NULL. En revanche, avec un `GROUP BY`, il n'y aurait aucun groupe, donc aucune ligne en sortie. D'où le classique `COALESCE(SUM(montant), 0)` pour afficher 0 plutôt que NULL.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/functions-aggregate.html"
+    },
+    {
+      "question": "Pourquoi cette requête échoue-t-elle ?\n```sql\nSELECT nom FROM employes\nWHERE ROW_NUMBER() OVER (ORDER BY salaire DESC) = 1;\n```",
+      "answer": "Les fonctions de fenêtre sont calculées après le `WHERE`",
+      "wrong": [
+        "`ROW_NUMBER()` exige une clause `PARTITION BY`",
+        "Une clause `OVER` impose un `GROUP BY`",
+        "`ROW_NUMBER()` numérote à partir de 0, pas de 1"
+      ],
+      "explanation": "Les fonctions de fenêtre sont évaluées à l'étape du `SELECT`, donc **après** `WHERE`, `GROUP BY` et `HAVING` : on ne peut pas filtrer dessus à ces niveaux (« window functions are not allowed in WHERE » en PostgreSQL). Il faut calculer le rang dans une sous-requête ou une CTE, puis filtrer à l'extérieur. Certains moteurs (Snowflake, BigQuery, DuckDB) offrent une clause `QUALIFY` pour cela. `PARTITION BY` est facultatif, et la numérotation commence bien à 1.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/tutorial-window.html"
+    },
+    {
+      "question": "Quel est le niveau d'isolation **par défaut** d'InnoDB, le moteur de stockage par défaut de MySQL ?",
+      "answer": "`REPEATABLE READ`",
+      "wrong": [
+        "`READ COMMITTED`",
+        "`SERIALIZABLE`",
+        "`READ UNCOMMITTED`"
+      ],
+      "explanation": "InnoDB travaille par défaut en `REPEATABLE READ` : une transaction lit un instantané figé à sa première lecture. PostgreSQL, Oracle et SQL Server, eux, sont par défaut en `READ COMMITTED`, où chaque requête voit les données validées au moment où elle démarre. Une même application peut donc se comporter différemment selon le SGBD si elle compte sur le niveau par défaut.",
+      "difficulty": 3,
+      "source": "https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-isolation-levels.html"
+    },
+    {
+      "question": "En PostgreSQL, la colonne `note` contient 3, NULL et 1. Où apparaît le NULL avec `ORDER BY note ASC` ?",
+      "answer": "En dernière position",
+      "wrong": [
+        "En première position",
+        "Il est exclu du résultat",
+        "À une position imprévisible"
+      ],
+      "explanation": "PostgreSQL trie les NULL **comme s'ils étaient plus grands** que toute valeur : à la fin en ordre croissant, au début en ordre décroissant. MySQL et SQLite font l'inverse (NULL en tête en `ASC`), et le standard laisse ce choix à l'implémentation. Pour un résultat portable, on précise `ORDER BY note ASC NULLS FIRST` ou `NULLS LAST`. `ORDER BY` n'exclut jamais de lignes.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/queries-order.html"
+    },
+    {
+      "question": "Avec la logique à trois valeurs de SQL, que vaut `NULL AND FALSE` ?",
+      "answer": "`FALSE`",
+      "wrong": [
+        "`NULL`",
+        "`TRUE`",
+        "Une erreur"
+      ],
+      "explanation": "NULL représente une valeur **inconnue** : si l'un des opérandes d'un `AND` est faux, le résultat est faux quelle que soit l'inconnue, donc `FALSE`. Symétriquement, `NULL OR TRUE` vaut `TRUE`. En revanche, `NULL AND TRUE` et `NULL OR FALSE` dépendent de l'inconnue : ils valent NULL. Retenir « NULL contamine tout » est donc trop simpliste.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/functions-logical.html"
+    },
+    {
+      "question": "En PostgreSQL, que renvoie `SELECT NULL IS DISTINCT FROM NULL;` ?",
+      "answer": "`false`",
+      "wrong": [
+        "`NULL`",
+        "`true`",
+        "Une erreur de syntaxe"
+      ],
+      "explanation": "`IS DISTINCT FROM` est une comparaison qui **traite NULL comme une valeur ordinaire** : deux NULL sont considérés comme identiques (résultat `false`), et un NULL face à une valeur donne `true`, jamais NULL. À l'inverse, `NULL <> NULL` vaut NULL. Équivalents ailleurs : l'opérateur `<=>` de MySQL (égalité « NULL-safe ») et `IS` / `IS NOT` en SQLite.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/functions-comparison.html"
+    },
+    {
+      "question": "Quel type de jointure effectue un simple `JOIN … ON …`, écrit sans aucun autre mot-clé ?",
+      "answer": "Une jointure interne (`INNER JOIN`)",
+      "wrong": [
+        "Une jointure externe gauche (`LEFT JOIN`)",
+        "Un produit cartésien (`CROSS JOIN`)",
+        "Une jointure externe complète (`FULL JOIN`)"
+      ],
+      "explanation": "Le mot `INNER` est facultatif : `JOIN` seul est une jointure **interne**, qui ne garde que les lignes ayant une correspondance des deux côtés. Pour les jointures externes, le mot `OUTER` est lui aussi facultatif (`LEFT JOIN` = `LEFT OUTER JOIN`), mais `LEFT`, `RIGHT` ou `FULL` doit être écrit. Le produit cartésien s'obtient avec `CROSS JOIN`, qui ne prend pas de clause `ON`.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+    },
+    {
+      "question": "Sous quelle forme MongoDB stocke-t-il les données ?",
+      "answer": "Des documents BSON, proches du JSON",
+      "wrong": [
+        "Des lignes dans des tables typées",
+        "Des nœuds reliés par des arêtes",
+        "Des fichiers CSV compressés"
+      ],
+      "explanation": "MongoDB est une base **orientée documents** : chaque enregistrement est un document (objets imbriqués, tableaux…) sérialisé en BSON, un format binaire dérivé du JSON qui ajoute des types comme les dates. Les documents sont rangés dans des **collections**, et deux documents d'une même collection n'ont pas forcément les mêmes champs. Chaque document possède un identifiant unique `_id`.",
+      "difficulty": 1,
+      "source": "https://www.mongodb.com/docs/manual/core/document/"
+    },
+    {
+      "question": "Une transaction a été validée (`COMMIT`), puis le serveur subit une coupure de courant. Quelle propriété ACID garantit que ses modifications ne sont pas perdues ?",
+      "answer": "La durabilité",
+      "wrong": [
+        "L'atomicité",
+        "La cohérence",
+        "L'isolation"
+      ],
+      "explanation": "La **durabilité** promet qu'une fois le `COMMIT` confirmé, les modifications survivront à une panne. En pratique, le SGBD écrit d'abord ses changements dans un journal (WAL) forcé sur disque avant de confirmer la validation, et le rejoue au redémarrage. L'atomicité, elle, concerne le « tout ou rien » d'une transaction **en cours** : après une panne, une transaction non validée est entièrement annulée.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle commande annule toutes les modifications de la transaction en cours ?",
+      "answer": "`ROLLBACK`",
+      "wrong": [
+        "`COMMIT`",
+        "`REVOKE`",
+        "`RELEASE`"
+      ],
+      "explanation": "`ROLLBACK` annule la transaction et remet les données dans leur état d'avant le `BEGIN`, alors que `COMMIT` la valide définitivement. `REVOKE` retire un droit d'accès à un utilisateur, rien à voir avec les transactions. `RELEASE SAVEPOINT` supprime un point de sauvegarde sans rien annuler.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/sql-rollback.html"
+    },
+    {
+      "question": "Que fait la requête `UPDATE produits SET prix = 0;` ?",
+      "answer": "Elle met à 0 le prix de **toutes** les lignes",
+      "wrong": [
+        "Elle échoue faute de clause `WHERE`",
+        "Elle met à 0 le prix de la première ligne",
+        "Elle ajoute une ligne dont le prix vaut 0"
+      ],
+      "explanation": "Sans `WHERE`, un `UPDATE` (comme un `DELETE`) s'applique à **toutes les lignes** de la table, sans aucun avertissement : c'est l'une des erreurs les plus redoutées en production. Réflexes utiles : écrire d'abord le `SELECT` avec le même `WHERE` pour voir les lignes visées, travailler dans une transaction pour pouvoir faire `ROLLBACK`, ou activer des garde-fous comme le mode `--safe-updates` du client MySQL.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/sql-update.html"
+    },
+    {
+      "question": "Quelle base NoSQL est avant tout un magasin **clé-valeur en mémoire**, très utilisé comme cache ?",
+      "answer": "Redis",
+      "wrong": [
+        "Neo4j",
+        "Cassandra",
+        "MongoDB"
+      ],
+      "explanation": "Redis garde ses données en **RAM**, ce qui le rend extrêmement rapide : cache de pages, sessions, compteurs, files de messages. Il peut aussi persister sur disque et propose des structures riches (listes, ensembles, hachages). Neo4j est une base graphe, Cassandra une base à colonnes larges distribuée sur disque, et MongoDB une base de documents.",
+      "difficulty": 1,
+      "source": "https://redis.io/docs/latest/develop/data-types/"
+    },
+    {
+      "question": "Quelle contrainte empêche d'insérer un produit dont le prix est négatif ?",
+      "answer": "`CHECK (prix >= 0)`",
+      "wrong": [
+        "`UNIQUE (prix)`",
+        "`NOT NULL`",
+        "`DEFAULT 0`"
+      ],
+      "explanation": "Une contrainte `CHECK` vérifie une condition à chaque `INSERT` et `UPDATE` et rejette la ligne si la condition est **fausse**. Subtilité : si elle vaut NULL (prix inconnu), la ligne est acceptée, d'où l'intérêt d'ajouter `NOT NULL` si le prix est obligatoire. `DEFAULT 0` ne fournit qu'une valeur quand on n'en donne pas, sans rien interdire, et `UNIQUE` interdit les doublons.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/ddl-constraints.html"
+    },
+    {
+      "question": "Dans une transaction, à quoi sert `SAVEPOINT s1` ?",
+      "answer": "À pouvoir annuler jusqu'à ce point sans tout annuler",
+      "wrong": [
+        "À valider les modifications faites jusqu'ici",
+        "À forcer l'écriture sur disque de la transaction",
+        "À verrouiller les lignes lues depuis ce point"
+      ],
+      "explanation": "Un point de sauvegarde marque un état intermédiaire : `ROLLBACK TO SAVEPOINT s1` défait ce qui a été fait **après** lui, tout en gardant le travail antérieur, et la transaction continue. Rien n'est validé pour autant : seul le `COMMIT` final rend les changements définitifs. Les ORM s'en servent pour simuler des transactions imbriquées.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/sql-savepoint.html"
+    },
+    {
+      "question": "Que fait `SELECT … FOR UPDATE` dans une transaction ?",
+      "answer": "Il verrouille les lignes lues jusqu'à la fin de la transaction",
+      "wrong": [
+        "Il met à jour les lignes sélectionnées",
+        "Il lit les lignes en ignorant les verrous existants",
+        "Il copie les lignes dans une table temporaire"
+      ],
+      "explanation": "C'est du **verrouillage pessimiste** : les lignes renvoyées sont verrouillées comme si on allait les modifier, et toute autre transaction voulant les modifier ou les verrouiller à son tour doit attendre le `COMMIT` ou le `ROLLBACK`. Typique pour « lire un solde puis le mettre à jour » sans risquer de mise à jour perdue. Les simples lectures (sans verrou), elles, ne sont pas bloquées en PostgreSQL.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/sql-select.html#SQL-FOR-UPDATE-SHARE"
+    },
+    {
+      "question": "En quoi consiste le verrouillage **optimiste** ?",
+      "answer": "Vérifier à l'écriture que la ligne n'a pas changé depuis sa lecture",
+      "wrong": [
+        "Verrouiller la ligne dès sa lecture, par précaution",
+        "Désactiver tous les verrous pendant les lectures",
+        "Relire la ligne en boucle tant qu'elle est verrouillée"
+      ],
+      "explanation": "On ne pose aucun verrou à la lecture ; on mémorise un numéro de version, puis on écrit `UPDATE … SET …, version = version + 1 WHERE id = 42 AND version = 7`. Si aucune ligne n'est modifiée, quelqu'un est passé entre-temps : on signale le conflit ou on recommence. C'est efficace quand les conflits sont rares ; le verrouillage **pessimiste** (`SELECT … FOR UPDATE`) convient mieux quand ils sont fréquents.",
+      "difficulty": 2
+    },
+    {
+      "question": "Une transaction lit deux fois **la même ligne** et obtient deux valeurs différentes, car une autre transaction l'a modifiée et validée entre-temps. Comment s'appelle cette anomalie ?",
+      "answer": "La lecture non répétable",
+      "wrong": [
+        "La lecture sale",
+        "La lecture fantôme",
+        "La mise à jour perdue"
+      ],
+      "explanation": "La valeur lue n'était pas « sale » (elle avait été validée), mais la relecture ne donne plus le même résultat : c'est une **lecture non répétable**, possible en `READ COMMITTED` et empêchée à partir de `REPEATABLE READ`. La **lecture fantôme** concerne un **ensemble** de lignes qui change (lignes apparues ou disparues pour une même condition), et non une ligne déjà lue dont la valeur change.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/transaction-iso.html"
+    },
+    {
+      "question": "Le modèle **BASE**, souvent opposé à ACID dans le monde NoSQL, signifie *Basically Available, Soft state, E…* : que désigne le E ?",
+      "answer": "*Eventually consistent* (cohérence à terme)",
+      "wrong": [
+        "*Exclusive locking* (verrous exclusifs)",
+        "*Encrypted storage* (stockage chiffré)",
+        "*Event sourcing* (journal d'événements)"
+      ],
+      "explanation": "Une base « BASE » privilégie la disponibilité : les répliques peuvent diverger un moment, mais **finissent par converger** si les écritures cessent. On accepte ainsi de lire une valeur légèrement périmée en échange de performances et de résilience. C'est le choix AP du théorème CAP, à l'opposé des garanties fortes et immédiates d'ACID.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Eventual_consistency"
+    },
+    {
+      "question": "Quelle technique répartit les **lignes** d'une même table entre plusieurs serveurs, chacun n'en stockant qu'une partie ?",
+      "answer": "Le sharding (partitionnement horizontal)",
+      "wrong": [
+        "La réplication maître-esclave",
+        "La normalisation en 3NF",
+        "Le partitionnement vertical"
+      ],
+      "explanation": "Avec le **sharding**, une clé (par exemple `client_id`) détermine sur quel serveur vit chaque ligne : on répartit ainsi le volume et la charge d'écriture. La **réplication**, elle, copie les **mêmes** données sur plusieurs serveurs, pour la tolérance aux pannes et la lecture. Le partitionnement **vertical** découpe les **colonnes** d'une table, pas ses lignes. Un mauvais choix de clé de sharding crée des serveurs surchargés (*hot spots*).",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Shard_(database_architecture)"
+    },
+    {
+      "question": "En MongoDB, quelle instruction trouve les utilisateurs âgés de **plus de** 30 ans ?",
+      "answer": "`db.users.find({ age: { $gt: 30 } })`",
+      "wrong": [
+        "`db.users.find({ age: { $gte: 30 } })`",
+        "`db.users.find({ age: { $lt: 30 } })`",
+        "`db.users.select({ age: { $gt: 30 } })`"
+      ],
+      "explanation": "MongoDB exprime les conditions par des **opérateurs préfixés de `$`** dans un document de filtre : `$gt` (*greater than*, strictement supérieur), `$gte` (supérieur ou égal), `$lt`, `$lte`, `$ne`, `$in`… `$gte: 30` inclurait donc aussi les personnes de 30 ans pile. La méthode de lecture est `find` ; il n'existe pas de `select` sur une collection.",
+      "difficulty": 2,
+      "source": "https://www.mongodb.com/docs/manual/reference/operator/query/gt/"
+    },
+    {
+      "question": "Quelle structure de Redis convient le mieux à un **classement** de joueurs trié par score ?",
+      "answer": "Un ensemble trié (sorted set, `ZADD`)",
+      "wrong": [
+        "Une liste (`LPUSH`)",
+        "Un ensemble simple (`SADD`)",
+        "Une table de hachage (`HSET`)"
+      ],
+      "explanation": "Un *sorted set* associe à chaque membre un **score** et maintient les membres triés : `ZADD classement 1500 alice` ajoute ou met à jour un joueur, `ZREVRANGE` (ou `ZRANGE … REV`) donne le top, et `ZRANK` / `ZREVRANK` la position d'un joueur, en temps logarithmique. Un ensemble simple n'a pas d'ordre, une liste conserve l'ordre d'insertion, et une table de hachage ne trie rien.",
+      "difficulty": 2,
+      "source": "https://redis.io/docs/latest/develop/data-types/sorted-sets/"
+    },
+    {
+      "question": "Quel est le langage de requête natif de la base graphe Neo4j ?",
+      "answer": "Cypher",
+      "wrong": [
+        "CQL",
+        "SPARQL",
+        "N1QL"
+      ],
+      "explanation": "Cypher décrit des **motifs** de graphe avec une syntaxe visuelle : `MATCH (a:Personne)-[:AMI]->(b) RETURN b.nom`, les nœuds entre parenthèses et les relations en flèches. Il a fortement inspiré GQL, la norme ISO des langages de requête pour graphes publiée en 2024. CQL est le langage de Cassandra, SPARQL celui des triplets RDF du Web sémantique, et N1QL celui de Couchbase.",
+      "difficulty": 2,
+      "source": "https://neo4j.com/docs/cypher-manual/current/introduction/"
+    },
+    {
+      "question": "Pourquoi un stockage **colonnaire** (ClickHouse, BigQuery, fichiers Parquet…) est-il efficace pour l'analytique ?",
+      "answer": "Il ne lit sur disque que les colonnes utiles à la requête",
+      "wrong": [
+        "Il range chaque ligne d'un seul bloc contigu",
+        "Il garde toutes les données en mémoire vive",
+        "Il crée automatiquement un index par ligne"
+      ],
+      "explanation": "Une requête analytique typique (`SUM(montant)` sur des millions de lignes) ne touche que quelques colonnes : stockées séparément, elles se lisent sans charger le reste. Des valeurs d'une même colonne se ressemblent, donc se **compressent** très bien. Ranger chaque ligne d'un bloc, c'est le stockage **par lignes** des bases transactionnelles (OLTP), efficace pour lire ou écrire un enregistrement complet.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Column-oriented_DBMS"
+    },
+    {
+      "question": "Avec l'isolation par instantané (*snapshot isolation*), deux médecins de garde vérifient chacun qu'au moins 2 médecins sont de garde, puis se retirent en même temps : il n'en reste plus aucun. Comment s'appelle cette anomalie ?",
+      "answer": "L'écriture biaisée (write skew)",
+      "wrong": [
+        "La mise à jour perdue (lost update)",
+        "La lecture sale (dirty read)",
+        "La lecture non répétable"
+      ],
+      "explanation": "Chaque transaction lit le même ensemble, puis modifie **une ligne différente** (la sienne) : aucun conflit d'écriture n'est détecté, mais l'invariant « au moins un médecin » est violé. Ce n'est pas une mise à jour perdue, car personne n'écrase l'écriture de l'autre. En PostgreSQL, `REPEATABLE READ` (un instantané) laisse passer ce cas ; seul `SERIALIZABLE` le détecte et annule l'une des transactions, que l'application doit relancer.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/transaction-iso.html"
+    },
+    {
+      "question": "Quel est l'avantage principal du **MVCC** (contrôle de concurrence multiversion), utilisé par PostgreSQL ou InnoDB ?",
+      "answer": "Les lectures ne bloquent pas les écritures, et inversement",
+      "wrong": [
+        "Deux écritures sur une même ligne ne se bloquent plus",
+        "Les anciennes versions de lignes disparaissent aussitôt",
+        "Toutes les transactions deviennent sérialisables"
+      ],
+      "explanation": "Avec le MVCC, une modification crée une **nouvelle version** de la ligne au lieu d'écraser l'ancienne : chaque lecteur voit l'instantané cohérent qui le concerne sans attendre les écrivains, et les écrivains n'attendent pas les lecteurs. Deux écrivains sur une **même ligne**, eux, se bloquent toujours. Le prix à payer : les versions périmées s'accumulent et doivent être nettoyées (le `VACUUM` de PostgreSQL).",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/mvcc-intro.html"
+    },
+    {
+      "question": "En PostgreSQL, pourquoi faut-il exécuter régulièrement `VACUUM` (ou laisser l'autovacuum le faire) ?",
+      "answer": "Pour récupérer l'espace des versions de lignes mortes",
+      "wrong": [
+        "Pour reconstruire les index devenus corrompus",
+        "Pour vider le cache de pages en mémoire",
+        "Pour valider les transactions restées ouvertes"
+      ],
+      "explanation": "À cause du MVCC, un `UPDATE` écrit une nouvelle version de la ligne et un `DELETE` ne fait que marquer l'ancienne : ces lignes « mortes » occupent de la place tant qu'on ne les nettoie pas. `VACUUM` rend cet espace réutilisable et protège aussi contre le rebouclage des identifiants de transaction (*wraparound*). Sans lui, les tables gonflent (*bloat*) et les requêtes ralentissent.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/routine-vacuuming.html"
+    },
+    {
+      "question": "Quel mécanisme permet à la plupart des SGBD de garantir la durabilité sans écrire tout de suite sur disque chaque page de données modifiée ?",
+      "answer": "Le journal à écriture anticipée (WAL)",
+      "wrong": [
+        "Le cache des résultats de requêtes",
+        "Le verrouillage à deux phases (2PL)",
+        "La réplication asynchrone"
+      ],
+      "explanation": "Chaque modification est d'abord ajoutée **séquentiellement** à un journal, forcé sur disque au `COMMIT` ; les pages de données, elles, sont écrites plus tard, en lot, lors des points de contrôle (*checkpoints*). Après un crash, le SGBD rejoue le journal pour reconstituer les modifications validées. Le verrouillage à deux phases sert l'isolation, pas la durabilité, et une réplique asynchrone peut avoir du retard au moment de la panne.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/wal-intro.html"
+    },
+    {
+      "question": "Une base façon Dynamo ou Cassandra réplique chaque donnée sur N nœuds ; une écriture attend W accusés de réception et une lecture interroge R nœuds. Quelle condition garantit qu'une lecture voie la dernière écriture validée ?",
+      "answer": "R + W > N",
+      "wrong": [
+        "R + W = N",
+        "R = W",
+        "R + W < N"
+      ],
+      "explanation": "Si R + W > N, tout ensemble de R nœuds lus **chevauche** forcément l'ensemble des W nœuds écrits : au moins un nœud interrogé détient la dernière version. Avec N = 3, le choix courant est W = 2 et R = 2 (quorum). Avec R = W = 1, on gagne en latence et en disponibilité, mais une lecture peut tomber sur une réplique périmée : c'est de la cohérence à terme.",
+      "difficulty": 3,
+      "source": "https://cassandra.apache.org/doc/latest/cassandra/architecture/dynamo.html"
+    },
+    {
+      "question": "Le « C » d'ACID et le « C » du théorème CAP désignent-ils la même notion ?",
+      "answer": "Non : respect des contraintes d'un côté, données identiques entre nœuds de l'autre",
+      "wrong": [
+        "Oui : dans les deux cas, le respect des contraintes d'intégrité",
+        "Oui : dans les deux cas, des données identiques sur tous les nœuds",
+        "Non : cohérence des index d'un côté, des caches de l'autre"
+      ],
+      "explanation": "Dans ACID, la **cohérence** signifie qu'une transaction fait passer la base d'un état valide à un autre état valide (contraintes, clés étrangères, règles métier). Dans CAP, elle désigne la **linéarisabilité** : toute lecture, sur n'importe quel nœud, voit la dernière écriture, comme s'il n'existait qu'une seule copie. Un même mot pour deux garanties sans rapport, source de nombreuses confusions.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_CAP"
+    },
+    {
+      "question": "Dans une transaction distribuée, quel protocole demande d'abord à chaque participant s'il est prêt, puis n'ordonne la validation que si tous ont répondu oui ?",
+      "answer": "Le commit à deux phases (2PC)",
+      "wrong": [
+        "Le verrouillage à deux phases (2PL)",
+        "Le contrôle multiversion (MVCC)",
+        "La journalisation anticipée (WAL)"
+      ],
+      "explanation": "Phase 1 (*prepare*) : le coordinateur demande à chaque base de tout préparer et de garantir qu'elle pourra valider. Phase 2 (*commit*) : si tous ont voté oui, il ordonne la validation, sinon l'annulation. Point faible : si le coordinateur tombe entre les deux phases, les participants restent bloqués. Le **2PL**, malgré son nom proche, est une technique de verrouillage pour l'isolation : acquérir des verrous, puis seulement les relâcher.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Two-phase_commit_protocol"
+    },
+    {
+      "question": "La table `articles` compte 50 lignes. Lesquelles renvoie `SELECT * FROM articles ORDER BY id LIMIT 10 OFFSET 20;` ?",
+      "answer": "Les lignes 21 à 30",
+      "wrong": [
+        "Les lignes 20 à 30",
+        "Les lignes 11 à 20",
+        "Les lignes 10 à 20"
+      ],
+      "explanation": "`OFFSET 20` **saute** les 20 premières lignes du résultat trié, puis `LIMIT 10` en garde 10 : on obtient les rangs 21 à 30, soit la 3e page de 10 résultats. Sans `ORDER BY`, la notion de « 21e ligne » n'aurait aucun sens stable. `LIMIT`/`OFFSET` est la syntaxe de PostgreSQL, MySQL et SQLite ; le standard écrit `OFFSET 20 ROWS FETCH FIRST 10 ROWS ONLY`.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/queries-limit.html"
+    },
+    {
+      "question": "Que fait `ALTER TABLE clients ADD COLUMN telephone VARCHAR(20);` ?",
+      "answer": "Elle ajoute une colonne à la table existante",
+      "wrong": [
+        "Elle crée une nouvelle table `telephone`",
+        "Elle ajoute une ligne contenant un téléphone",
+        "Elle convertit toutes les colonnes en texte"
+      ],
+      "explanation": "`ALTER TABLE` modifie la **structure** d'une table existante sans la recréer : ajouter (`ADD COLUMN`), supprimer (`DROP COLUMN`) ou renommer une colonne, changer un type, ajouter une contrainte… Les lignes déjà présentes reçoivent NULL (ou la valeur `DEFAULT`) dans la nouvelle colonne. Pour ajouter des **lignes**, on utilise `INSERT`.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/ddl-alter.html"
+    },
+    {
+      "question": "Qu'est-ce qu'une **vue**, créée avec `CREATE VIEW` ?",
+      "answer": "Une requête enregistrée, interrogeable comme une table",
+      "wrong": [
+        "Une copie physique et figée d'une table",
+        "Un index portant sur plusieurs colonnes",
+        "Une sauvegarde de la base à un instant donné"
+      ],
+      "explanation": "Une vue ne stocke pas de données : son `SELECT` est réexécuté à chaque fois qu'on l'interroge, donc elle reflète toujours l'état actuel des tables. Elle sert à simplifier des requêtes complexes ou à n'exposer qu'une partie des colonnes à certains utilisateurs. Une **vue matérialisée**, elle, stocke son résultat et doit être rafraîchie.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/sql-createview.html"
+    },
+    {
+      "question": "Quel type de colonne convient le mieux pour stocker des **montants monétaires** exacts ?",
+      "answer": "`DECIMAL(10, 2)`",
+      "wrong": [
+        "`FLOAT`",
+        "`REAL`",
+        "`DOUBLE PRECISION`"
+      ],
+      "explanation": "`DECIMAL` (ou `NUMERIC`) stocke les nombres en base 10 avec une précision **exacte** : 0,10 + 0,20 y vaut exactement 0,30. Les types à virgule flottante (`FLOAT`, `REAL`, `DOUBLE PRECISION`) stockent une approximation binaire : en PostgreSQL, `0.1::float8 + 0.2::float8 = 0.3::float8` est faux. Pour de l'argent, ces petites erreurs d'arrondi sont inacceptables.",
+      "difficulty": 1,
+      "source": "https://www.postgresql.org/docs/current/datatype-numeric.html"
+    },
+    {
+      "question": "Qu'est-ce qu'un **ORM**, comme Hibernate, SQLAlchemy ou Doctrine ?",
+      "answer": "Une couche qui relie les objets du code aux tables",
+      "wrong": [
+        "Un moteur de base de données embarqué dans l'application",
+        "Un outil de sauvegarde et de restauration de base",
+        "Un langage de requête dédié aux bases NoSQL"
+      ],
+      "explanation": "Un ORM (*Object-Relational Mapping*) traduit les classes et objets de l'application en tables et lignes, et génère le SQL à ta place : `client.commandes` devient une jointure. Gain : moins de code répétitif. Risques : des requêtes inefficaces si l'on oublie ce qu'il génère, comme le fameux problème « N+1 » (une requête par objet d'une liste).",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Mapping_objet-relationnel"
+    },
+    {
+      "question": "Que signifie le sigle **SQL** ?",
+      "answer": "Structured Query Language",
+      "wrong": [
+        "Simple Query Language",
+        "Standard Query Logic",
+        "Sequential Query Language"
+      ],
+      "explanation": "SQL, *Structured Query Language*, descend de SEQUEL (*Structured English Query Language*), conçu chez IBM au début des années 1970 par Donald Chamberlin et Raymond Boyce. Le nom a été raccourci pour une question de marque déposée, d'où la prononciation « sequel » encore courante. SQL est normalisé par l'ANSI depuis 1986 et par l'ISO depuis 1987.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Structured_Query_Language"
+    },
+    {
+      "question": "Que renvoie `CASE WHEN x > 0 THEN 'positif' END` quand `x` vaut -3 ?",
+      "answer": "NULL",
+      "wrong": [
+        "Une chaîne vide `''`",
+        "`'positif'`",
+        "Une erreur, faute de `ELSE`"
+      ],
+      "explanation": "Quand aucune branche `WHEN` n'est vraie et qu'il n'y a pas de `ELSE`, un `CASE` renvoie **NULL**, sans erreur. C'est un piège quand on l'emploie dans un calcul ou un filtre : ces lignes deviennent « inconnues ». D'où l'habitude d'écrire toujours un `ELSE` explicite, par exemple `ELSE 'négatif ou nul'`.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/functions-conditional.html"
+    },
+    {
+      "question": "En SQL standard, comme en PostgreSQL ou en SQLite, quel opérateur concatène deux chaînes de caractères ?",
+      "answer": "`||`",
+      "wrong": [
+        "`+`",
+        "`&`",
+        "`.`"
+      ],
+      "explanation": "`'Jean' || ' ' || 'Dupont'` donne `'Jean Dupont'`. Attention aux autres SGBD : SQL Server utilise `+`, et MySQL interprète par défaut `||` comme un **OU logique** (sauf en mode `PIPES_AS_CONCAT`) ; la fonction `CONCAT()` est le choix le plus portable. Autre piège : avec `||`, il suffit d'un NULL pour que tout le résultat soit NULL.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/functions-string.html"
+    },
+    {
+      "question": "En SQL standard (et en PostgreSQL), à quoi servent les guillemets **doubles**, comme dans `\"Date de naissance\"` ?",
+      "answer": "À délimiter un identifiant (nom de colonne, de table…)",
+      "wrong": [
+        "À délimiter une chaîne de caractères littérale",
+        "À échapper les caractères spéciaux d'une chaîne",
+        "À marquer un commentaire sur une seule ligne"
+      ],
+      "explanation": "Les guillemets **simples** délimitent les chaînes (`'Paris'`) ; les **doubles** délimitent les identifiants, ce qui permet d'y mettre des espaces, des mots réservés ou de la casse (`\"Nom\"` est différent de `nom` en PostgreSQL). Ainsi, `SELECT \"abc\"` cherche une **colonne** abc. MySQL accepte par défaut les doubles comme des chaînes (sauf en mode `ANSI_QUOTES`) et utilise des accents graves pour les identifiants.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/sql-syntax-lexical.html"
+    },
+    {
+      "question": "Que fait `ORDER BY 2` dans `SELECT nom, age FROM personnes ORDER BY 2;` ?",
+      "answer": "Il trie selon la 2e colonne du `SELECT`, soit `age`",
+      "wrong": [
+        "Il trie selon la constante 2, donc ne trie rien",
+        "Il ne renvoie que les 2 premières lignes",
+        "Il trie selon la 2e colonne de la table"
+      ],
+      "explanation": "Un entier seul dans un `ORDER BY` désigne la **position** d'une colonne de la liste du `SELECT`, en partant de 1. C'est pratique en exploration, mais fragile : si l'on réordonne les colonnes du `SELECT`, le tri change silencieusement. Dans le code durable, on préfère nommer la colonne ou son alias.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/queries-order.html"
+    },
+    {
+      "question": "`a(id)` contient 1, 2, 3 et `b(id)` contient 2, 3, 4. Que renvoie la requête suivante ?\n```sql\nSELECT id FROM a\nEXCEPT\nSELECT id FROM b;\n```",
+      "answer": "1",
+      "wrong": [
+        "4",
+        "1 et 4",
+        "2 et 3"
+      ],
+      "explanation": "`EXCEPT` renvoie les lignes de la **première** requête absentes de la seconde : seul 1 est dans `a` sans être dans `b`. Ce n'est pas symétrique : `b EXCEPT a` donnerait 4. `INTERSECT` renverrait les lignes communes (2 et 3). Oracle a longtemps nommé cet opérateur `MINUS`.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/queries-union.html"
+    },
+    {
+      "question": "La table `employes(id, nom, manager_id)` stocke dans `manager_id` l'`id` du manager de chaque employé. Comment afficher chaque employé avec le nom de son manager ?",
+      "answer": "En joignant `employes` à elle-même, avec deux alias",
+      "wrong": [
+        "Avec un `GROUP BY manager_id` sur la table",
+        "Avec un `UNION` de la table avec elle-même",
+        "Avec un `CROSS JOIN` sans condition"
+      ],
+      "explanation": "C'est une **auto-jointure** : `FROM employes e LEFT JOIN employes m ON m.id = e.manager_id`, puis `SELECT e.nom, m.nom`. Les alias `e` et `m` font jouer à la même table deux rôles distincts. Le `LEFT JOIN` garde les employés sans manager (le PDG, avec `manager_id` à NULL). Pour remonter toute la hiérarchie, on passerait à une CTE récursive.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que renvoie `LAG(prix) OVER (ORDER BY jour)` sur la **toute première** ligne ?",
+      "answer": "NULL",
+      "wrong": [
+        "0",
+        "Le prix de cette même ligne",
+        "Le prix de la dernière ligne"
+      ],
+      "explanation": "`LAG` renvoie la valeur de la ligne **précédente** dans la fenêtre ; la première ligne n'en a pas, d'où NULL. On peut fournir une valeur par défaut en troisième argument : `LAG(prix, 1, 0)`. `LEAD` fait l'inverse (ligne suivante), et `prix - LAG(prix) OVER (ORDER BY jour)` donne la variation d'un jour à l'autre.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/functions-window.html"
+    },
+    {
+      "question": "Que renvoie `SELECT nom, SUM(salaire) OVER (PARTITION BY service) FROM employes;` ?",
+      "answer": "Chaque employé, avec la masse salariale de son service",
+      "wrong": [
+        "Une seule ligne par service, comme un `GROUP BY`",
+        "Chaque employé, avec la masse salariale totale",
+        "Chaque employé, avec un cumul progressif du service"
+      ],
+      "explanation": "Une fonction de fenêtre calcule un agrégat **sans regrouper les lignes** : chaque employé reste présent, accompagné de la somme calculée sur les lignes de son service. Sans `PARTITION BY`, `OVER ()` donnerait le total général ; avec un `ORDER BY` dans le `OVER`, on obtiendrait un cumul progressif. C'est idéal pour comparer chaque ligne à son groupe, par exemple pour calculer une part en pourcentage.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/tutorial-window.html"
+    },
+    {
+      "question": "En PostgreSQL comme en SQLite, quelle clause transforme un `INSERT` en « insère, ou mets à jour si la clé existe déjà » ?",
+      "answer": "`ON CONFLICT (id) DO UPDATE SET …`",
+      "wrong": [
+        "`ON DUPLICATE KEY UPDATE …`",
+        "`IF EXISTS THEN UPDATE …`",
+        "`WITH REPLACE ON KEY (id) …`"
+      ],
+      "explanation": "C'est l'**upsert** : en cas de violation de la contrainte d'unicité sur `id`, la ligne existante est mise à jour ; la pseudo-table `excluded` contient les valeurs qu'on tentait d'insérer (`SET v = excluded.v`). `ON DUPLICATE KEY UPDATE` est la syntaxe équivalente de **MySQL**. Le standard SQL propose aussi `MERGE`, disponible dans PostgreSQL depuis la version 15.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/sql-insert.html"
+    },
+    {
+      "question": "En PostgreSQL, pourquoi cette requête est-elle rejetée ?\n```sql\nSELECT ville, nom, COUNT(*)\nFROM clients\nGROUP BY ville;\n```",
+      "answer": "`nom` n'est ni dans le `GROUP BY` ni dans un agrégat",
+      "wrong": [
+        "`COUNT(*)` ne peut pas côtoyer d'autres colonnes",
+        "Une clause `HAVING` est obligatoire ici",
+        "Un `GROUP BY` exige un `ORDER BY`"
+      ],
+      "explanation": "Chaque groupe (une ville) produit **une seule ligne** : quel `nom` afficher parmi tous les clients de la ville ? La requête est ambiguë, donc refusée. Il faut ajouter `nom` au `GROUP BY` ou l'agréger (`MIN(nom)`, `STRING_AGG(nom, ', ')`). SQLite, lui, l'accepte et prend le nom d'une ligne quelconque du groupe, tout comme les anciens MySQL sans le mode `ONLY_FULL_GROUP_BY`.",
+      "difficulty": 2,
+      "source": "https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-GROUP"
+    },
+    {
+      "question": "Pour compter les commandes de chaque client, avec 0 pour ceux qui n'en ont aucune, que faut-il mettre à la place de `???` ?\n```sql\nSELECT c.id, ???\nFROM clients c\nLEFT JOIN commandes o ON o.client_id = c.id\nGROUP BY c.id;\n```",
+      "answer": "`COUNT(o.id)`",
+      "wrong": [
+        "`COUNT(*)`",
+        "`COUNT(c.id)`",
+        "`SUM(o.id)`"
+      ],
+      "explanation": "Un client sans commande produit quand même **une ligne** dans le `LEFT JOIN`, avec des NULL côté `commandes`. `COUNT(*)` et `COUNT(c.id)` comptent cette ligne et affichent donc 1 au lieu de 0. `COUNT(o.id)` ignore les NULL et renvoie bien 0. Quant à `SUM(o.id)`, il additionne des identifiants, ce qui n'a aucun sens.",
+      "difficulty": 3
+    },
+    {
+      "question": "Combien de lignes produit la CTE récursive `n` ?\n```sql\nWITH RECURSIVE n(x) AS (\n  SELECT 1\n  UNION ALL\n  SELECT x * 2 FROM n WHERE x < 100\n)\nSELECT COUNT(*) FROM n;\n```",
+      "answer": "8",
+      "wrong": [
+        "7",
+        "6",
+        "100"
+      ],
+      "explanation": "Le cas de base produit 1, puis chaque tour double la valeur tant que la ligne **précédente** est inférieure à 100 : 1, 2, 4, 8, 16, 32, 64, puis 128 (produit à partir de 64, qui est < 100). Le tour suivant ne produit rien, car 128 ne passe pas le filtre : la récursion s'arrête. Total : 8 lignes, la dernière dépassant 100. Le `WHERE` filtre l'entrée du tour, pas sa sortie.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/queries-with.html"
+    },
+    {
+      "question": "En SQLite, dans une table classique (non `STRICT`) où la colonne `n` est déclarée `INTEGER`, que produit `INSERT INTO t (n) VALUES ('abc');` ?",
+      "answer": "La chaîne 'abc' est stockée telle quelle",
+      "wrong": [
+        "Une erreur de type est levée",
+        "La valeur 0 est stockée",
+        "La valeur NULL est stockée"
+      ],
+      "explanation": "SQLite a un typage **dynamique** : le type déclaré d'une colonne n'est qu'une *affinité*. Il tente une conversion (`'12'` serait stocké comme l'entier 12), mais si elle échoue, il garde la valeur telle quelle : `typeof(n)` renvoie alors `'text'`. Depuis la version 3.37, une table déclarée `STRICT` refuse au contraire ce genre de valeur, comme PostgreSQL.",
+      "difficulty": 3,
+      "source": "https://www.sqlite.org/datatype3.html"
+    },
+    {
+      "question": "Quel SGBD traite une chaîne vide `''` comme si elle valait NULL ?",
+      "answer": "Oracle Database",
+      "wrong": [
+        "PostgreSQL",
+        "MySQL",
+        "SQLite"
+      ],
+      "explanation": "Dans Oracle, une valeur `VARCHAR2` de longueur zéro **est** NULL : `WHERE col = ''` ne trouve donc jamais rien, alors que `'' IS NULL` est vrai. PostgreSQL, MySQL et SQLite distinguent clairement chaîne vide et absence de valeur, conformément au standard. C'est un piège classique lors des migrations vers ou depuis Oracle.",
+      "difficulty": 3,
+      "source": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Nulls.html"
+    },
+    {
+      "question": "En SQLite, que renvoie `SELECT 'ABC' LIKE 'abc';` ?",
+      "answer": "1 (vrai)",
+      "wrong": [
+        "0 (faux)",
+        "NULL",
+        "Une erreur de syntaxe"
+      ],
+      "explanation": "Par défaut, le `LIKE` de SQLite est **insensible à la casse** pour les caractères ASCII (pas pour « É » face à « é ») ; le pragma `case_sensitive_like` change ce comportement. En PostgreSQL, au contraire, `LIKE` est sensible à la casse (`'ABC' LIKE 'abc'` est faux) et il faut `ILIKE` pour l'ignorer. En MySQL, tout dépend de la collation, insensible à la casse par défaut.",
+      "difficulty": 3,
+      "source": "https://www.sqlite.org/lang_expr.html"
+    },
+    {
+      "question": "En PostgreSQL, que renvoie cette requête ?\n```sql\nSELECT DISTINCT ON (client_id) client_id, montant\nFROM commandes\nORDER BY client_id, date DESC;\n```",
+      "answer": "La commande la plus récente de chaque client",
+      "wrong": [
+        "La commande la plus ancienne de chaque client",
+        "Les montants distincts de chaque client",
+        "Les clients n'ayant qu'une seule commande"
+      ],
+      "explanation": "`DISTINCT ON (client_id)` ne garde que la **première ligne** de chaque groupe de même `client_id`, selon l'ordre de l'`ORDER BY` : ici la date la plus récente, grâce à `date DESC`. Les expressions du `DISTINCT ON` doivent figurer en tête de l'`ORDER BY`. Cette extension propre à PostgreSQL résout élégamment le problème du « dernier élément par groupe », que l'on traite ailleurs avec `ROW_NUMBER()`.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/sql-select.html#SQL-DISTINCT"
+    },
+    {
+      "question": "Dans une transaction PostgreSQL, on exécute `CREATE TABLE t (x INT);` puis `ROLLBACK;`. Qu'advient-il de la table `t` ?",
+      "answer": "Elle n'existe pas : sa création est annulée",
+      "wrong": [
+        "Elle subsiste, car le DDL valide implicitement",
+        "Elle subsiste, mais sans aucune colonne",
+        "Le `ROLLBACK` est refusé après du DDL"
+      ],
+      "explanation": "PostgreSQL a un **DDL transactionnel** : `CREATE`, `ALTER` ou `DROP` s'annulent comme des `INSERT`, ce qui permet d'appliquer une migration de schéma en « tout ou rien ». Ce n'est pas le cas partout : MySQL et Oracle valident implicitement la transaction en cours avant et après la plupart des instructions DDL, qui ne peuvent donc pas être annulées.",
+      "difficulty": 3,
+      "source": "https://wiki.postgresql.org/wiki/Transactional_DDL_in_PostgreSQL:_A_Competitive_Analysis"
+    },
+    {
+      "question": "Un index B-tree porte sur `(client_id, montant)`. Pourquoi `SELECT montant FROM commandes WHERE client_id = 42` peut-elle être particulièrement rapide ?",
+      "answer": "Elle peut être servie par l'index seul, sans lire la table",
+      "wrong": [
+        "L'index garde en cache le résultat de la requête",
+        "L'index trie la table elle-même sur le disque",
+        "L'index stocke la somme des montants par client"
+      ],
+      "explanation": "Toutes les colonnes nécessaires (`client_id` pour filtrer, `montant` pour afficher) sont présentes **dans l'index** : c'est un index **couvrant**, et le moteur peut faire un parcours d'index seul (*index-only scan*) sans aller chercher les lignes dans la table. PostgreSQL permet aussi d'ajouter des colonnes non clés avec `INCLUDE`. Un index ne stocke ni résultats de requêtes ni agrégats.",
+      "difficulty": 3,
+      "source": "https://www.postgresql.org/docs/current/indexes-index-only-scans.html"
     }
   ]
 }

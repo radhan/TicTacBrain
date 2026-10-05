@@ -364,6 +364,870 @@
       "explanation": "En Python, `//` arrondit **vers le bas** (floor), pas vers zéro : `-7 / 2` vaut -3,5, dont le plancher est -4. Le reste suit la relation `(a // b) * b + (a % b) == a`, soit `-4 * 2 + r == -7`, donc `r = 1`. Résultat : le `%` d'un nombre négatif par un positif est toujours positif en Python, à la différence du C.",
       "difficulty": 3,
       "source": "https://docs.python.org/fr/3/reference/expressions.html#binary-arithmetic-operations"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nprint(7 / 2, 8 / 2)\n```",
+      "answer": "`3.5 4.0`",
+      "wrong": [
+        "`3 4`",
+        "`3.5 4`",
+        "`3 4.0`"
+      ],
+      "explanation": "En Python 3, l'opérateur `/` effectue toujours une division **réelle** et renvoie un `float`, même quand le résultat tombe juste : `8 / 2` vaut donc `4.0` et non `4`. Pour obtenir un quotient entier, on utilise la division entière `//` (`8 // 2` vaut `4`). En Python 2, `/` entre deux entiers faisait une division entière, ce qui a causé bien des surprises lors des migrations.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/tutorial/introduction.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\na, b = 1, 2\na, b = b, a\nprint(a, b)\n```",
+      "answer": "`2 1`",
+      "wrong": [
+        "`1 2`",
+        "`2 2`",
+        "`1 1`"
+      ],
+      "explanation": "L'expression de droite `b, a` est évaluée **entièrement** avant l'affectation : elle construit le tuple `(2, 1)`, qui est ensuite dépaqueté dans `a` et `b`. On échange ainsi deux variables en une ligne, sans variable temporaire. Le piège serait de croire que `a` reçoit 2 puis que `b` reçoit le nouveau `a` (ce qui donnerait `2 2`) : les valeurs sont figées avant toute affectation.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/reference/simple_stmts.html#assignment-statements"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nx = [1, 2, 3]\ny = x\ny.append(4)\nprint(x)\n```",
+      "answer": "`[1, 2, 3, 4]`",
+      "wrong": [
+        "`[1, 2, 3]`",
+        "`[4]`",
+        "`[1, 2, 3, [4]]`"
+      ],
+      "explanation": "`y = x` ne copie pas la liste : cela crée un second **nom** pour le même objet. Modifier la liste via `y` (ici avec `append`) se voit donc aussi via `x`. En Python, une affectation lie toujours un nom à un objet existant, sans jamais le dupliquer. Pour obtenir une liste indépendante, il faut une copie explicite : `y = x.copy()` ou `y = list(x)`.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/faq/programming.html#why-did-changing-list-y-also-change-list-x"
+    },
+    {
+      "question": "Que se passe-t-il à l'exécution de ce code ?\n```python\ns = \"chat\"\ns[0] = \"p\"\n```",
+      "answer": "Une `TypeError` : les chaînes sont immuables",
+      "wrong": [
+        "`s` vaut désormais `\"phat\"`",
+        "`s` vaut désormais `\"pchat\"`",
+        "Une `IndexError` : indice invalide"
+      ],
+      "explanation": "Une chaîne (`str`) est **immuable** : on ne peut pas remplacer un de ses caractères en place, d'où l'erreur `'str' object does not support item assignment`. Pour obtenir « phat », on construit une nouvelle chaîne, par exemple `s = \"p\" + s[1:]`. Les méthodes de `str` (`upper`, `replace`, `strip`…) renvoient toujours une nouvelle chaîne sans toucher à l'originale.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/tutorial/introduction.html"
+    },
+    {
+      "question": "Qu'affiche `print(\"Python\"[::-1])` ?",
+      "answer": "`nohtyP`",
+      "wrong": [
+        "`Pytho`",
+        "`n`",
+        "`Python`"
+      ],
+      "explanation": "Le slicing accepte un troisième paramètre, le **pas** : `[début:fin:pas]`. Avec un pas de `-1` et des bornes omises, on parcourt toute la séquence de la fin vers le début, ce qui inverse la chaîne. À ne pas confondre avec `[:-1]`, qui retire le dernier caractère (« Pytho »), ni avec `[-1]`, qui renvoie seulement le dernier (« n »).",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html#common-sequence-operations"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nprint(list(range(2, 10, 3)))\n```",
+      "answer": "`[2, 5, 8]`",
+      "wrong": [
+        "`[2, 5, 8, 11]`",
+        "`[3, 6, 9]`",
+        "`[2, 3, 4]`"
+      ],
+      "explanation": "`range(début, fin, pas)` part de 2 et avance de 3 en 3 tant que la valeur reste **strictement inférieure** à 10 : 2, 5, 8. La valeur suivante, 11, dépasse la borne et n'est pas produite. Comme pour le slicing, la borne de fin est toujours exclue ; `range` étant paresseux, le `list()` sert à matérialiser ses valeurs pour les afficher.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html#ranges"
+    },
+    {
+      "question": "En Python, comment délimite-t-on un bloc de code (corps d'une fonction, d'une boucle, d'un `if`…) ?",
+      "answer": "Par l'indentation des lignes, après un deux-points",
+      "wrong": [
+        "Par des accolades `{` et `}` autour du bloc",
+        "Par les mots-clés `begin` et `end`",
+        "Par un point-virgule à la fin du bloc"
+      ],
+      "explanation": "Python fait de l'**indentation** une règle de syntaxe : la ligne d'en-tête se termine par `:` et toutes les lignes du bloc sont décalées du même nombre d'espaces (4 selon la PEP 8). Une indentation incohérente provoque une `IndentationError`. Les accolades, qui délimitent les blocs en C, Java ou JavaScript, servent en Python à écrire des dictionnaires et des ensembles.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/reference/lexical_analysis.html#indentation"
+    },
+    {
+      "question": "Qu'affiche `print(0.1 + 0.2 == 0.3)` ?",
+      "answer": "`False`",
+      "wrong": [
+        "`True`",
+        "Une `ValueError`",
+        "`0.3`"
+      ],
+      "explanation": "0,1 et 0,2 n'ont pas de représentation exacte en binaire (norme IEEE 754) : leur somme vaut en réalité `0.30000000000000004`, qui diffère du flottant le plus proche de 0,3. Ce n'est pas un bug de Python mais une propriété des nombres à virgule flottante, présente dans presque tous les langages. Pour comparer des flottants, on utilise `math.isclose(a, b)` ; pour des calculs décimaux exacts (montants d'argent), le module `decimal`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/tutorial/floatingpoint.html"
+    },
+    {
+      "question": "Qu'affiche `print(type({}))` ?",
+      "answer": "`<class 'dict'>`",
+      "wrong": [
+        "`<class 'set'>`",
+        "`<class 'object'>`",
+        "`<class 'list'>`"
+      ],
+      "explanation": "Des accolades vides créent un **dictionnaire** vide : les dictionnaires existaient dans Python bien avant les ensembles, et la notation `{}` leur est restée. Pour un ensemble vide, il faut écrire `set()`. En revanche, dès que les accolades contiennent des éléments sans deux-points, comme `{1, 2}`, elles créent bien un `set`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/tutorial/datastructures.html#sets"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\na = (1)\nb = (1,)\nprint(type(a).__name__, type(b).__name__)\n```",
+      "answer": "`int tuple`",
+      "wrong": [
+        "`tuple tuple`",
+        "`int int`",
+        "`tuple int`"
+      ],
+      "explanation": "Ce sont les **virgules** qui créent un tuple, pas les parenthèses : `(1)` est simplement l'entier 1 entre parenthèses de regroupement, comme dans `(1 + 2) * 3`. Pour un tuple à un seul élément, la virgule finale est obligatoire : `(1,)`, ou même `1,` sans parenthèses. Seul le tuple vide s'écrit `()` sans virgule.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences"
+    },
+    {
+      "question": "Qu'affiche `print(True + True + True)` ?",
+      "answer": "`3`",
+      "wrong": [
+        "`True`",
+        "Une `TypeError`",
+        "`1`"
+      ],
+      "explanation": "`bool` est une **sous-classe** de `int` : dans un calcul, `True` vaut 1 et `False` vaut 0, et `isinstance(True, int)` renvoie `True`. L'addition donne donc 1 + 1 + 1 = 3. On s'en sert parfois pour compter : `sum(x > 0 for x in valeurs)` donne le nombre de valeurs positives.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/functions.html#bool"
+    },
+    {
+      "question": "Que se passe-t-il quand on calcule `2 ** 100` en Python ?",
+      "answer": "Le résultat exact s'affiche : les `int` n'ont pas de taille maximale",
+      "wrong": [
+        "Une `OverflowError`, car le résultat dépasse 64 bits",
+        "Le résultat est converti en flottant arrondi `1.2676506002282294e+30`",
+        "Le calcul déborde et donne un nombre négatif"
+      ],
+      "explanation": "Les entiers Python ont une **précision arbitraire** : ils grandissent autant que la mémoire le permet, et `2 ** 100` affiche ses 31 chiffres exacts (1267650600228229401496703205376). Il n'y a donc jamais de débordement silencieux comme avec les entiers 64 bits du C ou de Java. Le revers est un coût : les opérations sur de très grands entiers sont plus lentes que sur des entiers machine.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html#numeric-types-int-float-complex"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nmot = \"Python\"\nprint(mot.find(\"y\"), mot.find(\"z\"))\n```",
+      "answer": "`1 -1`",
+      "wrong": [
+        "`1 None`",
+        "`2 -1`",
+        "`1` puis une `ValueError`"
+      ],
+      "explanation": "`str.find` renvoie l'indice de la première occurrence (ici `y` est en position 1, car on compte à partir de 0) et **-1** si la sous-chaîne est absente, sans lever d'erreur. Sa cousine `str.index` fait la même recherche mais lève une `ValueError` en cas d'absence. Attention : -1 est aussi un indice valide (le dernier caractère) ; pour savoir seulement si la sous-chaîne existe, on écrit `\"z\" in mot`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html#str.find"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nprint(bool(\"\"), bool(\" \"), bool(\"0\"))\n```",
+      "answer": "`False True True`",
+      "wrong": [
+        "`False False False`",
+        "`False True False`",
+        "`False False True`"
+      ],
+      "explanation": "Une chaîne est fausse **uniquement** si elle est vide. Une chaîne contenant un espace, ou le caractère `\"0\"`, n'est pas vide : elle vaut donc `True`, quel que soit son contenu. Piège fréquent avec `input()` : une saisie « 0 » ou « False » est une chaîne non vide, donc vraie ; il faut la convertir (avec `int(...)` par exemple) avant de tester sa valeur.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html#truth-value-testing"
+    },
+    {
+      "question": "Que vaut l'expression `2 ^ 3` en Python ?",
+      "answer": "`1`",
+      "wrong": [
+        "`8`",
+        "`9`",
+        "`6`"
+      ],
+      "explanation": "En Python, `^` est l'opérateur **OU exclusif bit à bit** (XOR), pas la puissance : 2 s'écrit `10` en binaire, 3 s'écrit `11`, et leur XOR donne `01`, soit 1. La puissance s'écrit `**` : `2 ** 3` vaut 8. La confusion vient des calculatrices et de notations comme LaTeX, où `^` désigne l'exposant.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html#bitwise-operations-on-integer-types"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nlst = [1, 2, 3]\nprint(lst[5:])\n```",
+      "answer": "`[]`",
+      "wrong": [
+        "Une `IndexError`",
+        "`None`",
+        "`[3]`"
+      ],
+      "explanation": "Le slicing est **tolérant** : des bornes hors limites sont simplement ramenées à la taille de la séquence, et une tranche qui ne contient rien donne une liste vide. L'accès à un seul élément, lui, est strict : `lst[5]` lèverait une `IndexError`. Cette tolérance est pratique (`texte[:100]` fonctionne même sur un texte plus court), mais elle peut masquer une erreur d'indice.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html#common-sequence-operations"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nprint(round(0.5), round(1.5), round(2.5))\n```",
+      "answer": "`0 2 2`",
+      "wrong": [
+        "`1 2 3`",
+        "`0 1 2`",
+        "`1 2 2`"
+      ],
+      "explanation": "En Python 3, `round` applique l'**arrondi au pair** (dit « arrondi bancaire ») : une valeur située exactement à mi-chemin entre deux entiers est arrondie vers l'entier **pair**. 0,5 donne donc 0, 1,5 donne 2 et 2,5 donne 2. Cette règle évite le biais vers le haut qu'introduirait l'arrondi « scolaire » sur de grandes séries de calculs.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/library/functions.html#round"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nx = float(\"nan\")\nprint(x == x)\n```",
+      "answer": "`False`",
+      "wrong": [
+        "`True`",
+        "Une `ValueError`",
+        "`nan`"
+      ],
+      "explanation": "NaN (« Not a Number ») est la seule valeur qui n'est **pas égale à elle-même** : la norme IEEE 754 impose qu'elle soit différente de tout, y compris d'elle-même. `x == x` vaut donc `False`, et `x != x` vaut `True`. Pour détecter un NaN de façon lisible, on utilise `math.isnan(x)`.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/library/math.html#math.isnan"
+    },
+    {
+      "question": "Que vaut l'expression `-2 ** 2` en Python ?",
+      "answer": "`-4`",
+      "wrong": [
+        "`4`",
+        "`-4.0`",
+        "Une `SyntaxError`"
+      ],
+      "explanation": "L'opérateur puissance `**` est **prioritaire** sur le moins unaire placé à sa gauche : `-2 ** 2` se lit `-(2 ** 2)`, soit -4. Pour élever -2 au carré, il faut des parenthèses : `(-2) ** 2` vaut 4. C'est la même convention qu'en mathématiques, où −2² vaut −4.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/reference/expressions.html#the-power-operator"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nd = {1: \"a\", 1.0: \"b\", True: \"c\"}\nprint(d)\n```",
+      "answer": "`{1: 'c'}`",
+      "wrong": [
+        "`{1: 'a', 1.0: 'b', True: 'c'}`",
+        "`{True: 'c'}`",
+        "`{1: 'a'}`"
+      ],
+      "explanation": "`1`, `1.0` et `True` sont **égaux** (`1 == 1.0 == True`) et ont le même hachage : pour un dictionnaire, c'est donc la même clé. Chaque nouvelle paire remplace la valeur, mais la clé conservée reste le premier objet inséré, `1`. On obtient un seul couple, `{1: 'c'}`. Même logique pour les ensembles : `{1, 1.0, True}` ne contient qu'un élément.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html#mapping-types-dict"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nprint(\"photo.com\".rstrip(\".com\"))\n```",
+      "answer": "`phot`",
+      "wrong": [
+        "`photo`",
+        "`photo.com`",
+        "`pho`"
+      ],
+      "explanation": "L'argument de `rstrip` n'est pas un suffixe mais un **ensemble de caractères** : Python retire à droite tous les caractères appartenant à `{'.', 'c', 'o', 'm'}`, jusqu'à en rencontrer un qui n'en fait pas partie. Il enlève donc « m », « o », « c », « . » puis le « o » final de « photo », et s'arrête sur le « t ». Pour retirer un suffixe précis, on utilise `removesuffix(\".com\")` (Python 3.9+), qui donne bien `photo`.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html#str.rstrip"
+    },
+    {
+      "question": "Qu'affiche ce code (attention à la ponctuation) ?\n```python\nfruits = [\n    \"pomme\",\n    \"poire\"\n    \"kiwi\",\n]\nprint(len(fruits))\n```",
+      "answer": "`2`",
+      "wrong": [
+        "`3`",
+        "Une `SyntaxError`",
+        "`1`"
+      ],
+      "explanation": "Il manque une virgule après `\"poire\"`. Or deux littéraux de chaîne écrits côte à côte sont **concaténés automatiquement** à la compilation : `\"poire\" \"kiwi\"` devient `\"poirekiwi\"`. La liste contient donc deux éléments, `'pomme'` et `'poirekiwi'`, sans aucune erreur. Cette fonctionnalité sert à couper une longue chaîne sur plusieurs lignes, mais elle rend ce genre d'oubli silencieux.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/reference/expressions.html#string-literal-concatenation"
+    },
+    {
+      "question": "Qu'affiche ce code (il y a deux espaces entre `a` et `b`) ?\n```python\nprint(\"a  b\".split(\" \"))\n```",
+      "answer": "`['a', '', 'b']`",
+      "wrong": [
+        "`['a', 'b']`",
+        "`['a', ' ', 'b']`",
+        "`['a', ' b']`"
+      ],
+      "explanation": "Avec un séparateur explicite, `split` coupe à **chaque** occurrence : entre les deux espaces consécutifs se trouve une chaîne vide, qui apparaît dans le résultat. Sans argument, `split()` se comporte différemment : il coupe sur toute suite de blancs et ignore ceux du début et de la fin, ce qui donnerait `['a', 'b']`. C'est pourquoi on préfère `split()` pour découper un texte en mots.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html#str.split"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nmultiplie = lambda x, y: x * y\nprint(multiplie(3, 4))\n```",
+      "answer": "`12`",
+      "wrong": [
+        "`7`",
+        "`34`",
+        "`<function <lambda>>`"
+      ],
+      "explanation": "`lambda` crée une petite fonction **anonyme** réduite à une seule expression, dont la valeur est renvoyée automatiquement (pas de `return`). Ici elle reçoit 3 et 4 et renvoie leur produit, 12. Elle équivaut à `def multiplie(x, y): return x * y` ; la PEP 8 recommande d'ailleurs ce `def` plutôt que d'affecter une lambda à un nom, et de réserver les lambdas aux arguments comme `key=`.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/tutorial/controlflow.html#lambda-expressions"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nprint([x for x in range(10) if x % 3 == 0])\n```",
+      "answer": "`[0, 3, 6, 9]`",
+      "wrong": [
+        "`[3, 6, 9]`",
+        "`[0, 3, 6]`",
+        "`[1, 4, 7]`"
+      ],
+      "explanation": "Le `if` placé à la fin d'une compréhension **filtre** les éléments : seuls ceux pour lesquels la condition est vraie sont conservés. Parmi 0 à 9, les multiples de 3 sont 0, 3, 6 et 9 ; 0 en fait partie car `0 % 3` vaut 0. C'est l'équivalent concis d'une boucle `for` contenant un `if` et un `append`.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/tutorial/datastructures.html#list-comprehensions"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nfor i, fruit in enumerate([\"pomme\", \"kiwi\"], start=1):\n    print(i, fruit)\n```",
+      "answer": "`1 pomme` puis `2 kiwi`",
+      "wrong": [
+        "`0 pomme` puis `1 kiwi`",
+        "`pomme 1` puis `kiwi 2`",
+        "`(1, 'pomme')` puis `(2, 'kiwi')`"
+      ],
+      "explanation": "`enumerate` produit des couples `(indice, élément)` ; le paramètre `start=1` fait commencer le compteur à 1 au lieu de 0. Chaque couple est dépaqueté dans `i` et `fruit`, puis `print` affiche les deux valeurs séparées par un espace. C'est la façon idiomatique d'obtenir l'indice dans une boucle, plutôt que `for i in range(len(liste))`.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/library/functions.html#enumerate"
+    },
+    {
+      "question": "Quel est l'avantage principal de l'expression génératrice `(x * 2 for x in data)` par rapport à la liste en compréhension `[x * 2 for x in data]` ?",
+      "answer": "Elle produit les valeurs à la demande, sans tout stocker en mémoire",
+      "wrong": [
+        "Elle répartit automatiquement le calcul sur plusieurs cœurs",
+        "Elle peut être parcourue autant de fois qu'on le souhaite",
+        "Elle trie automatiquement les valeurs qu'elle produit"
+      ],
+      "explanation": "Une expression génératrice (entre parenthèses) est **paresseuse** : elle calcule chaque valeur au moment où on la demande, avec une empreinte mémoire constante, même sur des millions d'éléments ou un fichier énorme. La liste en compréhension, elle, construit immédiatement tous les résultats en mémoire. En contrepartie, un générateur ne se parcourt qu'une seule fois.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/reference/expressions.html#generator-expressions"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nn = 7\nprint(\"pair\" if n % 2 == 0 else \"impair\")\n```",
+      "answer": "`impair`",
+      "wrong": [
+        "`pair`",
+        "`False`",
+        "Une `SyntaxError`"
+      ],
+      "explanation": "C'est l'**expression conditionnelle** (opérateur ternaire) de Python : `A if condition else B` vaut `A` si la condition est vraie, `B` sinon. Comme 7 % 2 vaut 1, la condition `n % 2 == 0` est fausse et l'expression vaut `\"impair\"`. L'ordre diffère du `condition ? A : B` du C ou de JavaScript, mais se lit presque comme une phrase.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/reference/expressions.html#conditional-expressions"
+    },
+    {
+      "question": "Quelle instruction Python sert à écrire un bloc qui ne fait rien, par exemple le corps d'une fonction pas encore implémentée ?",
+      "answer": "`pass`",
+      "wrong": [
+        "`continue`",
+        "`break`",
+        "`skip`"
+      ],
+      "explanation": "La syntaxe exige au moins une instruction dans chaque bloc indenté : `pass` est l'instruction qui ne fait **rien** et sert à remplir ce vide (`def a_faire(): pass`, `class Erreur(Exception): pass`). `continue` et `break` ne sont valides que dans une boucle, où ils passent à l'itération suivante ou quittent la boucle. `skip` n'existe pas en Python.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/reference/simple_stmts.html#the-pass-statement"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ndef salue(nom):\n    print(\"Salut\", nom)\n\nr = salue(\"Ana\")\nprint(r)\n```",
+      "answer": "`Salut Ana` puis `None`",
+      "wrong": [
+        "`Salut Ana` puis `Salut Ana`",
+        "`Salut Ana` seulement",
+        "`None` puis `Salut Ana`"
+      ],
+      "explanation": "Une fonction sans instruction `return` (ou avec un `return` nu) renvoie implicitement **`None`**. L'appel `salue(\"Ana\")` affiche d'abord `Salut Ana`, puis `r` reçoit `None`, que le second `print` affiche. Confondre « afficher » (`print`) et « renvoyer » (`return`) est l'une des erreurs les plus courantes chez les débutants.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/tutorial/controlflow.html#defining-functions"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ndef compteur():\n    n = 0\n    def incremente():\n        nonlocal n\n        n += 1\n        return n\n    return incremente\n\nc = compteur()\nc()\nc()\nprint(c())\n```",
+      "answer": "`3`",
+      "wrong": [
+        "`1`",
+        "`0`",
+        "Une `UnboundLocalError`"
+      ],
+      "explanation": "`incremente` est une **closure** : elle garde accès à la variable `n` de la fonction englobante, même après la fin de `compteur()`. Le mot-clé `nonlocal` l'autorise à **réaffecter** cette variable au lieu d'en créer une locale. Les trois appels font passer `n` de 0 à 1, 2 puis 3. Sans `nonlocal`, `n += 1` lèverait une `UnboundLocalError`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/reference/simple_stmts.html#the-nonlocal-statement"
+    },
+    {
+      "question": "Dans quel ordre Python cherche-t-il un nom de variable (règle **LEGB**) ?",
+      "answer": "Local, fonctions englobantes, global, puis built-ins",
+      "wrong": [
+        "Global, local, fonctions englobantes, puis built-ins",
+        "Built-ins, global, fonctions englobantes, puis local",
+        "Local, global, built-ins, puis fonctions englobantes"
+      ],
+      "explanation": "LEGB signifie **L**ocal, **E**nclosing (fonctions englobantes), **G**lobal (le module) et **B**uilt-in (les noms prédéfinis comme `len` ou `print`). Python s'arrête à la première portée où le nom existe. C'est pour cela qu'une variable nommée `list` dans ton module masque la fonction native `list` : la portée globale est consultée avant les built-ins.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/tutorial/classes.html#python-scopes-and-namespaces"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ndef g():\n    yield from range(3)\n    yield from \"ab\"\n\nprint(list(g()))\n```",
+      "answer": "`[0, 1, 2, 'a', 'b']`",
+      "wrong": [
+        "`[range(0, 3), 'ab']`",
+        "`[0, 1, 2, 'ab']`",
+        "`[0, 1, 2]`"
+      ],
+      "explanation": "`yield from iterable` délègue au sous-itérable : le générateur produit **un par un** tous ses éléments, comme une boucle `for x in iterable: yield x`. Il produit donc 0, 1 et 2, puis chaque caractère de la chaîne `\"ab\"`. Sans `from`, `yield range(3)` produirait l'objet `range` lui-même comme une seule valeur.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/reference/expressions.html#yield-expressions"
+    },
+    {
+      "question": "Que renvoie l'appel `map(str, [1, 2, 3])` en Python 3 ?",
+      "answer": "Un objet `map`, itérateur paresseux",
+      "wrong": [
+        "La liste `['1', '2', '3']`",
+        "Le tuple `('1', '2', '3')`",
+        "La chaîne `'123'` toute faite"
+      ],
+      "explanation": "Depuis Python 3, `map` (comme `filter` et `zip`) renvoie un **itérateur** : rien n'est calculé tant qu'on ne le parcourt pas. `print(map(...))` affiche donc `<map object at 0x…>`, et il faut écrire `list(map(str, [1, 2, 3]))` pour obtenir `['1', '2', '3']`. Comme tout itérateur, il est épuisé après un parcours. En Python 2, `map` renvoyait directement une liste.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/functions.html#map"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nfrom functools import reduce\n\nprint(reduce(lambda acc, x: acc * x, [1, 2, 3, 4]))\n```",
+      "answer": "`24`",
+      "wrong": [
+        "`10`",
+        "`[1, 2, 6, 24]`",
+        "`0`"
+      ],
+      "explanation": "`reduce` applique la fonction de proche en proche pour **réduire** la séquence à une seule valeur : `((1 × 2) × 3) × 4` = 24. L'accumulateur `acc` part du premier élément, puis reçoit à chaque étape le résultat précédent. Pour obtenir les résultats intermédiaires `[1, 2, 6, 24]`, on utiliserait `itertools.accumulate`. Pour un produit, `math.prod` est aujourd'hui plus lisible.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/functools.html#functools.reduce"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ndef f(a, b):\n    a.append(1)\n    b = [9]\n\nx, y = [], []\nf(x, y)\nprint(x, y)\n```",
+      "answer": "`[1] []`",
+      "wrong": [
+        "`[1] [9]`",
+        "`[] []`",
+        "`[] [9]`"
+      ],
+      "explanation": "Python transmet aux fonctions des **références vers les objets** : `a` et `x` désignent la même liste, donc `a.append(1)` modifie la liste de l'appelant. En revanche, `b = [9]` ne fait que lier le nom **local** `b` à une nouvelle liste ; `y` n'est pas touché. Retenir : muter un objet reçu se voit de l'extérieur, réaffecter le paramètre non.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nprint([(x, y) for x in range(2) for y in \"ab\"])\n```",
+      "answer": "`[(0, 'a'), (0, 'b'), (1, 'a'), (1, 'b')]`",
+      "wrong": [
+        "`[(0, 'a'), (1, 'b')]`",
+        "`[(0, 'a'), (1, 'a'), (0, 'b'), (1, 'b')]`",
+        "`[[(0, 'a'), (0, 'b')], [(1, 'a'), (1, 'b')]]`"
+      ],
+      "explanation": "Plusieurs `for` dans une compréhension s'imbriquent **dans l'ordre où ils sont écrits**, comme des boucles classiques : le premier `for` est la boucle extérieure. Pour `x = 0`, on parcourt `'a'` puis `'b'`, puis on recommence pour `x = 1`. Le résultat est une liste plate de 4 tuples (et non une liste de listes), soit le produit cartésien, aussi obtenu avec `itertools.product`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/tutorial/datastructures.html#list-comprehensions"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nmatrice = [[1, 2], [3, 4], [5, 6]]\nprint(list(zip(*matrice)))\n```",
+      "answer": "`[(1, 3, 5), (2, 4, 6)]`",
+      "wrong": [
+        "`[(1, 2), (3, 4), (5, 6)]`",
+        "`[(1, 2, 3), (4, 5, 6)]`",
+        "`[1, 3, 5, 2, 4, 6]`"
+      ],
+      "explanation": "`*matrice` dépaquette la liste : l'appel devient `zip([1, 2], [3, 4], [5, 6])`. `zip` regroupe alors les éléments de même rang, d'abord tous les premiers (1, 3, 5), puis tous les seconds (2, 4, 6). C'est l'idiome classique pour **transposer** une matrice (échanger lignes et colonnes). Chaque groupe est produit sous forme de tuple.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/functions.html#zip"
+    },
+    {
+      "question": "Que fait le décorateur `@functools.lru_cache` posé sur une fonction ?",
+      "answer": "Il mémorise les résultats déjà calculés pour chaque jeu d'arguments",
+      "wrong": [
+        "Il compile la fonction en code machine pour l'accélérer",
+        "Il exécute chaque appel de la fonction dans un thread séparé",
+        "Il limite le nombre d'appels autorisés par seconde"
+      ],
+      "explanation": "`lru_cache` fait de la **mémoïsation** : si la fonction est rappelée avec les mêmes arguments, le résultat est renvoyé depuis un cache au lieu d'être recalculé. LRU (« Least Recently Used ») signifie que, lorsque le cache est plein (128 entrées par défaut), les entrées les moins récemment utilisées sont évincées. Appliqué à une fonction de Fibonacci récursive, il fait passer le temps de calcul d'exponentiel à linéaire. Les arguments doivent être hachables.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/functools.html#functools.lru_cache"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nfrom functools import partial\n\ndef puissance(base, exp):\n    return base ** exp\n\ncarre = partial(puissance, exp=2)\nprint(carre(5))\n```",
+      "answer": "`25`",
+      "wrong": [
+        "`32`",
+        "`10`",
+        "Une `TypeError`"
+      ],
+      "explanation": "`functools.partial` crée une nouvelle fonction dont certains arguments sont **pré-remplis** : `carre(5)` équivaut à `puissance(5, exp=2)`, soit 5² = 25. Le piège `32` correspondrait à 2⁵, si l'argument figé avait été `base`. `partial` est pratique pour adapter une fonction à une interface qui attend moins de paramètres, par exemple un callback.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/functools.html#functools.partial"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nx = 10\n\ndef f():\n    print(x)\n    x = 5\n\nf()\n```",
+      "answer": "Une `UnboundLocalError`",
+      "wrong": [
+        "`10`, la valeur globale",
+        "`5`, la valeur locale",
+        "`None`, faute de valeur"
+      ],
+      "explanation": "Python décide de la portée d'un nom **à la compilation** de la fonction : comme `x` est affecté quelque part dans `f`, il est considéré comme local dans **toute** la fonction, y compris avant l'affectation. Le `print(x)` lit donc une variable locale pas encore définie, d'où `UnboundLocalError`, au lieu d'afficher le `x` global. Pour modifier la variable globale, il faudrait déclarer `global x` en tête de fonction.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/faq/programming.html#why-am-i-getting-an-unboundlocalerror-when-the-variable-has-a-value"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ndef deco(f):\n    def wrapper(*args, **kwargs):\n        return f(*args, **kwargs)\n    return wrapper\n\n@deco\ndef saluer():\n    pass\n\nprint(saluer.__name__)\n```",
+      "answer": "`wrapper`",
+      "wrong": [
+        "`saluer`",
+        "`deco`",
+        "`f`"
+      ],
+      "explanation": "`@deco` remplace `saluer` par l'objet renvoyé par `deco`, c'est-à-dire la fonction interne `wrapper` : son `__name__` (et sa docstring) sont donc ceux de `wrapper`. Cela perturbe le débogage, les logs et la documentation. La solution est de décorer `wrapper` avec `@functools.wraps(f)`, qui copie le nom, la docstring et d'autres métadonnées de la fonction d'origine.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/library/functools.html#functools.wraps"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ndef a(f):\n    return lambda: \"a(\" + f() + \")\"\n\ndef b(f):\n    return lambda: \"b(\" + f() + \")\"\n\n@a\n@b\ndef g():\n    return \"g\"\n\nprint(g())\n```",
+      "answer": "`a(b(g))`",
+      "wrong": [
+        "`b(a(g))`",
+        "`a(g)`",
+        "`b(g)`"
+      ],
+      "explanation": "Les décorateurs empilés s'appliquent **de bas en haut** : le plus proche de la fonction en premier. Le code équivaut à `g = a(b(g))` : `b` enveloppe d'abord `g`, puis `a` enveloppe le résultat. À l'appel, `a` est donc la couche extérieure et produit `a(b(g))`. L'ordre compte, par exemple quand on combine un décorateur de cache et un décorateur de journalisation.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/reference/compound_stmts.html#function-definitions"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ndef echo():\n    recu = yield \"prêt\"\n    yield f\"reçu {recu}\"\n\ng = echo()\nprint(next(g))\nprint(g.send(42))\n```",
+      "answer": "`prêt` puis `reçu 42`",
+      "wrong": [
+        "`prêt` puis `reçu None`",
+        "`reçu 42` puis `prêt`",
+        "`prêt` puis une `TypeError`"
+      ],
+      "explanation": "`next(g)` démarre le générateur jusqu'au premier `yield`, qui produit `\"prêt\"` puis suspend l'exécution. `g.send(42)` **reprend** le générateur en faisant de 42 la valeur de l'expression `yield` : `recu` vaut donc 42, et le générateur avance jusqu'au `yield` suivant. Avec `next(g)` au lieu de `send`, l'expression `yield` aurait valu `None`. Ce mécanisme est à l'origine historique des coroutines en Python.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/reference/expressions.html#generator.send"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nit = iter([1, 2, 3, 4])\nprint(list(zip(it, it)))\n```",
+      "answer": "`[(1, 2), (3, 4)]`",
+      "wrong": [
+        "`[(1, 1), (2, 2), (3, 3), (4, 4)]`",
+        "`[(1, 3), (2, 4)]`",
+        "`[(1, 2), (2, 3), (3, 4)]`"
+      ],
+      "explanation": "Les deux arguments de `zip` sont le **même** itérateur : chaque fois que `zip` demande un élément à « l'un », il fait avancer l'unique curseur. Le premier tuple prend 1 puis 2, le second 3 puis 4. C'est un idiome connu pour regrouper une séquence par paquets de `n` (`zip(*[it] * n)`). Avec une liste au lieu d'un itérateur, `zip(lst, lst)` donnerait au contraire `[(1, 1), (2, 2), …]`.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/library/functions.html#zip"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ndef g():\n    print(\"début\")\n    yield 1\n\ngen = g()\nprint(\"fin\")\n```",
+      "answer": "`fin` seulement",
+      "wrong": [
+        "`début` puis `fin`",
+        "`début` seulement",
+        "`fin` puis `début`"
+      ],
+      "explanation": "Appeler une fonction qui contient `yield` n'exécute **pas** son corps : cela crée seulement un objet générateur, figé avant sa première ligne. Le code de `g` ne démarre qu'au premier `next(gen)` (ou au premier tour d'une boucle `for`). Ici, on ne le parcourt jamais, donc `début` n'est jamais affiché. C'est aussi pourquoi une erreur dans un générateur n'apparaît qu'au moment où on le consomme.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/glossary.html#term-generator"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nx = \"avant\"\ncarres = [x * x for x in range(3)]\nprint(x)\n```",
+      "answer": "`avant`",
+      "wrong": [
+        "`2`",
+        "`4`",
+        "`[0, 1, 4]`"
+      ],
+      "explanation": "En Python 3, une compréhension possède sa **propre portée** : sa variable de boucle `x` est locale à la compréhension et ne remplace pas la variable `x` extérieure. Après la ligne, `x` vaut donc toujours `\"avant\"`. En Python 2, la variable d'une compréhension de liste « fuyait » dans la portée englobante, et ce code aurait affiché `2`. Une boucle `for` classique, elle, laisse toujours sa variable définie après la boucle.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/reference/expressions.html#displays-for-lists-sets-and-dictionaries"
+    },
+    {
+      "question": "Que produit ce code ?\n```python\ndef f(a, *, b):\n    return a + b\n\nprint(f(1, 2))\n```",
+      "answer": "Une `TypeError`",
+      "wrong": [
+        "`3`",
+        "`1`",
+        "`(1, 2)`"
+      ],
+      "explanation": "Tous les paramètres placés après un `*` isolé sont **obligatoirement nommés** (keyword-only) : `b` ne peut être passé que sous la forme `b=2`. L'appel `f(1, 2)` transmet deux arguments positionnels alors que `f` n'en accepte qu'un, d'où `TypeError: f() takes 1 positional argument but 2 were given`. Il fallait écrire `f(1, b=2)`. Ce mécanisme rend les appels plus lisibles pour les options, comme `sorted(..., reverse=True)`.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/tutorial/controlflow.html#keyword-only-arguments"
+    },
+    {
+      "question": "Dans une méthode de classe Python, que désigne le premier paramètre, nommé par convention `self` ?",
+      "answer": "L'instance sur laquelle la méthode est appelée",
+      "wrong": [
+        "La classe elle-même, commune à toutes les instances",
+        "Le module dans lequel la classe est définie",
+        "La version de la méthode héritée du parent"
+      ],
+      "explanation": "Quand on écrit `rex.parle()`, Python appelle en réalité `Chien.parle(rex)` : l'instance est passée **automatiquement** comme premier argument, que l'on nomme `self` par convention (ce n'est pas un mot-clé). C'est grâce à lui que la méthode accède aux attributs de l'objet, comme `self.nom`. Contrairement à `this` en Java ou JavaScript, ce paramètre doit être écrit explicitement dans la définition.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/tutorial/classes.html#method-objects"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nd = {\"a\": 1, \"b\": 2}\nfor x in d:\n    print(x)\n```",
+      "answer": "`a` puis `b`",
+      "wrong": [
+        "`1` puis `2`",
+        "`('a', 1)` puis `('b', 2)`",
+        "`a 1` puis `b 2`"
+      ],
+      "explanation": "Parcourir un dictionnaire avec `for` parcourt ses **clés**. Pour les valeurs, on utilise `d.values()` ; pour les couples clé-valeur, `d.items()`, qui se dépaquette naturellement : `for cle, valeur in d.items():`. Depuis Python 3.7, ce parcours suit l'ordre d'insertion des clés.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/tutorial/datastructures.html#looping-techniques"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\npile = [1, 2, 3]\nx = pile.pop()\nprint(x, pile)\n```",
+      "answer": "`3 [1, 2]`",
+      "wrong": [
+        "`1 [2, 3]`",
+        "`3 [1, 2, 3]`",
+        "`None [1, 2]`"
+      ],
+      "explanation": "Sans argument, `list.pop()` **retire et renvoie** le dernier élément : `x` vaut 3 et la liste devient `[1, 2]`. Associée à `append`, elle permet d'utiliser une liste comme une pile (LIFO), avec des opérations en temps constant. `pop(0)` retirerait le premier élément, mais en décalant tous les autres, donc en O(n).",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/tutorial/datastructures.html#using-lists-as-stacks"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\na = [1, 2]\na.append([3, 4])\nprint(len(a))\n```",
+      "answer": "`3`",
+      "wrong": [
+        "`4`",
+        "`2`",
+        "`1`"
+      ],
+      "explanation": "`append` ajoute son argument **tel quel**, comme un seul élément : la liste devient `[1, 2, [3, 4]]`, de longueur 3. Pour ajouter chacun des éléments d'un itérable, il faut `extend` : `a.extend([3, 4])` donnerait `[1, 2, 3, 4]`, de longueur 4. L'opérateur `a += [3, 4]` se comporte comme `extend`.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists"
+    },
+    {
+      "question": "Qu'affiche `print([1, 2, 3] * 2)` ?",
+      "answer": "`[1, 2, 3, 1, 2, 3]`",
+      "wrong": [
+        "`[2, 4, 6]`",
+        "`[[1, 2, 3], [1, 2, 3]]`",
+        "Une `TypeError`"
+      ],
+      "explanation": "Multiplier une séquence par un entier la **répète** : `[1, 2, 3] * 2` concatène deux fois la liste. Il en va de même pour les chaînes (`\"ab\" * 3` donne `\"ababab\"`). Pour multiplier chaque élément, il faut une compréhension, `[x * 2 for x in liste]`, ou une bibliothèque de calcul comme NumPy, où `*` agit élément par élément.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html#common-sequence-operations"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nprint(\", \".join([\"a\", \"b\", \"c\"]))\n```",
+      "answer": "`a, b, c`",
+      "wrong": [
+        "`['a', 'b', 'c']`",
+        "`a, b, c, `",
+        "`abc`"
+      ],
+      "explanation": "`sep.join(iterable)` assemble les chaînes de l'itérable en insérant le séparateur `sep` **entre** chaque élément, jamais à la fin. La syntaxe surprend au début : c'est une méthode du séparateur, pas de la liste. C'est aussi la façon efficace de construire une longue chaîne, bien plus rapide que des `+=` répétés dans une boucle. Tous les éléments doivent être des chaînes, sinon `join` lève une `TypeError`.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html#str.join"
+    },
+    {
+      "question": "En Python 3, de quelle classe hérite implicitement une classe déclarée avec `class Chien:` ?",
+      "answer": "`object`",
+      "wrong": [
+        "`type`",
+        "`Base`",
+        "Aucune classe"
+      ],
+      "explanation": "En Python 3, toute classe hérite, directement ou non, de **`object`** : `class Chien:` équivaut à `class Chien(object):`. C'est `object` qui fournit les comportements par défaut, comme `__repr__`, `__eq__` (comparaison par identité) ou `__hash__`. `type` n'est pas la classe parente mais la **métaclasse** : c'est la classe des classes, celle qui fabrique `Chien`.",
+      "difficulty": 1,
+      "source": "https://docs.python.org/fr/3/library/functions.html#object"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\na = {1, 2, 3}\nb = {2, 3, 4}\nprint(a & b, a ^ b)\n```",
+      "answer": "`{2, 3} {1, 4}`",
+      "wrong": [
+        "`{1, 2, 3, 4} {1, 4}`",
+        "`{2, 3} {1, 2, 3, 4}`",
+        "`{1, 4} {2, 3}`"
+      ],
+      "explanation": "Sur les ensembles, `&` est l'**intersection** (éléments communs : 2 et 3) et `^` la **différence symétrique** (éléments présents dans un seul des deux ensembles : 1 et 4). Les autres opérateurs sont `|` pour l'union (`{1, 2, 3, 4}`) et `-` pour la différence (`a - b` donne `{1}`). Ces opérations s'appuient sur le hachage et sont bien plus rapides que des boucles imbriquées sur des listes.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html#set-types-set-frozenset"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nfrom collections import Counter\n\nprint(Counter(\"abracadabra\").most_common(1))\n```",
+      "answer": "`[('a', 5)]`",
+      "wrong": [
+        "`('a', 5)`",
+        "`[('a', 4)]`",
+        "`{'a': 5}`"
+      ],
+      "explanation": "`Counter` compte les occurrences de chaque élément d'un itérable ; « abracadabra » contient 5 « a ». `most_common(n)` renvoie une **liste** des `n` couples `(élément, nombre)` les plus fréquents, triée par fréquence décroissante : même avec `n = 1`, on obtient une liste d'un seul tuple. `Counter` est une sous-classe de `dict` qui renvoie 0 pour une clé absente au lieu de lever une `KeyError`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/collections.html#collections.Counter.most_common"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nfrom collections import defaultdict\n\nd = defaultdict(int)\nfor c in \"banane\":\n    d[c] += 1\nprint(d[\"n\"], d[\"z\"])\n```",
+      "answer": "`2 0`",
+      "wrong": [
+        "`2` puis une `KeyError`",
+        "`2 None`",
+        "`3 0`"
+      ],
+      "explanation": "Un `defaultdict(int)` appelle `int()` (qui renvoie 0) pour créer une valeur dès qu'on accède à une clé absente. `d[c] += 1` fonctionne donc sans initialisation : « banane » contient deux « n ». L'accès à `d[\"z\"]` ne lève pas de `KeyError` : il renvoie 0… et **ajoute** la clé `'z'` au dictionnaire, un effet de bord à garder en tête. Pour tester sans créer, on utilise `\"z\" in d`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/collections.html#collections.defaultdict"
+    },
+    {
+      "question": "Qu'affiche ce code (Python 3.9 ou plus récent) ?\n```python\na = {\"x\": 1, \"y\": 2}\nb = {\"y\": 3, \"z\": 4}\nprint(a | b)\n```",
+      "answer": "`{'x': 1, 'y': 3, 'z': 4}`",
+      "wrong": [
+        "`{'x': 1, 'y': 2, 'z': 4}`",
+        "`{'x': 1, 'y': [2, 3], 'z': 4}`",
+        "Une `TypeError`"
+      ],
+      "explanation": "Depuis Python 3.9, l'opérateur `|` **fusionne** deux dictionnaires dans un nouveau. En cas de clé commune, c'est la valeur de l'opérande **de droite** qui l'emporte : `'y'` vaut donc 3. L'équivalent plus ancien est `{**a, **b}`, et `a |= b` met à jour `a` en place, comme `a.update(b)`. Les valeurs ne sont jamais combinées entre elles.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/stdtypes.html#mapping-types-dict"
+    },
+    {
+      "question": "Pourquoi préfère-t-on `collections.deque` à une liste pour gérer une file FIFO (ajout à droite, retrait à gauche) ?",
+      "answer": "`popleft()` s'exécute en O(1), alors que `list.pop(0)` est en O(n)",
+      "wrong": [
+        "`deque` maintient ses éléments triés à chaque insertion",
+        "`deque` est immuable, donc à l'abri des modifications",
+        "Une `list` ne peut pas dépasser 65 536 éléments"
+      ],
+      "explanation": "Une liste Python est un tableau dynamique : retirer son premier élément oblige à **décaler** tous les suivants, ce qui coûte O(n). `deque` (« double-ended queue ») est conçue pour ajouter et retirer aux deux extrémités en temps constant, avec `append`, `appendleft`, `pop` et `popleft`. En contrepartie, l'accès à un élément au milieu d'une `deque` est plus lent que dans une liste.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/collections.html#collections.deque"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nfrom dataclasses import dataclass\n\n@dataclass\nclass Point:\n    x: int\n    y: int = 0\n\nprint(Point(1))\n```",
+      "answer": "`Point(x=1, y=0)`",
+      "wrong": [
+        "`Point(1)`",
+        "`<__main__.Point object at 0x…>`",
+        "Une `TypeError` : `y` manque"
+      ],
+      "explanation": "Le décorateur `@dataclass` lit les annotations de la classe et **génère** automatiquement `__init__`, `__repr__` et `__eq__`. Le `__repr__` produit affiche le nom de la classe et chaque champ nommé, d'où `Point(x=1, y=0)`. `y` ayant une valeur par défaut, il est facultatif à la création. Sans `@dataclass`, on obtiendrait la représentation par défaut `<__main__.Point object at 0x…>`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/dataclasses.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nclass C:\n    n = 0\n\na, b = C(), C()\na.n = 5\nprint(C.n, b.n)\n```",
+      "answer": "`0 0`",
+      "wrong": [
+        "`5 5`",
+        "`0 5`",
+        "`5 0`"
+      ],
+      "explanation": "`n` est un **attribut de classe**, partagé par toutes les instances tant qu'elles ne le redéfinissent pas. L'affectation `a.n = 5` ne modifie pas la classe : elle crée un attribut d'**instance** `n` propre à `a`, qui masque celui de la classe pour `a` uniquement. `C.n` et `b.n` (qui remonte jusqu'à la classe) valent donc toujours 0. Pour changer la valeur partagée, il faudrait écrire `C.n = 5`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/tutorial/classes.html#class-and-instance-variables"
+    },
+    {
+      "question": "Qu'est-ce qui distingue une méthode décorée par `@classmethod` d'une méthode ordinaire ?",
+      "answer": "Elle reçoit la classe (`cls`) au lieu de l'instance en premier argument",
+      "wrong": [
+        "Elle ne reçoit aucun argument implicite, ni instance ni classe",
+        "Elle ne peut être appelée que depuis une sous-classe",
+        "Elle s'exécute une seule fois, à la création de la classe"
+      ],
+      "explanation": "Une méthode de classe reçoit automatiquement **la classe** comme premier argument, nommé `cls` par convention, qu'on l'appelle sur la classe ou sur une instance. Elle sert souvent de constructeur alternatif, comme `dict.fromkeys(...)` ou `Date.depuis_texte(\"2024-01-01\")`, qui fonctionne aussi pour les sous-classes. Une méthode qui ne reçoit aucun argument implicite est une `@staticmethod`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/functions.html#classmethod"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nclass Cercle:\n    def __init__(self, r):\n        self.r = r\n\n    @property\n    def diametre(self):\n        return 2 * self.r\n\nc = Cercle(3)\nc.r = 5\nprint(c.diametre)\n```",
+      "answer": "`10`",
+      "wrong": [
+        "`6`",
+        "`<bound method Cercle.diametre>`",
+        "Une `TypeError`"
+      ],
+      "explanation": "`@property` transforme la méthode en **attribut calculé** : on y accède sans parenthèses (`c.diametre`), et la valeur est recalculée à chaque lecture à partir de l'état courant. Comme `r` vaut 5 au moment du `print`, on obtient 10 et non la valeur du moment de la création. Sans setter défini avec `@diametre.setter`, l'affectation `c.diametre = 8` lèverait une `AttributeError`.",
+      "difficulty": 2,
+      "source": "https://docs.python.org/fr/3/library/functions.html#property"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\ngrille = [[0] * 3] * 3\ngrille[0][0] = 1\nprint(grille)\n```",
+      "answer": "`[[1, 0, 0], [1, 0, 0], [1, 0, 0]]`",
+      "wrong": [
+        "`[[1, 0, 0], [0, 0, 0], [0, 0, 0]]`",
+        "`[[1, 1, 1], [0, 0, 0], [0, 0, 0]]`",
+        "`[[1, 1, 1], [1, 1, 1], [1, 1, 1]]`"
+      ],
+      "explanation": "`* 3` sur la liste extérieure ne copie pas la ligne `[0, 0, 0]` : il répète trois **références** vers la même liste. Les trois « lignes » sont donc un seul objet, et modifier `grille[0][0]` modifie toutes les lignes à la fois. Pour créer des lignes indépendantes, on utilise une compréhension : `[[0] * 3 for _ in range(3)]`, qui construit une nouvelle liste à chaque tour.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/faq/programming.html#how-do-i-create-a-multidimensional-list"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nt = ([1, 2],)\ntry:\n    t[0] += [3]\nexcept TypeError:\n    print(\"erreur\")\nprint(t)\n```",
+      "answer": "`erreur` puis `([1, 2, 3],)`",
+      "wrong": [
+        "`erreur` puis `([1, 2],)`",
+        "`([1, 2, 3],)` seulement",
+        "`([1, 2],)` seulement"
+      ],
+      "explanation": "`t[0] += [3]` se déroule en deux temps : la liste `t[0]` est d'abord étendue **en place** (c'est un `extend`, qui réussit), puis Python tente de réaffecter le résultat à `t[0]`, ce qu'un tuple interdit, d'où la `TypeError`. L'exception est bien levée, mais la liste a déjà été modifiée. Ce cas célèbre est décrit dans la FAQ officielle de Python.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/faq/programming.html#why-does-a-tuple-i-item-raise-an-exception-when-the-addition-works"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nclass Chien:\n    tours = []\n\n    def apprend(self, tour):\n        self.tours.append(tour)\n\na, b = Chien(), Chien()\na.apprend(\"assis\")\nprint(b.tours)\n```",
+      "answer": "`['assis']`",
+      "wrong": [
+        "`[]`",
+        "Une `AttributeError`",
+        "`None`"
+      ],
+      "explanation": "`tours` est un attribut de **classe** : une seule liste, partagée par toutes les instances. `self.tours.append(...)` ne crée pas d'attribut d'instance (ce n'est pas une affectation) : il trouve la liste de la classe et la **modifie**. `b` voit donc le tour appris par `a`. Pour une liste propre à chaque chien, il faut la créer dans `__init__` : `self.tours = []`.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/tutorial/classes.html#class-and-instance-variables"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nclass A:\n    def f(self): return \"A\"\n\nclass B(A):\n    def f(self): return \"B\" + super().f()\n\nclass C(A):\n    def f(self): return \"C\" + super().f()\n\nclass D(B, C):\n    def f(self): return \"D\" + super().f()\n\nprint(D().f())\n```",
+      "answer": "`DBCA`",
+      "wrong": [
+        "`DBA`",
+        "`DBACA`",
+        "`DCBA`"
+      ],
+      "explanation": "`super()` n'appelle pas « la classe parente » mais la classe **suivante dans le MRO** (ordre de résolution des méthodes) de l'objet. Pour `D`, l'algorithme C3 donne `D → B → C → A → object` (visible via `D.__mro__`). Dans `B`, `super()` mène donc à `C`, et non à `A`. Chaque classe n'est visitée qu'une fois : `A` n'est appelé qu'à la fin, ce qui résout proprement l'héritage en diamant.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/library/functions.html#super"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```python\nclass Compte:\n    def __init__(self):\n        self.__solde = 100\n\nc = Compte()\nprint(c._Compte__solde)\n```",
+      "answer": "`100`",
+      "wrong": [
+        "Une `AttributeError`",
+        "`None`",
+        "Une `SyntaxError`"
+      ],
+      "explanation": "Un attribut dont le nom commence par **deux** tirets bas (sans en finir par deux) subit le *name mangling* : Python le renomme en `_Compte__solde` à l'intérieur de la classe. `c.__solde` lèverait donc une `AttributeError`, mais `c._Compte__solde` fonctionne. Ce mécanisme sert à éviter les collisions de noms avec les sous-classes, pas à protéger les données : Python n'a pas d'attributs réellement privés.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/tutorial/classes.html#private-variables"
+    },
+    {
+      "question": "Que produit ce code ?\n```python\nclass P:\n    def __init__(self, x):\n        self.x = x\n\n    def __eq__(self, autre):\n        return self.x == autre.x\n\nprint({P(1)})\n```",
+      "answer": "Une `TypeError` : type non hachable",
+      "wrong": [
+        "Un ensemble contenant un objet `P`",
+        "L'ensemble `{1}`",
+        "L'ensemble vide `set()`"
+      ],
+      "explanation": "Définir `__eq__` dans une classe sans définir `__hash__` fait passer automatiquement `__hash__` à `None` : les instances deviennent **non hachables**, donc interdites dans un `set` ou comme clé de dictionnaire. Python protège ainsi la règle « deux objets égaux doivent avoir le même hachage », que le `__hash__` par défaut (basé sur l'identité) violerait. Il faut définir un `__hash__` cohérent, par exemple `return hash(self.x)`.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/reference/datamodel.html#object.__hash__"
+    },
+    {
+      "question": "Que se passe-t-il à l'exécution de ce code ?\n```python\nfrom dataclasses import dataclass\n\n@dataclass\nclass Panier:\n    articles: list = []\n```",
+      "answer": "Une `ValueError` dès la définition de la classe",
+      "wrong": [
+        "Tous les paniers partagent la même liste vide",
+        "Chaque panier reçoit sa propre liste vide",
+        "Une `TypeError` à la création d'un panier"
+      ],
+      "explanation": "`@dataclass` détecte les valeurs par défaut **mutables** (`list`, `dict`, `set`) et refuse la classe avec `ValueError: mutable default <class 'list'> for field articles is not allowed`. Il évite ainsi le piège des arguments par défaut mutables, où tous les objets partageraient la même liste. La solution est `articles: list = field(default_factory=list)`, qui appelle `list()` à chaque création d'instance.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/library/dataclasses.html#mutable-default-values"
+    },
+    {
+      "question": "Que se passe-t-il à la dernière ligne de ce code ?\n```python\nclass P:\n    __slots__ = (\"x\",)\n\np = P()\np.x = 1\np.y = 2\n```",
+      "answer": "Une `AttributeError`, car `y` n'est pas déclaré",
+      "wrong": [
+        "`p.y` est créé normalement et vaut 2",
+        "`p.x` est remplacé par la valeur 2",
+        "Une `TypeError`, car `P` est immuable"
+      ],
+      "explanation": "`__slots__` déclare la liste **fermée** des attributs d'instance : Python ne crée alors pas de `__dict__` par instance et réserve seulement la place des attributs prévus. Ajouter un attribut non déclaré, comme `y`, lève une `AttributeError`. Le principal intérêt est l'économie de mémoire (et un accès un peu plus rapide), précieuse quand on crée des millions de petits objets.",
+      "difficulty": 3,
+      "source": "https://docs.python.org/fr/3/reference/datamodel.html#slots"
     }
   ]
 }

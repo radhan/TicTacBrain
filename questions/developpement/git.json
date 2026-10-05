@@ -304,6 +304,593 @@
       "explanation": "Par défaut, `git stash` ne sauve que les modifications des fichiers **suivis** (indexées ou non) : un fichier tout neuf reste tel quel dans le répertoire de travail. `-u` (`--include-untracked`) inclut les fichiers non suivis, et `-a` (`--all`) y ajoute même les fichiers ignorés. Un nouveau fichier déjà passé par `git add` est, lui, bien stashé puisqu'il est dans l'index.",
       "difficulty": 3,
       "source": "https://git-scm.com/docs/git-stash"
+    },
+    {
+      "question": "Qui a créé Git, et en quelle année ?",
+      "answer": "Linus Torvalds, en 2005",
+      "wrong": [
+        "Linus Torvalds, en 1991",
+        "Tom Preston-Werner, en 2008",
+        "Richard Stallman, en 1998"
+      ],
+      "explanation": "Linus Torvalds a écrit Git en avril 2005 pour gérer le développement du noyau Linux, après le retrait de la licence gratuite de **BitKeeper**, l'outil propriétaire utilisé jusque-là. Dès juillet 2005, il a confié la maintenance du projet à Junio Hamano. 1991 est l'année de naissance de Linux, et Tom Preston-Werner a cofondé GitHub en 2008.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/book/en/v2/Getting-Started-A-Short-History-of-Git"
+    },
+    {
+      "question": "Quelle est la relation entre Git et GitHub ?",
+      "answer": "GitHub est un service d'hébergement de dépôts Git",
+      "wrong": [
+        "Git est le client officiel développé par GitHub",
+        "GitHub est l'ancien nom du logiciel Git",
+        "Ce sont deux noms du même logiciel libre"
+      ],
+      "explanation": "**Git** est le logiciel de gestion de versions, libre, installé sur votre machine : il fonctionne sans aucun serveur. **GitHub** (créé en 2008) est une plateforme qui héberge des dépôts Git, comme GitLab, Bitbucket ou Gitea. Les *pull requests*, les *issues* ou l'intégration continue sont des fonctionnalités de ces plateformes, ajoutées par-dessus Git.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/GitHub"
+    },
+    {
+      "question": "Git est un gestionnaire de versions **distribué**. Qu'est-ce que cela implique ?",
+      "answer": "Chaque clone contient tout l'historique du projet",
+      "wrong": [
+        "Le dépôt est réparti sur plusieurs serveurs obligatoires",
+        "Chaque développeur ne voit que ses propres commits",
+        "Les commits sont envoyés au serveur dès leur création"
+      ],
+      "explanation": "Contrairement à un système **centralisé** comme Subversion, chaque clone Git est un dépôt complet, avec tout l'historique. On peut donc commiter, consulter le log, comparer des versions ou créer des branches **hors ligne**, puis synchroniser quand on le souhaite avec `git push` et `git fetch`. Chaque clone sert aussi de sauvegarde complète.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control"
+    },
+    {
+      "question": "Que fait `git init` dans un dossier existant ?",
+      "answer": "Il crée un dépôt vide dans un sous-dossier `.git`",
+      "wrong": [
+        "Il télécharge un dépôt depuis le serveur par défaut",
+        "Il commite tous les fichiers présents dans le dossier",
+        "Il supprime les fichiers non suivis du dossier"
+      ],
+      "explanation": "`git init` crée le dossier caché `.git`, qui contient **tout** le dépôt : objets, références, `HEAD`, configuration. Vos fichiers ne sont pas touchés : ils restent non suivis jusqu'à un `git add` puis un `git commit`. Supprimer `.git` efface tout l'historique mais laisse les fichiers. Relancer `git init` dans un dépôt existant est sans danger.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-init"
+    },
+    {
+      "question": "Que se passe-t-il si vous lancez `git commit` sans l'option `-m` ?",
+      "answer": "Git ouvre un éditeur pour saisir le message",
+      "wrong": [
+        "Git crée le commit avec un message vide",
+        "Git reprend le message du commit précédent",
+        "Git refuse le commit et affiche une erreur"
+      ],
+      "explanation": "Sans `-m`, Git ouvre l'éditeur configuré (`core.editor`, ou les variables `GIT_EDITOR` / `EDITOR`, souvent `vi` par défaut) avec un modèle listant les changements en commentaires : les lignes commençant par `#` sont ignorées. Si vous enregistrez un message vide, le commit est **abandonné** (*Aborting commit due to empty commit message*).",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-commit"
+    },
+    {
+      "question": "Vous êtes sur `main` et tapez `git branch feature`. Sur quelle branche êtes-vous ensuite ?",
+      "answer": "Toujours sur `main`",
+      "wrong": [
+        "Sur `feature`",
+        "En *detached HEAD*",
+        "Sur `origin/feature`"
+      ],
+      "explanation": "`git branch feature` crée un nouveau pointeur sur le commit courant, mais **ne déplace pas** `HEAD`. Pour créer la branche et s'y placer d'un coup : `git switch -c feature` (ou l'ancienne forme `git checkout -b feature`). Erreur classique de débutant : on croit être sur la nouvelle branche et les commits suivants partent sur `main`.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-branch"
+    },
+    {
+      "question": "Lors d'un conflit de merge, quelle ligne sépare votre version de celle de l'autre branche dans le fichier ?",
+      "answer": "`=======`",
+      "wrong": [
+        "`<<<<<<<`",
+        "`>>>>>>>`",
+        "`-------`"
+      ],
+      "explanation": "Git encadre chaque zone en conflit : `<<<<<<< HEAD` ouvre le bloc avec votre version, `=======` la sépare de la version de l'autre branche, et `>>>>>>> feature` ferme le bloc. Pour résoudre, on édite le fichier pour garder le bon contenu, on supprime les marqueurs, puis on fait `git add` sur le fichier et `git commit` pour terminer le merge.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-merge#_how_conflicts_are_presented"
+    },
+    {
+      "question": "Vous venez de commiter et remarquez une faute de frappe dans le message. Quelle commande permet de le corriger ?",
+      "answer": "`git commit --amend`",
+      "wrong": [
+        "`git revert HEAD`",
+        "`git reset --hard HEAD`",
+        "`git restore --staged .`"
+      ],
+      "explanation": "`git commit --amend` **remplace** le dernier commit par un nouveau, avec le contenu de l'index et le message que vous saisissez. On l'utilise aussi pour ajouter un fichier oublié : `git add fichier` puis `git commit --amend --no-edit`. Comme c'est un nouveau commit (nouveau SHA), on évite de le faire sur un commit déjà poussé. `git revert HEAD`, lui, créerait un commit annulant les changements, sans toucher au message.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-commit"
+    },
+    {
+      "question": "Selon la convention *Conventional Commits*, quel préfixe de message signale la correction d'un bug ?",
+      "answer": "`fix:`",
+      "wrong": [
+        "`bug:`",
+        "`patch:`",
+        "`hotfix:`"
+      ],
+      "explanation": "La spécification *Conventional Commits* impose la forme `type(portée facultative): description`. `fix:` correspond à une version PATCH en versionnage sémantique, `feat:` à une version MINOR, et un `!` après le type ou un pied de message `BREAKING CHANGE:` signale une version MAJOR. D'autres types (`docs:`, `refactor:`, `test:`…) sont admis sans effet sur la version. Ces messages structurés permettent de générer automatiquement un *changelog*.",
+      "difficulty": 1,
+      "source": "https://www.conventionalcommits.org/en/v1.0.0/"
+    },
+    {
+      "question": "Quelle commande affiche la liste des dépôts distants configurés, avec leurs URL ?",
+      "answer": "`git remote -v`",
+      "wrong": [
+        "`git branch -r`",
+        "`git ls-remote`",
+        "`git log --remotes`"
+      ],
+      "explanation": "`git remote` liste les noms des remotes (`origin`…) et `-v` (*verbose*) ajoute leurs URL de fetch et de push. `git branch -r` liste les branches de suivi distantes (`origin/main`…), et `git ls-remote` interroge un dépôt distant pour afficher ses références. Pour ajouter un remote : `git remote add upstream <url>`.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-remote"
+    },
+    {
+      "question": "Vous avez modifié `app.js`, puis lancé `git add app.js`, sans rien toucher d'autre. Qu'affiche alors `git diff` sans argument ?",
+      "answer": "Rien : il compare le répertoire de travail à l'index",
+      "wrong": [
+        "Vos modifications, prêtes à être commitées",
+        "Les différences avec le dernier commit poussé",
+        "Le diff complet depuis le dernier commit"
+      ],
+      "explanation": "Sans argument, `git diff` montre les changements **pas encore indexés** (répertoire de travail comparé à l'index). Tout ayant été indexé, il n'y a rien à afficher. Pour voir ce qui partira dans le prochain commit, il faut `git diff --staged` (synonyme : `--cached`), qui compare l'index à `HEAD` ; `git diff HEAD` montre les deux à la fois.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-diff"
+    },
+    {
+      "question": "Vous avez modifié `app.js` (déjà suivi) et créé `utils.js` (jamais ajouté). Que contiendra le commit créé par `git commit -a -m \"maj\"` ?",
+      "answer": "Seulement les modifications de `app.js`",
+      "wrong": [
+        "Les modifications de `app.js` et `utils.js`",
+        "Uniquement le nouveau fichier `utils.js`",
+        "Rien, car aucun fichier n'a été indexé"
+      ],
+      "explanation": "L'option `-a` indexe automatiquement les modifications et suppressions des fichiers **déjà suivis** avant de commiter, mais n'ajoute jamais un fichier non suivi : `utils.js` reste marqué `??` dans `git status`. Il faut d'abord un `git add utils.js`. `git commit -a` équivaut en fait à `git add -u` suivi d'un commit.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-commit"
+    },
+    {
+      "question": "Dans la sortie de `git status -s`, que signifie le préfixe `??` devant un fichier ?",
+      "answer": "Le fichier n'est pas suivi par Git",
+      "wrong": [
+        "Le fichier est en conflit de fusion",
+        "Le fichier est ignoré par `.gitignore`",
+        "Le fichier a été supprimé du disque"
+      ],
+      "explanation": "Le format court affiche deux colonnes : la première pour l'index, la seconde pour le répertoire de travail. `??` signale un fichier **non suivi**, `M` modifié, `A` ajouté, `D` supprimé, et `UU` un conflit. Les fichiers ignorés n'apparaissent pas du tout, sauf avec `--ignored` (ils sont alors marqués `!!`).",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-status#_short_format"
+    },
+    {
+      "question": "`git status -s` affiche la ligne `MM app.js`. Que s'est-il passé ?",
+      "answer": "Modifié et indexé, puis modifié à nouveau",
+      "wrong": [
+        "Modifié dans les deux branches d'un merge",
+        "Modifié deux fois, dans deux commits successifs",
+        "Modifié localement et sur le dépôt distant"
+      ],
+      "explanation": "La première colonne compare l'index à `HEAD`, la seconde le répertoire de travail à l'index. `MM` signifie qu'une version d'`app.js` a été indexée (`git add`), puis que le fichier a encore été modifié. Un commit maintenant ne contiendrait que la version indexée : `git diff --staged` montre la première modification, `git diff` la seconde. Un conflit de merge, lui, s'affiche `UU`.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-status#_short_format"
+    },
+    {
+      "question": "Vous créez un dossier vide `logs/`, puis lancez `git add .` et `git commit`. Que contient le commit concernant ce dossier ?",
+      "answer": "Rien : Git ne suit pas les dossiers vides",
+      "wrong": [
+        "Un dossier `logs/` vide, recréé au clone",
+        "Un fichier `.gitkeep` ajouté automatiquement",
+        "Une référence vers un objet tree vide"
+      ],
+      "explanation": "Git suit du **contenu**, c'est-à-dire des fichiers : un dossier n'existe dans un commit que parce qu'il contient au moins un fichier suivi, et l'index ne sait pas stocker un dossier vide. La convention est d'y placer un fichier vide, souvent nommé `.gitkeep`. Ce nom n'a rien de spécial pour Git : c'est une simple habitude, et Git ne le crée jamais lui-même.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans un fichier `.gitignore`, à quoi sert une ligne qui commence par `!` ?",
+      "answer": "À réinclure un fichier exclu par un motif précédent",
+      "wrong": [
+        "À ignorer le fichier même s'il est déjà suivi",
+        "À rendre la règle prioritaire sur les autres fichiers",
+        "À commenter la ligne pour la désactiver"
+      ],
+      "explanation": "Le `!` inverse un motif : avec `*.log` puis `!important.log`, tous les fichiers `.log` sont ignorés sauf `important.log`. L'ordre compte, car c'est la **dernière** règle correspondante qui l'emporte. Les commentaires, eux, commencent par `#`. Et aucun motif ne fait ignorer un fichier déjà suivi : il faut d'abord le retirer de l'index avec `git rm --cached`.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/gitignore"
+    },
+    {
+      "question": "Votre `.gitignore` contient :\n```\nlogs/\n!logs/important.log\n```\nQue devient `logs/important.log` ?",
+      "answer": "Il reste ignoré, car son dossier parent est exclu",
+      "wrong": [
+        "Il est suivi, car la négation l'emporte",
+        "Git signale une erreur de syntaxe",
+        "Il est suivi, et le reste de `logs/` aussi"
+      ],
+      "explanation": "Quand un dossier est exclu, Git n'y descend même pas pour évaluer les règles suivantes : la documentation précise qu'il est **impossible de réinclure** un fichier dont un dossier parent est exclu. La solution consiste à exclure le contenu plutôt que le dossier : `logs/*` puis `!logs/important.log`. La commande `git check-ignore -v logs/important.log` indique quelle règle s'applique à un fichier.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/gitignore"
+    },
+    {
+      "question": "Quelle différence entre `git stash pop` et `git stash apply` ?",
+      "answer": "`pop` retire l'entrée de la pile, `apply` la conserve",
+      "wrong": [
+        "`pop` réapplique l'index, `apply` seulement les fichiers",
+        "`apply` crée un commit, `pop` modifie les fichiers",
+        "`pop` prend la plus ancienne entrée, `apply` la dernière"
+      ],
+      "explanation": "Les deux réappliquent par défaut l'entrée la plus récente (`stash@{0}`), ou celle qu'on leur indique (`stash@{2}`…). `apply` la laisse dans la liste, ce qui permet par exemple de l'appliquer sur plusieurs branches, tandis que `pop` enchaîne `apply` puis `drop`. Aucune des deux ne restaure l'index tel qu'il était, sauf avec l'option `--index`.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-stash"
+    },
+    {
+      "question": "`git stash pop` provoque un conflit. Que devient l'entrée du stash ?",
+      "answer": "Elle est conservée dans la liste du stash",
+      "wrong": [
+        "Elle est supprimée, comme après tout `pop`",
+        "Elle est convertie en commit sur la branche",
+        "Elle est déplacée dans le reflog de `HEAD`"
+      ],
+      "explanation": "`pop` n'exécute le `drop` que si l'application a réussi. En cas de conflit, Git affiche *The stash entry is kept in case you need it again* : vos modifications restent à l'abri si la résolution tourne mal. Une fois le conflit résolu, il faut donc supprimer l'entrée vous-même avec `git stash drop`.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-stash"
+    },
+    {
+      "question": "Quelle commande liste les commits locaux de votre branche qui n'ont pas encore été poussés sur `origin/main` ?",
+      "answer": "`git log origin/main..HEAD`",
+      "wrong": [
+        "`git log HEAD..origin/main`",
+        "`git diff origin/main`",
+        "`git log origin/main`"
+      ],
+      "explanation": "La notation `A..B` désigne les commits accessibles depuis `B` mais pas depuis `A`. `origin/main..HEAD` donne donc les commits que vous avez et que le remote n'a pas (d'après votre dernier fetch). L'inverse, `HEAD..origin/main`, liste les commits distants que vous n'avez pas encore intégrés. `git status` résume cela par *Your branch is ahead of 'origin/main' by N commits*.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/gitrevisions#_dotted_range_notations"
+    },
+    {
+      "question": "`git push` est refusé avec le message *Updates were rejected because the tip of your current branch is behind its remote counterpart*. Que faut-il faire ?",
+      "answer": "Intégrer d'abord les commits distants, puis repousser",
+      "wrong": [
+        "Relancer le push : le refus n'est que temporaire",
+        "Supprimer la branche distante puis la repousser",
+        "Recréer le dernier commit avec `git commit --amend`"
+      ],
+      "explanation": "Quelqu'un a poussé des commits que vous n'avez pas : la mise à jour ne serait pas un *fast-forward* et les effacerait, donc Git refuse. Il faut récupérer et intégrer ces commits (`git pull`, par merge ou rebase), résoudre les éventuels conflits, puis pousser. Un `git push --force` ferait passer le push, mais en supprimant le travail de vos collègues.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-push#_note_about_fast_forwards"
+    },
+    {
+      "question": "Que fait l'option `-u` dans `git push -u origin feature` ?",
+      "answer": "Elle définit `origin/feature` comme branche amont",
+      "wrong": [
+        "Elle pousse aussi les fichiers non suivis",
+        "Elle force l'écrasement de la branche distante",
+        "Elle pousse tous les tags en même temps"
+      ],
+      "explanation": "`-u` (`--set-upstream`) enregistre `origin/feature` comme branche **amont** (*upstream*) de votre `feature` locale. Ensuite, `git push` et `git pull` sans argument savent où aller, et `git status` indique de combien de commits vous êtes en avance ou en retard. On l'utilise en général lors du premier push d'une nouvelle branche.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-push"
+    },
+    {
+      "question": "Pendant un conflit de merge sur `app.js`, combien d'entrées l'index contient-il pour ce fichier (visible avec `git ls-files --stage`) ?",
+      "answer": "Trois : l'ancêtre commun, votre version, la leur",
+      "wrong": [
+        "Une seule, avec les marqueurs de conflit",
+        "Deux : votre version et celle de l'autre branche",
+        "Aucune, le fichier est retiré de l'index"
+      ],
+      "explanation": "Normalement, l'index contient une seule entrée par chemin (« stage » 0). Pendant un conflit, il en stocke trois : le stage 1 (l'ancêtre commun), le 2 (« ours », `HEAD`) et le 3 (« theirs », la branche fusionnée), consultables avec `git show :1:app.js`, `:2:` et `:3:`. Le fichier avec les marqueurs n'existe que dans le répertoire de travail ; `git add` remplace les trois entrées par une seule, ce qui marque le conflit comme résolu.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-ls-files"
+    },
+    {
+      "question": "Vous avez annulé le merge de `feature` dans `main` avec `git revert -m 1 <merge>`. Plus tard, sans nouveau commit sur `feature`, vous relancez `git merge feature`. Que se passe-t-il ?",
+      "answer": "Git répond *Already up to date* : rien n'est réintroduit",
+      "wrong": [
+        "Les changements de `feature` sont réappliqués normalement",
+        "Git refuse et exige d'abord un `git revert --abort`",
+        "Le revert est automatiquement annulé par le merge"
+      ],
+      "explanation": "Le revert annule le **contenu**, pas l'historique : les commits de `feature` restent des ancêtres de `main`, donc Git les considère comme déjà fusionnés. Pour récupérer ces changements, il faut « reverter le revert » (`git revert <sha-du-revert>`), après quoi les nouveaux commits de `feature` pourront être fusionnés normalement. C'est un piège classique décrit dans la documentation de `git revert`.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-revert"
+    },
+    {
+      "question": "Quelle différence entre `git merge -X ours feature` et `git merge -s ours feature` ?",
+      "answer": "`-X ours` garde les changements sans conflit de `feature`, pas `-s ours`",
+      "wrong": [
+        "`-s ours` ne tranche que les conflits, `-X ours` ignore tout `feature`",
+        "Aucune : `-X` n'est qu'un alias plus court de `-s`",
+        "`-X ours` crée un commit de merge, `-s ours` un fast-forward"
+      ],
+      "explanation": "`-X ours` est une **option** de la stratégie par défaut : le merge se fait normalement, et seuls les blocs en conflit sont tranchés en faveur de la branche courante ; les changements de `feature` sans conflit sont bien intégrés. `-s ours` est une **stratégie** qui ignore totalement le contenu de l'autre branche : l'arbre résultant est celui de la branche courante, et seul un commit de merge garde trace de `feature` dans l'historique.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-merge#_merge_strategies"
+    },
+    {
+      "question": "Quelle commande crée sur votre machine une copie complète d'un dépôt distant, historique compris ?",
+      "answer": "`git clone <url>`",
+      "wrong": [
+        "`git fetch <url>`",
+        "`git pull <url>`",
+        "`git init <url>`"
+      ],
+      "explanation": "`git clone` crée le dossier, initialise le dépôt, télécharge tous les objets, configure le remote `origin` avec ses branches de suivi (`origin/main`…), puis extrait la branche par défaut. `git fetch` et `git pull`, eux, s'utilisent dans un dépôt existant pour le mettre à jour.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-clone"
+    },
+    {
+      "question": "Que fait `git config --global user.email \"alice@exemple.fr\"` ?",
+      "answer": "Définit l'e-mail des commits pour tous vos dépôts",
+      "wrong": [
+        "Crée un compte sur GitHub avec cette adresse",
+        "Envoie un e-mail de vérification à cette adresse",
+        "Définit l'e-mail pour le seul dépôt courant"
+      ],
+      "explanation": "Chaque commit enregistre le nom et l'e-mail de son auteur. Avec `--global`, la valeur est écrite dans votre configuration utilisateur (`~/.gitconfig`) et s'applique à tous vos dépôts, sauf si un dépôt la redéfinit localement (même commande sans `--global`, stockée dans `.git/config`). Git ne vérifie rien : c'est du simple texte, d'où l'intérêt des commits signés pour prouver une identité.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup"
+    },
+    {
+      "question": "Quelle commande supprime la branche locale `feature`, déjà fusionnée ?",
+      "answer": "`git branch -d feature`",
+      "wrong": [
+        "`git rm feature`",
+        "`git switch -d feature`",
+        "`git branch -m feature`"
+      ],
+      "explanation": "`git branch -d` supprime la branche seulement si elle est fusionnée ; sinon, Git refuse (*not fully merged*) et suggère `-D` pour forcer. Seul le pointeur disparaît : les commits restent accessibles s'ils ont été fusionnés ailleurs. `-m` renomme une branche, et `git switch -d` (`--detach`) place `HEAD` en *detached HEAD* sur son commit.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-branch"
+    },
+    {
+      "question": "Quelle commande affiche le message, l'auteur, la date et les modifications d'un commit précis ?",
+      "answer": "`git show <sha>`",
+      "wrong": [
+        "`git blame <sha>`",
+        "`git status <sha>`",
+        "`git reflog <sha>`"
+      ],
+      "explanation": "`git show` affiche un objet Git. Pour un commit, on obtient l'en-tête (auteur, date, message) puis le diff par rapport à son parent. Sans argument, il montre `HEAD`. Il fonctionne aussi sur les tags annotés, dont il affiche le message avant le commit pointé.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-show"
+    },
+    {
+      "question": "Que fait `git rm notes.txt` sur un fichier suivi et non modifié ?",
+      "answer": "Il le supprime du disque et de l'index",
+      "wrong": [
+        "Il le retire de l'index mais le garde sur le disque",
+        "Il l'efface de tout l'historique du dépôt",
+        "Il le supprime uniquement du dépôt distant"
+      ],
+      "explanation": "`git rm` efface le fichier du répertoire de travail et indexe sa suppression : le prochain commit l'enregistrera. Les commits passés le contiennent toujours, car l'historique n'est pas réécrit. Pour arrêter de suivre un fichier en le gardant sur le disque, c'est `git rm --cached`. Si le fichier a des modifications non commitées, `git rm` refuse sans `-f`.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/docs/git-rm"
+    },
+    {
+      "question": "Combien de caractères hexadécimaux compte l'identifiant SHA-1 complet d'un commit ?",
+      "answer": "40",
+      "wrong": [
+        "32",
+        "64",
+        "16"
+      ],
+      "explanation": "SHA-1 produit une empreinte de 160 bits, soit 20 octets, donc **40 caractères** hexadécimaux. Les commandes affichent souvent une forme abrégée (7 caractères dans un petit dépôt), qui suffit tant qu'elle reste sans ambiguïté. 32 caractères correspondent à MD5, et 64 à SHA-256.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F"
+    },
+    {
+      "question": "Combien de parents a le tout premier commit d'un dépôt ?",
+      "answer": "Aucun, c'est un commit racine",
+      "wrong": [
+        "Un : le commit vide créé par `git init`",
+        "Un : lui-même, par convention",
+        "Un : la racine commune à tous les dépôts"
+      ],
+      "explanation": "Le premier commit est un commit **racine** (*root commit*) : il n'a pas de parent. Un commit ordinaire en a un, et un commit de merge deux ou plus. `git init` ne crée aucun commit : la branche n'existe vraiment qu'au premier `git commit`. Un dépôt peut d'ailleurs contenir plusieurs commits racines, par exemple après un `git switch --orphan`.",
+      "difficulty": 1,
+      "source": "https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell"
+    },
+    {
+      "question": "`user.email` est défini à la fois dans votre configuration globale et dans celle du dépôt (`.git/config`). Quelle valeur Git utilise-t-il pour les commits de ce dépôt ?",
+      "answer": "Celle du dépôt, plus spécifique",
+      "wrong": [
+        "Celle de la configuration globale",
+        "La première définie chronologiquement",
+        "Aucune : Git signale un conflit"
+      ],
+      "explanation": "Git lit la configuration dans l'ordre système (`/etc/gitconfig`), global (`~/.gitconfig`) puis local (`.git/config`), et la dernière valeur lue l'emporte : le niveau le plus spécifique gagne. Pratique pour utiliser son e-mail professionnel dans les seuls dépôts du travail. `git config --show-origin user.email` indique de quel fichier vient la valeur.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-config#FILES"
+    },
+    {
+      "question": "Parmi ces éléments, lequel **n'entre pas** dans le calcul du SHA d'un commit ?",
+      "answer": "Le nom de la branche où il est créé",
+      "wrong": [
+        "Le SHA du ou des commits parents",
+        "La date et l'auteur du commit",
+        "Le SHA de l'arbre des fichiers"
+      ],
+      "explanation": "Un objet commit contient le SHA de l'arbre racine, celui de ses parents, l'auteur et le committer (avec leurs dates) et le message : son SHA est le hash de ce contenu. Le nom de branche n'y figure nulle part, car une branche n'est qu'un pointeur externe : un même commit peut appartenir à plusieurs branches, et renommer une branche ne change aucun SHA. À l'inverse, changer une date ou un parent produit un nouveau SHA.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/book/en/v2/Git-Internals-Git-Objects"
+    },
+    {
+      "question": "Vous lancez `git clean` sans aucune option. Que se passe-t-il, avec la configuration par défaut ?",
+      "answer": "Git refuse et demande `-f` (ou `-n` pour simuler)",
+      "wrong": [
+        "Il supprime tous les fichiers non suivis",
+        "Il supprime aussi les fichiers ignorés",
+        "Il annule les modifications des fichiers suivis"
+      ],
+      "explanation": "Le réglage `clean.requireForce` vaut `true` par défaut : sans `-f`, `-n` ou `-i`, `git clean` refuse d'agir. `git clean -n` liste ce qui serait supprimé, `-f` supprime les fichiers non suivis, `-d` y ajoute les dossiers et `-x` les fichiers ignorés. Ces fichiers n'ayant jamais été dans Git, ils sont irrécupérables : toujours commencer par `-n`.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-clean"
+    },
+    {
+      "question": "Que devient un fichier **non suivi** (jamais ajouté avec `git add`) lors d'un `git reset --hard` ?",
+      "answer": "Il reste intact dans le répertoire de travail",
+      "wrong": [
+        "Il est supprimé définitivement du disque",
+        "Il est mis de côté dans le stash",
+        "Il est remis à l'état du dernier commit"
+      ],
+      "explanation": "`--hard` remet l'index et les fichiers **suivis** dans l'état du commit visé, en jetant leurs modifications, mais ignore les fichiers non suivis, dont Git ne sait rien. Pour repartir d'un répertoire vraiment propre, on le combine avec `git clean -fd`. Piège : un nouveau fichier passé par `git add` mais jamais commité est, lui, connu de l'index, et `reset --hard` le supprime.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-reset"
+    },
+    {
+      "question": "Que fait `git switch -` ?",
+      "answer": "Revient sur la branche où vous étiez juste avant",
+      "wrong": [
+        "Revient au commit précédent sur la branche",
+        "Supprime la branche courante après confirmation",
+        "Liste les branches récemment utilisées"
+      ],
+      "explanation": "`-` est un raccourci pour `@{-1}`, la branche extraite avant le dernier changement, comme `cd -` dans un shell. Idéal pour alterner entre deux branches. Il fonctionne aussi avec `git checkout -` et `git merge -` (fusionner la branche précédente).",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-switch"
+    },
+    {
+      "question": "Avec la configuration par défaut, vous créez le tag `v2.0` puis lancez `git push`. Le tag est-il envoyé sur le dépôt distant ?",
+      "answer": "Non, il faut le pousser explicitement",
+      "wrong": [
+        "Oui, comme tous les objets du commit",
+        "Oui, mais seulement s'il est annoté",
+        "Non, les tags ne peuvent jamais être poussés"
+      ],
+      "explanation": "Par défaut, `git push` envoie des branches, pas les tags. Pour un tag précis : `git push origin v2.0` ; pour tous : `git push origin --tags`. L'option `--follow-tags` pousse les seuls tags **annotés** pointant vers des commits poussés, et le réglage `push.followTags` en fait le comportement par défaut.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/book/en/v2/Git-Basics-Tagging"
+    },
+    {
+      "question": "Que se passe-t-il quand vous lancez `git checkout v1.0`, où `v1.0` est un tag ?",
+      "answer": "Vous passez en *detached HEAD* sur ce commit",
+      "wrong": [
+        "Vous êtes sur une nouvelle branche nommée `v1.0`",
+        "Les commits suivants déplaceront le tag `v1.0`",
+        "Git refuse : un tag ne peut pas être extrait"
+      ],
+      "explanation": "Un tag n'est pas une branche : `HEAD` ne peut pas « être dessus ». Git fait donc pointer `HEAD` directement sur le commit, en *detached HEAD*. On peut explorer et compiler cette version, mais d'éventuels commits ne seraient suivis par aucune branche, et un tag ne bouge jamais tout seul. Pour travailler à partir de cette version : `git switch -c correctif v1.0`.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-checkout#_detached_head"
+    },
+    {
+      "question": "Un collègue a poussé la branche `feature`. Après un `git fetch`, vous tapez `git switch feature` alors qu'aucune branche locale de ce nom n'existe. Que se passe-t-il ?",
+      "answer": "Git crée `feature` en local, qui suit `origin/feature`",
+      "wrong": [
+        "Git refuse : la branche locale n'existe pas",
+        "Vous passez en *detached HEAD* sur `origin/feature`",
+        "Vous travaillez directement sur `origin/feature`"
+      ],
+      "explanation": "Quand un seul remote possède une branche de ce nom, `git switch` (comme `git checkout`) la « devine » : il crée une branche locale à partir d'`origin/feature` et la configure pour la suivre (*branch 'feature' set up to track 'origin/feature'*). C'est l'équivalent de `git switch -c feature --track origin/feature`. On ne commite jamais directement sur `origin/feature`, une référence de suivi que seul le fetch met à jour.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-switch"
+    },
+    {
+      "question": "Que fait `git clone --depth 1 <url>` ?",
+      "answer": "Il ne récupère que le dernier commit, sans l'historique",
+      "wrong": [
+        "Il ne clone que les fichiers à la racine du projet",
+        "Il clone la seule branche par défaut, avec tout son historique",
+        "Il clone sans extraire les fichiers dans le dossier"
+      ],
+      "explanation": "C'est un clone **superficiel** (*shallow clone*) : l'historique est tronqué à la profondeur demandée. C'est bien plus rapide sur un gros dépôt, d'où son usage fréquent en intégration continue, qui n'a besoin que de la dernière version. En contrepartie, `git log`, `git blame` ou `git bisect` ne voient pas le passé ; `git fetch --unshallow` récupère le reste. À noter : `--depth` implique aussi `--single-branch`.",
+      "difficulty": 2,
+      "source": "https://git-scm.com/docs/git-clone"
+    },
+    {
+      "question": "Vous avez modifié `README.md` sans commiter. Ce fichier est identique sur `main` et sur `feature`. Que fait `git switch feature` ?",
+      "answer": "Il change de branche, et votre modification vous suit",
+      "wrong": [
+        "Il refuse tant que la modification n'est pas commitée",
+        "Il change de branche et jette la modification",
+        "Il met la modification dans le stash automatiquement"
+      ],
+      "explanation": "Les modifications non commitées n'appartiennent à aucune branche : elles vivent dans le répertoire de travail (et l'index). Si le changement de branche n'a pas besoin de toucher aux fichiers modifiés, Git les conserve et les signale (`M README.md`). Il ne refuse que si un fichier modifié diffère entre les deux branches (*Your local changes … would be overwritten*) : il faut alors commiter, stasher ou utiliser `--merge`.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-switch"
+    },
+    {
+      "question": "Une fonction `calculerTva` a disparu du code, mais vous ignorez quand. Quelle commande trouve les commits qui ont ajouté ou supprimé cette chaîne ?",
+      "answer": "`git log -S calculerTva`",
+      "wrong": [
+        "`git log --grep=calculerTva`",
+        "`git grep calculerTva`",
+        "`git log --follow calculerTva`"
+      ],
+      "explanation": "L'option `-S` (surnommée *pickaxe*, la pioche) sélectionne les commits dont le diff change le nombre d'occurrences de la chaîne : ceux qui l'ajoutent ou la suppriment. `--grep` ne cherche que dans les messages de commit, et `git grep` dans les fichiers de la version actuelle, où la fonction n'existe plus. La variante `-G` accepte une expression régulière et retient tout diff dont une ligne ajoutée ou supprimée la contient.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-log"
+    },
+    {
+      "question": "Comment Git sait-il qu'un fichier a été renommé entre deux commits ?",
+      "answer": "Il le déduit en comparant les contenus (similarité)",
+      "wrong": [
+        "`git mv` enregistre le renommage dans le commit",
+        "L'objet tree conserve l'ancien nom du fichier",
+        "Le blob garde un lien vers son chemin d'origine"
+      ],
+      "explanation": "Git ne stocke aucune information de renommage : un commit ne contient qu'un instantané. À l'affichage (`git diff`, `git log --stat`, merges), il apparie un fichier supprimé et un fichier ajouté si leurs contenus sont assez proches, par défaut au moins **50 %** de similarité (réglable avec `-M`). `git mv` n'est qu'un raccourci pour `mv` + `git rm` + `git add`, et suivre un fichier à travers ses renommages demande `git log --follow`.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-diff"
+    },
+    {
+      "question": "Que fait la commande `git push origin :feature` ?",
+      "answer": "Elle supprime la branche `feature` sur `origin`",
+      "wrong": [
+        "Elle pousse `feature` vers la branche distante courante",
+        "Elle pousse toutes les branches sauf `feature`",
+        "Elle crée une branche `feature` vide sur `origin`"
+      ],
+      "explanation": "L'argument de `git push` est un *refspec* de la forme `<source>:<destination>`. Une source vide signifie « ne rien pousser vers cette destination », ce qui supprime la référence distante. L'équivalent moderne, plus lisible, est `git push origin --delete feature`. Votre branche locale `feature`, elle, n'est pas touchée.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-push"
+    },
+    {
+      "question": "`main` est extraite dans votre dossier principal, et vous lancez `git worktree add ../hotfix main` pour l'extraire aussi dans un second dossier. Que se passe-t-il ?",
+      "answer": "Git refuse : une branche ne peut être extraite qu'une fois",
+      "wrong": [
+        "Les deux dossiers partagent `main` et se synchronisent",
+        "Git crée une copie nommée `main-2` dans le second dossier",
+        "Git clone le dépôt entier dans `../hotfix`"
+      ],
+      "explanation": "`git worktree` permet d'avoir plusieurs répertoires de travail pour un même dépôt (qui partagent les objets de `.git`), par exemple pour traiter un correctif sans stasher. Pour éviter que deux dossiers fassent avancer la même branche dans leur coin, Git refuse d'extraire une branche déjà extraite ailleurs. Solutions : créer une autre branche (`git worktree add -b hotfix ../hotfix main`), utiliser `--detach`, ou forcer avec `--force`.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-worktree"
+    },
+    {
+      "question": "Dans la liste ouverte par `git rebase -i HEAD~3`, dans quel ordre apparaissent les commits ?",
+      "answer": "Du plus ancien, en haut, au plus récent",
+      "wrong": [
+        "Du plus récent, en haut, au plus ancien",
+        "Par ordre alphabétique des messages",
+        "Par date de modification des fichiers"
+      ],
+      "explanation": "La liste est un **script** exécuté de haut en bas : Git rejoue d'abord la première ligne, donc le commit le plus ancien est en haut. C'est l'inverse de `git log`, qui affiche le plus récent en premier : un piège classique au moment de choisir quel commit marquer `squash` (il fusionne avec la ligne **au-dessus**). Réordonner les lignes réordonne les commits, et supprimer une ligne (ou la marquer `drop`) supprime le commit.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-rebase#_interactive_mode"
+    },
+    {
+      "question": "`feature` a été créée à partir de `topicA` (pas encore fusionnée), elle-même issue de `main`. Comment déplacer sur `main` les seuls commits propres à `feature` ?",
+      "answer": "`git rebase --onto main topicA feature`",
+      "wrong": [
+        "`git rebase main feature`",
+        "`git rebase --onto topicA main feature`",
+        "`git rebase --onto feature main topicA`"
+      ],
+      "explanation": "`git rebase --onto <nouvelle-base> <amont> <branche>` prend les commits de `<branche>` absents de `<amont>` (ici `topicA..feature`) et les rejoue sur `<nouvelle-base>`. Un simple `git rebase main feature` embarquerait aussi les commits de `topicA`, puisqu'ils ne sont pas encore dans `main`. C'est l'exemple des branches `server` et `client` du livre *Pro Git*.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/book/en/v2/Git-Branching-Rebasing"
+    },
+    {
+      "question": "Votre branche contient un commit de merge. Que devient-il après un simple `git rebase main` ?",
+      "answer": "Il disparaît : les commits sont linéarisés",
+      "wrong": [
+        "Il est rejoué tel quel, avec ses deux parents",
+        "Git refuse de rebaser une branche avec un merge",
+        "Il est converti en commit de revert"
+      ],
+      "explanation": "Par défaut, le rebase ne rejoue que les commits ordinaires, l'un après l'autre : les commits de merge sont abandonnés et l'historique devient linéaire (les commits de la branche fusionnée sont rejoués individuellement s'ils ne sont pas déjà dans `main`). Pour conserver la structure, il faut `git rebase --rebase-merges` (`-r`), qui recrée les merges.",
+      "difficulty": 3,
+      "source": "https://git-scm.com/docs/git-rebase"
     }
   ]
 }

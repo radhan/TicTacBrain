@@ -281,6 +281,259 @@
       ],
       "explanation": "EIP-1559, activé en août 2021 avec la mise à jour London, divise les frais en deux : une **base fee** fixée par le protocole selon l'encombrement des blocs, qui est **brûlée**, et un pourboire (priority fee) versé à celui qui produit le bloc (un mineur à l'époque, un validateur aujourd'hui). Une transaction qui échoue paie quand même le gas consommé.",
       "difficulty": 3
+    },
+    {
+      "question": "Dans une blockchain en preuve d'enjeu (Proof of Stake), qu'est-ce qui permet de participer à la validation des blocs ?",
+      "answer": "Immobiliser des jetons en garantie",
+      "wrong": [
+        "Résoudre des calculs coûteux en énergie",
+        "Être agréé par une banque centrale",
+        "Posséder le nœud le plus ancien du réseau"
+      ],
+      "explanation": "En **preuve d'enjeu**, les validateurs bloquent (« misent ») des jetons du réseau comme caution : plus leur mise est élevée, plus ils ont de chances d'être choisis pour proposer un bloc, et ils risquent de la perdre s'ils trichent. Résoudre des calculs coûteux décrit au contraire la **preuve de travail**, celle de Bitcoin. Aucune autorité centrale n'intervient dans le choix des validateurs.",
+      "difficulty": 1
+    },
+    {
+      "question": "Comment appelle-t-on le tout premier bloc d'une blockchain ?",
+      "answer": "Le bloc genèse",
+      "wrong": [
+        "Le bloc orphelin",
+        "Le bloc oncle",
+        "Le bloc maître"
+      ],
+      "explanation": "Le **bloc genèse** (genesis block), numéroté 0, est le seul bloc qui ne pointe vers aucun bloc précédent : il est inscrit en dur dans le logiciel des nœuds. Celui de Bitcoin date du 3 janvier 2009, celui d'Ethereum du 30 juillet 2015. Un bloc **orphelin** est au contraire un bloc valide abandonné quand une autre branche l'emporte, et un bloc **oncle** (ommer) désignait, sur l'Ethereum en preuve de travail, un tel bloc tout de même référencé et partiellement récompensé.",
+      "difficulty": 1
+    },
+    {
+      "question": "Une blockchain publique comme Ethereum est-elle anonyme ?",
+      "answer": "Non, elle est pseudonyme : tout y est public",
+      "wrong": [
+        "Oui, les transactions y sont chiffrées",
+        "Oui, seuls les validateurs voient les soldes",
+        "Non, chaque compte exige une pièce d'identité"
+      ],
+      "explanation": "Sur Ethereum, chacun peut consulter le solde et l'historique de n'importe quelle adresse, par exemple avec un explorateur comme Etherscan. Les adresses ne portent pas de nom : c'est de la **pseudonymie**. Mais dès qu'une adresse est reliée à une identité (achat sur une plateforme qui vérifie l'identité, nom ENS, publication sur un réseau social), tout son historique devient traçable. Les données ne sont pas chiffrées.",
+      "difficulty": 1
+    },
+    {
+      "question": "Par quels caractères commence une adresse Ethereum écrite au format standard ?",
+      "answer": "`0x`",
+      "wrong": [
+        "`bc1`",
+        "`0b`",
+        "`r`"
+      ],
+      "explanation": "Une adresse Ethereum s'écrit `0x` suivi de **40 caractères hexadécimaux**, soit 20 octets. Le préfixe `0x` signale simplement une notation hexadécimale, comme en programmation (`0b` désigne, lui, le binaire). Les adresses Bitcoin récentes (SegWit) commencent par `bc1`, et celles du XRP Ledger par `r`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie qu'un actif est « fongible » ?",
+      "answer": "Chaque unité est interchangeable avec une autre",
+      "wrong": [
+        "Il peut être converti en monnaie fiduciaire",
+        "Sa valeur reste stable dans le temps",
+        "Il peut être divisé en petites fractions"
+      ],
+      "explanation": "Un actif **fongible** se compose d'unités identiques et interchangeables : un billet de 10 € en vaut un autre, 1 ETH en vaut un autre. Un **NFT** (jeton non fongible) est au contraire unique. La fongibilité ne dit rien de la stabilité ni de la divisibilité : un tableau de maître n'est pas fongible, alors que du blé d'une même qualité l'est.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans le jargon crypto, qu'est-ce qui distingue un « coin » d'un « token » ?",
+      "answer": "Le coin a sa propre blockchain, le token vit sur une autre",
+      "wrong": [
+        "Le token vaut toujours moins d'un dollar",
+        "Le coin est une pièce physique, le token un fichier",
+        "Le coin sert à payer, le token ne sert qu'à voter"
+      ],
+      "explanation": "Un **coin** est la monnaie native d'une blockchain : le BTC sur Bitcoin, l'ETH sur Ethereum, le SOL sur Solana. Un **token** est créé par un smart contract sur une blockchain existante, comme USDC, UNI ou SHIB sur Ethereum (standard ERC-20). Un token peut servir à payer, à voter ou à représenter un actif : ce n'est pas son usage qui le définit, mais le fait qu'il s'appuie sur la blockchain d'un autre.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans l'univers des blockchains, que signifie le sigle DAO ?",
+      "answer": "Decentralized Autonomous Organization",
+      "wrong": [
+        "Distributed Application Operator",
+        "Decentralized Automated Oracle",
+        "Digital Asset Ownership"
+      ],
+      "explanation": "Une **DAO** (organisation autonome décentralisée) est un collectif dont les règles et la trésorerie sont gérées par des smart contracts : les membres votent les décisions, souvent au prorata de leurs jetons de gouvernance. La plus célèbre reste **The DAO**, lancée en 2016 sur Ethereum, dont le piratage a conduit à la scission entre Ethereum et Ethereum Classic.",
+      "difficulty": 1
+    },
+    {
+      "question": "Combien d'ETH faut-il déposer, au minimum, pour activer son propre validateur sur Ethereum ?",
+      "answer": "32 ETH",
+      "wrong": [
+        "16 ETH",
+        "64 ETH",
+        "1 ETH"
+      ],
+      "explanation": "Le dépôt minimal pour activer un validateur est de **32 ETH**. Depuis la mise à jour Pectra (mai 2025), un même validateur peut cumuler jusqu'à 2 048 ETH de solde effectif, mais ce minimum n'a pas changé. Ceux qui n'ont pas 32 ETH passent par du staking mutualisé ou liquide (Lido, Rocket Pool…) ou par une plateforme d'échange.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur Ethereum, qu'appelle-t-on le « slashing » d'un validateur ?",
+      "answer": "La destruction d'une partie de sa mise pour faute grave",
+      "wrong": [
+        "La division par deux de ses récompenses tous les quatre ans",
+        "Le partage de son solde entre plusieurs comptes",
+        "La suppression des blocs qu'il a produits"
+      ],
+      "explanation": "Le **slashing** punit les comportements qui menacent le consensus, comme proposer deux blocs différents pour le même créneau ou émettre des votes contradictoires. Le validateur perd une partie de son ETH misé (d'autant plus que beaucoup de validateurs fautent en même temps) et il est exclu du réseau. Une simple panne n'est pas sanctionnée ainsi : un validateur hors ligne ne subit que de légères pénalités. La division par deux tous les quatre ans évoque le **halving** de Bitcoin.",
+      "difficulty": 2
+    },
+    {
+      "question": "Le « trilemme de la blockchain », popularisé par Vitalik Buterin, affirme qu'il est difficile d'obtenir à la fois la sécurité, la décentralisation et… quoi ?",
+      "answer": "La scalabilité",
+      "wrong": [
+        "L'anonymat",
+        "La rentabilité",
+        "L'interopérabilité"
+      ],
+      "explanation": "Selon ce **trilemme**, une blockchain peine à être à la fois sûre, décentralisée et capable de traiter beaucoup de transactions (**scalabilité**) : augmenter le débit en grossissant les blocs, par exemple, exige des machines plus puissantes, donc moins de participants capables de faire tourner un nœud. La stratégie d'Ethereum consiste à garder une couche de base décentralisée et à déporter le volume vers les **rollups** (couche 2).",
+      "difficulty": 2
+    },
+    {
+      "question": "Lors du lancement de la Beacon Chain d'Ethereum, en décembre 2020, quelle durée avait un « slot », le créneau où un validateur peut proposer un bloc ?",
+      "answer": "12 secondes",
+      "wrong": [
+        "1 seconde",
+        "10 minutes",
+        "2 minutes"
+      ],
+      "explanation": "La preuve d'enjeu d'Ethereum découpe le temps en **slots de 12 secondes** : à chaque slot, un validateur tiré au sort peut proposer un bloc. Ce rythme régulier a été adopté par le réseau principal lors de The Merge (2022), à la place des blocs irréguliers de la preuve de travail, produits en moyenne toutes les 13 secondes environ. Le piège « 10 minutes » correspond à l'intervalle moyen visé entre deux blocs Bitcoin.",
+      "difficulty": 2
+    },
+    {
+      "question": "Depuis The Merge, un nœud Ethereum complet fait tourner deux logiciels distincts. Lesquels ?",
+      "answer": "Un client d'exécution et un client de consensus",
+      "wrong": [
+        "Un client de minage et un client de portefeuille",
+        "Un nœud complet et un nœud léger",
+        "Un client pour le réseau principal et un pour le testnet"
+      ],
+      "explanation": "Le **client d'exécution** (Geth, Nethermind, Besu, Erigon…) traite les transactions, fait tourner l'EVM et tient l'état ; le **client de consensus** (Prysm, Lighthouse, Teku, Nimbus…) gère la preuve d'enjeu et le choix de la chaîne. Les deux communiquent localement par l'**Engine API**. Le minage, lui, a disparu avec The Merge.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle blockchain s'appuie sur la « preuve d'historique » (Proof of History), une horloge cryptographique qui horodate les événements ?",
+      "answer": "Solana",
+      "wrong": [
+        "Cardano",
+        "Polkadot",
+        "Avalanche"
+      ],
+      "explanation": "**Solana** utilise la preuve d'historique, une longue suite de hash SHA-256 calculés les uns après les autres, pour prouver qu'un certain temps s'est écoulé entre deux événements et ordonner les transactions sans attendre les autres nœuds. Ce n'est pas un consensus à elle seule : Solana combine cette horloge avec une **preuve d'enjeu**. Cardano repose sur Ouroboros, et Polkadot sur une preuve d'enjeu nominative (NPoS).",
+      "difficulty": 2
+    },
+    {
+      "question": "Contrairement au modèle UTXO de Bitcoin, comment Ethereum enregistre-t-il ce que possède chaque utilisateur ?",
+      "answer": "Par des comptes dotés d'un solde",
+      "wrong": [
+        "Par des pièces numérotées une à une",
+        "Par des reçus stockés dans chaque portefeuille",
+        "Par un fichier tenu par la Fondation Ethereum"
+      ],
+      "explanation": "Ethereum utilise un **modèle par comptes** : l'état global associe à chaque adresse un solde, un compteur de transactions (nonce) et, pour les contrats, du code et un espace de stockage. Un transfert débite un compte et en crédite un autre, comme en banque. Dans le modèle **UTXO** de Bitcoin, on dépense au contraire des sorties de transactions précédentes, et le « solde » n'est que la somme de celles qu'on contrôle.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur Ethereum, qu'est-ce qu'un EOA (Externally Owned Account) ?",
+      "answer": "Un compte contrôlé par une clé privée",
+      "wrong": [
+        "Un compte dont la logique est un smart contract",
+        "Un compte réservé aux validateurs",
+        "Un compte ouvert sur une plateforme d'échange"
+      ],
+      "explanation": "Ethereum distingue deux types de comptes : les **EOA**, contrôlés par la détention d'une clé privée (ceux de MetaMask, par exemple), et les **comptes de contrat**, régis par leur code. Seul un EOA peut initier une transaction : un contrat ne fait qu'agir lorsqu'on l'appelle. Un compte sur une plateforme d'échange n'est qu'une ligne dans la base de données de l'entreprise.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans une transaction Ethereum, à quoi sert le champ « nonce » ?",
+      "answer": "À numéroter les transactions du compte, contre le rejeu",
+      "wrong": [
+        "À stocker le nombre que font varier les mineurs",
+        "À fixer le pourboire versé au validateur",
+        "À chiffrer le montant transféré"
+      ],
+      "explanation": "Le **nonce** d'un compte compte les transactions qu'il a déjà envoyées : la suivante doit porter exactement le numéro attendu. Cela impose un ordre et empêche de rediffuser (« rejouer ») une transaction déjà exécutée. On peut aussi remplacer une transaction bloquée en renvoyant une transaction de **même nonce** avec des frais plus élevés. Le piège confond avec le nonce de l'en-tête de bloc, que font varier les mineurs en preuve de travail.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur la Beacon Chain d'Ethereum, combien de slots compte une « epoch » ?",
+      "answer": "32",
+      "wrong": [
+        "12",
+        "64",
+        "100"
+      ],
+      "explanation": "Une **epoch** regroupe **32 slots** ; avec des slots de 12 secondes, elle dure 6,4 minutes. C'est l'unité de temps des tâches collectives : à chaque epoch, chaque validateur actif est affecté à un comité pour voter (« attester ») une fois, et la finalisation progresse d'epoch en epoch. Le piège 12 confond avec la durée d'un slot en secondes.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans la preuve d'enjeu d'Ethereum, quelle part de l'ETH misé doit voter pour un point de contrôle (checkpoint) pour qu'il puisse être finalisé ?",
+      "answer": "Au moins les deux tiers",
+      "wrong": [
+        "Plus de la moitié",
+        "Au moins les trois quarts",
+        "La totalité"
+      ],
+      "explanation": "Le mécanisme de finalité **Casper FFG** exige une **supermajorité des deux tiers** de l'ETH misé : un checkpoint ainsi soutenu est « justifié », puis « finalisé » quand le suivant l'est aussi, en général au bout de deux epochs (environ 13 minutes). Revenir sur un bloc finalisé obligerait au moins un tiers des validateurs à enfreindre les règles et à se faire **slasher**, pour un coût colossal. Ce seuil des deux tiers est classique des protocoles tolérants aux fautes byzantines.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que se passe-t-il sur Ethereum si la chaîne ne parvient plus à finaliser, faute de deux tiers de validateurs en ligne ?",
+      "answer": "Les validateurs inactifs perdent peu à peu leur mise",
+      "wrong": [
+        "Le réseau s'arrête jusqu'à un vote de la Fondation",
+        "Les blocs repassent en preuve de travail",
+        "Les validateurs actifs sont tous slashés"
+      ],
+      "explanation": "C'est la **fuite d'inactivité** (inactivity leak) : après quatre epochs sans finalisation, le solde des validateurs qui ne votent pas fond progressivement, jusqu'à ce que les validateurs actifs représentent de nouveau les deux tiers de la mise et puissent finaliser. Les blocs continuent d'être produits pendant ce temps : la chaîne reste disponible, puis retrouve la finalité. Ce mécanisme protège le réseau si, par exemple, un tiers des validateurs disparaît d'un coup.",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment Ethereum désigne-t-il le validateur qui propose le bloc de chaque slot ?",
+      "answer": "Par tirage pseudo-aléatoire (RANDAO)",
+      "wrong": [
+        "Par une course au calcul entre validateurs",
+        "Par ordre d'arrivée dans la file",
+        "Au plus offrant parmi les validateurs"
+      ],
+      "explanation": "Le proposeur est tiré au sort grâce à **RANDAO**, une valeur aléatoire que chaque proposeur fait évoluer en y mêlant une signature ; la probabilité d'être choisi est proportionnelle au solde effectif du validateur. Aucune course au calcul n'a lieu, contrairement à la preuve de travail. Ce hasard n'est pas parfait : un proposeur peut l'influencer légèrement en choisissant de ne pas publier son bloc.",
+      "difficulty": 3
+    },
+    {
+      "question": "Avec le mécanisme de frais EIP-1559, de combien la « base fee » peut-elle augmenter au maximum d'un bloc à l'autre ?",
+      "answer": "12,5 %",
+      "wrong": [
+        "5 %",
+        "25 %",
+        "50 %"
+      ],
+      "explanation": "La **base fee** s'ajuste à chaque bloc selon son remplissage par rapport à une **cible**, égale à la moitié de la limite de gas du bloc. Un bloc plein (deux fois la cible) la fait monter de **12,5 %**, un bloc vide la fait baisser d'autant, et un bloc pile à la cible la laisse inchangée. En cas de forte demande, elle peut donc doubler en six blocs consécutifs, soit un peu plus d'une minute.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un transfert d'ETH consomme 21 000 unités de gas, au prix de 20 gwei par unité. Combien coûte-t-il en frais ?",
+      "answer": "0,00042 ETH",
+      "wrong": [
+        "0,0042 ETH",
+        "0,42 ETH",
+        "0,000042 ETH"
+      ],
+      "explanation": "Les frais valent `gas consommé × prix du gas` : 21 000 × 20 = **420 000 gwei**. Comme 1 gwei = 10⁻⁹ ETH, cela fait 420 000 × 10⁻⁹ = **0,00042 ETH**. Le piège classique consiste à se tromper d'une puissance de dix en convertissant les gwei en ether.",
+      "difficulty": 3
+    },
+    {
+      "question": "Une transaction Ethereum échoue en cours d'exécution parce qu'elle a épuisé tout son gas (« out of gas »). Que se passe-t-il ?",
+      "answer": "Ses effets sont annulés, mais tout le gas prévu est payé",
+      "wrong": [
+        "Elle est rejetée sans frais et retirée du bloc",
+        "Ses effets sont conservés, et le gas est remboursé",
+        "Elle reste en attente jusqu'à ce qu'on rajoute du gas"
+      ],
+      "explanation": "Une transaction à court de gas est bien **incluse dans un bloc**, mais toutes ses modifications d'état sont annulées, à l'exception du paiement des frais et de l'incrémentation du nonce. L'expéditeur paie la totalité du gas qu'il avait autorisé, car ce calcul a réellement été effectué par le réseau. On ne peut pas « recharger » une transaction : il faut en envoyer une nouvelle avec une limite de gas plus haute.",
+      "difficulty": 3
     }
   ]
 }
