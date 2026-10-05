@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'preact/hooks'
+import { useEffect, useMemo, useState } from 'preact/hooks'
 
 /**
  * Routage par hash (#/…) : fonctionne sur n'importe quel hébergement statique
@@ -22,33 +22,40 @@ export function parseRoute(hash: string): Route {
   return { name: 'home' }
 }
 
-/** Nombre d'entrées d'historique créées par l'app (pour savoir si « retour » reste dans l'app). */
-let depth = 0
+/**
+ * Profondeur de l'entrée d'historique courante *dans l'app*, rangée dans
+ * history.state : elle reste juste même après un « retour » du navigateur
+ * ou du bouton Android, contrairement à un simple compteur.
+ */
+const depth = (): number => (history.state as { depth?: number } | null)?.depth ?? 0
+
+const ROUTE_EVENT = 'tictacbrain:route'
+const notify = () => window.dispatchEvent(new Event(ROUTE_EVENT))
 
 export function navigate(path: string) {
-  depth += 1
-  location.hash = path
+  history.pushState({ depth: depth() + 1 }, '', `#${path}`)
+  notify()
 }
 
 /** Revient à l'écran précédent de l'app, ou à `fallback` si on y est arrivé par un lien direct. */
 export function goBack(fallback: string) {
-  if (depth > 0) {
-    depth -= 1
+  if (depth() > 0) {
     history.back()
   } else {
-    location.replace(`#${fallback}`)
+    history.replaceState({ depth: 0 }, '', `#${fallback}`)
+    notify()
   }
 }
 
 export function useRoute(): Route {
-  const [route, setRoute] = useState(() => parseRoute(location.hash))
+  const [hash, setHash] = useState(location.hash)
   useEffect(() => {
-    const onChange = () => {
-      setRoute(parseRoute(location.hash))
-      window.scrollTo(0, 0)
+    const onChange = () => setHash(location.hash)
+    for (const type of ['popstate', 'hashchange', ROUTE_EVENT]) window.addEventListener(type, onChange)
+    return () => {
+      for (const type of ['popstate', 'hashchange', ROUTE_EVENT]) window.removeEventListener(type, onChange)
     }
-    window.addEventListener('hashchange', onChange)
-    return () => window.removeEventListener('hashchange', onChange)
   }, [])
-  return route
+  useEffect(() => window.scrollTo(0, 0), [hash])
+  return useMemo(() => parseRoute(hash), [hash])
 }
