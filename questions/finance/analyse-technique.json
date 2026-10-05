@@ -1,0 +1,345 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Analyse technique",
+  "icon": "🕯️",
+  "description": "Chandeliers, support/résistance, tendances, moyennes mobiles, RSI, MACD, Bollinger, figures chartistes et Fibonacci.",
+  "order": 3,
+  "questions": [
+    {
+      "question": "En analyse technique, que représente une bougie **doji** ?",
+      "answer": "Une bougie dont l’ouverture et la clôture sont quasiment au même niveau",
+      "wrong": [
+        "Une bougie avec un très grand corps haussier",
+        "Une bougie sans aucune mèche, haute ou basse",
+        "Une bougie dont la clôture est très au-dessus de l’ouverture"
+      ],
+      "explanation": "Le **doji** se forme quand le cours termine presque là où il a ouvert : son corps est minuscule, réduit à une ligne. Il traduit un équilibre entre acheteurs et vendeurs, donc une indécision du marché, souvent interprétée comme un possible essoufflement de la tendance en cours.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Chandelier_japonais"
+    },
+    {
+      "question": "En analyse graphique, qu’appelle-t-on un **support** ?",
+      "answer": "Un niveau de prix où la baisse tend à s’arrêter car la demande redevient forte",
+      "wrong": [
+        "Un niveau de prix où la hausse tend à s’arrêter car l’offre redevient forte",
+        "La moyenne des prix sur les 200 derniers jours",
+        "Le volume maximal échangé sur une seule séance"
+      ],
+      "explanation": "Un **support** est un seuil sous lequel les acheteurs jugent le prix attractif : la demande augmente et freine la baisse, le cours a tendance à rebondir. C’est l’image miroir de la résistance, qui plafonne les hausses. Plus un support est touché sans céder, plus il est jugé solide.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que désigne une **résistance** sur un graphique de cours ?",
+      "answer": "Un niveau où la hausse a tendance à buter car les vendeurs reprennent la main",
+      "wrong": [
+        "Un niveau où la baisse a tendance à s’arrêter car les acheteurs reviennent",
+        "Le plus bas prix atteint sur l’ensemble de l’historique",
+        "La différence entre le prix d’achat et le prix de vente"
+      ],
+      "explanation": "Une **résistance** est un seuil au-dessus duquel les vendeurs deviennent plus nombreux : l’offre augmente et plafonne la progression du cours. C’est le pendant du support. Quand une résistance est enfin cassée nettement, elle se transforme souvent en support pour les hausses suivantes.",
+      "difficulty": 1
+    },
+    {
+      "question": "Comment reconnaît-on une **tendance haussière** sur un graphique ?",
+      "answer": "Par une succession de sommets et de creux de plus en plus hauts",
+      "wrong": [
+        "Par une succession de sommets et de creux de plus en plus bas",
+        "Par des prix qui oscillent sans direction autour d’un même niveau",
+        "Par un volume d’échanges qui diminue à chaque séance"
+      ],
+      "explanation": "Une **tendance haussière** (uptrend) se caractérise par des points hauts successifs plus hauts et des points bas successifs plus hauts : le marché progresse par vagues vers le haut. Des sommets et creux de plus en plus bas décrivent au contraire une tendance baissière ; des oscillations sans direction forment un range.",
+      "difficulty": 1
+    },
+    {
+      "question": "Avec les réglages classiques du **RSI**, quels sont les seuils usuels de surachat et de survente ?",
+      "answer": "70 pour le surachat et 30 pour la survente",
+      "wrong": [
+        "80 pour le surachat et 20 pour la survente",
+        "60 pour le surachat et 40 pour la survente",
+        "100 pour le surachat et 0 pour la survente"
+      ],
+      "explanation": "Le **RSI** (Relative Strength Index) varie de 0 à 100. Au-dessus de 70, l’actif est considéré en **surachat** (hausse peut-être excessive) ; sous 30, en **survente**. Ce sont des zones d’alerte, pas des ordres d’achat ou de vente automatiques : en forte tendance, le RSI peut rester longtemps dans ces extrêmes.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Relative_strength_index"
+    },
+    {
+      "question": "Que calcule une **moyenne mobile simple (SMA)** sur N périodes ?",
+      "answer": "La moyenne arithmétique des N derniers cours de clôture",
+      "wrong": [
+        "La somme des N derniers cours de clôture",
+        "Le cours de clôture le plus élevé des N dernières périodes",
+        "La différence entre le cours le plus haut et le plus bas sur N périodes"
+      ],
+      "explanation": "La **SMA** additionne les N derniers cours de clôture puis divise par N. En se recalculant à chaque nouvelle bougie, elle « glisse » dans le temps et lisse les variations pour faire ressortir la tendance de fond. Plus N est grand, plus la courbe est lisse mais réagit lentement aux retournements.",
+      "difficulty": 1
+    },
+    {
+      "question": "En analyse technique, que mesure le **volume** d’une séance ?",
+      "answer": "La quantité d’actifs échangés pendant cette période",
+      "wrong": [
+        "La variation de prix entre l’ouverture et la clôture",
+        "Le nombre de participants connectés au marché",
+        "La valeur totale de la capitalisation de l’actif"
+      ],
+      "explanation": "Le **volume** compte combien d’unités (actions, contrats, tokens) ont changé de mains sur la période. Il sert à jauger la conviction derrière un mouvement : une hausse accompagnée d’un fort volume est jugée plus fiable qu’une hausse à faible volume, qui peut vite s’essouffler.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle figure en chandelier décrit un **marteau** (hammer) ?",
+      "answer": "Un petit corps en haut surmontant une longue mèche basse, après une baisse",
+      "wrong": [
+        "Un petit corps en bas surmonté d’une longue mèche haute, après une hausse",
+        "Deux grands corps haussiers consécutifs sans mèche",
+        "Une bougie sans corps ni mèche, parfaitement plate"
+      ],
+      "explanation": "Le **marteau** apparaît après un mouvement de baisse : la longue mèche inférieure montre que les vendeurs ont fait plonger le prix avant que les acheteurs ne le ramènent près du plus haut, d’où le petit corps en haut. C’est un signal de possible retournement haussier, à confirmer par la bougie suivante.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signale un **golden cross** entre deux moyennes mobiles ?",
+      "answer": "La moyenne mobile courte passe au-dessus de la moyenne mobile longue, signal plutôt haussier",
+      "wrong": [
+        "La moyenne mobile courte passe sous la moyenne mobile longue, signal plutôt baissier",
+        "Les deux moyennes mobiles deviennent parfaitement horizontales",
+        "Le prix touche exactement sa moyenne mobile longue"
+      ],
+      "explanation": "Le **golden cross** se produit quand une moyenne mobile de court terme croise à la hausse une moyenne de long terme (souvent 50 et 200 jours) : cela signale que la dynamique récente devient plus forte que la tendance de fond, un signe plutôt haussier. Le croisement inverse s’appelle le death cross.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle est la principale différence entre une **EMA** et une **SMA** de même période ?",
+      "answer": "L’EMA accorde plus de poids aux cours les plus récents",
+      "wrong": [
+        "L’EMA accorde plus de poids aux cours les plus anciens",
+        "L’EMA ignore totalement les cours de clôture",
+        "L’EMA se calcule uniquement sur le volume, pas sur le prix"
+      ],
+      "explanation": "La moyenne mobile **exponentielle (EMA)** pondère davantage les dernières clôtures, alors que la **SMA** traite toutes les périodes de façon égale. Résultat : l’EMA réagit plus vite aux changements de prix récents, ce qui aide à repérer tôt un retournement, mais génère aussi davantage de faux signaux.",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment est construite la **ligne MACD** dans son réglage standard (12, 26, 9) ?",
+      "answer": "C’est la différence entre l’EMA 12 et l’EMA 26 périodes",
+      "wrong": [
+        "C’est la somme de l’EMA 12 et de l’EMA 26 périodes",
+        "C’est la différence entre le RSI et sa moyenne sur 9 périodes",
+        "C’est la moyenne simple des prix sur 9 périodes"
+      ],
+      "explanation": "La **ligne MACD** est obtenue en soustrayant l’EMA longue (26) à l’EMA courte (12) : elle mesure l’écart entre deux dynamiques. Une EMA 9 de cette ligne MACD forme la **ligne de signal**, et la différence entre les deux est tracée en histogramme. Les croisements MACD/signal servent de repères d’entrée et de sortie.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/MACD"
+    },
+    {
+      "question": "Dans le réglage classique des **bandes de Bollinger**, comment sont placées les bandes supérieure et inférieure ?",
+      "answer": "À deux écarts-types au-dessus et en dessous d’une moyenne mobile à 20 périodes",
+      "wrong": [
+        "À un pourcentage fixe de 10 % au-dessus et en dessous du prix d’ouverture",
+        "À deux écarts-types au-dessus et en dessous du RSI",
+        "Au niveau des plus hauts et plus bas des 20 dernières bougies"
+      ],
+      "explanation": "Les **bandes de Bollinger** reposent sur une moyenne mobile centrale (souvent SMA 20) encadrée par deux bandes placées à ±2 écarts-types du prix. Les bandes s’écartent quand la volatilité augmente et se resserrent quand elle baisse, ce qui aide à situer un cours comme relativement haut ou bas par rapport à sa moyenne récente.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Bandes_de_Bollinger"
+    },
+    {
+      "question": "À quel type de signal correspond la figure **tête-épaules** (head and shoulders) classique ?",
+      "answer": "Un retournement baissier au sommet d’une tendance haussière",
+      "wrong": [
+        "Un retournement haussier au creux d’une tendance baissière",
+        "Une simple pause avant la poursuite de la hausse",
+        "Un signal d’accélération de la tendance haussière"
+      ],
+      "explanation": "La **tête-épaules** se dessine en fin de hausse : un sommet (épaule gauche), un sommet plus haut (tête), puis un sommet plus bas (épaule droite). La cassure de la **ligne de cou** qui relie les creux confirme le retournement à la baisse. Sa version inversée, en bas d’une baisse, est au contraire un signal haussier.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que traduit généralement une figure en **double sommet** (double top) ?",
+      "answer": "Un affaiblissement de la hausse annonçant un possible retournement baissier",
+      "wrong": [
+        "Une accélération de la hausse en cours",
+        "Un signal fiable de poursuite de la tendance haussière",
+        "Une forte baisse de la volatilité sans changement de tendance"
+      ],
+      "explanation": "Le **double sommet** se forme quand le prix bute deux fois sur une même résistance sans la franchir, échouant à faire un nouveau plus haut. Cela montre que les acheteurs s’épuisent ; la cassure du creux situé entre les deux sommets confirme le retournement à la baisse. Le **double creux** en est l’équivalent haussier.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur un mouvement de hausse, autour de quel niveau de **retracement de Fibonacci** les traders surveillent-ils particulièrement un rebond, car il correspond au nombre d’or ?",
+      "answer": "61,8 %",
+      "wrong": [
+        "42,0 %",
+        "88,6 %",
+        "100,0 %"
+      ],
+      "explanation": "Les niveaux de **Fibonacci** (23,6 %, 38,2 %, 50 %, 61,8 %, 78,6 %) mesurent jusqu’où un prix peut corriger avant de repartir. Le **61,8 %** découle directement du nombre d’or : dans la suite de Fibonacci, chaque terme divisé par le suivant tend vers 0,618 (par exemple 34 ÷ 55 ≈ 0,618). C’est le retracement le plus suivi.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Retracement_de_Fibonacci"
+    },
+    {
+      "question": "Que désigne un **breakout** (cassure) en analyse technique ?",
+      "answer": "Le franchissement par le prix d’un niveau clé de support ou de résistance",
+      "wrong": [
+        "Le retour du prix exactement sur sa moyenne mobile",
+        "Un arrêt complet des échanges sur le marché",
+        "Un écart entre la clôture d’une séance et l’ouverture de la suivante"
+      ],
+      "explanation": "Un **breakout** survient quand le cours sort d’une zone de congestion en franchissant une résistance (cassure haussière) ou un support (cassure baissière). Les traders y voient un signal d’accélération, surtout si le volume accompagne le mouvement. Un breakout non confirmé qui échoue est appelé un faux signal, ou fakeout.",
+      "difficulty": 2
+    },
+    {
+      "question": "Après une forte cassure de résistance, que décrit un **pullback** ?",
+      "answer": "Un retour temporaire du prix vers le niveau cassé avant de poursuivre son mouvement",
+      "wrong": [
+        "Une inversion complète et définitive de la tendance",
+        "Une multiplication soudaine du volume d’échanges",
+        "Un élargissement des bandes de Bollinger"
+      ],
+      "explanation": "Un **pullback** est un repli passager dans le sens inverse de la tendance : après avoir franchi une résistance, le prix revient souvent la « retester » (l’ancienne résistance jouant alors de support) avant de repartir. Les traders l’utilisent pour entrer à un meilleur prix tout en vérifiant que la cassure tient.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que signale un **death cross** entre deux moyennes mobiles ?",
+      "answer": "La moyenne courte passe sous la moyenne longue, signal plutôt baissier",
+      "wrong": [
+        "La moyenne courte passe au-dessus de la moyenne longue, signal plutôt haussier",
+        "Les deux moyennes se confondent durablement",
+        "Le volume chute brutalement à zéro"
+      ],
+      "explanation": "Le **death cross** est le croisement inverse du golden cross : une moyenne mobile de court terme passe sous une moyenne de long terme (souvent 50 et 200 jours), signe que la dynamique récente s’affaiblit par rapport à la tendance de fond. C’est lu comme un avertissement baissier, même s’il arrive souvent en retard sur le marché.",
+      "difficulty": 2
+    },
+    {
+      "question": "En analyse technique, que désigne l’**unité de temps** (timeframe) d’un graphique ?",
+      "answer": "La durée que représente chaque bougie, par exemple 5 minutes, 1 heure ou 1 jour",
+      "wrong": [
+        "Le temps restant avant la clôture définitive du marché",
+        "La durée pendant laquelle un ordre reste valable",
+        "Le délai de règlement-livraison d’une transaction"
+      ],
+      "explanation": "L’**unité de temps** fixe ce qu’englobe une seule bougie : en journalier, chaque bougie résume une journée. Les traders combinent souvent plusieurs timeframes (analyse multi-échelles) : une grande unité donne la tendance de fond, une plus petite affine le point d’entrée. Changer de timeframe peut inverser la lecture d’un même actif.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que caractérise une figure en **avalement haussier** (bullish engulfing) ?",
+      "answer": "Une grande bougie haussière dont le corps recouvre entièrement celui de la bougie baissière précédente",
+      "wrong": [
+        "Une petite bougie haussière contenue dans le corps de la bougie précédente",
+        "Une bougie haussière suivie d’une bougie baissière plus grande",
+        "Deux dojis consécutifs sans corps"
+      ],
+      "explanation": "L’**avalement haussier** se produit en bas d’une baisse : après une bougie baissière, une bougie haussière plus large englobe complètement le corps de la précédente. Cela montre que les acheteurs ont repris le dessus avec force, d’où un signal de retournement à la hausse. Son miroir en haut d’une hausse est l’avalement baissier.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur quelle échelle évolue l’oscillateur **stochastique**, et quelles zones signalent surachat et survente ?",
+      "answer": "De 0 à 100, surachat au-dessus de 80 et survente en dessous de 20",
+      "wrong": [
+        "De 0 à 100, surachat au-dessus de 70 et survente en dessous de 30",
+        "De −100 à +100, surachat au-dessus de 0",
+        "De 0 à 1, surachat au-dessus de 0,5"
+      ],
+      "explanation": "L’**oscillateur stochastique** compare la clôture à la fourchette haut-bas récente et se lit de 0 à 100. Au-dessus de 80, l’actif est jugé en surachat ; sous 20, en survente. Il se compose d’une ligne %K et de sa moyenne %D, dont les croisements dans ces zones servent de signaux. À ne pas confondre avec les seuils 70/30 du RSI.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Oscillateur_stochastique"
+    },
+    {
+      "question": "Le prix d’un actif inscrit un nouveau plus haut, mais le RSI forme un sommet plus bas que le précédent. Comment nomme-t-on cette configuration ?",
+      "answer": "Une divergence baissière",
+      "wrong": [
+        "Une divergence haussière",
+        "Un golden cross",
+        "Un breakout confirmé"
+      ],
+      "explanation": "On parle de **divergence baissière** quand le prix monte plus haut alors que l’indicateur (ici le RSI) monte moins haut : la hausse perd de sa force interne, ce qui annonce souvent un essoufflement. À l’inverse, un prix faisant un plus bas plus bas pendant que l’indicateur remonte forme une divergence haussière.",
+      "difficulty": 3
+    },
+    {
+      "question": "Les cinq derniers cours de clôture sont 20, 22, 24, 21 et 23. Que vaut la **SMA à 5 périodes** ?",
+      "answer": "22",
+      "wrong": [
+        "21",
+        "23",
+        "110"
+      ],
+      "explanation": "La SMA additionne les cinq clôtures : 20 + 22 + 24 + 21 + 23 = 110, puis divise par 5, soit **22**. Le piège de 110 correspond à la somme sans la division, et 21 ou 23 sont de simples cours de la série, pas leur moyenne. C’est bien la moyenne arithmétique glissante sur la fenêtre choisie.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur une période de calcul du **RSI**, la hausse moyenne est exactement égale à la baisse moyenne (RS = 1). Que vaut alors le RSI ?",
+      "answer": "50",
+      "wrong": [
+        "0",
+        "100",
+        "70"
+      ],
+      "explanation": "La formule est RSI = 100 − 100 / (1 + RS), avec RS = gain moyen / perte moyenne. Si RS = 1, alors RSI = 100 − 100 / 2 = **50**. Cette valeur centrale marque un équilibre parfait entre forces acheteuses et vendeuses : c’est pour cela que 50 sert souvent de ligne médiane de référence sur le RSI.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle est la formule du **facteur de lissage** (multiplicateur) d’une EMA à N périodes ?",
+      "answer": "2 / (N + 1)",
+      "wrong": [
+        "1 / N",
+        "2 / (N − 1)",
+        "N / (N + 1)"
+      ],
+      "explanation": "Chaque nouvelle valeur d’une **EMA** s’écrit : EMA = cours × k + EMA précédente × (1 − k), où le facteur de lissage vaut **k = 2 / (N + 1)**. Plus N est grand, plus k est petit, donc plus la moyenne réagit lentement. Pour une EMA 10, k = 2 / 11 ≈ 0,18, soit environ 18 % de poids sur le dernier cours.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans le MACD standard, que représente l’**histogramme** affiché sous les deux courbes ?",
+      "answer": "L’écart entre la ligne MACD et sa ligne de signal",
+      "wrong": [
+        "La somme de la ligne MACD et de sa ligne de signal",
+        "Le volume échangé sur chaque bougie",
+        "La valeur brute de l’EMA 26 périodes"
+      ],
+      "explanation": "L’**histogramme MACD** trace la différence entre la ligne MACD et la ligne de signal (EMA 9 de la MACD). Il passe au-dessus de zéro quand la MACD croise son signal à la hausse, en dessous dans le cas contraire. Sa hauteur illustre l’accélération ou le ralentissement de la dynamique, avant même le croisement des deux lignes.",
+      "difficulty": 3
+    },
+    {
+      "question": "À quelle catégorie appartient en général une figure en **drapeau** (flag) qui suit une forte impulsion de prix ?",
+      "answer": "Une figure de continuation de la tendance",
+      "wrong": [
+        "Une figure de retournement de la tendance",
+        "Un indicateur de volume comme l’OBV",
+        "Un type de moyenne mobile pondérée"
+      ],
+      "explanation": "Un **drapeau** est une courte phase de consolidation inclinée à contre-sens, juste après un mouvement vif (la « hampe »). C’est une figure de **continuation** : une fois le drapeau cassé dans le sens de l’impulsion initiale, la tendance reprend le plus souvent. Le fanion (pennant) joue un rôle très proche.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un ancien **support** finit par être cassé nettement à la baisse. Selon le principe de polarité, quel rôle joue ensuite ce niveau ?",
+      "answer": "Il tend à devenir une résistance lors des remontées suivantes",
+      "wrong": [
+        "Il devient un support encore plus solide qu’avant",
+        "Il perd toute influence et n’est plus jamais testé",
+        "Il se transforme automatiquement en moyenne mobile"
+      ],
+      "explanation": "Le **principe de polarité** veut qu’un niveau change de rôle une fois franchi : un support cassé à la baisse se mue souvent en résistance, car les acheteurs piégés au-dessus cherchent à sortir à l’équilibre quand le prix y revient. L’inverse vaut aussi : une résistance cassée à la hausse devient fréquemment un support.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un trader calcule un **point pivot** classique avec un plus haut de 120, un plus bas de 90 et une clôture de 108. Quelle valeur obtient-il ?",
+      "answer": "106",
+      "wrong": [
+        "105",
+        "108",
+        "318"
+      ],
+      "explanation": "Le point pivot classique est la moyenne du plus haut, du plus bas et de la clôture : (120 + 90 + 108) / 3 = 318 / 3 = **106**. Le piège 105 est la simple moyenne du plus haut et du plus bas (sans la clôture), 108 reprend la clôture seule, et 318 est la somme non divisée. Ce pivot sert de niveau de référence pour la séance.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que signale un **resserrement** marqué des bandes de Bollinger (squeeze) ?",
+      "answer": "Une période de faible volatilité qui précède souvent un fort mouvement",
+      "wrong": [
+        "Une hausse garantie du prix dans les minutes qui suivent",
+        "Une volatilité extrême déjà en cours",
+        "La disparition définitive de la tendance de l’actif"
+      ],
+      "explanation": "Un **squeeze** correspond à des bandes de Bollinger très rapprochées, signe que la volatilité s’est effondrée et que le marché « comprime ». Historiquement, ces phases calmes précèdent souvent une expansion brutale de la volatilité. Attention : le squeeze indique qu’un gros mouvement approche, mais pas dans quel sens ; il faut d’autres éléments pour trancher.",
+      "difficulty": 3
+    }
+  ]
+}

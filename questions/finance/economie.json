@@ -1,0 +1,233 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Économie",
+  "icon": "💶",
+  "description": "Offre et demande, inflation, PIB, taux d'intérêt, banques centrales : les grands mécanismes de l'économie expliqués simplement.",
+  "order": 1,
+  "questions": [
+    {
+      "question": "Sur un marché, la demande d'un produit augmente fortement alors que la quantité offerte reste identique. Que se passe-t-il, toutes choses égales par ailleurs ?",
+      "answer": "Son prix a tendance à augmenter",
+      "wrong": ["Son prix a tendance à baisser", "Son prix reste strictement inchangé", "Son prix devient impossible à déterminer"],
+      "explanation": "C'est la **loi de l'offre et de la demande** : quand la demande grimpe mais que l'offre ne suit pas, les acheteurs se font concurrence pour une quantité limitée et sont prêts à payer davantage, ce qui pousse le prix vers le haut. À l'inverse, une offre abondante face à une demande faible fait baisser le prix.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Loi_de_l%27offre_et_de_la_demande"
+    },
+    {
+      "question": "Qu'appelle-t-on l'**inflation** ?",
+      "answer": "La hausse générale et durable du niveau des prix",
+      "wrong": ["La hausse du prix d'un seul produit particulier", "La baisse générale et durable du niveau des prix", "L'augmentation de la quantité de biens produits dans un pays"],
+      "explanation": "L'**inflation** mesure l'augmentation générale et durable des prix de l'ensemble des biens et services, pas la hausse ponctuelle d'un seul produit. Elle réduit la valeur de la monnaie : avec la même somme, on achète progressivement moins de choses. La baisse générale des prix, elle, porte le nom de déflation.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Inflation"
+    },
+    {
+      "question": "Que désigne le terme **déflation** ?",
+      "answer": "Une baisse générale et durable du niveau des prix",
+      "wrong": ["Un ralentissement de la hausse des prix qui restent orientés à la hausse", "La hausse générale et durable du niveau des prix", "Une réduction volontaire de la masse monétaire par l'État"],
+      "explanation": "La **déflation** est l'inverse de l'inflation : les prix baissent de façon générale et durable. Elle peut sembler favorable aux consommateurs, mais elle est redoutée car elle pousse à reporter les achats (« ce sera moins cher demain »), ce qui freine l'activité. Le simple ralentissement de l'inflation, lui, s'appelle la désinflation.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que mesure le **PIB** (produit intérieur brut) d'un pays ?",
+      "answer": "La valeur des biens et services produits sur son territoire pendant une période donnée",
+      "wrong": ["La somme de l'épargne détenue par ses habitants", "Le total des richesses accumulées dans le pays depuis sa création", "La quantité de monnaie en circulation dans le pays"],
+      "explanation": "Le **PIB** additionne la valeur de toute la production de biens et services finaux réalisée sur un territoire au cours d'une période (souvent un an ou un trimestre). C'est un flux, pas un stock : il mesure ce qui a été produit sur la période, pas le patrimoine total accumulé. Sa variation sert d'indicateur principal de la croissance.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Produit_int%C3%A9rieur_brut"
+    },
+    {
+      "question": "La **TVA** (taxe sur la valeur ajoutée) est un exemple de quel type d'impôt ?",
+      "answer": "Un impôt indirect, payé sur la consommation",
+      "wrong": ["Un impôt direct, assis sur le revenu du contribuable", "Un impôt direct, assis sur le patrimoine", "Une cotisation sociale prélevée sur les salaires"],
+      "explanation": "La **TVA** est un impôt **indirect** : elle frappe la consommation et est incluse dans le prix payé par le client, puis reversée par le vendeur à l'État. On ne la paie pas en fonction de ses revenus, contrairement à un impôt direct comme l'impôt sur le revenu que le contribuable verse directement au Trésor.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle institution est chargée de conduire la politique monétaire de la zone euro ?",
+      "answer": "La Banque centrale européenne (BCE)",
+      "wrong": ["La Commission européenne", "Le Fonds monétaire international (FMI)", "La Banque centrale de chaque État membre, de façon indépendante"],
+      "explanation": "La **BCE**, basée à Francfort, pilote la politique monétaire des pays ayant adopté l'euro : elle fixe les taux directeurs et veille à la stabilité des prix. Les banques centrales nationales existent toujours mais agissent dans le cadre de l'Eurosystème ; elles ne décident pas seules de la politique monétaire.",
+      "difficulty": 1,
+      "source": "https://www.ecb.europa.eu/ecb/html/index.fr.html"
+    },
+    {
+      "question": "Qu'appelle-t-on le **pouvoir d'achat** d'un revenu ?",
+      "answer": "La quantité de biens et services que ce revenu permet d'acheter",
+      "wrong": ["Le montant total de ce revenu exprimé en euros", "La part de ce revenu que l'on choisit d'épargner", "La capacité à emprunter de l'argent auprès d'une banque"],
+      "explanation": "Le **pouvoir d'achat** relie le revenu aux prix : c'est ce que l'on peut concrètement se procurer avec son argent. Un salaire qui augmente de 2 % alors que les prix montent de 3 % se traduit par une perte de pouvoir d'achat, car la même somme achète moins de choses. Seul le montant nominal, lui, ignore l'évolution des prix.",
+      "difficulty": 1
+    },
+    {
+      "question": "Au sens statistique habituel, qui est comptabilisé comme **chômeur** ?",
+      "answer": "Une personne sans emploi, disponible pour travailler et qui recherche activement un travail",
+      "wrong": ["Toute personne sans emploi, qu'elle en cherche un ou non", "Toute personne en âge de travailler mais qui n'exerce aucune activité", "Une personne qui travaille à temps partiel sans le vouloir"],
+      "explanation": "Au sens du Bureau international du travail (BIT), le **chômage** suppose trois conditions réunies : être sans emploi, être disponible pour en prendre un, et rechercher activement du travail. Une personne sans emploi qui ne cherche pas (par exemple un étudiant ou un retraité) est dite « inactive », pas au chômage.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle est la différence entre **microéconomie** et **macroéconomie** ?",
+      "answer": "La microéconomie étudie les agents individuels, la macroéconomie l'économie dans son ensemble",
+      "wrong": ["La microéconomie concerne les petites entreprises, la macroéconomie les grandes", "La microéconomie étudie le passé, la macroéconomie prévoit l'avenir", "La microéconomie porte sur un pays, la macroéconomie sur le monde entier"],
+      "explanation": "La **microéconomie** analyse les décisions d'agents individuels (consommateurs, entreprises) et les marchés particuliers. La **macroéconomie** raisonne au niveau global : PIB, inflation, chômage, croissance d'un pays. La distinction tient à l'échelle d'analyse, pas à la taille des entreprises ni au pays concerné.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Microéconomie"
+    },
+    {
+      "question": "Selon la définition dite « technique » couramment utilisée, à partir de quand parle-t-on de **récession** ?",
+      "answer": "Après deux trimestres consécutifs de recul du PIB",
+      "wrong": ["Dès qu'un seul trimestre affiche un recul du PIB", "Lorsque le chômage dépasse 10 % de la population active", "Lorsque l'inflation devient négative pendant un an"],
+      "explanation": "La définition **technique** la plus répandue retient deux trimestres consécutifs de baisse du PIB réel. C'est une convention pratique : d'autres approches tiennent compte de l'emploi, de la production industrielle ou des revenus. Une récession traduit un recul de l'activité, à ne pas confondre avec la déflation, qui concerne les prix.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/R%C3%A9cession_(%C3%A9conomie)"
+    },
+    {
+      "question": "Une banque centrale **augmente** ses taux directeurs. Quel effet recherche-t-elle généralement ?",
+      "answer": "Freiner le crédit et la demande pour ralentir l'inflation",
+      "wrong": ["Stimuler le crédit pour relancer la consommation", "Faire baisser directement le taux de chômage", "Augmenter immédiatement la quantité de monnaie en circulation"],
+      "explanation": "Relever les taux directeurs rend le crédit plus cher : entreprises et ménages empruntent et dépensent moins, ce qui réduit la pression sur les prix et **freine l'inflation**. C'est un resserrement monétaire. À l'inverse, baisser les taux vise à relancer l'activité en rendant l'emprunt meilleur marché.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que désigne la **masse monétaire** d'une économie ?",
+      "answer": "La quantité totale de monnaie en circulation dans l'économie",
+      "wrong": ["Le poids des réserves d'or détenues par la banque centrale", "La richesse totale produite par le pays en une année", "La valeur de l'ensemble des dettes de l'État"],
+      "explanation": "La **masse monétaire** regroupe l'argent disponible pour les transactions : billets et pièces, mais aussi les dépôts sur les comptes. On la découpe en agrégats (M1, M2, M3) selon la liquidité. À ne pas confondre avec le PIB, qui mesure une production, ni avec la dette publique.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qu'un **taux de change** ?",
+      "answer": "Le prix d'une monnaie exprimé dans une autre monnaie",
+      "wrong": ["Le taux d'intérêt appliqué aux prêts en devises étrangères", "La commission prélevée par une banque lors d'un virement international", "Le rapport entre les exportations et les importations d'un pays"],
+      "explanation": "Le **taux de change** indique combien d'unités d'une monnaie il faut pour en obtenir une autre (par exemple le nombre de dollars pour un euro). Il varie selon l'offre et la demande de devises. Il ne faut pas le confondre avec les frais bancaires ni avec la balance commerciale.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la différence entre le **déficit public** et la **dette publique** ?",
+      "answer": "Le déficit est l'écart négatif d'une année, la dette est le cumul des emprunts passés",
+      "wrong": ["Le déficit concerne l'État, la dette les collectivités locales", "Le déficit est remboursable, la dette ne l'est jamais", "Le déficit se mesure en euros, la dette en pourcentage uniquement"],
+      "explanation": "Le **déficit** est un flux : sur une année, les dépenses publiques dépassent les recettes. Pour le combler, l'État emprunte, et ces emprunts s'accumulent d'année en année pour former la **dette**, un stock. Chaque année de déficit vient donc gonfler la dette totale ; un budget en excédent la réduit.",
+      "difficulty": 2,
+      "source": "https://www.vie-publique.fr/fiches/21918-quest-ce-que-le-deficit-public"
+    },
+    {
+      "question": "Comment qualifie-t-on un marché où un **seul vendeur** fait face à de nombreux acheteurs ?",
+      "answer": "Un monopole",
+      "wrong": ["Un monopsone", "Un oligopole", "Une situation de concurrence pure et parfaite"],
+      "explanation": "Un **monopole** désigne un marché dominé par un vendeur unique, qui dispose alors d'un fort pouvoir sur le prix. À ne pas confondre avec le **monopsone** (un seul acheteur face à de nombreux vendeurs) ni avec l'**oligopole** (quelques vendeurs). La concurrence pure et parfaite suppose au contraire une multitude d'acteurs.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que désigne un **oligopole** ?",
+      "answer": "Un marché dominé par un petit nombre de vendeurs",
+      "wrong": ["Un marché où un seul vendeur est présent", "Un marché avec un seul acheteur et de nombreux vendeurs", "Un marché totalement contrôlé par l'État"],
+      "explanation": "Dans un **oligopole**, quelques entreprises se partagent l'essentiel du marché (téléphonie, compagnies aériennes, etc.). Leurs décisions sont interdépendantes : chacune surveille les autres, ce qui peut favoriser des ententes. Un seul vendeur correspond au monopole, un seul acheteur au monopsone.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle institution conduit la politique monétaire des États-Unis ?",
+      "answer": "La Réserve fédérale (Federal Reserve, « Fed »)",
+      "wrong": ["Le département du Trésor américain", "La Banque mondiale", "Le Fonds monétaire international (FMI)"],
+      "explanation": "La **Fed** (Federal Reserve System) est la banque centrale des États-Unis : elle fixe les taux directeurs et veille à la stabilité des prix et à l'emploi. Le Trésor, lui, gère le budget et la dette de l'État, tandis que la Banque mondiale et le FMI sont des institutions internationales, pas la banque centrale d'un pays.",
+      "difficulty": 2,
+      "source": "https://www.federalreserve.gov/aboutthefed.htm"
+    },
+    {
+      "question": "Qu'appelle-t-on le **coût d'opportunité** d'un choix ?",
+      "answer": "La valeur de la meilleure option à laquelle on renonce en faisant ce choix",
+      "wrong": ["La somme d'argent effectivement dépensée pour ce choix", "Le coût total de toutes les options écartées additionnées", "Le risque de perdre de l'argent en se trompant de choix"],
+      "explanation": "Le **coût d'opportunité** rappelle que choisir, c'est renoncer : il correspond à ce que rapporte la meilleure alternative sacrifiée. Par exemple, passer une soirée à étudier a pour coût d'opportunité ce que cette soirée aurait pu rapporter autrement (travail rémunéré, loisir). Ce n'est ni la dépense directe ni la somme de toutes les options.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Co%C3%BBt_d%27opportunit%C3%A9"
+    },
+    {
+      "question": "Face à une crise, une banque centrale mène une politique monétaire dite **expansionniste**. En quoi consiste-t-elle principalement ?",
+      "answer": "Baisser les taux d'intérêt pour stimuler le crédit et l'activité",
+      "wrong": ["Augmenter les taux d'intérêt pour attirer les capitaux", "Réduire la masse monétaire pour renforcer la monnaie", "Augmenter les impôts pour financer la relance"],
+      "explanation": "Une politique monétaire **expansionniste** vise à soutenir l'activité : en abaissant les taux directeurs (et parfois en injectant des liquidités), la banque centrale rend le crédit moins cher pour encourager investissement et consommation. Augmenter les impôts relève de la politique budgétaire, menée par l'État, pas de la banque centrale.",
+      "difficulty": 2
+    },
+    {
+      "question": "Parmi ces prélèvements, lequel est un **impôt direct** ?",
+      "answer": "L'impôt sur le revenu",
+      "wrong": ["La TVA", "Les droits de douane", "La taxe sur les carburants"],
+      "explanation": "Un **impôt direct** est payé directement par le contribuable en fonction de sa situation (revenu, patrimoine) : l'impôt sur le revenu en est l'exemple type. La TVA, les droits de douane et les taxes sur les carburants sont des impôts **indirects**, intégrés au prix des produits et acquittés lors de la consommation.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un panier de biens coûtait 100 € il y a un an et coûte 105 € aujourd'hui. Quel est le taux d'inflation sur cette période ?",
+      "answer": "5 %",
+      "wrong": ["0,5 %", "15 %", "105 %"],
+      "explanation": "Le taux d'inflation se calcule ainsi : (prix final − prix initial) ÷ prix initial. Ici (105 − 100) ÷ 100 = 0,05, soit **5 %**. On rapporte toujours la hausse au prix de départ. La valeur 105 % correspondrait au nouveau prix exprimé en pourcentage de l'ancien, pas à la hausse.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que décrit le terme **stagflation** ?",
+      "answer": "Une inflation élevée accompagnée d'une croissance faible et d'un chômage important",
+      "wrong": ["Une forte croissance accompagnée d'une inflation élevée", "Une baisse des prix combinée à une forte croissance", "Une période de stabilité totale des prix et de l'emploi"],
+      "explanation": "La **stagflation** (stagnation + inflation) décrit une situation déroutante : les prix montent alors que l'économie stagne et que le chômage grimpe. Elle est redoutée car les remèdes classiques s'opposent : lutter contre l'inflation en relevant les taux risque d'aggraver le chômage, et inversement.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Stagflation"
+    },
+    {
+      "question": "Dans l'esprit du **keynésianisme**, comment relancer une économie en récession ?",
+      "answer": "En soutenant la demande, notamment par la dépense publique",
+      "wrong": ["En réduisant la dépense publique pour équilibrer le budget", "En laissant le marché se corriger sans intervention de l'État", "En augmentant les taux d'intérêt pour attirer l'épargne"],
+      "explanation": "Pour **Keynes**, lors d'une crise, la demande insuffisante entretient le chômage ; l'État doit alors la soutenir, quitte à creuser temporairement le déficit, pour relancer l'activité. Cette approche s'oppose à la vision classique selon laquelle le marché se rééquilibre seul sans intervention publique.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Keyn%C3%A9sianisme"
+    },
+    {
+      "question": "Quelle idée résume le mieux la pensée **libérale classique** en économie ?",
+      "answer": "Le marché tend à s'autoréguler et l'intervention de l'État doit rester limitée",
+      "wrong": ["L'État doit planifier la production et fixer les prix", "La dépense publique est le principal moteur de la croissance", "Les crises se résolvent uniquement par la relance budgétaire"],
+      "explanation": "Le **libéralisme classique** (Smith, Ricardo) postule que, laissés libres, les marchés s'ajustent d'eux-mêmes grâce aux prix — la fameuse « main invisible » — et qu'un État trop interventionniste nuit à cet équilibre. C'est l'inverse de l'approche keynésienne, qui justifie l'intervention publique pour soutenir la demande.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que décrit la **courbe de Phillips** dans sa version d'origine, à court terme ?",
+      "answer": "Une relation inverse entre le taux de chômage et le taux d'inflation",
+      "wrong": ["Une relation positive entre le chômage et l'inflation", "Une relation entre le PIB et la dette publique", "L'évolution des prix en fonction du taux de change"],
+      "explanation": "La **courbe de Phillips** met en évidence, à court terme, un arbitrage : quand le chômage baisse, l'inflation tend à monter, et inversement. Cette relation inverse est toutefois contestée à long terme, et des épisodes comme la stagflation ont montré ses limites, car chômage et inflation peuvent augmenter ensemble.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Courbe_de_Phillips"
+    },
+    {
+      "question": "En quoi consistent les **opérations d'open market** d'une banque centrale ?",
+      "answer": "Acheter ou vendre des titres sur le marché pour régler la liquidité et influencer les taux",
+      "wrong": ["Prêter directement de l'argent aux particuliers", "Fixer par décret le prix des biens de consommation", "Imprimer des billets pour rembourser la dette de l'État"],
+      "explanation": "Via l'**open market**, la banque centrale achète ou vend des titres (souvent des obligations d'État) aux banques. En achetant, elle injecte des liquidités et pousse les taux à la baisse ; en vendant, elle retire des liquidités. C'est un outil clé de la politique monétaire, distinct du financement direct de l'État.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quels effets attend-on généralement d'une **dévaluation** de la monnaie nationale ?",
+      "answer": "Les exportations deviennent plus compétitives et les importations plus chères",
+      "wrong": ["Les exportations et les importations deviennent toutes deux moins chères", "Les importations deviennent plus compétitives et les exportations plus chères", "Le pouvoir d'achat intérieur augmente immédiatement"],
+      "explanation": "Une **dévaluation** abaisse la valeur de la monnaie face aux autres devises. Les produits nationaux coûtent alors moins cher pour l'étranger (exportations dopées), tandis que les produits importés deviennent plus onéreux. Cet effet peut soutenir l'industrie nationale, mais renchérit les biens importés et peut alimenter l'inflation.",
+      "difficulty": 3
+    },
+    {
+      "question": "La demande d'un bien est dite **inélastique** par rapport au prix. Qu'est-ce que cela signifie ?",
+      "answer": "La quantité demandée varie peu quand le prix change",
+      "wrong": ["La quantité demandée varie fortement quand le prix change", "Le prix du bien ne change jamais", "La demande dépend uniquement du revenu, pas du prix"],
+      "explanation": "L'**élasticité-prix de la demande** mesure la sensibilité de la quantité demandée à une variation de prix. Une demande **inélastique** (élasticité inférieure à 1 en valeur absolue) réagit peu : c'est typique des biens de première nécessité comme le sel ou certains médicaments, que l'on continue d'acheter même si leur prix monte.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/%C3%89lasticit%C3%A9_(%C3%A9conomie)"
+    },
+    {
+      "question": "Sur un an, un salaire augmente de 2 % tandis que les prix augmentent de 3 %. Qu'arrive-t-il au pouvoir d'achat ?",
+      "answer": "Il diminue, car les prix montent plus vite que le salaire",
+      "wrong": ["Il augmente de 2 %, au rythme du salaire", "Il augmente de 1 %, soit la somme des deux hausses", "Il reste stable, les deux hausses se compensant exactement"],
+      "explanation": "Le pouvoir d'achat dépend du revenu rapporté aux prix. Si le salaire progresse de 2 % mais que les prix montent de 3 %, la hausse des revenus ne suffit pas à suivre celle des prix : on peut acheter un peu moins qu'avant (environ 1 % de moins). Le pouvoir d'achat **baisse** donc, même si le salaire nominal a augmenté.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle est la différence entre le **PIB nominal** et le **PIB réel** ?",
+      "answer": "Le PIB nominal est mesuré aux prix courants, le PIB réel corrige l'effet de l'inflation",
+      "wrong": ["Le PIB nominal inclut les services, le PIB réel seulement les biens matériels", "Le PIB nominal concerne le secteur privé, le PIB réel le secteur public", "Le PIB nominal est une estimation, le PIB réel un chiffre définitif"],
+      "explanation": "Le **PIB nominal** évalue la production aux prix de l'année en cours ; il peut donc augmenter simplement parce que les prix montent. Le **PIB réel** utilise des prix constants (année de référence) pour neutraliser l'inflation et mesurer la vraie variation des volumes produits. C'est le PIB réel qui sert à juger la croissance.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Produit_int%C3%A9rieur_brut"
+    }
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Growth & Web",
+  "icon": "🚀",
+  "description": "Funnel AARRR, CAC, LTV, SEO/SEA, A/B testing, ROAS : les métriques et leviers du growth marketing, du premier clic jusqu'à la conversion.",
+  "order": 2,
+  "questions": [
+    {
+      "question": "Que désigne l'acronyme **AARRR**, le « funnel des pirates » utilisé en growth ?",
+      "answer": "Acquisition, Activation, Rétention, Revenu, Recommandation",
+      "wrong": ["Audience, Annonce, Reach, Revenu, Réseau", "Acquisition, Audience, Retargeting, Reach, Référencement", "Activation, Audience, Rétention, Revenu, Remarketing"],
+      "explanation": "Le funnel **AARRR** décompose le parcours client en cinq étapes : **A**cquisition (attirer le visiteur), **A**ctivation (première expérience réussie), **R**étention (il revient), **R**evenu (il paie) et **R**ecommandation (il parraine). Ce cadre popularisé par Dave McClure aide à repérer à quelle étape le funnel « fuit » et où concentrer les efforts.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/AARRR"
+    },
+    {
+      "question": "Dans une interface web, qu'est-ce qu'un **CTA** (call-to-action) ?",
+      "answer": "Un élément qui incite le visiteur à effectuer une action précise",
+      "wrong": ["Un indicateur mesurant le temps passé sur une page", "Un script qui analyse le comportement des visiteurs", "Un type de publicité facturée au nombre d'affichages"],
+      "explanation": "Un **call-to-action** est un bouton ou un lien conçu pour pousser l'utilisateur à agir : « S'inscrire », « Ajouter au panier », « Télécharger ». Son texte, sa couleur et sa position influencent fortement le taux de conversion. Ce n'est pas une mesure ni un format publicitaire, mais bien un déclencheur d'action.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie l'abréviation **KPI** en marketing ?",
+      "answer": "Indicateur clé de performance (Key Performance Indicator)",
+      "wrong": ["Processus d'intégration d'un nouveau client (Key Partner Integration)", "Indice de popularité d'une marque (Key Popularity Index)", "Programme d'incitation à l'achat (Key Purchase Incentive)"],
+      "explanation": "Un **KPI** (Key Performance Indicator) est une mesure chiffrée qui suit l'avancement vers un objectif : taux de conversion, CAC, churn, chiffre d'affaires, etc. Un bon KPI est aligné sur un objectif précis et actionnable, par opposition aux « vanity metrics » qui flattent sans guider la décision.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Indicateur_de_performance"
+    },
+    {
+      "question": "En marketing digital, qu'appelle-t-on un **lead** ?",
+      "answer": "Un contact ayant manifesté un intérêt pour l'offre, mais pas encore client",
+      "wrong": ["Un client fidèle qui a déjà réalisé plusieurs achats", "Un simple visiteur anonyme du site, sans coordonnées", "Un partenaire commercial qui revend les produits"],
+      "explanation": "Un **lead** est un prospect : une personne qui a laissé une trace de son intérêt (formulaire rempli, e-mail déposé, livre blanc téléchargé) sans avoir encore acheté. Le travail de « lead nurturing » consiste à l'accompagner jusqu'à la conversion. Une fois l'achat réalisé, on parle de client, plus de lead.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quoi sert une **landing page** (page d'atterrissage) ?",
+      "answer": "Convertir le visiteur sur un objectif unique et précis",
+      "wrong": ["Présenter l'intégralité du catalogue et des rubriques du site", "Héberger le blog et les articles de l'entreprise", "Afficher les mentions légales et la politique de confidentialité"],
+      "explanation": "Une **landing page** est une page autonome vers laquelle on dirige le trafic d'une campagne, focalisée sur une seule action : s'inscrire, acheter, télécharger. On y limite volontairement les distractions (menu, liens externes) pour maximiser la conversion. Elle se distingue d'une page d'accueil classique qui, elle, oriente vers de multiples destinations.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Page_d%27atterrissage"
+    },
+    {
+      "question": "Que mesure le **taux de rebond** (bounce rate) d'une page web ?",
+      "answer": "La part des visiteurs qui quittent le site après avoir vu une seule page",
+      "wrong": ["La part des visiteurs qui reviennent une seconde fois sur le site", "Le nombre moyen de pages vues par session", "La part des visiteurs qui finalisent un achat"],
+      "explanation": "Le **taux de rebond** correspond aux sessions limitées à une seule page, sans autre interaction. Un taux élevé peut signaler un contenu hors sujet, une page lente ou un mauvais ciblage, mais pas toujours : sur un article de blog qui répond à la question, un visiteur peut repartir satisfait. Il ne mesure ni les retours ni les achats.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Taux_de_rebond"
+    },
+    {
+      "question": "Comment calcule-t-on le **CTR** (taux de clic) d'une annonce ou d'un lien ?",
+      "answer": "Nombre de clics divisé par le nombre d'impressions",
+      "wrong": ["Nombre d'impressions divisé par le nombre de clics", "Nombre de clics divisé par le nombre de conversions", "Nombre de conversions divisé par le nombre de clics"],
+      "explanation": "Le **CTR** (Click-Through Rate) rapporte les clics au nombre d'affichages : CTR = clics / impressions. Il mesure l'attractivité d'une annonce ou d'un résultat. À ne pas confondre avec le taux de conversion, qui rapporte les conversions aux clics (ou aux visiteurs) et mesure, lui, l'efficacité de la page d'arrivée.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Taux_de_clics"
+    },
+    {
+      "question": "Quelle est la différence entre le **SEO** et le **SEA** ?",
+      "answer": "Le SEO vise le référencement naturel, le SEA les annonces payantes",
+      "wrong": ["Le SEO concerne les moteurs de recherche, le SEA les réseaux sociaux", "Le SEO vise le mobile, le SEA l'ordinateur de bureau", "Le SEO optimise le contenu, le SEA l'adresse e-mail"],
+      "explanation": "Le **SEO** (Search Engine Optimization) cherche à faire remonter un site dans les résultats *naturels* des moteurs, sans payer le clic, par le contenu et la technique. Le **SEA** (Search Engine Advertising) consiste à acheter des annonces, par exemple au CPC, pour apparaître en tête. Les deux ciblent les moteurs de recherche, mais l'un est organique et l'autre payant.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Optimisation_pour_les_moteurs_de_recherche"
+    },
+    {
+      "question": "En marketing, qu'est-ce qu'un **persona** ?",
+      "answer": "Un portrait-type semi-fictif représentant un segment de clientèle cible",
+      "wrong": ["Le compte officiel d'une marque sur les réseaux sociaux", "Un client réel choisi pour témoigner dans une publicité", "Un influenceur rémunéré pour promouvoir un produit"],
+      "explanation": "Un **persona** est un personnage inventé mais fondé sur des données réelles (besoins, objectifs, freins, habitudes) qui incarne un type de client cible. Il aide les équipes à concevoir produits et messages en gardant en tête une personne concrète. Ce n'est ni un compte de marque, ni une vraie personne, ni un influenceur.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Persona_(marketing)"
+    },
+    {
+      "question": "Que représente le **CAC** (coût d'acquisition client) ?",
+      "answer": "Le coût marketing et commercial moyen pour acquérir un nouveau client",
+      "wrong": ["Le chiffre d'affaires moyen généré par un client", "Le coût de production d'une unité de produit", "Le coût de fidélisation d'un client déjà acquis"],
+      "explanation": "Le **CAC** divise l'ensemble des dépenses marketing et commerciales d'une période par le nombre de nouveaux clients acquis sur cette même période. C'est un indicateur de rentabilité de la croissance : on le compare souvent à la LTV. Il mesure le coût d'acquisition, pas le revenu généré ni le coût de production du bien.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Co%C3%BBt_d%27acquisition_client"
+    },
+    {
+      "question": "Que mesure la **LTV** (ou CLV, lifetime value) d'un client ?",
+      "answer": "Le revenu total qu'un client rapporte sur toute sa durée de relation",
+      "wrong": ["Le coût total engagé pour acquérir ce client", "Le montant de son tout premier achat", "Le nombre de clients acquis sur une année"],
+      "explanation": "La **Lifetime Value** estime la somme des revenus (souvent de la marge) qu'un client génère pendant toute la durée de sa relation avec l'entreprise. On la compare au CAC pour vérifier qu'un client rapporte plus qu'il ne coûte à acquérir. Elle concerne le revenu attendu, pas le coût d'acquisition ni un achat isolé.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Valeur_vie_client"
+    },
+    {
+      "question": "Que désigne le **taux de churn** (taux d'attrition) d'un service par abonnement ?",
+      "answer": "La part de clients qui cessent d'être clients sur une période donnée",
+      "wrong": ["La part de nouveaux clients gagnés sur une période donnée", "La part de clients qui recommandent le service à un proche", "La part de visiteurs qui s'abonnent après un essai gratuit"],
+      "explanation": "Le **churn** mesure l'érosion de la base clients : clients perdus sur une période / clients au début de cette période. Un churn élevé oblige à acquérir sans cesse pour compenser les départs, ce qui pèse sur la rentabilité. Son opposé est le taux de rétention. Les clients *gagnés* relèvent, eux, de l'acquisition.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Taux_d%27attrition"
+    },
+    {
+      "question": "Dans une campagne facturée au **CPC**, à quel moment l'annonceur paie-t-il ?",
+      "answer": "À chaque fois qu'un internaute clique sur l'annonce",
+      "wrong": ["À chaque fois que l'annonce est affichée", "À chaque fois qu'une vente est réalisée", "À chaque millier d'affichages de l'annonce"],
+      "explanation": "Le **CPC** (coût par clic) facture l'annonceur uniquement lorsqu'un internaute clique, quel que soit le nombre d'affichages. Il est au cœur du SEA (Google Ads, par exemple). Il se distingue du CPM, facturé à l'affichage, et du CPA, facturé à l'action (vente ou inscription).",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Co%C3%BBt_par_clic"
+    },
+    {
+      "question": "Sur quelle base une campagne publicitaire facturée au **CPM** est-elle payée ?",
+      "answer": "Pour mille affichages (impressions) de l'annonce",
+      "wrong": ["Pour chaque clic reçu par l'annonce", "Pour chaque conversion générée", "Pour mille clics sur l'annonce"],
+      "explanation": "Le **CPM** signifie « coût pour mille » : l'annonceur paie un montant fixe par tranche de 1 000 impressions, qu'il y ait des clics ou non. Ce modèle sert surtout aux campagnes de notoriété, où l'objectif est la visibilité. Le « M » renvoie à mille (chiffre romain), pas à des clics ni à des conversions.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Co%C3%BBt_pour_mille"
+    },
+    {
+      "question": "Dans un modèle de facturation au **CPA**, l'annonceur paie lorsque…",
+      "answer": "Une action définie est réalisée (vente, inscription, lead)",
+      "wrong": ["L'annonce est simplement affichée à l'internaute", "L'internaute clique sur l'annonce", "L'annonce atteint mille impressions"],
+      "explanation": "Le **CPA** (coût par action ou par acquisition) ne facture l'annonceur qu'une fois une action précise accomplie : achat, inscription, téléchargement. C'est le modèle le moins risqué pour l'annonceur, car il ne paie que des résultats. Il se distingue du CPM (à l'affichage) et du CPC (au clic).",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Co%C3%BBt_par_action"
+    },
+    {
+      "question": "Que mesure le **ROAS** d'une campagne publicitaire ?",
+      "answer": "Le chiffre d'affaires généré pour chaque euro dépensé en publicité",
+      "wrong": ["Le bénéfice net généré après déduction de tous les coûts", "Le nombre de clients acquis grâce à la publicité", "La part du budget total consacrée à la publicité"],
+      "explanation": "Le **ROAS** (Return On Ad Spend) rapporte le chiffre d'affaires attribué à une campagne au montant dépensé en publicité : CA / dépenses pub. Un ROAS de 4 signifie 4 € de CA par euro investi. Contrairement au ROI, il raisonne en chiffre d'affaires brut et ne retranche pas l'ensemble des coûts.",
+      "difficulty": 3,
+      "source": "https://support.google.com/google-ads/answer/6268637?hl=fr"
+    },
+    {
+      "question": "Quelle est la différence principale entre marketing **inbound** et **outbound** ?",
+      "answer": "L'inbound attire le client par du contenu, l'outbound va le solliciter directement",
+      "wrong": ["L'inbound est payant, l'outbound est toujours gratuit", "L'inbound cible les entreprises, l'outbound les particuliers", "L'inbound concerne le web, l'outbound uniquement la télévision"],
+      "explanation": "L'**inbound marketing** fait venir le prospect à soi grâce à du contenu utile (blog, SEO, livres blancs) qu'il découvre de lui-même. L'**outbound** va chercher le prospect par des messages poussés (démarchage, e-mailing à froid, publicité interruptive). La distinction tient au sens de l'initiative, pas au prix ni au support.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Inbound_marketing"
+    },
+    {
+      "question": "En quoi consiste un **test A/B** ?",
+      "answer": "Comparer deux versions d'un élément pour voir laquelle performe le mieux",
+      "wrong": ["Lancer une version, puis une autre à plusieurs mois d'écart", "Demander leur avis à deux panels de clients différents", "Tester un site sur deux navigateurs différents"],
+      "explanation": "Un **test A/B** montre, en même temps et à des visiteurs répartis aléatoirement, deux variantes (A et B) d'une page, d'un objet d'e-mail ou d'un bouton, puis compare un indicateur (taux de conversion, clics). La répartition simultanée et aléatoire est essentielle pour isoler l'effet de la variante des autres facteurs.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Test_A/B"
+    },
+    {
+      "question": "Qu'est-ce que le **retargeting** (reciblage publicitaire) ?",
+      "answer": "Rediffuser des publicités à des personnes ayant déjà visité le site",
+      "wrong": ["Cibler de nouveaux prospects n'ayant jamais entendu parler de la marque", "Modifier le ciblage géographique d'une campagne en cours", "Changer le visuel d'une annonce qui ne performe pas"],
+      "explanation": "Le **retargeting** s'adresse aux internautes ayant déjà interagi avec la marque (visite, panier abandonné) pour les ramener vers la conversion, via des annonces qui les « suivent » sur d'autres sites. Il mise sur un public déjà familier, par opposition à une campagne d'acquisition qui vise des audiences froides.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Reciblage_publicitaire"
+    },
+    {
+      "question": "Sur quoi repose un programme de **parrainage** (referral) ?",
+      "answer": "Des clients existants qui recommandent le produit à leurs proches",
+      "wrong": ["L'achat d'espaces publicitaires sur les moteurs de recherche", "L'envoi d'e-mails à une base de contacts achetée", "Le paiement d'influenceurs pour poster du contenu"],
+      "explanation": "Le **parrainage** transforme les clients en canal d'acquisition : ils recommandent le produit à leur entourage, souvent contre une récompense pour le parrain et le filleul. Il s'appuie sur la confiance interpersonnelle, d'où un CAC souvent bas. C'est l'étape « Recommandation » du funnel AARRR, distincte de la publicité ou de l'influence rémunérée.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Marketing_de_recommandation"
+    },
+    {
+      "question": "En e-mail marketing, que mesure le **taux d'ouverture** d'une campagne ?",
+      "answer": "La part des e-mails délivrés qui ont été ouverts par les destinataires",
+      "wrong": ["La part des e-mails envoyés qui ont atteint la boîte de réception", "La part des destinataires ayant cliqué sur un lien de l'e-mail", "La part des destinataires qui se sont désabonnés"],
+      "explanation": "Le **taux d'ouverture** rapporte les e-mails ouverts aux e-mails effectivement délivrés. Il reflète surtout l'efficacité de l'objet et de l'expéditeur. À distinguer du taux de délivrabilité (arrivée en boîte), du taux de clic (clics sur un lien) et du taux de désabonnement.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Taux_d%27ouverture"
+    },
+    {
+      "question": "Qu'est-ce que le **growth hacking** ?",
+      "answer": "Une approche de croissance rapide par l'expérimentation continue et les données",
+      "wrong": ["Une technique illégale pour pirater les comptes des concurrents", "Un synonyme exact de la publicité télévisée de masse", "La gestion du service après-vente d'un produit"],
+      "explanation": "Le **growth hacking** cherche la croissance par itérations rapides : on formule des hypothèses, on les teste à moindre coût (A/B tests, boucles virales, automatisations) et on garde ce qui marche. Popularisé par les startups, le terme n'a rien d'illégal : le « hacking » renvoie ici à l'ingéniosité et à l'expérimentation, pas au piratage.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Growth_hacking"
+    },
+    {
+      "question": "Dans un outil d'analytics, quelle est la différence entre une **session** et un **utilisateur** ?",
+      "answer": "Un même utilisateur peut générer plusieurs sessions en revenant sur le site",
+      "wrong": ["Une session correspond toujours à un utilisateur unique et inversement", "Un utilisateur désigne une visite, une session un internaute distinct", "Une session regroupe plusieurs utilisateurs connectés en même temps"],
+      "explanation": "Un **utilisateur** est un visiteur identifié (souvent par un cookie ou un identifiant) ; une **session** est une période d'activité continue. Comme une personne peut revenir plusieurs fois, le nombre de sessions est généralement supérieur au nombre d'utilisateurs. Confondre les deux fausse l'interprétation du trafic.",
+      "difficulty": 3,
+      "source": "https://support.google.com/analytics/answer/6086251?hl=fr"
+    },
+    {
+      "question": "Dans une boucle virale, que traduit un **coefficient viral (facteur K)** strictement supérieur à 1 ?",
+      "answer": "Chaque utilisateur en amène en moyenne plus d'un nouveau : croissance auto-entretenue",
+      "wrong": ["Le produit a doublé son chiffre d'affaires sur la période", "Un utilisateur sur deux se désabonne chaque mois", "La campagne publicitaire est rentable au-delà du seuil"],
+      "explanation": "Le **facteur K** mesure combien de nouveaux utilisateurs chaque utilisateur existant génère (invitations × taux de conversion des invitations). Au-dessus de 1, la base croît d'elle-même de façon exponentielle, sans dépense d'acquisition supplémentaire. En dessous de 1, la viralité amplifie l'acquisition mais ne suffit pas seule à la croissance.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Viral_coefficient"
+    },
+    {
+      "question": "En quoi consiste une **analyse de cohortes** ?",
+      "answer": "Suivre dans le temps des groupes d'utilisateurs réunis par une caractéristique commune",
+      "wrong": ["Comparer deux versions d'une même page au même instant", "Mesurer le trafic total du site mois après mois", "Regrouper les clients selon leur zone géographique uniquement"],
+      "explanation": "Une **cohorte** rassemble des utilisateurs partageant un événement de départ commun (par exemple inscrits en mars). En suivant chaque cohorte au fil du temps, on isole l'effet de l'ancienneté : on voit, par exemple, que la rétention à 3 mois s'améliore d'une cohorte à l'autre. Cela va bien au-delà d'un simple trafic global, et diffère d'un test A/B.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Cohort_analysis"
+    },
+    {
+      "question": "Selon la règle empirique souvent citée pour un modèle par abonnement sain, quel rapport **LTV / CAC** vise-t-on au minimum ?",
+      "answer": "Environ 3 pour 1",
+      "wrong": ["Environ 1 pour 1", "Environ 1 pour 3", "Environ 10 pour 1"],
+      "explanation": "Une règle empirique répandue chez les startups SaaS considère qu'un ratio **LTV/CAC** d'environ 3 est un bon équilibre : un client rapporte à peu près trois fois ce qu'il a coûté à acquérir. En dessous de 1, on perd de l'argent sur chaque client ; très au-dessus de 3, on sous-investit peut-être dans la croissance. C'est un repère, pas une loi absolue.",
+      "difficulty": 3
+    },
+    {
+      "question": "Une campagne display coûte **600 €** et totalise **150 000 impressions**. Quel est son **CPM** ?",
+      "answer": "4 €",
+      "wrong": ["0,40 €", "40 €", "25 €"],
+      "explanation": "Le CPM est le coût pour mille impressions : CPM = coût / impressions × 1 000 = 600 / 150 000 × 1 000 = **4 €**. Autrement dit, 150 000 impressions représentent 150 tranches de mille, et 600 / 150 = 4 € par tranche.",
+      "difficulty": 3
+    },
+    {
+      "question": "Une campagne a coûté **2 000 €** et a généré **10 000 €** de chiffre d'affaires directement attribué. Quel est son **ROAS** ?",
+      "answer": "5 (soit 500 %)",
+      "wrong": ["0,2 (soit 20 %)", "8 (soit 800 %)", "2,5 (soit 250 %)"],
+      "explanation": "Le ROAS = chiffre d'affaires / dépenses publicitaires = 10 000 / 2 000 = **5**, soit 500 % : chaque euro dépensé a rapporté 5 € de CA. Attention, le ROAS raisonne en CA brut ; il ne retranche pas le coût des produits ni les 2 000 € eux-mêmes, contrairement au ROI.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur un mois, l'entreprise a dépensé **18 000 €** en marketing et acquis **300** nouveaux clients. Quel est son **CAC** ?",
+      "answer": "60 €",
+      "wrong": ["6 €", "600 €", "54 €"],
+      "explanation": "Le CAC = dépenses d'acquisition / nombre de nouveaux clients = 18 000 / 300 = **60 €**. Chaque nouveau client a donc coûté 60 € en moyenne. Pour juger si c'est soutenable, on compare ce CAC à la LTV : un client doit rapporter sensiblement plus que 60 € sur sa durée de vie.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un investissement marketing de **2 000 €** rapporte au total **8 000 €**. Quel est son **ROI** ?",
+      "answer": "300 %",
+      "wrong": ["400 %", "25 %", "600 %"],
+      "explanation": "Le ROI = (gains − coût) / coût = (8 000 − 2 000) / 2 000 = 6 000 / 2 000 = **300 %**. Le piège classique est de calculer 8 000 / 2 000 = 400 %, mais cela correspond au ROAS (rendement brut), pas au ROI, qui mesure le gain *net* rapporté à l'investissement.",
+      "difficulty": 3
+    }
+  ]
+}

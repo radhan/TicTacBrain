@@ -289,7 +289,7 @@
     },
     {
       "question": "Qu'empile l'instruction `call` juste avant de transférer l'exécution à la fonction appelée ?",
-      "answer": "L'adresse de retour, c'est-à-dire l'adresse de l'instruction qui suit le `call`",
+      "answer": "L'adresse de l'instruction qui suit le `call`",
       "wrong": [
         "L'adresse de la fonction appelée",
         "La valeur courante du registre `EBP`",

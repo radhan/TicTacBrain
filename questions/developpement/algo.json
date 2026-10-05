@@ -34,7 +34,7 @@
       "answer": "Premier entré, premier sorti (FIFO)",
       "wrong": [
         "Dernier entré, premier sorti (LIFO)",
-        "Dernier entré, dernier sorti",
+        "Le plus petit élément sort toujours en premier",
         "Accès direct à n'importe quel élément par son indice"
       ],
       "explanation": "Une file suit le FIFO (First In, First Out), comme une file d'attente : le premier arrivé est le premier servi. On ajoute d'un côté (`enqueue`) et on retire de l'autre (`dequeue`). Le LIFO décrit au contraire une pile.",
@@ -211,7 +211,7 @@
     },
     {
       "question": "Sur quelle structure repose naturellement le **parcours en profondeur** (DFS) d'un graphe ?",
-      "answer": "Une pile (ou, de façon équivalente, la récursion)",
+      "answer": "Une pile (stack)",
       "wrong": [
         "Une file (queue)",
         "Une table de hachage",

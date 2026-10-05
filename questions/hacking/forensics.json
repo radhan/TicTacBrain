@@ -69,7 +69,7 @@
       "question": "Le framework **Volatility** est spécialisé dans l'analyse de quel type de preuve ?",
       "answer": "Les captures de la mémoire vive (RAM)",
       "wrong": [
-        "Les images de disques dur chiffrés",
+        "Les images de disques durs chiffrés",
         "Les captures de trafic réseau au format pcap",
         "Les journaux d'événements Windows uniquement"
       ],
@@ -189,9 +189,9 @@
       "question": "Qu'est-ce qu'un fichier au format **pcap** en analyse réseau ?",
       "answer": "Un enregistrement des paquets réseau capturés, lisible par Wireshark ou tcpdump",
       "wrong": [
-        "Une image disque compressée d'une machine",
-        "Un vidage de la mémoire vive d'un serveur",
-        "Un export des clés de la base de registre"
+        "Une image disque compressée de l'ensemble d'une machine",
+        "Un vidage complet de la mémoire vive d'un serveur distant",
+        "Un export des principales clés de la base de registre Windows"
       ],
       "explanation": "Le format pcap (packet capture) stocke les trames réseau telles qu'elles ont circulé, avec leur horodatage. Des outils comme `tcpdump`, Wireshark ou Zeek le relisent pour reconstituer sessions, requêtes DNS, transferts de fichiers ou communications d'un malware. Il ne concerne ni le disque, ni la RAM, ni le registre.",
       "difficulty": 2,
@@ -319,7 +319,7 @@
     },
     {
       "question": "Quelle est la taille par défaut d'un **enregistrement de la MFT** sur un volume NTFS courant ?",
-      "answer": "1024 octets (1 Kio)",
+      "answer": "1024 octets",
       "wrong": [
         "512 octets",
         "4096 octets",

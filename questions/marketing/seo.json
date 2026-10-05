@@ -1,0 +1,348 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "SEO",
+  "icon": "🔍",
+  "description": "Le SEO de A à Z : on-page, netlinking, robots.txt, balises canoniques, Core Web Vitals, données structurées et techniques black hat.",
+  "order": 1,
+  "questions": [
+    {
+      "question": "Que signifie l'acronyme **SEO** ?",
+      "answer": "Search Engine Optimization",
+      "wrong": [
+        "Search Engine Oversight",
+        "Site Engine Optimization",
+        "Search Efficiency Operations"
+      ],
+      "explanation": "**SEO** signifie *Search Engine Optimization*, soit « optimisation pour les moteurs de recherche ». Il regroupe les techniques visant à améliorer le positionnement d'un site dans les résultats naturels (non payants), par opposition au SEA, qui relève des liens sponsorisés.",
+      "difficulty": 1
+    },
+    {
+      "question": "En SEO, que désigne le terme **SERP** ?",
+      "answer": "La page de résultats affichée par un moteur de recherche",
+      "wrong": [
+        "Le score de pertinence attribué à une page",
+        "L'algorithme de classement de Google",
+        "Le protocole d'échange entre robots d'indexation"
+      ],
+      "explanation": "**SERP** = *Search Engine Results Page*, la page de résultats renvoyée pour une requête. Elle mêle résultats naturels, annonces et éléments enrichis (images, FAQ, knowledge panel). Y apparaître en bonne position est l'objectif du SEO.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qu'un **backlink** (lien retour) ?",
+      "answer": "Un lien provenant d'un autre site et pointant vers le vôtre",
+      "wrong": [
+        "Un lien interne reliant deux pages de votre site",
+        "Un lien de votre site vers une source externe",
+        "Un lien marqué en `nofollow` dans votre menu"
+      ],
+      "explanation": "Un **backlink** est un lien entrant : un autre site pointe vers une de vos pages. Perçu comme un vote de confiance, il est un pilier du SEO off-page (netlinking). Sa valeur dépend de la qualité et de la thématique du site source, pas seulement du nombre de liens.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quoi sert principalement la balise `<title>` d'une page ?",
+      "answer": "Définir le titre cliquable affiché dans les résultats de recherche",
+      "wrong": [
+        "Afficher le titre visible en haut du contenu de la page",
+        "Résumer la page pour le partage sur les réseaux sociaux",
+        "Indiquer la langue principale du document"
+      ],
+      "explanation": "La balise `<title>` définit le titre de l'onglet et, surtout, le titre cliquable dans la SERP. C'est un facteur de positionnement et de taux de clic important. À ne pas confondre avec le `<h1>`, qui est le titre visible dans le corps de la page.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel est le rôle de la balise meta description ?",
+      "answer": "Proposer un résumé de la page susceptible d'apparaître sous le titre dans la SERP",
+      "wrong": [
+        "Imposer le mot-clé principal pris en compte pour le classement",
+        "Lister les balises `Hn` présentes sur la page",
+        "Déclarer l'URL canonique de la page"
+      ],
+      "explanation": "La meta description est un court résumé qui peut servir d'extrait (*snippet*) sous le titre dans les résultats. Ce n'est pas un facteur de classement direct, mais une description claire et incitative améliore le taux de clic. Google peut toutefois la réécrire.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quoi sert le fichier `robots.txt` placé à la racine d'un site ?",
+      "answer": "Indiquer aux robots quelles zones du site ils peuvent ou non explorer",
+      "wrong": [
+        "Lister toutes les URL à indexer en priorité",
+        "Empêcher de façon garantie l'indexation des pages sensibles",
+        "Rediriger les anciennes URL vers les nouvelles"
+      ],
+      "explanation": "`robots.txt` donne des directives d'exploration (`Disallow`, `Allow`) aux robots. Il contrôle le crawl, pas l'indexation : une page bloquée au crawl peut tout de même apparaître dans les résultats si elle est liée ailleurs. Pour empêcher l'indexation, on utilise `noindex`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel est le rôle de l'attribut `alt` d'une balise `<img>` ?",
+      "answer": "Décrire le contenu de l'image par un texte alternatif",
+      "wrong": [
+        "Définir les dimensions d'affichage de l'image",
+        "Préciser le format de compression de l'image",
+        "Rendre l'image cliquable vers une autre page"
+      ],
+      "explanation": "L'attribut `alt` fournit un texte alternatif décrivant l'image. Il est lu par les lecteurs d'écran (accessibilité), s'affiche si l'image ne charge pas, et aide les moteurs à comprendre l'image, notamment pour le référencement dans Google Images.",
+      "difficulty": 1
+    },
+    {
+      "question": "Par rapport au HTTP, qu'apporte le **HTTPS** ?",
+      "answer": "Le chiffrement des échanges entre le navigateur et le serveur",
+      "wrong": [
+        "Une compression automatique des pages",
+        "Une mise en cache plus longue dans le navigateur",
+        "Une exploration plus fréquente par les robots"
+      ],
+      "explanation": "Le **HTTPS** chiffre les données échangées grâce à TLS, assurant confidentialité et intégrité. Google en a fait un léger signal de classement, et les navigateurs signalent les pages HTTP comme « non sécurisées », ce qui en fait un standard attendu.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que représente la balise `<h1>` d'une page web ?",
+      "answer": "Le titre principal du contenu de la page",
+      "wrong": [
+        "Le titre affiché dans l'onglet du navigateur",
+        "Le premier paragraphe du texte",
+        "Le libellé du lien dans le menu de navigation"
+      ],
+      "explanation": "La balise `<h1>` marque le titre principal visible dans le corps de la page et structure le contenu avec les `<h2>`, `<h3>`, etc. Elle aide moteurs et utilisateurs à saisir le sujet. Le titre de l'onglet et de la SERP relève, lui, de la balise `<title>`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Parmi ces actions, laquelle relève du SEO **off-page** (hors de votre site) ?",
+      "answer": "Obtenir des backlinks depuis d'autres sites (netlinking)",
+      "wrong": [
+        "Optimiser les balises `<title>` de vos pages",
+        "Améliorer le maillage interne entre vos pages",
+        "Réduire le temps de chargement de vos pages"
+      ],
+      "explanation": "Le SEO **off-page** regroupe les leviers extérieurs au site, dominés par le netlinking (acquisition de backlinks). Les balises, le maillage interne et la performance relèvent du SEO **on-page**, réalisé directement sur vos propres pages.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la différence entre une redirection **301** et une **302** ?",
+      "answer": "La 301 est permanente, la 302 est temporaire",
+      "wrong": [
+        "La 301 est temporaire, la 302 est permanente",
+        "La 301 conserve l'ancienne URL, la 302 la supprime",
+        "La 301 concerne les pages, la 302 les images"
+      ],
+      "explanation": "Une **301** signale un déplacement permanent : les moteurs transfèrent l'URL et le « jus » de lien vers la nouvelle adresse. Une **302** indique un déplacement temporaire et conserve l'ancienne URL dans l'index. Pour un changement définitif, on utilise donc la 301.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quoi sert la balise `rel=\"canonical\"` ?",
+      "answer": "Désigner l'URL de référence quand plusieurs pages ont un contenu identique ou très proche",
+      "wrong": [
+        "Empêcher totalement l'indexation d'une page",
+        "Forcer une redirection côté serveur vers une autre page",
+        "Déclarer la langue et le pays ciblés par la page"
+      ],
+      "explanation": "La balise canonique indique aux moteurs quelle URL considérer comme la version principale parmi des contenus dupliqués (paramètres d'URL, pagination…). Elle consolide les signaux sur une seule page sans rediriger l'internaute. Le blocage d'indexation se fait avec `noindex`, le ciblage langue/pays avec `hreflang`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la différence entre `noindex` et `nofollow` dans la balise meta robots ?",
+      "answer": "`noindex` empêche l'indexation de la page, `nofollow` demande de ne pas suivre ses liens",
+      "wrong": [
+        "`noindex` bloque le crawl, `nofollow` bloque l'indexation",
+        "`noindex` cible les images, `nofollow` cible le texte",
+        "Les deux empêchent exactement la même chose"
+      ],
+      "explanation": "`noindex` demande d'exclure la page des résultats de recherche. `nofollow` demande aux robots de ne pas suivre les liens de la page. Les deux peuvent se combiner, mais agissent sur des choses distinctes : l'indexation d'un côté, le suivi des liens de l'autre.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quoi sert un fichier `sitemap.xml` ?",
+      "answer": "Lister les URL du site pour aider les moteurs à les découvrir",
+      "wrong": [
+        "Interdire l'accès de certaines pages aux robots",
+        "Garantir la première position des pages listées",
+        "Accélérer le chargement des pages du site"
+      ],
+      "explanation": "Le `sitemap.xml` fournit aux moteurs une liste structurée des URL importantes du site, facilitant leur découverte, utile pour les grands sites ou les pages peu liées. Il aide à l'exploration mais ne garantit ni l'indexation ni le classement.",
+      "difficulty": 2
+    },
+    {
+      "question": "La requête « acheter chaussures running pas cher » traduit surtout quelle **intention de recherche** ?",
+      "answer": "Transactionnelle",
+      "wrong": [
+        "Informationnelle",
+        "Navigationnelle",
+        "Commerciale d'investigation"
+      ],
+      "explanation": "Le verbe « acheter » et le critère de prix traduisent une intention **transactionnelle** : l'internaute veut effectuer un achat. L'intention informationnelle cherche à savoir, la navigationnelle vise un site précis, la commerciale d'investigation compare avant d'acheter.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que désigne la **longue traîne** (long tail) en SEO ?",
+      "answer": "Les requêtes longues et précises, peu recherchées une à une mais nombreuses au total",
+      "wrong": [
+        "Les quelques mots-clés les plus recherchés d'un marché",
+        "Les requêtes contenant une faute d'orthographe",
+        "Les pages les plus profondes dans l'arborescence du site"
+      ],
+      "explanation": "La **longue traîne** regroupe les requêtes spécifiques à faible volume unitaire (ex. « chaussures running femme pieds larges »). Peu concurrentielles et souvent mieux converties, leur somme pèse lourd dans le trafic total, d'où leur intérêt stratégique.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel est l'intérêt principal du **maillage interne** ?",
+      "answer": "Relier les pages du site entre elles pour guider les robots et répartir la popularité",
+      "wrong": [
+        "Obtenir des liens depuis des sites partenaires",
+        "Empêcher l'indexation des pages secondaires",
+        "Réduire le poids des images du site"
+      ],
+      "explanation": "Le maillage interne consiste à créer des liens entre les pages d'un même site. Il aide les robots à explorer le site, transmet de la popularité (*link juice*) vers les pages importantes et améliore la navigation. Les liens venant d'autres sites relèvent, eux, du netlinking.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que signifie l'**indexation mobile-first** de Google ?",
+      "answer": "Google explore et évalue en priorité la version mobile des pages",
+      "wrong": [
+        "Google n'indexe plus que les sites dotés d'une application mobile",
+        "Google n'affiche de résultats qu'aux utilisateurs sur mobile",
+        "Google classe systématiquement les sites mobiles avant ceux de bureau"
+      ],
+      "explanation": "Avec l'**indexation mobile-first**, Google s'appuie principalement sur la version mobile d'une page pour l'indexer et la classer, y compris pour les recherches sur ordinateur. D'où l'importance d'un site responsive dont la version mobile contient le même contenu que la version bureau.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur quel principe repose l'algorithme historique du **PageRank** de Google ?",
+      "answer": "Évaluer l'importance d'une page selon le nombre et la qualité des liens qu'elle reçoit",
+      "wrong": [
+        "Compter la densité du mot-clé principal dans le texte",
+        "Mesurer le temps de chargement de la page",
+        "Comptabiliser le nombre de visites mensuelles de la page"
+      ],
+      "explanation": "Le **PageRank**, nommé d'après Larry Page, modélise les liens comme des votes : une page est jugée importante si elle reçoit beaucoup de liens, surtout depuis des pages elles-mêmes importantes. Ce principe de « popularité par les liens » a fondé l'approche de Google.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans les **Core Web Vitals**, que mesure le **LCP** (Largest Contentful Paint) ?",
+      "answer": "Le temps d'affichage du plus grand élément de contenu visible de la page",
+      "wrong": [
+        "La stabilité visuelle de la mise en page pendant le chargement",
+        "Le délai de réponse à la première interaction",
+        "Le nombre total de requêtes réseau de la page"
+      ],
+      "explanation": "Le **LCP** mesure le temps nécessaire pour afficher le plus grand élément de contenu visible (image, bloc de texte) dans la fenêtre. C'est un indicateur de vitesse de chargement perçue ; selon web.dev, un bon LCP se situe à 2,5 secondes ou moins.",
+      "difficulty": 2,
+      "source": "https://web.dev/articles/lcp"
+    },
+    {
+      "question": "Une page obtient **2 000 impressions** et **60 clics** dans la SERP. Quel est son **taux de clic (CTR)** ?",
+      "answer": "3 %",
+      "wrong": [
+        "6 %",
+        "0,3 %",
+        "30 %"
+      ],
+      "explanation": "Le CTR se calcule ainsi : clics ÷ impressions × 100 = 60 ÷ 2000 × 100 = **3 %**. Ce taux mesure la proportion d'internautes qui cliquent après avoir vu le résultat ; un titre et une description soignés contribuent à l'améliorer.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que mesure le **CLS** (Cumulative Layout Shift) parmi les Core Web Vitals ?",
+      "answer": "La stabilité visuelle, c'est-à-dire les déplacements inattendus des éléments pendant le chargement",
+      "wrong": [
+        "La vitesse d'affichage du premier contenu texte",
+        "La réactivité de la page aux interactions de l'utilisateur",
+        "La consommation mémoire de la page"
+      ],
+      "explanation": "Le **CLS** quantifie les décalages de mise en page imprévus (une image ou une publicité qui pousse le contenu pendant le chargement). Il reflète la stabilité visuelle perçue ; selon web.dev, un bon score est de 0,1 ou moins. On l'améliore en réservant l'espace des médias et contenus injectés.",
+      "difficulty": 3,
+      "source": "https://web.dev/articles/cls"
+    },
+    {
+      "question": "En **mars 2024**, quelle métrique est devenue un **Core Web Vital**, en remplacement du FID ?",
+      "answer": "INP (Interaction to Next Paint)",
+      "wrong": [
+        "TTFB (Time To First Byte)",
+        "FCP (First Contentful Paint)",
+        "TBT (Total Blocking Time)"
+      ],
+      "explanation": "Depuis mars 2024, l'**INP** (*Interaction to Next Paint*) a remplacé le FID comme Core Web Vital de réactivité. L'INP évalue la latence de l'ensemble des interactions d'une visite, là où le FID ne mesurait que la première. TTFB, FCP et TBT restent utiles mais ne sont pas des Core Web Vitals.",
+      "difficulty": 3,
+      "source": "https://web.dev/articles/inp"
+    },
+    {
+      "question": "Quel format Google **recommande-t-il** pour implémenter les données structurées schema.org ?",
+      "answer": "JSON-LD",
+      "wrong": [
+        "Microdata",
+        "RDFa",
+        "XML Sitemap"
+      ],
+      "explanation": "Google recommande le **JSON-LD** : un bloc `<script type=\"application/ld+json\">` ajouté au code, sans toucher au HTML visible. Microdata et RDFa restent compris mais s'entremêlent au balisage. Les données structurées permettent d'obtenir des résultats enrichis (étoiles, FAQ, recettes…) dans la SERP.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data"
+    },
+    {
+      "question": "Que désigne le **crawl budget** (budget d'exploration) ?",
+      "answer": "Le volume de pages qu'un moteur accepte d'explorer sur un site dans un laps de temps donné",
+      "wrong": [
+        "Le budget publicitaire alloué aux annonces de recherche",
+        "Le nombre maximal de backlinks tolérés vers un site",
+        "Le délai avant qu'une nouvelle page ne soit classée"
+      ],
+      "explanation": "Le **crawl budget** est la quantité de ressources (pages explorées) qu'un moteur consacre à un site sur une période, selon sa taille, sa santé technique et sa popularité. Il devient un enjeu sur les très gros sites, où l'on évite de gaspiller l'exploration sur des URL inutiles.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/large-site-managing-crawl-budget"
+    },
+    {
+      "question": "Dans les consignes qualité de Google, que recouvre l'acronyme **E-E-A-T** ?",
+      "answer": "Experience, Expertise, Authoritativeness, Trustworthiness",
+      "wrong": [
+        "Engagement, Efficiency, Authority, Traffic",
+        "Experience, Engagement, Accessibility, Transparency",
+        "Expertise, Exactness, Audience, Targeting"
+      ],
+      "explanation": "**E-E-A-T** signifie *Experience, Expertise, Authoritativeness, Trustworthiness* (expérience, expertise, autorité, fiabilité). Le premier « E », Experience, a été ajouté fin 2022 au précédent E-A-T. Ces critères guident les évaluateurs qualité, surtout sur les sujets sensibles (santé, finance).",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+    },
+    {
+      "question": "En SEO, qu'est-ce que le **cloaking** ?",
+      "answer": "Présenter aux robots un contenu différent de celui montré aux visiteurs",
+      "wrong": [
+        "Dupliquer son contenu sur plusieurs domaines",
+        "Acheter massivement des backlinks",
+        "Masquer du texte en le mettant à la couleur du fond"
+      ],
+      "explanation": "Le **cloaking** consiste à servir aux moteurs une version de la page différente de celle vue par l'internaute, afin de tromper le classement. C'est une technique **black hat** explicitement interdite par Google et passible de pénalité, voire de désindexation.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/essentials/spam-policies"
+    },
+    {
+      "question": "Répéter de façon excessive et non naturelle un mot-clé pour manipuler le classement s'appelle…",
+      "answer": "Le keyword stuffing (bourrage de mots-clés)",
+      "wrong": [
+        "Le link baiting",
+        "Le maillage interne",
+        "La longue traîne"
+      ],
+      "explanation": "Le **keyword stuffing** consiste à surcharger une page d'un mot-clé ou de ses variantes de manière artificielle. C'est une pratique **black hat** sanctionnée : elle dégrade la lecture et ne reflète pas un contenu de qualité. Mieux vaut un champ lexical riche et naturel.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/essentials/spam-policies"
+    },
+    {
+      "question": "Vous voulez retirer des résultats Google une page **déjà indexée**. Quelle est la bonne méthode ?",
+      "answer": "Ajouter une balise `noindex` à la page et la laisser accessible au crawl",
+      "wrong": [
+        "La bloquer via `Disallow` dans le `robots.txt`",
+        "Supprimer tous les liens internes vers la page",
+        "Ajouter la page au `sitemap.xml`"
+      ],
+      "explanation": "Pour désindexer, il faut un `noindex` que le robot doit pouvoir **lire** : la page ne doit donc pas être bloquée par `robots.txt`. Un simple `Disallow` empêche le crawl mais pas forcément l'indexation ; une page bloquée peut rester affichée (souvent sans description) si elle est liée ailleurs.",
+      "difficulty": 3,
+      "source": "https://developers.google.com/search/docs/crawling-indexing/block-indexing"
+    },
+    {
+      "question": "Quel problème pose un même contenu accessible via **plusieurs URL** sans version de référence déclarée ?",
+      "answer": "Les signaux de classement se dispersent et le moteur peut retenir une URL non souhaitée",
+      "wrong": [
+        "Le site est aussitôt pénalisé et déclassé manuellement",
+        "Le temps de chargement des pages augmente fortement",
+        "Les backlinks externes passent tous en `nofollow`"
+      ],
+      "explanation": "Le contenu dupliqué disperse les signaux (liens, pertinence) entre plusieurs URL et laisse le moteur choisir la version à afficher, parfois la mauvaise. Ce n'est en général pas une pénalité, mais une perte d'efficacité. On l'évite avec une balise canonique ou des redirections 301.",
+      "difficulty": 3
+    }
+  ]
+}
