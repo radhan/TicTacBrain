@@ -1,4 +1,5 @@
-import { CloudOff, Sparkles, X } from 'lucide-preact'
+import { CircleCheck, Sparkles, X } from 'lucide-preact'
+import { isStandalone } from '../lib/install'
 import { useEffect } from 'preact/hooks'
 import { useRegisterSW } from 'virtual:pwa-register/preact'
 
@@ -30,7 +31,7 @@ export function UpdateToast({ hidden }: { hidden: boolean }) {
       <div class="toast" role="status">
         <Sparkles size={18} aria-hidden="true" class="toast-icon" />
         <span>Nouvelle version disponible</span>
-        <button type="button" class="btn btn-small btn-primary" onClick={() => updateServiceWorker(true)}>
+        <button type="button" class="btn btn-sm btn-primary" onClick={() => updateServiceWorker(true)}>
           Mettre à jour
         </button>
         <button type="button" class="icon-btn icon-btn-ghost" aria-label="Plus tard" onClick={() => setNeedRefresh(false)}>
@@ -39,11 +40,12 @@ export function UpdateToast({ hidden }: { hidden: boolean }) {
       </div>
     )
   }
-  if (offlineReady) {
+  // Dans un simple onglet, ce message n'apporte rien : on le garde pour l'app installée.
+  if (offlineReady && isStandalone()) {
     return (
       <div class="toast" role="status">
-        <CloudOff size={18} aria-hidden="true" class="toast-icon" />
-        <span>Prêt à fonctionner hors ligne</span>
+        <CircleCheck size={18} aria-hidden="true" class="toast-icon" />
+        <span>Disponible hors connexion</span>
       </div>
     )
   }

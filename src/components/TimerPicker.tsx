@@ -20,7 +20,7 @@ export function TimerPicker({ value, onChange }: { value: TimerSetting; onChange
     <div class="setting">
       <span class="setting-label" id="timer-label">
         <Timer size={18} aria-hidden="true" />
-        Chrono par question
+        <span>Chrono par question</span>
       </span>
       <div class="segmented" role="radiogroup" aria-labelledby="timer-label" onKeyDown={onKeyDown}>
         {TIMER_OPTIONS.map((t) => (

@@ -80,8 +80,8 @@ export default defineConfig({
         scope: './',
         display: 'standalone',
         orientation: 'portrait',
-        theme_color: '#4f46e5',
-        background_color: '#eef1f8',
+        theme_color: '#f5f6fa',
+        background_color: '#f5f6fa',
         categories: ['education', 'games'],
         screenshots: [
           { src: 'screenshots/accueil.png', sizes: '1082x2202', type: 'image/png', form_factor: 'narrow', label: 'Accueil : thèmes et statistiques' },

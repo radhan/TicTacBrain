@@ -19,6 +19,8 @@ export interface SavedRun {
   picked: string | null
   /** Échéance absolue du chrono (ms) : recharger la page ne rend pas de temps. */
   deadline: number | null
+  /** Record du mode au début de la partie (pour célébrer un nouveau record après une reprise). */
+  bestBefore?: number
   updatedAt: number
 }
 
@@ -154,6 +156,12 @@ export const save = {
     if (!(bestKey(pool, timer) in data.runs)) return
     delete data.runs[bestKey(pool, timer)]
     persist()
+  },
+
+  /** Partie en cours d'un mode, quel que soit le chrono (la plus récente). */
+  getRunAny(pool: string): SavedRun | null {
+    const runs = Object.values(data.runs).filter((r) => r.pool === pool && r.streak > 0)
+    return runs.sort((a, b) => b.updatedAt - a.updatedAt)[0] ?? null
   },
 
   /** Partie en cours la plus récente avec au moins une bonne réponse (carte « Reprendre »). */

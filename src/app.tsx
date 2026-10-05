@@ -1,3 +1,4 @@
+import { CircleAlert, SearchX } from 'lucide-preact'
 import { useEffect, useState } from 'preact/hooks'
 import { UpdateToast } from './components/UpdateToast'
 import { loadCatalog, resolvePool } from './lib/data'
@@ -27,8 +28,12 @@ export function App() {
     <>
       {error ? (
         <main class="screen center">
-          <p>😵 {error}</p>
-          <button type="button" class="btn" onClick={() => location.reload()}>
+          <span class="topic-chip topic-chip-lg">
+            <CircleAlert size={26} aria-hidden="true" />
+          </span>
+          <h1 class="center-title">Chargement impossible</h1>
+          <p>{error}</p>
+          <button type="button" class="btn btn-secondary" onClick={() => location.reload()}>
             Réessayer
           </button>
         </main>
@@ -64,8 +69,12 @@ function Screen({ catalog, route, timer, onTimer }: {
 function NotFound() {
   return (
     <main class="screen center">
-      <p>🤔 Ce thème n'existe pas (ou plus).</p>
-      <button type="button" class="btn" onClick={() => goBack('/')}>
+      <span class="topic-chip topic-chip-lg">
+        <SearchX size={26} aria-hidden="true" />
+      </span>
+      <h1 class="center-title">Introuvable</h1>
+      <p>Ce thème n'existe pas (ou plus).</p>
+      <button type="button" class="btn btn-secondary" onClick={() => goBack('/')}>
         Retour à l'accueil
       </button>
     </main>

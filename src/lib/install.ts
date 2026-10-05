@@ -2,11 +2,16 @@ import { useEffect, useState } from 'preact/hooks'
 
 /**
  * Installation de la PWA.
- * - Android / Chrome / Edge : on capture `beforeinstallprompt` pour proposer un vrai
- *   bouton « Installer » (le navigateur ne l'affiche sinon que discrètement dans son menu).
- * - iPhone / iPad : Safari ne propose jamais l'installation ; on affiche un guide
- *   (« Partager » puis « Sur l'écran d'accueil »).
+ * - Chrome / Edge (Android, desktop) : on capture `beforeinstallprompt` pour proposer un
+ *   vrai bouton « Installer ».
+ * - Android sans cet événement (Firefox, Chrome avant ses critères d'engagement) :
+ *   on explique le menu du navigateur.
+ * - iPhone / iPad : Safari ne propose jamais l'installation ; on guide (« Partager »).
+ * - Navigateurs intégrés (Instagram, Facebook…) : il faut d'abord ouvrir la page dans le
+ *   vrai navigateur.
  */
+
+export type InstallMode = 'prompt' | 'ios' | 'android-menu' | 'inapp'
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>
@@ -14,8 +19,21 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 const DISMISS_KEY = 'tictacbrain:install-dismissed'
+/** Une fois refermée, la bannière revient au bout d'une semaine. */
+const DISMISS_MS = 7 * 24 * 60 * 60 * 1000
 
+function readDismissed() {
+  try {
+    const at = Number(localStorage.getItem(DISMISS_KEY))
+    return Number.isFinite(at) && at > 0 && Date.now() - at < DISMISS_MS
+  } catch {
+    return false
+  }
+}
+
+// État partagé par tous les composants (bannière, bouton d'en-tête).
 let deferred: BeforeInstallPromptEvent | null = null
+let dismissed = typeof window !== 'undefined' && readDismissed()
 const listeners = new Set<() => void>()
 const notify = () => listeners.forEach((l) => l())
 
@@ -39,17 +57,20 @@ export const isStandalone = () =>
 export const isIos = () =>
   /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
 
-function readDismissed() {
-  try {
-    return localStorage.getItem(DISMISS_KEY) === '1'
-  } catch {
-    return false
-  }
+const isInApp = () => /FBAN|FBAV|Instagram|Line\/|LinkedInApp|GSA\/|Snapchat|TikTok/i.test(navigator.userAgent)
+const isAndroid = () => /Android/i.test(navigator.userAgent)
+
+function currentMode(): InstallMode | null {
+  if (isStandalone()) return null
+  if (deferred) return 'prompt'
+  if (isInApp()) return 'inapp'
+  if (isIos()) return 'ios'
+  if (isAndroid()) return 'android-menu'
+  return null
 }
 
 export function useInstall() {
   const [, force] = useState(0)
-  const [dismissed, setDismissed] = useState(readDismissed)
 
   useEffect(() => {
     const update = () => force((n) => n + 1)
@@ -59,13 +80,11 @@ export function useInstall() {
     }
   }, [])
 
-  const standalone = isStandalone()
-  const mode: 'prompt' | 'ios' | null = standalone ? null : deferred ? 'prompt' : isIos() ? 'ios' : null
-
   return {
-    /** `prompt` : bouton d'installation natif ; `ios` : guide manuel ; `null` : rien à proposer. */
-    mode,
+    /** Ce qu'on peut proposer sur cet appareil, ou `null` (déjà installée, desktop sans support…). */
+    mode: currentMode(),
     dismissed,
+    /** Ouvre la boîte d'installation native (mode `prompt`). */
     async install() {
       if (!deferred) return
       await deferred.prompt()
@@ -74,12 +93,23 @@ export function useInstall() {
       notify()
     },
     dismiss() {
-      setDismissed(true)
+      dismissed = true
       try {
-        localStorage.setItem(DISMISS_KEY, '1')
+        localStorage.setItem(DISMISS_KEY, String(Date.now()))
       } catch {
         // Stockage indisponible : la bannière reviendra simplement à la prochaine visite.
       }
+      notify()
+    },
+    /** Réaffiche la bannière (bouton « Installer » de l'en-tête). */
+    reopen() {
+      dismissed = false
+      try {
+        localStorage.removeItem(DISMISS_KEY)
+      } catch {
+        // Rien à faire.
+      }
+      notify()
     },
   }
 }

@@ -27,12 +27,17 @@ export function Home({ catalog, timer, onTimer }: {
     <main class="screen home">
       <header class="appbar">
         <span class="brand">
-          <img class="brand-logo" src={LOGO} alt="" width="34" height="34" />
+          <img class="brand-logo" src={LOGO} alt="" width="32" height="32" />
           <span class="brand-name">TicTacBrain</span>
         </span>
-        {install.mode === 'prompt' && install.dismissed && (
-          <button type="button" class="btn btn-tonal btn-sm" onClick={install.install}>
-            <Download size={16} aria-hidden="true" /> Installer
+        {install.mode && install.dismissed && (
+          <button
+            type="button"
+            class="btn btn-secondary btn-sm"
+            onClick={install.mode === 'prompt' ? install.install : install.reopen}
+          >
+            <Download size={16} aria-hidden="true" />
+            <span>Installer</span>
           </button>
         )}
       </header>
@@ -72,82 +77,87 @@ export function Home({ catalog, timer, onTimer }: {
         </button>
       )}
 
-      <section class="kpis" aria-label="Tes statistiques">
-        <div class="kpi">
-          <span class="kpi-icon kpi-flame">
-            <Flame size={18} aria-hidden="true" />
-          </span>
-          <strong>{stats.bestEver}</strong>
-          <span>Meilleure série</span>
-        </div>
-        <div class="kpi">
-          <span class="kpi-icon kpi-ok">
-            <CircleCheck size={18} aria-hidden="true" />
-          </span>
-          <strong>{stats.correct}</strong>
-          <span>Bonnes réponses</span>
-        </div>
-        <div class="kpi">
-          <span class="kpi-icon">
-            <Target size={18} aria-hidden="true" />
-          </span>
-          <strong>{accuracy} %</strong>
-          <span>Réussite</span>
-        </div>
-      </section>
+      {stats.answered > 0 && (
+        <section class="kpis" aria-label="Tes statistiques">
+          <div class="kpi">
+            <Flame size={16} aria-hidden="true" class="kpi-icon" />
+            <strong>{stats.bestEver}</strong>
+            <span>Meilleure série</span>
+          </div>
+          <div class="kpi">
+            <CircleCheck size={16} aria-hidden="true" class="kpi-icon" />
+            <strong>{stats.correct}</strong>
+            <span>Bonnes réponses</span>
+          </div>
+          <div class="kpi">
+            <Target size={16} aria-hidden="true" class="kpi-icon" />
+            <strong>{accuracy} %</strong>
+            <span>Réussite</span>
+          </div>
+        </section>
+      )}
 
-      <button type="button" class={run ? 'quickplay' : 'quickplay quickplay-primary'} onClick={() => navigate('/play/all')}>
-        <span class="topic-chip">
-          <Shuffle size={22} aria-hidden="true" />
-        </span>
-        <span class="topic-body">
-          <span class="topic-name">Partie rapide</span>
-          <span class="topic-meta">
-            <span>Tous les thèmes mélangés · {catalog.total} questions</span>
-            {bestAll > 0 && (
-              <span class="meta-best">
-                <Trophy size={13} aria-hidden="true" />
-                <span class="sr-only">Record :</span>
-                <span>{bestAll}</span>
-              </span>
-            )}
+      <section class="home-block" aria-labelledby="h-play">
+        <h2 class="section-title" id="h-play">
+          Jouer
+        </h2>
+        <button type="button" class={run ? 'quickplay' : 'quickplay quickplay-primary'} onClick={() => navigate('/play/all')}>
+          <span class="topic-chip">
+            <Shuffle size={22} aria-hidden="true" />
           </span>
-        </span>
-        <span class="quickplay-go" aria-hidden="true">
-          <Play size={18} fill="currentColor" />
-        </span>
-      </button>
-
-      <TimerPicker value={timer} onChange={onTimer} />
-
-      <h2 class="section-title">
-        Thèmes <span class="count">{catalog.themes.length}</span>
-      </h2>
-      <div class="topic-list">
-        {catalog.themes.map((theme) => {
-          const best = save.bestForTheme(theme.id)
-          return (
-            <button key={theme.id} type="button" class="topic-row" onClick={() => navigate(`/t/${theme.id}`)}>
-              <span class="topic-chip">
-                <TopicIcon id={theme.id} emoji={theme.icon} />
-              </span>
-              <span class="topic-body">
-                <span class="topic-name">{theme.name}</span>
-                <span class="topic-meta">
-                  {theme.count} questions · {theme.subthemes.length} sous-thèmes
-                </span>
-              </span>
-              {best > 0 && (
-                <span class="pill pill-gold">
+          <span class="topic-body">
+            <span class="topic-name">Tout mélangé</span>
+            <span class="topic-meta">
+              <span>{catalog.total} questions · tous thèmes</span>
+              {bestAll > 0 && (
+                <span class="meta-best">
                   <Trophy size={13} aria-hidden="true" />
-                  <span class="sr-only">Record :</span> {best}
+                  <span class="sr-only">Record :</span>
+                  <span>{bestAll}</span>
                 </span>
               )}
-              <ChevronRight size={20} class="chevron" aria-hidden="true" />
-            </button>
-          )
-        })}
-      </div>
+            </span>
+          </span>
+          <span class="quickplay-go" aria-hidden="true">
+            <Play size={18} fill="currentColor" />
+          </span>
+        </button>
+        <TimerPicker value={timer} onChange={onTimer} />
+      </section>
+
+      <section class="home-block" aria-labelledby="h-themes">
+        <h2 class="section-title" id="h-themes">
+          Thèmes <span class="count">{catalog.themes.length}</span>
+        </h2>
+        <div class="topic-list">
+          {catalog.themes.map((theme) => {
+            const best = save.bestForTheme(theme.id)
+            return (
+              <button key={theme.id} type="button" class="topic-row" onClick={() => navigate(`/t/${theme.id}`)}>
+                <span class="topic-chip">
+                  <TopicIcon id={theme.id} emoji={theme.icon} />
+                </span>
+                <span class="topic-body">
+                  <span class="topic-name">{theme.name}</span>
+                  <span class="topic-meta">
+                    <span>
+                      {theme.subthemes.length} sous-thèmes · {theme.count} questions
+                    </span>
+                  </span>
+                </span>
+                {best > 0 && (
+                  <span class="pill">
+                    <Trophy size={13} aria-hidden="true" />
+                    <span class="sr-only">Record :</span>
+                    <span>{best}</span>
+                  </span>
+                )}
+                <ChevronRight size={20} class="chevron" aria-hidden="true" />
+              </button>
+            )
+          })}
+        </div>
+      </section>
 
       <footer class="footer">
         Une question à proposer ? Tout se passe dans un simple fichier JSON :{' '}

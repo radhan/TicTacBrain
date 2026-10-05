@@ -1,4 +1,4 @@
-import { ArrowRight, Check, CircleCheck, CircleX, Flame, LayoutGrid, Lightbulb, RotateCcw, TimerOff, Trophy, X } from 'lucide-preact'
+import { ArrowRight, Check, CircleAlert, CircleCheck, CircleX, LayoutGrid, Lightbulb, RotateCcw, TimerOff, Trophy, X } from 'lucide-preact'
 import { useCallback, useEffect, useRef, useState } from 'preact/hooks'
 import { Modal } from '../components/Modal'
 import { Inline, Rich } from '../components/Rich'
@@ -23,6 +23,17 @@ interface Turn {
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F']
 const DIFFICULTY = { 1: 'Facile', 2: 'Moyen', 3: 'Difficile' } as const
+
+/** Niveau de difficulté : trois barres, autant de pleines que le niveau. */
+function DifficultyBars({ level }: { level: 1 | 2 | 3 }) {
+  return (
+    <svg class="difficulty-bars" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+      {[0, 1, 2].map((i) => (
+        <rect key={i} x={1 + i * 4.5} y={9 - i * 3.5} width="3" height={4 + i * 3.5} rx="1" class={i < level ? 'on' : ''} />
+      ))}
+    </svg>
+  )
+}
 /** Après une réponse ou une nouvelle question, les taps sont ignorés un instant (anti double-tap). */
 const TAP_LOCK_MS = 400
 
@@ -46,8 +57,11 @@ export function Quiz({ pool, timer }: { pool: PoolInfo; timer: TimerSetting }) {
   if (loadError) {
     return (
       <main class="screen center">
-        <p>😵 {loadError}</p>
-        <button type="button" class="btn btn-outline" onClick={() => goBack('/')}>
+        <span class="topic-chip topic-chip-lg">
+          <CircleAlert size={28} aria-hidden="true" />
+        </span>
+        <p>{loadError}</p>
+        <button type="button" class="btn btn-secondary" onClick={() => goBack('/')}>
           Retour
         </button>
       </main>
@@ -106,6 +120,7 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
   const [remainingMs, setRemainingMs] = useState(timer * 1000)
   const primaryRef = useRef<HTMLButtonElement>(null)
   const headingRef = useRef<HTMLHeadingElement>(null)
+  const bestBefore = useRef(bestAtStart)
 
   // État de jeu « vivant », mis à jour immédiatement (le rendu, lui, est asynchrone) :
   // empêche les doubles réponses, les touches perdues et les taps fantômes.
@@ -143,6 +158,7 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
         phase: runPhase,
         picked: runPicked,
         deadline: live.current.deadline,
+        bestBefore: bestBefore.current,
         updatedAt: Date.now(),
       })
     },
@@ -172,6 +188,7 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
     save.clearRun(pool.key, timer)
     asked.current.clear()
     const b = save.best(pool.key, timer)
+    bestBefore.current = b
     setBestAtStart(b)
     setBest(b)
     setNotice(null)
@@ -192,12 +209,25 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
     }
     const { run, q } = saved
     asked.current = new Set(run.asked)
+    if (run.bestBefore !== undefined) {
+      bestBefore.current = run.bestBefore
+      setBestAtStart(run.bestBefore)
+    }
+    live.current.streak = run.streak
+    setStreak(run.streak)
+    // Chrono expiré pendant l'absence : on ne fait pas perdre la série, on change de question
+    // (celle qu'on a vue repart dans le paquet, pour pouvoir encore viser le sans-faute).
+    if (timer && run.phase === 'question' && (run.deadline ?? 0) - Date.now() < 1500) {
+      asked.current.delete(run.qId)
+      nextQuestion()
+      if (run.streak > 0) setNotice(`Reprise : ${run.streak} d'affilée · nouvelle question`)
+      return
+    }
     const t: Turn = { q, choices: run.choices, n: 1, num: run.num }
-    Object.assign(live.current, { turn: t, phase: run.phase, streak: run.streak, deadline: run.deadline })
+    Object.assign(live.current, { turn: t, phase: run.phase, deadline: run.deadline })
     setTurn(t)
     setPhase(run.phase)
     setPicked(run.picked)
-    setStreak(run.streak)
     if (run.streak > 0) setNotice(`Reprise de ta série : ${run.streak} d'affilée`)
   }, [nextQuestion, pool.key, questions, timer])
 
@@ -331,12 +361,16 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
 
   const recordLine =
     phase === 'victory'
-      ? 'Toutes les questions du mode, sans une seule erreur.'
+      ? `Les ${total} questions de « ${pool.title} », sans une seule erreur.`
       : newRecord
         ? bestAtStart > 0
           ? `Nouveau record : ${streak} (ancien : ${bestAtStart})`
           : `Premier record : ${streak}`
-        : `Série : ${streak}${bestAtStart > 0 ? ` · record : ${bestAtStart}` : ''}`
+        : streak > 0
+          ? `Série terminée à ${streak}${bestAtStart > 0 ? ` · Record : ${bestAtStart}` : ''}`
+          : bestAtStart > 0
+            ? `Record à battre : ${bestAtStart}`
+            : 'Lis l\'explication, puis retente ta chance.'
 
   const closeExplain = () => {
     setExplainOpen(false)
@@ -368,23 +402,19 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
 
       <div class="q-head">
         <h1 class="q-count" ref={headingRef} tabIndex={-1}>
-          Question {turn.num}
+          Série <strong>{streak}</strong>
           <span>
             <span class="sr-only"> sur </span>
             <span aria-hidden="true"> / </span>
             {total}
           </span>
         </h1>
-        <span class="q-scores">
-          <span key={streak} class={`stat-pill stat-streak ${streak > 0 ? 'bump' : ''}`}>
-            <Flame size={15} aria-hidden="true" />
-            <span class="sr-only">Série :</span> {streak}
-          </span>
-          <span class="stat-pill stat-best">
+        {best > 0 && (
+          <span key={best} class={`stat-pill ${streak > 0 && streak === best ? 'bump' : ''}`}>
             <Trophy size={15} aria-hidden="true" />
-            <span class="sr-only">Record :</span> {best}
+            <span>Record {best}</span>
           </span>
-        </span>
+        )}
       </div>
 
       <div class="q-meta">
@@ -392,7 +422,10 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
           <TopicIcon id={topicId} emoji={topicSub?.icon ?? pool.icon} size={14} />
           {pool.mixed ? (topicSub?.name ?? '') : pool.title}
         </span>
-        <span class={`chip difficulty d${q.difficulty}`}>{DIFFICULTY[q.difficulty]}</span>
+        <span class="chip">
+          <DifficultyBars level={q.difficulty} />
+          <span>{DIFFICULTY[q.difficulty]}</span>
+        </span>
       </div>
 
       <Rich key={turn.n} text={q.question} class="q-text" />
@@ -454,7 +487,7 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
             )}
             {ended && (
               <button type="button" class="btn btn-ghost btn-wide" onClick={guard(() => goBack('/'))}>
-                <LayoutGrid size={18} aria-hidden="true" /> Changer de thème
+                <LayoutGrid size={18} aria-hidden="true" /> Autres sujets
               </button>
             )}
           </div>
