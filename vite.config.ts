@@ -79,8 +79,8 @@ export default defineConfig({
         scope: './',
         display: 'standalone',
         orientation: 'portrait',
-        theme_color: '#0b1020',
-        background_color: '#0b1020',
+        theme_color: '#151a2e',
+        background_color: '#151a2e',
         categories: ['education', 'games'],
         icons: [
           { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
@@ -90,7 +90,8 @@ export default defineConfig({
       },
       workbox: {
         // Toutes les questions sont précachées : l'app fonctionne hors ligne.
-        globPatterns: ['**/*.{js,css,html,svg,png,json}'],
+        // Police : seuls les sous-ensembles latins (français) sont mis en cache.
+        globPatterns: ['**/*.{js,css,html,svg,png,json}', 'assets/nunito-latin-*.woff2'],
         cleanupOutdatedCaches: true,
       },
     }),

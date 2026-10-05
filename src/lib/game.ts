@@ -67,19 +67,12 @@ export function pickNext<Q extends Question>(
 }
 
 /**
- * Questions encore jouables dans la partie. Quand tout a été posé (série
- * plus longue que le paquet !), on repart du paquet complet sauf la question
- * qui vient d'être jouée.
+ * Questions encore jouables dans la partie : celles qui n'ont pas encore été
+ * posées. La série est plafonnée par la taille du mode : une liste vide après
+ * une bonne réponse signifie un sans-faute (victoire), pas un remélange.
  */
-export function remainingCandidates<Q extends Question>(
-  pool: readonly Q[],
-  askedInRun: ReadonlySet<string>,
-  lastId?: string,
-): { candidates: Q[]; reshuffled: boolean } {
-  const candidates = pool.filter((q) => !askedInRun.has(q.id))
-  if (candidates.length > 0) return { candidates, reshuffled: false }
-  const again = pool.filter((q) => q.id !== lastId)
-  return { candidates: again.length > 0 ? again : pool.slice(), reshuffled: true }
+export function remainingCandidates<Q extends Question>(pool: readonly Q[], askedInRun: ReadonlySet<string>): Q[] {
+  return pool.filter((q) => !askedInRun.has(q.id))
 }
 
 /** Clé d'un mode de jeu : `all`, `<theme>` ou `<theme>/<sous-theme>`. */
@@ -88,10 +81,3 @@ export const poolKey = (themeId?: string, subthemeId?: string) =>
 
 /** Paliers de série qui déclenchent une petite célébration : 5, puis 10, 20, 30… */
 export const isMilestone = (streak: number) => streak === 5 || (streak > 0 && streak % 10 === 0)
-
-/** Prochain palier et progression (0→1) depuis le palier précédent, pour la barre de progression. */
-export function milestoneProgress(streak: number): { target: number; fraction: number } {
-  const target = streak < 5 ? 5 : (Math.floor(streak / 10) + 1) * 10
-  const prev = streak < 5 ? 0 : streak < 10 ? 5 : target - 10
-  return { target, fraction: (streak - prev) / (target - prev) }
-}

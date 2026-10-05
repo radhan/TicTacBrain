@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { buildChoices, freshnessBuckets, isMilestone, milestoneProgress, pickNext, poolKey, remainingCandidates, shuffle, targetDifficulty } from './game'
+import { buildChoices, freshnessBuckets, isMilestone, pickNext, poolKey, remainingCandidates, shuffle, targetDifficulty } from './game'
 import type { Question } from './types'
 
 const q = (id: string, difficulty: 1 | 2 | 3 = 2): Question => ({
@@ -107,7 +107,7 @@ describe('pickNext', () => {
       const asked = new Set<string>()
       const run: string[] = []
       for (let i = 0; i < length; i++) {
-        const { candidates } = remainingCandidates(pool, asked)
+        const candidates = remainingCandidates(pool, asked)
         const next = pickNext(candidates, seen, i, random)
         asked.add(next.id)
         seen[next.id] = ++tick
@@ -126,21 +126,12 @@ describe('pickNext', () => {
 describe('remainingCandidates', () => {
   it('exclut les questions déjà posées dans la partie', () => {
     const pool = [q('a'), q('b'), q('c')]
-    const { candidates, reshuffled } = remainingCandidates(pool, new Set(['a']))
-    expect(candidates.map((c) => c.id)).toEqual(['b', 'c'])
-    expect(reshuffled).toBe(false)
+    expect(remainingCandidates(pool, new Set(['a'])).map((c) => c.id)).toEqual(['b', 'c'])
   })
 
-  it('remélange quand tout a été posé, sans reposer la dernière question', () => {
-    const pool = [q('a'), q('b'), q('c')]
-    const { candidates, reshuffled } = remainingCandidates(pool, new Set(['a', 'b', 'c']), 'c')
-    expect(candidates.map((c) => c.id)).toEqual(['a', 'b'])
-    expect(reshuffled).toBe(true)
-  })
-
-  it('fonctionne avec une seule question', () => {
-    const pool = [q('a')]
-    expect(remainingCandidates(pool, new Set(['a']), 'a').candidates).toHaveLength(1)
+  it('renvoie une liste vide quand tout a été posé (sans-faute)', () => {
+    const pool = [q('a'), q('b')]
+    expect(remainingCandidates(pool, new Set(['a', 'b']))).toEqual([])
   })
 })
 
@@ -153,15 +144,5 @@ describe('divers', () => {
 
   it('isMilestone', () => {
     expect([0, 1, 4, 5, 6, 10, 15, 20, 30].filter(isMilestone)).toEqual([5, 10, 20, 30])
-  })
-
-  it('milestoneProgress', () => {
-    expect(milestoneProgress(0)).toEqual({ target: 5, fraction: 0 })
-    expect(milestoneProgress(3)).toEqual({ target: 5, fraction: 0.6 })
-    expect(milestoneProgress(5)).toEqual({ target: 10, fraction: 0 })
-    expect(milestoneProgress(7)).toEqual({ target: 10, fraction: 0.4 })
-    expect(milestoneProgress(10)).toEqual({ target: 20, fraction: 0 })
-    expect(milestoneProgress(15)).toEqual({ target: 20, fraction: 0.5 })
-    expect(milestoneProgress(25)).toEqual({ target: 30, fraction: 0.5 })
   })
 })

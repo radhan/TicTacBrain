@@ -4,6 +4,7 @@ import { save } from '../lib/storage'
 import type { Catalog, TimerSetting } from '../lib/types'
 
 const REPO_URL = 'https://github.com/radhan/TicTacBrain'
+const LOGO = `${import.meta.env.BASE_URL}favicon.svg`
 
 export function Home({ catalog, timer, onTimer }: {
   catalog: Catalog
@@ -16,74 +17,84 @@ export function Home({ catalog, timer, onTimer }: {
 
   return (
     <main class="screen home">
-      <header class="hero">
-        <h1 class="logo">
-          <span class="logo-mark" aria-hidden="true">🧠</span>
-          <span class="logo-text">TicTacBrain</span>
-        </h1>
-        <p class="tagline">Enchaîne les bonnes réponses. Une seule erreur et ta série retombe à zéro.</p>
+      <header class="brand">
+        <img class="brand-mark" src={LOGO} alt="" width="44" height="44" />
+        <span class="brand-name">
+          TicTac<b>Brain</b>
+        </span>
       </header>
 
-      {stats.answered > 0 && (
-        <section class="stats" aria-label="Tes statistiques">
-          <div class="stat">
-            <strong>🏆 {stats.bestEver}</strong>
-            <span>meilleure série</span>
-          </div>
-          <div class="stat">
-            <strong>✅ {stats.correct}</strong>
-            <span>bonnes réponses</span>
-          </div>
-          <div class="stat">
-            <strong>🎯 {accuracy} %</strong>
-            <span>de réussite</span>
-          </div>
-        </section>
-      )}
+      <section class="hero-card">
+        <div class="hero-text">
+          {stats.answered > 0 ? (
+            <>
+              <span class="hero-label">Meilleure série</span>
+              <strong class="hero-value">{stats.bestEver}</strong>
+              <span class="hero-stats">
+                <span>
+                  <b>{stats.correct}</b> bonnes réponses
+                </span>
+                <span>
+                  <b>{accuracy} %</b> de réussite
+                </span>
+              </span>
+            </>
+          ) : (
+            <>
+              <span class="hero-label">Prêt ?</span>
+              <strong class="hero-title">Une erreur, et ta série retombe à zéro.</strong>
+              <span class="hero-sub">Enchaîne les questions, apprends avec chaque explication.</span>
+            </>
+          )}
+        </div>
+        <span class="hero-art" aria-hidden="true">
+          🔥
+        </span>
+      </section>
 
       <TimerPicker value={timer} onChange={onTimer} />
 
-      <button type="button" class="card card-wide mix" style={{ '--accent': '#a855f7' }} onClick={() => navigate('/play/all')}>
-        <span class="card-icon" aria-hidden="true">🎲</span>
-        <span class="card-text">
-          <span class="card-title">Tout mélanger</span>
-          <span class="card-desc">Tous les thèmes, {catalog.total} questions. Le mode ultime.</span>
+      <button type="button" class="play-all" onClick={() => navigate('/play/all')}>
+        <span class="play-all-text">
+          <span class="play-all-title">Tout mélanger</span>
+          <span class="play-all-sub">
+            {catalog.total} questions · tous les thèmes
+            {bestAll > 0 && <span class="badge badge-light">🏆 {bestAll}</span>}
+          </span>
         </span>
-        {bestAll > 0 && <span class="badge">🏆 {bestAll}</span>}
+        <span class="play-btn" aria-hidden="true">
+          ▶
+        </span>
       </button>
 
       <h2 class="section-title">Thèmes</h2>
-      <div class="grid">
+      <div class="theme-grid">
         {catalog.themes.map((theme) => {
           const best = save.bestForTheme(theme.id)
           return (
             <button
               key={theme.id}
               type="button"
-              class="card theme-card"
-              style={{ '--accent': theme.color }}
+              class="theme-tile"
+              style={{ '--c': theme.color }}
               onClick={() => navigate(`/t/${theme.id}`)}
             >
-              <span class="card-icon" aria-hidden="true">{theme.icon}</span>
-              <span class="card-title">{theme.name}</span>
-              <span class="card-desc">{theme.description}</span>
-              <span class="card-meta">
-                {theme.count} questions · {theme.subthemes.length} sous-thèmes
-                {best > 0 && <span class="badge">🏆 {best}</span>}
+              <span class="tile-icon" aria-hidden="true">
+                {theme.icon}
               </span>
+              {best > 0 && <span class="tile-best">🏆 {best}</span>}
+              <span class="tile-name">{theme.name}</span>
+              <span class="tile-meta">{theme.count} questions</span>
             </button>
           )
         })}
       </div>
 
       <footer class="footer">
-        <p>
-          Une question à proposer ? Tout se passe dans un simple fichier JSON :{' '}
-          <a href={`${REPO_URL}/blob/main/CONTRIBUTING.md`} target="_blank" rel="noreferrer">
-            contribuer sur GitHub
-          </a>
-          .
-        </p>
+        Une question à proposer ? Tout se passe dans un simple fichier JSON :{' '}
+        <a href={`${REPO_URL}/blob/main/CONTRIBUTING.md`} target="_blank" rel="noreferrer">
+          contribuer sur GitHub
+        </a>
       </footer>
     </main>
   )

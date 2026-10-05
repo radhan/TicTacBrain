@@ -9,6 +9,8 @@ export interface SaveData {
   seen: Record<string, number>
   tick: number
   stats: { answered: number; correct: number; bestEver: number; runs: number }
+  /** Modes terminés sans aucune faute (toutes les questions du mode d'affilée). */
+  perfect: Record<string, true>
   timer: TimerSetting
 }
 
@@ -20,6 +22,7 @@ const empty = (): SaveData => ({
   seen: {},
   tick: 0,
   stats: { answered: 0, correct: 0, bestEver: 0, runs: 0 },
+  perfect: {},
   timer: 0,
 })
 
@@ -34,6 +37,7 @@ function load(): SaveData {
       seen: parsed.seen ?? base.seen,
       tick: parsed.tick ?? base.tick,
       stats: { ...base.stats, ...parsed.stats },
+      perfect: parsed.perfect ?? base.perfect,
       timer: TIMER_OPTIONS.includes(parsed.timer as TimerSetting) ? (parsed.timer as TimerSetting) : 0,
     }
   } catch {
@@ -97,6 +101,15 @@ export const save = {
     }
     persist()
   },
+
+  /** Sans-faute : toutes les questions du mode ont été réussies d'affilée. */
+  recordPerfect(pool: string) {
+    data.stats.runs += 1
+    data.perfect[pool] = true
+    persist()
+  },
+
+  isPerfect: (pool: string) => data.perfect[pool] === true,
 
   reset() {
     data = { ...empty(), timer: data.timer }

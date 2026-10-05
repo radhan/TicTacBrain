@@ -5,7 +5,13 @@ export const timerLabel = (t: TimerSetting) => (t === 0 ? '∞' : t === 60 ? '1 
 export function TimerPicker({ value, onChange }: { value: TimerSetting; onChange: (t: TimerSetting) => void }) {
   return (
     <div class="timer-picker">
-      <span class="timer-picker-label">⏱️ Temps par question</span>
+      <span class="timer-picker-label">
+        <span aria-hidden="true">⏱️</span>
+        <span>
+          Chrono
+          <small>par question</small>
+        </span>
+      </span>
       <div class="segmented" role="radiogroup" aria-label="Temps par question">
         {TIMER_OPTIONS.map((t) => (
           <button
