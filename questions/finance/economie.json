@@ -164,7 +164,7 @@
     {
       "question": "Que décrit le terme **stagflation** ?",
       "answer": "Une inflation élevée accompagnée d'une croissance faible et d'un chômage important",
-      "wrong": ["Une forte croissance accompagnée d'une inflation élevée", "Une baisse des prix combinée à une forte croissance", "Une période de stabilité totale des prix et de l'emploi"],
+      "wrong": ["Une forte croissance accompagnée d'une inflation élevée et d'un chômage faible", "Une baisse des prix combinée à une forte croissance", "Une période de stabilité totale des prix et de l'emploi"],
       "explanation": "La **stagflation** (stagnation + inflation) décrit une situation déroutante : les prix montent alors que l'économie stagne et que le chômage grimpe. Elle est redoutée car les remèdes classiques s'opposent : lutter contre l'inflation en relevant les taux risque d'aggraver le chômage, et inversement.",
       "difficulty": 3,
       "source": "https://fr.wikipedia.org/wiki/Stagflation"
@@ -195,7 +195,7 @@
     {
       "question": "En quoi consistent les **opérations d'open market** d'une banque centrale ?",
       "answer": "Acheter ou vendre des titres sur le marché pour régler la liquidité et influencer les taux",
-      "wrong": ["Prêter directement de l'argent aux particuliers", "Fixer par décret le prix des biens de consommation", "Imprimer des billets pour rembourser la dette de l'État"],
+      "wrong": ["Prêter directement de l'argent aux particuliers pour relancer la consommation", "Fixer par décret le prix des biens et services de consommation courante", "Imprimer des billets neufs pour rembourser directement la dette de l'État"],
       "explanation": "Via l'**open market**, la banque centrale achète ou vend des titres (souvent des obligations d'État) aux banques. En achetant, elle injecte des liquidités et pousse les taux à la baisse ; en vendant, elle retire des liquidités. C'est un outil clé de la politique monétaire, distinct du financement direct de l'État.",
       "difficulty": 3
     },

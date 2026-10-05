@@ -28,7 +28,7 @@
     },
     {
       "question": "En DeFi, que désigne un **LP** (Liquidity Provider) ?",
-      "answer": "Un utilisateur qui dépose des actifs dans une pool pour fournir de la liquidité",
+      "answer": "Un utilisateur qui dépose des actifs dans une pool de liquidité",
       "wrong": ["Un emprunteur qui met en gage ses cryptoactifs", "Un contrat qui fixe le prix des jetons", "Un validateur qui sécurise la blockchain"],
       "explanation": "Un **Liquidity Provider** dépose une paire d'actifs dans une pool de liquidité d'un AMM. En échange, il reçoit des **jetons LP** représentant sa part et touche une fraction des frais de transaction prélevés sur les échanges.",
       "difficulty": 1

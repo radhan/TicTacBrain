@@ -311,13 +311,13 @@
     },
     {
       "question": "Répéter de façon excessive et non naturelle un mot-clé pour manipuler le classement s'appelle…",
-      "answer": "Le keyword stuffing (bourrage de mots-clés)",
+      "answer": "Le keyword stuffing",
       "wrong": [
         "Le link baiting",
         "Le maillage interne",
         "La longue traîne"
       ],
-      "explanation": "Le **keyword stuffing** consiste à surcharger une page d'un mot-clé ou de ses variantes de manière artificielle. C'est une pratique **black hat** sanctionnée : elle dégrade la lecture et ne reflète pas un contenu de qualité. Mieux vaut un champ lexical riche et naturel.",
+      "explanation": "Le **keyword stuffing** (bourrage de mots-clés) consiste à surcharger une page d'un mot-clé ou de ses variantes de manière artificielle. C'est une pratique **black hat** sanctionnée : elle dégrade la lecture et ne reflète pas un contenu de qualité. Mieux vaut un champ lexical riche et naturel.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/essentials/spam-policies"
     },

@@ -169,7 +169,7 @@
     {
       "question": "Qu'est-ce qu'un **wallet drainer** et comment s'en protéger ?",
       "answer": "Un contrat ou site malveillant qui vide un portefeuille après qu'on a signé une transaction piégée ; on s'en protège en vérifiant chaque signature",
-      "wrong": ["Un outil officiel qui transfère vos fonds vers une CEX", "Un virus qui ralentit la synchronisation de la blockchain", "Une taxe automatique prélevée sur les retraits d'une DEX"],
+      "wrong": ["Un outil officiel qui transfère vos fonds vers une CEX ; on l'active dans les réglages pour sécuriser son épargne", "Un virus qui ralentit la synchronisation de la blockchain ; un simple antivirus suffit à s'en débarrasser", "Une taxe prélevée sur les retraits d'une DEX ; on l'évite en ne retirant que de gros montants à la fois"],
       "explanation": "Un **wallet drainer** pousse la victime à signer une approbation ou une transaction qui donne au pirate le droit de transférer ses tokens. Il circule via faux airdrops, sites de phishing ou fausses mint. Protection : ne jamais signer une transaction qu'on ne comprend pas, vérifier le domaine, révoquer les approbations inutiles et se méfier des offres « trop belles ».",
       "difficulty": 3
     },
@@ -210,7 +210,7 @@
     },
     {
       "question": "Un token a une market cap de 100 M$ et une FDV de 500 M$. Que faut-il en déduire ?",
-      "answer": "Seule une partie des tokens est en circulation ; de nombreux tokens restent à débloquer, source de dilution future",
+      "answer": "Seule une partie des tokens circule ; beaucoup restent à débloquer, source de dilution future",
       "wrong": ["Le token est garanti par 500 M$ de réserves", "Le cours va forcément quintupler pour rejoindre la FDV", "La liquidité du projet est verrouillée à 80 %"],
       "explanation": "FDV cinq fois supérieure à la market cap signifie qu'environ 20 % seulement des tokens circulent (100 / 500). Les 80 % restants arriveront plus tard (vesting, émissions) et peuvent **diluer** les détenteurs et peser sur le prix. La FDV n'est ni une garantie de valeur ni un objectif de cours : c'est un signal de pression vendeuse potentielle à surveiller.",
       "difficulty": 3
