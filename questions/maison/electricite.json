@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Électricité",
+  "icon": "💡",
+  "description": "Tableau, disjoncteurs, différentiels, sections de câbles, prises, mise à la terre et règles de sécurité (NF C 15-100).",
+  "order": 2,
+  "questions": []
+}

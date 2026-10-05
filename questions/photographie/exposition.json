@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Exposition & réglages",
+  "icon": "🎛️",
+  "description": "Ouverture, vitesse, ISO, mesure de la lumière, histogramme, balance des blancs et modes de l'appareil.",
+  "order": 1,
+  "questions": []
+}

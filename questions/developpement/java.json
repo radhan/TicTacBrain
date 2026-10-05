@@ -861,6 +861,284 @@
       ],
       "explanation": "Une instance de classe interne non statique est liée à une instance de la classe englobante, dont elle garde une référence cachée (`Outer.this`). Il faut donc un objet `Outer` pour la créer : `outer.new Inner()`. La syntaxe `new Outer.Inner()` ne fonctionne que pour une classe imbriquée `static`. Cette référence cachée peut provoquer des fuites mémoire : on préfère une classe `static` quand l'accès à l'objet englobant est inutile.",
       "difficulty": 3
+    },
+    {
+      "question": "Quelle est la complexité d'un appel à `get(i)` sur une `ArrayList` ?",
+      "answer": "O(1) : accès direct dans le tableau interne",
+      "wrong": [
+        "O(n) : parcours de la liste depuis le début",
+        "O(log n) : recherche dans un arbre équilibré",
+        "O(n log n) : la liste est d'abord triée"
+      ],
+      "explanation": "Une `ArrayList` stocke ses éléments dans un **tableau** : l'élément d'indice `i` se trouve directement à sa case, en temps constant. Une `LinkedList`, liste doublement chaînée, doit au contraire suivre les maillons un à un, soit O(n). En pratique, l'`ArrayList` est presque toujours le meilleur choix, même pour des insertions, grâce à la contiguïté de ses données en mémoire (cache du processeur).",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle implémentation de `Set` conserve l'**ordre d'insertion** de ses éléments ?",
+      "answer": "`LinkedHashSet`",
+      "wrong": [
+        "`HashSet`",
+        "`TreeSet`",
+        "`EnumSet`"
+      ],
+      "explanation": "`HashSet` ne garantit aucun ordre de parcours. `TreeSet` trie ses éléments (ordre naturel ou `Comparator`), avec des opérations en O(log n). `LinkedHashSet` ajoute à la table de hachage une liste doublement chaînée qui relie les éléments **dans leur ordre d'insertion**, pour un léger surcoût mémoire. `EnumSet`, lui, suit l'ordre de déclaration des constantes de l'enum. Même logique côté `Map` : `HashMap`, `LinkedHashMap`, `TreeMap`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que se passe-t-il à l'exécution de `List.of(1, 2, 3).add(4)` (Java 9+) ?",
+      "answer": "Une `UnsupportedOperationException` est levée",
+      "wrong": [
+        "La liste devient `[1, 2, 3, 4]`",
+        "L'appel renvoie `false` sans rien modifier",
+        "Rien : une erreur de compilation l'empêche"
+      ],
+      "explanation": "`List.of(...)` crée une liste **non modifiable** : `add`, `remove` ou `set` lèvent une `UnsupportedOperationException`. Le code compile pourtant, car le type déclaré `List` possède bien une méthode `add` : l'erreur n'apparaît qu'à l'exécution. Pour obtenir une liste modifiable, on la copie : `new ArrayList<>(List.of(1, 2, 3))`. À noter : `List.of` refuse aussi les éléments `null`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle méthode faut-il implémenter pour donner un **ordre naturel** à une classe via l'interface `Comparable` ?",
+      "answer": "`compareTo`",
+      "wrong": [
+        "`compare`",
+        "`equals`",
+        "`orderBy`"
+      ],
+      "explanation": "`Comparable<T>` (package `java.lang`) déclare `int compareTo(T autre)`, qui renvoie un nombre négatif, nul ou positif selon que l'objet est avant, égal ou après `autre`. C'est cet ordre que suivent `Collections.sort`, `TreeSet` ou `TreeMap` par défaut. `compare(a, b)` appartient à l'interface `Comparator<T>` (package `java.util`), qui définit un ordre **externe** : on peut en créer plusieurs, par exemple avec `Comparator.comparing(Personne::nom)`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle méthode, ajoutée en Java 8, supprime d'une collection tous les éléments qui vérifient une condition ?",
+      "answer": "`removeIf`",
+      "wrong": [
+        "`removeAll`",
+        "`retainAll`",
+        "`filter`"
+      ],
+      "explanation": "`liste.removeIf(x -> x % 2 == 0)` supprime tous les nombres pairs **sur place**, sans risque de `ConcurrentModificationException`. `removeAll` et `retainAll` prennent une autre **collection** en paramètre, pas une condition : elles retirent (ou gardent uniquement) les éléments qui y figurent. `filter` est une opération de `Stream` : elle produit un nouveau flux sans toucher à la collection d'origine.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi la déclaration `List<int> nombres;` ne compile-t-elle pas ?",
+      "answer": "Un type générique n'accepte pas de type primitif",
+      "wrong": [
+        "Il faut l'écrire `List<Int>`, avec une majuscule",
+        "Le type `int` doit être importé explicitement",
+        "Une `List` ne peut contenir que des `Number`"
+      ],
+      "explanation": "Les paramètres de type doivent être des **types référence** (objets) : après l'effacement de type, une `List` manipule en réalité des `Object`. On utilise donc la classe enveloppe : `List<Integer>`, et l'**autoboxing** convertit automatiquement les `int` en `Integer` (et inversement). Ce confort a un coût, puisque chaque élément devient un objet sur le tas : pour de gros volumes, on préfère un `int[]` ou un `IntStream`. `Int`, c'est la syntaxe de Kotlin.",
+      "difficulty": 1
+    },
+    {
+      "question": "Comment s'appelle le `<>` vide dans `List<String> l = new ArrayList<>();` (Java 7+) ?",
+      "answer": "L'opérateur diamant",
+      "wrong": [
+        "L'opérateur joker",
+        "L'opérateur de projection",
+        "Le type brut implicite"
+      ],
+      "explanation": "L'**opérateur diamant** demande au compilateur d'inférer les arguments de type à partir du contexte, ici `<String>`, pour éviter de les répéter. Il ne faut pas le confondre avec le **joker** `?` (`List<?>`), ni avec le **type brut** `new ArrayList()` sans chevrons, qui désactive les vérifications génériques et provoque un avertissement « unchecked ».",
+      "difficulty": 1
+    },
+    {
+      "question": "Laquelle de ces `Map` accepte `null` comme clé ?",
+      "answer": "`HashMap`",
+      "wrong": [
+        "`TreeMap` (ordre naturel)",
+        "`ConcurrentHashMap`",
+        "`Hashtable`"
+      ],
+      "explanation": "`HashMap` accepte une clé `null` (dont le hash vaut 0) et des valeurs `null`. Un `TreeMap` en ordre naturel appelle `compareTo` sur la clé, d'où une `NullPointerException`. `Hashtable` (classe historique) et `ConcurrentHashMap` refusent `null` en clé comme en valeur : en contexte concurrent, un `get()` qui renvoie `null` serait ambigu (clé absente, ou associée à `null` ?).",
+      "difficulty": 2
+    },
+    {
+      "question": "Que se passe-t-il à l'exécution de ce code ?\n```java\nList<String> noms = new ArrayList<>(List.of(\"a\", \"b\", \"c\"));\nfor (String n : noms) {\n    if (n.equals(\"a\")) noms.remove(n);\n}\n```",
+      "answer": "Une `ConcurrentModificationException` est levée",
+      "wrong": [
+        "`noms` vaut ensuite `[b, c]`",
+        "Le programme boucle indéfiniment",
+        "Rien : une erreur de compilation l'empêche"
+      ],
+      "explanation": "La boucle for-each s'appuie sur un `Iterator`, qui est **fail-fast** : il détecte que la liste a été modifiée structurellement en dehors de lui et lève une `ConcurrentModificationException` au `next()` suivant. Malgré son nom, cette exception n'a rien à voir avec les threads. Pour supprimer en parcourant, on utilise `iterator.remove()` ou, plus simplement, `noms.removeIf(n -> n.equals(\"a\"))`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nMap<String, Integer> cpt = new HashMap<>();\nfor (String m : \"le chat et le chien et le rat\".split(\" \"))\n    cpt.merge(m, 1, Integer::sum);\nSystem.out.println(cpt.get(\"le\") + \" \" + cpt.get(\"loup\"));\n```",
+      "answer": "`3 null`",
+      "wrong": [
+        "`3 0`",
+        "`2 null`",
+        "`1 1`"
+      ],
+      "explanation": "`merge(cle, valeur, fonction)` (Java 8) associe `valeur` si la clé est absente, sinon remplace l'ancienne valeur par `fonction(ancienne, valeur)` : ici une somme. C'est l'idiome classique pour compter des occurrences : « le » apparaît 3 fois. `get` sur une clé absente renvoie `null`, pas 0 : pour une valeur par défaut, on utilise `getOrDefault(cle, 0)`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle classe la documentation Java recommande-t-elle pour une pile (LIFO), de préférence à la classe `Stack` ?",
+      "answer": "`ArrayDeque`",
+      "wrong": [
+        "`Vector`",
+        "`PriorityQueue`",
+        "`ArrayBlockingQueue`"
+      ],
+      "explanation": "`Stack` date de Java 1.0 et hérite de `Vector` : ses méthodes sont synchronisées (donc plus lentes) et elle expose des accès par indice qui brisent l'abstraction de pile. Sa Javadoc conseille d'utiliser l'interface `Deque` et ses implémentations, par exemple `Deque<Integer> pile = new ArrayDeque<>();` avec `push()`, `pop()` et `peek()`. `PriorityQueue` sert les éléments par priorité, et `ArrayBlockingQueue` est une file FIFO.",
+      "difficulty": 2,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Stack.html"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nvar m = new TreeMap<>(Map.of(10, \"a\", 20, \"b\", 30, \"c\"));\nSystem.out.println(m.floorKey(25) + \" \" + m.ceilingKey(25));\n```",
+      "answer": "`20 30`",
+      "wrong": [
+        "`30 20`",
+        "`20 20`",
+        "`null null`"
+      ],
+      "explanation": "`TreeMap` implémente `NavigableMap` : `floorKey(k)` renvoie la plus grande clé **inférieure ou égale** à `k`, et `ceilingKey(k)` la plus petite clé **supérieure ou égale**. Les variantes `lowerKey` et `higherKey` excluent l'égalité, et toutes renvoient `null` s'il n'y a pas de candidate (`floorKey(5)` ici). Le `TreeMap` étant un arbre rouge-noir, ces recherches coûtent O(log n) : idéal pour des barèmes ou des tranches.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que se passe-t-il à l'exécution de `Set.of(\"a\", \"a\")` (Java 9+) ?",
+      "answer": "Une `IllegalArgumentException` est levée",
+      "wrong": [
+        "Elle renvoie un ensemble contenant seulement `\"a\"`",
+        "Elle renvoie un ensemble contenant deux fois `\"a\"`",
+        "Rien : une erreur de compilation l'empêche"
+      ],
+      "explanation": "`Set.of` considère un doublon comme une **erreur de programmation** et lève une `IllegalArgumentException` (« duplicate element: a »). Il en va de même pour `Map.of` avec deux clés identiques. À l'inverse, `new HashSet<>(List.of(\"a\", \"a\"))` élimine silencieusement le doublon. `Set.of` refuse aussi `null`, et son ordre de parcours n'est pas spécifié.",
+      "difficulty": 2
+    },
+    {
+      "question": "En Java 21, qu'affiche ce code ?\n```java\nList<Integer> l = new ArrayList<>(List.of(1, 2, 3));\nSystem.out.println(l.getFirst() + \" \" + l.getLast() + \" \" + l.reversed());\n```",
+      "answer": "`1 3 [3, 2, 1]`",
+      "wrong": [
+        "`1 3 [1, 2, 3]`",
+        "`3 1 [3, 2, 1]`",
+        "Rien : erreur de compilation"
+      ],
+      "explanation": "Java 21 introduit les **collections séquencées** (JEP 431) : les interfaces `SequencedCollection`, `SequencedSet` et `SequencedMap` unifient les collections dotées d'un ordre de parcours. Elles apportent `getFirst()`, `getLast()`, `addFirst()`, `addLast()`, `removeFirst()`, `removeLast()` et `reversed()`, qui renvoie une **vue** inversée et non une copie. Avant, il fallait écrire `l.get(l.size() - 1)` pour lire le dernier élément.",
+      "difficulty": 2,
+      "source": "https://openjdk.org/jeps/431"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nPriorityQueue<Integer> pq = new PriorityQueue<>();\npq.add(5);\npq.add(1);\npq.add(3);\nSystem.out.println(pq);\nSystem.out.println(pq.poll());\n```",
+      "answer": "`[1, 5, 3]` puis `1`",
+      "wrong": [
+        "`[1, 3, 5]` puis `1`",
+        "`[5, 1, 3]` puis `5`",
+        "`[1, 3, 5]` puis `5`"
+      ],
+      "explanation": "Une `PriorityQueue` est un **tas binaire** stocké dans un tableau : elle garantit seulement que la tête est le plus petit élément. `toString()` et l'itérateur parcourent le tableau interne tel quel, qui n'est pas trié : `[1, 5, 3]`. En revanche, `poll()` retire toujours le minimum, ici `1`. Pour obtenir les éléments dans l'ordre, il faut appeler `poll()` en boucle ou trier une copie.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la bonne déclaration d'une méthode générique qui renvoie le premier élément d'une liste ?",
+      "answer": "`static <T> T premier(List<T> l)`",
+      "wrong": [
+        "`static T premier<T>(List<T> l)`",
+        "`static T<T> premier(List<T> l)`",
+        "`static T premier(List<T> l) <T>`"
+      ],
+      "explanation": "Le paramètre de type d'une méthode générique se déclare entre chevrons, **avant le type de retour** : `<T> T premier(...)`. Placer `<T>` après le nom de la méthode, c'est la syntaxe de C#. À l'appel, le type est généralement inféré (`premier(noms)`), mais on peut aussi l'expliciter : `Util.<String>premier(noms)`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans `static <T extends Comparable<T>> T max(List<T> l)`, que garantit la borne `extends Comparable<T>` ?",
+      "answer": "Que l'on peut appeler `compareTo` sur des valeurs de type `T`",
+      "wrong": [
+        "Que la liste reçue en paramètre est déjà triée",
+        "Que les éléments de la liste ne sont jamais `null`",
+        "Que la méthode `max` ne modifie pas la liste"
+      ],
+      "explanation": "C'est un **type borné** : seuls les types qui implémentent `Comparable<T>` sont acceptés pour `T`. Dans le corps de la méthode, on peut donc écrire `a.compareTo(b)`. `max(List.of(3, 9, 2))` compile, car `Integer` implémente `Comparable<Integer>`, alors qu'une liste d'`Object` est refusée dès la compilation. Dans une borne générique, `extends` s'emploie aussi bien pour une classe que pour une interface.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nList<String> base = new ArrayList<>(List.of(\"x\"));\nList<String> vue = Collections.unmodifiableList(base);\nbase.add(\"y\");\nSystem.out.println(vue);\n```",
+      "answer": "`[x, y]`",
+      "wrong": [
+        "`[x]`",
+        "Une `UnsupportedOperationException`",
+        "Rien : erreur de compilation"
+      ],
+      "explanation": "`Collections.unmodifiableList` ne copie rien : elle renvoie une **vue** en lecture seule sur la liste d'origine. On ne peut pas modifier la liste **à travers** `vue`, mais toute modification de `base` y reste visible. Pour obtenir une copie réellement figée et indépendante, on utilise `List.copyOf(base)` (Java 10).",
+      "difficulty": 3
+    },
+    {
+      "question": "Que se passe-t-il à l'exécution de ce code ?\n```java\nList<Integer> l = Arrays.asList(1, 2, 3);\nl.set(0, 9);\nl.add(4);\n```",
+      "answer": "`set` fonctionne, puis `add` lève une exception",
+      "wrong": [
+        "Les deux appels lèvent une exception",
+        "Les deux appels fonctionnent",
+        "`set` lève une exception, `add` fonctionne"
+      ],
+      "explanation": "`Arrays.asList` renvoie une liste de **taille fixe**, adossée au tableau passé en argument. `set` écrit simplement dans ce tableau : c'est autorisé. `add` ou `remove` changeraient la taille : ils lèvent une `UnsupportedOperationException`. Les modifications du tableau sont d'ailleurs visibles dans la liste, et inversement. `List.of`, lui, interdit même `set`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nint[] t = {1, 2, 3};\nSystem.out.println(Arrays.asList(t).size());\n```",
+      "answer": "`1`",
+      "wrong": [
+        "`3`",
+        "`0`",
+        "Rien : erreur de compilation"
+      ],
+      "explanation": "`Arrays.asList(T... a)` est générique, et `T` ne peut pas être un type primitif. Le tableau `int[]` ne peut donc pas être « étalé » en trois arguments : il est considéré comme **un seul objet**, avec `T = int[]`. On obtient une `List<int[]>` d'un seul élément. Avec un `Integer[]`, on aurait bien 3 ; pour un `int[]`, on passe par `Arrays.stream(t).boxed().toList()`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Avec le constructeur par défaut, quand une `HashMap` agrandit-elle sa table interne pour la première fois ?",
+      "answer": "Au-delà de 12 entrées (16 cases × 0,75)",
+      "wrong": [
+        "Au-delà de 16 entrées (16 cases × 1)",
+        "Au-delà de 8 entrées (16 cases × 0,5)",
+        "Au-delà de 10 entrées (10 cases × 1)"
+      ],
+      "explanation": "Une `HashMap` démarre avec **16 cases** et un **facteur de charge de 0,75** : dès que le nombre d'entrées dépasse 16 × 0,75 = 12, la table double (32 cases) et toutes les entrées sont redistribuées, ce qui a un coût. Si l'on connaît le volume à l'avance, on peut la dimensionner dès la création, par exemple avec `HashMap.newHashMap(n)` (Java 19), qui tient compte du facteur de charge.",
+      "difficulty": 3,
+      "source": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/HashMap.html"
+    },
+    {
+      "question": "Depuis Java 8, que fait une `HashMap` d'au moins 64 cases quand plus de 8 clés s'accumulent dans la même case ?",
+      "answer": "Elle convertit la liste chaînée de la case en arbre",
+      "wrong": [
+        "Elle recalcule tous les hash avec une autre fonction",
+        "Elle lève une exception signalant trop de collisions",
+        "Elle range les clés en trop dans une table annexe"
+      ],
+      "explanation": "Les clés en collision sont normalement rangées dans une **liste chaînée**, ce qui donne une recherche en O(n) dans la case. Au-delà de 8 éléments (`TREEIFY_THRESHOLD`), et si la table compte au moins 64 cases (sinon elle s'agrandit plutôt), la liste devient un **arbre rouge-noir** : la recherche passe à O(log n). Cela protège contre un `hashCode()` médiocre ou contre les attaques par saturation de hash (hash flooding).",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nSet<List<Integer>> set = new HashSet<>();\nList<Integer> cle = new ArrayList<>(List.of(1));\nset.add(cle);\ncle.add(2);\nSystem.out.println(set.contains(cle));\n```",
+      "answer": "`false`",
+      "wrong": [
+        "`true`",
+        "Une `ConcurrentModificationException`",
+        "Rien : erreur de compilation"
+      ],
+      "explanation": "Un `HashSet` range chaque élément dans la case correspondant à son `hashCode()` **au moment de l'insertion**. Modifier la liste change son hash : `contains` va chercher dans une autre case et ne la trouve pas, alors qu'elle est bien dans l'ensemble (dont la taille vaut toujours 1). Règle d'or : les éléments d'un `HashSet` et les clés d'une `HashMap` doivent être **immuables** (`String`, `Integer`, records aux composants immuables…).",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```java\nList<String> l = new ArrayList<>(List.of(\"a\", \"b\", \"c\"));\nfor (String s : l) {\n    if (s.equals(\"b\")) l.remove(s);\n}\nSystem.out.println(l);\n```",
+      "answer": "`[a, c]`",
+      "wrong": [
+        "Une `ConcurrentModificationException`",
+        "`[a, b, c]`",
+        "`[a]`"
+      ],
+      "explanation": "Surprise : pas d'exception ! La détection de modification a lieu dans `next()`, pas dans `hasNext()`. Après la suppression de `\"b\"`, la liste ne compte plus que 2 éléments et le curseur de l'itérateur vaut 2 : `hasNext()` renvoie `false` et la boucle s'arrête sans rappeler `next()`. `\"c\"` n'est d'ailleurs jamais visité. Le comportement fail-fast n'est qu'un « meilleur effort » : la Javadoc précise qu'on ne doit pas s'y fier.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle ligne ne compile pas ?\n```java\nstatic void f(List<? extends Number> nums) {\n    nums.add(1);               // ligne A\n    Number n = nums.get(0);    // ligne B\n}\n```",
+      "answer": "Seulement la ligne A",
+      "wrong": [
+        "Seulement la ligne B",
+        "Les lignes A et B",
+        "Aucune des deux lignes"
+      ],
+      "explanation": "`List<? extends Number>` désigne une liste d'un sous-type **inconnu** de `Number` : ce peut être une `List<Integer>` comme une `List<Double>`. Lire est sûr (on obtient forcément un `Number`), mais ajouter est interdit (sauf `null`), car on risquerait de glisser un `Integer` dans une liste de `Double`. À l'inverse, `List<? super Integer>` accepte des ajouts d'`Integer` mais ne renvoie que des `Object` en lecture. Moyen mnémotechnique : PECS, « Producer Extends, Consumer Super ».",
+      "difficulty": 3
     }
   ]
 }

@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Composition & lumière",
+  "icon": "🖼️",
+  "description": "Règle des tiers, lignes directrices, cadrage, profondeur de champ, qualité et direction de la lumière, heure dorée.",
+  "order": 2,
+  "questions": []
+}

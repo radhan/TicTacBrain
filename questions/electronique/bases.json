@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Lois & circuits",
+  "icon": "⚡",
+  "description": "Tension, courant, résistance, loi d'Ohm, lois de Kirchhoff, puissance, montages série et parallèle, mesures au multimètre.",
+  "order": 1,
+  "questions": []
+}

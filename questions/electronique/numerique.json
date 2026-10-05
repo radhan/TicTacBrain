@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Numérique & Arduino",
+  "icon": "💾",
+  "description": "Logique booléenne, portes, binaire, bascules, Arduino et microcontrôleurs, PWM, bus I2C, SPI et UART.",
+  "order": 3,
+  "questions": []
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Plomberie",
+  "icon": "🚰",
+  "description": "Alimentation et évacuation, raccords, siphons, chauffe-eau, pression, fuites, matériaux et outillage du plombier.",
+  "order": 1,
+  "questions": []
+}
