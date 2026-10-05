@@ -31,7 +31,7 @@ Ouvre le fichier du sous-thème et ajoute un objet dans `questions` :
   "question": "Quelle commande permet de retrouver un commit « perdu » après un `git reset --hard` ?",
   "answer": "`git reflog`",
   "wrong": ["`git log --all`", "`git fsck --lost`", "`git restore`"],
-  "explanation": "Le **reflog** garde la trace de chaque déplacement de HEAD pendant ~90 jours…",
+  "explanation": "Le **reflog** garde la trace de chaque déplacement de HEAD, même vers un commit qui n'est plus référencé…",
   "difficulty": 2,
   "source": "https://git-scm.com/docs/git-reflog"
 }

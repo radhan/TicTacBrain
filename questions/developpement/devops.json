@@ -17,7 +17,7 @@
       "question": "Quelle instruction Dockerfile définit l'image de base à partir de laquelle l'image est construite ?",
       "answer": "`FROM`",
       "wrong": ["`BASE`", "`IMAGE`", "`USE`"],
-      "explanation": "`FROM` démarre une étape de build et définit l'image de base, par exemple `FROM node:20-alpine`, ou `FROM scratch` pour partir d'une image vide. Un Dockerfile doit commencer par `FROM` (seuls des `ARG`, des commentaires et des directives du parser peuvent le précéder). Plusieurs `FROM` dans un même fichier créent un build multi-stage.",
+      "explanation": "`FROM` démarre une étape de build et définit l'image de base, par exemple `FROM node:24-alpine`, ou `FROM scratch` pour partir d'une image vide. Un Dockerfile doit commencer par `FROM` (seuls des `ARG`, des commentaires et des directives du parser peuvent le précéder). Plusieurs `FROM` dans un même fichier créent un build multi-stage.",
       "difficulty": 1,
       "source": "https://docs.docker.com/reference/dockerfile/"
     },
@@ -135,7 +135,7 @@
       "question": "Lequel de ces indicateurs ne fait **pas** partie des métriques DORA de performance de la livraison logicielle ?",
       "answer": "Le taux de couverture de code",
       "wrong": ["La fréquence de déploiement", "Le délai de mise en production d'un changement", "Le taux d'échec des changements"],
-      "explanation": "Les métriques **DORA** (DevOps Research and Assessment, popularisées par le livre *Accelerate*) mesurent le débit et la stabilité : **fréquence de déploiement**, **délai de mise en production** (*lead time for changes*), **taux d'échec des changements** et **temps de restauration** après un incident. La couverture de code est un indicateur de qualité interne utile, mais elle n'en fait pas partie.",
+      "explanation": "Les métriques **DORA** (DevOps Research and Assessment, popularisées par le livre *Accelerate*) mesurent le débit et la stabilité : **fréquence de déploiement**, **délai de mise en production** (*lead time for changes*), **taux d'échec des changements**, **temps de restauration** après un déploiement raté et, depuis 2024, **taux de reprise** (*rework rate*). La couverture de code est un indicateur de qualité interne utile, mais elle n'en fait pas partie.",
       "difficulty": 2,
       "source": "https://dora.dev/guides/dora-metrics-four-keys/"
     },

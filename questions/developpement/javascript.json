@@ -78,7 +78,7 @@
       "source": "https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules"
     },
     {
-      "question": "Que renvoie toujours une fonction déclarée avec `async` ?",
+      "question": "Que renvoie toujours une fonction déclarée avec `async` (hors générateurs `async function*`) ?",
       "answer": "Une `Promise`",
       "wrong": [
         "Directement la valeur du `return`",

@@ -87,8 +87,8 @@
     {
       "question": "Plusieurs instances EC2 Linux doivent monter simultanément le même système de fichiers partagé via NFS. Quel service AWS choisir ?",
       "answer": "Amazon EFS",
-      "wrong": ["Amazon EBS", "Amazon S3", "EC2 Instance Store"],
-      "explanation": "**Amazon EFS** (Elastic File System) est un stockage **fichier** NFS, montable en même temps par de nombreuses instances. **EBS** fournit du stockage **bloc** (un disque virtuel, en général attaché à une seule instance), l'**instance store** un disque local éphémère, et **S3** du stockage **objet**, accessible via une API HTTP et non comme un système de fichiers POSIX.",
+      "wrong": ["Amazon EBS", "Amazon FSx for Windows", "EC2 Instance Store"],
+      "explanation": "**Amazon EFS** (Elastic File System) est un stockage **fichier** NFS, montable en même temps par de nombreuses instances. **EBS** fournit du stockage **bloc** (un disque virtuel, en général attaché à une seule instance), l'**instance store** un disque local éphémère, et **FSx for Windows File Server** des partages de fichiers accessibles en **SMB**, pas en NFS.",
       "difficulty": 2,
       "source": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html"
     },
