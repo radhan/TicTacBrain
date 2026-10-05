@@ -1,3 +1,4 @@
+import { Lightbulb, X } from 'lucide-preact'
 import type { ComponentChildren } from 'preact'
 import { useEffect, useRef } from 'preact/hooks'
 
@@ -29,9 +30,11 @@ export function Modal({ open, onClose, title, children }: {
     >
       <div class="modal-body">
         <header class="modal-header">
-          <h2>{title}</h2>
-          <button type="button" class="icon-btn" aria-label="Fermer" onClick={onClose}>
-            ✕
+          <h2>
+            <Lightbulb size={20} aria-hidden="true" /> {title}
+          </h2>
+          <button type="button" class="icon-btn icon-btn-ghost" aria-label="Fermer" onClick={onClose}>
+            <X size={20} aria-hidden="true" />
           </button>
         </header>
         {children}

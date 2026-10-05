@@ -1,8 +1,10 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'preact/hooks'
+import { ArrowRight, Check, CircleCheck, CircleX, Flame, LayoutGrid, Lightbulb, RotateCcw, TimerOff, Trophy, X } from 'lucide-preact'
+import { useCallback, useEffect, useRef, useState } from 'preact/hooks'
 import { Modal } from '../components/Modal'
 import { Inline, Rich } from '../components/Rich'
 import { loadPoolQuestions, type PoolInfo } from '../lib/data'
 import { buildChoices, isMilestone, pickNext, remainingCandidates } from '../lib/game'
+import { TopicIcon } from '../lib/icons'
 import { goBack } from '../lib/router'
 import { save, type SavedRun } from '../lib/storage'
 import type { PoolQuestion, TimerSetting } from '../lib/types'
@@ -25,7 +27,6 @@ const DIFFICULTY = { 1: 'Facile', 2: 'Moyen', 3: 'Difficile' } as const
 const TAP_LOCK_MS = 400
 
 const reducedMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false
-const inARow = (n: number) => `${n <= 1 ? 'bonne réponse' : 'bonnes réponses'} d'affilée`
 
 export function Quiz({ pool, timer }: { pool: PoolInfo; timer: TimerSetting }) {
   const [questions, setQuestions] = useState<PoolQuestion[] | null>(null)
@@ -102,7 +103,6 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
   const [picked, setPicked] = useState<string | null>(null)
   const [explainOpen, setExplainOpen] = useState(false)
   const [notice, setNotice] = useState<string | null>(null)
-  const [burstKey, setBurstKey] = useState(0)
   const [remainingMs, setRemainingMs] = useState(timer * 1000)
   const primaryRef = useRef<HTMLButtonElement>(null)
   const headingRef = useRef<HTMLHeadingElement>(null)
@@ -127,14 +127,6 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
   const guard = (fn: () => void) => () => {
     if (!locked()) fn()
   }
-
-  const subName = useMemo(() => {
-    const names = new Map<string, string>()
-    for (const { theme, sub } of pool.parts) {
-      names.set(`${theme.id}/${sub.id}`, pool.key === 'all' ? `${theme.icon} ${sub.name}` : `${sub.icon} ${sub.name}`)
-    }
-    return names
-  }, [pool])
 
   const persistRun = useCallback(
     (runPhase: 'question' | 'correct', runPicked: string | null) => {
@@ -206,7 +198,7 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
     setPhase(run.phase)
     setPicked(run.picked)
     setStreak(run.streak)
-    if (run.streak > 0) setNotice(`▶ Reprise : ${run.streak} d'affilée`)
+    if (run.streak > 0) setNotice(`Reprise de ta série : ${run.streak} d'affilée`)
   }, [nextQuestion, pool.key, questions, timer])
 
   /** `null` = temps écoulé. */
@@ -230,8 +222,7 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
       if (correct) {
         setStreak(newStreak)
         setBest((b) => Math.max(b, newStreak))
-        if (perfect || isMilestone(newStreak)) setBurstKey((k) => k + 1)
-        setNotice(!perfect && isMilestone(newStreak) ? `🔥 ${newStreak} d'affilée !` : null)
+        setNotice(!perfect && isMilestone(newStreak) ? `${newStreak} bonnes réponses d'affilée !` : null)
       } else {
         setNotice(null)
         navigator.vibrate?.(200)
@@ -331,38 +322,35 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
     return 'is-dim'
   }
 
-  const result =
+  const verdict =
+    phase === 'correct'
+      ? { tone: 'ok', Icon: CircleCheck, title: 'Bonne réponse !' }
+      : phase === 'victory'
+        ? { tone: 'ok', Icon: Trophy, title: `Sans faute ! ${streak}/${total}` }
+        : { tone: 'ko', Icon: phase === 'timeout' ? TimerOff : CircleX, title: phase === 'timeout' ? 'Temps écoulé' : 'Raté !' }
+
+  const recordLine =
     phase === 'victory'
-      ? { tone: 'win', title: '🎉 Sans faute !', value: `${streak}/${total}`, sub: 'Toutes les questions du mode, sans une seule erreur.' }
-      : {
-          tone: newRecord ? 'record' : 'lose',
-          title: phase === 'timeout' ? '⏰ Temps écoulé' : '💥 Raté !',
-          value: String(streak),
-          sub: newRecord
-            ? bestAtStart > 0
-              ? `🏆 Nouveau record ! (ancien : ${bestAtStart})`
-              : '🏆 Premier record !'
-            : `${inARow(streak)}${bestAtStart > 0 ? ` · record ${bestAtStart}` : ''}`,
-        }
+      ? 'Toutes les questions du mode, sans une seule erreur.'
+      : newRecord
+        ? bestAtStart > 0
+          ? `Nouveau record : ${streak} (ancien : ${bestAtStart})`
+          : `Premier record : ${streak}`
+        : `Série : ${streak}${bestAtStart > 0 ? ` · record : ${bestAtStart}` : ''}`
 
   const closeExplain = () => {
     setExplainOpen(false)
     requestAnimationFrame(() => primaryRef.current?.focus({ preventScroll: true }))
   }
 
-  return (
-    <main class={`screen quiz phase-${phase}`} style={{ '--accent': pool.color }}>
-      <div class="deco" aria-hidden="true">
-        <i />
-        <i />
-        <i />
-        <i />
-        <i />
-      </div>
+  const topicId = pool.mixed ? `${q.themeId}/${q.subthemeId}` : pool.key
+  const topicSub = pool.parts.find(({ theme, sub }) => theme.id === q.themeId && sub.id === q.subthemeId)?.sub
 
+  return (
+    <main class={`screen quiz phase-${phase}`}>
       <nav class="quiz-top">
         <button type="button" class="icon-btn" aria-label="Quitter (la série est gardée pour plus tard)" onClick={() => goBack('/')}>
-          ✕
+          <X size={20} aria-hidden="true" />
         </button>
         <div
           class="progress"
@@ -373,41 +361,44 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
           aria-valuenow={streak}
           aria-valuetext={`${streak} sur ${total}`}
         >
-          <div class="progress-fill" style={{ width: streak ? `max(12px, ${(streak / total) * 100}%)` : '0' }} />
+          <div class="progress-fill" style={{ width: streak ? `max(10px, ${(streak / total) * 100}%)` : '0' }} />
         </div>
         {timer > 0 && <TimerRing remainingMs={remainingMs} totalMs={timer * 1000} active={phase === 'question'} />}
       </nav>
 
       <div class="q-head">
         <h1 class="q-count" ref={headingRef} tabIndex={-1}>
-          Question <strong>{turn.num}</strong>
+          Question {turn.num}
           <span>
             <span class="sr-only"> sur </span>
-            <span aria-hidden="true">/</span>
+            <span aria-hidden="true"> / </span>
             {total}
           </span>
         </h1>
         <span class="q-scores">
-          <span key={streak} class={`streak-chip ${streak > 0 ? 'bump' : ''}`}>
-            <span aria-hidden="true">🔥</span>
+          <span key={streak} class={`stat-pill stat-streak ${streak > 0 ? 'bump' : ''}`}>
+            <Flame size={15} aria-hidden="true" />
             <span class="sr-only">Série :</span> {streak}
           </span>
-          <span class="best-chip">
-            <span aria-hidden="true">🏆</span>
+          <span class="stat-pill stat-best">
+            <Trophy size={15} aria-hidden="true" />
             <span class="sr-only">Record :</span> {best}
           </span>
         </span>
       </div>
 
       <div class="q-meta">
-        <span class="chip">{pool.mixed ? subName.get(`${q.themeId}/${q.subthemeId}`) : `${pool.icon} ${pool.title}`}</span>
+        <span class="chip chip-topic">
+          <TopicIcon id={topicId} emoji={topicSub?.icon ?? pool.icon} size={14} />
+          {pool.mixed ? (topicSub?.name ?? '') : pool.title}
+        </span>
         <span class={`chip difficulty d${q.difficulty}`}>{DIFFICULTY[q.difficulty]}</span>
       </div>
 
       <Rich key={turn.n} text={q.question} class="q-text" />
 
       <div class="answers" role="group" aria-label="Réponses">
-        {choices.map((c) => {
+        {choices.map((c, i) => {
           const state = choiceState(c)
           return (
             <button
@@ -417,13 +408,13 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
               disabled={phase !== 'question'}
               onClick={() => answer(c)}
             >
+              <span class="answer-key" aria-hidden="true">
+                {state === 'is-correct' ? <Check size={16} strokeWidth={3} /> : state === 'is-wrong' ? <X size={16} strokeWidth={3} /> : LETTERS[i]}
+              </span>
               <span class="answer-text">
                 <Inline text={c} />
                 {state === 'is-correct' && <span class="sr-only"> — bonne réponse</span>}
                 {state === 'is-wrong' && <span class="sr-only"> — ta réponse, fausse</span>}
-              </span>
-              <span class="radio" aria-hidden="true">
-                {state === 'is-correct' ? '✓' : state === 'is-wrong' ? '✕' : ''}
               </span>
             </button>
           )
@@ -431,35 +422,39 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
       </div>
 
       {phase !== 'question' && (
-        <section class="feedback" aria-live="assertive">
-          {phase === 'correct' ? (
-            <p class="verdict">✓ Bonne réponse !</p>
-          ) : (
-            <div class={`result-card ${result.tone}`}>
-              <span class="result-title">{result.title}</span>
-              <strong class="result-value">{result.value}</strong>
-              <span class="result-sub">
-                {result.sub}
-                {phase !== 'victory' && <span class="sr-only">. La bonne réponse était : {q.answer.replace(/`/g, '')}</span>}
-              </span>
+        <section class={`feedback feedback-${verdict.tone}`} aria-live="assertive">
+          <div class="feedback-head">
+            <verdict.Icon size={26} aria-hidden="true" />
+            <div>
+              <p class="feedback-title">{verdict.title}</p>
+              {ended && phase !== 'victory' && (
+                <p class="feedback-line">
+                  Bonne réponse : <strong><Inline text={q.answer} /></strong>
+                </p>
+              )}
+              {ended && (
+                <p class={newRecord || phase === 'victory' ? 'feedback-line feedback-record' : 'feedback-line'}>
+                  {(newRecord || phase === 'victory') && <Trophy size={14} aria-hidden="true" class="inline-icon" />} {recordLine}
+                </p>
+              )}
             </div>
-          )}
+          </div>
           <div class="actions">
-            <button type="button" class="btn btn-soft" onClick={guard(() => setExplainOpen(true))}>
-              <span aria-hidden="true">💡</span> Comprendre
+            <button type="button" class="btn btn-secondary" onClick={guard(() => setExplainOpen(true))}>
+              <Lightbulb size={18} aria-hidden="true" /> Comprendre
             </button>
             {phase === 'correct' ? (
-              <button ref={primaryRef} type="button" class="btn btn-primary" onClick={guard(nextQuestion)}>
-                Suivant <span aria-hidden="true">→</span>
+              <button ref={primaryRef} type="button" class="btn btn-success" onClick={guard(nextQuestion)}>
+                Continuer <ArrowRight size={18} aria-hidden="true" />
               </button>
             ) : (
-              <button ref={primaryRef} type="button" class="btn btn-success" onClick={guard(restart)}>
-                <span aria-hidden="true">↻</span> Rejouer
+              <button ref={primaryRef} type="button" class={phase === 'victory' ? 'btn btn-success' : 'btn btn-danger'} onClick={guard(restart)}>
+                <RotateCcw size={18} aria-hidden="true" /> Rejouer
               </button>
             )}
             {ended && (
-              <button type="button" class="btn btn-outline btn-wide" onClick={guard(() => goBack('/'))}>
-                Changer de thème
+              <button type="button" class="btn btn-ghost btn-wide" onClick={guard(() => goBack('/'))}>
+                <LayoutGrid size={18} aria-hidden="true" /> Changer de thème
               </button>
             )}
           </div>
@@ -472,9 +467,7 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
         </div>
       )}
 
-      {burstKey > 0 && <div key={burstKey} class="burst" aria-hidden="true" />}
-
-      <Modal open={explainOpen} onClose={closeExplain} title="💡 Explication">
+      <Modal open={explainOpen} onClose={closeExplain} title="Explication">
         <Rich text={q.question} class="explain-question" />
         <div class="explain-answer">
           <span>Bonne réponse</span>
@@ -490,12 +483,12 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
         <Rich text={q.explanation} class="explain-text" />
         {q.source && (
           <a class="explain-source" href={q.source} target="_blank" rel="noreferrer">
-            <span aria-hidden="true">📚</span> Pour aller plus loin
+            Pour aller plus loin →
           </a>
         )}
         <button
           type="button"
-          class="btn btn-primary modal-cta"
+          class="btn btn-primary btn-block modal-cta"
           onClick={() => {
             if (phase === 'correct') {
               setExplainOpen(false)
@@ -503,7 +496,7 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
             } else closeExplain()
           }}
         >
-          {phase === 'correct' ? 'Question suivante →' : 'Fermer'}
+          {phase === 'correct' ? 'Question suivante' : 'Fermer'}
         </button>
       </Modal>
     </main>

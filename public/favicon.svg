@@ -1,16 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#312e81"/>
-      <stop offset="1" stop-color="#0b1020"/>
-    </linearGradient>
-    <linearGradient id="flame" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#fbbf24"/>
-      <stop offset=".45" stop-color="#fb923c"/>
-      <stop offset="1" stop-color="#ec4899"/>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#4338ca"/>
     </linearGradient>
   </defs>
-  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
-  <path fill="url(#flame)" d="M262 52c10 62 52 98 86 138 40 47 58 92 52 146-8 78-70 128-144 128s-136-50-144-128c-5-50 13-94 46-128 6 34 22 56 46 68-10-66 18-138 58-224z"/>
-  <path fill="#fff" d="M256 418a30 30 0 1 1 0-60 30 30 0 0 1 0 60zm-26-98v-10c0-30 14-44 34-58 14-10 20-17 20-30 0-15-11-25-28-25-18 0-30 11-33 30l-50-6c6-46 40-72 85-72 48 0 80 26 80 68 0 28-14 44-36 60-14 10-20 16-20 32v11z"/>
+  <rect width="512" height="512" rx="116" fill="url(#g)"/>
+  <g transform="translate(256 256) scale(12.5) translate(-12 -12)">
+    <path fill="#fff" d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z"/>
+  </g>
 </svg>

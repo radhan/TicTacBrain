@@ -1,3 +1,4 @@
+import { CloudOff, Sparkles, X } from 'lucide-preact'
 import { useEffect } from 'preact/hooks'
 import { useRegisterSW } from 'virtual:pwa-register/preact'
 
@@ -27,12 +28,13 @@ export function UpdateToast({ hidden }: { hidden: boolean }) {
   if (needRefresh) {
     return (
       <div class="toast" role="status">
-        <span>✨ Nouvelle version disponible</span>
+        <Sparkles size={18} aria-hidden="true" class="toast-icon" />
+        <span>Nouvelle version disponible</span>
         <button type="button" class="btn btn-small btn-primary" onClick={() => updateServiceWorker(true)}>
           Mettre à jour
         </button>
-        <button type="button" class="icon-btn" aria-label="Plus tard" onClick={() => setNeedRefresh(false)}>
-          ✕
+        <button type="button" class="icon-btn icon-btn-ghost" aria-label="Plus tard" onClick={() => setNeedRefresh(false)}>
+          <X size={18} aria-hidden="true" />
         </button>
       </div>
     )
@@ -40,7 +42,8 @@ export function UpdateToast({ hidden }: { hidden: boolean }) {
   if (offlineReady) {
     return (
       <div class="toast" role="status">
-        <span>📴 Prêt à fonctionner hors ligne</span>
+        <CloudOff size={18} aria-hidden="true" class="toast-icon" />
+        <span>Prêt à fonctionner hors ligne</span>
       </div>
     )
   }

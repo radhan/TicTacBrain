@@ -1,5 +1,9 @@
+import { ChevronRight, CircleCheck, Download, Flame, Play, Shuffle, Target, Trophy } from 'lucide-preact'
+import { InstallBanner } from '../components/InstallBanner'
 import { TimerPicker } from '../components/TimerPicker'
 import { resolvePool } from '../lib/data'
+import { TopicIcon } from '../lib/icons'
+import { useInstall } from '../lib/install'
 import { navigate } from '../lib/router'
 import { save } from '../lib/storage'
 import type { Catalog, TimerSetting } from '../lib/types'
@@ -17,111 +21,129 @@ export function Home({ catalog, timer, onTimer }: {
   const bestAll = save.bestAnyTimer('all')
   const run = save.latestRun()
   const runPool = run ? resolvePool(catalog, run.pool) : null
+  const install = useInstall()
 
   return (
     <main class="screen home">
-      <header class="brand">
-        <img class="brand-mark" src={LOGO} alt="" width="44" height="44" />
-        <h1 class="brand-name">
-          TicTac<b>Brain</b>
-        </h1>
+      <header class="appbar">
+        <span class="brand">
+          <img class="brand-logo" src={LOGO} alt="" width="34" height="34" />
+          <span class="brand-name">TicTacBrain</span>
+        </span>
+        {install.mode === 'prompt' && install.dismissed && (
+          <button type="button" class="btn btn-tonal btn-sm" onClick={install.install}>
+            <Download size={16} aria-hidden="true" /> Installer
+          </button>
+        )}
       </header>
+
+      <section class="intro">
+        <h1>Prêt pour une série ?</h1>
+        <p>Enchaîne les bonnes réponses. À la première erreur, la série repart de zéro : on apprend au passage.</p>
+      </section>
+
+      <InstallBanner />
 
       {run && runPool && (
         <button
           type="button"
-          class="resume"
-          style={{ '--c': runPool.color }}
+          class="hero-action"
           onClick={() => {
             onTimer(run.timer)
             navigate(`/play/${run.pool}`)
           }}
         >
-          <span class="resume-icon" aria-hidden="true">
-            {runPool.icon}
+          <span class="hero-action-top">
+            <span class="hero-action-label">Reprendre ta série</span>
+            <span class="hero-action-play" aria-hidden="true">
+              <Play size={18} fill="currentColor" />
+            </span>
           </span>
-          <span class="resume-text">
-            <span class="resume-label">Reprendre ta série</span>
-            <span class="resume-title">{runPool.title}</span>
+          <span class="hero-action-title">{runPool.title}</span>
+          <span class="hero-progress" aria-hidden="true">
+            <span style={{ width: `${Math.max(3, (run.streak / runPool.count) * 100)}%` }} />
           </span>
-          <span class="resume-streak">
-            <span aria-hidden="true">🔥</span> {run.streak}
-            <small>/{runPool.count}</small>
+          <span class="hero-action-meta">
+            <Flame size={15} aria-hidden="true" />
+            <span>
+              {run.streak} / {runPool.count} bonnes réponses d'affilée
+            </span>
           </span>
         </button>
       )}
 
-      <section class="hero-card">
-        <div class="hero-text">
-          {stats.answered > 0 ? (
-            <>
-              <span class="hero-label">Meilleure série</span>
-              <strong class="hero-value">{stats.bestEver}</strong>
-              <span class="hero-stats">
-                <span>
-                  <b>{stats.correct}</b> bonnes réponses
-                </span>
-                <span>
-                  <b>{accuracy} %</b> de réussite
-                </span>
-              </span>
-            </>
-          ) : (
-            <>
-              <span class="hero-label">Prêt ?</span>
-              <strong class="hero-title">Une erreur, et ta série retombe à zéro.</strong>
-              <span class="hero-sub">Enchaîne les questions, apprends avec chaque explication.</span>
-            </>
-          )}
+      <section class="kpis" aria-label="Tes statistiques">
+        <div class="kpi">
+          <span class="kpi-icon kpi-flame">
+            <Flame size={18} aria-hidden="true" />
+          </span>
+          <strong>{stats.bestEver}</strong>
+          <span>Meilleure série</span>
         </div>
-        <span class="hero-art" aria-hidden="true">
-          🔥
-        </span>
+        <div class="kpi">
+          <span class="kpi-icon kpi-ok">
+            <CircleCheck size={18} aria-hidden="true" />
+          </span>
+          <strong>{stats.correct}</strong>
+          <span>Bonnes réponses</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-icon">
+            <Target size={18} aria-hidden="true" />
+          </span>
+          <strong>{accuracy} %</strong>
+          <span>Réussite</span>
+        </div>
       </section>
 
-      <TimerPicker value={timer} onChange={onTimer} />
-
-      <button type="button" class="play-all" onClick={() => navigate('/play/all')}>
-        <span class="play-all-text">
-          <span class="play-all-title">Tout mélanger</span>
-          <span class="play-all-sub">
-            {catalog.total} questions · tous les thèmes
+      <button type="button" class={run ? 'quickplay' : 'quickplay quickplay-primary'} onClick={() => navigate('/play/all')}>
+        <span class="topic-chip">
+          <Shuffle size={22} aria-hidden="true" />
+        </span>
+        <span class="topic-body">
+          <span class="topic-name">Partie rapide</span>
+          <span class="topic-meta">
+            <span>Tous les thèmes mélangés · {catalog.total} questions</span>
             {bestAll > 0 && (
-              <span class="badge badge-light">
-                <span aria-hidden="true">🏆</span>
-                <span class="sr-only">Record :</span> {bestAll}
+              <span class="meta-best">
+                <Trophy size={13} aria-hidden="true" />
+                <span class="sr-only">Record :</span>
+                <span>{bestAll}</span>
               </span>
             )}
           </span>
         </span>
-        <span class="play-btn" aria-hidden="true">
-          ▶
+        <span class="quickplay-go" aria-hidden="true">
+          <Play size={18} fill="currentColor" />
         </span>
       </button>
 
-      <h2 class="section-title">Thèmes</h2>
-      <div class="theme-grid">
+      <TimerPicker value={timer} onChange={onTimer} />
+
+      <h2 class="section-title">
+        Thèmes <span class="count">{catalog.themes.length}</span>
+      </h2>
+      <div class="topic-list">
         {catalog.themes.map((theme) => {
           const best = save.bestForTheme(theme.id)
           return (
-            <button
-              key={theme.id}
-              type="button"
-              class="theme-tile"
-              style={{ '--c': theme.color }}
-              onClick={() => navigate(`/t/${theme.id}`)}
-            >
-              <span class="tile-icon" aria-hidden="true">
-                {theme.icon}
+            <button key={theme.id} type="button" class="topic-row" onClick={() => navigate(`/t/${theme.id}`)}>
+              <span class="topic-chip">
+                <TopicIcon id={theme.id} emoji={theme.icon} />
+              </span>
+              <span class="topic-body">
+                <span class="topic-name">{theme.name}</span>
+                <span class="topic-meta">
+                  {theme.count} questions · {theme.subthemes.length} sous-thèmes
+                </span>
               </span>
               {best > 0 && (
-                <span class="tile-best">
-                  <span aria-hidden="true">🏆</span>
+                <span class="pill pill-gold">
+                  <Trophy size={13} aria-hidden="true" />
                   <span class="sr-only">Record :</span> {best}
                 </span>
               )}
-              <span class="tile-name">{theme.name}</span>
-              <span class="tile-meta">{theme.count} questions</span>
+              <ChevronRight size={20} class="chevron" aria-hidden="true" />
             </button>
           )
         })}

@@ -71,6 +71,7 @@ export default defineConfig({
       registerType: 'prompt',
       includeAssets: ['favicon.svg', 'icons/apple-touch-icon.png'],
       manifest: {
+        id: './',
         name: 'TicTacBrain — Quiz en mode série',
         short_name: 'TicTacBrain',
         description: 'Quiz QCM par thèmes en mode série : va le plus loin possible sans te tromper.',
@@ -79,9 +80,13 @@ export default defineConfig({
         scope: './',
         display: 'standalone',
         orientation: 'portrait',
-        theme_color: '#151a2e',
+        theme_color: '#4f46e5',
         background_color: '#eef1f8',
         categories: ['education', 'games'],
+        screenshots: [
+          { src: 'screenshots/accueil.png', sizes: '1082x2202', type: 'image/png', form_factor: 'narrow', label: 'Accueil : thèmes et statistiques' },
+          { src: 'screenshots/question.png', sizes: '1082x2202', type: 'image/png', form_factor: 'narrow', label: 'Une question en mode série' },
+        ],
         icons: [
           { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },
@@ -91,7 +96,9 @@ export default defineConfig({
       workbox: {
         // Toutes les questions sont précachées : l'app fonctionne hors ligne.
         // Police : seuls les sous-ensembles latins (français) sont mis en cache.
-        globPatterns: ['**/*.{js,css,html,svg,png,json}', 'assets/nunito-latin-*.woff2'],
+        globPatterns: ['**/*.{js,css,html,svg,png,json}', 'assets/plus-jakarta-sans-latin-*.woff2'],
+        // Les captures ne servent qu'à la boîte d'installation : inutile de les mettre en cache.
+        globIgnores: ['screenshots/**'],
         cleanupOutdatedCaches: true,
       },
     }),

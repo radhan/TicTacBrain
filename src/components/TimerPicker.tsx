@@ -1,7 +1,8 @@
+import { Timer } from 'lucide-preact'
 import { TIMER_OPTIONS, type TimerSetting } from '../lib/types'
 
-export const timerLabel = (t: TimerSetting) => (t === 0 ? '∞' : `${t} s`)
-const timerName = (t: TimerSetting) => (t === 0 ? 'Sans limite' : `${t} secondes`)
+export const timerLabel = (t: TimerSetting) => (t === 0 ? 'Libre' : `${t} s`)
+const timerName = (t: TimerSetting) => (t === 0 ? 'Sans limite de temps' : `${t} secondes`)
 
 /** Groupe radio accessible : une seule tabulation, flèches pour changer d'option. */
 export function TimerPicker({ value, onChange }: { value: TimerSetting; onChange: (t: TimerSetting) => void }) {
@@ -16,13 +17,10 @@ export function TimerPicker({ value, onChange }: { value: TimerSetting; onChange
   }
 
   return (
-    <div class="timer-picker">
-      <span class="timer-picker-label" id="timer-label">
-        <span aria-hidden="true">⏱️</span>
-        <span>
-          Chrono
-          <small>par question</small>
-        </span>
+    <div class="setting">
+      <span class="setting-label" id="timer-label">
+        <Timer size={18} aria-hidden="true" />
+        Chrono par question
       </span>
       <div class="segmented" role="radiogroup" aria-labelledby="timer-label" onKeyDown={onKeyDown}>
         {TIMER_OPTIONS.map((t) => (
