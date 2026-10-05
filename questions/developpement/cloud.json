@@ -865,6 +865,294 @@
       "explanation": "Une **SCP** ne donne jamais de droits : elle fixe le **plafond** des permissions possibles dans les comptes de l'organisation. Une action n'est permise que si la SCP **et** une policy IAM l'autorisent ; ici, l'utilisateur sans policy reste bloqué par le refus implicite. Les SCP servent de garde-fous, par exemple pour interdire certaines régions ou empêcher la désactivation de CloudTrail ; elles ne s'appliquent pas au compte de gestion de l'organisation.",
       "difficulty": 3,
       "source": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html"
+    },
+    {
+      "question": "Sur Microsoft Azure, quel service permet d'exécuter du code en serverless, déclenché par des événements (requête HTTP, message, minuteur…), à la manière d'AWS Lambda ?",
+      "answer": "Azure Functions",
+      "wrong": [
+        "Azure Virtual Machines",
+        "Azure Batch",
+        "Azure Arc"
+      ],
+      "explanation": "**Azure Functions** est l'offre FaaS d'Azure : on écrit des fonctions (C#, JavaScript, Python, Java, PowerShell…) déclenchées par des *triggers* (HTTP, minuteur, file d'attente, Service Bus, Blob…), et avec les plans de consommation on ne paie que les exécutions. Les **bindings** permettent de lire ou d'écrire dans d'autres services sans écrire de code de connexion. **Azure Batch** sert aux calculs massifs par lots, et **Azure Arc** à gérer depuis Azure des serveurs situés ailleurs.",
+      "difficulty": 1,
+      "source": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview"
+    },
+    {
+      "question": "Quel service Azure joue le rôle d'un VPC AWS, c'est-à-dire d'un réseau privé isolé dans lequel on place ses machines virtuelles ?",
+      "answer": "Azure Virtual Network (VNet)",
+      "wrong": [
+        "Azure Front Door",
+        "Azure ExpressRoute",
+        "Azure DNS"
+      ],
+      "explanation": "Un **Azure Virtual Network** (VNet) est un réseau privé défini par une plage d'adresses (CIDR) et découpé en sous-réseaux, comme un VPC chez AWS ou Google Cloud. On y filtre le trafic avec des **groupes de sécurité réseau** (NSG), et on relie plusieurs VNet par *peering*. **ExpressRoute** est une liaison privée entre un datacenter d'entreprise et Azure, et **Front Door** un point d'entrée HTTP mondial doublé d'un CDN.",
+      "difficulty": 1,
+      "source": "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview"
+    },
+    {
+      "question": "Quel service Google Cloud est un entrepôt de données (*data warehouse*) serverless, interrogé en SQL, capable d'analyser des téraoctets de données en quelques secondes ?",
+      "answer": "BigQuery",
+      "wrong": [
+        "Cloud Spanner",
+        "Firestore",
+        "Cloud Bigtable"
+      ],
+      "explanation": "**BigQuery** est l'entrepôt de données analytique de Google Cloud : aucun serveur ni cluster à dimensionner, on charge les données et on les interroge en SQL. Son stockage **en colonnes** et son exécution massivement parallèle, héritée du projet interne Dremel, en font un outil d'analyse (OLAP). **Spanner** est une base relationnelle transactionnelle distribuée, **Bigtable** une base NoSQL à colonnes larges, et **Firestore** une base de documents pour applications.",
+      "difficulty": 1,
+      "source": "https://cloud.google.com/bigquery/docs/introduction"
+    },
+    {
+      "question": "Dans Microsoft Azure, comment s'appelle le conteneur logique où l'on regroupe les ressources d'une même solution (VM, base, réseau…), pour leur appliquer des droits ou les supprimer d'un seul coup ?",
+      "answer": "Un groupe de ressources",
+      "wrong": [
+        "Un groupe à haute disponibilité",
+        "Un groupe de sécurité réseau",
+        "Un groupe de placement de proximité"
+      ],
+      "explanation": "Le **groupe de ressources** (*resource group*) est l'unité d'organisation de base d'Azure : chaque ressource appartient à exactement un groupe, auquel on peut appliquer des droits (RBAC), des stratégies et des étiquettes, et que l'on peut supprimer avec tout son contenu. Les groupes de ressources sont eux-mêmes rangés dans des **abonnements**. Un **groupe de sécurité réseau** (NSG) filtre le trafic, et un **groupe à haute disponibilité** répartit des VM sur plusieurs domaines de panne.",
+      "difficulty": 1,
+      "source": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal"
+    },
+    {
+      "question": "Quel est le service Kubernetes managé de Microsoft Azure ?",
+      "answer": "AKS",
+      "wrong": [
+        "GKE",
+        "EKS",
+        "ACR"
+      ],
+      "explanation": "**AKS** (*Azure Kubernetes Service*) fournit un cluster Kubernetes dont Azure gère le plan de contrôle (serveur d'API, etcd, ordonnanceur) ; vous gérez vos charges de travail et, selon le mode choisi, vos nœuds. Ses équivalents sont **EKS** (*Elastic Kubernetes Service*) chez AWS et **GKE** (*Google Kubernetes Engine*) chez Google Cloud. **ACR** (*Azure Container Registry*) est le registre d'images de conteneurs d'Azure.",
+      "difficulty": 1,
+      "source": "https://learn.microsoft.com/en-us/azure/aks/what-is-aks"
+    },
+    {
+      "question": "Quel service Azure sert à stocker de façon centralisée et sécurisée les secrets, les clés de chiffrement et les certificats d'une application ?",
+      "answer": "Azure Key Vault",
+      "wrong": [
+        "Azure Blob Storage",
+        "Azure Monitor",
+        "Azure Bastion"
+      ],
+      "explanation": "**Azure Key Vault** conserve secrets (mots de passe, chaînes de connexion), clés cryptographiques (éventuellement protégées par des modules matériels HSM) et certificats, avec un contrôle d'accès fin et une journalisation de chaque accès. L'application les récupère à l'exécution, idéalement grâce à une identité managée, au lieu de les écrire dans son code ou sa configuration. Ses équivalents sont AWS Secrets Manager et AWS KMS, ou Secret Manager et Cloud KMS chez Google. **Azure Bastion** donne un accès RDP/SSH sécurisé aux VM.",
+      "difficulty": 1,
+      "source": "https://learn.microsoft.com/en-us/azure/key-vault/general/overview"
+    },
+    {
+      "question": "En 2023, Microsoft a renommé son service d'identité cloud Azure Active Directory (Azure AD). Quel est son nouveau nom ?",
+      "answer": "Microsoft Entra ID",
+      "wrong": [
+        "Microsoft Identity Manager",
+        "Microsoft Defender for Identity",
+        "Azure Directory Services"
+      ],
+      "explanation": "Depuis juillet 2023, **Azure AD** s'appelle **Microsoft Entra ID**, au sein de la famille de produits d'identité Microsoft Entra ; fonctionnalités, licences et API n'ont pas changé. C'est l'annuaire et le fournisseur d'identité de Microsoft 365 et d'Azure : authentification unique (SSO), MFA, accès conditionnel. À ne pas confondre avec l'Active Directory « classique » (AD DS), l'annuaire sur site de Windows Server, qui repose sur LDAP et Kerberos. **Defender for Identity** est, lui, un outil de détection des attaques contre cet annuaire.",
+      "difficulty": 2,
+      "source": "https://learn.microsoft.com/en-us/entra/fundamentals/new-name"
+    },
+    {
+      "question": "Sous quel nom la plateforme cloud de Microsoft a-t-elle été lancée commercialement en 2010, avant d'être rebaptisée Microsoft Azure en 2014 ?",
+      "answer": "Windows Azure",
+      "wrong": [
+        "Windows Live Cloud",
+        "Windows Server Cloud",
+        "Microsoft Sky"
+      ],
+      "explanation": "Microsoft a présenté sa plateforme cloud en octobre 2008, lors de la conférence PDC (le projet interne s'appelait *Red Dog*), puis l'a lancée commercialement sous le nom de **Windows Azure** en février 2010. En 2014, elle a été renommée **Microsoft Azure**, pour souligner qu'elle ne se limitait pas à Windows : elle accueille aussi des machines virtuelles Linux et de nombreux logiciels open source.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Microsoft_Azure"
+    },
+    {
+      "question": "Quel langage déclaratif Microsoft propose-t-il comme alternative plus lisible aux modèles ARM écrits en JSON, pour décrire une infrastructure Azure ?",
+      "answer": "Bicep",
+      "wrong": [
+        "HCL",
+        "Jsonnet",
+        "PowerShell DSC"
+      ],
+      "explanation": "**Bicep** est un langage spécifique (DSL) créé par Microsoft pour Azure : un fichier `.bicep` est transpilé en modèle **ARM** (*Azure Resource Manager*) JSON, puis déployé par Azure Resource Manager. Plus concis que le JSON, il gère modules, boucles et références entre ressources. **HCL** est le langage de Terraform, outil multi-cloud de HashiCorp, et **PowerShell DSC** sert à configurer l'état de machines.",
+      "difficulty": 2,
+      "source": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview"
+    },
+    {
+      "question": "Dans Azure, vous voulez **empêcher**, pour toute l'entreprise, la création de ressources en dehors des régions de l'Union européenne. Quel service utiliser ?",
+      "answer": "Azure Policy",
+      "wrong": [
+        "Azure Advisor",
+        "Azure Monitor",
+        "Azure Cost Management"
+      ],
+      "explanation": "**Azure Policy** évalue les ressources par rapport à des règles (définitions de stratégie) et peut refuser leur création (*deny*), les auditer ou les corriger. La stratégie intégrée « Allowed locations », affectée à un groupe d'administration ou à un abonnement, bloque ainsi tout déploiement hors des régions autorisées. Le contrôle d'accès **RBAC** décide *qui* peut agir, alors qu'Azure Policy décide *ce qui* est conforme ; **Azure Advisor** se contente de recommandations.",
+      "difficulty": 2,
+      "source": "https://learn.microsoft.com/en-us/azure/governance/policy/overview"
+    },
+    {
+      "question": "Quel service Azure fournit une connexion privée et dédiée entre le datacenter d'une entreprise et Azure, sans passer par Internet, comme AWS Direct Connect ?",
+      "answer": "Azure ExpressRoute",
+      "wrong": [
+        "Azure VPN Gateway",
+        "Azure Front Door",
+        "Azure Traffic Manager"
+      ],
+      "explanation": "**ExpressRoute** établit une liaison privée, via un opérateur partenaire ou un point d'échange, entre le réseau de l'entreprise et celui de Microsoft : latence plus stable, débits élevés et trafic qui ne transite pas par Internet. Chez Google Cloud, l'équivalent s'appelle **Cloud Interconnect**. Un **VPN Gateway** offre aussi une connexion chiffrée vers Azure, mais à travers Internet, et **Traffic Manager** répartit le trafic au niveau DNS.",
+      "difficulty": 2,
+      "source": "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-introduction"
+    },
+    {
+      "question": "Sur Google Cloud, dans quelle entité toute ressource (VM, bucket…) doit-elle être créée, et à laquelle sont rattachés la facturation et l'activation des API ?",
+      "answer": "Un projet",
+      "wrong": [
+        "Un dossier",
+        "Une organisation",
+        "Une zone"
+      ],
+      "explanation": "Le **projet** est l'unité de base de Google Cloud : chaque ressource appartient à un projet, identifié par un ID unique, sur lequel on active les API, associe un compte de facturation et définit des droits IAM. Les projets peuvent être rangés dans des **dossiers**, eux-mêmes placés sous un nœud **organisation**, et les politiques IAM se transmettent vers le bas de cette hiérarchie. Le projet joue un rôle comparable à celui d'un compte AWS ou d'un abonnement Azure.",
+      "difficulty": 2,
+      "source": "https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy"
+    },
+    {
+      "question": "Sur Google Cloud, quel service exécute un conteneur qui répond à des requêtes HTTP, sans cluster à gérer, avec une mise à l'échelle automatique jusqu'à zéro instance en l'absence de trafic ?",
+      "answer": "Cloud Run",
+      "wrong": [
+        "Compute Engine",
+        "GKE Standard",
+        "Dataproc"
+      ],
+      "explanation": "**Cloud Run** prend une image de conteneur, la sert derrière une URL HTTPS et ajuste automatiquement le nombre d'instances au trafic, **jusqu'à zéro** : sans requête, aucune instance ne tourne. Il s'appuie sur le modèle ouvert **Knative**, ce qui facilite la portabilité vers un cluster Kubernetes. **GKE Standard** impose de gérer les nœuds de son cluster, **Compute Engine** fournit des VM classiques et **Dataproc** des clusters Spark et Hadoop.",
+      "difficulty": 2,
+      "source": "https://cloud.google.com/run/docs/overview/what-is-cloud-run"
+    },
+    {
+      "question": "Sur Google Cloud, quel type d'identité une application ou une VM (plutôt qu'une personne) utilise-t-elle pour appeler les API Google de façon authentifiée ?",
+      "answer": "Un compte de service",
+      "wrong": [
+        "Un compte Google Workspace",
+        "Un groupe Google",
+        "Un compte de facturation"
+      ],
+      "explanation": "Un **compte de service** (*service account*) est une identité destinée aux charges de travail : on lui accorde des rôles IAM, puis on l'attache à une VM, à un service Cloud Run ou à une charge GKE, qui obtient automatiquement des jetons d'accès de courte durée. Il remplit le même rôle qu'un rôle IAM attaché à une instance EC2 ou qu'une identité managée Azure. Télécharger des clés JSON de compte de service est déconseillé : une clé qui fuit donne un accès durable.",
+      "difficulty": 2,
+      "source": "https://cloud.google.com/iam/docs/service-account-overview"
+    },
+    {
+      "question": "Plusieurs serveurs Windows doivent partager un même dossier réseau via le protocole **SMB**, sans que vous ayez à gérer de serveur de fichiers. Quel service Azure choisir ?",
+      "answer": "Azure Files",
+      "wrong": [
+        "Azure Blob Storage",
+        "Azure Queue Storage",
+        "Azure Table Storage"
+      ],
+      "explanation": "**Azure Files** fournit des partages de fichiers entièrement managés, accessibles en **SMB** (et en NFS pour certains comptes) : on les monte comme un lecteur réseau, depuis des VM Azure ou des machines sur site. **Azure File Sync** peut en outre synchroniser un partage avec des serveurs Windows locaux, qui gardent en cache les fichiers les plus utilisés. **Blob Storage** est un stockage d'objets, et les services Queue et Table servent aux files de messages et au stockage clé-valeur.",
+      "difficulty": 2,
+      "source": "https://learn.microsoft.com/en-us/azure/storage/files/storage-files-introduction"
+    },
+    {
+      "question": "Dans Azure, quel est l'ordre de la hiérarchie d'organisation, du niveau le plus large au plus fin ?",
+      "answer": "Groupe d'administration → abonnement → groupe de ressources → ressource",
+      "wrong": [
+        "Abonnement → groupe d'administration → groupe de ressources → ressource",
+        "Groupe de ressources → abonnement → groupe d'administration → ressource",
+        "Abonnement → groupe de ressources → groupe d'administration → ressource"
+      ],
+      "explanation": "Les **groupes d'administration** (*management groups*) regroupent des abonnements et peuvent s'imbriquer ; les **abonnements** sont l'unité de facturation et de limites ; les **groupes de ressources** rassemblent les ressources d'une solution. Les droits RBAC et les stratégies Azure Policy affectés à un niveau sont **hérités** par tous les niveaux inférieurs. Google Cloud suit une logique proche : organisation, dossiers, projets, ressources.",
+      "difficulty": 2,
+      "source": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview"
+    },
+    {
+      "question": "Azure Cosmos DB propose cinq niveaux de cohérence. Quel est le niveau **le plus faible** qui garantit encore à un client de toujours lire ses propres écritures (*read-your-writes*) ?",
+      "answer": "Session",
+      "wrong": [
+        "Préfixe cohérent",
+        "Éventuelle",
+        "Forte"
+      ],
+      "explanation": "Du plus fort au plus faible, Cosmos DB propose : **forte**, **obsolescence limitée** (*bounded staleness*), **session**, **préfixe cohérent** et **éventuelle**. Le niveau **session** garantit, au sein d'une session client (identifiée par un jeton de session), la lecture de ses propres écritures et des lectures monotones, avec des latences proches du niveau éventuel : c'est le niveau le plus utilisé. Le **préfixe cohérent** garantit seulement qu'on ne voit jamais les écritures dans le désordre, et l'**éventuelle** ne garantit même pas l'ordre. La cohérence **forte** garantit bien la lecture de ses écritures, mais c'est le niveau le plus strict.",
+      "difficulty": 3,
+      "source": "https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels"
+    },
+    {
+      "question": "Un compte de stockage Azure est configuré en **LRS** (*Locally Redundant Storage*). Où sont conservées les copies de vos données ?",
+      "answer": "Dans un seul datacenter de la région primaire",
+      "wrong": [
+        "Dans plusieurs zones de disponibilité de la région",
+        "Dans la région primaire et une région secondaire",
+        "Dans toutes les régions d'une même zone géographique"
+      ],
+      "explanation": "Le **LRS** réplique les données au sein d'**un seul datacenter** de la région choisie : il protège contre la panne d'un disque ou d'un serveur, mais pas contre un sinistre touchant tout le bâtiment. Le **ZRS** copie les données de façon synchrone dans au moins trois zones de disponibilité de la région, et le **GRS** ajoute une copie asynchrone dans une région secondaire (le **GZRS** combine les deux). Plus la redondance est large, plus le stockage coûte cher.",
+      "difficulty": 3,
+      "source": "https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy"
+    },
+    {
+      "question": "Un blob Azure est au niveau d'accès **Archive**. Que faut-il faire avant de pouvoir lire son contenu ?",
+      "answer": "Le réhydrater vers un niveau en ligne (Hot, Cool…)",
+      "wrong": [
+        "Rien : il se lit directement, mais plus lentement",
+        "Activer le versioning sur son conteneur",
+        "Passer la redondance du compte en GRS"
+      ],
+      "explanation": "Un blob au niveau **Archive** est **hors ligne** : il ne peut être ni lu ni modifié. Il faut d'abord le **réhydrater** vers un niveau en ligne (Hot, Cool ou Cold), en changeant son niveau ou en le copiant vers un nouveau blob ; en priorité standard, cela peut prendre jusqu'à 15 heures pour un objet de moins de 10 Go, contre souvent moins d'une heure en priorité haute, plus chère. C'est la contrepartie d'un stockage très bon marché, comparable à S3 Glacier Deep Archive.",
+      "difficulty": 3,
+      "source": "https://learn.microsoft.com/en-us/azure/storage/blobs/archive-rehydrate-overview"
+    },
+    {
+      "question": "Dans le contrôle d'accès Azure (RBAC), que ne permet **pas** le rôle intégré **Contributeur** (*Contributor*), contrairement au rôle **Propriétaire** (*Owner*) ?",
+      "answer": "Attribuer des rôles à d'autres utilisateurs",
+      "wrong": [
+        "Supprimer des ressources du groupe",
+        "Créer et démarrer des machines virtuelles",
+        "Modifier les règles des groupes de sécurité"
+      ],
+      "explanation": "Le rôle **Contributeur** donne un accès complet à la gestion des ressources (créer, modifier, supprimer), mais **pas** le droit d'attribuer des rôles RBAC, ni de gérer les affectations Azure Blueprints. Le **Propriétaire** a tous ces droits, gestion des accès comprise, et le **Lecteur** (*Reader*) ne peut que consulter. Ce découpage évite qu'un administrateur de ressources puisse s'octroyer, ou octroyer à d'autres, des droits supplémentaires.",
+      "difficulty": 3,
+      "source": "https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles"
+    },
+    {
+      "question": "Quelle est la particularité d'un réseau VPC sur Google Cloud, par rapport à un VPC sur AWS ?",
+      "answer": "Il est global, ses sous-réseaux sont régionaux",
+      "wrong": [
+        "Il est zonal, ses sous-réseaux sont régionaux",
+        "Il est régional, ses sous-réseaux sont zonaux",
+        "Il est global, ses sous-réseaux aussi"
+      ],
+      "explanation": "Sur Google Cloud, un **réseau VPC**, ses routes et ses règles de pare-feu sont des ressources **globales**, et chaque **sous-réseau** est **régional** : des VM de régions différentes communiquent par adresses privées, sans peering ni VPN. Sur AWS, tout est un cran plus bas : un VPC est **régional** et chaque sous-réseau appartient à une seule zone de disponibilité. Un réseau mondial unique simplifie les architectures multirégions.",
+      "difficulty": 3,
+      "source": "https://cloud.google.com/vpc/docs/vpc"
+    },
+    {
+      "question": "Google Cloud Spanner offre des transactions fortement cohérentes à l'échelle mondiale. Sur quoi s'appuie-t-il pour horodater les transactions avec une incertitude bornée ?",
+      "answer": "TrueTime, des horloges atomiques et GPS",
+      "wrong": [
+        "Les horloges de Lamport, sans matériel dédié",
+        "NTP, synchronisé sur des serveurs publics",
+        "Paxos, en votant l'heure entre réplicas"
+      ],
+      "explanation": "**TrueTime** est une API de Google qui renvoie l'heure sous forme d'intervalle, garanti de contenir l'heure réelle, grâce à des **horloges atomiques et des récepteurs GPS** installés dans les datacenters. Spanner attend que l'incertitude soit écoulée avant de rendre visible une validation (*commit wait*), ce qui garantit la **cohérence externe** : l'ordre des horodatages respecte l'ordre réel des transactions. Spanner utilise par ailleurs **Paxos** pour répliquer les données, mais pas pour donner l'heure.",
+      "difficulty": 3,
+      "source": "https://cloud.google.com/spanner/docs/true-time-external-consistency"
+    },
+    {
+      "question": "Sur Compute Engine, quelle contrainte s'applique aux VM **préemptives** (*preemptible*), mais pas aux VM Spot qui leur ont succédé ?",
+      "answer": "Elles s'arrêtent au bout de 24 heures au maximum",
+      "wrong": [
+        "Elles ne peuvent pas avoir de disque persistant",
+        "Elles sont limitées à 2 vCPU par instance",
+        "Elles ne peuvent pas recevoir d'adresse IP externe"
+      ],
+      "explanation": "Les VM **préemptives**, comme les **VM Spot**, utilisent de la capacité excédentaire à prix très réduit et peuvent être arrêtées à tout moment par Google, avec un préavis de 30 secondes. Mais une VM préemptive est en plus **toujours arrêtée après 24 heures** d'exécution, alors qu'une VM Spot n'a pas de durée maximale, sauf si on en fixe une. Ces instances conviennent aux traitements tolérants aux interruptions : calculs par lots, rendu, intégration continue.",
+      "difficulty": 3,
+      "source": "https://cloud.google.com/compute/docs/instances/preemptible"
+    },
+    {
+      "question": "Dans BigQuery, avec la tarification à la demande (au volume de données traitées), vous lancez `SELECT * FROM ventes LIMIT 10` sur une grande table **non clusterisée**. Qu'est-ce qui est facturé ?",
+      "answer": "La lecture de toutes les colonnes de la table entière",
+      "wrong": [
+        "La lecture des 10 lignes renvoyées uniquement",
+        "La lecture de la première colonne seulement",
+        "Rien, car les aperçus sont gratuits"
+      ],
+      "explanation": "BigQuery stocke les données **par colonne** et facture, à la demande, les octets lus dans chaque colonne référencée. Sur une table non clusterisée, `LIMIT` ne réduit pas la quantité de données lues : `SELECT *` lit toutes les colonnes de toute la table, même pour afficher 10 lignes. Pour réduire la facture, on ne sélectionne que les colonnes utiles et on filtre sur une table **partitionnée** ou **clusterisée** ; pour simplement jeter un œil aux données, l'aperçu de la table (qui n'est pas une requête) est gratuit.",
+      "difficulty": 3,
+      "source": "https://cloud.google.com/bigquery/docs/best-practices-costs"
     }
   ]
 }
