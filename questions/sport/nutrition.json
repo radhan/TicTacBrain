@@ -37,7 +37,7 @@
     {
       "question": "Quel groupe d'aliments est la principale source de **fibres alimentaires** ?",
       "answer": "Fruits, légumes, légumineuses et céréales complètes",
-      "wrong": ["Viandes et poissons", "Produits laitiers et œufs", "Huiles et matières grasses"],
+      "wrong": ["Viandes, poissons et fruits de mer", "Produits laitiers, fromages et œufs", "Huiles, beurre et matières grasses"],
       "explanation": "Les **fibres** sont des glucides que nos enzymes ne savent pas digérer ; on les trouve dans les **végétaux**, les produits animaux n'en contenant pas naturellement. Elles favorisent le transit, la satiété et nourrissent le microbiote intestinal. Les légumineuses (lentilles, pois chiches…) figurent parmi les aliments les plus riches.",
       "difficulty": 1
     },

@@ -176,7 +176,7 @@
       "question": "En octobre 2019, lors de l'INEOS 1:59 Challenge, Eliud Kipchoge court la distance du marathon en 1 h 59 min 40 s. Dans quelle ville ?",
       "answer": "Vienne",
       "wrong": ["Berlin", "Monza", "Londres"],
-      "explanation": "Kipchoge a couru le 12 octobre 2019 sur un circuit tracé dans le Prater, le grand parc de Vienne. Ce temps n'a pas été homologué comme record du monde : lièvres se relayant, ravitaillement apporté à vélo et absence de compétition ouverte. Deux ans plus tôt, sur le circuit automobile de Monza, sa tentative Breaking2 s'était arrêtée à 2 h 00 min 25 s.",
+      "explanation": "Kipchoge a couru le 12 octobre 2019 sur un circuit tracé dans le Prater, le grand parc de Vienne. Ce temps n'a pas été homologué comme record du monde : lièvres se relayant, ravitaillement apporté à vélo et absence de compétition ouverte. En mai 2017, sur le circuit automobile de Monza, sa tentative Breaking2 s'était arrêtée à 2 h 00 min 25 s.",
       "difficulty": 3,
       "source": "https://en.wikipedia.org/wiki/Ineos_1:59_Challenge"
     },

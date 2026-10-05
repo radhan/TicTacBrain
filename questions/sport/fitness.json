@@ -132,7 +132,7 @@
     },
     {
       "question": "Dans le continuum de répétitions classiquement enseigné (NSCA), quelle plage est associée au développement de la **force maximale** ?",
-      "answer": "6 répétitions ou moins (≥ 85 % du 1RM)",
+      "answer": "6 répétitions ou moins",
       "wrong": ["8 à 12 répétitions", "15 à 20 répétitions", "30 répétitions ou plus"],
       "explanation": "La NSCA associe la **force maximale** aux charges lourdes : **6 répétitions ou moins** à au moins 85 % du 1RM, l'hypertrophie à environ 6 à 12 répétitions et l'endurance musculaire à 12 répétitions ou plus. Les études récentes nuancent ce schéma : l'hypertrophie peut être obtenue sur une large plage de répétitions si les séries sont proches de l'échec, mais les charges lourdes restent les plus efficaces pour la force.",
       "difficulty": 2

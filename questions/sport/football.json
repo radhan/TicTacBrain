@@ -175,7 +175,7 @@
       "question": "En 1995, le Ballon d'Or s'ouvre aux joueurs non européens évoluant en Europe. Qui devient alors le premier lauréat non européen ?",
       "answer": "George Weah",
       "wrong": ["Ronaldo", "Rivaldo", "Ronaldinho"],
-      "explanation": "L'attaquant libérien, passé par Monaco et le PSG avant de rejoindre le Milan AC en 1995, devient aussi le premier lauréat africain du trophée. Le Brésilien Ronaldo lui succède en 1997. Après sa carrière, Weah s'est lancé en politique et a été président du Liberia de 2018 à 2024.",
+      "explanation": "L'attaquant libérien, passé par Monaco et le PSG avant de rejoindre le Milan AC en 1995, devient aussi le premier lauréat africain du trophée. Le Brésilien Ronaldo l'imite en 1997, un an après le sacre de l'Allemand Matthias Sammer. Après sa carrière, Weah s'est lancé en politique et a été président du Liberia de 2018 à 2024.",
       "difficulty": 3,
       "source": "https://en.wikipedia.org/wiki/George_Weah"
     },
@@ -191,7 +191,7 @@
       "question": "Le ballon réglementaire du football à 11 (taille 5) doit avoir une circonférence comprise entre…",
       "answer": "68 et 70 cm",
       "wrong": ["58 et 60 cm", "63 et 65 cm", "74 et 76 cm"],
-      "explanation": "La Loi 2 impose un ballon sphérique de **68 à 70 cm** de circonférence, pesant entre 410 et 450 g au début du match. Les tailles 3 et 4, plus petites et plus légères, sont réservées aux jeunes catégories.",
+      "explanation": "La Loi 2 impose un ballon sphérique de **68 à 70 cm** de circonférence, pesant entre 410 et 450 g au début du match. Les tailles 3 et 4, plus petites et plus légères, sont utilisées notamment par les jeunes catégories.",
       "difficulty": 3,
       "source": "https://www.theifab.com/laws/latest/the-ball/"
     },
