@@ -840,6 +840,248 @@
       ],
       "explanation": "Chaque tour ajoute de l'ETH en collatéral financé par de la dette : l'utilisateur détient au final **plus d'ETH que son capital initial**, soit une position à levier. Les gains sont amplifiés si l'ETH monte, mais le facteur de santé se dégrade à chaque boucle et une baisse modérée peut suffire à déclencher la liquidation.",
       "difficulty": 2
+    },
+    {
+      "question": "Que reçois-tu en déposant de l'ETH dans le protocole de *liquid staking* **Lido** ?",
+      "answer": "Du stETH, un jeton qui représente ton ETH staké et ses récompenses",
+      "wrong": [
+        "Du WETH, une version ERC-20 de l'ETH qui ne rapporte rien",
+        "Du LDO, le jeton de gouvernance, au prorata du dépôt",
+        "Rien : ton ETH reste bloqué sans reçu jusqu'au retrait"
+      ],
+      "explanation": "Le **liquid staking** résout un dilemme : staker son ETH rapporte des récompenses mais l'immobilise. Lido stake l'ETH déposé via des validateurs et remet en échange du **stETH**, un jeton liquide qui suit la valeur de l'ETH staké et accumule les récompenses. Ce stETH peut être échangé ou utilisé ailleurs en DeFi, par exemple comme collatéral. LDO, lui, est le jeton de gouvernance de Lido.",
+      "difficulty": 1
+    },
+    {
+      "question": "Ton swap sur un DEX a une **tolérance de slippage** de 0,5 %. Que se passe-t-il si le prix bouge de 2 % en ta défaveur avant l'exécution ?",
+      "answer": "La transaction échoue et l'échange n'a pas lieu",
+      "wrong": [
+        "L'échange s'exécute quand même au nouveau prix",
+        "Le DEX te rembourse la différence de 1,5 %",
+        "L'échange est reporté au bloc suivant"
+      ],
+      "explanation": "La tolérance de slippage fixe le **minimum** de jetons que tu acceptes de recevoir. Si le prix d'exécution est pire, le contrat annule la transaction (*revert*) : tu ne perds que les frais de gas. Une tolérance trop large expose aux attaques sandwich ; une tolérance trop serrée fait échouer les échanges sur des marchés agités.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qu'un portefeuille **multisig** (multisignature), souvent utilisé pour gérer la trésorerie d'un protocole ?",
+      "answer": "Un portefeuille qui exige plusieurs signatures, par exemple 3 sur 5",
+      "wrong": [
+        "Un portefeuille qui gère plusieurs cryptomonnaies à la fois",
+        "Un portefeuille partagé où chacun peut dépenser seul",
+        "Un portefeuille qui signe tout seul chaque transaction reçue"
+      ],
+      "explanation": "Un **multisig** n'exécute une transaction que si un nombre minimal de détenteurs de clés l'approuvent (*m sur n*, par exemple 3 sur 5). Une seule clé volée ne suffit donc plus à vider les fonds. Sa sécurité dépend toutefois de l'indépendance des signataires : si un attaquant parvient à réunir assez de clés, la protection tombe.",
+      "difficulty": 1
+    },
+    {
+      "question": "En DeFi, que désigne l'abréviation **RWA** ?",
+      "answer": "Des actifs du monde réel tokenisés, comme des bons du Trésor",
+      "wrong": [
+        "Des récompenses versées aux validateurs d'un réseau",
+        "Des jetons émis sans aucune réserve ni garantie",
+        "Des portefeuilles anonymes détenus par des baleines"
+      ],
+      "explanation": "**RWA** signifie *Real World Assets* : des actifs traditionnels (obligations d'État, crédits, immobilier, or…) représentés par des jetons sur une blockchain. Ils permettent par exemple d'offrir en DeFi le rendement des bons du Trésor américain, mais réintroduisent des intermédiaires : un dépositaire doit réellement détenir l'actif sous-jacent.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qu'un **contrat perpétuel** (perp), proposé par des DEX de produits dérivés comme dYdX ?",
+      "answer": "Un contrat à terme sans date d'échéance",
+      "wrong": [
+        "Un prêt sans collatéral remboursable à vie",
+        "Un jeton dont l'offre est fixée pour toujours",
+        "Un staking dont on ne peut jamais sortir"
+      ],
+      "explanation": "Un **perpétuel** permet de parier à la hausse ou à la baisse sur un actif, souvent avec levier, comme un contrat à terme… mais **sans échéance** : la position reste ouverte tant que la marge déposée suffit à couvrir les pertes. C'est le produit dérivé le plus échangé dans l'univers crypto.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que signifie qu'un protocole DeFi est « **permissionless** » ?",
+      "answer": "N'importe qui peut l'utiliser sans demander d'autorisation",
+      "wrong": [
+        "Il n'exige aucune signature pour déplacer des fonds",
+        "Ses développeurs ne peuvent plus jamais le modifier",
+        "On l'utilise sans payer de frais de transaction"
+      ],
+      "explanation": "**Permissionless** (sans permission) signifie qu'aucun intermédiaire ne filtre l'accès : quiconque possède un portefeuille peut déposer, emprunter ou échanger, sans ouvrir de compte ni respecter d'horaires d'ouverture. Cela ne veut dire ni que le code est immuable, ni que l'usage est gratuit : chaque transaction coûte des frais de gas.",
+      "difficulty": 1
+    },
+    {
+      "question": "Une ferme de rendement affiche un **APY de 1 000 %**. Que faut-il en penser, en général ?",
+      "answer": "Il vient souvent de jetons émis en masse, voués à chuter",
+      "wrong": [
+        "Il est garanti par le contrat, donc sans risque",
+        "Il provient forcément d'intérêts payés par des emprunteurs",
+        "Il sera versé intégralement en dollars en fin d'année"
+      ],
+      "explanation": "Des rendements à trois ou quatre chiffres sont presque toujours financés par l'**émission de nouveaux jetons** du protocole. Si tout le monde les revend, leur prix chute et le rendement réel s'évapore, parfois avec le capital en cas de perte impermanente ou d'arnaque. Un APY affiché n'est qu'une projection : il n'est ni garanti, ni forcément issu de revenus réels.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que désigne la **MEV** (*Maximal Extractable Value*) ?",
+      "answer": "Le profit tiré du choix et de l'ordre des transactions dans un bloc",
+      "wrong": [
+        "La récompense fixe versée à un validateur pour chaque bloc",
+        "La valeur maximale qu'un protocole peut prêter contre un collatéral",
+        "Le montant maximal de gas qu'une transaction peut consommer"
+      ],
+      "explanation": "Celui qui construit un bloc décide quelles transactions y entrent et dans quel ordre. Cette position permet d'extraire de la valeur : arbitrages entre DEX, liquidations, attaques sandwich… C'est la **MEV**, d'abord appelée *Miner Extractable Value* à l'époque de la preuve de travail. Sur Ethereum, elle est surtout captée par des *searchers* et des *builders* spécialisés, qui en reversent une partie aux validateurs.",
+      "difficulty": 2
+    },
+    {
+      "question": "En quoi consiste une **attaque sandwich** contre un swap sur un DEX ?",
+      "answer": "Acheter juste avant la victime puis revendre juste après elle",
+      "wrong": [
+        "Placer deux faux ordres pour bloquer sa transaction",
+        "Copier la transaction de la victime dans un autre bloc",
+        "Voler la clé privée de la victime entre deux blocs"
+      ],
+      "explanation": "Un robot repère dans la mempool un gros achat en attente. Il **achète avant** la victime (ce qui fait monter le prix), laisse la victime acheter plus cher, puis **revend juste après** au prix gonflé. La victime obtient un moins bon prix, dans la limite de sa tolérance de slippage, et l'écart revient à l'attaquant. Une tolérance serrée ou un envoi par un canal privé, hors mempool publique, limite ce risque.",
+      "difficulty": 2
+    },
+    {
+      "question": "Lequel de ces usages est typique d'un **flash loan** légitime ?",
+      "answer": "Profiter d'un écart de prix entre deux DEX sans capital de départ",
+      "wrong": [
+        "Financer un achat immobilier remboursé sur vingt ans",
+        "Emprunter de l'ETH pour le staker pendant un an",
+        "Obtenir un crédit sans garantie remboursable le mois suivant"
+      ],
+      "explanation": "Un flash loan doit être remboursé dans la **même transaction**. Il sert donc aux opérations atomiques : arbitrage entre deux DEX, transfert d'une dette d'un protocole à un autre, changement de collatéral ou auto-liquidation. Tout usage qui suppose de garder les fonds au-delà de la transaction est impossible.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel événement de juin 2020 est souvent considéré comme le coup d'envoi du « **DeFi Summer** » ?",
+      "answer": "La distribution du jeton COMP aux utilisateurs de Compound",
+      "wrong": [
+        "L'airdrop du jeton UNI à tous les utilisateurs d'Uniswap",
+        "Le lancement d'Uniswap v3 et de sa liquidité concentrée",
+        "Le « Jeudi noir » des liquidations de MakerDAO"
+      ],
+      "explanation": "Le 15 juin 2020, Compound a commencé à distribuer son jeton de gouvernance **COMP** aux prêteurs et emprunteurs, au prorata de leur activité. Ce *liquidity mining* a déclenché une ruée — certains empruntaient uniquement pour toucher des COMP — et d'autres protocoles ont copié le modèle. Les autres événements cités sont arrivés plus tard (airdrop UNI en septembre 2020, Uniswap v3 en 2021) ou plus tôt (Jeudi noir en mars 2020).",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi le **solde de stETH** d'un portefeuille augmente-t-il d'un jour à l'autre, sans aucune transaction de son propriétaire ?",
+      "answer": "C'est un jeton à rebasage : le solde intègre les récompenses de staking",
+      "wrong": [
+        "Lido rachète chaque jour des stETH sur le marché pour ses détenteurs",
+        "Le portefeuille réinvestit automatiquement les frais de gas économisés",
+        "Chaque transfert de stETH prélève une taxe redistribuée aux détenteurs"
+      ],
+      "explanation": "Le **stETH** de Lido est un jeton à **rebasage** (*rebasing*) : une fois par jour, le contrat ajuste les soldes de tous les détenteurs pour refléter les récompenses de staking (ou d'éventuelles pénalités). Un stETH reste ainsi proche d'un ETH, et c'est le **nombre** de jetons détenus qui croît.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que propose le **restaking**, popularisé par EigenLayer ?",
+      "answer": "Réutiliser de l'ETH déjà staké pour sécuriser d'autres services",
+      "wrong": [
+        "Staker de l'ETH une seconde fois pour doubler son vote",
+        "Retirer son ETH staké sans aucun délai d'attente",
+        "Convertir son ETH staké en bitcoin pour le staker"
+      ],
+      "explanation": "Avec le **restaking**, un staker engage son ETH déjà staké (ou un jeton de liquid staking) pour sécuriser d'autres services : bridges, oracles, couches de disponibilité des données… Il touche des récompenses supplémentaires, mais accepte des **risques de slashing** additionnels : si l'opérateur choisi enfreint les règles d'un de ces services, une partie de la mise peut être confisquée.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quoi sert un **timelock** dans la gouvernance d'un protocole DeFi ?",
+      "answer": "À imposer un délai entre l'adoption d'une décision et son exécution",
+      "wrong": [
+        "À bloquer les jetons de gouvernance des votants pendant un an",
+        "À limiter le nombre de votes possibles par jour et par adresse",
+        "À horodater précisément chaque transaction de la blockchain"
+      ],
+      "explanation": "Un **timelock** est un contrat qui retient les actions de gouvernance votées (changement de paramètre, mise à jour du code…) pendant un délai fixé, par exemple deux jours, avant qu'elles ne deviennent exécutables. Les utilisateurs qui désapprouvent ont ainsi le temps de retirer leurs fonds, et une proposition malveillante peut être repérée avant d'agir.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un bridge verrouille de l'ETH sur Ethereum et émet en échange un jeton « wrappé » sur une autre chaîne. Que devient ce jeton si un pirate vide le contrat de verrouillage ?",
+      "answer": "Il risque de ne plus rien valoir, faute de garantie",
+      "wrong": [
+        "Il garde sa valeur, car il est inscrit sur l'autre chaîne",
+        "Il est automatiquement converti en ETH natif",
+        "Il est remboursé par la Fondation Ethereum"
+      ],
+      "explanation": "Un jeton « wrappé » n'est qu'une **créance** sur les actifs verrouillés de l'autre côté du bridge. Si ce coffre est vidé, les jetons émis ne sont plus adossés à rien : leur prix s'effondre, sauf si quelqu'un renfloue les réserves. C'est ce qui rend les bridges si risqués : un seul contrat piraté peut dévaluer tous les jetons qui en dépendent.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur un contrat perpétuel, à quoi sert le **taux de financement** (*funding rate*) ?",
+      "answer": "À rapprocher le prix du perpétuel de celui du marché au comptant",
+      "wrong": [
+        "À rémunérer la plateforme d'échange pour chaque ordre passé",
+        "À rembourser les pertes des traders liquidés",
+        "À fixer le levier maximal autorisé sur une position"
+      ],
+      "explanation": "Faute d'échéance, rien ne force un perpétuel à converger vers le prix au comptant. Le **funding** y pourvoit par des paiements périodiques entre acheteurs (*longs*) et vendeurs (*shorts*). Si le perpétuel cote au-dessus du comptant, le taux est positif et les longs paient les shorts, ce qui décourage les achats et ramène le prix. Ces paiements ont lieu entre traders, pas au profit de la plateforme.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce que la **liquidité « juste-à-temps »** (JIT) sur Uniswap v3 ?",
+      "answer": "Fournir de la liquidité juste avant un gros swap, puis la retirer aussitôt",
+      "wrong": [
+        "Fournir de la liquidité seulement aux heures d'ouverture des marchés",
+        "Emprunter de la liquidité par flash loan pour la revendre plus cher",
+        "Retirer sa liquidité dès que le prix sort de sa fourchette"
+      ],
+      "explanation": "Un acteur spécialisé repère un gros swap en attente, ajoute dans le même bloc une position très concentrée autour du prix courant, capte l'essentiel des **frais** de ce swap, puis retire sa liquidité juste après. C'est une forme de MEV qui pénalise les LP passifs : ils partagent les frais de ce gros échange avec une liquidité restée là le temps d'une seule transaction.",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment **CoW Swap** peut-il exécuter certains échanges sans passer par aucune pool AMM ?",
+      "answer": "En faisant correspondre directement des ordres opposés d'utilisateurs",
+      "wrong": [
+        "En empruntant les jetons par flash loan auprès d'Aave",
+        "En créant temporairement les jetons demandés puis en les brûlant",
+        "En laissant un oracle fixer un prix imposé aux deux parties"
+      ],
+      "explanation": "CoW Swap regroupe les ordres en **enchères par lots** (*batch auctions*). Si un utilisateur vend de l'ETH contre des USDC pendant qu'un autre fait l'inverse, ils peuvent être appariés directement : c'est la **coïncidence des besoins** (*Coincidence of Wants*, d'où « CoW »). Ces échanges ne paient pas de frais de pool et échappent aux attaques sandwich ; seul le reliquat est routé vers des sources de liquidité externes.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi de nombreux protocoles DeFi préfèrent-ils le **wstETH** au stETH de Lido ?",
+      "answer": "Son solde ne change pas : c'est sa valeur unitaire qui augmente",
+      "wrong": [
+        "Il rapporte un rendement de staking deux fois plus élevé",
+        "Il peut être retiré du staking sans aucun délai",
+        "Il est adossé à des dollars plutôt qu'à de l'ETH"
+      ],
+      "explanation": "Le stETH est un jeton à rebasage : les récompenses s'ajoutent chaque jour au **nombre** de jetons de chaque détenteur, ce que beaucoup de contrats (pools AMM, coffres, bridges) gèrent mal. Le **wstETH** (*wrapped stETH*) enveloppe le stETH dans un jeton au solde fixe dont le **taux de conversion** en stETH augmente avec le temps. Le rendement est le même : seule la manière de le comptabiliser change.",
+      "difficulty": 3
+    },
+    {
+      "question": "En juin 2022, pourquoi le **stETH** s'échangeait-il nettement sous 1 ETH ?",
+      "answer": "Les retraits d'ETH staké n'étaient pas encore possibles sur Ethereum",
+      "wrong": [
+        "Lido avait perdu une partie des ETH à la suite d'un piratage",
+        "Les validateurs de Lido avaient été massivement sanctionnés",
+        "La Fondation Ethereum avait plafonné le prix du stETH"
+      ],
+      "explanation": "Jusqu'à la mise à jour **Shapella** d'avril 2023, l'ETH staké ne pouvait pas être retiré : impossible de rendre un stETH pour récupérer 1 ETH. Son prix dépendait donc uniquement du marché secondaire. En juin 2022, pendant les crises de Celsius et de Three Arrows Capital, des ventes forcées ont fait glisser le stETH vers 0,93-0,95 ETH, alors que les ETH sous-jacents étaient toujours là.",
+      "difficulty": 3
+    },
+    {
+      "question": "En avril 2022, comment le protocole **Beanstalk** a-t-il été vidé d'environ 180 millions de dollars ?",
+      "answer": "Un flash loan a donné assez de votes pour passer une proposition pirate",
+      "wrong": [
+        "Une clé privée de l'équipe a été volée par hameçonnage",
+        "Un oracle de prix a été manipulé pour emprunter trop",
+        "Une faille de réentrance a permis des retraits en boucle"
+      ],
+      "explanation": "Beanstalk permettait d'exécuter en urgence une proposition votée à une large majorité. L'attaquant a emprunté par **flash loan** assez d'actifs pour obtenir l'écrasante majorité des droits de vote, a fait adopter et exécuter une proposition qui lui transférait les fonds, puis a remboursé le prêt dans la même transaction. Des droits de vote mesurés à une date antérieure (*snapshot*) ou un délai entre vote et exécution auraient déjoué l'attaque.",
+      "difficulty": 3
+    },
+    {
+      "question": "En mars 2022, le bridge **Ronin** (jeu Axie Infinity) a perdu plus de 600 millions de dollars. Comment ?",
+      "answer": "Les attaquants ont obtenu 5 des 9 clés de validation du bridge",
+      "wrong": [
+        "Un flash loan a permis de manipuler le prix d'un oracle",
+        "Un bug de compilateur a désactivé une protection anti-réentrance",
+        "Une fausse proposition de gouvernance a été votée en urgence"
+      ],
+      "explanation": "Le bridge Ronin exigeait **5 signatures sur 9 validateurs** pour autoriser un retrait. Les attaquants, attribués par le FBI au groupe nord-coréen Lazarus, ont compromis quatre clés de Sky Mavis et en ont obtenu une cinquième grâce à une autorisation restée active pour l'Axie DAO : de quoi valider seuls le retrait d'environ 173 600 ETH et 25,5 millions d'USDC. Un multisig n'est sûr que si ses signataires sont réellement indépendants.",
+      "difficulty": 3
     }
   ]
 }

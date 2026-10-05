@@ -873,6 +873,293 @@
       "explanation": "La propriété `length` d'une fonction indique le nombre de paramètres « attendus » : elle compte les paramètres situés **avant** le premier qui a une valeur par défaut (ou avant un paramètre du reste `...args`). Ici, le décompte s'arrête à `b = 1` : seul `a` est compté. Les fonctions de curryfication qui s'appuient sur `length` pour savoir combien d'arguments attendre sont donc trompées par les paramètres par défaut.",
       "difficulty": 3,
       "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/length"
+    },
+    {
+      "question": "Dans une classe, que signifie le préfixe `#` devant un champ, comme `#solde` ?",
+      "answer": "Le champ est privé à la classe",
+      "wrong": [
+        "Le champ est statique",
+        "Le champ est en lecture seule",
+        "Le champ est calculé à la volée"
+      ],
+      "explanation": "Depuis ES2022, un nom commençant par `#` déclare un champ (ou une méthode) **réellement privé** : il n'est accessible que depuis le code de la classe, et écrire `compte.#solde` à l'extérieur est une erreur de syntaxe, détectée avant même l'exécution. C'est plus strict que l'ancienne convention du préfixe `_`, qui n'était qu'une indication pour les développeurs. Un champ statique, lui, se déclare avec le mot-clé `static`.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_properties"
+    },
+    {
+      "question": "Comment appeler correctement la méthode `double` de cette classe ?\n```js\nclass Outils {\n  static double(n) { return n * 2; }\n}\n```",
+      "answer": "`Outils.double(4)`",
+      "wrong": [
+        "`new Outils().double(4)`",
+        "`Outils.prototype.double(4)`",
+        "`double(4)`"
+      ],
+      "explanation": "Une méthode `static` appartient à la **classe elle-même**, pas à ses instances : on l'appelle sur la classe, comme `Math.max()` ou `Array.isArray()`. Elle n'est pas définie sur `Outils.prototype`, donc une instance n'y a pas accès : `new Outils().double` vaut `undefined`, et l'appeler lève une `TypeError`. On s'en sert pour des fonctions utilitaires ou des méthodes de fabrique, comme `Date.now()` ou `Promise.resolve()`.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static"
+    },
+    {
+      "question": "Lors de l'appel `new Personne(\"Ada\")`, que désigne `this` dans le constructeur ?",
+      "answer": "Le nouvel objet en cours de création",
+      "wrong": [
+        "La fonction `Personne` elle-même",
+        "L'objet global (`globalThis`)",
+        "L'objet `Personne.prototype`"
+      ],
+      "explanation": "`new` crée un objet vide dont le prototype est `Personne.prototype`, exécute le constructeur avec `this` lié à cet objet, puis renvoie cet objet (sauf si le constructeur renvoie explicitement un autre objet). C'est ce qui permet d'écrire `this.nom = nom` pour initialiser l'instance. Les méthodes, elles, ne sont pas copiées dans chaque objet : elles sont partagées via le prototype.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new"
+    },
+    {
+      "question": "À quoi servait surtout le motif `(function () { ... })();` (IIFE) avant l'arrivée des modules ?",
+      "answer": "À isoler ses variables dans une portée privée",
+      "wrong": [
+        "À exécuter le code de façon asynchrone",
+        "À rendre la fonction plus rapide",
+        "À exporter la fonction vers d'autres fichiers"
+      ],
+      "explanation": "Une IIFE (Immediately Invoked Function Expression) est une fonction exécutée dès sa définition. Comme `var` a une portée de fonction, c'était le moyen standard d'isoler des variables pour ne pas polluer l'espace global, partagé par tous les scripts de la page. Elle pouvait aussi renvoyer un objet n'exposant que certaines fonctions (le « module pattern »). Aujourd'hui, les modules ES et les blocs avec `let`/`const` remplissent ce rôle.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Glossary/IIFE"
+    },
+    {
+      "question": "Quelle différence de **portée** y a-t-il entre `let` et `var` ?",
+      "answer": "`let` est limité au bloc, `var` à la fonction",
+      "wrong": [
+        "`var` est limité au bloc, `let` à la fonction",
+        "`let` est toujours global, `var` local",
+        "Aucune : seule la réaffectation diffère"
+      ],
+      "explanation": "Une variable `var` est visible dans **toute la fonction** qui la contient (ou globalement), même si elle est déclarée dans un `if` ou une boucle. `let` et `const` sont limitées au **bloc** `{ ... }` où elles sont déclarées. Ainsi, après `if (true) { var x = 1; let y = 2; }`, lire `x` donne 1 alors que lire `y` lève une `ReferenceError`. `let` et `var` permettent toutes deux la réaffectation ; c'est `const` qui l'interdit.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let"
+    },
+    {
+      "question": "Quels sont les trois états possibles d'une promesse ?",
+      "answer": "`pending`, `fulfilled` et `rejected`",
+      "wrong": [
+        "`pending`, `running` et `done`",
+        "`waiting`, `success` et `error`",
+        "`idle`, `resolved` et `failed`"
+      ],
+      "explanation": "Une promesse naît **en attente** (`pending`), puis passe une seule fois, et définitivement, à l'état **tenue** (`fulfilled`, avec une valeur) ou **rejetée** (`rejected`, avec une raison). On dit alors qu'elle est « établie » (settled). Une fois établie, elle ne change plus : appeler `resolve` ou `reject` une seconde fois n'a aucun effet, et un `.then` ajouté plus tard reçoit quand même le résultat.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+    },
+    {
+      "question": "Dans une fonction `async`, comment intercepter le rejet d'une promesse attendue avec `await` ?",
+      "answer": "Avec un bloc `try`/`catch`",
+      "wrong": [
+        "Avec un bloc `if`/`else`",
+        "Avec `window.onerror`",
+        "C'est impossible avec `await`"
+      ],
+      "explanation": "`await` transforme le rejet d'une promesse en **exception** levée à cet endroit : un `try`/`catch` classique l'intercepte, exactement comme une erreur synchrone. C'est l'un des grands avantages de `async`/`await` sur les chaînes de `.then()`. Sans `try`/`catch`, l'erreur rejette la promesse renvoyée par la fonction `async` elle-même et remonte ainsi à l'appelant.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nfunction ajoute(x, liste = []) {\n  liste.push(x);\n  return liste;\n}\najoute(1);\nconsole.log(ajoute(2));\n```",
+      "answer": "`[2]`",
+      "wrong": [
+        "`[1, 2]`",
+        "`[2, 1]`",
+        "`2`"
+      ],
+      "explanation": "En JavaScript, la valeur par défaut est **réévaluée à chaque appel** où l'argument manque : chaque appel reçoit donc un nouveau tableau vide. C'est une différence notable avec Python, où l'objet par défaut est créé une seule fois, à la définition de la fonction, et partagé entre les appels (on obtiendrait `[1, 2]`). Un paramètre par défaut peut même dépendre des précédents : `function f(a, b = a * 2)`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters"
+    },
+    {
+      "question": "Quelle différence y a-t-il entre le paramètre du reste `...args` et l'objet `arguments` ?",
+      "answer": "`args` est un vrai tableau, `arguments` non",
+      "wrong": [
+        "`arguments` ne contient que le premier argument",
+        "`args` est en lecture seule, `arguments` non",
+        "`args` n'existe que dans les fonctions fléchées"
+      ],
+      "explanation": "`...args` regroupe les arguments dans un **véritable tableau** : `map`, `filter` ou `reduce` s'utilisent directement. `arguments` n'est qu'un objet « semblable à un tableau » (des indices et une `length`, mais pas ces méthodes), qu'il faut convertir avec `Array.from(arguments)`. De plus, les fonctions fléchées n'ont pas leur propre `arguments`, alors qu'elles acceptent un paramètre du reste. Introduit en ES2015, `...args` est la forme recommandée.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nconsole.log(typeof f, typeof g);\nfunction f() {}\nvar g = function () {};\n```",
+      "answer": "`function undefined`",
+      "wrong": [
+        "`function function`",
+        "`undefined undefined`",
+        "Une `ReferenceError`"
+      ],
+      "explanation": "Une **déclaration** de fonction est remontée entièrement, avec son corps : `f` est utilisable dès le début de sa portée. Avec `var g = function () {}`, seule la variable `g` est remontée et initialisée à `undefined` ; la fonction ne lui est affectée qu'à l'exécution de cette ligne. Appeler `g()` avant celle-ci lèverait donc une `TypeError` (« g is not a function »).",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Glossary/Hoisting"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nvar x = 1;\nfunction f() {\n  console.log(x);\n  var x = 2;\n}\nf();\n```",
+      "answer": "`undefined`",
+      "wrong": [
+        "`1`",
+        "`2`",
+        "Une `ReferenceError`"
+      ],
+      "explanation": "Le `var x` déclaré dans `f` est remonté en haut de **la fonction** : dès la première ligne, `x` désigne cette variable locale, qui vaut encore `undefined`, et masque le `x` global. Tout se passe comme si l'on avait écrit `var x; console.log(x); x = 2;`. Avec `let x = 2` à la place, on obtiendrait une `ReferenceError` (zone morte temporelle), et toujours pas le `1` global.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nconst choix = \"1\";\nswitch (choix) {\n  case 1:\n    console.log(\"un\");\n    break;\n  default:\n    console.log(\"autre\");\n}\n```",
+      "answer": "`autre`",
+      "wrong": [
+        "`un`",
+        "`un` puis `autre`",
+        "Rien du tout"
+      ],
+      "explanation": "`switch` compare la valeur à chaque `case` avec l'**égalité stricte** `===`, sans conversion de type : la chaîne `\"1\"` n'est pas égale au nombre `1`, donc on tombe dans `default`. C'est un piège fréquent avec les valeurs lues dans une URL ou un formulaire, qui sont toujours des chaînes. Il faut convertir avant (`switch (Number(choix))`) ou écrire `case \"1\"`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nfunction compteur() {\n  let n = 0;\n  return () => ++n;\n}\nconst c1 = compteur();\nconst c2 = compteur();\nc1();\nc1();\nconsole.log(c1(), c2());\n```",
+      "answer": "`3 1`",
+      "wrong": [
+        "`3 4`",
+        "`1 1`",
+        "`3 3`"
+      ],
+      "explanation": "Chaque appel à `compteur()` crée un **nouvel environnement** avec sa propre variable `n`, et la fonction fléchée renvoyée garde accès à celui-ci : c'est une closure. `c1` et `c2` ont donc chacun leur compteur, indépendant et inaccessible de l'extérieur : `c1` en est à 3 après trois appels, `c2` à 1 après le sien. C'est la façon classique d'obtenir un état privé sans classe.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nlet x = 1;\nconst lire = () => x;\nx = 2;\nconsole.log(lire());\n```",
+      "answer": "`2`",
+      "wrong": [
+        "`1`",
+        "`undefined`",
+        "Une `ReferenceError`"
+      ],
+      "explanation": "Une closure capture la **variable** elle-même (sa liaison), pas une copie de sa valeur au moment où la fonction est créée. Quand `lire()` s'exécute, elle lit la valeur actuelle de `x`, soit `2`. C'est aussi pour cela que des callbacks créés dans une boucle `for` avec `var` affichent tous la valeur finale du compteur : ils partagent une seule et même variable.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\n\"use strict\";\nconst o = {\n  v: 42,\n  m() {\n    function interne() { return this; }\n    return interne();\n  },\n};\nconsole.log(o.m());\n```",
+      "answer": "`undefined`",
+      "wrong": [
+        "L'objet `o`",
+        "`42`",
+        "L'objet global"
+      ],
+      "explanation": "Chaque fonction classique a son propre `this`, fixé par la façon dont **elle** est appelée. `interne()` est un appel simple, sans objet devant le point : en mode strict, son `this` vaut `undefined`, même si elle est définie à l'intérieur d'une méthode de `o` (hors mode strict, ce serait l'objet global). Pour hériter du `this` de `m`, on utilise une fonction fléchée : `const interne = () => this;` renverrait `o`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this"
+    },
+    {
+      "question": "Que fait `f.apply(obj, [1, 2])` ?",
+      "answer": "Il appelle `f` avec `this = obj` et les arguments 1 et 2",
+      "wrong": [
+        "Il renvoie une copie de `f` liée à `obj`",
+        "Il appelle `f` avec un seul argument : le tableau",
+        "Il ajoute `f` comme méthode permanente de `obj`"
+      ],
+      "explanation": "`call` et `apply` appellent tous deux la fonction **immédiatement** en fixant son `this` ; ils ne diffèrent que par le passage des arguments : un par un pour `call` (`f.call(obj, 1, 2)`), sous forme de tableau pour `apply`. Moyen mnémotechnique : **A**pply comme **A**rray. C'est `bind` qui n'appelle rien et renvoie une nouvelle fonction dont le `this` est fixé.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply"
+    },
+    {
+      "question": "Que se passe-t-il à l'exécution de ce code ?\n```js\nconst p = new Point();\nclass Point {}\n```",
+      "answer": "Une `ReferenceError` est levée",
+      "wrong": [
+        "`p` est créé normalement",
+        "Une `TypeError` est levée",
+        "`p` vaut `undefined`"
+      ],
+      "explanation": "Contrairement aux déclarations de fonctions, les déclarations de **classes** ne sont pas utilisables avant leur ligne : comme `let` et `const`, elles sont remontées mais restent dans la zone morte temporelle (TDZ) jusqu'à leur évaluation. Y accéder avant lève une `ReferenceError` (« Cannot access 'Point' before initialization »). Il faut donc déclarer une classe avant de l'instancier.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/class"
+    },
+    {
+      "question": "Dans un script classique (pas un module), qu'affiche ce code ?\n```js\nfunction f() { return 1; }\nconsole.log(f());\nfunction f() { return 2; }\n```",
+      "answer": "`2`",
+      "wrong": [
+        "`1`",
+        "Une `SyntaxError`",
+        "`undefined`"
+      ],
+      "explanation": "Les déclarations de fonctions sont toutes traitées **avant** l'exécution du code, dans l'ordre du fichier : la seconde déclaration de `f` remplace la première avant même que la ligne `console.log` ne s'exécute. On obtient donc `2`, alors que l'appel est situé entre les deux. Dans un module ES, en revanche, ce doublon est refusé (`SyntaxError`), comme le serait une redéclaration avec `let`, `const` ou `class`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Glossary/Hoisting"
+    },
+    {
+      "question": "Hors mode strict, qu'affiche ce code ?\n```js\n(function () {\n  var a = b = 5;\n})();\nconsole.log(typeof a, typeof b);\n```",
+      "answer": "`undefined number`",
+      "wrong": [
+        "`number number`",
+        "`undefined undefined`",
+        "`number undefined`"
+      ],
+      "explanation": "L'affectation est associative à droite : `var a = b = 5` signifie `b = 5`, puis `var a = b`. Seul `a` est déclaré avec `var`, donc local à la fonction ; `b`, jamais déclaré, devient une **variable globale implicite**. Après l'IIFE, `a` n'existe pas (`typeof` renvoie `\"undefined\"` sans erreur) alors que `b` vaut 5. En mode strict, l'affectation à `b` lèverait une `ReferenceError`.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nfunction F() {\n  this.a = 1;\n  return { b: 2 };\n}\nconsole.log(new F().a);\n```",
+      "answer": "`undefined`",
+      "wrong": [
+        "`1`",
+        "`2`",
+        "Une `TypeError`"
+      ],
+      "explanation": "Normalement, `new` renvoie l'objet créé et initialisé via `this`. Mais si le constructeur renvoie explicitement un **objet**, c'est cet objet qui devient le résultat de `new`, et l'instance préparée est abandonnée : `new F()` vaut `{ b: 2 }`, qui n'a pas de propriété `a`. Si le constructeur renvoie une primitive (`return 42`), elle est ignorée et l'on récupère bien l'instance.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nclass Compteur {\n  n = 0;\n  inc = () => { this.n++; };\n}\nconst c = new Compteur();\nconst f = c.inc;\nf();\nf();\nconsole.log(c.n);\n```",
+      "answer": "`2`",
+      "wrong": [
+        "`0`",
+        "Une `TypeError`",
+        "`NaN`"
+      ],
+      "explanation": "Les champs de classe sont initialisés pour chaque instance, au moment de sa construction : la fonction fléchée `inc` capture donc le `this` de ce moment-là, c'est-à-dire l'instance `c`, et le garde pour toujours. On peut l'extraire ou la passer en callback sans perdre le lien. Avec une méthode classique `inc() { this.n++; }`, l'appel `f()` aurait un `this` à `undefined` (le corps d'une classe est en mode strict) et lèverait une `TypeError`. Revers de la médaille : chaque instance possède sa propre copie de la fonction.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields"
+    },
+    {
+      "question": "Qu'affiche ce code ?\n```js\nfunction nom() { return this.nom; }\nconst g = nom.bind({ nom: \"A\" }).bind({ nom: \"B\" });\nconsole.log(g());\n```",
+      "answer": "`A`",
+      "wrong": [
+        "`B`",
+        "`undefined`",
+        "Une `TypeError`"
+      ],
+      "explanation": "`bind` renvoie une fonction liée dont le `this` est **définitivement** fixé. Le second `bind` crée bien une nouvelle fonction, mais celle-ci appelle la première, qui ignore le `this` qu'on lui transmet : c'est donc le premier `bind` qui l'emporte. De même, `call` et `apply` ne peuvent pas changer le `this` d'une fonction liée. Seul `new` passe outre : appelée avec `new`, une fonction liée construit un nouvel objet.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind"
+    },
+    {
+      "question": "Que se passe-t-il quand on exécute ce code ?\n```js\nclass Animal {\n  constructor(nom) { this.nom = nom; }\n}\nclass Chien extends Animal {\n  constructor(nom) {\n    this.race = \"labrador\";\n    super(nom);\n  }\n}\nnew Chien(\"Rex\");\n```",
+      "answer": "Une `ReferenceError` est levée",
+      "wrong": [
+        "L'objet est créé normalement",
+        "Une `SyntaxError` à la lecture du fichier",
+        "Une `TypeError` est levée"
+      ],
+      "explanation": "Dans le constructeur d'une classe dérivée, c'est le constructeur **parent**, appelé par `super()`, qui crée l'objet. Avant cet appel, `this` n'est pas initialisé, et y accéder lève une `ReferenceError` à l'exécution. Il faut donc appeler `super(nom)` en premier, puis seulement initialiser `this.race`. Si une classe dérivée ne définit pas de constructeur, un constructeur implicite appelle `super(...args)` à notre place.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super"
+    },
+    {
+      "question": "Que vaut `Object.create(null) instanceof Object` ?",
+      "answer": "`false`",
+      "wrong": [
+        "`true`",
+        "Une `TypeError`",
+        "`null`"
+      ],
+      "explanation": "`Object.create(proto)` crée un objet dont le prototype est `proto`. Avec `null`, l'objet n'a **aucun prototype** : il n'hérite pas de `Object.prototype`, donc ni de `toString` ni de `hasOwnProperty`. Or `instanceof` parcourt la chaîne des prototypes à la recherche de `Object.prototype` : il ne le trouve pas et renvoie `false`. Ces objets « nus » servent de dictionnaires sans risque de collision avec des clés comme `\"toString\"`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create"
     }
   ]
 }

@@ -893,6 +893,253 @@
       ],
       "explanation": "Le **CPI** (*cost per install*) est le coût moyen pour obtenir une installation de l'application, mode de facturation et indicateur clé des campagnes d'acquisition mobile. Mais un CPI bas ne suffit pas : beaucoup d'utilisateurs installent puis n'ouvrent jamais l'app. Il faut le rapprocher de la rétention et des revenus des utilisateurs acquis. Le coût par impression correspond, lui, à la logique du CPM.",
       "difficulty": 1
+    },
+    {
+      "question": "Que signifie un résultat de test A/B **statistiquement significatif au seuil de 95 %** ?",
+      "answer": "Sans réel écart entre A et B, un écart aussi grand serait rare (moins de 5 % des cas)",
+      "wrong": [
+        "La variante B sera meilleure que A pour 95 % des futurs visiteurs du site",
+        "La variante gagnante améliore la conversion d'au moins 95 % par rapport à A",
+        "95 % des visiteurs du test ont préféré la variante gagnante à la version A"
+      ],
+      "explanation": "Le seuil de 95 % signifie que, si les deux versions convertissaient en réalité de la même façon, on n'observerait un écart au moins aussi grand que par **simple hasard** dans moins de 5 % des cas (p-value < 0,05). Cela ne dit rien de l'ampleur du gain, ni de la part des visiteurs qui préfèrent B. Il reste un risque de faux positif, d'autant plus grand qu'on multiplie les tests et les variantes.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi est-il risqué de consulter un test A/B chaque jour et de l'**arrêter dès qu'il devient significatif** (*peeking*) ?",
+      "answer": "Cela gonfle fortement le risque de déclarer un faux gagnant",
+      "wrong": [
+        "Cela fausse la répartition aléatoire des visiteurs entre A et B",
+        "Cela empêche de calculer le taux de conversion final du test",
+        "Cela oblige l'outil à relancer le test sur un nouvel échantillon"
+      ],
+      "explanation": "Le seuil de 5 % n'est valable que si l'on fait **un seul** test statistique à la fin, sur une taille d'échantillon fixée à l'avance. En regardant tous les jours, on multiplie les occasions qu'une fluctuation aléatoire franchisse temporairement le seuil : le taux réel de faux positifs peut alors dépasser largement 5 %. La parade : fixer durée et taille d'échantillon avant de lancer, ou utiliser des méthodes séquentielles conçues pour les analyses intermédiaires.",
+      "difficulty": 3
+    },
+    {
+      "question": "À quoi sert un **test A/A** ?",
+      "answer": "Vérifier que l'outil de test et la répartition du trafic sont fiables",
+      "wrong": [
+        "Comparer la même page sur deux sites concurrents différents",
+        "Valider une variante gagnante en la testant une seconde fois",
+        "Tester deux versions d'une page auprès de la même personne"
+      ],
+      "explanation": "Dans un **test A/A**, les deux groupes voient exactement la même version. On s'attend donc à ne trouver aucune différence significative, sauf dans environ 5 % des cas par pur hasard au seuil de 95 %. Si des écarts significatifs apparaissent régulièrement, c'est que le suivi des conversions ou la répartition aléatoire du trafic est défaillant, et les futurs tests A/B ne seraient pas fiables.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qu'un **test multivarié** (MVT) ?",
+      "answer": "Un test qui évalue en même temps les combinaisons de plusieurs éléments",
+      "wrong": [
+        "Un test A/B qui compare la même page sur plusieurs sites",
+        "Un test A/B répété successivement sur plusieurs mois",
+        "Un sondage qui interroge les visiteurs sur plusieurs critères"
+      ],
+      "explanation": "Un **test multivarié** fait varier plusieurs éléments à la fois et teste leurs combinaisons : 2 titres × 2 images × 2 boutons donnent 8 versions. Il mesure l'effet de chaque élément et leurs interactions, mais exige beaucoup plus de trafic qu'un test A/B, puisque chaque combinaison doit recevoir assez de visiteurs pour conclure.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans un test A/B, comment évolue environ la **taille d'échantillon nécessaire** si l'on veut détecter un effet **deux fois plus petit** (effet minimal détectable divisé par 2) ?",
+      "answer": "Elle est multipliée par environ 4",
+      "wrong": [
+        "Elle est multipliée par environ 2",
+        "Elle est divisée par environ 2",
+        "Elle reste à peu près la même"
+      ],
+      "explanation": "La taille d'échantillon requise varie à peu près comme l'**inverse du carré** de l'effet minimal détectable (MDE). Diviser l'effet cherché par 2 impose donc environ **4 fois** plus de visiteurs par variante. C'est pourquoi les petits sites ne peuvent tester que des changements à fort impact : détecter une hausse de quelques pour cent demande un trafic considérable.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans un test A/B censé répartir le trafic à **50/50**, l'outil compte **10 000** visiteurs dans A et **9 000** dans B. Que faut-il en conclure ?",
+      "answer": "Il y a un déséquilibre d'échantillon (SRM) : les résultats sont suspects",
+      "wrong": [
+        "Un effet de nouveauté avantage la variante B pendant le test",
+        "Rien d'anormal : un tel écart est fréquent avec ce volume",
+        "La variante A est plus attractive et capte plus de visiteurs"
+      ],
+      "explanation": "Avec 19 000 visiteurs, on attend environ 9 500 par groupe, à une centaine près ; un écart de 500 est quasi impossible par hasard (un test du khi-deux le confirme). Ce **sample ratio mismatch** (SRM) révèle un bug : redirection qui perd des visiteurs, suivi défaillant sur une variante, robots… Il invalide les résultats, quelle que soit la variante gagnante. La répartition se fait avant l'affichage : une variante ne peut pas « attirer » plus de visiteurs.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Sample_ratio_mismatch"
+    },
+    {
+      "question": "Dans un test A/B, qu'appelle-t-on l'**effet de nouveauté** ?",
+      "answer": "Une hausse temporaire due à la curiosité des habitués face au changement",
+      "wrong": [
+        "La meilleure conversion des nouveaux visiteurs par rapport aux anciens",
+        "La baisse de trafic qui suit chaque lancement d'un nouveau test",
+        "Le délai nécessaire à Google pour indexer la nouvelle page testée"
+      ],
+      "explanation": "Les utilisateurs habitués cliquent parfois sur un élément simplement parce qu'il est **nouveau** : la variante semble gagner, puis l'effet s'estompe au bout de quelques jours ou semaines. Pour s'en prémunir, on laisse tourner le test suffisamment longtemps et on compare nouveaux et anciens visiteurs. Le phénomène inverse existe aussi : l'aversion au changement, qui pénalise d'abord une variante.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi conseille-t-on de faire durer un test A/B sur **au moins une ou deux semaines complètes** ?",
+      "answer": "Pour couvrir les variations de comportement selon le jour de la semaine",
+      "wrong": [
+        "Pour laisser à Google le temps d'indexer les deux variantes testées",
+        "Pour attendre l'expiration des cookies déposés chez les visiteurs",
+        "Pour que les concurrents ne remarquent pas le test en cours"
+      ],
+      "explanation": "Les visiteurs du lundi matin ne se comportent pas comme ceux du samedi soir : profils, appareils et intentions d'achat changent selon les jours. Un test arrêté après trois jours, même s'il a atteint sa taille d'échantillon, peut donc refléter un biais de calendrier. Couvrir des **semaines entières** (voire un cycle d'achat complet) rend le résultat représentatif.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que montre une **heatmap** (carte de chaleur) d'une page web ?",
+      "answer": "Les zones de la page où les visiteurs cliquent ou s'attardent le plus",
+      "wrong": [
+        "Les pages du site qui se chargent le plus lentement",
+        "Les pays d'où vient la majorité des visiteurs du site",
+        "Les heures de la journée où le site reçoit le plus de visites"
+      ],
+      "explanation": "Une **heatmap** superpose à la page des couleurs chaudes là où les interactions sont nombreuses et froides là où elles sont rares. Il en existe pour les clics, les mouvements de souris ou la profondeur de défilement (*scroll map*). Elle révèle par exemple un bouton ignoré ou une image cliquée à tort parce qu'elle ressemble à un lien, ce qui nourrit des hypothèses de tests A/B.",
+      "difficulty": 1
+    },
+    {
+      "question": "En growth marketing, que désigne l'acronyme **CRO** ?",
+      "answer": "L'optimisation du taux de conversion",
+      "wrong": [
+        "Le coût de revient d'une opération",
+        "Le contrôle des robots d'indexation",
+        "Le classement des requêtes organiques"
+      ],
+      "explanation": "Le **CRO** (*Conversion Rate Optimization*) consiste à augmenter la part des visiteurs qui réalisent l'action souhaitée : on analyse (analytics, heatmaps, tests utilisateurs), on formule des hypothèses, on les teste (A/B) et on garde ce qui fonctionne. Plutôt que d'acheter plus de trafic, on tire davantage du trafic existant. À ne pas confondre avec le CRM, la gestion de la relation client.",
+      "difficulty": 1
+    },
+    {
+      "question": "Sur un formulaire d'inscription, quel effet a généralement la **suppression des champs non indispensables** ?",
+      "answer": "Elle augmente le taux de complétion en réduisant la friction",
+      "wrong": [
+        "Elle fait baisser le taux de complétion, faute d'engagement",
+        "Elle n'a aucun effet, seul le design du bouton compte",
+        "Elle dégrade le référencement naturel de la page"
+      ],
+      "explanation": "Chaque champ supplémentaire est un effort et une occasion d'abandonner : c'est la **friction**. Ne demander que l'essentiel (souvent l'e-mail seul) augmente en général le nombre de formulaires remplis ; les informations complémentaires peuvent être collectées plus tard (*progressive profiling*). La contrepartie possible : des leads un peu moins qualifiés, à arbitrer selon l'objectif.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qu'une **pop-up d'intention de sortie** (*exit intent*) ?",
+      "answer": "Une fenêtre qui s'affiche quand le visiteur semble sur le point de partir",
+      "wrong": [
+        "Une fenêtre qui s'ouvre dès l'arrivée du visiteur sur le site",
+        "Une page affichée après la déconnexion du compte client",
+        "Un message de confirmation envoyé après une désinscription"
+      ],
+      "explanation": "Sur ordinateur, le site détecte par exemple le mouvement rapide de la souris vers les onglets ou le bouton de fermeture, et affiche une **offre de dernière chance** : code promo, livraison offerte, lead magnet. Elle permet de récupérer une partie des visiteurs perdus sans gêner ceux qui naviguent. Mal dosée, elle agace et nuit à l'image de la marque.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans **Google Analytics 4**, à quelle condition une session est-elle considérée comme **engagée** ?",
+      "answer": "Plus de 10 secondes, ou un événement clé, ou au moins 2 pages vues",
+      "wrong": [
+        "Dès que le visiteur a fait défiler la page jusqu'en bas",
+        "Uniquement si le visiteur a effectué un achat sur le site",
+        "Si le visiteur est revenu au moins deux fois dans la semaine"
+      ],
+      "explanation": "Une **session avec engagement** remplit au moins un critère : durer plus de **10 secondes**, comporter un **événement clé** (une conversion) ou générer au moins **2 vues** de page ou d'écran. Dans GA4, le taux de rebond est l'inverse du taux d'engagement : un visiteur qui lit une seule page pendant une minute n'est donc plus compté comme un rebond, contrairement à l'ancien Universal Analytics.",
+      "difficulty": 3,
+      "source": "https://support.google.com/analytics/answer/12195621?hl=fr"
+    },
+    {
+      "question": "Dans Google Analytics, au bout de combien de temps d'**inactivité** une session expire-t-elle **par défaut** ?",
+      "answer": "30 minutes",
+      "wrong": [
+        "5 minutes",
+        "2 heures",
+        "24 heures"
+      ],
+      "explanation": "Par défaut, une session prend fin après **30 minutes** d'inactivité de l'utilisateur ; le délai est réglable. Si un visiteur laisse un onglet ouvert, part déjeuner et revient une heure plus tard, son retour ouvre donc une nouvelle session. C'est l'une des raisons pour lesquelles on compte plus de sessions que d'utilisateurs.",
+      "difficulty": 3,
+      "source": "https://support.google.com/analytics/answer/9191807?hl=fr"
+    },
+    {
+      "question": "Que mesure le **taux de sortie** (*exit rate*) d'une page ?",
+      "answer": "La part des vues de cette page qui ont été les dernières de la session",
+      "wrong": [
+        "La part des sessions qui n'ont consulté que cette seule page",
+        "La part des visiteurs partis avant la fin du chargement de la page",
+        "La part des clics de cette page menant vers un site externe"
+      ],
+      "explanation": "Le **taux de sortie** indique combien de fois une page a été la dernière vue d'une visite, quel que soit le chemin parcouru avant. Le **taux de rebond**, lui, ne concerne que les sessions d'une seule page. Une page « Merci pour votre commande » a logiquement un taux de sortie élevé ; une étape du tunnel de commande avec un fort taux de sortie signale en revanche un point de fuite à corriger.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans un outil d'analytics, que regroupe souvent le **trafic direct** ?",
+      "answer": "Les visites tapées à la main ou dont la source n'a pas été identifiée",
+      "wrong": [
+        "Uniquement les visites issues des favoris du navigateur",
+        "Les visites provenant des annonces payantes de la marque",
+        "Les visites venues d'un clic dans les résultats de Google"
+      ],
+      "explanation": "Le **trafic direct** inclut les URL saisies et les favoris, mais sert aussi de fourre-tout : liens partagés dans des messageries privées (le *dark social*), e-mails ou PDF sans paramètres UTM, applications qui ne transmettent pas de référent… Une hausse inexpliquée du direct cache donc souvent des campagnes mal étiquetées, d'où l'intérêt de systématiser les UTM.",
+      "difficulty": 2
+    },
+    {
+      "question": "En e-mailing, qu'est-ce qu'un **hard bounce** ?",
+      "answer": "Un échec de livraison définitif, par exemple une adresse inexistante",
+      "wrong": [
+        "Un échec de livraison temporaire, par exemple une boîte pleine",
+        "Un e-mail ouvert puis supprimé immédiatement par le destinataire",
+        "Un e-mail livré mais classé dans le dossier des courriers indésirables"
+      ],
+      "explanation": "Un **hard bounce** est un rejet **permanent** : adresse ou domaine inexistant, destinataire bloqué. L'adresse doit être retirée immédiatement de la liste, car continuer à y écrire dégrade la réputation de l'expéditeur auprès des messageries. Le **soft bounce** est un échec **temporaire** (boîte pleine, serveur indisponible) : on peut réessayer, puis retirer l'adresse si l'échec se répète.",
+      "difficulty": 2
+    },
+    {
+      "question": "Lors de l'inscription à une newsletter, qu'est-ce que le **double opt-in** ?",
+      "answer": "Confirmer son inscription via un lien reçu par e-mail",
+      "wrong": [
+        "Cocher deux cases distinctes sur le formulaire",
+        "S'inscrire à la fois à la newsletter et aux SMS",
+        "Accepter aussi les offres des partenaires de la marque"
+      ],
+      "explanation": "Avec le **double opt-in**, l'inscription n'est validée qu'après un clic sur le lien de confirmation envoyé à l'adresse saisie. On élimine ainsi fautes de frappe, fausses adresses et inscriptions de robots, on dispose d'une preuve du consentement et on améliore la délivrabilité. Le prix à payer : une partie des inscrits ne confirme jamais.",
+      "difficulty": 1
+    },
+    {
+      "question": "Depuis l'arrivée de **Mail Privacy Protection** d'Apple (iOS 15, en 2021), pourquoi le **taux d'ouverture** des e-mails est-il devenu moins fiable ?",
+      "answer": "Le contenu des e-mails, pixel de suivi compris, est préchargé automatiquement",
+      "wrong": [
+        "Les e-mails marketing sont désormais bloqués avant d'arriver en boîte",
+        "Les ouvertures ne sont plus comptées que sur les ordinateurs Mac",
+        "Les images sont retirées de tous les e-mails promotionnels reçus"
+      ],
+      "explanation": "Une ouverture est détectée grâce à une petite image invisible (pixel) chargée à l'affichage de l'e-mail. Avec **Mail Privacy Protection**, l'app Mail d'Apple télécharge ce contenu en arrière-plan via des serveurs relais, même si l'utilisateur n'ouvre jamais le message, et masque son adresse IP. Les ouvertures sont donc gonflées : on juge plutôt une campagne sur ses clics et ses conversions.",
+      "difficulty": 3
+    },
+    {
+      "question": "Une campagne e-mail est délivrée à **10 000** adresses et obtient **2 000** ouvertures et **300** clics. Quel est son **taux de clic par ouverture** (CTOR) ?",
+      "answer": "15 %",
+      "wrong": [
+        "3 %",
+        "20 %",
+        "30 %"
+      ],
+      "explanation": "Le **CTOR** rapporte les clics aux ouvertures : 300 / 2 000 = **15 %**. Il mesure l'efficacité du contenu auprès de ceux qui ont ouvert. À ne pas confondre avec le taux de clic (300 / 10 000 = 3 %), calculé sur les e-mails délivrés, ni avec le taux d'ouverture (2 000 / 10 000 = 20 %).",
+      "difficulty": 2
+    },
+    {
+      "question": "Depuis **février 2024**, Gmail impose de nouvelles règles aux **expéditeurs d'e-mails en masse** (plus de 5 000 messages par jour vers ses comptes). Laquelle en fait partie ?",
+      "answer": "Permettre le désabonnement en un seul clic",
+      "wrong": [
+        "Garantir un taux d'ouverture d'au moins 20 %",
+        "Limiter les envois à une campagne par semaine",
+        "Ne jamais insérer d'images dans les e-mails"
+      ],
+      "explanation": "Gmail (et Yahoo, au même moment) exige des gros expéditeurs une authentification complète du domaine (**SPF**, **DKIM** et **DMARC**), un **désabonnement en un clic** dans les messages marketing et un taux de plaintes pour spam maintenu sous **0,3 %**. Ces règles visent à réduire le spam et l'usurpation d'identité. Rien n'impose en revanche un taux d'ouverture minimal ou une fréquence d'envoi.",
+      "difficulty": 3,
+      "source": "https://support.google.com/a/answer/81126?hl=fr"
+    },
+    {
+      "question": "Selon la **CNIL**, comment un bandeau cookies doit-il permettre de **refuser** les traceurs publicitaires ?",
+      "answer": "Avec la même simplicité que pour les accepter",
+      "wrong": [
+        "Via un e-mail au délégué à la protection des données",
+        "Dans des paramètres avancés, un refus en un clic étant interdit",
+        "Seulement après avoir créé un compte sur le site"
+      ],
+      "explanation": "Le consentement n'est valable que si l'internaute fait un choix réel : il doit pouvoir **accepter ou refuser avec le même degré de simplicité**, par exemple avec un bouton « Tout refuser » au même niveau que « Tout accepter ». En janvier 2022, la CNIL a ainsi sanctionné Google (150 millions d'euros) et Facebook (60 millions d'euros), car refuser les cookies demandait plusieurs clics quand un seul suffisait pour accepter.",
+      "difficulty": 2,
+      "source": "https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/cookies/que-dit-la-loi"
     }
   ]
 }

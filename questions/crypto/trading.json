@@ -864,6 +864,281 @@
       ],
       "explanation": "Les escrocs achètent des **annonces sponsorisées** qui pointent vers des copies parfaites de sites de portefeuilles ou de plateformes, avec un nom de domaine à une lettre près. Ces faux sites volent les identifiants ou proposent de fausses extensions qui dérobent la phrase de récupération. Réflexe : enregistrer l'adresse officielle en favori et l'utiliser systématiquement, et ne jamais saisir sa phrase de récupération sur un site web.",
       "difficulty": 1
+    },
+    {
+      "question": "Que désigne la **tokenomics** d'un projet crypto ?",
+      "answer": "L'économie de son token : offre, répartition, émission et utilité",
+      "wrong": [
+        "Le classement du token sur les grands sites d'agrégation de cours",
+        "L'équipe de développeurs chargée de maintenir le token",
+        "La liste des plateformes où le token peut être acheté"
+      ],
+      "explanation": "La **tokenomics** (contraction de token et economics) décrit combien de tokens existent et existeront, qui les détient (équipe, investisseurs, communauté), à quel rythme ils sont émis ou débloqués, et à quoi ils servent. C'est l'un des premiers éléments à analyser : une belle technologie ne sauve pas un token dont l'équipe détient la majorité ou dont l'offre gonfle sans cesse.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle est la différence entre la **circulating supply** et la **max supply** d'un token ?",
+      "answer": "La première compte les tokens qui circulent, la seconde le nombre maximal qui existera jamais",
+      "wrong": [
+        "La première compte les tokens achetés en 24 h, la seconde ceux achetés depuis la création",
+        "La première compte les tokens sur les CEX, la seconde ceux déposés sur les DEX",
+        "La première compte les tokens en staking, la seconde ceux qui ont été brûlés"
+      ],
+      "explanation": "La **circulating supply** est la quantité de tokens réellement disponibles sur le marché ; c'est elle qui sert à calculer la market cap. La **max supply** est le plafond absolu fixé par le protocole (21 millions pour le bitcoin) ; certains tokens n'en ont aucun, comme l'ether. Entre les deux, la **total supply** compte les tokens déjà créés, y compris ceux qui sont encore bloqués.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qui rend un token **inflationniste** ?",
+      "answer": "De nouveaux tokens sont émis en continu, ce qui augmente l'offre en circulation",
+      "wrong": [
+        "Son prix augmente plus vite que le taux d'inflation de l'euro",
+        "Ses frais de transaction augmentent à chaque nouveau bloc miné",
+        "Son prix est indexé sur l'indice des prix à la consommation"
+      ],
+      "explanation": "Un token **inflationniste** voit son offre croître avec le temps, par exemple via les récompenses de minage, de staking ou de farming. Si la demande ne suit pas, cette dilution pèse sur le prix : un rendement de 100 % par an payé en tokens nouvellement créés peut être entièrement effacé par la baisse du cours. À l'inverse, un token **déflationniste** voit son offre diminuer, généralement grâce à des burns.",
+      "difficulty": 2
+    },
+    {
+      "question": "Le tableau de répartition d'un nouveau token indique : 60 % pour l'équipe, sans aucun calendrier de vesting. Pourquoi est-ce un signal d'alerte ?",
+      "answer": "L'équipe peut vendre une part énorme de l'offre à tout moment et faire s'effondrer le cours",
+      "wrong": [
+        "L'équipe est légalement obligée de racheter les tokens des autres détenteurs",
+        "La communauté ne pourra jamais acheter le token sur une plateforme décentralisée",
+        "Le token ne pourra jamais être coté sur une plateforme d'échange centralisée"
+      ],
+      "explanation": "Une allocation aussi concentrée, **sans vesting**, signifie que l'équipe détient la majorité des tokens et peut les vendre dès le lancement, sur le dos des acheteurs. Les projets sérieux réservent une part plus modeste à l'équipe et la débloquent progressivement sur plusieurs années. Combine toujours l'analyse de la répartition avec celle du calendrier de déblocage.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur un explorateur de blocs, tu constates que les 5 premières adresses détiennent 85 % d'un token (hors pool de liquidité et contrats de lock). Quel est le risque principal ?",
+      "answer": "Quelques détenteurs peuvent faire chuter le cours en vendant, voire organiser un dump",
+      "wrong": [
+        "Le token sera automatiquement retiré des plateformes d'échange",
+        "Les nouveaux acheteurs paieront des frais de gas plus élevés",
+        "Le réseau refusera les transactions des plus petits portefeuilles"
+      ],
+      "explanation": "Une forte **concentration des détenteurs** donne à une poignée d'adresses le pouvoir de faire s'effondrer le prix : il suffit que l'une d'elles vende pour écraser la liquidité disponible. Ces adresses appartiennent souvent à l'équipe ou à des initiés, parfois réparties sur plusieurs portefeuilles pour masquer la concentration. Il faut toutefois exclure de l'analyse les adresses légitimes comme le pool de liquidité, les contrats de lock ou l'adresse de burn.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un projet annonce le **déblocage** (unlock) de 15 % de son offre totale la semaine prochaine, au profit de ses investisseurs privés. Quel effet est couramment redouté ?",
+      "answer": "Une pression vendeuse, car ces investisseurs peuvent enfin vendre leurs tokens",
+      "wrong": [
+        "Une hausse garantie, car l'offre disponible devient plus rare",
+        "Un gel des échanges sur toutes les plateformes pendant l'opération",
+        "Une conversion automatique des tokens débloqués en stablecoins"
+      ],
+      "explanation": "Un **unlock** libère des tokens jusque-là bloqués par le vesting. Les investisseurs privés les ont souvent obtenus à un prix bien inférieur au cours actuel : beaucoup sont tentés d'encaisser, ce qui ajoute de l'offre sur le marché. Le calendrier des déblocages est public pour la plupart des projets et mérite d'être consulté avant d'acheter. L'effet n'est pas automatique, mais il est souvent anticipé par le marché.",
+      "difficulty": 2
+    },
+    {
+      "question": "L'équipe d'un projet reçoit 1 200 000 tokens avec ce vesting : aucun token pendant 12 mois (cliff), puis un déblocage linéaire mensuel sur les 24 mois suivants. Combien de tokens sont débloqués 18 mois après le lancement ?",
+      "answer": "300 000 tokens",
+      "wrong": [
+        "600 000 tokens",
+        "900 000 tokens",
+        "Aucun token"
+      ],
+      "explanation": "Pendant le **cliff** de 12 mois, rien n'est débloqué. Ensuite, 1 200 000 / 24 = 50 000 tokens se libèrent chaque mois. À 18 mois, six mois de déblocage se sont écoulés : 6 × 50 000 = **300 000 tokens**. Le piège à 900 000 consiste à oublier le cliff et à compter 18 mensualités. La fin d'un cliff est souvent un moment de pression vendeuse à surveiller.",
+      "difficulty": 3
+    },
+    {
+      "question": "Le contrat d'un token applique une « taxe » de 1 % à l'achat et de 99 % à la vente. Qu'est-ce que cela signifie en pratique ?",
+      "answer": "Revendre est quasi impossible : c'est un piège de type honeypot",
+      "wrong": [
+        "C'est un mécanisme anti-spéculation qui protège les petits porteurs",
+        "Les 99 % sont reversés au vendeur plus tard, il ne perd donc rien",
+        "C'est un réglage standard imposé par la plupart des DEX"
+      ],
+      "explanation": "Beaucoup de tokens prélèvent une **taxe** sur chaque achat ou vente, envoyée à l'équipe ou à un « fonds marketing ». Une taxe de vente de 99 % revient à confisquer presque tout ce que tu vends : l'achat fonctionne, mais tu ne récupères quasiment rien en sortant, comme avec un honeypot. Pire, certains contrats permettent au propriétaire de modifier ces taxes après le lancement : un token « 0 % de taxe » peut passer à 99 % du jour au lendemain.",
+      "difficulty": 2
+    },
+    {
+      "question": "L'équipe d'un token annonce avoir **renoncé à la propriété** (renounced ownership) de son contrat. Que garantit réellement cette opération ?",
+      "answer": "Que les fonctions réservées au rôle de propriétaire ne peuvent plus être appelées",
+      "wrong": [
+        "Que la liquidité du token est verrouillée de façon définitive",
+        "Que l'équipe ne détient plus aucun token du projet en portefeuille",
+        "Que le contrat a été audité par un organisme de sécurité indépendant"
+      ],
+      "explanation": "Renoncer à la propriété transfère le rôle d'**owner** à l'adresse nulle : les fonctions protégées par ce rôle (modifier les taxes, mettre en pause, minter…) deviennent inutilisables. C'est rassurant, mais pas une garantie absolue : l'équipe peut garder des tokens à vendre, retirer une liquidité non verrouillée, ou avoir prévu d'autres rôles privilégiés, voire un contrat modifiable via un proxy. Il faut donc vérifier le code, pas seulement l'annonce.",
+      "difficulty": 3
+    },
+    {
+      "question": "En lisant le contrat d'un token, tu découvres une fonction `mint` que le propriétaire peut appeler sans aucune limite. Quel danger représente-t-elle ?",
+      "answer": "Il peut créer autant de tokens qu'il veut et les vendre, diluant tous les détenteurs",
+      "wrong": [
+        "Il peut annuler les transactions passées et récupérer les tokens vendus",
+        "Il peut fixer lui-même le prix affiché du token sur toutes les plateformes",
+        "Il peut lire la phrase de récupération des portefeuilles des détenteurs"
+      ],
+      "explanation": "Une fonction **mint** crée de nouveaux tokens. Si le propriétaire peut l'appeler librement, il peut s'en attribuer des milliards et les vendre dans le pool de liquidité : le prix s'effondre et les détenteurs sont dilués. C'est l'une des techniques de rug pull les plus courantes. Un contrat sain plafonne l'émission ou la soumet à des règles transparentes, et les outils d'analyse de contrats signalent ce type de fonction.",
+      "difficulty": 3
+    },
+    {
+      "question": "Parmi ces fonctions présentes dans le contrat d'un nouveau memecoin et contrôlées par son créateur, laquelle peut transformer le token en piège dont on ne peut plus sortir ?",
+      "answer": "Une fonction de liste noire qui empêche certaines adresses de vendre",
+      "wrong": [
+        "Une fonction qui permet à chacun de consulter son propre solde",
+        "Une fonction qui émet un événement public à chaque transfert",
+        "Une fonction qui indique le nombre total de tokens déjà émis"
+      ],
+      "explanation": "Une fonction de **blacklist** contrôlée par le créateur lui permet de bloquer n'importe quel portefeuille, par exemple tous les acheteurs, pendant que lui seul peut vendre : c'est un honeypot déguisé. Les fonctions de pause des échanges ou de modification des taxes posent le même problème. Certains stablecoins régulés possèdent une liste noire pour des raisons légales, mais dans un memecoin c'est un drapeau rouge. Consulter son solde (`balanceOf`), connaître l'offre totale (`totalSupply`) ou émettre un événement `Transfer` sont en revanche des éléments standards de tout token ERC-20.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur un explorateur de blocs comme Etherscan, que signifie la mention **contrat vérifié** (verified) ?",
+      "answer": "Le code source publié correspond bien au code déployé, et chacun peut le lire",
+      "wrong": [
+        "Le contrat a été audité et déclaré sans danger par l'explorateur",
+        "L'équipe du projet a fourni ses pièces d'identité à l'explorateur",
+        "Le token est garanti contre le piratage par une assurance"
+      ],
+      "explanation": "« Vérifié » signifie seulement que le développeur a publié le **code source** et que l'explorateur a confirmé qu'il produit exactement le bytecode déployé sur la blockchain. Chacun peut alors lire le contrat et y repérer des fonctions dangereuses. Ce n'est en aucun cas un label de sécurité : un contrat vérifié peut parfaitement contenir un honeypot. À l'inverse, un contrat non vérifié est opaque et doit inciter à la plus grande prudence.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la différence entre **verrouiller** (lock) et **brûler** (burn) les jetons LP d'un pool de liquidité ?",
+      "answer": "Le lock bloque la liquidité jusqu'à une date, le burn la rend irrécupérable pour toujours",
+      "wrong": [
+        "Le lock détruit la liquidité, le burn la place en staking pour un rendement",
+        "Le lock concerne les plateformes centralisées, le burn les DEX uniquement",
+        "Le lock double la liquidité du pool, le burn la divise par deux"
+      ],
+      "explanation": "Les **jetons LP** représentent la propriété de la liquidité d'un pool. Les verrouiller dans un contrat de lock empêche de les retirer avant une échéance, après laquelle l'équipe pourra les récupérer. Les envoyer à une adresse de burn les rend irrécupérables : la liquidité correspondante reste dans le pool pour toujours. Le burn est donc plus rassurant qu'un lock court, mais ne protège pas contre d'autres risques, comme une fonction `mint` ou une équipe qui vend ses propres tokens.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle est la différence entre un **hard rug** et un **soft rug** ?",
+      "answer": "Le hard rug vide brutalement la liquidité ; dans le soft rug, l'équipe vend et abandonne peu à peu",
+      "wrong": [
+        "Le hard rug touche les NFT ; le soft rug touche uniquement les stablecoins",
+        "Le hard rug dure plusieurs années ; le soft rug tient en une seule transaction",
+        "Le hard rug vise les plateformes centralisées ; le soft rug les portefeuilles"
+      ],
+      "explanation": "Dans un **hard rug**, les créateurs retirent d'un coup la liquidité ou exploitent une porte dérobée du contrat : le cours tombe à zéro en quelques minutes. Dans un **soft rug**, l'équipe délaisse progressivement le projet tout en vendant ses tokens sur des semaines ou des mois, en invoquant des retards ou des difficultés. Plus discret, le soft rug est aussi plus difficile à prouver, mais le résultat pour les détenteurs est le même.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans le jargon crypto, que signifie « servir d'**exit liquidity** » à quelqu'un ?",
+      "answer": "Être l'acheteur qui permet à des initiés de vendre leurs tokens à bon prix",
+      "wrong": [
+        "Être le dernier à retirer ses fonds d'un pool de liquidité",
+        "Fournir de la liquidité à une plateforme qui ferme ses portes",
+        "Recevoir des tokens gratuits juste avant la fin d'un projet"
+      ],
+      "explanation": "Un gros détenteur ne peut vendre que s'il trouve des acheteurs en face. Quand des initiés (équipe, investisseurs précoces, influenceurs) font la promotion d'un token qu'ils ont obtenu pour presque rien, les nouveaux acheteurs attirés par le battage leur servent d'**exit liquidity** : ils absorbent les ventes et supportent la baisse qui suit. Se demander « qui me vend ce token, et pourquoi ? » est un bon réflexe.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un projet affiche fièrement un badge « **audité** » sur son site. Qu'est-ce que cela garantit ?",
+      "answer": "Rien d'absolu : il réduit le risque de failles, sans prouver l'honnêteté de l'équipe",
+      "wrong": [
+        "Que les fonds des investisseurs sont assurés en cas de piratage du contrat",
+        "Que le token ne pourra jamais descendre sous son prix d'émission",
+        "Que l'État a autorisé la vente du token au grand public en Europe"
+      ],
+      "explanation": "Un **audit** est une revue du code par une société spécialisée, qui signale des failles à un instant donné. Il ne couvre pas toujours tout le code, ne garantit pas que les problèmes relevés ont été corrigés, et ne dit rien des intentions de l'équipe : un contrat audité peut contenir des fonctions de mint ou de taxe parfaitement assumées. Certains escrocs affichent même de faux badges : vérifie que le rapport existe sur le site de l'auditeur et lis ses conclusions.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans l'univers crypto, que signifie qu'une équipe est **doxxée** ?",
+      "answer": "Ses membres ont révélé publiquement leur véritable identité",
+      "wrong": [
+        "Ses membres ont été victimes du piratage de leurs portefeuilles",
+        "Ses membres travaillent sous pseudonyme pour se protéger",
+        "Ses membres ont tous déjà été condamnés pour fraude"
+      ],
+      "explanation": "Une équipe **doxxée** (de *doxxing*, révéler l'identité de quelqu'un) a rendu publique l'identité réelle de ses membres, parfois vérifiée par un tiers. Cela n'empêche pas une arnaque, mais rend la fuite plus risquée pour les fondateurs, qui peuvent être poursuivis. À l'inverse, une équipe anonyme n'est pas forcément malhonnête (le créateur de Bitcoin est lui-même pseudonyme), mais c'est un risque supplémentaire à prendre en compte.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que signifie le sigle **ICO**, très en vogue lors de la bulle crypto de 2017 ?",
+      "answer": "Initial Coin Offering : une levée de fonds par la vente d'un nouveau token",
+      "wrong": [
+        "Internal Crypto Office : l'autorité qui contrôle les plateformes",
+        "International Coin Organization : l'organisme qui régule les tokens",
+        "Instant Conversion Order : un ordre d'échange immédiat"
+      ],
+      "explanation": "Une **ICO** (Initial Coin Offering, par analogie avec l'IPO d'une entreprise en Bourse) permet à un projet de lever des fonds en vendant directement son token au public, souvent contre de l'ether. En 2017-2018, des milliers de projets ont ainsi levé des milliards de dollars, avec très peu de contrôle ; une grande partie a échoué ou s'est révélée frauduleuse. Il n'existe pas d'organisme mondial unique qui régule les tokens.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle est la différence entre une **IEO** et une **IDO** ?",
+      "answer": "L'IEO se fait via une plateforme centralisée, l'IDO via une plateforme décentralisée",
+      "wrong": [
+        "L'IEO est réservée aux États, l'IDO aux entreprises privées",
+        "L'IEO vend des NFT, l'IDO vend uniquement des stablecoins",
+        "L'IEO a lieu avant la création du token, l'IDO après sa cotation"
+      ],
+      "explanation": "Après la vague des ICO, de nouveaux formats sont apparus. Dans une **IEO** (Initial Exchange Offering), la vente est organisée par une plateforme d'échange centralisée, qui sélectionne le projet et engage en partie sa réputation. Dans une **IDO** (Initial DEX Offering), le token est lancé sur une plateforme décentralisée ou un « launchpad », souvent avec une liquidité immédiate. Aucun de ces formats ne garantit la qualité du projet.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'appelle-t-on un **fair launch** pour un token ?",
+      "answer": "Un lancement sans prévente ni part réservée : tous accèdent au token à égalité",
+      "wrong": [
+        "Un lancement dont le prix est fixé par une autorité de régulation",
+        "Un lancement où l'équipe garantit le remboursement en cas de baisse",
+        "Un lancement réservé aux acheteurs ayant passé une vérification KYC"
+      ],
+      "explanation": "Un **fair launch** vise l'égalité d'accès : pas de prévente à prix réduit pour des initiés, pas de gros paquet de tokens réservé à l'équipe ou aux investisseurs. Le bitcoin, lancé sans prévente et dont chaque unité est créée par un minage ouvert à tous, est souvent cité en exemple. Le terme est toutefois devenu un argument marketing : certains « fair launches » sont accaparés dès les premières secondes par des bots ou par des portefeuilles liés aux créateurs.",
+      "difficulty": 3
+    },
+    {
+      "question": "Lors du lancement d'un token sur une DEX, que font les **sniper bots** ?",
+      "answer": "Ils achètent automatiquement dans les tout premiers blocs pour revendre aux suivants",
+      "wrong": [
+        "Ils détectent les honeypots et bloquent les transactions des escrocs",
+        "Ils protègent le pool contre les attaques en limitant les achats",
+        "Ils publient automatiquement le code source du contrat du token"
+      ],
+      "explanation": "Les **sniper bots** surveillent la création des pools et achètent dès que la liquidité est ajoutée, parfois dans le même bloc, à un prix qu'aucun humain ne peut obtenir. Ils revendent ensuite aux acheteurs arrivés plus tard. Certains créateurs utilisent eux-mêmes des snipers depuis des portefeuilles secondaires pour accaparer l'offre discrètement, ce qui fausse l'apparente répartition des détenteurs.",
+      "difficulty": 3
+    },
+    {
+      "question": "Les tokens dits « à **réflexion** », popularisés en 2021, prélèvent une taxe sur chaque transaction. Que devient une partie de cette taxe ?",
+      "answer": "Elle est redistribuée automatiquement aux détenteurs, au prorata de leurs avoirs",
+      "wrong": [
+        "Elle est reversée à une association caritative choisie par vote",
+        "Elle est convertie en bitcoin et placée dans une réserve de garantie",
+        "Elle est versée aux validateurs du réseau sous forme de frais de gas"
+      ],
+      "explanation": "Dans un token à **réflexion**, chaque achat ou vente est taxé (par exemple 10 %), et une partie est répartie entre tous les détenteurs : leur solde augmente sans rien faire, ce qui encourage à garder. Ce mécanisme ne crée aucune valeur : il prélève les acheteurs et les vendeurs pour payer les détenteurs, et ne fonctionne que tant que de nouveaux acheteurs arrivent. Beaucoup de ces tokens ont perdu l'essentiel de leur valeur une fois l'engouement retombé.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un memecoin vaut 0,0001 $ et compte 1 000 milliards de tokens en circulation. Sa communauté rêve qu'il atteigne 1 $. Quelle market cap cela impliquerait-il ?",
+      "answer": "1 000 milliards de dollars",
+      "wrong": [
+        "1 milliard de dollars",
+        "10 milliards de dollars",
+        "100 millions de dollars"
+      ],
+      "explanation": "Market cap = prix × tokens en circulation = 1 $ × 1 000 milliards = **1 000 milliards de dollars**, soit 10 000 fois sa valeur actuelle (100 millions de dollars), un niveau que seule une poignée d'actifs au monde a jamais atteint. C'est le **biais de l'unité** : un prix unitaire minuscule donne l'impression qu'un token est « pas cher » et peut facilement grimper, alors que seule la capitalisation compte. Raisonne toujours en market cap, jamais en prix unitaire.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un token affiche une market cap de 20 M$, mais son unique pool de liquidité ne contient que l'équivalent de 50 000 $. Que peux-tu en déduire ?",
+      "answer": "La market cap est illusoire : une vente modeste ferait chuter fortement le prix",
+      "wrong": [
+        "Le projet dispose de 20 M$ de trésorerie pour soutenir le cours",
+        "Les détenteurs pourront revendre 20 M$ de tokens au prix actuel",
+        "La liquidité est verrouillée à hauteur de 20 M$ dans le contrat"
+      ],
+      "explanation": "La market cap multiplie le dernier prix par toute l'offre en circulation, mais ce prix n'est fixé que par de petits échanges. Avec seulement 50 000 $ dans le pool, une vente de quelques dizaines de milliers de dollars en absorberait une grande partie et ferait plonger le cours. La market cap n'est ni de l'argent investi ni une valeur réalisable : c'est la **profondeur de liquidité** qui dit combien on peut réellement vendre.",
+      "difficulty": 3
+    },
+    {
+      "question": "À quoi sert un **explorateur de blocs** comme Etherscan ?",
+      "answer": "À consulter publiquement les transactions, adresses et contrats d'une blockchain",
+      "wrong": [
+        "À miner des blocs depuis son navigateur sans matériel spécialisé",
+        "À restaurer un portefeuille dont on a perdu la phrase de récupération",
+        "À annuler une transaction envoyée par erreur à la mauvaise adresse"
+      ],
+      "explanation": "Un **explorateur de blocs** est un moteur de recherche de la blockchain : il affiche n'importe quelle transaction, le solde d'une adresse, la liste des détenteurs d'un token ou le code d'un contrat. C'est l'outil de base pour vérifier un envoi, l'adresse d'un contrat ou la répartition d'un token. Il ne donne aucun pouvoir sur les fonds : il ne peut ni annuler un envoi, ni restaurer un portefeuille.",
+      "difficulty": 1
     }
   ]
 }

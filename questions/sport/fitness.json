@@ -567,6 +567,276 @@
       "explanation": "Les **fuseaux neuromusculaires**, disposés parallèlement aux fibres, sont sensibles à l'allongement du muscle et à sa vitesse : un étirement brusque provoque une contraction réflexe du même muscle, c'est le **réflexe myotatique**, testé par le coup de marteau sous la rotule. L'**organe tendineux de Golgi**, situé à la jonction muscle-tendon, mesure plutôt la **tension** et tend à freiner la contraction. Le corpuscule de Pacini perçoit les vibrations et les pressions.",
       "difficulty": 3,
       "source": "https://en.wikipedia.org/wiki/Muscle_spindle"
+    },
+    {
+      "question": "Quelle molécule est la « **monnaie énergétique** » directement utilisée par les muscles pour se contracter ?",
+      "answer": "L'ATP (adénosine triphosphate)",
+      "wrong": [
+        "Le glucose (sucre sanguin)",
+        "La phosphocréatine (PCr)",
+        "Le lactate (acide lactique)"
+      ],
+      "explanation": "Seule l'**ATP** fournit directement l'énergie aux têtes de myosine : en perdant un groupement phosphate (ATP → ADP), elle libère l'énergie nécessaire au glissement des filaments. Le glucose, les lipides et la phosphocréatine ne servent qu'à **reconstituer** l'ATP, chacun par une filière différente. Comme le muscle en stocke très peu, il doit la régénérer en permanence.",
+      "difficulty": 1
+    },
+    {
+      "question": "Les réserves d'**ATP** déjà présentes dans le muscle permettent de soutenir un effort maximal pendant environ…",
+      "answer": "2 à 3 secondes",
+      "wrong": [
+        "20 à 30 secondes",
+        "2 à 3 minutes",
+        "20 à 30 minutes"
+      ],
+      "explanation": "Le muscle ne stocke que très peu d'**ATP**, de quoi tenir **2 à 3 secondes** d'effort maximal. Au-delà, l'ATP doit être régénérée en continu : d'abord par la phosphocréatine (quelques secondes de plus), puis par la glycolyse et par la filière aérobie. C'est pour cela qu'aucun sprint ne repose sur le seul stock d'ATP.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle enzyme régénère très rapidement l'ATP en transférant le phosphate de la **phosphocréatine** vers l'ADP ?",
+      "answer": "La créatine kinase",
+      "wrong": [
+        "La lactate déshydrogénase",
+        "La lipase hormono-sensible",
+        "L'ATP synthase"
+      ],
+      "explanation": "La **créatine kinase** catalyse la réaction phosphocréatine + ADP → créatine + ATP, si rapide qu'elle soutient les efforts explosifs des premières secondes. Son taux sanguin (CK ou CPK) sert d'ailleurs de marqueur des lésions musculaires après un effort intense. La lactate déshydrogénase intervient en fin de glycolyse (pyruvate ↔ lactate) et l'ATP synthase fabrique l'ATP dans les mitochondries, à partir d'ADP et de phosphate libre.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi conseille-t-on souvent **3 à 5 minutes** de repos entre des séries très lourdes de force ?",
+      "answer": "Pour laisser la phosphocréatine se reconstituer",
+      "wrong": [
+        "Pour laisser le glycogène musculaire se reconstituer",
+        "Pour laisser la FC redescendre sous 80 bpm",
+        "Pour éviter l'apparition des courbatures"
+      ],
+      "explanation": "Les séries lourdes et courtes puisent surtout dans la **phosphocréatine**. Sa resynthèse est rapide mais pas instantanée : il faut environ 3 à 5 minutes pour la reconstituer presque entièrement, ce qui permet de soulever de nouveau la même charge. Le glycogène, lui, demande des heures pour se reconstituer, bien au-delà d'une pause entre séries.",
+      "difficulty": 2
+    },
+    {
+      "question": "Combien de molécules d'**ATP** la glycolyse anaérobie produit-elle **en net** à partir d'une molécule de glucose ?",
+      "answer": "2",
+      "wrong": [
+        "4",
+        "8",
+        "32"
+      ],
+      "explanation": "La glycolyse produit 4 ATP mais en consomme 2 au départ pour « activer » le glucose : le bilan net est de **2 ATP** par glucose (3 si l'on part du glycogène musculaire, qui économise une étape). C'est très peu comparé à l'oxydation complète du glucose dans les mitochondries, qui en fournit une trentaine. La glycolyse compense par sa **rapidité**, ce qui en fait la filière clé des efforts intenses de quelques dizaines de secondes.",
+      "difficulty": 3
+    },
+    {
+      "question": "Lors d'un effort **maximal** continu, vers quelle durée les filières aérobie et anaérobies contribuent-elles **à parts égales** à la production d'énergie ?",
+      "answer": "Entre 1 et 2 minutes",
+      "wrong": [
+        "Vers 10 secondes",
+        "Entre 5 et 10 minutes",
+        "Vers 30 minutes"
+      ],
+      "explanation": "Selon la synthèse de Gastin (2001), l'aérobie fournit déjà la moitié de l'énergie après **environ 75 secondes** d'effort maximal, bien plus tôt qu'on ne le pensait autrefois. Un 800 m de course est ainsi majoritairement aérobie. Les filières ne s'allument pas les unes après les autres : elles fonctionnent toujours ensemble, seule leur part relative change avec la durée.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle filière énergétique est la **seule** capable d'utiliser les **lipides** comme carburant ?",
+      "answer": "La filière aérobie",
+      "wrong": [
+        "La filière anaérobie lactique",
+        "La filière anaérobie alactique",
+        "Les trois, selon l'intensité"
+      ],
+      "explanation": "Les acides gras sont dégradés par la **bêta-oxydation**, puis par le cycle de Krebs et la chaîne respiratoire, dans les mitochondries : ce processus exige de l'**oxygène**. Les lipides ne peuvent donc alimenter que la filière aérobie, ce qui explique qu'ils soient surtout utilisés lors des efforts longs d'intensité faible à modérée. Les filières anaérobies n'utilisent que la phosphocréatine et les glucides.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans quelle partie de la cellule musculaire se déroule la production **aérobie** d'ATP ?",
+      "answer": "Dans les mitochondries",
+      "wrong": [
+        "Dans le noyau",
+        "Dans le réticulum sarcoplasmique",
+        "Dans les myofibrilles"
+      ],
+      "explanation": "Les **mitochondries**, surnommées les « centrales énergétiques » de la cellule, abritent le cycle de Krebs et la chaîne respiratoire, où l'oxygène permet de produire la majeure partie de l'ATP. L'entraînement d'endurance augmente leur nombre et leur taille dans les muscles. La glycolyse, elle, se déroule hors des mitochondries, dans le sarcoplasme (le cytoplasme de la fibre).",
+      "difficulty": 1
+    },
+    {
+      "question": "Que devient l'essentiel du **lactate** produit pendant un effort intense ?",
+      "answer": "Il est réutilisé comme carburant ou reconverti en glucose",
+      "wrong": [
+        "Il reste dans le muscle et provoque les courbatures",
+        "Il est éliminé tel quel dans la sueur et l'urine",
+        "Il est transformé en graisse et stocké sous la peau"
+      ],
+      "explanation": "Le **lactate** n'est pas un déchet : il est oxydé comme carburant par le cœur et les fibres lentes, ou reconverti en glucose par le foie (**cycle de Cori**). Sa concentration sanguine revient en général à la normale en moins d'une heure, bien avant l'apparition des courbatures, qui sont dues à des microlésions musculaires et non à « l'acide lactique ». Seule une faible part est éliminée dans la sueur et l'urine.",
+      "difficulty": 2
+    },
+    {
+      "question": "Lors d'une mesure des échanges gazeux, un **quotient respiratoire** (CO2 rejeté / O2 consommé) proche de **0,7** indique que l'organisme utilise surtout…",
+      "answer": "Des lipides",
+      "wrong": [
+        "Des glucides",
+        "Des protéines",
+        "Autant de glucides que de lipides"
+      ],
+      "explanation": "L'oxydation des **lipides** rejette moins de CO2 par molécule d'O2 consommée : son quotient respiratoire est d'environ **0,7**, contre **1,0** pour les glucides et environ 0,8 pour les protéines. Un mélange égal de glucides et de lipides donne une valeur intermédiaire, autour de 0,85. Lors d'un effort d'intensité croissante, le quotient monte vers 1, signe que les glucides prennent le relais.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Respiratory_quotient"
+    },
+    {
+      "question": "Quand l'intensité d'un effort augmente, comment évolue la part des **glucides** dans la fourniture d'énergie ?",
+      "answer": "Elle augmente, au détriment des lipides",
+      "wrong": [
+        "Elle diminue, au profit des lipides",
+        "Elle reste stable, autour de 50 %",
+        "Elle diminue, au profit des protéines"
+      ],
+      "explanation": "C'est le **concept du croisement** (crossover) : au repos et à faible intensité, les lipides fournissent l'essentiel de l'énergie ; plus l'intensité monte, plus les **glucides** dominent, car ils produisent l'ATP plus vite. La « zone de combustion des graisses » à basse intensité est donc réelle en proportion, mais un effort plus intense brûle souvent plus de calories au total. Les protéines ne fournissent qu'une faible part de l'énergie à l'effort.",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment appelle-t-on la consommation d'oxygène qui reste **élevée après un effort**, le temps que l'organisme revienne à son état de repos ?",
+      "answer": "L'EPOC (dette d'oxygène)",
+      "wrong": [
+        "Le déficit en oxygène",
+        "La VO2max",
+        "Le seuil ventilatoire"
+      ],
+      "explanation": "L'**EPOC** (*excess post-exercise oxygen consumption*), autrefois appelée dette d'oxygène, correspond à l'oxygène consommé en plus après l'effort pour reconstituer la phosphocréatine, recycler le lactate, refroidir le corps et réparer les tissus. Elle est d'autant plus importante que l'effort a été intense. Le déficit en oxygène, à l'inverse, se produit au **début** de l'effort.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Excess_post-exercise_oxygen_consumption"
+    },
+    {
+      "question": "Au tout début d'un effort, la consommation d'oxygène met quelques minutes à s'ajuster à la demande. Comment appelle-t-on ce décalage, comblé par les filières anaérobies ?",
+      "answer": "Le déficit en oxygène",
+      "wrong": [
+        "La dette d'oxygène (EPOC)",
+        "La dérive cardiaque",
+        "Le second souffle"
+      ],
+      "explanation": "Le **déficit en oxygène** s'explique par l'inertie du système aérobie : le cœur, la respiration et les mitochondries ont besoin de quelques minutes pour atteindre leur régime. Pendant ce temps, la phosphocréatine et la glycolyse fournissent l'ATP manquant. Ce déficit est ensuite en partie « remboursé » après l'effort, pendant l'EPOC.",
+      "difficulty": 3
+    },
+    {
+      "question": "Le **débit cardiaque** est égal à la fréquence cardiaque multipliée par…",
+      "answer": "Le volume d'éjection systolique",
+      "wrong": [
+        "La pression artérielle",
+        "La fréquence respiratoire",
+        "Le volume de sang total"
+      ],
+      "explanation": "Le **débit cardiaque** (Q) est le volume de sang pompé par le cœur chaque minute : Q = FC × **VES**, le volume d'éjection systolique étant la quantité de sang expulsée à chaque battement. Au repos, il avoisine **5 L/min** chez l'adulte ; à l'effort maximal, il peut dépasser 20 L/min, et bien davantage chez les athlètes d'endurance. L'entraînement augmente surtout le VES, la FC maximale changeant peu.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi la fréquence cardiaque de repos d'un sportif d'endurance entraîné est-elle souvent **basse**, parfois sous 50 bpm ?",
+      "answer": "Son cœur éjecte plus de sang à chaque battement",
+      "wrong": [
+        "Son sang transporte moins d'oxygène au repos",
+        "Ses poumons sont plus grands et absorbent plus d'air",
+        "Son cœur se contracte moins fort pour s'économiser"
+      ],
+      "explanation": "L'entraînement d'endurance agrandit les cavités du cœur et renforce sa contraction : le **volume d'éjection systolique** augmente. Pour un même débit cardiaque au repos (environ 5 L/min), il suffit alors de moins de battements. S'y ajoute un tonus accru du nerf vague, qui ralentit le cœur. Cette **bradycardie du sportif** est normale, contrairement à une bradycardie inexpliquée chez un sédentaire, qui mérite un avis médical.",
+      "difficulty": 2
+    },
+    {
+      "question": "Selon le **principe de Fick**, la consommation d'oxygène (VO2) est égale au débit cardiaque multiplié par…",
+      "answer": "La différence artério-veineuse en oxygène",
+      "wrong": [
+        "La fréquence respiratoire",
+        "Le volume d'air expiré par minute",
+        "La concentration de myoglobine"
+      ],
+      "explanation": "VO2 = **débit cardiaque × différence artério-veineuse en O2** : l'oxygène consommé dépend de la quantité de sang envoyée aux tissus et de la part d'oxygène qu'ils en extraient. L'entraînement d'endurance améliore les deux termes : un cœur qui pompe davantage, et des muscles plus riches en capillaires et en mitochondries, qui extraient plus d'oxygène. À l'effort maximal, cette équation décrit donc les deux grands déterminants de la VO2max.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Fick_principle"
+    },
+    {
+      "question": "Par convention, à quelle consommation d'oxygène correspond **1 MET**, l'unité utilisée pour comparer l'intensité des activités physiques ?",
+      "answer": "3,5 mL d'O2 par kg et par minute",
+      "wrong": [
+        "1 mL d'O2 par kg et par minute",
+        "10 mL d'O2 par kg et par minute",
+        "35 mL d'O2 par kg et par minute"
+      ],
+      "explanation": "Le **MET** (équivalent métabolique) représente la dépense au repos, assis, fixée par convention à **3,5 mL d'O2/kg/min**, soit environ 1 kcal par kilo et par heure. Une activité à 8 MET demande donc huit fois la dépense de repos. Le *Compendium of Physical Activities* classe des centaines d'activités selon cette échelle : en dessous de 3 MET l'activité est dite légère, de 3 à 6 modérée, au-delà vigoureuse.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Metabolic_equivalent_of_task"
+    },
+    {
+      "question": "Dans quelle unité exprime-t-on habituellement la VO2max **relative**, rapportée au poids du corps ?",
+      "answer": "En mL/kg/min",
+      "wrong": [
+        "En L/min",
+        "En bpm",
+        "En km/h"
+      ],
+      "explanation": "La VO2max **relative** s'exprime en **millilitres d'oxygène par kilo de poids corporel et par minute** : elle permet de comparer des personnes de gabarits différents. La VO2max **absolue**, elle, s'exprime en litres par minute. Un adulte sédentaire se situe souvent entre 30 et 45 mL/kg/min, alors que les meilleurs fondeurs et cyclistes dépassent 80. Les km/h servent à exprimer la VMA, la vitesse atteinte à VO2max.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi l'échelle de perception de l'effort de **Borg** originale va-t-elle de **6 à 20** ?",
+      "answer": "Multipliée par 10, elle évoque la FC de 60 à 200 bpm",
+      "wrong": [
+        "Elle reprend les 15 paliers d'un test d'effort standard",
+        "Elle reproduit la notation scolaire suédoise sur 20",
+        "Elle correspond aux METs des activités, de 6 à 20"
+      ],
+      "explanation": "Le physiologiste suédois Gunnar **Borg** a choisi ces bornes pour que la note, multipliée par 10, approche la **fréquence cardiaque** d'un adulte jeune et en bonne santé : 6 correspond au repos (environ 60 bpm), 20 à l'effort maximal (environ 200 bpm). Cette correspondance reste approximative et varie selon l'âge et la forme. Borg a ensuite créé l'échelle CR-10, de 0 à 10, dont s'inspirent de nombreuses échelles actuelles.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Rating_of_perceived_exertion"
+    },
+    {
+      "question": "Lors d'un effort d'endurance prolongé à allure **constante**, surtout par temps chaud, la fréquence cardiaque monte peu à peu. Comment appelle-t-on ce phénomène ?",
+      "answer": "La dérive cardiaque",
+      "wrong": [
+        "La bradycardie d'effort",
+        "Le déficit en oxygène",
+        "L'arythmie sinusale"
+      ],
+      "explanation": "La **dérive cardiaque** (ou cardiovasculaire) s'explique surtout par la chaleur et la déshydratation : une partie du sang part vers la peau pour évacuer la chaleur et le volume plasmatique diminue, si bien que le volume d'éjection systolique baisse. Pour maintenir le débit cardiaque, la fréquence cardiaque doit augmenter. C'est pourquoi un entraînement piloté au cardiofréquencemètre oblige souvent à ralentir en fin de sortie longue.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Cardiovascular_drift"
+    },
+    {
+      "question": "Quelle plage de **fréquence cardiaque au repos** est classiquement considérée comme normale chez l'adulte ?",
+      "answer": "De 60 à 100 bpm",
+      "wrong": [
+        "De 30 à 50 bpm",
+        "De 100 à 140 bpm",
+        "De 140 à 180 bpm"
+      ],
+      "explanation": "La définition classique situe la fréquence cardiaque normale de repos entre **60 et 100 battements par minute** : au-dessus, on parle de tachycardie, en dessous de bradycardie. Chez les sportifs d'endurance, des valeurs inférieures à 60 bpm sont fréquentes et normales. La mesurer le matin au réveil, plusieurs jours de suite, donne une valeur de référence fiable.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel est le principal muscle de l'**inspiration** ?",
+      "answer": "Le diaphragme",
+      "wrong": [
+        "Le grand pectoral",
+        "Le grand droit de l'abdomen",
+        "Le trapèze"
+      ],
+      "explanation": "En se contractant, le **diaphragme**, un muscle en forme de dôme situé sous les poumons, s'abaisse et agrandit la cage thoracique : l'air entre. Lors d'un effort intense, des muscles accessoires (scalènes, sterno-cléido-mastoïdiens, pectoraux) l'aident à soulever les côtes. Les abdominaux, eux, interviennent surtout dans l'**expiration** forcée.",
+      "difficulty": 1
+    },
+    {
+      "question": "Parmi ces adaptations, laquelle est typique d'un entraînement d'**endurance** régulier ?",
+      "answer": "Davantage de capillaires autour des fibres musculaires",
+      "wrong": [
+        "Davantage de fibres IIx, les plus rapides",
+        "Moins de mitochondries dans les fibres lentes",
+        "Une fréquence cardiaque de repos plus élevée"
+      ],
+      "explanation": "L'endurance augmente la **densité capillaire** autour des fibres, ce qui facilite l'apport d'oxygène et l'évacuation des déchets, ainsi que le nombre et la taille des **mitochondries**. Elle tend au contraire à faire évoluer les fibres IIx vers le type IIa, plus résistant à la fatigue, et abaisse la fréquence cardiaque de repos. Ces adaptations expliquent qu'à même allure un sportif entraîné utilise moins de glycogène et produise moins de lactate.",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment appelle-t-on la tendance d'un gros volume d'**endurance** à limiter les gains de force et de puissance lorsqu'il est combiné à la musculation ?",
+      "answer": "L'effet d'interférence",
+      "wrong": [
+        "L'éducation croisée",
+        "La surcompensation",
+        "Le déficit bilatéral"
+      ],
+      "explanation": "Décrit par Robert Hickson en 1980, l'**effet d'interférence** désigne le fait qu'un entraînement **concurrent** (force + endurance) donne parfois moins de gains de force, et surtout de puissance, que la musculation seule. Il dépend fortement du volume d'endurance, de la modalité (la course semble plus pénalisante que le vélo) et du délai entre les séances. Avec une programmation raisonnable, on progresse néanmoins sur les deux plans.",
+      "difficulty": 3
     }
   ]
 }
