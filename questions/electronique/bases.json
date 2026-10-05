@@ -517,6 +517,276 @@
       "explanation": "En mesure 2 fils, la résistance des cordons et des contacts (souvent quelques dixièmes d'ohm) s'ajoute à celle du composant, ce qui fausse complètement la mesure d'un shunt de quelques milliohms. En **4 fils**, une paire de fils injecte le courant et une **autre paire**, qui ne transporte quasiment aucun courant, mesure la tension directement aux bornes du composant : la chute de tension dans les cordons n'est plus comptée.",
       "difficulty": 3,
       "source": "https://en.wikipedia.org/wiki/Four-terminal_sensing"
+    },
+    {
+      "question": "Une pile de force électromotrice 9 V et de résistance interne 2 Ω alimente une résistance de 16 Ω. Quelle tension mesure-t-on aux bornes de la pile ?",
+      "answer": "8 V",
+      "wrong": [
+        "9 V",
+        "7 V",
+        "1 V"
+      ],
+      "explanation": "Le courant vaut I = E / (r + R) = 9 / (2 + 16) = 0,5 A. La résistance interne en « consomme » r × I = 1 V, donc la tension disponible aux bornes vaut **U = E − r × I = 8 V** (c'est aussi R × I = 16 × 0,5). Les 9 V de la force électromotrice ne se mesurent qu'à vide, quand la pile ne débite rien.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Force_%C3%A9lectromotrice"
+    },
+    {
+      "question": "Une batterie de voiture affiche 12,6 V à vide et 12,0 V lorsqu'elle débite 30 A. Avec le modèle « source idéale + résistance interne », combien vaut sa résistance interne ?",
+      "answer": "20 mΩ",
+      "wrong": [
+        "2 mΩ",
+        "0,4 Ω",
+        "0,42 Ω"
+      ],
+      "explanation": "La chute de tension sous charge est due à la résistance interne : r = ΔU / I = (12,6 − 12,0) / 30 = 0,6 / 30 = **0,02 Ω, soit 20 mΩ**. Le piège 0,4 Ω (12 / 30) est la résistance de la **charge** branchée, pas celle de la batterie. Cette très faible résistance interne explique qu'une batterie de voiture puisse fournir des centaines d'ampères au démarreur.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/R%C3%A9sistance_interne"
+    },
+    {
+      "question": "Que permet d'affirmer le théorème de Thévenin pour un circuit linéaire vu entre deux de ses bornes ?",
+      "answer": "Il équivaut à une source de tension en série avec une résistance",
+      "wrong": [
+        "Il équivaut à une source de courant en série avec une résistance",
+        "Il équivaut à une source de tension en parallèle avec une résistance",
+        "Il équivaut à une résistance seule, sans aucune source"
+      ],
+      "explanation": "Vu de deux bornes, tout circuit linéaire (sources et résistances) peut être remplacé par une **source de tension E_th en série avec une résistance R_th** : E_th est la tension à vide entre les bornes et R_th la résistance vue quand on éteint les sources. Le théorème de **Norton** donne l'équivalent dual : une source de courant **en parallèle** avec la même résistance. Une source de tension idéale en parallèle avec une résistance se comporterait, vue de l'extérieur, comme la source seule.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Th%C3%A9venin"
+    },
+    {
+      "question": "Un pont diviseur formé de deux résistances de 2 kΩ est alimenté par une source idéale de 12 V. Quel est son modèle de Thévenin vu de la sortie (point milieu et masse) ?",
+      "answer": "6 V en série avec 1 kΩ",
+      "wrong": [
+        "6 V en série avec 4 kΩ",
+        "12 V en série avec 1 kΩ",
+        "6 V en série avec 2 kΩ"
+      ],
+      "explanation": "**E_th** est la tension de sortie à vide : 12 × 2 / (2 + 2) = 6 V. **R_th** est la résistance vue de la sortie quand on éteint la source (on la remplace par un fil) : les deux résistances se retrouvent alors **en parallèle**, soit 2 kΩ // 2 kΩ = 1 kΩ. Ce modèle permet de prévoir immédiatement la chute de tension quand on branche une charge sur le pont.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Th%C3%A9venin"
+    },
+    {
+      "question": "Pour calculer la résistance de Thévenin d'un circuit ne contenant que des sources indépendantes et des résistances, on éteint les sources. Comment ?",
+      "answer": "Sources de tension en court-circuit, de courant en circuit ouvert",
+      "wrong": [
+        "Sources de tension en circuit ouvert, de courant en court-circuit",
+        "Toutes les sources remplacées par des fils",
+        "Toutes les sources remplacées par des coupures"
+      ],
+      "explanation": "Éteindre une source, c'est annuler la grandeur qu'elle impose. Une source de tension éteinte impose 0 V : elle devient un **fil** (court-circuit). Une source de courant éteinte impose 0 A : elle devient une **coupure** (circuit ouvert). L'inversion de ces deux règles est l'erreur classique. Autre méthode équivalente : R_th = tension à vide / courant de court-circuit.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Th%C3%A9venin"
+    },
+    {
+      "question": "Quel est l'équivalent de Norton d'un générateur de Thévenin de 10 V en série avec 50 Ω ?",
+      "answer": "200 mA en parallèle avec 50 Ω",
+      "wrong": [
+        "200 mA en série avec 50 Ω",
+        "5 A en parallèle avec 50 Ω",
+        "500 mA en parallèle avec 20 Ω"
+      ],
+      "explanation": "Le courant de Norton est le **courant de court-circuit** : I_N = E_th / R_th = 10 / 50 = 0,2 A = **200 mA**. La résistance est la même (50 Ω), mais placée **en parallèle** avec la source de courant. Vérification : à vide, les 200 mA traversent les 50 Ω et donnent bien 10 V entre les bornes.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Norton"
+    },
+    {
+      "question": "Une source de résistance interne 8 Ω alimente une résistance de charge réglable. Pour quelle valeur de la charge la puissance qu'elle reçoit est-elle maximale ?",
+      "answer": "8 Ω",
+      "wrong": [
+        "Une valeur aussi proche de 0 Ω que possible",
+        "4 Ω",
+        "16 Ω"
+      ],
+      "explanation": "La puissance reçue vaut P = E² × R / (r + R)². Elle est nulle pour R = 0 (le courant est maximal, mais la tension aux bornes de la charge est nulle) et tend vers 0 pour R très grande (plus de courant). Entre les deux, elle passe par un maximum pour **R = r = 8 Ω** : c'est le théorème du transfert maximal de puissance, à la base de l'**adaptation d'impédance**.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Maximum_power_transfer_theorem"
+    },
+    {
+      "question": "Quand une charge reçoit la puissance maximale que peut lui fournir une source (charge égale à la résistance interne), quel est le rendement du transfert ?",
+      "answer": "50 %",
+      "wrong": [
+        "100 %",
+        "25 %",
+        "70,7 %"
+      ],
+      "explanation": "Avec R = r, le même courant traverse la résistance interne et la charge, qui ont la même valeur : elles dissipent donc **la même puissance**, et la moitié de l'énergie part en chaleur dans la source. Rendement : **50 %**. C'est pourquoi le réseau électrique ne cherche pas l'adaptation : il vise un bon rendement, avec des charges de résistance bien plus grande que celle de la source.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Maximum_power_transfer_theorem"
+    },
+    {
+      "question": "Dans un circuit linéaire à plusieurs sources, laquelle de ces grandeurs ne s'obtient pas en additionnant les contributions de chaque source prise seule ?",
+      "answer": "La puissance dissipée dans une résistance",
+      "wrong": [
+        "Le courant traversant une branche donnée",
+        "La tension entre deux nœuds du circuit",
+        "Le potentiel d'un nœud par rapport à la masse"
+      ],
+      "explanation": "Le théorème de superposition repose sur la **linéarité** : courants, tensions et potentiels s'additionnent source par source. Mais la puissance (P = R × I²) n'est **pas linéaire** : (I1 + I2)² ≠ I1² + I2². Il faut d'abord sommer les courants, puis calculer la puissance avec le courant total.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_superposition"
+    },
+    {
+      "question": "Un nœud A est relié à une source idéale de 10 V par R1 = 1 kΩ et à la masse par R2 = 1 kΩ. Une source de courant idéale injecte en plus 2 mA dans le nœud A. Que vaut le potentiel de A ?",
+      "answer": "6 V",
+      "wrong": [
+        "5 V",
+        "7 V",
+        "4 V"
+      ],
+      "explanation": "Par superposition. Source de tension seule (source de courant ouverte) : pont diviseur, V_A = 10 × 1 / 2 = 5 V. Source de courant seule (source de tension remplacée par un fil) : les 2 mA voient R1 et R2 en parallèle, soit 500 Ω, d'où 1 V. Total : **6 V**. Vérification par la loi des nœuds : (10 − 6) / 1 kΩ + 2 mA = 4 mA + 2 mA = 6 mA, qui repartent bien dans R2 (6 V / 1 kΩ). Le piège 7 V oublie R1 dans le calcul de la contribution de la source de courant.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_superposition"
+    },
+    {
+      "question": "Qu'appelle-t-on un court-circuit ?",
+      "answer": "Une liaison quasi sans résistance entre deux points de potentiels différents",
+      "wrong": [
+        "Une coupure du circuit qui interrompt complètement le courant",
+        "Un circuit très court, qui chauffe moins qu'un circuit long",
+        "Une surtension brève provoquée par la foudre sur le réseau"
+      ],
+      "explanation": "Un court-circuit relie deux points normalement à des potentiels différents (les bornes d'une source, par exemple) par un chemin de **résistance quasi nulle** : le courant n'est plus limité que par la résistance interne de la source et devient très intense, d'où échauffement, étincelles, voire incendie. C'est le rôle des fusibles et disjoncteurs de l'interrompre. Une coupure du circuit, à l'inverse, s'appelle un **circuit ouvert**.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Court-circuit"
+    },
+    {
+      "question": "Un radiateur de 2 000 W fonctionne pendant 30 minutes. Quelle énergie consomme-t-il ?",
+      "answer": "1 kWh",
+      "wrong": [
+        "60 kWh",
+        "4 kWh",
+        "1 000 kWh"
+      ],
+      "explanation": "L'énergie vaut **E = P × t** = 2 kW × 0,5 h = **1 kWh**. Le piège de 60 kWh vient d'un mélange d'unités (2 000 W × 30 minutes / 1 000). À ne pas confondre : le **kW** mesure une puissance (un débit d'énergie), le **kWh** une quantité d'énergie, celle qu'on paie sur la facture.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Kilowattheure"
+    },
+    {
+      "question": "À combien de joules correspond 1 kWh ?",
+      "answer": "3,6 MJ",
+      "wrong": [
+        "3,6 kJ",
+        "1 MJ",
+        "36 MJ"
+      ],
+      "explanation": "Un watt, c'est un joule par seconde. 1 kWh = 1 000 W × 3 600 s = 3 600 000 J = **3,6 MJ**. Le joule est l'unité d'énergie du Système international, mais il est très petit à l'échelle domestique, d'où l'usage du kilowattheure pour l'électricité.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Kilowattheure"
+    },
+    {
+      "question": "Une batterie de 2 000 mAh alimente un montage qui consomme en permanence 250 mA. Combien de temps tiendra-t-elle, en théorie ?",
+      "answer": "8 h",
+      "wrong": [
+        "4 h",
+        "12 h",
+        "80 h"
+      ],
+      "explanation": "Le mAh est une unité de **charge** (courant × durée) : 2 000 mAh / 250 mA = **8 h**. En pratique, l'autonomie réelle est plus faible : la tension finit par tomber sous le minimum accepté par le montage avant que toute la charge soit extraite, et la capacité utile baisse avec le froid et les forts courants.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle énergie stocke, environ, une batterie lithium-ion de tension nominale 3,7 V et de capacité 3 000 mAh ?",
+      "answer": "11,1 Wh",
+      "wrong": [
+        "3 Wh",
+        "0,81 Wh",
+        "111 Wh"
+      ],
+      "explanation": "L'énergie vaut tension × charge : E = 3,7 V × 3 Ah = **11,1 Wh** (soit environ 40 kJ). Les mAh seuls ne permettent pas de comparer des batteries de tensions différentes : une batterie 12 V de 3 000 mAh stocke plus de trois fois plus d'énergie. C'est pourquoi l'énergie des batteries s'exprime aussi en wattheures, notamment pour les règles du transport aérien.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un moteur absorbe 500 W de puissance électrique et fournit 400 W de puissance mécanique. Quel est son rendement ?",
+      "answer": "80 %",
+      "wrong": [
+        "125 %",
+        "20 %",
+        "90 %"
+      ],
+      "explanation": "Le rendement est le rapport puissance utile / puissance absorbée : η = 400 / 500 = **0,8, soit 80 %**. Les 100 W restants sont perdus, essentiellement en chaleur (effet Joule dans les bobinages, frottements, pertes magnétiques). Un rendement ne peut jamais dépasser 100 %, ce qui élimine 125 % (le rapport à l'envers).",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Rendement_(physique)"
+    },
+    {
+      "question": "Comment appelle-t-on le dégagement de chaleur dans un conducteur parcouru par un courant électrique ?",
+      "answer": "L'effet Joule",
+      "wrong": [
+        "L'effet Peltier",
+        "L'effet Hall",
+        "L'effet Seebeck"
+      ],
+      "explanation": "L'**effet Joule**, étudié par James Prescott Joule dans les années 1840, transforme l'énergie électrique en chaleur dans tout conducteur résistif : P = R × I². Il est utile (radiateur, grille-pain, fusible) ou subi (pertes dans les câbles). L'effet **Peltier** est un transfert de chaleur à la jonction de deux matériaux, l'effet **Seebeck** la tension créée par une différence de température (thermocouples) et l'effet **Hall** une tension transversale due à un champ magnétique.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Effet_Joule"
+    },
+    {
+      "question": "Pour transporter la même puissance sur la même ligne électrique, on multiplie la tension par 10. Que deviennent les pertes par effet Joule dans les câbles ?",
+      "answer": "Elles sont divisées par 100",
+      "wrong": [
+        "Elles sont divisées par 10",
+        "Elles sont multipliées par 10",
+        "Elles restent les mêmes"
+      ],
+      "explanation": "À puissance constante, I = P / U : multiplier la tension par 10 divise le courant par 10. Or les pertes valent R × I² : elles sont donc **divisées par 10² = 100**. C'est la raison d'être des lignes à très haute tension (400 kV en France) et des transformateurs qui élèvent la tension en sortie de centrale puis l'abaissent près des consommateurs.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Effet_Joule"
+    },
+    {
+      "question": "À quoi correspond un watt ?",
+      "answer": "À un joule par seconde",
+      "wrong": [
+        "À un volt par ampère",
+        "À un coulomb par seconde",
+        "À un ampère par volt"
+      ],
+      "explanation": "Le watt mesure une **puissance**, c'est-à-dire un débit d'énergie : **1 W = 1 J/s**. En électricité, on a aussi 1 W = 1 V × 1 A. Les autres rapports désignent d'autres unités : le volt par ampère est l'**ohm**, le coulomb par seconde est l'**ampère** et l'ampère par volt est le **siemens**.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Watt"
+    },
+    {
+      "question": "Une résistance de 100 Ω est soumise en permanence à 12 V. Parmi ces puissances nominales, quelle est la plus faible qui convienne ?",
+      "answer": "2 W",
+      "wrong": [
+        "1/4 W",
+        "1/2 W",
+        "1 W"
+      ],
+      "explanation": "La puissance dissipée vaut P = U² / R = 144 / 100 = **1,44 W**. Une résistance de 1 W ou moins serait en surcharge et chaufferait jusqu'à se dégrader : il faut donc au moins **2 W**. Les résistances traversantes les plus courantes (1/4 W) conviennent aux petits courants des montages de signal, pas à ce genre de dissipation.",
+      "difficulty": 2
+    },
+    {
+      "question": "Deux résistances identiques en série, branchées sur une source de tension fixe, dissipent ensemble une puissance P. Quelle puissance totale dissipent-elles si on les rebranche en parallèle sur la même source ?",
+      "answer": "4 × P",
+      "wrong": [
+        "2 × P",
+        "P",
+        "P / 2"
+      ],
+      "explanation": "En série, la résistance équivalente vaut 2R, donc P = U² / 2R. En parallèle, elle vaut R/2, donc P' = U² / (R/2) = 2U² / R = **4 × P**. Autre façon de voir : en série, chaque résistance ne reçoit que U/2 ; en parallèle, elle reçoit U entière, et la puissance dépendant du carré de la tension, chacune dissipe 4 fois plus.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que maintient constant une source de tension idéale ?",
+      "answer": "La tension à ses bornes, quel que soit le courant",
+      "wrong": [
+        "Le courant qu'elle débite, quelle que soit la charge",
+        "La puissance qu'elle fournit, quelle que soit la charge",
+        "Sa résistance interne, égale à celle de la charge"
+      ],
+      "explanation": "Une source de tension idéale impose sa tension quel que soit le courant demandé : c'est une source de **résistance interne nulle**. Une source réelle s'en approche tant que le courant reste faible, mais sa tension baisse quand elle débite (U = E − r × I). Maintenir le courant constant quelle que soit la charge, c'est le rôle d'une **source de courant**.",
+      "difficulty": 1
+    },
+    {
+      "question": "En convention récepteur, on mesure pour un dipôle U = 5 V et I = −2 A. Que peut-on en conclure ?",
+      "answer": "Il fournit 10 W au reste du circuit",
+      "wrong": [
+        "Il reçoit 10 W du reste du circuit",
+        "Il ne reçoit ni ne fournit de puissance",
+        "Il est forcément en court-circuit"
+      ],
+      "explanation": "En convention récepteur (flèches de U et de I en sens opposés), le produit U × I est la puissance **reçue** par le dipôle. Ici U × I = 5 × (−2) = −10 W : le dipôle reçoit −10 W, c'est-à-dire qu'il en **fournit 10** au reste du circuit. Il se comporte en générateur, comme une batterie qui se décharge. Le signe négatif du courant indique seulement que le courant circule dans le sens opposé à la flèche choisie.",
+      "difficulty": 3
     }
   ]
 }

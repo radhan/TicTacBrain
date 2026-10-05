@@ -1153,6 +1153,42 @@
       "explanation": "BigQuery stocke les données **par colonne** et facture, à la demande, les octets lus dans chaque colonne référencée. Sur une table non clusterisée, `LIMIT` ne réduit pas la quantité de données lues : `SELECT *` lit toutes les colonnes de toute la table, même pour afficher 10 lignes. Pour réduire la facture, on ne sélectionne que les colonnes utiles et on filtre sur une table **partitionnée** ou **clusterisée** ; pour simplement jeter un œil aux données, l'aperçu de la table (qui n'est pas une requête) est gratuit.",
       "difficulty": 3,
       "source": "https://cloud.google.com/bigquery/docs/best-practices-costs"
+    },
+    {
+      "question": "Avec la CLI AWS, quelle commande affiche le numéro de compte et l'ARN de l'identité avec laquelle vous êtes actuellement authentifié ?",
+      "answer": "`aws sts get-caller-identity`",
+      "wrong": [
+        "`aws iam list-users`",
+        "`aws configure list-profiles`",
+        "`aws whoami`"
+      ],
+      "explanation": "`aws sts get-caller-identity` renvoie l'identifiant de l'utilisateur ou du rôle, le numéro de compte et l'**ARN** de l'identité qui signe la requête : c'est le premier réflexe quand on se demande « sous quel compte et quel rôle suis-je ? ». Particularité : cette opération ne nécessite aucune permission IAM, et même un refus explicite ne la bloque pas. Il n'existe pas de commande `aws whoami`, `aws iam list-users` liste tous les utilisateurs IAM du compte et `aws configure list-profiles` se contente de lister les profils configurés localement.",
+      "difficulty": 2,
+      "source": "https://docs.aws.amazon.com/STS/latest/APIReference/API_GetCallerIdentity.html"
+    },
+    {
+      "question": "Dans Amazon DynamoDB, sur quoi est-il **impossible** de demander une lecture fortement cohérente ?",
+      "answer": "Un index secondaire global (GSI)",
+      "wrong": [
+        "La table, via `GetItem`",
+        "Un index secondaire local (LSI)",
+        "La table, via `Query`"
+      ],
+      "explanation": "Par défaut, les lectures DynamoDB sont **à cohérence éventuelle** ; sur une table ou un **index secondaire local** (LSI), on peut demander une lecture **fortement cohérente** (`ConsistentRead`), qui consomme deux fois plus de capacité de lecture. Un **index secondaire global** (GSI), lui, est alimenté de façon asynchrone à partir de la table : ses lectures sont toujours à cohérence éventuelle, comme celles des DynamoDB Streams. Le LSI, qui partage la clé de partition de la table, peut offrir cette cohérence forte.",
+      "difficulty": 3,
+      "source": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadConsistency.html"
+    },
+    {
+      "question": "Le 28 février 2017, une panne majeure d'Amazon S3 dans la région `us-east-1` a perturbé une grande partie du Web pendant plusieurs heures. Quelle en était la cause ?",
+      "answer": "Une commande mal saisie qui a retiré trop de serveurs",
+      "wrong": [
+        "Une attaque DDoS contre les serveurs DNS d'AWS",
+        "Un incendie dans un datacenter de Virginie",
+        "La coupure d'un câble sous-marin transatlantique"
+      ],
+      "explanation": "Selon le rapport publié par AWS, un membre de l'équipe S3 qui déboguait le système de facturation a exécuté une commande prévue pour retirer quelques serveurs, mais une **erreur de saisie** dans un paramètre en a retiré beaucoup plus, dont ceux de deux sous-systèmes essentiels (l'index des métadonnées et le placement des objets). Leur redémarrage complet a pris des heures. AWS a ensuite modifié l'outil pour retirer la capacité plus lentement et empêcher de descendre sous un seuil minimal : un exemple classique de l'importance des garde-fous dans l'automatisation.",
+      "difficulty": 3,
+      "source": "https://aws.amazon.com/message/41926/"
     }
   ]
 }

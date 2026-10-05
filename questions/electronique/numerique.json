@@ -4,5 +4,298 @@
   "icon": "💾",
   "description": "Logique booléenne, portes, binaire, bascules, Arduino et microcontrôleurs, PWM, bus I2C, SPI et UART.",
   "order": 3,
-  "questions": []
+  "questions": [
+    {
+      "question": "Quelle est la valeur décimale du nombre binaire `1011` ?",
+      "answer": "11",
+      "wrong": [
+        "13",
+        "9",
+        "10"
+      ],
+      "explanation": "Chaque position vaut une puissance de 2, en partant de 2⁰ à droite : `1011` = 1×8 + 0×4 + 1×2 + 1×1 = 11. Le piège 13 correspond à une lecture à l'envers (`1101`). Retenir les poids 128, 64, 32, 16, 8, 4, 2, 1 permet de convertir un octet de tête.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Système_binaire"
+    },
+    {
+      "question": "Combien de valeurs différentes peut-on coder avec un octet (8 bits) ?",
+      "answer": "256",
+      "wrong": [
+        "255",
+        "128",
+        "512"
+      ],
+      "explanation": "Chaque bit double le nombre de combinaisons : 2⁸ = 256 valeurs, de 0 à 255 en non signé. Le piège 255 est la **plus grande** valeur codable, pas le nombre de valeurs : on oublie alors de compter le zéro. Avec 7 bits on aurait 128 valeurs, avec 9 bits 512.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Octet"
+    },
+    {
+      "question": "Que vaut `0x2A` en décimal ?",
+      "answer": "42",
+      "wrong": [
+        "26",
+        "32",
+        "40"
+      ],
+      "explanation": "En hexadécimal (base 16), les chiffres vont de 0 à 9 puis de A (10) à F (15). `0x2A` vaut donc 2×16 + 10 = 42. Les leurres correspondent à `0x1A` (26), `0x20` (32) et `0x28` (40).",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Système_hexadécimal"
+    },
+    {
+      "question": "Combien de bits représente un seul chiffre hexadécimal ?",
+      "answer": "4",
+      "wrong": [
+        "2",
+        "8",
+        "16"
+      ],
+      "explanation": "Comme 16 = 2⁴, un chiffre hexadécimal correspond exactement à 4 bits, qu'on appelle un quartet (*nibble*). Un octet s'écrit donc toujours avec deux chiffres hexadécimaux, de `0x00` à `0xFF`. Le piège 16 est le nombre de symboles de la base, pas le nombre de bits.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Système_hexadécimal"
+    },
+    {
+      "question": "En C/C++ (donc dans un programme Arduino), que signale le préfixe `0x` devant un nombre, comme dans `0x3F` ?",
+      "answer": "Un nombre écrit en hexadécimal",
+      "wrong": [
+        "Un nombre écrit en binaire",
+        "Un nombre écrit en octal",
+        "Un nombre décimal non signé"
+      ],
+      "explanation": "`0x` (ou `0X`) introduit un littéral hexadécimal : `0x3F` vaut 63. Le binaire s'écrit avec le préfixe `0b` (`0b00111111`) et un simple `0` initial signale de l'octal, ce qui piège parfois les débutants. Le caractère non signé, lui, s'indique par le suffixe `u` (`63u`).",
+      "difficulty": 1
+    },
+    {
+      "question": "Combien de lignes compte la table de vérité complète d'une fonction logique à 3 entrées ?",
+      "answer": "8",
+      "wrong": [
+        "6",
+        "9",
+        "3"
+      ],
+      "explanation": "Chaque entrée peut valoir 0 ou 1, donc 3 entrées donnent 2³ = 8 combinaisons, de 000 à 111. En général, une fonction à n entrées a une table de 2ⁿ lignes : 16 pour 4 entrées, 256 pour 8. C'est pourquoi on passe vite aux équations ou aux tableaux de Karnaugh quand le nombre d'entrées grandit.",
+      "difficulty": 1
+    },
+    {
+      "question": "En algèbre de Boole, où `+` désigne le OU logique, que vaut `A + 1` ?",
+      "answer": "`1`",
+      "wrong": [
+        "`A`",
+        "`0`",
+        "`NON A`"
+      ],
+      "explanation": "Un OU dont une entrée vaut 1 donne toujours 1, quelle que soit la valeur de A : 1 est l'élément absorbant du OU. Le piège `A` correspond à `A + 0` ou à `A · 1` (éléments neutres). Par dualité, `A · 0` vaut toujours 0.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Algèbre_de_Boole_(logique)"
+    },
+    {
+      "question": "Comment s'écrit l'octet binaire `1011 0110` en hexadécimal ?",
+      "answer": "`B6`",
+      "wrong": [
+        "`D6`",
+        "`B9`",
+        "`6B`"
+      ],
+      "explanation": "On découpe l'octet en deux quartets et on convertit chacun : `1011` = 11 = B et `0110` = 6, d'où `0xB6` (182 en décimal). Le piège `6B` inverse l'ordre des quartets, et `D6` vient d'une lecture du premier quartet à l'envers (`1101`). Cette conversion par paquets de 4 bits est la raison d'être de l'hexadécimal.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Système_hexadécimal"
+    },
+    {
+      "question": "Sur 8 bits en complément à deux, comment s'écrit −1 ?",
+      "answer": "`11111111`",
+      "wrong": [
+        "`10000001`",
+        "`11111110`",
+        "`10000000`"
+      ],
+      "explanation": "Pour obtenir −x, on inverse tous les bits de x puis on ajoute 1 : `00000001` → `11111110` → `11111111`. On le vérifie en ajoutant 1 : `11111111 + 1` donne `00000000` (la retenue sort du registre). `10000001` est la représentation « signe + valeur absolue », `11111110` le complément à un, et `10000000` vaut −128.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Complément_à_deux"
+    },
+    {
+      "question": "Quel intervalle de valeurs couvre un entier signé sur 8 bits en complément à deux (`int8_t`) ?",
+      "answer": "De −128 à +127",
+      "wrong": [
+        "De −127 à +127",
+        "De −128 à +128",
+        "De 0 à 255"
+      ],
+      "explanation": "8 bits donnent 256 combinaisons. Le complément à deux n'a qu'un seul zéro, il reste donc 128 valeurs négatives et 127 positives : de −2⁷ à 2⁷ − 1. L'intervalle −127 à +127 est celui des représentations « signe + valeur absolue » ou complément à un, qui gaspillent une combinaison avec un « −0 ». 0 à 255 est l'intervalle d'un octet **non signé**.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Complément_à_deux"
+    },
+    {
+      "question": "Sur une Arduino Uno, qu'affiche ce code ?\n```cpp\nbyte b = 200;\nb = b + 100;\nSerial.println(b);\n```",
+      "answer": "`44`",
+      "wrong": [
+        "`300`",
+        "`255`",
+        "`0`"
+      ],
+      "explanation": "Le type `byte` est un entier **non signé sur 8 bits** (0 à 255). Le calcul donne 300, qui ne tient pas sur 8 bits : le neuvième bit est perdu et il reste 300 − 256 = 44 (arithmétique modulo 256). Il n'y a pas de saturation à 255 : un débordement non signé « fait le tour » du compteur.",
+      "difficulty": 2,
+      "source": "https://docs.arduino.cc/language-reference/en/variables/data-types/byte/"
+    },
+    {
+      "question": "Que vaut l'expression `5 << 3` ?",
+      "answer": "`40`",
+      "wrong": [
+        "`15`",
+        "`8`",
+        "`125`"
+      ],
+      "explanation": "`<<` décale les bits vers la gauche en insérant des zéros à droite : `101` devient `101000`, soit 40. Décaler de n positions revient à multiplier par 2ⁿ, ici 5 × 2³ = 40. Le piège 15 confond avec 5 × 3, et 125 avec 5³. Le décalage à droite `>>` divise de même par 2ⁿ (pour des entiers positifs).",
+      "difficulty": 2
+    },
+    {
+      "question": "En code BCD (décimal codé binaire), comment s'écrit le nombre décimal 59 ?",
+      "answer": "`0101 1001`",
+      "wrong": [
+        "`0011 1011`",
+        "`0101 1000`",
+        "`1001 0101`"
+      ],
+      "explanation": "En BCD, chaque chiffre décimal est codé séparément sur 4 bits : 5 → `0101` et 9 → `1001`. Le piège `0011 1011` est la conversion binaire classique de 59, et `1001 0101` inverse les chiffres. Le BCD est pratique pour piloter des afficheurs : les horloges temps réel comme le DS1307 stockent d'ailleurs l'heure en BCD.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Décimal_codé_binaire"
+    },
+    {
+      "question": "Pourquoi les codeurs rotatifs absolus utilisent-ils souvent le code Gray plutôt que le binaire naturel ?",
+      "answer": "Un seul bit change entre deux positions voisines",
+      "wrong": [
+        "Il code plus de positions avec le même nombre de bits",
+        "Il permet de corriger automatiquement les erreurs",
+        "Il se convertit directement en décimal"
+      ],
+      "explanation": "En binaire naturel, passer de 3 (`011`) à 4 (`100`) fait changer trois bits ; comme les capteurs ne basculent jamais exactement au même instant, on peut lire une valeur transitoire aberrante (par exemple `111`). En code Gray, deux positions voisines ne diffèrent que d'un bit, donc l'erreur ne dépasse jamais une position. Le code Gray n'économise aucun bit et ne corrige pas d'erreur.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Code_de_Gray"
+    },
+    {
+      "question": "Selon le théorème de De Morgan, à quoi équivaut `NON (A ET B)` ?",
+      "answer": "`(NON A) OU (NON B)`",
+      "wrong": [
+        "`(NON A) ET (NON B)`",
+        "`NON (A OU B)`",
+        "`A OU B`"
+      ],
+      "explanation": "Complémenter un ET revient à faire le OU des compléments : `NON (A ET B) = (NON A) OU (NON B)`. C'est pourquoi une porte NAND équivaut à une porte OU dont les entrées sont inversées. La loi duale donne `NON (A OU B) = (NON A) ET (NON B)` : c'est la fonction NOR, qui n'est pas égale à NAND (A = 1, B = 0 donne 1 pour l'une et 0 pour l'autre).",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Lois_de_De_Morgan"
+    },
+    {
+      "question": "Que donne la simplification de l'expression booléenne `A + A·B` (où `+` est le OU et `·` le ET) ?",
+      "answer": "`A`",
+      "wrong": [
+        "`A·B`",
+        "`A + B`",
+        "`B`"
+      ],
+      "explanation": "C'est la loi d'absorption : `A + A·B = A·(1 + B) = A·1 = A`. On le vérifie avec la table : si A = 1, la sortie vaut 1 ; si A = 0, `A·B` vaut 0 et la sortie aussi. B n'a donc aucune influence, et la porte ET peut être supprimée du circuit.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Algèbre_de_Boole_(logique)"
+    },
+    {
+      "question": "Dans la forme canonique « somme de produits » d'une fonction logique, à quoi correspond chaque terme produit (minterme) ?",
+      "answer": "À une ligne de la table où la fonction vaut 1",
+      "wrong": [
+        "À une ligne de la table où la fonction vaut 0",
+        "À une des variables d'entrée de la fonction",
+        "À une colonne du tableau de Karnaugh"
+      ],
+      "explanation": "On écrit un minterme par ligne où la sortie vaut 1 : un ET de **toutes** les variables, chacune complémentée si elle vaut 0 sur cette ligne. La fonction est le OU de ces mintermes. La forme duale, « produit de sommes », utilise les maxtermes, un par ligne où la fonction vaut 0.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi les lignes et colonnes d'un tableau de Karnaugh à 4 variables sont-elles numérotées 00, 01, 11, 10 (et non 00, 01, 10, 11) ?",
+      "answer": "Pour que deux cases voisines ne diffèrent que d'une variable",
+      "wrong": [
+        "Pour ranger les mintermes dans l'ordre croissant",
+        "Pour regrouper les cases à 0 en bas du tableau",
+        "Pour respecter l'ordre du binaire naturel"
+      ],
+      "explanation": "Cet ordre est le code Gray : deux cases adjacentes ne diffèrent que d'une seule variable. Quand on regroupe deux cases voisines à 1, la variable qui change s'élimine, ce qui simplifie l'expression. Pour la même raison, les bords opposés du tableau sont eux aussi considérés comme adjacents.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Table_de_Karnaugh"
+    },
+    {
+      "question": "Quelle expression C/C++ permet de tester si le bit 3 de l'octet `x` est à 1 (bits numérotés à partir de 0) ?",
+      "answer": "`x & 0x08`",
+      "wrong": [
+        "`x & 0x03`",
+        "`x | 0x08`",
+        "`x & 0x10`"
+      ],
+      "explanation": "Le bit 3 a pour poids 2³ = 8, soit le masque `0x08` (`0b00001000`). Le ET bit à bit efface tous les autres bits : le résultat est non nul si et seulement si le bit 3 vaut 1. `x | 0x08` force ce bit à 1 (donc toujours vrai), `0x10` vise le bit 4 et `0x03` les bits 0 et 1. Sur Arduino, `bitRead(x, 3)` fait la même chose.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle instruction met à 0 le bit `n` de la variable `reg` sans modifier les autres bits ?",
+      "answer": "`reg &= ~(1 << n);`",
+      "wrong": [
+        "`reg |= (1 << n);`",
+        "`reg ^= (1 << n);`",
+        "`reg &= (1 << n);`"
+      ],
+      "explanation": "`~(1 << n)` est un masque où tous les bits valent 1 sauf le bit n : un ET avec ce masque force le bit n à 0 et laisse les autres intacts. `|=` met le bit à 1, `^=` l'inverse, et `&= (1 << n)` efface au contraire **tous les autres** bits. C'est la technique standard pour manipuler les registres d'un microcontrôleur.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle opération bit à bit donne le code Gray de l'entier non signé `n` ?",
+      "answer": "`n ^ (n >> 1)`",
+      "wrong": [
+        "`n ^ (n << 1)`",
+        "`n & (n >> 1)`",
+        "`~n + 1`"
+      ],
+      "explanation": "Chaque bit du code Gray est le XOR du bit binaire correspondant et de son voisin de poids supérieur, ce que réalise `n ^ (n >> 1)`. Par exemple 3 (`011`) donne `011 ^ 001` = `010`, et 4 (`100`) donne `110` : un seul bit change entre les deux. `~n + 1` calcule le complément à deux, c'est-à-dire −n.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Code_de_Gray"
+    },
+    {
+      "question": "Combien de fonctions logiques différentes de deux variables booléennes existe-t-il ?",
+      "answer": "16",
+      "wrong": [
+        "4",
+        "8",
+        "256"
+      ],
+      "explanation": "La table de vérité de deux variables compte 2² = 4 lignes, et chaque ligne peut donner 0 ou 1 : il y a donc 2⁴ = 16 fonctions possibles (ET, OU, XOR, NAND, NOR, XNOR, les deux constantes, les implications…). Le piège 256 correspond aux fonctions de **trois** variables : 2⁸ tables différentes.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans un tableau de Karnaugh à 4 variables, un regroupement de 4 cases adjacentes donne un terme comportant combien de variables ?",
+      "answer": "2",
+      "wrong": [
+        "1",
+        "3",
+        "4"
+      ],
+      "explanation": "Un groupe de 2ᵏ cases élimine k variables. Un groupe de 4 = 2² cases en élimine donc 2, et il reste 4 − 2 = 2 variables dans le terme. Une paire de cases donnerait 3 variables, un groupe de 8 cases une seule, et une case isolée un minterme complet à 4 variables.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Table_de_Karnaugh"
+    },
+    {
+      "question": "Lors d'une addition en complément à deux, quand le résultat signé est-il en dépassement (overflow) ?",
+      "answer": "Opérandes de même signe et résultat de signe opposé",
+      "wrong": [
+        "Dès qu'une retenue sort du bit de poids fort",
+        "Dès que l'un des deux opérandes est négatif",
+        "Opérandes de signes opposés et résultat positif"
+      ],
+      "explanation": "Ajouter un positif et un négatif ne peut jamais déborder. Il y a dépassement seulement si deux positifs donnent un négatif (127 + 1 → −128 sur 8 bits) ou deux négatifs un positif. La retenue sortante signale un débordement **non signé**, pas signé : −1 + 1 (`11111111 + 00000001`) produit une retenue alors que le résultat 0 est juste. Les processeurs ont pour cela deux drapeaux distincts, C (carry) et V (overflow).",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Complément_à_deux"
+    },
+    {
+      "question": "Sur Arduino, qu'affiche ce code ?\n```cpp\nint x = 010;\nSerial.println(x);\n```",
+      "answer": "`8`",
+      "wrong": [
+        "`10`",
+        "`2`",
+        "`1`"
+      ],
+      "explanation": "En C et en C++, un littéral entier qui commence par `0` est écrit en **octal** (base 8) : `010` vaut 1×8 + 0 = 8. Ce piège surprend quand on aligne des nombres avec des zéros initiaux (`007`, `010`…). Le leurre 2 correspondrait à une lecture binaire, qui exige le préfixe `0b` (`0b10`).",
+      "difficulty": 3
+    }
+  ]
 }
