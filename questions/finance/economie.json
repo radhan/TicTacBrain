@@ -886,6 +886,287 @@
       ],
       "explanation": "Avec un taux fixe, les mensualités restent les mêmes en euros alors que les prix, et souvent les revenus, augmentent : le poids réel de la dette s'allège. Le prêteur, lui, est remboursé en euros qui ont perdu du pouvoir d'achat. L'inflation allège de la même façon la dette des États. Une inflation **anticipée**, en revanche, est intégrée dès le départ dans les taux d'intérêt demandés par les prêteurs.",
       "difficulty": 2
+    },
+    {
+      "question": "Comment mesure-t-on le plus couramment la **croissance économique** d'un pays ?",
+      "answer": "Par le taux de variation de son PIB en volume",
+      "wrong": [
+        "Par la hausse de sa population active",
+        "Par l'augmentation de ses exportations",
+        "Par la progression de son indice boursier"
+      ],
+      "explanation": "La **croissance économique** correspond à l'augmentation de la production de biens et services sur une période. On la mesure par la variation du **PIB en volume**, c'est-à-dire corrigé de la hausse des prix, exprimée en pourcentage par trimestre ou par an. Une hausse du PIB due uniquement à l'inflation ne traduit aucun enrichissement réel.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Croissance_%C3%A9conomique"
+    },
+    {
+      "question": "Au sens statistique, qui compose la **population active** ?",
+      "answer": "Les personnes en emploi et les chômeurs",
+      "wrong": [
+        "Uniquement les personnes qui ont un emploi",
+        "Toutes les personnes âgées de 15 à 64 ans",
+        "Les seuls salariés du secteur privé"
+      ],
+      "explanation": "La **population active** réunit ceux qui travaillent (population active occupée) et ceux qui cherchent un emploi (chômeurs). Les étudiants qui ne travaillent pas, les retraités ou les personnes au foyer n'en font pas partie : ils sont dits **inactifs**. L'ensemble des 15-64 ans forme la population en âge de travailler, une notion plus large.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Population_active"
+    },
+    {
+      "question": "Un pays compte 50 millions d'habitants, dont 30 millions d'actifs, et 3 millions de chômeurs. Quel est son **taux de chômage** ?",
+      "answer": "10 %",
+      "wrong": [
+        "6 %",
+        "11,1 %",
+        "60 %"
+      ],
+      "explanation": "Le **taux de chômage** rapporte le nombre de chômeurs à la **population active** (personnes en emploi + chômeurs), et non à la population totale : 3 / 30 = **10 %**. Diviser par les 50 millions d'habitants (6 %) sous-estime le phénomène, car enfants et retraités ne cherchent pas d'emploi ; diviser par les seuls actifs occupés (3 / 27 ≈ 11,1 %) le surestime. Quant à 60 %, c'est la part des actifs dans la population totale.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle organisation internationale a établi la définition du chômage utilisée pour comparer les pays entre eux ?",
+      "answer": "Le Bureau international du travail (BIT)",
+      "wrong": [
+        "L'Organisation mondiale du commerce (OMC)",
+        "Le Fonds monétaire international (FMI)",
+        "La Banque mondiale"
+      ],
+      "explanation": "Selon le **BIT**, est chômeur une personne de 15 ans ou plus qui n'a pas travaillé, ne serait-ce qu'une heure, pendant une semaine de référence, qui est disponible pour travailler dans les deux semaines et qui a cherché activement un emploi au cours des quatre semaines précédentes (ou en a trouvé un qui commence bientôt). En France, l'Insee mesure ce chômage par son enquête Emploi, un chiffre distinct du nombre d'inscrits à France Travail.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Ch%C3%B4mage"
+    },
+    {
+      "question": "Une ingénieure démissionne et met deux mois à trouver un nouveau poste qui lui convient, alors que les offres ne manquent pas. Quel type de chômage cela illustre-t-il ?",
+      "answer": "Le chômage frictionnel",
+      "wrong": [
+        "Le chômage structurel",
+        "Le chômage conjoncturel",
+        "Le chômage technologique"
+      ],
+      "explanation": "Le **chômage frictionnel** correspond au temps nécessaire pour passer d'un emploi à un autre : chercher, comparer, attendre une réponse. Il existe même quand l'économie est proche du plein emploi. Le **chômage conjoncturel** est lié à un ralentissement de l'activité, et le **chômage structurel** à des inadéquations durables entre les emplois proposés et les qualifications, les régions ou le fonctionnement du marché du travail.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que désigne l'Insee par le **halo autour du chômage** ?",
+      "answer": "Des inactifs qui veulent travailler mais ne sont pas comptés chômeurs",
+      "wrong": [
+        "Les chômeurs inscrits depuis plus d'un an auprès de France Travail",
+        "Les salariés à temps partiel qui souhaiteraient travailler davantage",
+        "Les personnes en emploi qui craignent de perdre bientôt leur poste"
+      ],
+      "explanation": "Le **halo autour du chômage** regroupe des personnes qui souhaitent un emploi mais ne remplissent pas tous les critères du BIT : elles ne cherchent pas activement (par découragement, par exemple) ou ne sont pas disponibles rapidement. Elles sont donc classées parmi les inactifs. Les salariés à temps partiel qui voudraient travailler plus relèvent, eux, du **sous-emploi** : ils ont un emploi et ne sont ni chômeurs ni dans le halo.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que décrit la **loi d'Okun** ?",
+      "answer": "Le lien entre la croissance du PIB et la variation du chômage",
+      "wrong": [
+        "Le lien entre l'inflation et le niveau des taux d'intérêt",
+        "Le lien entre le niveau des impôts et les recettes fiscales",
+        "Le lien entre la masse monétaire et le niveau des prix"
+      ],
+      "explanation": "Établie empiriquement par **Arthur Okun** en 1962 pour les États-Unis, cette relation indique que le chômage ne recule que si la croissance dépasse un certain seuil, et qu'il augmente quand elle est plus faible. Ses coefficients varient selon les pays et les époques, mais l'idée reste un repère : il faut une croissance suffisante pour créer assez d'emplois. Le lien entre impôts et recettes renvoie à la courbe de Laffer, celui entre monnaie et prix à la théorie quantitative.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Loi_d%27Okun"
+    },
+    {
+      "question": "Que désigne le **NAIRU** en macroéconomie ?",
+      "answer": "Le taux de chômage qui n'accélère pas l'inflation",
+      "wrong": [
+        "Le taux d'inflation qui maximise la croissance",
+        "Le taux d'intérêt fixé par la banque centrale",
+        "Le taux de croissance qui stabilise la dette"
+      ],
+      "explanation": "Le **NAIRU** (Non-Accelerating Inflation Rate of Unemployment) est le taux de chômage en dessous duquel les tensions sur le marché du travail font accélérer l'inflation (salaires puis prix). Il prolonge la critique de la courbe de Phillips par Friedman et Phelps : à long terme, on ne peut pas maintenir le chômage sous ce niveau en acceptant simplement plus d'inflation. Il ne s'observe pas directement et doit être estimé.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/NAIRU"
+    },
+    {
+      "question": "Une boulangerie réalise **200 000 €** de chiffre d'affaires sur l'année. Elle a acheté pour **80 000 €** de farine, d'énergie et d'autres consommations intermédiaires. Quelle est sa **valeur ajoutée** ?",
+      "answer": "120 000 €",
+      "wrong": [
+        "200 000 €",
+        "280 000 €",
+        "80 000 €"
+      ],
+      "explanation": "La **valeur ajoutée** mesure la richesse réellement créée par l'entreprise : sa production moins les **consommations intermédiaires**, c'est-à-dire les biens et services transformés ou détruits pour produire. Ici, 200 000 − 80 000 = **120 000 €**. Cette valeur ajoutée sert ensuite à rémunérer les salariés, à payer certains impôts et à dégager l'excédent brut d'exploitation.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Valeur_ajout%C3%A9e"
+    },
+    {
+      "question": "Pourquoi le PIB additionne-t-il les **valeurs ajoutées** des entreprises plutôt que leurs chiffres d'affaires ?",
+      "answer": "Pour ne pas compter plusieurs fois les consommations intermédiaires",
+      "wrong": [
+        "Parce que les chiffres d'affaires sont des données confidentielles",
+        "Pour exclure du calcul les biens vendus à l'étranger",
+        "Parce que seules les grandes entreprises publient leurs ventes"
+      ],
+      "explanation": "Le blé vendu au meunier se retrouve dans le prix de la farine, puis dans celui du pain. Additionner les chiffres d'affaires de l'agriculteur, du meunier et du boulanger compterait le blé trois fois. En ne retenant que la **valeur ajoutée** de chaque étape, on évite ces **doubles comptes** : la somme des valeurs ajoutées correspond à la valeur des biens finaux. Le PIB inclut d'ailleurs bien la production exportée.",
+      "difficulty": 3
+    },
+    {
+      "question": "Lequel de ces exemples **n'est pas** comptabilisé dans le PIB français ?",
+      "answer": "La cuisine préparée chez soi pour sa famille",
+      "wrong": [
+        "Le salaire d'un enseignant de l'école publique",
+        "Le repas servi par un restaurant",
+        "La construction d'une maison neuve"
+      ],
+      "explanation": "Le PIB mesure la production marchande, plus la production non marchande des administrations, évaluée à son coût (notamment les salaires des enseignants). Le **travail domestique** (cuisine, ménage, garde des enfants par les parents) n'est pas compté, faute de transaction, alors qu'il représente un volume d'heures considérable. Le même repas acheté au restaurant, lui, entre dans le PIB : c'est une limite classique de cet indicateur.",
+      "difficulty": 2
+    },
+    {
+      "question": "En comptabilité nationale, comment est classé l'achat d'un **logement neuf** par un ménage ?",
+      "answer": "Comme un investissement (FBCF)",
+      "wrong": [
+        "Comme une consommation finale",
+        "Comme une consommation intermédiaire",
+        "Comme un placement financier"
+      ],
+      "explanation": "Un logement neuf rend des services pendant des décennies : la comptabilité nationale le traite donc comme un **investissement** des ménages, la **formation brute de capital fixe** (FBCF), et non comme une consommation. C'est une exception notable, car les autres achats des ménages, même durables comme une voiture ou un réfrigérateur, sont comptés en consommation finale. L'achat d'un logement ancien, lui, ne correspond à aucune production nouvelle : seuls les frais liés à la transaction entrent dans la FBCF.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Formation_brute_de_capital_fixe"
+    },
+    {
+      "question": "Quelle est la différence entre le **PIB** et le **RNB** (revenu national brut) d'un pays ?",
+      "answer": "Le RNB ajoute le solde des revenus échangés avec l'étranger",
+      "wrong": [
+        "Le RNB ne compte que la production des entreprises publiques",
+        "Le RNB est le PIB corrigé de l'inflation de l'année",
+        "Le RNB exclut toute la production du secteur des services"
+      ],
+      "explanation": "Le **PIB** mesure la production réalisée **sur le territoire**, quelle que soit la nationalité des producteurs. Le **RNB** part du PIB, ajoute les revenus (salaires, dividendes, intérêts) perçus du reste du monde par les résidents et retire ceux versés aux non-résidents. Dans un pays où de nombreuses multinationales étrangères rapatrient leurs bénéfices, comme l'Irlande, le RNB est nettement inférieur au PIB. Le PIB corrigé de l'inflation, c'est le PIB réel.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Revenu_national_brut"
+    },
+    {
+      "question": "Pourquoi compare-t-on souvent les PIB par habitant en **parité de pouvoir d'achat** (PPA) plutôt qu'au taux de change du marché ?",
+      "answer": "Pour tenir compte des écarts de niveau des prix entre pays",
+      "wrong": [
+        "Pour éliminer l'effet de la taille de la population",
+        "Pour exclure les productions destinées à l'exportation",
+        "Pour corriger le PIB de l'inflation de chaque année"
+      ],
+      "explanation": "Avec 1 000 €, on n'achète pas la même quantité de biens à Paris, à Lisbonne ou à Bangkok. La **parité de pouvoir d'achat** convertit les montants avec des taux fictifs qui égalisent le coût d'un même panier de biens dans chaque pays. Elle corrige donc les écarts de prix entre pays, alors que les taux de change du marché fluctuent aussi au gré des flux financiers. C'est la division par la population qui fait passer du PIB au PIB par habitant.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Parit%C3%A9_de_pouvoir_d%27achat"
+    },
+    {
+      "question": "Un Big Mac coûte **5 $** aux États-Unis et **4 €** dans la zone euro, et le taux de change est de **1 € = 1,10 $**. Selon la logique de l'**indice Big Mac**, comment se situe l'euro face au dollar ?",
+      "answer": "Sous-évalué : la PPA donnerait 1 € = 1,25 $",
+      "wrong": [
+        "Surévalué : la PPA donnerait 1 € = 0,80 $",
+        "Surévalué : la PPA donnerait 1 € = 1,25 $",
+        "À sa juste valeur, car 4 € valent environ 5 $"
+      ],
+      "explanation": "L'indice publié par **The Economist** depuis 1986 applique la parité de pouvoir d'achat à un seul produit. Pour que le Big Mac coûte autant des deux côtés, il faudrait 5 / 4 = **1,25 $** pour 1 €. Or l'euro ne vaut que 1,10 $ : au taux du marché, le burger européen revient à 4,40 $, moins que les 5 $ américains. L'euro est donc **sous-évalué** d'environ 12 % selon cet indicateur, qui reste une illustration simplifiée.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Indice_Big_Mac"
+    },
+    {
+      "question": "Quelles dimensions combine l'**indice de développement humain** (IDH) publié par le PNUD ?",
+      "answer": "La santé, l'éducation et le niveau de vie",
+      "wrong": [
+        "La croissance, l'inflation et le chômage",
+        "Le PIB, la dette publique et le commerce extérieur",
+        "La démographie, l'urbanisation et l'industrie"
+      ],
+      "explanation": "Créé en 1990 par le Programme des Nations unies pour le développement, sous l'impulsion de l'économiste Mahbub ul Haq et avec l'apport d'Amartya Sen, l'**IDH** veut dépasser le seul PIB. Il combine l'**espérance de vie** à la naissance, la **durée de scolarisation** (moyenne et attendue) et le **revenu national brut par habitant** en PPA. Il varie entre 0 et 1.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Indice_de_d%C3%A9veloppement_humain"
+    },
+    {
+      "question": "Dans un pays où le **coefficient de Gini** des revenus vaudrait **0**, quelle serait la situation ?",
+      "answer": "Tous les habitants auraient exactement le même revenu",
+      "wrong": [
+        "Une seule personne détiendrait la totalité des revenus",
+        "Le revenu moyen y serait le plus élevé au monde",
+        "La croissance du revenu national serait nulle"
+      ],
+      "explanation": "Le **coefficient de Gini** mesure l'inégalité d'une répartition entre **0** (égalité parfaite : chacun a la même part) et **1** (inégalité maximale : une seule personne a tout). Il se calcule à partir de la courbe de Lorenz. Il ne dit rien du niveau de vie moyen : un pays peut être très égalitaire et pauvre à la fois.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Coefficient_de_Gini"
+    },
+    {
+      "question": "Quelle expression désigne la période de forte croissance qu'a connue la France de la fin de la Seconde Guerre mondiale au milieu des années 1970 ?",
+      "answer": "Les Trente Glorieuses",
+      "wrong": [
+        "Les Années folles",
+        "La Belle Époque",
+        "Les Trois Glorieuses"
+      ],
+      "explanation": "L'expression vient du livre de l'économiste **Jean Fourastié**, « Les Trente Glorieuses ou la révolution invisible de 1946 à 1975 » (1979). Pendant cette période, la France a connu une croissance d'environ 5 % par an, le quasi-plein emploi et l'essor de la consommation de masse ; les chocs pétroliers des années 1970 y ont mis fin. Les Années folles désignent les années 1920, la Belle Époque la période d'avant 1914 et les Trois Glorieuses la révolution de juillet 1830.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Trente_Glorieuses"
+    },
+    {
+      "question": "Lors du **premier choc pétrolier** de 1973-1974, comment a évolué le prix du baril de pétrole brut ?",
+      "answer": "Il a été multiplié par quatre environ",
+      "wrong": [
+        "Il a été divisé par deux environ",
+        "Il a augmenté d'environ 10 %",
+        "Il a été multiplié par cent environ"
+      ],
+      "explanation": "En octobre 1973, pendant la guerre du Kippour, les pays arabes exportateurs décrètent un embargo contre les pays soutenant Israël et l'OPEP relève fortement ses prix : le baril passe d'environ 3 à près de 12 dollars en quelques mois. Ce choc renchérit brutalement l'énergie dans les pays importateurs, provoquant à la fois inflation et ralentissement de la croissance, et marque la fin des Trente Glorieuses. Un second choc suivra en 1979, avec la révolution iranienne.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Premier_choc_p%C3%A9trolier"
+    },
+    {
+      "question": "Quelle est la durée approximative d'un **cycle de Kondratiev** ?",
+      "answer": "Environ 50 ans",
+      "wrong": [
+        "Environ 3 à 4 ans",
+        "Environ 8 à 10 ans",
+        "Environ 150 ans"
+      ],
+      "explanation": "L'économiste russe **Nikolaï Kondratiev** a décrit dans les années 1920 des cycles longs d'une cinquantaine d'années, alternant phases d'expansion et de dépression. Joseph Schumpeter les a reliés à des grappes d'innovations majeures (machine à vapeur, chemin de fer, électricité…). On distingue aussi les **cycles de Juglar** (8 à 10 ans), le cycle des affaires classique, et les **cycles de Kitchin** (environ 40 mois), liés aux stocks.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Cycle_de_Kondratiev"
+    },
+    {
+      "question": "Quel économiste a popularisé l'expression « **destruction créatrice** » pour décrire le rôle des innovations dans le capitalisme ?",
+      "answer": "Joseph Schumpeter",
+      "wrong": [
+        "John Maynard Keynes",
+        "Friedrich Hayek",
+        "David Ricardo"
+      ],
+      "explanation": "Dans **Capitalisme, socialisme et démocratie** (1942), **Joseph Schumpeter** décrit le capitalisme comme un processus de « destruction créatrice » : les innovations portées par les entrepreneurs font naître de nouvelles activités tout en rendant obsolètes les anciennes, comme l'automobile a remplacé la voiture à cheval. Pour lui, l'innovation est le véritable moteur de la croissance et des cycles économiques.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Destruction_cr%C3%A9atrice"
+    },
+    {
+      "question": "Comment calcule-t-on le **PIB par habitant** d'un pays ?",
+      "answer": "En divisant le PIB par le nombre d'habitants",
+      "wrong": [
+        "En divisant le PIB par le nombre d'actifs",
+        "En divisant le PIB par le nombre de ménages",
+        "En multipliant le PIB par le taux d'emploi"
+      ],
+      "explanation": "Le **PIB par habitant** rapporte la richesse produite à la population totale. Il permet de comparer des pays de tailles très différentes : la Chine a un PIB total bien plus élevé que la Suisse, mais un PIB par habitant beaucoup plus faible. C'est une moyenne, qui ne dit rien de la répartition des revenus. Diviser par le nombre d'actifs ou d'heures travaillées donne plutôt une mesure de **productivité**.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qui distingue une **dépression** d'une simple récession ?",
+      "answer": "Un recul de la production bien plus profond et durable",
+      "wrong": [
+        "Une hausse simultanée des prix et du chômage",
+        "Un ralentissement d'une croissance qui reste positive",
+        "Une crise limitée au seul secteur financier"
+      ],
+      "explanation": "Une **récession** est un recul temporaire de l'activité (souvent défini par deux trimestres consécutifs de baisse du PIB). Une **dépression** est une contraction beaucoup plus profonde et prolongée, accompagnée d'un chômage massif, comme la Grande Dépression des années 1930. Une croissance qui ralentit tout en restant positive n'est ni l'une ni l'autre. La hausse simultanée des prix et du chômage correspond, elle, à la stagflation.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que mesure la **productivité du travail** ?",
+      "answer": "La production par travailleur ou par heure travaillée",
+      "wrong": [
+        "Le nombre d'heures travaillées chaque semaine par salarié",
+        "Le salaire moyen versé à chaque salarié de l'entreprise",
+        "La part des salariés dans la population totale"
+      ],
+      "explanation": "La **productivité du travail** rapporte la production (en volume) à la quantité de travail utilisée : nombre de travailleurs ou, plus finement, nombre d'heures. Ses gains, permis par le progrès technique, l'équipement en capital et la formation, sont la principale source de hausse du niveau de vie à long terme. Travailler plus longtemps augmente la production, mais pas la productivité horaire.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Productivit%C3%A9"
     }
   ]
 }
