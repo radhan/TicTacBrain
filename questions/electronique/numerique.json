@@ -296,6 +296,598 @@
       ],
       "explanation": "En C et en C++, un littéral entier qui commence par `0` est écrit en **octal** (base 8) : `010` vaut 1×8 + 0 = 8. Ce piège surprend quand on aligne des nombres avec des zéros initiaux (`007`, `010`…). Le leurre 2 correspondrait à une lecture binaire, qui exige le préfixe `0b` (`0b10`).",
       "difficulty": 3
+    },
+    {
+      "question": "Quelle porte logique ne donne 1 que si **toutes** ses entrées sont à 1 ?",
+      "answer": "La porte ET (AND)",
+      "wrong": [
+        "La porte OU (OR)",
+        "La porte OU exclusif (XOR)",
+        "La porte NON-ET (NAND)"
+      ],
+      "explanation": "La porte ET réalise le produit logique : sa sortie vaut 1 seulement quand toutes ses entrées valent 1. La porte OU donne 1 dès qu'**une** entrée vaut 1. La NAND fait exactement l'inverse du ET : elle ne donne 0 que lorsque toutes ses entrées sont à 1.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Fonction_logique"
+    },
+    {
+      "question": "Une porte XOR (OU exclusif) à deux entrées reçoit A = 1 et B = 1. Quelle est sa sortie ?",
+      "answer": "0",
+      "wrong": [
+        "1",
+        "Indéterminée",
+        "Haute impédance (Z)"
+      ],
+      "explanation": "Le XOR donne 1 quand ses entrées sont **différentes** et 0 quand elles sont égales. C'est ce qui le distingue du OU (inclusif), qui donnerait 1 ici. On s'en sert pour comparer deux bits, calculer la somme d'un additionneur ou inverser un bit à la demande (`x XOR 1` inverse `x`).",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Fonction_OU_exclusif"
+    },
+    {
+      "question": "Pourquoi dit-on que la porte NAND est « universelle » ?",
+      "answer": "Elle suffit à réaliser n'importe quelle fonction logique",
+      "wrong": [
+        "Elle fonctionne avec toutes les tensions d'alimentation",
+        "Elle est présente dans tous les microcontrôleurs",
+        "Elle accepte un nombre quelconque d'entrées"
+      ],
+      "explanation": "Avec des NAND seules, on obtient un NON (en reliant les deux entrées), un ET (une NAND suivie d'un NON) et un OU (une NAND aux entrées inversées, d'après De Morgan) : toute fonction logique peut donc être construite. La porte NOR possède la même propriété. Ni le ET, ni le OU, ni le XOR seuls ne sont universels, car ils ne permettent pas d'inverser un signal.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Fonction_NON-ET"
+    },
+    {
+      "question": "Sur un schéma logique, que signifie le petit rond dessiné à la sortie (ou à une entrée) d'une porte ?",
+      "answer": "Une inversion du signal",
+      "wrong": [
+        "Un point de connexion de fils",
+        "Une entrée d'horloge",
+        "Une sortie à haute impédance"
+      ],
+      "explanation": "Ce petit rond, la « bulle », indique une négation : NAND = symbole du ET + bulle, NOR = symbole du OU + bulle, NON = triangle + bulle. Placé sur une entrée, il signale une entrée active à l'état bas. L'entrée d'horloge d'une bascule se reconnaît plutôt à un petit triangle.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qui distingue un circuit **séquentiel** d'un circuit combinatoire ?",
+      "answer": "Sa sortie dépend aussi de son état passé",
+      "wrong": [
+        "Il traite les bits un par un, en série",
+        "Il ne contient aucune porte logique",
+        "Sa sortie ne dépend que des entrées actuelles"
+      ],
+      "explanation": "Un circuit combinatoire (additionneur, multiplexeur, décodeur) calcule sa sortie uniquement à partir des entrées présentes. Un circuit séquentiel contient des éléments de mémoire (bascules) : sa sortie dépend aussi de l'historique, comme pour un compteur, un registre ou une machine à états. Le leurre « ne dépend que des entrées actuelles » décrit justement le combinatoire.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Logique_séquentielle"
+    },
+    {
+      "question": "Quelle mémoire perd son contenu quand on coupe l'alimentation ?",
+      "answer": "La RAM",
+      "wrong": [
+        "La Flash",
+        "L'EEPROM",
+        "La ROM"
+      ],
+      "explanation": "La RAM (SRAM ou DRAM) est volatile : sans alimentation, elle perd ses données. La Flash, l'EEPROM et la ROM sont non volatiles. Sur un ATmega328P (Arduino Uno), le programme est en Flash, les variables en SRAM (perdues à chaque coupure) et l'EEPROM sert à conserver des réglages.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Mémoire_vive"
+    },
+    {
+      "question": "Que fait une bascule D (flip-flop) à chaque front montant de son horloge ?",
+      "answer": "Elle recopie l'entrée D sur sa sortie Q",
+      "wrong": [
+        "Elle inverse l'état de sa sortie Q",
+        "Elle remet sa sortie Q à 0",
+        "Elle met Q à 1 si D a changé"
+      ],
+      "explanation": "La bascule D capture la valeur présente sur D à l'instant du front et la maintient sur Q jusqu'au front suivant, quoi que fasse D entre-temps. Inverser la sortie à chaque front est le comportement d'une bascule T (ou JK avec J = K = 1). La bascule D est la brique de base des registres et des compteurs synchrones.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Bascule_(circuit_logique)"
+    },
+    {
+      "question": "Comment obtient-on une porte NON à partir d'une porte NOR à deux entrées ?",
+      "answer": "En reliant ses deux entrées au même signal",
+      "wrong": [
+        "En mettant une entrée à 1 en permanence",
+        "En inversant le sens de l'alimentation",
+        "En reliant sa sortie à l'une des entrées"
+      ],
+      "explanation": "`NOR(A, A) = NON (A OU A) = NON A` : avec les deux entrées reliées, la NOR devient un inverseur. Fixer l'autre entrée à 0 fonctionne aussi, mais à 1 la sortie resterait bloquée à 0. Comme la NAND, la NOR est universelle : elle suffit à construire n'importe quelle fonction logique.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Fonction_NON-OU"
+    },
+    {
+      "question": "Un demi-additionneur additionne deux bits A et B. Par quelles portes obtient-on la somme S et la retenue C ?",
+      "answer": "S = A XOR B et C = A ET B",
+      "wrong": [
+        "S = A OU B et C = A ET B",
+        "S = A ET B et C = A XOR B",
+        "S = A XOR B et C = A OU B"
+      ],
+      "explanation": "En binaire, 1 + 1 = 10 : la somme vaut 0 et la retenue 1. S vaut donc 1 quand **un seul** des bits est à 1 (XOR), et la retenue seulement quand les deux le sont (ET). Avec un OU, la somme serait fausse pour 1 + 1. Un additionneur complet, qui gère aussi une retenue entrante, s'obtient avec deux demi-additionneurs et une porte OU.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Additionneur"
+    },
+    {
+      "question": "Combien d'entrées de sélection faut-il à un multiplexeur 8 vers 1 ?",
+      "answer": "3",
+      "wrong": [
+        "8",
+        "4",
+        "2"
+      ],
+      "explanation": "Le multiplexeur est un aiguillage : il recopie sur sa sortie l'entrée dont le numéro est présent sur les lignes de sélection. Pour désigner 8 entrées, il faut 3 bits, car 2³ = 8. Un multiplexeur 16 vers 1 en demanderait 4. Le démultiplexeur fait l'inverse : il envoie une entrée vers l'une de ses sorties.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Multiplexeur"
+    },
+    {
+      "question": "Pourquoi un circuit logique CMOS ne consomme-t-il presque rien lorsque ses entrées ne changent pas ?",
+      "answer": "Un des deux transistors de chaque paire est toujours bloqué",
+      "wrong": [
+        "Ses transistors fonctionnent en régime linéaire au repos",
+        "Il coupe automatiquement son alimentation au repos",
+        "Ses sorties passent en haute impédance au repos"
+      ],
+      "explanation": "Chaque sortie CMOS associe un transistor P relié à l'alimentation et un transistor N relié à la masse, commandés en opposition : au repos, l'un conduit et l'autre est bloqué, donc aucun courant ne traverse directement de l'alimentation à la masse (hors fuites). La consommation apparaît surtout lors des commutations, pour charger et décharger les capacités. C'est ce qui a permis l'explosion du nombre de transistors par puce.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Complementary_metal_oxide_semi-conductor"
+    },
+    {
+      "question": "Que signifie l'état « haute impédance » (noté Z) d'une sortie trois états ?",
+      "answer": "La sortie est comme déconnectée de la ligne",
+      "wrong": [
+        "La sortie fournit un niveau haut renforcé",
+        "La sortie est en court-circuit vers la masse",
+        "La sortie hésite entre 0 et 1"
+      ],
+      "explanation": "En haute impédance, les deux transistors de sortie sont bloqués : la sortie n'impose ni 0 ni 1, comme si elle était débranchée. Plusieurs circuits peuvent ainsi partager un même bus, à condition qu'un seul à la fois ne soit pas en Z. Cet état est commandé par une entrée de validation (*Output Enable*) ; ce n'est pas un niveau logique intermédiaire.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pour une bascule RS à portes NOR (entrées actives à l'état haut), quelle combinaison d'entrées est interdite ?",
+      "answer": "S = 1 et R = 1",
+      "wrong": [
+        "S = 0 et R = 0",
+        "S = 1 et R = 0",
+        "S = 0 et R = 1"
+      ],
+      "explanation": "S = 1 (*set*) met Q à 1, R = 1 (*reset*) le remet à 0, et S = R = 0 conserve l'état : c'est la mémorisation. S = R = 1 force Q et Q̄ à 0 en même temps, ce qui contredit Q̄ = NON Q, et l'état final au relâchement des deux entrées est imprévisible. Avec une bascule à portes NAND (entrées actives à l'état bas), c'est au contraire S̄ = R̄ = 0 qui est interdit.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Bascule_(circuit_logique)"
+    },
+    {
+      "question": "On relie la sortie Q̄ d'une bascule D à son entrée D et on lui applique une horloge de 1 MHz. Quelle fréquence obtient-on sur Q ?",
+      "answer": "500 kHz",
+      "wrong": [
+        "1 MHz",
+        "2 MHz",
+        "250 kHz"
+      ],
+      "explanation": "À chaque front montant, la bascule recopie Q̄ : sa sortie s'inverse donc une fois par période d'horloge. Il faut deux fronts pour une période complète de Q, d'où une fréquence divisée par 2. En chaînant n bascules ainsi montées, on divise par 2ⁿ : c'est le principe du compteur binaire asynchrone.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel type de circuit, comme le 74HC595, permet de piloter 8 LED à partir de seulement 3 broches d'un microcontrôleur ?",
+      "answer": "Un registre à décalage",
+      "wrong": [
+        "Un multiplexeur analogique",
+        "Un compteur binaire",
+        "Un convertisseur numérique-analogique"
+      ],
+      "explanation": "Le 74HC595 est un registre à décalage série-parallèle : les bits arrivent un par un sur la broche de données, au rythme d'une horloge, et se décalent dans 8 bascules. Une troisième broche (le verrou) recopie ensuite l'octet complet sur les 8 sorties d'un coup. On peut en chaîner plusieurs pour obtenir 16, 24… sorties avec les mêmes 3 broches ; sur Arduino, la fonction `shiftOut()` sert à les alimenter.",
+      "difficulty": 2,
+      "source": "https://docs.arduino.cc/language-reference/en/functions/advanced-io/shiftOut/"
+    },
+    {
+      "question": "Quelle est la différence entre un verrou D (*latch*) et une bascule D (*flip-flop*) ?",
+      "answer": "Le verrou est transparent tant que l'horloge est active",
+      "wrong": [
+        "Le verrou ne réagit qu'aux fronts d'horloge",
+        "Le verrou mémorise deux bits au lieu d'un",
+        "Le verrou fonctionne sans aucun signal de commande"
+      ],
+      "explanation": "Le verrou est sensible au **niveau** : tant que son entrée de validation est active, Q suit D en permanence, et il fige la valeur quand elle redevient inactive. La bascule est sensible au **front** : elle ne capture D qu'à l'instant précis du front d'horloge. Les circuits synchrones utilisent surtout des bascules, car un verrou transparent laisse se propager les changements pendant toute la phase active.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Bascule_(circuit_logique)"
+    },
+    {
+      "question": "Combien de portes NAND à deux entrées faut-il au minimum pour réaliser une porte XOR ?",
+      "answer": "4",
+      "wrong": [
+        "3",
+        "5",
+        "2"
+      ],
+      "explanation": "Le montage classique calcule d'abord N = NAND(A, B), puis NAND(A, N) et NAND(B, N), et enfin une quatrième NAND combine ces deux résultats : on obtient A XOR B avec 4 portes, le minimum possible. La traduction directe de `A·B̄ + Ā·B` en coûterait 5 (deux NAND en inverseurs, deux pour les produits, une pour le OU).",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Fonction_OU_exclusif"
+    },
+    {
+      "question": "Dans un additionneur complet (entrées A, B et retenue entrante Cin), quelle expression donne la retenue sortante ?",
+      "answer": "`A·B + Cin·(A ⊕ B)`",
+      "wrong": [
+        "`A ⊕ B ⊕ Cin`",
+        "`A·B·Cin`",
+        "`(A + B)·Cin`"
+      ],
+      "explanation": "La retenue sortante vaut 1 quand au moins deux des trois entrées valent 1 (fonction majorité) : soit A et B sont tous deux à 1, soit un seul l'est et la retenue entrante aussi. On l'écrit aussi `A·B + A·Cin + B·Cin`. Le leurre `A ⊕ B ⊕ Cin` est la **somme** S, et `(A + B)·Cin` oublie le cas A = B = 1 sans retenue entrante.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Additionneur"
+    },
+    {
+      "question": "En logique TTL standard alimentée en 5 V, quelle est la tension d'entrée minimale garantie comme niveau haut (VIH) ?",
+      "answer": "2 V",
+      "wrong": [
+        "2,4 V",
+        "3,5 V",
+        "0,8 V"
+      ],
+      "explanation": "Une entrée TTL reconnaît un niveau haut dès 2 V et un niveau bas jusqu'à 0,8 V (VIL). Une sortie TTL garantit au moins 2,4 V à l'état haut (VOH) : l'écart de 0,4 V constitue la marge de bruit. 3,5 V est le seuil haut typique d'une entrée CMOS 5 V (70 % de VDD), ce qui explique qu'une sortie TTL ne pilote pas toujours de façon fiable une entrée CMOS, d'où la famille 74HCT à entrées compatibles TTL.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Transistor-transistor_logic"
+    },
+    {
+      "question": "La puissance dynamique dissipée par un circuit CMOS qui commute est proportionnelle à quelle expression (C : capacité commutée, V : tension d'alimentation, f : fréquence) ?",
+      "answer": "`C·V²·f`",
+      "wrong": [
+        "`C·V·f`",
+        "`C·V²/f`",
+        "`C²·V·f`"
+      ],
+      "explanation": "À chaque cycle, les capacités sont chargées puis déchargées, ce qui dissipe une énergie proportionnelle à C·V², et cela se répète f fois par seconde. La dépendance au **carré** de la tension explique pourquoi on a abaissé l'alimentation des circuits de 5 V à 3,3 V puis autour de 1 V dans les processeurs : c'est le levier le plus efficace. À l'inverse, l'overclocking augmente f et souvent V.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Complementary_metal_oxide_semi-conductor"
+    },
+    {
+      "question": "Plusieurs sorties à drain ouvert sont reliées à une même ligne munie d'une résistance de tirage vers VCC. En logique positive (1 = niveau haut), quelle fonction des sorties obtient-on sur la ligne ?",
+      "answer": "Un ET câblé",
+      "wrong": [
+        "Un OU câblé",
+        "Un XOR câblé",
+        "Un NON câblé"
+      ],
+      "explanation": "Une sortie à drain ouvert sait seulement tirer la ligne vers 0 ou la laisser libre. La ligne n'est haute, grâce à la résistance, que si **toutes** les sorties la laissent libre : c'est un ET de leurs états, sans risque de court-circuit, contrairement à deux sorties push-pull en opposition. En logique négative (actif à l'état bas), le même montage est vu comme un OU câblé. C'est le principe des bus I2C et des lignes d'interruption partagées.",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment élimine-t-on un aléa statique (glitch) repéré sur un tableau de Karnaugh, quand deux regroupements voisins se touchent sans se chevaucher ?",
+      "answer": "En ajoutant un regroupement redondant qui chevauche les deux",
+      "wrong": [
+        "En supprimant l'un des deux regroupements",
+        "En ajoutant une variable au tableau de Karnaugh",
+        "En remplaçant toutes les portes ET par des NAND"
+      ],
+      "explanation": "Lors du passage d'un groupe à l'autre, la variable qui change emprunte des chemins de délais différents : pendant quelques nanosecondes, aucun terme ne vaut 1 et la sortie chute brièvement. Le terme de consensus, logiquement redondant, reste à 1 pendant la transition et supprime l'aléa. Par exemple, `A·B̄ + B·C` devient `A·B̄ + B·C + A·C`. Passer en NAND-NAND ne change rien, c'est la même fonction avec les mêmes chemins.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Table_de_Karnaugh"
+    },
+    {
+      "question": "Que désigne le temps de prépositionnement (*setup time*) d'une bascule ?",
+      "answer": "La durée où D doit être stable avant le front d'horloge",
+      "wrong": [
+        "La durée où D doit rester stable après le front",
+        "Le délai entre le front et le changement de Q",
+        "La durée minimale de l'état haut de l'horloge"
+      ],
+      "explanation": "Pour être capturée correctement, l'entrée D doit être stable pendant le *setup time* **avant** le front, puis pendant le temps de maintien (*hold time*) **après** le front. Le délai entre le front et la mise à jour de Q est le temps de propagation (*clock-to-Q*). Si D change dans cette fenêtre, la bascule risque de devenir métastable.",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment limite-t-on le risque de métastabilité quand un signal asynchrone (bouton, autre domaine d'horloge) entre dans un circuit synchrone ?",
+      "answer": "En le faisant passer par deux bascules en série",
+      "wrong": [
+        "En ajoutant une porte NON sur ce signal",
+        "En augmentant la fréquence d'horloge",
+        "En le reliant à l'entrée de reset du circuit"
+      ],
+      "explanation": "Un signal asynchrone peut changer pendant la fenêtre setup/hold : la première bascule risque alors de rester un instant dans un état intermédiaire. La seconde bascule ne l'échantillonne qu'un cycle plus tard, ce qui laisse à la première le temps de se stabiliser : la probabilité qu'une métastabilité traverse les deux devient négligeable. Augmenter la fréquence réduit au contraire ce temps de résolution et aggrave le problème.",
+      "difficulty": 3
+    },
+    {
+      "question": "Entre deux bascules d'un circuit synchrone, le chemin combinatoire le plus lent dure 8 ns. Chaque bascule a un temps de propagation horloge-sortie de 1 ns et un temps de prépositionnement de 1 ns. Quelle est la fréquence d'horloge maximale ?",
+      "answer": "100 MHz",
+      "wrong": [
+        "125 MHz",
+        "111 MHz",
+        "50 MHz"
+      ],
+      "explanation": "En une période, le signal doit sortir de la première bascule (1 ns), traverser la logique (8 ns) et être stable 1 ns avant le front suivant : la période minimale est de 10 ns, soit 1 / 10 ns = 100 MHz. 125 MHz ignorerait les temps des bascules, 111 MHz n'en compterait qu'un seul. Ce « chemin critique » fixe la fréquence maximale d'un processeur ou d'un FPGA.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelles sont les deux fonctions qu'un programme Arduino (croquis) doit obligatoirement définir ?",
+      "answer": "`setup()` et `loop()`",
+      "wrong": [
+        "`main()` et `loop()`",
+        "`init()` et `run()`",
+        "`setup()` et `main()`"
+      ],
+      "explanation": "Un programme Arduino, appelé croquis, suit toujours le même squelette. `setup()` s'exécute une seule fois, au démarrage ou après un appui sur reset : on y règle les broches (`pinMode`) et on ouvre le port série (`Serial.begin`). `loop()` est ensuite appelée en boucle, sans fin, tant que la carte est alimentée : c'est là qu'on lit les capteurs et qu'on commande les sorties. Exemple : dans Blink, `setup()` met la broche 13 en sortie, puis `loop()` allume et éteint la LED, encore et encore. Le piège `main()` : cette fonction existe bien, mais le cœur Arduino la fournit déjà. C'est elle qui appelle `setup()` une fois, puis `loop()` indéfiniment.",
+      "difficulty": 1,
+      "source": "https://docs.arduino.cc/language-reference/en/structure/sketch/setup/"
+    },
+    {
+      "question": "Quel microcontrôleur équipe l'Arduino Uno R3 ?",
+      "answer": "L'ATmega328P",
+      "wrong": [
+        "L'ATmega2560",
+        "L'ATtiny85",
+        "L'ESP32"
+      ],
+      "explanation": "Une carte Arduino n'est qu'un support : le vrai « cerveau » est le microcontrôleur soudé dessus. Sur l'Uno R3, c'est l'ATmega328P, un microcontrôleur AVR 8 bits (il traite les données par paquets de 8 bits) cadencé à 16 MHz. Il offre 32 Kio de Flash pour le programme et 2 Kio de RAM. Les autres puces équipent d'autres cartes : l'ATmega2560 l'Arduino Mega 2560, l'ATtiny85 de minuscules montages à 8 broches, et l'ESP32 d'Espressif les projets connectés en Wi-Fi. Attention au nom : l'Uno R4, sortie en 2023, a changé de puce (Renesas RA4M1, cœur ARM 32 bits).",
+      "difficulty": 1,
+      "source": "https://docs.arduino.cc/hardware/uno-rev3/"
+    },
+    {
+      "question": "Sur une Arduino Uno, à quelle broche numérique est reliée la LED intégrée, accessible par la constante `LED_BUILTIN` ?",
+      "answer": "13",
+      "wrong": [
+        "11",
+        "1",
+        "2"
+      ],
+      "explanation": "Presque toutes les cartes Arduino ont une petite LED soudée sur la carte, pratique pour tester un programme sans aucun câblage. Sur l'Uno, cette LED, marquée « L », est reliée à la broche numérique 13. C'est elle que fait clignoter l'exemple Blink, le « Hello world » de l'Arduino. La constante `LED_BUILTIN` vaut 13 sur l'Uno, mais une autre valeur sur certaines cartes : l'écrire plutôt que 13 rend le code portable. Les broches 1 et 2 sont de mauvais choix : les broches 0 et 1 servent au port série (RX et TX), et la broche 2 est une entrée-sortie ordinaire, souvent utilisée pour les interruptions.",
+      "difficulty": 1,
+      "source": "https://docs.arduino.cc/built-in-examples/basics/Blink/"
+    },
+    {
+      "question": "Quelle plage de valeurs renvoie `analogRead()` sur une Arduino Uno ?",
+      "answer": "De 0 à 1023",
+      "wrong": [
+        "De 0 à 255",
+        "De 0 à 5",
+        "De −512 à 511"
+      ],
+      "explanation": "`analogRead()` mesure une tension sur une broche analogique (A0 à A5 sur l'Uno) grâce au convertisseur analogique-numérique, ou CAN. Ce convertisseur transforme une tension en nombre entier. Celui de l'Uno a une résolution de 10 bits : il distingue 2¹⁰ = 1024 niveaux, numérotés de 0 à 1023. 0 correspond à 0 V et 1023 à la tension de référence, 5 V par défaut. Exemple : un potentiomètre réglé à mi-course donne environ 512, soit 2,5 V. Le piège 0 à 255 est la plage de `analogWrite()`, qui produit un signal PWM sur 8 bits : une confusion très fréquente chez les débutants.",
+      "difficulty": 1,
+      "source": "https://docs.arduino.cc/language-reference/en/functions/analog-io/analogRead/"
+    },
+    {
+      "question": "Pourquoi un seul appui sur un bouton poussoir est-il parfois compté plusieurs fois par un programme Arduino ?",
+      "answer": "À cause des rebonds mécaniques du contact",
+      "wrong": [
+        "À cause de la résistance de tirage interne",
+        "Parce que `digitalRead()` est trop lent",
+        "À cause des parasites du port USB"
+      ],
+      "explanation": "Un bouton poussoir est un simple contact mécanique : deux lames de métal se touchent quand on appuie. En se fermant, ces lames rebondissent pendant quelques millisecondes. Le signal passe alors plusieurs fois de 0 à 1 avant de se stabiliser. Or un microcontrôleur à 16 MHz exécute `loop()` des milliers de fois par seconde : il voit chaque rebond comme un nouvel appui. Exemple : un compteur d'appuis saute de 1 à 4 d'un seul coup. On corrige par un anti-rebond : en logiciel, on ignore les changements pendant quelques dizaines de millisecondes grâce à `millis()` (50 ms dans l'exemple officiel) ; en matériel, on ajoute un filtre RC ou une porte à trigger de Schmitt.",
+      "difficulty": 1,
+      "source": "https://docs.arduino.cc/built-in-examples/digital/Debounce/"
+    },
+    {
+      "question": "Qu'est-ce qui distingue un microcontrôleur d'un microprocesseur ?",
+      "answer": "Il réunit processeur, mémoires et périphériques sur une puce",
+      "wrong": [
+        "Il exécute ses instructions bien plus rapidement",
+        "Il se programme obligatoirement en assembleur",
+        "Il fonctionne sans aucune horloge interne"
+      ],
+      "explanation": "On trouve des microcontrôleurs partout : machine à laver, télécommande, souris, voiture… Un microcontrôleur est un petit ordinateur complet sur une seule puce. Il réunit le cœur de calcul (le processeur), la mémoire Flash qui garde le programme, la RAM pour les variables et des périphériques : entrées-sorties, timers, convertisseur analogique-numérique, port série. Un microprocesseur de PC, lui, a besoin de composants externes : barrettes de RAM, disque, carte mère. Exemple : l'ATmega328P de l'Arduino Uno tourne à 16 MHz avec 2 Kio de RAM, quand un processeur de PC dépasse les 3 GHz avec des gigaoctets de RAM. Le microcontrôleur n'est donc pas plus rapide, mais il est économe, bon marché et autonome.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Microcontrôleur"
+    },
+    {
+      "question": "Le moniteur série de l'IDE Arduino affiche des caractères incompréhensibles. Quelle est la cause la plus probable ?",
+      "answer": "Son débit ne correspond pas à celui de `Serial.begin()`",
+      "wrong": [
+        "Le câble USB utilisé est trop long",
+        "La carte n'est pas alimentée en 5 V",
+        "Le programme occupe trop de mémoire Flash"
+      ],
+      "explanation": "Le moniteur série de l'IDE Arduino affiche ce que la carte envoie avec `Serial.print()`. Cette liaison série est asynchrone : il n'y a pas de fil d'horloge commun. Émetteur et récepteur doivent donc se mettre d'accord à l'avance sur le débit, mesuré en bauds (ici, des bits par seconde). Si le programme appelle `Serial.begin(115200)` et que le moniteur est réglé sur 9600 bauds, le récepteur lit chaque bit au mauvais instant. Il reconstitue alors des octets faux, qui s'affichent comme des symboles bizarres. La solution : choisir la même valeur dans la liste déroulante du moniteur. Les autres pistes sont bien moins probables et ne donnent pas ce symptôme typique.",
+      "difficulty": 1,
+      "source": "https://docs.arduino.cc/language-reference/en/functions/communication/serial/begin/"
+    },
+    {
+      "question": "Quelle différence fondamentale y a-t-il entre un Raspberry Pi 4 et une Arduino Uno ?",
+      "answer": "Le Raspberry Pi fait tourner un système d'exploitation",
+      "wrong": [
+        "Le Raspberry Pi n'a aucune broche d'entrée-sortie",
+        "L'Arduino Uno se programme uniquement en Python",
+        "L'Arduino Uno a un processeur plus puissant"
+      ],
+      "explanation": "Arduino et Raspberry Pi sont les deux cartes stars des makers, mais elles ne jouent pas dans la même catégorie. Le Raspberry Pi 4 est un nano-ordinateur : processeur ARM 64 bits, plusieurs gigaoctets de RAM et un système d'exploitation comme Linux, avec bureau graphique et navigateur. L'Uno est une carte à microcontrôleur : 8 bits, 16 MHz, 2 Kio de RAM. Elle exécute un seul programme, sans système d'exploitation, démarre instantanément et réagit de façon très prévisible. Exemple : pour un serveur web avec écran, on prend un Pi ; pour piloter un moteur avec un timing précis, une Arduino. Le Pi a lui aussi des broches GPIO, en 3,3 V. Attention : le Raspberry Pi Pico est, lui, une carte à microcontrôleur.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Raspberry_Pi"
+    },
+    {
+      "question": "Quelle est la résolution en tension du convertisseur 10 bits d'une Arduino Uno, avec la référence par défaut de 5 V ?",
+      "answer": "Environ 4,9 mV",
+      "wrong": [
+        "Environ 19,5 mV",
+        "Environ 1,2 mV",
+        "Environ 9,8 mV"
+      ],
+      "explanation": "La résolution d'un convertisseur analogique-numérique (CAN) est le plus petit écart de tension qu'il sait distinguer. C'est le chiffre clé pour savoir si une mesure sera assez fine. Le CAN de l'Uno a 10 bits : il découpe la plage de 0 à 5 V en 2¹⁰ = 1024 pas. Un pas vaut donc 5 / 1024 ≈ 4,88 mV. Exemple : une lecture de 512 correspond à 512 × 4,88 mV ≈ 2,5 V. Les leurres sont les résolutions d'autres convertisseurs : 19,5 mV pour 8 bits (5 / 256), 9,8 mV pour 9 bits (5 / 512) et 1,2 mV pour 12 bits (5 / 4096). Pour mesurer finement une petite tension, on peut abaisser la référence avec `analogReference()`.",
+      "difficulty": 2,
+      "source": "https://docs.arduino.cc/language-reference/en/functions/analog-io/analogRead/"
+    },
+    {
+      "question": "Un bouton est câblé entre la broche 2 et GND, avec `pinMode(2, INPUT_PULLUP)`. Que renvoie `digitalRead(2)` quand on appuie sur le bouton ?",
+      "answer": "`LOW`",
+      "wrong": [
+        "`HIGH`",
+        "Une valeur aléatoire",
+        "`1023`"
+      ],
+      "explanation": "Une entrée numérique doit toujours être reliée à un niveau défini, sinon elle lit n'importe quoi. Une résistance de tirage (*pull-up*) relie la broche au 5 V à travers une forte résistance : sans autre action, la broche lit `HIGH`. L'ATmega328P en contient une pour chaque broche, de 20 à 50 kΩ environ, que `INPUT_PULLUP` active. Bouton relâché, la broche est donc à `HIGH`. Quand on appuie, le bouton relie directement la broche à la masse, qui l'emporte sur la résistance : on lit `LOW`. La logique est inversée (appuyé = `LOW`), mais on économise une résistance externe. Le leurre `1023` est une valeur d'`analogRead()`, jamais renvoyée par `digitalRead()`.",
+      "difficulty": 2,
+      "source": "https://docs.arduino.cc/learn/microcontrollers/digital-pins/"
+    },
+    {
+      "question": "Un bouton relie le 5 V à une broche configurée en `INPUT`, sans aucune résistance. Que lit `digitalRead()` quand le bouton est relâché ?",
+      "answer": "Une valeur imprévisible",
+      "wrong": [
+        "`LOW` en permanence",
+        "`HIGH` en permanence",
+        "Une erreur d'exécution"
+      ],
+      "explanation": "Ce piège arrive dans presque tous les premiers montages avec bouton. Quand le bouton est relâché, la broche n'est reliée à rien : on dit qu'elle est « flottante ». Une entrée CMOS a une impédance très élevée, c'est-à-dire qu'elle ne consomme presque aucun courant. Le moindre parasite suffit donc à faire varier sa tension : câble secteur voisin, électricité statique, simple approche du doigt. `digitalRead()` renvoie alors `LOW` ou `HIGH` au hasard. Exemple : une LED censée suivre le bouton clignote toute seule. Le remède est une résistance de rappel vers la masse (*pull-down*, typiquement 10 kΩ). Autre solution : câbler le bouton vers GND et utiliser `INPUT_PULLUP`.",
+      "difficulty": 2,
+      "source": "https://docs.arduino.cc/learn/microcontrollers/digital-pins/"
+    },
+    {
+      "question": "Pourquoi préfère-t-on `millis()` à `delay()` pour faire clignoter une LED tout en surveillant un bouton ?",
+      "answer": "`delay()` bloque le programme pendant toute l'attente",
+      "wrong": [
+        "`delay()` n'accepte pas plus de 1 000 ms",
+        "`millis()` consomme moins d'énergie",
+        "`delay()` désactive les broches de sortie"
+      ],
+      "explanation": "Un programme embarqué doit souvent faire plusieurs choses à la fois : faire clignoter une LED, lire un bouton, surveiller un capteur. `delay(500)` met tout le programme en pause pendant 500 ms : pendant ce temps, `loop()` ne tourne plus et un appui bref sur le bouton passe inaperçu. `millis()`, au contraire, renvoie simplement le nombre de millisecondes écoulées depuis le démarrage, sans rien bloquer. À chaque tour de `loop()`, on compare l'heure actuelle à celle du dernier changement de la LED, et on ne la bascule que si 500 ms se sont écoulées. La boucle tourne ainsi des milliers de fois par seconde et reste réactive. C'est l'objet de l'exemple officiel « BlinkWithoutDelay ».",
+      "difficulty": 2,
+      "source": "https://docs.arduino.cc/built-in-examples/digital/BlinkWithoutDelay/"
+    },
+    {
+      "question": "Sur une Arduino Uno, quelles broches peuvent déclencher une interruption externe avec `attachInterrupt()` ?",
+      "answer": "Les broches 2 et 3",
+      "wrong": [
+        "Les broches 0 et 1",
+        "Les broches 10 à 13",
+        "Toutes les broches PWM"
+      ],
+      "explanation": "Une interruption permet de réagir immédiatement à un événement, comme un front sur une broche, sans le surveiller en permanence dans `loop()`. Le processeur suspend son travail, exécute une petite fonction, puis reprend. Sur l'Uno, `attachInterrupt()` ne fonctionne que sur les broches 2 et 3, reliées aux interruptions externes INT0 et INT1 de l'ATmega328P. On écrit par exemple `attachInterrupt(digitalPinToInterrupt(2), compter, FALLING)` pour compter les impulsions d'un capteur de débit d'eau. D'autres cartes en offrent davantage, comme la Mega 2560 (2, 3, 18, 19, 20 et 21). L'ATmega328P a aussi des interruptions « pin change » sur les autres broches, mais `attachInterrupt()` ne les utilise pas.",
+      "difficulty": 2,
+      "source": "https://docs.arduino.cc/language-reference/en/functions/external-interrupts/attachInterrupt/"
+    },
+    {
+      "question": "Pourquoi faut-il être prudent en reliant la sortie d'un capteur alimenté en 5 V à une entrée d'un ESP32 ?",
+      "answer": "Ses entrées-sorties fonctionnent en 3,3 V",
+      "wrong": [
+        "Il ne lit que des signaux analogiques",
+        "Il ne possède aucune résistance de tirage",
+        "Ses entrées fonctionnent en logique inversée"
+      ],
+      "explanation": "L'ESP32 est un microcontrôleur très populaire pour les objets connectés, car il intègre le Wi-Fi et le Bluetooth. Contrairement à l'Arduino Uno R3, qui travaille en 5 V, il fonctionne en 3,3 V : un niveau haut sur ses broches vaut 3,3 V. Ses entrées ne sont pas prévues pour recevoir 5 V, et un tel signal peut les endommager durablement. Exemple : un capteur à ultrasons HC-SR04 alimenté en 5 V renvoie des impulsions de 5 V sur sa broche « Echo ». Il faut alors abaisser la tension avec un pont diviseur (deux résistances) ou un adaptateur de niveaux (*level shifter*). Le problème est électrique, pas logique : l'ESP32 lit des niveaux numériques tout à fait classiques.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quoi sert le chien de garde (*watchdog*) d'un microcontrôleur ?",
+      "answer": "À le redémarrer si le programme se bloque",
+      "wrong": [
+        "À surveiller la température de la puce",
+        "À protéger les broches contre les surtensions",
+        "À empêcher la copie du programme en Flash"
+      ],
+      "explanation": "Un système embarqué tourne souvent sans personne pour le surveiller : station météo, alarme, chaudière. S'il se bloque, il doit redémarrer tout seul. C'est le rôle du chien de garde (*watchdog*) : une minuterie indépendante du programme, qui compte en permanence. Le programme doit la remettre à zéro régulièrement ; on dit qu'il « nourrit le chien ». S'il se fige (boucle infinie, attente d'un capteur qui ne répond plus), il cesse de la réarmer. La minuterie arrive alors au bout et provoque un reset du microcontrôleur. Exemple : avec un délai d'une seconde, un programme bloqué redémarre au bout d'une seconde au lieu de rester figé des jours. Sur AVR, on l'utilise via `wdt_enable()` et `wdt_reset()`.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Chien_de_garde_(informatique)"
+    },
+    {
+      "question": "Sur Arduino, qu'affiche `Serial.println(10, BIN);` ?",
+      "answer": "`1010`",
+      "wrong": [
+        "`00001010`",
+        "`0b1010`",
+        "`A`"
+      ],
+      "explanation": "Afficher une valeur en binaire est très utile pour déboguer un registre ou un masque de bits. Sur Arduino, `print()` et `println()` acceptent un second paramètre qui choisit la base : `BIN` (2), `OCT` (8), `DEC` (10, par défaut) ou `HEX` (16). Le nombre est alors écrit dans cette base, **sans zéros initiaux ni préfixe**. 10 vaut 8 + 2, donc `1010` en binaire. Exemple : `Serial.println(5, BIN)` affiche seulement `101`. Le piège `00001010` suppose un affichage sur 8 bits : pour l'obtenir, il faut ajouter soi-même les zéros manquants. Le leurre `A` est ce qu'afficherait `Serial.println(10, HEX)`, en majuscule.",
+      "difficulty": 2,
+      "source": "https://docs.arduino.cc/language-reference/en/functions/communication/serial/print/"
+    },
+    {
+      "question": "Sur une Arduino Uno, à quelle fréquence environ la LED de ce programme clignote-t-elle (cycles allumé + éteint par seconde) ?\n```cpp\nunsigned long t0 = 0;\nbool etat = false;\n\nvoid setup() {\n  pinMode(13, OUTPUT);\n}\n\nvoid loop() {\n  if (millis() - t0 >= 250) {\n    t0 = millis();\n    etat = !etat;\n    digitalWrite(13, etat);\n  }\n}\n```",
+      "answer": "2 Hz",
+      "wrong": [
+        "4 Hz",
+        "1 Hz",
+        "250 Hz"
+      ],
+      "explanation": "La fréquence d'un clignotement est le nombre de cycles complets par seconde, mesuré en hertz (Hz). Un cycle complet, c'est une phase allumée suivie d'une phase éteinte. Ici, la condition devient vraie toutes les 250 ms, et l'état de la LED est alors inversé. La LED reste donc allumée 250 ms, puis éteinte 250 ms : un cycle dure 500 ms. En une seconde, on a 1000 / 500 = 2 cycles, soit 2 Hz. Le piège 4 Hz compte les changements d'état (4 par seconde), pas les cycles. Ce schéma sans `delay()` laisse `loop()` libre de faire autre chose entre deux changements, comme lire un bouton.",
+      "difficulty": 2,
+      "source": "https://docs.arduino.cc/built-in-examples/digital/BlinkWithoutDelay/"
+    },
+    {
+      "question": "Au bout de combien de temps environ la valeur renvoyée par `millis()` revient-elle à zéro sur une Arduino ?",
+      "answer": "Environ 49,7 jours",
+      "wrong": [
+        "Environ 65,5 secondes",
+        "Environ 24,8 jours",
+        "Environ 71,6 minutes"
+      ],
+      "explanation": "`millis()` compte les millisecondes écoulées depuis le démarrage de la carte. Il renvoie un `unsigned long`, un entier non signé de 32 bits. Sa valeur maximale est donc 2³² − 1, soit environ 4,29 milliards. Une fois ce maximum atteint, le compteur repasse à zéro, comme un compteur kilométrique. 4,29 milliards de millisecondes, c'est 4,29 millions de secondes, soit environ 49,7 jours. Les leurres viennent d'autres tailles : 24,8 jours pour un entier **signé** (2³¹ ms), 65,5 secondes pour un compteur 16 bits. 71,6 minutes est la durée avant le débordement de `micros()`, qui compte 2³² microsecondes. Un montage qui tourne des mois doit donc gérer ce retour à zéro.",
+      "difficulty": 3,
+      "source": "https://docs.arduino.cc/language-reference/en/functions/time/millis/"
+    },
+    {
+      "question": "Pourquoi écrit-on `if (millis() - debut >= intervalle)` plutôt que `if (millis() >= debut + intervalle)` ?",
+      "answer": "La soustraction reste juste quand `millis()` déborde",
+      "wrong": [
+        "La soustraction s'exécute plus vite que l'addition",
+        "L'addition provoque une erreur de compilation",
+        "`millis()` ne peut pas être comparé directement"
+      ],
+      "explanation": "Ce point concerne tout montage qui tourne plus de 49,7 jours, durée après laquelle `millis()` repasse à zéro. Les deux variables sont des `unsigned long`, des entiers non signés de 32 bits. Leurs calculs se font « modulo 2³² » : un résultat trop grand ou négatif fait le tour du compteur. Grâce à cela, `millis() - debut` donne toujours le vrai temps écoulé, même si `millis()` a débordé entre-temps. Exemple : `debut` vaut 4 294 967 000 et `millis()` vaut 200 après le débordement : la soustraction donne bien 496 ms. Avec l'addition, `debut + 1000` déborde et vaut 704. Or, juste avant le débordement, `millis()` dépasse déjà 704 : la condition devient vraie bien trop tôt.",
+      "difficulty": 3,
+      "source": "https://docs.arduino.cc/language-reference/en/functions/time/millis/"
+    },
+    {
+      "question": "Sur une Arduino Uno, combien de bits occupe une variable de type `int` ?",
+      "answer": "16 bits",
+      "wrong": [
+        "32 bits",
+        "8 bits",
+        "64 bits"
+      ],
+      "explanation": "La taille d'un `int` dépend du processeur, ce qui piège les habitués du PC. Sur les cartes à AVR 8 bits (Uno, Nano, Mega), un `int` occupe 16 bits. Il va donc de −32 768 à 32 767 seulement. Sur l'Arduino Due, l'ESP32 ou les cartes ARM, il fait 32 bits, comme sur un ordinateur. Exemple : 300 × 200 = 60 000 dépasse la capacité d'un `int` sur Uno, et le résultat stocké est faux. Pour une taille garantie partout, on utilise `int16_t` ou `int32_t`, ou bien `long`, qui fait 32 bits sur AVR. Le leurre 8 bits correspond au type `byte`, et 32 bits au `int` d'un PC ou d'un ESP32.",
+      "difficulty": 3,
+      "source": "https://docs.arduino.cc/language-reference/en/variables/data-types/int/"
+    },
+    {
+      "question": "Quelle quantité de mémoire vive (SRAM) possède l'ATmega328P de l'Arduino Uno ?",
+      "answer": "2 Kio",
+      "wrong": [
+        "32 Kio",
+        "1 Kio",
+        "8 Kio"
+      ],
+      "explanation": "Un microcontrôleur possède plusieurs mémoires, chacune avec son rôle. Sur l'ATmega328P de l'Uno, la mémoire Flash (32 Kio) garde le programme, même hors tension ; le bootloader en occupe 0,5 Kio. L'EEPROM (1 Kio) conserve des réglages entre deux coupures. La SRAM, la mémoire vive, contient les variables pendant l'exécution : elle ne fait que 2 Kio, soit 2 048 octets. Exemple : un tableau de 500 `int` (2 octets chacun) occupe déjà 1 000 octets, la moitié de la RAM. Quand la SRAM est saturée, le programme plante de façon déroutante, sans message d'erreur. Le piège 32 Kio est la taille de la Flash, pas de la RAM.",
+      "difficulty": 3,
+      "source": "https://docs.arduino.cc/hardware/uno-rev3/"
+    },
+    {
+      "question": "À quoi sert la macro `F()` dans `Serial.println(F(\"Bonjour\"));` sur une Arduino Uno ?",
+      "answer": "À garder la chaîne en Flash au lieu de la copier en SRAM",
+      "wrong": [
+        "À formater la chaîne comme un nombre à virgule",
+        "À forcer l'envoi immédiat sur le port série",
+        "À convertir la chaîne en caractères majuscules"
+      ],
+      "explanation": "Sur l'Arduino Uno, la mémoire vive (SRAM) ne fait que 2 Kio, alors que la Flash qui stocke le programme en fait 32. Or, sur un AVR, les chaînes de texte écrites dans le code sont recopiées en SRAM au démarrage, même si elles ne changent jamais. Un programme qui affiche beaucoup de messages peut ainsi remplir la RAM à lui seul. La macro `F()` laisse la chaîne en Flash, comme le mot-clé `PROGMEM`, et `print()` la lit directement là-bas. Exemple : 40 messages de 30 caractères, ce sont plus de 1 200 octets de SRAM économisés, soit plus de la moitié de la mémoire vive. L'affichage, lui, ne change pas : le texte apparaît exactement pareil.",
+      "difficulty": 3,
+      "source": "https://docs.arduino.cc/language-reference/en/variables/utilities/PROGMEM/"
+    },
+    {
+      "question": "Pourquoi déclare-t-on `volatile` une variable globale modifiée dans une routine d'interruption ?",
+      "answer": "Pour que le compilateur relise sa valeur en mémoire à chaque accès",
+      "wrong": [
+        "Pour la placer en EEPROM afin qu'elle survive au reset",
+        "Pour la rendre accessible depuis un autre fichier",
+        "Pour interdire sa modification hors de l'interruption"
+      ],
+      "explanation": "Une routine d'interruption est une fonction appelée par le matériel à n'importe quel moment, par exemple à chaque impulsion d'un capteur. Pour aller vite, le compilateur optimise : s'il ne voit aucune modification d'une variable dans `loop()`, il peut garder sa valeur dans un registre du processeur sans jamais relire la mémoire. Mais l'interruption modifie cette variable « dans son dos ». Le mot-clé `volatile` interdit cette optimisation : la valeur est relue en mémoire à chaque accès. Exemple : un compteur `volatile int impulsions` incrémenté dans l'interruption. Sur un AVR 8 bits, lire cette variable de 2 octets n'est pas atomique (pas faite en une seule étape) : on la copie donc entre `noInterrupts()` et `interrupts()`.",
+      "difficulty": 3,
+      "source": "https://docs.arduino.cc/language-reference/en/variables/variable-scope-qualifiers/volatile/"
+    },
+    {
+      "question": "Sur une Arduino Uno, qu'affiche `Serial.println(10 / 4.0);` ?",
+      "answer": "`2.50`",
+      "wrong": [
+        "`2.5`",
+        "`2`",
+        "`2.500000`"
+      ],
+      "explanation": "Afficher un calcul avec des décimales est courant, par exemple pour une tension ou une température. Ici, `4.0` est un nombre à virgule, donc la division est réelle et vaut 2,5. Mais `print()` et `println()` affichent par défaut les nombres à virgule avec **deux décimales** exactement : on obtient `2.50`. On peut choisir le nombre de décimales avec un second paramètre : `Serial.println(10 / 4.0, 3)` affiche `2.500`. Le piège `2` serait le résultat de `10 / 4`, une division entre deux entiers, qui tronque la partie décimale. Le piège `2.5` est l'affichage qu'on attendrait en Python ou en JavaScript, pas sur Arduino.",
+      "difficulty": 3,
+      "source": "https://docs.arduino.cc/language-reference/en/functions/communication/serial/print/"
+    },
+    {
+      "question": "Sur une Arduino Uno, on oublie `pinMode(8, OUTPUT)` puis on exécute `digitalWrite(8, HIGH)`, avec une LED et sa résistance branchées sur la broche 8. Que se passe-t-il ?",
+      "answer": "Elle brille faiblement via la pull-up interne",
+      "wrong": [
+        "Elle s'allume normalement, à pleine intensité",
+        "Elle reste éteinte, la broche étant en entrée",
+        "Le compilateur signale l'oubli de `pinMode`"
+      ],
+      "explanation": "Oublier `pinMode()` est l'erreur la plus classique avec une LED. Au démarrage, toutes les broches de l'Uno sont configurées en entrée. Sur une carte AVR, `digitalWrite(HIGH)` sur une broche en entrée n'impose pas 5 V : il active sa résistance de tirage interne, de 20 à 50 kΩ environ. La LED est alors alimentée à travers cette grosse résistance. Exemple : avec environ 3 V aux bornes de la résistance interne et 30 kΩ, le courant vaut à peu près 0,1 mA, contre une dizaine de milliampères normalement. La LED luit donc très faiblement. La documentation officielle de `digitalWrite()` signale ce piège ; le compilateur, lui, ne vérifie rien.",
+      "difficulty": 3,
+      "source": "https://docs.arduino.cc/language-reference/en/functions/digital-io/digitalwrite/"
     }
   ]
 }

@@ -283,6 +283,565 @@
       ],
       "explanation": "Le mode priorité à l'ouverture (A chez Nikon, Sony ou Fujifilm, Av pour « aperture value » chez Canon) laisse au photographe le contrôle de l'ouverture, donc de la profondeur de champ ; l'appareil ajuste la vitesse pour obtenir une exposition correcte. Le mode inverse, où l'on fixe la vitesse, s'appelle S ou Tv. Tout régler soi-même correspond au mode M.",
       "difficulty": 1
+    },
+    {
+      "question": "Sur la molette d'un boîtier Canon, que signifie le mode **Tv** ?",
+      "answer": "Time value : priorité à la vitesse d'obturation",
+      "wrong": [
+        "Total value : mode entièrement automatique",
+        "Tungsten value : balance des blancs tungstène",
+        "Tone value : réglage du contraste de l'image"
+      ],
+      "explanation": "Tv vient de « time value » : tu fixes le temps de pose et l'appareil choisit l'ouverture. Chez Nikon, Sony ou Fujifilm, ce mode s'appelle S (shutter priority). Il sert quand le rendu du mouvement prime : figer un sportif à 1/1000 s ou réussir un filé à 1/30 s.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel mode laisse au photographe le contrôle à la fois de l'ouverture et de la vitesse ?",
+      "answer": "Le mode M (manuel)",
+      "wrong": [
+        "Le mode P (programme)",
+        "Le mode A (priorité ouverture)",
+        "Le mode S (priorité vitesse)"
+      ],
+      "explanation": "En mode M, l'appareil mesure toujours la lumière et affiche un indicateur, mais c'est toi qui fixes l'ouverture et la vitesse (et l'ISO, sauf si l'ISO auto est activé). En A et S, tu ne règles qu'un des deux paramètres ; en P, l'appareil choisit le couple lui-même.",
+      "difficulty": 1
+    },
+    {
+      "question": "En mode P, à quoi sert le « décalage de programme » (program shift) ?",
+      "answer": "Changer le couple vitesse/ouverture à exposition égale",
+      "wrong": [
+        "Éclaircir ou assombrir toute l'image d'un IL",
+        "Basculer automatiquement en mode manuel M",
+        "Passer la mesure de la lumière en mode spot"
+      ],
+      "explanation": "En mode P, tourner la molette fait défiler des couples équivalents, par exemple 1/250 s à f/4 ou 1/60 s à f/8 : la quantité de lumière reste la même, seul le compromis entre flou de mouvement et profondeur de champ change. Éclaircir ou assombrir l'image relève de la correction d'exposition, un réglage distinct.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'apporte le mode P par rapport au mode tout automatique (souvent repéré en vert sur la molette) ?",
+      "answer": "Tu peux régler toi-même l'ISO, la balance des blancs, la correction…",
+      "wrong": [
+        "Tu fixes l'ouverture et l'appareil calcule la vitesse",
+        "L'appareil désactive la mesure de la lumière",
+        "Le flash se déclenche automatiquement à chaque photo"
+      ],
+      "explanation": "En mode P, l'appareil choisit toujours le couple vitesse/ouverture, mais il te rend la main sur les autres paramètres : sensibilité, balance des blancs, correction d'exposition, mode de mesure, flash… En mode tout automatique, la plupart de ces réglages sont verrouillés. Fixer l'ouverture et laisser l'appareil calculer la vitesse correspond au mode A.",
+      "difficulty": 1
+    },
+    {
+      "question": "En mode A, avec une sensibilité ISO fixe, tu appliques une correction d'exposition de +1 IL. Que modifie l'appareil ?",
+      "answer": "Il double le temps de pose",
+      "wrong": [
+        "Il ouvre le diaphragme d'un cran",
+        "Il double la sensibilité ISO",
+        "Rien : la correction n'agit qu'en M"
+      ],
+      "explanation": "En priorité ouverture, l'ouverture est imposée par le photographe et l'ISO est fixe : la seule variable que l'appareil peut ajuster est la vitesse. Pour ajouter 1 IL, il double le temps de pose (de 1/250 s à 1/125 s, par exemple). En mode S, la même correction ferait au contraire varier l'ouverture.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur la plupart des boîtiers récents, en mode M avec l'ISO auto activé, sur quoi agit la correction d'exposition ?",
+      "answer": "Sur la sensibilité ISO choisie par l'appareil",
+      "wrong": [
+        "Sur la vitesse que tu as réglée",
+        "Sur l'ouverture que tu as réglée",
+        "Sur la puissance du flash uniquement"
+      ],
+      "explanation": "En M, l'ouverture et la vitesse sont fixées par toi : avec l'ISO auto, l'appareil n'a plus que la sensibilité pour atteindre l'exposition visée. La correction d'exposition décale donc la cible, et l'appareil monte ou descend l'ISO en conséquence. Sans ISO auto, plus aucun paramètre n'est automatique : la correction ne fait au mieux que décaler l'indicateur d'exposition.",
+      "difficulty": 3
+    },
+    {
+      "question": "À quoi sert la cellule (le posemètre) intégrée à l'appareil photo ?",
+      "answer": "À mesurer la lumière pour proposer une exposition",
+      "wrong": [
+        "À mesurer la distance du sujet pour la mise au point",
+        "À mesurer les vibrations pour la stabilisation",
+        "À mesurer l'inclinaison de l'appareil (niveau)"
+      ],
+      "explanation": "La cellule mesure la lumière réfléchie par la scène, à travers l'objectif (mesure TTL), et en déduit un couple vitesse/ouverture/ISO. En modes automatiques ou semi-automatiques, l'appareil applique cette proposition ; en mode M, elle s'affiche sous forme d'indicateur. Elle peut être trompée par des scènes très claires ou très sombres.",
+      "difficulty": 1
+    },
+    {
+      "question": "Sur quelle valeur de référence un posemètre à lumière réfléchie cale-t-il ce qu'il mesure ?",
+      "answer": "Un gris moyen, d'environ 18 % de réflectance",
+      "wrong": [
+        "Un blanc pur, d'environ 100 % de réflectance",
+        "Un noir profond, d'environ 3 % de réflectance",
+        "Un gris clair, d'environ 50 % de réflectance"
+      ],
+      "explanation": "Une cellule ignore si le sujet est clair ou sombre : elle suppose que la scène est, en moyenne, d'un gris moyen et règle l'exposition pour la rendre ainsi. On associe traditionnellement ce gris à une réflectance de 18 % (celle des cartes grises), même si l'étalonnage réel des cellules correspond plutôt à une valeur un peu plus faible. D'où les erreurs sur la neige ou les fonds noirs.",
+      "difficulty": 2
+    },
+    {
+      "question": "Tu photographies un paysage enneigé en mesure automatique, sans correction. Quel défaut obtiens-tu typiquement ?",
+      "answer": "Une neige grisâtre : la photo est sous-exposée",
+      "wrong": [
+        "Une neige brûlée : la photo est surexposée",
+        "Une photo floue à cause des reflets",
+        "Des couleurs qui virent nettement au rouge"
+      ],
+      "explanation": "La cellule veut ramener cette scène très claire au gris moyen : elle réduit l'exposition et la neige devient grise et terne. Il faut corriger positivement, en général de +1 à +2 IL, pour retrouver une neige blanche qui garde ses détails. Le même phénomène se produit sur une plage de sable clair.",
+      "difficulty": 1
+    },
+    {
+      "question": "Un chat noir sur un canapé noir remplit tout le cadre. Quelle correction d'exposition appliquer ?",
+      "answer": "Une correction négative, autour de −1 IL",
+      "wrong": [
+        "Une correction positive, autour de +1 IL",
+        "Aucune : la mesure compense toujours seule",
+        "Une correction de balance des blancs vers le bleu"
+      ],
+      "explanation": "Face à une scène très sombre, la cellule cherche à la ramener au gris moyen et surexpose : le noir devient gris délavé. Une correction négative (souvent −1 IL environ) rend au pelage sa noirceur. C'est le symétrique exact du cas de la neige, qui demande une correction positive.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel mode de mesure découpe l'image en nombreuses zones et les analyse ensemble pour estimer l'exposition ?",
+      "answer": "La mesure matricielle (ou évaluative)",
+      "wrong": [
+        "La mesure spot sur le collimateur",
+        "La mesure pondérée centrale",
+        "La mesure incidente au posemètre"
+      ],
+      "explanation": "La mesure matricielle (Nikon), évaluative (Canon) ou multizone (Sony) découpe l'image en de nombreuses zones, compare leurs luminosités, souvent avec les couleurs et la position de la mise au point, et en déduit une exposition. C'est le mode par défaut, efficace dans la majorité des situations. La mesure spot, elle, ne tient compte que d'une toute petite zone.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Metering_mode"
+    },
+    {
+      "question": "Dans quelle situation la mesure spot est-elle particulièrement utile ?",
+      "answer": "Un chanteur éclairé par une poursuite sur une scène noire",
+      "wrong": [
+        "Un paysage uniformément éclairé par un ciel couvert",
+        "Une photo de groupe à l'ombre, sans contraste",
+        "Un mur de briques éclairé de façon homogène"
+      ],
+      "explanation": "Quand le sujet n'occupe qu'une petite partie d'un cadre très contrasté, les mesures globales se laissent influencer par le fond noir et surexposent le visage. La mesure spot ne lit qu'une petite zone (quelques pourcents de l'image), ce qui permet d'exposer précisément pour le visage éclairé. Dans une scène homogène, tous les modes donnent à peu près le même résultat.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel est le principal avantage d'une mesure de la lumière incidente par rapport à une mesure de la lumière réfléchie ?",
+      "answer": "Elle n'est pas trompée par la clarté ou la noirceur du sujet",
+      "wrong": [
+        "Elle mesure la lumière directement à travers l'objectif",
+        "Elle fournit en plus la température de couleur exacte",
+        "Elle tient compte du filtre vissé sur l'objectif"
+      ],
+      "explanation": "La mesure incidente évalue la lumière qui tombe sur le sujet, avec un posemètre placé à sa position, et non celle qu'il renvoie. Une robe blanche et un costume noir sous le même éclairage donnent donc la même mesure, et chacun garde sa vraie valeur sur la photo. La mesure à travers l'objectif (TTL) est, elle, une mesure réfléchie, donc dépendante du sujet.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Light_meter"
+    },
+    {
+      "question": "Comment placer un posemètre à main pour une mesure en lumière incidente ?",
+      "answer": "À la place du sujet, la sphère blanche tournée vers l'appareil",
+      "wrong": [
+        "À la place de l'appareil, la sphère tournée vers le sujet",
+        "Contre l'objectif, la sphère tournée vers le ciel",
+        "Derrière le sujet, la sphère tournée vers le fond"
+      ],
+      "explanation": "La sphère (ou dôme) diffusante intègre la lumière qui arrive sur le sujet depuis toutes les directions vues par l'appareil : on la place donc là où se trouve le sujet, orientée vers l'objectif. Mesurer depuis l'appareil avec la sphère pointée vers le sujet évaluerait une lumière qui n'éclaire pas le sujet de la même façon.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quoi sert le bouton **AE-L** (ou **✱** chez Canon) ?",
+      "answer": "À mémoriser l'exposition avant de recadrer",
+      "wrong": [
+        "À mémoriser la balance des blancs mesurée",
+        "À verrouiller la molette des modes",
+        "À activer la réduction du bruit"
+      ],
+      "explanation": "AE-L signifie « auto exposure lock » : on mesure sur la zone voulue (un visage, un ciel), on mémorise, puis on recompose l'image sans que l'appareil recalcule l'exposition. Sans ce verrouillage, l'exposition changerait dès que le cadrage inclut des zones plus claires ou plus sombres.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans le système de zones d'Ansel Adams, quelle zone correspond au gris moyen visé par un posemètre ?",
+      "answer": "La zone V",
+      "wrong": [
+        "La zone 0",
+        "La zone X",
+        "La zone III"
+      ],
+      "explanation": "Le système de zones, mis au point par Ansel Adams et Fred Archer, découpe les tons en 11 zones, de 0 (noir pur) à X (blanc pur), chacune séparée de la suivante par 1 IL. La zone V est le gris moyen : c'est là qu'un posemètre place tout ce qu'il mesure. La zone III correspond à des ombres sombres mais encore texturées.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Zone_System"
+    },
+    {
+      "question": "Tu mesures en spot un mur sombre que tu veux rendre en zone III (ombre détaillée). Quelle correction appliquer à la valeur proposée par le posemètre ?",
+      "answer": "−2 IL",
+      "wrong": [
+        "+2 IL",
+        "−5 IL",
+        "−1 IL"
+      ],
+      "explanation": "Le posemètre place la surface mesurée en zone V (gris moyen). Les zones étant séparées d'1 IL, descendre de V à III demande de retirer 2 IL. Corriger de +2 IL placerait au contraire le mur en zone VII, bien trop clair. C'est tout le principe du système de zones : on choisit où « placer » une valeur, et les autres se répartissent en conséquence.",
+      "difficulty": 3
+    },
+    {
+      "question": "Portrait à contre-jour devant un ciel lumineux : le visage est trop sombre. Quel moyen éclaircit le visage sans brûler davantage le ciel ?",
+      "answer": "Un flash d'appoint dirigé vers le visage",
+      "wrong": [
+        "Une sensibilité ISO bien plus élevée",
+        "Une vitesse d'obturation plus lente",
+        "Une ouverture plus grande d'un ou deux crans"
+      ],
+      "explanation": "Augmenter l'ISO, ralentir la vitesse ou ouvrir davantage éclaircissent toute l'image, ciel compris, qui risque alors d'être écrêté. Le flash d'appoint (fill-in), comme un réflecteur, ajoute de la lumière uniquement sur le sujet proche : le visage s'éclaircit tandis que l'exposition du ciel lointain reste inchangée.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pour obtenir un sujet en silhouette noire devant un coucher de soleil, sur quoi faut-il mesurer la lumière ?",
+      "answer": "Sur le ciel lumineux, derrière le sujet",
+      "wrong": [
+        "Sur le sujet à contre-jour",
+        "Sur le sol sombre au premier plan",
+        "Sur une carte grise placée à l'ombre"
+      ],
+      "explanation": "En exposant pour le ciel, les zones claires sont correctement rendues et le sujet, beaucoup moins éclairé, tombe dans le noir : c'est l'effet silhouette. Mesurer sur le sujet sombre ferait au contraire surexposer fortement le ciel, qui perdrait ses couleurs.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel mode de mesure tient compte de toute l'image mais accorde un poids nettement plus fort à sa partie centrale ?",
+      "answer": "La mesure pondérée centrale",
+      "wrong": [
+        "La mesure spot",
+        "La mesure matricielle",
+        "La mesure incidente"
+      ],
+      "explanation": "La mesure pondérée centrale, héritée des reflex argentiques, fait une moyenne de toute l'image en privilégiant le centre. Son comportement est simple et prévisible, ce qu'apprécient certains photographes, mais elle ne cherche pas à « reconnaître » la scène comme la matricielle. La spot, elle, ignore presque tout le reste du cadre.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi un gris qui ne réfléchit qu'environ 18 % de la lumière paraît-il « à mi-chemin » entre le noir et le blanc ?",
+      "answer": "Notre perception de la clarté n'est pas linéaire",
+      "wrong": [
+        "Il réfléchit en réalité la moitié de la lumière",
+        "Les capteurs saturent au-delà de 36 % de lumière",
+        "C'est la moyenne des trois couleurs primaires"
+      ],
+      "explanation": "L'œil ne répond pas proportionnellement à la quantité de lumière : dans le modèle CIE L*a*b*, la clarté suit à peu près une racine cubique de la luminance. Une surface qui réfléchit 18 % de la lumière obtient ainsi une clarté L* d'environ 50 sur 100 et paraît moyenne, alors qu'un gris réfléchissant 50 % paraît déjà clair (L* ≈ 76). C'est aussi pourquoi chaque IL représente une marche perceptive à peu près régulière.",
+      "difficulty": 3
+    },
+    {
+      "question": "Selon la règle du « Looney 11 », quels réglages utiliser pour photographier la pleine lune à ISO 100 ?",
+      "answer": "f/11 et environ 1/100 s",
+      "wrong": [
+        "f/1.1 et environ 1/11 s",
+        "f/11 et environ 1 s",
+        "f/16 et environ 1/11 s"
+      ],
+      "explanation": "Le Looney 11 (de « lunar ») est le pendant du sunny 16 pour la Lune : f/11 et une vitesse de 1/ISO. La pleine lune est éclairée par le même soleil qu'un paysage de jour, mais sa surface est sombre, d'où une ouverture d'un cran plus grande que f/16. Le piège est de poser longuement comme pour une scène de nuit : la Lune devient alors un disque blanc sans détails.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Looney_11_rule"
+    },
+    {
+      "question": "En mode M, que montre la petite échelle graduée de −3 à +3 dans le viseur ?",
+      "answer": "L'écart entre tes réglages et l'exposition mesurée",
+      "wrong": [
+        "Le niveau de charge restant de la batterie",
+        "La distance de mise au point en mètres",
+        "La correction de balance des blancs appliquée"
+      ],
+      "explanation": "En manuel, l'appareil ne choisit rien mais continue de mesurer : l'indicateur d'exposition te dit de combien d'IL tes réglages s'écartent de ce que la cellule juge correct. À 0, tu suis la mesure ; à +1, l'image sera plus claire d'1 IL. Rien n'oblige à viser 0 : sur la neige, viser +1 ou +2 est souvent juste.",
+      "difficulty": 1
+    },
+    {
+      "question": "En ISO auto, à quoi sert le réglage de « vitesse d'obturation minimale » ?",
+      "answer": "L'ISO monte avant que la vitesse ne passe sous ce seuil",
+      "wrong": [
+        "Il bloque l'ISO à sa valeur la plus basse",
+        "Il interdit les vitesses plus rapides que ce seuil",
+        "Il fixe la vitesse de synchronisation du flash"
+      ],
+      "explanation": "Avec l'ISO auto, notamment en mode A ou P, l'appareil allonge d'abord le temps de pose quand la lumière baisse. La vitesse minimale fixe la limite : en dessous, il préfère augmenter la sensibilité, ce qui évite le flou de bougé. Certains boîtiers proposent un réglage « auto » qui adapte ce seuil à la focale, dans l'esprit de la règle du 1/focale.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur un hybride, quel est l'intérêt de la « simulation d'exposition » dans le viseur électronique ?",
+      "answer": "Voir avant le déclenchement la luminosité de la future photo",
+      "wrong": [
+        "Économiser la batterie en assombrissant le viseur",
+        "Corriger automatiquement les erreurs de la mesure",
+        "Accélérer la mise au point automatique en basse lumière"
+      ],
+      "explanation": "Avec la simulation d'exposition activée, le viseur électronique applique en direct ta vitesse, ton ouverture, ton ISO et ta correction : une photo trop sombre ou trop claire se voit avant de déclencher. On la désactive parfois en studio avec flash, car la lumière ambiante très faible rendrait alors le viseur presque noir.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur l'histogramme d'une photo, que représente l'axe horizontal ?",
+      "answer": "La luminosité des pixels, du noir à gauche au blanc à droite",
+      "wrong": [
+        "La position des pixels, de la gauche à la droite de l'image",
+        "Les couleurs, du rouge à gauche au bleu à droite",
+        "Le temps, du début à la fin de la pose"
+      ],
+      "explanation": "L'histogramme est un petit graphique affiché par l'appareil pour juger l'exposition d'une photo. C'est un graphique de répartition : chaque position horizontale correspond à un niveau de luminosité, du noir pur (tout à gauche) au blanc pur (tout à droite). La hauteur d'une colonne indique combien de pixels ont ce niveau. Exemple : une photo de nuit avec quelques lampadaires montre une grosse masse à gauche et un petit pic à droite. Le piège est d'y voir une carte de l'image : l'histogramme ne dit rien de l'emplacement des pixels. Un ciel en haut et une nappe blanche en bas tombent au même endroit du graphique.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Image_histogram"
+    },
+    {
+      "question": "L'histogramme d'une photo montre un amas de pixels plaqué contre son bord droit. Qu'est-ce que cela indique ?",
+      "answer": "Des hautes lumières écrêtées (brûlées)",
+      "wrong": [
+        "Des ombres bouchées (noir pur)",
+        "Une exposition parfaitement réussie",
+        "Un fort bruit dans les ombres"
+      ],
+      "explanation": "Lire les bords de l'histogramme est le réflexe de base pour vérifier une exposition sur le terrain. Un amas plaqué contre le bord droit signifie qu'une partie de l'image a atteint le blanc maximal : ces zones sont « écrêtées », c'est-à-dire coupées net, sans aucun détail. Exemple : un ciel nuageux surexposé devient un aplat blanc uniforme, impossible à récupérer. Le symétrique, un pic collé au bord gauche, signale des ombres bouchées (noir pur). Pour corriger, on applique une correction d'exposition négative, par exemple −1 IL, puis on vérifie à nouveau.",
+      "difficulty": 1
+    },
+    {
+      "question": "Un histogramme « réussi » doit-il forcément former une montagne centrée ?",
+      "answer": "Non : sa forme dépend de la scène photographiée",
+      "wrong": [
+        "Oui, sinon l'image est forcément mal exposée",
+        "Oui, mais uniquement en mode manuel",
+        "Non, il doit être parfaitement plat"
+      ],
+      "explanation": "Beaucoup de débutants pensent qu'un bon histogramme doit ressembler à une cloche bien centrée. En réalité, l'histogramme reflète simplement les tons de la scène. Une scène de neige (dite « high key », à dominante claire) a naturellement sa masse à droite. Une rue la nuit (« low key », à dominante sombre) l'a à gauche, sans que l'exposition soit fausse. Ce qui compte, ce sont surtout les bords : un pic collé à droite ou à gauche signale une perte de détails. Exemple : un portrait sur fond blanc bien exposé montre souvent un grand pic à droite, juste avant le bord, et c'est voulu.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quoi sert l'alerte de surexposition (les zones qui clignotent à la relecture) ?",
+      "answer": "À repérer les zones dont les hautes lumières sont écrêtées",
+      "wrong": [
+        "À repérer les zones floues de l'image",
+        "À indiquer le collimateur de mise au point utilisé",
+        "À repérer les zones les plus bruitées"
+      ],
+      "explanation": "À la relecture d'une photo, la plupart des appareils peuvent faire clignoter certaines zones : c'est l'alerte de surexposition, surnommée « blinkies ». Elle signale les pixels qui ont atteint le blanc maximal, donc les hautes lumières écrêtées, sans aucun détail. Elle complète l'histogramme, qui dit combien de pixels sont brûlés mais pas où ils se trouvent. Exemple : si tout le ciel clignote, une correction de −1 IL s'impose ; si seul le reflet du soleil sur un chrome clignote, on peut l'accepter. Cette alerte ne détecte ni le flou ni le bruit.",
+      "difficulty": 1
+    },
+    {
+      "question": "À partir de quoi l'histogramme affiché par l'appareil est-il calculé, même quand on photographie en RAW ?",
+      "answer": "De l'aperçu JPEG, avec sa balance des blancs et son style",
+      "wrong": [
+        "Des données RAW brutes lues sur le capteur",
+        "De la mesure de la cellule juste avant la prise",
+        "D'une moyenne des trois dernières photos prises"
+      ],
+      "explanation": "Beaucoup de photographes règlent leur exposition en se fiant à l'histogramme de l'appareil. Or celui-ci est calculé à partir de l'aperçu JPEG intégré au fichier, et non des données brutes du capteur. Cet aperçu dépend de la balance des blancs, du contraste et du style d'image choisis. Conséquence concrète : avec un style très contrasté, l'histogramme peut montrer un ciel écrêté alors que le RAW garde encore un peu de matière dans ces hautes lumières. Certains choisissent donc un style neutre et peu contrasté, pour que l'affichage soit plus fidèle au RAW. La cellule de mesure, elle, sert à proposer l'exposition, pas à tracer l'histogramme de la photo prise.",
+      "difficulty": 3
+    },
+    {
+      "question": "L'histogramme de luminosité d'une rose rouge semble correct, pourtant ses pétales sont saturés et sans détails. Pourquoi ?",
+      "answer": "Le canal rouge est écrêté, ce que masque l'histogramme global",
+      "wrong": [
+        "La balance des blancs a supprimé le canal rouge",
+        "Le capteur ne sait pas enregistrer les rouges vifs",
+        "La mesure spot a ignoré la fleur au centre"
+      ],
+      "explanation": "L'appareil propose souvent deux affichages : un histogramme de luminosité globale et un histogramme par canal (rouge, vert, bleu). L'histogramme de luminosité combine les trois canaux en donnant peu de poids au rouge, et encore moins au bleu, car l'œil y est moins sensible. Un canal peut donc être saturé, c'est-à-dire au maximum, sans que la courbe globale touche le bord droit. Exemple typique : une rose rouge, un coucher de soleil orangé ou un concert éclairé en rouge. Les pétales perdent alors leur texture. L'affichage RVB révèle le problème, et une correction de −1/3 à −2/3 IL suffit souvent à redonner de la matière.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'est-ce que l'**ETTR** (« expose to the right ») ?",
+      "answer": "Exposer le plus possible sans écrêter les hautes lumières",
+      "wrong": [
+        "Sous-exposer d'un IL pour protéger le ciel",
+        "Mesurer la lumière sur la droite du cadre",
+        "Placer le sujet sur le tiers droit de l'image"
+      ],
+      "explanation": "L'ETTR (« expose to the right », exposer à droite) est une technique de prise de vue en RAW popularisée avec la photo numérique. Elle consiste à exposer le plus possible, en poussant l'histogramme vers la droite jusqu'à frôler le bord sans le toucher, puis à réassombrir l'image au développement. Le but : capter un maximum de lumière, ce qui donne des ombres plus propres et moins bruitées. Exemple : si la cellule propose 1/250 s mais que l'histogramme reste loin du bord droit, on peut passer à 1/125 s (+1 IL) tant que rien n'est écrêté. Sous-exposer pour protéger le ciel est l'approche inverse.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Expose_to_the_right"
+    },
+    {
+      "question": "Pourquoi l'ETTR réduit-il le bruit visible après développement ?",
+      "answer": "Plus de lumière captée donne un meilleur rapport signal/bruit",
+      "wrong": [
+        "L'appareil baisse automatiquement l'ISO en ETTR",
+        "Les fichiers RAW sont moins compressés à droite",
+        "Le capteur chauffe moins lors des poses courtes"
+      ],
+      "explanation": "Le bruit est le grain parasite qui dégrade surtout les zones sombres d'une photo. Sa source principale est la nature aléatoire de l'arrivée des photons, les grains de lumière : pour un pixel qui reçoit N photons, le rapport signal/bruit vaut environ √N. Plus on capte de lumière, plus le signal l'emporte. Exemple : un pixel qui reçoit 100 photons a un rapport de 10 ; avec 400 photons (+2 IL), ce rapport passe à 20. En exposant au maximum puis en réassombrissant au développement, les ombres sont construites avec plus de lumière réelle. L'ETTR ne change pas l'ISO : c'est bien la quantité de lumière captée qui fait la différence.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans un RAW 14 bits à codage linéaire (16 384 niveaux), combien de niveaux occupe l'IL le plus clair, juste sous la saturation ?",
+      "answer": "La moitié, soit 8 192 niveaux",
+      "wrong": [
+        "Un quatorzième, soit environ 1 170 niveaux",
+        "Un quart, soit 4 096 niveaux",
+        "Toujours 1 024 niveaux par IL"
+      ],
+      "explanation": "Un fichier RAW 14 bits dispose de 2¹⁴ = 16 384 valeurs possibles par photosite, et ces valeurs sont proportionnelles à la lumière reçue : c'est le codage linéaire. Or un IL correspond à un doublement de la lumière. L'IL le plus clair va donc de 8 192 à 16 383, soit la moitié des valeurs disponibles. L'IL suivant n'en a que 4 096, puis 2 048, puis 1 024, et ainsi de suite. Neuf ou dix IL plus bas, il ne reste que quelques dizaines de niveaux. Le piège « un quatorzième » suppose une répartition égale entre les IL, ce qui ne vaut pas pour un codage linéaire. C'est l'un des arguments historiques de l'ETTR.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel est le principal avantage du format RAW sur le JPEG ?",
+      "answer": "Plus de latitude pour corriger exposition et couleurs",
+      "wrong": [
+        "Des fichiers plus légers et rapides à stocker",
+        "Une image directement prête à être partagée",
+        "Une ouverture garantie dans tous les logiciels"
+      ],
+      "explanation": "Presque tous les appareils proposent d'enregistrer en JPEG, en RAW, ou les deux à la fois. Le RAW est le fichier « brut » : il contient les données du capteur avec peu de traitement, sur 12 ou 14 bits, contre 8 bits par canal pour le JPEG. On peut donc récupérer des hautes lumières, déboucher des ombres ou changer la balance des blancs avec beaucoup plus de marge. Exemple : une photo sous-exposée de 2 IL s'éclaircit souvent proprement en RAW, alors qu'un JPEG montrera vite des dégradés cassés et du bruit. En contrepartie, un RAW est nettement plus lourd et doit être développé avant d'être partagé.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Raw_image_format"
+    },
+    {
+      "question": "Sur combien de bits par canal de couleur un JPEG standard est-il codé ?",
+      "answer": "8 bits, soit 256 niveaux",
+      "wrong": [
+        "12 bits, soit 4 096 niveaux",
+        "14 bits, soit 16 384 niveaux",
+        "16 bits, soit 65 536 niveaux"
+      ],
+      "explanation": "Le nombre de bits indique combien de nuances chaque canal de couleur peut prendre. Le JPEG courant code chaque canal (rouge, vert, bleu) sur 8 bits, soit 2⁸ = 256 niveaux. La plupart des RAW utilisent 12 bits (4 096 niveaux) ou 14 bits (16 384 niveaux). 256 niveaux suffisent pour afficher une image, mais pas toujours pour la retoucher. Exemple : en éclaircissant fortement un ciel bleu dégradé en JPEG, on voit apparaître des marches ou bandes de couleur : c'est la postérisation. Le 16 bits par canal se trouve dans d'autres formats, comme le TIFF ou le PSD.",
+      "difficulty": 2
+    },
+    {
+      "question": "Le style d'image (Picture Style, Picture Control, simulation de film…) modifie-t-il les données d'un fichier RAW ?",
+      "answer": "Non : il s'applique au JPEG et à l'aperçu, pas aux données brutes",
+      "wrong": [
+        "Oui : il est appliqué directement aux données du capteur",
+        "Oui, mais uniquement la netteté et le contraste du RAW",
+        "Non : il ne concerne que l'enregistrement vidéo"
+      ],
+      "explanation": "Chaque marque propose des styles d'image (Picture Style chez Canon, Picture Control chez Nikon, simulations de film chez Fujifilm) pour régler le contraste, la saturation ou la netteté. Ces réglages s'appliquent au JPEG produit par l'appareil et à l'aperçu affiché à l'écran. Dans un RAW, le style est seulement enregistré comme une étiquette, une métadonnée : les données du capteur restent identiques. Exemple : un RAW pris en style « monochrome » s'affiche en noir et blanc sur l'appareil, mais s'ouvre souvent en couleurs dans un logiciel tiers. Le logiciel du fabricant, lui, peut reprendre le style choisi.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que désigne la « plage dynamique » d'un capteur photo ?",
+      "answer": "L'écart entre les tons les plus sombres et les plus clairs captés",
+      "wrong": [
+        "L'étendue des couleurs que le capteur peut reproduire",
+        "La plage des sensibilités ISO proposées par l'appareil",
+        "L'étendue des vitesses d'obturation disponibles"
+      ],
+      "explanation": "La plage dynamique sert à savoir si un capteur pourra enregistrer à la fois les ombres et les hautes lumières d'une scène contrastée. Elle se mesure en IL : c'est le rapport entre le signal le plus fort avant saturation et le plus faible encore distinguable du bruit. Un capteur moderne à son ISO de base dépasse couramment une douzaine d'IL. Exemple : un intérieur sombre avec une fenêtre donnant sur un extérieur ensoleillé dépasse facilement ce que le capteur enregistre ; il faut alors sacrifier des ombres ou des hautes lumières, ou recourir au bracketing. Le piège : l'étendue des couleurs reproductibles est une autre notion, appelée gamut.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quelle sensibilité la plage dynamique d'un capteur est-elle en général la plus grande ?",
+      "answer": "À sa sensibilité de base, la plus basse native",
+      "wrong": [
+        "À sa sensibilité maximale",
+        "À ISO 800 sur tous les capteurs",
+        "Elle ne dépend pas du tout de l'ISO"
+      ],
+      "explanation": "L'ISO de base est la sensibilité la plus basse que le capteur offre nativement, souvent ISO 100 (parfois 64 ou 200). À ce réglage, le capteur peut recevoir le maximum de lumière avant de saturer, ce qui donne la plus grande plage dynamique. Chaque montée en ISO réduit la marge dans les hautes lumières : aux sensibilités élevées, on perd environ 1 IL de plage dynamique à chaque doublement. Exemple : un capteur qui couvre environ 13 IL à ISO 100 n'en couvre plus que de l'ordre de 10 vers ISO 1600. C'est pourquoi les paysagistes sur trépied restent à l'ISO le plus bas.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur un boîtier dont l'ISO de base est 100, quel est l'inconvénient du réglage étendu « L » (équivalent ISO 50) ?",
+      "answer": "Moins de marge dans les hautes lumières",
+      "wrong": [
+        "Beaucoup plus de bruit dans les ombres",
+        "Une dominante bleue sur toute l'image",
+        "Une perte de netteté par diffraction"
+      ],
+      "explanation": "Beaucoup de boîtiers proposent des ISO « étendus » en dehors de leur plage native, notés L (low) ou H (high). Le réglage L, par exemple ISO 50 sur un capteur dont l'ISO de base est 100, ne rend pas le capteur moins sensible. L'appareil expose comme à ISO 100 avec 1 IL de lumière en plus, puis assombrit l'image d'autant. Résultat : le capteur sature 1 IL plus tôt, et la plage dynamique se réduit du côté des hautes lumières. Exemple : un ciel lumineux qui passait tout juste à ISO 100 risque d'être écrêté à ISO L. Le bruit, lui, n'augmente pas. Ce réglage reste utile pour allonger une pose sans filtre ND.",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment se manifeste le bruit de chrominance sur une photo ?",
+      "answer": "Par des taches de couleurs parasites",
+      "wrong": [
+        "Par un grain monochrome régulier",
+        "Par des lignes noires horizontales",
+        "Par une baisse globale du contraste"
+      ],
+      "explanation": "Le bruit numérique, ce grain parasite visible surtout à haut ISO et dans les ombres, se présente sous deux formes. Le bruit de luminance est un grain monochrome : de petites variations de clarté qui rappellent le grain de l'argentique. Le bruit de chrominance, lui, forme de petites taches rouges, vertes ou bleues sans rapport avec le sujet. Exemple : un ciel nocturne photographié à ISO 6400 montre souvent des pâtés colorés dans les zones sombres. Ce bruit coloré est le plus disgracieux, mais aussi le plus facile à atténuer au développement sans trop perdre de détails.",
+      "difficulty": 2
+    },
+    {
+      "question": "En basse lumière à ISO élevé, quelle est la cause principale du bruit visible ?",
+      "answer": "Le faible nombre de photons captés (bruit photonique)",
+      "wrong": [
+        "L'amplification ISO, qui fabrique du bruit à partir de rien",
+        "La chaleur dégagée par l'écran arrière de l'appareil",
+        "La compression JPEG appliquée par l'appareil"
+      ],
+      "explanation": "En basse lumière, on monte l'ISO et le bruit apparaît : on accuse souvent l'ISO, mais la vraie cause est ailleurs. La lumière arrive par grains, les photons, de façon aléatoire. Si un pixel en reçoit en moyenne N, la fluctuation vaut environ √N : c'est le bruit photonique. Le rapport signal/bruit vaut donc lui aussi √N. Exemple : 10 000 photons donnent un rapport de 100, bruit invisible ; 100 photons, un rapport de 10 seulement, bruit très visible. Monter l'ISO rend surtout visible ce manque de lumière : c'est la faible exposition, plus que l'amplification, qui crée l'essentiel du bruit.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Shot_noise"
+    },
+    {
+      "question": "Tu empiles et moyennes 4 photos identiques d'une scène statique. Par combien le bruit aléatoire est-il divisé ?",
+      "answer": "Par 2",
+      "wrong": [
+        "Par 4",
+        "Par 16",
+        "Il reste identique"
+      ],
+      "explanation": "L'empilement (stacking) consiste à prendre plusieurs photos identiques puis à les moyenner pixel par pixel. On l'utilise beaucoup en astrophotographie et dans certains modes multi-images. Le signal, c'est-à-dire la scène, est le même sur chaque image, tandis que le bruit aléatoire change d'une image à l'autre. En moyennant N images, le bruit est divisé par √N. Pour 4 images : √4 = 2, le bruit est divisé par 2. Pour le diviser par 4, il faudrait 16 images. Le piège « par 4 » oublie la racine carrée : le bruit ne baisse pas proportionnellement au nombre d'images.",
+      "difficulty": 3
+    },
+    {
+      "question": "Après une pose de 30 s avec la « réduction du bruit en pose longue » activée, l'appareil reste occupé encore 30 s. Que fait-il ?",
+      "answer": "Il prend une image noire de même durée pour soustraire les pixels chauds",
+      "wrong": [
+        "Il compresse le fichier RAW sans perte de qualité",
+        "Il refroidit le capteur avant d'autoriser la photo suivante",
+        "Il recalcule la balance des blancs pixel par pixel"
+      ],
+      "explanation": "La plupart des appareils proposent une option « réduction du bruit en pose longue », utile pour les photos de nuit de plusieurs secondes. Pendant une longue pose, certains photosites accumulent un signal parasite d'origine thermique et apparaissent comme des points brillants : les pixels chauds. L'appareil prend alors une seconde image, obturateur fermé, de même durée et à même température : c'est l'image noire, ou « dark frame ». Il la soustrait de la première, ce qui efface ces points. Exemple : pour une pose de 30 s, il faut attendre environ 1 min avant la photo suivante. Pour une série de filés d'étoiles, on désactive souvent l'option et on fait ses images noires à part.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Dark-frame_subtraction"
+    },
+    {
+      "question": "Avec un fichier RAW, peut-on corriger la balance des blancs après la prise de vue sans perte de qualité ?",
+      "answer": "Oui : elle n'est appliquée qu'au moment du développement",
+      "wrong": [
+        "Non : elle est figée dans les pixels à la prise de vue",
+        "Oui, mais seulement depuis le menu de l'appareil",
+        "Non, sauf si la photo est en noir et blanc"
+      ],
+      "explanation": "La balance des blancs sert à neutraliser la couleur de la lumière, pour qu'un objet blanc paraisse blanc. Dans un RAW, le réglage choisi à la prise de vue n'est qu'une indication enregistrée avec le fichier : les données du capteur ne sont pas modifiées. Le logiciel de développement peut donc la changer librement, comme si on l'avait réglée autrement au départ. Exemple : une photo prise en « lumière du jour » sous des ampoules, donc très orangée, se corrige d'un clic en choisissant « tungstène » au développement. Sur un JPEG, au contraire, la balance est intégrée aux pixels et une forte correction dégrade l'image.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi conseille-t-on souvent, en numérique, de protéger en priorité les hautes lumières ?",
+      "answer": "Une zone écrêtée a perdu toute information, irrécupérable",
+      "wrong": [
+        "Les ombres ne peuvent jamais être éclaircies",
+        "Les hautes lumières sont plus bruitées que les ombres",
+        "Le RAW n'enregistre pas les tons les plus sombres"
+      ],
+      "explanation": "En photo numérique, une règle répandue dit : « expose pour les hautes lumières ». La raison tient au fonctionnement du capteur. Chaque photosite a une capacité maximale : quand il sature, il enregistre la même valeur quel que soit l'excès de lumière. Le détail est alors définitivement perdu, et le développement ne produira qu'un aplat blanc. Les ombres sous-exposées contiennent encore de l'information qu'on peut éclaircir, au prix d'un bruit accru. Exemple : un ciel nuageux brûlé reste blanc uni, alors qu'un premier plan trop sombre se remonte souvent de 2 IL en RAW. L'ETTR pousse l'exposition jusqu'à cette limite, sans la franchir.",
+      "difficulty": 2
+    },
+    {
+      "question": "Une photo « high key » (tons clairs dominants) présente typiquement un histogramme…",
+      "answer": "concentré sur la partie droite",
+      "wrong": [
+        "concentré sur la partie gauche",
+        "réparti en deux pics aux extrémités",
+        "parfaitement plat sur toute la largeur"
+      ],
+      "explanation": "« High key » et « low key » désignent deux styles d'image : l'un dominé par les tons clairs, l'autre par les tons sombres. Une image high key, comme un portrait sur fond blanc ou une scène de neige, est faite majoritairement de tons clairs. La masse de l'histogramme se trouve donc à droite, sans que ce soit une erreur d'exposition. À l'inverse, une image low key, comme un portrait éclairé par une seule lampe sur fond noir, a son histogramme concentré à gauche. Exemple : en studio, un fond blanc bien éclairé donne souvent un grand pic tout près du bord droit. Deux pics aux extrémités caractérisent plutôt une scène très contrastée.",
+      "difficulty": 1
+    },
+    {
+      "question": "Sur un capteur dit « ISO-invariant », à vitesse et ouverture identiques, comment se compare une photo à ISO 100 éclaircie de 3 IL au développement avec la même photo prise à ISO 800 ?",
+      "answer": "Un bruit très proche, et plus de marge pour les hautes lumières",
+      "wrong": [
+        "Un bruit nettement plus fort et des ombres inutilisables",
+        "Une image impossible à éclaircir d'autant d'IL",
+        "Des couleurs complètement délavées et irrécupérables"
+      ],
+      "explanation": "L'invariance ISO est une propriété de certains capteurs modernes, appréciée en photo de nuit ou de concert. Sur ces capteurs, le bruit ajouté par l'électronique après l'amplification est très faible. Amplifier dans l'appareil (monter l'ISO) ou éclaircir ensuite au développement revient alors presque au même : seule la lumière réellement captée, identique dans les deux cas, détermine le bruit. Exemple : une photo à 1/60 s, f/2.8 et ISO 100 éclaircie de 3 IL ressemble beaucoup à la même photo à ISO 800. Avantage : les lampadaires gardent 3 IL de marge avant d'être brûlés. Sur un capteur non invariant, éclaircir fortement fait au contraire ressortir davantage de bruit.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel est le principal effet indésirable d'une réduction du bruit poussée trop loin ?",
+      "answer": "Une perte des détails fins, au rendu lissé",
+      "wrong": [
+        "Une profondeur de champ plus grande",
+        "Des couleurs nettement sursaturées",
+        "Une image plus sombre d'un IL"
+      ],
+      "explanation": "La réduction du bruit est proposée dans l'appareil (pour les JPEG) et dans les logiciels de développement. Ses algorithmes lissent les variations aléatoires entre pixels voisins. Problème : ils ne distinguent pas toujours le bruit des textures fines. Exemple : poussée à fond, la réduction donne à la peau un aspect plastique, transforme le feuillage en taches et les cheveux en mèches floues, comme une « peinture à l'huile ». On dose donc la réduction, en traitant souvent le bruit coloré (chrominance) plus fortement que le grain monochrome (luminance), qui gêne moins l'œil. Elle n'a aucun effet sur la profondeur de champ ni sur l'exposition.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi les pixels chauds sont-ils plus nombreux sur une pose longue faite par une nuit d'été chaude que par une nuit d'hiver ?",
+      "answer": "Le courant d'obscurité du capteur augmente avec la chaleur",
+      "wrong": [
+        "La dilatation déforme la matrice de filtres colorés",
+        "L'air chaud provoque des reflets dans l'objectif",
+        "La batterie délivre une tension plus élevée"
+      ],
+      "explanation": "Les pixels chauds sont des points isolés trop brillants, rouges, verts ou blancs, qui apparaissent surtout sur les poses de plusieurs secondes. Ils viennent du courant d'obscurité : même dans le noir complet, l'agitation thermique libère des électrons dans les photosites, qui sont comptés comme s'ils venaient de la lumière. Ce courant s'accumule avec la durée de pose et croît fortement avec la température. Exemple : une pose de 2 minutes par une nuit d'été à 25 °C montre nettement plus de pixels chauds que la même pose à 0 °C. Les caméras d'astronomie refroidissent leur capteur pour cette raison.",
+      "difficulty": 3
     }
   ]
 }

@@ -4,5 +4,562 @@
   "icon": "💡",
   "description": "Tableau, disjoncteurs, différentiels, sections de câbles, prises, mise à la terre et règles de sécurité (NF C 15-100).",
   "order": 2,
-  "questions": []
+  "questions": [
+    {
+      "question": "Quelle est la tension nominale entre phase et neutre d'une installation électrique domestique en France ?",
+      "answer": "230 V",
+      "wrong": [
+        "220 V",
+        "240 V",
+        "110 V"
+      ],
+      "explanation": "Depuis l'harmonisation européenne des tensions (norme CEI 60038), la tension nominale du réseau basse tension est de **230 V** entre phase et neutre, et de 400 V entre deux phases. L'ancienne valeur française était 220 V, d'où l'expression encore courante « le 220 ». Le 110-120 V est utilisé notamment en Amérique du Nord.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quelle fréquence oscille la tension du réseau électrique français ?",
+      "answer": "50 Hz",
+      "wrong": [
+        "60 Hz",
+        "100 Hz",
+        "230 Hz"
+      ],
+      "explanation": "Le réseau européen interconnecté fonctionne à **50 Hz** : la tension effectue 50 cycles complets par seconde. L'Amérique du Nord et une partie du Japon utilisent 60 Hz. Ne confonds pas la fréquence, en hertz, avec la tension, en volts.",
+      "difficulty": 1
+    },
+    {
+      "question": "Les 230 V du secteur sont une valeur efficace. Quelle est approximativement la valeur crête (maximale) atteinte par cette tension sinusoïdale ?",
+      "answer": "Environ 325 V",
+      "wrong": [
+        "Environ 230 V",
+        "Environ 400 V",
+        "Environ 460 V"
+      ],
+      "explanation": "Pour une sinusoïde, valeur crête = valeur efficace × √2, soit 230 × 1,414 ≈ **325 V** : la tension oscille entre +325 V et −325 V. La valeur efficace est celle qui produirait le même échauffement qu'une tension continue de même valeur ; c'est elle qu'affichent les multimètres. Les 400 V correspondent à la tension entre deux phases en triphasé, pas à une crête.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Valeur_efficace"
+    },
+    {
+      "question": "À 50 Hz, combien de fois par seconde la tension du secteur passe-t-elle par zéro ?",
+      "answer": "100 fois",
+      "wrong": [
+        "50 fois",
+        "25 fois",
+        "200 fois"
+      ],
+      "explanation": "Une période dure 1/50 s, soit 20 ms, et la sinusoïde passe par zéro **deux fois par période** (en montant puis en descendant). On obtient donc 100 passages par zéro chaque seconde. C'est pourquoi le scintillement de certaines lampes se produit à 100 Hz et non à 50 Hz.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans une installation triphasée 230/400 V, quelle tension mesure-t-on entre deux phases ?",
+      "answer": "400 V",
+      "wrong": [
+        "230 V",
+        "460 V",
+        "690 V"
+      ],
+      "explanation": "Entre une phase et le neutre, on retrouve 230 V ; entre deux phases, on mesure **400 V**. Cela ne fait pas 2 × 230 = 460 V, car les trois tensions sont décalées de 120° : la tension entre phases vaut 230 × √3 ≈ 400 V. Un appareil prévu pour 230 V ne doit donc jamais être branché entre deux phases.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Courant_triphas%C3%A9"
+    },
+    {
+      "question": "Pourquoi l'électricité est-elle transportée sur de longues distances sous très haute tension ?",
+      "answer": "Pour réduire le courant, donc les pertes par effet Joule",
+      "wrong": [
+        "Parce que les centrales ne produisent que de la haute tension",
+        "Pour que l'électricité circule plus vite dans les câbles",
+        "Pour pouvoir se passer du conducteur de neutre"
+      ],
+      "explanation": "À puissance égale (P = U × I), élever la tension réduit l'intensité. Or les pertes dans les câbles valent R × I² : diviser le courant par 10 divise les pertes par 100. Le réseau de transport français monte ainsi jusqu'à 400 000 V, puis des transformateurs abaissent la tension par étapes jusqu'au 230/400 V distribué dans les logements.",
+      "difficulty": 2
+    },
+    {
+      "question": "Entre quelles valeurs la tension délivrée au logement doit-elle normalement rester autour de la valeur nominale de 230 V ?",
+      "answer": "207 V et 253 V (±10 %)",
+      "wrong": [
+        "220 V et 240 V (±4 %)",
+        "184 V et 276 V (±20 %)",
+        "225 V et 235 V (±2 %)"
+      ],
+      "explanation": "La tension fournie doit rester dans une plage de **±10 %** autour de 230 V, soit de 207 à 253 V (référence européenne EN 50160, reprise par la réglementation française). Les appareils sont conçus pour fonctionner dans cette plage. Des écarts répétés au-delà peuvent être signalés au gestionnaire du réseau.",
+      "difficulty": 2
+    },
+    {
+      "question": "Avec un branchement monophasé, quels conducteurs actifs alimentent le logement ?",
+      "answer": "Une phase et un neutre",
+      "wrong": [
+        "Deux phases, sans neutre",
+        "Trois phases et un neutre",
+        "Une phase, avec retour par la terre"
+      ],
+      "explanation": "Le branchement monophasé, le plus courant chez les particuliers, comporte **une phase et un neutre**, avec 230 V entre les deux. Le triphasé apporte trois phases et un neutre. La terre n'est pas un conducteur actif : elle ne transporte normalement aucun courant et sert uniquement à la protection des personnes.",
+      "difficulty": 1
+    },
+    {
+      "question": "La puissance souscrite d'un abonnement d'électricité s'exprime en kVA. Que mesure cette unité ?",
+      "answer": "Une puissance apparente (tension × intensité)",
+      "wrong": [
+        "Une énergie consommée en une heure",
+        "Une puissance active moyenne sur un mois",
+        "Une intensité maximale par phase"
+      ],
+      "explanation": "Le **kilovoltampère (kVA)** mesure la **puissance apparente**, produit de la tension par l'intensité (S = U × I). La puissance active, en kW, est celle réellement convertie en chaleur, lumière ou mouvement ; elle est égale ou inférieure à la puissance apparente selon le facteur de puissance (cos φ). Pour des appareils résistifs comme un radiateur ou un four, 1 kVA correspond à peu près à 1 kW.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que se passe-t-il lorsque la puissance appelée par le logement dépasse la puissance souscrite ?",
+      "answer": "Le compteur ou le disjoncteur coupe le courant",
+      "wrong": [
+        "Le surplus est facturé au tarif heures pleines",
+        "La tension baisse pour compenser le surplus",
+        "Le fournisseur envoie une simple alerte"
+      ],
+      "explanation": "La puissance souscrite (3, 6, 9 kVA…) est une **limite** : au-delà, l'alimentation est coupée, par le compteur Linky lui-même ou, avec les anciens compteurs, par le disjoncteur de branchement. Il suffit d'arrêter quelques appareils avant de rétablir le courant. Si cela se répète, on peut augmenter la puissance souscrite ou installer un délesteur.",
+      "difficulty": 1
+    },
+    {
+      "question": "Avec un abonnement de 6 kVA, tu lances en même temps un four de 3 kW, une plaque à induction réglée sur 3,5 kW et une bouilloire de 2 kW. Que risque-t-il de se passer ?",
+      "answer": "Une coupure : on appelle environ 8,5 kW au total",
+      "wrong": [
+        "Rien : la limite de 6 kVA s'applique par appareil",
+        "Rien : la limite de 6 kVA s'applique par circuit",
+        "Les appareils chauffent moins, sans coupure"
+      ],
+      "explanation": "La puissance souscrite limite la puissance **totale** appelée simultanément par tout le logement, pas celle d'un appareil ou d'un circuit. Ici 3 + 3,5 + 2 = **8,5 kW**, bien au-delà de 6 kVA : la coupure est quasi certaine. Pour l'éviter, on étale l'usage des gros appareils, on augmente la puissance souscrite ou on installe un délesteur.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle puissance maximale peut-on, en théorie, alimenter en 230 V sur un circuit protégé par un disjoncteur de 16 A ?",
+      "answer": "3 680 W",
+      "wrong": [
+        "2 300 W",
+        "4 600 W",
+        "1 600 W"
+      ],
+      "explanation": "P = U × I = 230 V × 16 A = **3 680 W**. C'est la valeur inscrite sur beaucoup de multiprises (« 16 A max 3 680 W »). Avec un disjoncteur de 20 A, on obtiendrait 4 600 W. En pratique, on garde de la marge plutôt que de faire fonctionner un circuit en permanence à sa limite.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un radiateur électrique de 2 000 W est alimenté en 230 V. Quelle intensité appelle-t-il environ ?",
+      "answer": "Environ 8,7 A",
+      "wrong": [
+        "Environ 4,6 A",
+        "Environ 13 A",
+        "Environ 20 A"
+      ],
+      "explanation": "I = P / U = 2 000 / 230 ≈ **8,7 A**. Ce calcul simple permet de vérifier qu'un circuit est bien dimensionné : deux radiateurs de 2 000 W sur le même circuit appelleraient environ 17,4 A, davantage que ce qu'accepte durablement un disjoncteur de 16 A.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un radiateur de 1 500 W fonctionne à pleine puissance pendant 4 heures. Quelle énergie a-t-il consommée ?",
+      "answer": "6 kWh",
+      "wrong": [
+        "1,5 kWh",
+        "375 Wh",
+        "6 000 kWh"
+      ],
+      "explanation": "Énergie = puissance × durée = 1,5 kW × 4 h = **6 kWh**. Le watt mesure une puissance, c'est-à-dire un débit d'énergie ; le kilowattheure mesure une quantité d'énergie, et c'est l'unité dans laquelle la consommation est facturée. Répondre 6 000 kWh reviendrait à confondre wattheures et kilowattheures.",
+      "difficulty": 1
+    },
+    {
+      "question": "En France, les offres d'électricité au tarif « bleu » destinées aux particuliers proposent des puissances souscrites allant de 3 kVA jusqu'à…",
+      "answer": "36 kVA",
+      "wrong": [
+        "12 kVA",
+        "24 kVA",
+        "100 kVA"
+      ],
+      "explanation": "Les puissances souscrites proposées aux particuliers s'échelonnent de **3 à 36 kVA** (3, 6, 9, 12, 15, 18, 24, 30 et 36 kVA). Au-delà de 36 kVA, on bascule vers des offres destinées aux professionnels, avec un autre type de comptage. Dans un logement, 6 et 9 kVA sont des valeurs très courantes.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle entreprise gère le réseau public de distribution d'électricité, et donc les compteurs Linky, sur la grande majorité du territoire français ?",
+      "answer": "Enedis",
+      "wrong": [
+        "EDF",
+        "RTE",
+        "Engie"
+      ],
+      "explanation": "**Enedis** (ex-ERDF, rebaptisée en 2016) gère environ 95 % du réseau de distribution ; le reste est desservi par des entreprises locales de distribution. EDF et Engie sont des **fournisseurs**, qui vendent l'électricité, tandis que RTE gère le réseau de **transport** à haute et très haute tension.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Enedis"
+    },
+    {
+      "question": "Une coupure de courant touche toute ta rue, desservie par Enedis. Qui faut-il contacter pour signaler la panne ?",
+      "answer": "Le service de dépannage d'Enedis",
+      "wrong": [
+        "Ton fournisseur d'électricité",
+        "RTE, le gestionnaire du réseau",
+        "Le Consuel de ta région"
+      ],
+      "explanation": "Les pannes du réseau relèvent du **gestionnaire du réseau de distribution**, Enedis dans la plupart des communes, quel que soit le fournisseur choisi. Le fournisseur gère le contrat et la facture, pas les câbles. Avant d'appeler, vérifie tout de même que ton propre disjoncteur n'a pas simplement déclenché.",
+      "difficulty": 2
+    },
+    {
+      "question": "Par quel moyen le compteur Linky transmet-il principalement ses données au gestionnaire du réseau ?",
+      "answer": "Par courant porteur en ligne (CPL)",
+      "wrong": [
+        "Par le Wi-Fi de la box internet",
+        "Par Bluetooth via un smartphone",
+        "Par une fibre optique dédiée"
+      ],
+      "explanation": "Linky communique par **courant porteur en ligne** : les données sont superposées au courant électrique sur les câbles du réseau jusqu'à un concentrateur situé dans le poste de distribution du quartier, qui les relaie ensuite par réseau mobile. Il n'utilise ni la box internet ni le Bluetooth du logement.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Linky"
+    },
+    {
+      "question": "De combien de chiffres se compose le numéro de point de livraison (PDL, aussi appelé PRM) qui identifie ton compteur ?",
+      "answer": "14 chiffres",
+      "wrong": [
+        "10 chiffres",
+        "12 chiffres",
+        "16 chiffres"
+      ],
+      "explanation": "Le **PDL/PRM** est un identifiant unique de **14 chiffres** attribué au point de raccordement. Il figure sur les factures et peut s'afficher sur le compteur Linky. Il est demandé lors d'une souscription ou d'un changement de fournisseur : il reste attaché au logement, pas à son occupant.",
+      "difficulty": 3
+    },
+    {
+      "question": "Le disjoncteur de branchement placé en tête de l'installation intègre généralement une fonction différentielle de 500 mA. À quoi sert-elle principalement ?",
+      "answer": "À couper en cas de fuite importante (risque d'incendie)",
+      "wrong": [
+        "À protéger les personnes d'un contact direct",
+        "À protéger les appareils contre la foudre",
+        "À limiter la puissance à la valeur souscrite"
+      ],
+      "explanation": "Un différentiel de **500 mA** est bien trop peu sensible pour protéger une personne, le danger commençant à quelques dizaines de milliampères : il détecte surtout les fuites importantes vers la terre, capables d'échauffer et de provoquer un incendie. La protection des personnes est assurée par les dispositifs **30 mA** du tableau. Ce différentiel est en général sélectif (retardé) afin de laisser les 30 mA déclencher en premier.",
+      "difficulty": 2
+    },
+    {
+      "question": "Où commence l'installation électrique intérieure, qui ne relève plus du gestionnaire du réseau ?",
+      "answer": "Aux bornes de sortie du disjoncteur de branchement",
+      "wrong": [
+        "Aux bornes d'entrée du compteur",
+        "Au premier interrupteur différentiel",
+        "Au coffret de façade en limite de terrain"
+      ],
+      "explanation": "L'installation intérieure, régie par la NF C 15-100, commence **en aval du disjoncteur de branchement**. Le câble de branchement, le compteur et ce disjoncteur font partie du réseau public : l'occupant peut manœuvrer le disjoncteur (couper, réarmer), mais pas modifier ses réglages, qui sont plombés.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle norme encadre le branchement, c'est-à-dire la partie comprise entre le réseau public et l'origine de l'installation intérieure ?",
+      "answer": "La NF C 14-100",
+      "wrong": [
+        "La NF C 15-100",
+        "La NF C 16-600",
+        "La NF C 18-510"
+      ],
+      "explanation": "La **NF C 14-100** traite des installations de branchement à basse tension. La NF C 15-100 prend le relais pour l'installation intérieure, la NF C 16-600 encadre le diagnostic de l'installation électrique d'un logement, et la NF C 18-510 la prévention du risque électrique lors des opérations sur les installations (habilitation).",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel schéma de liaison à la terre (ou « régime de neutre ») équipe les logements raccordés au réseau public basse tension en France ?",
+      "answer": "Le schéma TT",
+      "wrong": [
+        "Le schéma TN-C",
+        "Le schéma IT",
+        "Le schéma TN-S"
+      ],
+      "explanation": "En **TT**, le neutre est relié à la terre côté distributeur (premier T) et les masses de l'installation sont reliées à une prise de terre propre au bâtiment (second T). En cas de défaut, le courant revient par le sol avec une intensité souvent trop faible pour faire déclencher un disjoncteur : la protection des personnes repose donc sur les **dispositifs différentiels**. Le schéma IT équipe plutôt des sites qui ne doivent pas couper au premier défaut, comme certains blocs opératoires.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/R%C3%A9gime_de_neutre"
+    },
+    {
+      "question": "Dans une installation triphasée, le neutre se rompt en amont alors que les trois phases restent présentes. Quel est le principal danger pour les appareils 230 V ?",
+      "answer": "Des surtensions pouvant approcher 400 V",
+      "wrong": [
+        "Un arrêt général, sans danger pour eux",
+        "Le déclenchement de tous les différentiels",
+        "Une baisse de fréquence de 50 à 25 Hz"
+      ],
+      "explanation": "Sans neutre, les appareils branchés sur des phases différentes se retrouvent **en série entre deux phases**, donc sous 400 V. La tension se répartit selon leurs impédances : ceux de la phase la moins chargée peuvent recevoir bien plus de 230 V et être détruits. Les différentiels ne réagissent pas, car aucun courant ne fuit vers la terre ; d'où l'importance de connexions de neutre parfaitement serrées.",
+      "difficulty": 3
+    },
+    {
+      "question": "À quoi sert un délesteur installé dans le tableau électrique ?",
+      "answer": "À couper un temps des circuits non prioritaires",
+      "wrong": [
+        "À abaisser la tension pour consommer moins",
+        "À protéger les appareils contre la foudre",
+        "À équilibrer la charge entre phase et neutre"
+      ],
+      "explanation": "Le **délesteur** surveille la puissance appelée : quand elle approche la puissance souscrite, il coupe momentanément des circuits jugés non prioritaires (chauffage électrique, chauffe-eau…), puis les rétablit. On évite ainsi les coupures générales sans augmenter son abonnement. La protection contre la foudre relève, elle, du parafoudre.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un interrupteur différentiel 30 mA protège-t-il les circuits placés en dessous de lui contre les surcharges ?",
+      "answer": "Non, il ne réagit qu'aux fuites de courant",
+      "wrong": [
+        "Oui, il remplace les disjoncteurs divisionnaires",
+        "Oui, mais uniquement contre les courts-circuits",
+        "Oui, dès que le courant dépasse 30 mA"
+      ],
+      "explanation": "Dans le tableau, chaque rangée commence souvent par un interrupteur différentiel, suivi de plusieurs disjoncteurs divisionnaires. L'**interrupteur différentiel** surveille une seule chose : l'écart entre le courant qui part par la phase et celui qui revient par le neutre. S'il manque 30 mA ou plus, c'est qu'une fuite existe (vers la terre, à travers une personne) : il coupe. En revanche, si tu branches trop d'appareils et que le circuit tire 25 A, ce courant part et revient en entier : il ne voit rien. Ce sont les **disjoncteurs divisionnaires** qui coupent en cas de surcharge ou de court-circuit. Piège : « 30 mA » est un seuil de fuite, pas un courant maximal.",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment un dispositif différentiel détecte-t-il une fuite de courant ?",
+      "answer": "En comparant courant de phase et courant de neutre",
+      "wrong": [
+        "En mesurant la tension entre neutre et terre",
+        "En surveillant l'échauffement d'un bilame",
+        "En détectant une baisse de la tension"
+      ],
+      "explanation": "Le différentiel est l'appareil qui protège les personnes ; encore faut-il comprendre comment il « sent » une fuite. Les conducteurs de phase et de neutre passent tous les deux dans un **tore magnétique**, un anneau métallique entouré d'une bobine. Normalement, le courant qui part par la phase revient en totalité par le neutre : leurs effets magnétiques s'annulent. Si une partie s'échappe ailleurs, par exemple 40 mA vers la terre à travers la carcasse d'un lave-linge, l'équilibre est rompu : la bobine le détecte et l'appareil coupe dès que l'écart atteint sa sensibilité (30 mA). Le bilame, lui, appartient à la partie thermique des disjoncteurs et réagit aux surcharges.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Disjoncteur_diff%C3%A9rentiel"
+    },
+    {
+      "question": "Une personne parfaitement isolée du sol touche en même temps la phase et le neutre d'un circuit protégé par un différentiel 30 mA. Pourquoi celui-ci ne la protège-t-il pas ?",
+      "answer": "Le courant revient par le neutre : aucune fuite n'apparaît",
+      "wrong": [
+        "Le courant traversant le corps est alors sans danger",
+        "Le différentiel ne surveille que le conducteur de terre",
+        "Le courant passe trop vite pour être détecté"
+      ],
+      "explanation": "Le différentiel 30 mA est une protection très efficace, mais il a une limite qu'il faut connaître. Il ne réagit qu'à une **différence** entre le courant aller (phase) et le courant retour (neutre). Si une personne isolée du sol touche la phase d'une main et le neutre de l'autre, son corps se comporte comme un appareil branché sur la prise : tout le courant qui entre par la phase ressort par le neutre. Le différentiel ne voit **aucune fuite** et ne coupe pas, alors qu'un courant de plus de 100 mA peut traverser le thorax. C'est pourquoi on ne travaille jamais sous tension, même derrière un différentiel : on coupe au tableau et on vérifie l'absence de tension.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans un disjoncteur divisionnaire magnétothermique, quel élément réagit à une surcharge modérée mais prolongée ?",
+      "answer": "Le déclencheur thermique (bilame)",
+      "wrong": [
+        "Le déclencheur magnétique (bobine)",
+        "Le tore différentiel",
+        "Le bouton de test"
+      ],
+      "explanation": "Un disjoncteur divisionnaire protège un circuit contre deux dangers différents, avec deux mécanismes. Le **déclencheur thermique** est un **bilame** : deux lames de métaux différents soudées ensemble, qui se courbent en chauffant sous l'effet du courant. Si un circuit protégé par 16 A tire durablement 24 A, le bilame chauffe, se déforme peu à peu et finit par ouvrir le circuit : c'est la protection contre la **surcharge**, lente mais adaptée à l'échauffement progressif des câbles. Le **déclencheur magnétique**, une bobine, réagit en quelques millisecondes à un court-circuit, quand le courant atteint des centaines d'ampères. Le tore différentiel n'existe que dans les appareils différentiels.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un disjoncteur de courbe C déclenche par sa partie magnétique, quasi instantanément, lorsque le courant atteint…",
+      "answer": "Entre 5 et 10 fois son calibre",
+      "wrong": [
+        "Entre 3 et 5 fois son calibre",
+        "Entre 10 et 20 fois son calibre",
+        "Entre 1,13 et 1,45 fois son calibre"
+      ],
+      "explanation": "Les disjoncteurs divisionnaires portent une lettre devant leur calibre, par exemple « C16 » : c'est leur courbe de déclenchement. La **courbe** fixe le seuil à partir duquel le déclencheur magnétique coupe instantanément : **B** entre 3 et 5 fois le calibre, **C** entre 5 et 10 fois, **D** entre 10 et 20 fois (norme EN 60898). Exemple : un C16 coupe immédiatement à partir d'un courant situé entre 80 et 160 A, typique d'un court-circuit. La courbe C, la plus courante dans les logements, tolère les petites pointes au démarrage des appareils ; la D sert aux moteurs à fort courant d'appel. Les valeurs 1,13 et 1,45 fois le calibre concernent la partie thermique, qui gère les surcharges.",
+      "difficulty": 3
+    },
+    {
+      "question": "Selon la NF C 15-100, quel dispositif 30 mA doit au minimum protéger les circuits du lave-linge et de la plaque de cuisson ?",
+      "answer": "Un différentiel de type A",
+      "wrong": [
+        "Un différentiel de type AC",
+        "Un différentiel sélectif de type S",
+        "Aucun : un disjoncteur 20 A suffit"
+      ],
+      "explanation": "Le type d'un différentiel (AC, A, F…) indique quelles formes de courant de fuite il sait détecter. Le **type AC** repère les fuites en courant alternatif « pur ». Or l'électronique des plaques à induction et des lave-linge modernes (redresseurs, variateurs de vitesse du moteur) peut produire des fuites **à composante continue**, que le type AC risque de ne pas voir. Le **type A** les détecte : la NF C 15-100 l'impose donc pour ces circuits, et le type F, encore plus complet, convient aussi. En pratique, on place la plaque et le lave-linge sous l'interrupteur différentiel marqué « A ». Le type S, retardé, sert seulement à la sélectivité, et un disjoncteur sans fonction différentielle ne détecte aucune fuite.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quoi sert le bouton « T » (test) d'un interrupteur différentiel ?",
+      "answer": "À vérifier qu'il déclenche en simulant une fuite",
+      "wrong": [
+        "À réarmer le différentiel après un déclenchement",
+        "À mesurer la résistance de la prise de terre",
+        "À couper l'éclairage en gardant les prises"
+      ],
+      "explanation": "Un différentiel peut rester des années sans déclencher : il faut donc vérifier de temps en temps que son mécanisme fonctionne encore. Le bouton **T** (test) fait passer volontairement un petit courant qui contourne le tore, ce qui simule une fuite : le différentiel doit couper immédiatement. Exemple : tu appuies sur T, la manette retombe et les circuits de la rangée s'éteignent ; tu la relèves et tout repart. S'il ne bouge pas, il est défaillant et doit être remplacé. Les fabricants conseillent ce test environ une fois par mois. Attention au piège : le réarmement se fait avec la manette, pas avec ce bouton.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pour un courant de fuite égal à sa sensibilité nominale, en combien de temps au maximum un différentiel 30 mA de type général doit-il déclencher ?",
+      "answer": "300 ms",
+      "wrong": [
+        "30 ms",
+        "1 s",
+        "3 s"
+      ],
+      "explanation": "Les normes des dispositifs différentiels fixent des temps de coupure maximaux, car le danger dépend à la fois de l'intensité et de la durée du passage du courant. Pour une fuite égale à la **sensibilité** (30 mA pour un 30 mA), un différentiel de type général doit couper en **300 ms au plus**, soit trois dixièmes de seconde (normes EN 61008 et EN 61009). Pour une fuite cinq fois plus forte, 150 mA, il doit couper en 40 ms au plus. En pratique, la plupart déclenchent en quelques dizaines de millisecondes. Les modèles sélectifs (type S), placés en amont, sont au contraire volontairement retardés pour laisser couper d'abord les 30 mA.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur un disjoncteur divisionnaire « phase + neutre » (1P+N), quel pôle est protégé contre les surintensités ?",
+      "answer": "La phase seule ; le neutre est juste coupé",
+      "wrong": [
+        "Le neutre seul ; la phase est juste coupée",
+        "Les deux pôles, chacun de façon indépendante",
+        "Aucun : il ne fait que sectionner le circuit"
+      ],
+      "explanation": "Dans les tableaux domestiques, les disjoncteurs divisionnaires sont presque toujours des modèles « phase + neutre », d'un seul module de large. Un **1P+N** possède un seul pôle **protégé**, celui de la phase, équipé des déclencheurs thermique et magnétique ; le pôle neutre est simplement **coupé** en même temps, sans détection. Cela suffit en monophasé : le même courant circule dans la phase et dans le neutre, donc surveiller la phase revient à surveiller le circuit. Exemple : un C16 1P+N qui voit passer un courant de court-circuit sur la phase ouvre la phase et le neutre ensemble, ce qui isole complètement le circuit. La borne du neutre est repérée par la lettre « N ».",
+      "difficulty": 3
+    },
+    {
+      "question": "À quoi sert un peigne d'alimentation dans un tableau électrique ?",
+      "answer": "À relier les modules d'une rangée sans fils de pontage",
+      "wrong": [
+        "À repérer le nom de chaque circuit",
+        "À relier les terres de tous les circuits",
+        "À limiter le courant total d'une rangée"
+      ],
+      "explanation": "Dans un tableau, les disjoncteurs alignés sur une même rangée doivent tous recevoir la phase et le neutre venant de l'interrupteur différentiel. Le **peigne d'alimentation** est une barrette métallique isolée, munie de dents, qui se glisse dans les bornes du haut de chaque appareil : il distribue phase et neutre à toute la rangée d'un coup. Exemple : sous un interrupteur différentiel, un peigne alimente six disjoncteurs sans aucun petit fil de pontage. Les connexions sont plus fiables, mieux serrées et plus faciles à contrôler. Les conducteurs de protection vert/jaune, eux, ne passent jamais par le peigne : ils sont réunis sur le bornier de terre.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi chaque disjoncteur du tableau doit-il être repéré par une étiquette ?",
+      "answer": "Pour couper sans erreur le circuit sur lequel on intervient",
+      "wrong": [
+        "Pour que le compteur Linky identifie les circuits",
+        "Pour que les disjoncteurs déclenchent plus vite",
+        "Pour calculer la consommation de chaque pièce"
+      ],
+      "explanation": "Avant toute intervention, il faut savoir quel disjoncteur alimente la prise ou le luminaire concerné. Le **repérage** consiste à coller sous chaque disjoncteur une étiquette claire : « prises séjour », « éclairage chambres », « lave-linge »… La NF C 15-100 l'exige, et il fait gagner un temps précieux en cas de panne. Exemple : pour changer une prise de la cuisine, tu coupes le disjoncteur « prises cuisine » sans priver tout le logement de courant ni arrêter le congélateur. Un repérage ne remplace jamais la vérification d'absence de tension : une étiquette peut être fausse, ou périmée après des travaux.",
+      "difficulty": 1
+    },
+    {
+      "question": "Sur le contacteur jour/nuit qui commande un chauffe-eau électrique, que provoque la position « Auto » ?",
+      "answer": "Il ne chauffe que pendant les heures creuses",
+      "wrong": [
+        "Il chauffe en permanence, jour et nuit",
+        "Il est totalement arrêté",
+        "Il ne chauffe qu'aux heures pleines"
+      ],
+      "explanation": "Beaucoup de chauffe-eau électriques ne chauffent que la nuit, pendant les heures creuses, où le kWh est moins cher avec une option heures pleines / heures creuses. Le **contacteur jour/nuit** est un interrupteur commandé à distance, installé dans le tableau. En position **Auto**, il se ferme lorsque le compteur envoie le signal des heures creuses : le chauffe-eau chauffe alors son eau. La position **1** (ou I) force la marche à tout moment, utile si le ballon est vide en journée. La position **0** coupe le chauffe-eau, par exemple pendant les vacances. Dans tous les cas, le thermostat du ballon arrête la chauffe quand l'eau a atteint sa température.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel est le rôle d'un parafoudre installé dans le tableau électrique ?",
+      "answer": "Dériver vers la terre les surtensions transitoires",
+      "wrong": [
+        "Couper le courant en cas de surcharge prolongée",
+        "Détecter les fuites de courant de 30 mA",
+        "Empêcher la foudre de frapper la maison"
+      ],
+      "explanation": "La foudre qui tombe sur une ligne ou à proximité peut envoyer dans le réseau une pointe de tension très brève et très élevée, de plusieurs milliers de volts. Le **parafoudre** est un module du tableau qui réagit à ces **surtensions transitoires** : il devient conducteur pendant quelques microsecondes et dérive l'excès vers la terre. Il protège ainsi les appareils électroniques comme la box, la télévision ou la carte de la chaudière. Il ne fonctionne correctement qu'avec une bonne prise de terre. Piège : ce n'est pas un paratonnerre, il n'empêche pas la foudre de tomber ; et la surcharge prolongée relève du disjoncteur, pas de lui.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi répartit-on les circuits d'un logement sous plusieurs interrupteurs différentiels 30 mA plutôt que sous un seul ?",
+      "answer": "Pour qu'un seul défaut ne coupe pas tout le logement",
+      "wrong": [
+        "Parce qu'un différentiel ne supporte que 30 mA",
+        "Pour additionner leurs sensibilités",
+        "Pour séparer la phase et le neutre"
+      ],
+      "explanation": "Un logement compte en général plusieurs interrupteurs différentiels 30 mA, chacun en tête d'une rangée de circuits. Chaque appareil laisse fuir en permanence un tout petit courant vers la terre ; sous un seul différentiel, ces petites fuites s'additionnent et le rapprochent de son seuil de déclenchement. Surtout, au moindre défaut, **tout le logement** serait coupé, éclairage, chauffage et congélateur compris. Exemple : avec deux ou trois différentiels, un lave-linge en défaut ne coupe que sa rangée, tandis que l'éclairage d'une autre rangée reste disponible pour chercher la panne. Piège : les 30 mA sont un seuil de fuite, pas une limite de courant ni de puissance.",
+      "difficulty": 2
+    },
+    {
+      "question": "Le disjoncteur 16 A d'un circuit de prises câblé en 1,5 mm² saute souvent. Pourquoi ne faut-il surtout pas le remplacer par un modèle de 20 A ?",
+      "answer": "Les fils pourraient surchauffer sans que rien ne coupe",
+      "wrong": [
+        "Le différentiel 30 mA ne fonctionnerait plus",
+        "Un 20 A déclencherait encore plus souvent",
+        "Le compteur refuserait un calibre supérieur"
+      ],
+      "explanation": "Un disjoncteur ne protège pas d'abord les appareils : il protège **les fils** du circuit contre la surchauffe. Son calibre se choisit donc d'après leur section, et 1,5 mm² n'accepte qu'un disjoncteur de 16 A au plus. Avec un 20 A, le circuit pourrait débiter 19 A pendant des heures sans que rien ne coupe : les fils chaufferaient au-delà de leurs limites, leur isolant vieillirait ou fondrait, avec un risque d'incendie caché dans les murs. Un disjoncteur qui saute souvent est un signal : trop d'appareils puissants sur le même circuit. La bonne solution consiste à les répartir sur d'autres circuits ou à faire créer un circuit supplémentaire par un électricien.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la section minimale des conducteurs en cuivre d'un circuit d'éclairage protégé par un disjoncteur de 16 A ?",
+      "answer": "1,5 mm²",
+      "wrong": [
+        "0,75 mm²",
+        "1 mm²",
+        "2,5 mm²"
+      ],
+      "explanation": "La section d'un conducteur, en mm², est la surface de cuivre vue en coupe : plus elle est grande, plus le fil peut transporter de courant sans chauffer. Pour un circuit d'**éclairage**, le couple de référence est **1,5 mm² protégé par 16 A** (un disjoncteur de 10 A convient aussi). C'est le minimum pour le câblage fixe ; une section plus forte n'est pas interdite. Exemple : dix ampoules LED de 10 W ne tirent qu'environ 0,4 A au total (100 W / 230 V), très loin de la limite. Les sections de 0,75 ou 1 mm² se rencontrent dans les cordons souples des lampes et des luminaires, pas dans les fils encastrés du circuit.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans un logement, quel est le calibre maximal du disjoncteur protégeant un circuit de prises de courant câblé en 2,5 mm² de cuivre ?",
+      "answer": "20 A",
+      "wrong": [
+        "16 A",
+        "25 A",
+        "32 A"
+      ],
+      "explanation": "Le circuit des prises de courant doit pouvoir alimenter des appareils puissants comme un aspirateur ou un radiateur d'appoint. Avec des fils de **2,5 mm²**, le disjoncteur peut aller jusqu'à **20 A**, soit environ 4 600 W disponibles sur le circuit (230 V × 20 A). Un disjoncteur de 16 A serait plus prudent, mais ce n'est pas le maximum autorisé ; un 25 A ou un 32 A laisserait passer un courant capable de faire surchauffer les fils sans couper. Les prises restent des modèles 16 A : le calibre du disjoncteur protège le câble, pas chaque prise. Le nombre de prises admis par circuit, lui, a varié selon les éditions de la norme.",
+      "difficulty": 1
+    },
+    {
+      "question": "En monophasé, quel couple section / calibre retient-on pour le circuit spécialisé d'une plaque de cuisson ou d'une cuisinière ?",
+      "answer": "6 mm² et 32 A",
+      "wrong": [
+        "2,5 mm² et 20 A",
+        "1,5 mm² et 32 A",
+        "4 mm² et 40 A"
+      ],
+      "explanation": "La plaque de cuisson est l'un des appareils les plus puissants du logement : une table à induction peut appeler environ 7 kW. En monophasé, elle dispose donc d'un circuit dédié en **6 mm²** protégé par un disjoncteur de **32 A**. Mini-calcul : 230 V × 32 A ≈ 7 360 W disponibles, juste ce qu'il faut pour une grande plaque. Le couple 2,5 mm² / 20 A correspond à la cuisson alimentée en **triphasé**, où la puissance se répartit sur trois phases. Piège : mettre un calibre de 32 ou 40 A sur des fils de 1,5 ou 4 mm² les exposerait à une surchauffe dangereuse, car le disjoncteur doit toujours être adapté à la section.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi le lave-linge, le lave-vaisselle et le four disposent-ils chacun d'un circuit spécialisé ?",
+      "answer": "Leur forte puissance prolongée surchargerait un circuit partagé",
+      "wrong": [
+        "Ils fonctionnent en très basse tension de sécurité",
+        "Ils n'ont pas besoin de prise de terre",
+        "Ils doivent obligatoirement être en triphasé"
+      ],
+      "explanation": "Certains appareils ne se branchent pas sur une prise ordinaire mais sur une prise alimentée par son propre circuit, dit **spécialisé** ou dédié. C'est le cas du lave-linge, du lave-vaisselle, du four ou du sèche-linge : ils chauffent de l'eau ou de l'air et appellent souvent 2 à 3 kW pendant une heure ou plus. Mini-calcul : un four de 3 kW tire environ 13 A ; avec un radiateur d'appoint de 2 kW sur le même circuit, on dépasserait 20 A. Chacun a donc son circuit, en général en 2,5 mm² protégé par 20 A, avec une prise 2P+T reliée à la terre. Piège : ces appareils fonctionnent en 230 V monophasé ordinaire et ont besoin de la terre.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans la désignation d'un fil électrique H07V-U, que signifie la lettre « U » ?",
+      "answer": "Âme rigide massive (un seul brin)",
+      "wrong": [
+        "Âme souple à nombreux brins",
+        "Isolant résistant aux UV",
+        "Usage en extérieur uniquement"
+      ],
+      "explanation": "Les fils électriques portent une désignation codée, imprimée sur leur isolant, qui décrit leur fabrication. Dans **H07V-U** : **H** signifie série harmonisée européenne, **07** une tension assignée de 450/750 V, **V** un isolant en PVC (polychlorure de vinyle) et **U** une âme rigide massive, faite d'un seul brin de cuivre. On rencontre aussi **H07V-R**, rigide mais câblé en plusieurs brins, et **H07V-K**, souple, plus facile à tirer dans les conduits. Ces fils n'ont qu'un isolant simple : ils doivent toujours circuler dans un conduit ou une goulotte, contrairement aux câbles gainés comme le R2V.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi faut-il dérouler complètement un enrouleur de câble avant d'y brancher un appareil puissant ?",
+      "answer": "Enroulé, il évacue mal sa chaleur et peut fondre",
+      "wrong": [
+        "Enroulé, il forme une bobine qui coupe le courant",
+        "Enroulé, il divise la tension par deux",
+        "Enroulé, il rend le différentiel inopérant"
+      ],
+      "explanation": "Un enrouleur est une rallonge rangée sur un touret, très pratique pour bricoler ou jardiner. Un câble traversé par du courant chauffe un peu ; déroulé, cette chaleur s'évacue dans l'air. Enroulé, les spires serrées se réchauffent les unes les autres et la température grimpe : avec un appareil puissant, l'isolant peut ramollir, fondre et provoquer un court-circuit ou un incendie. C'est pourquoi l'étiquette indique deux puissances maximales, par exemple de l'ordre de 1 000 W **enroulé** et 3 500 W **déroulé** selon les modèles. Le piège de la « bobine qui coupe le courant » est faux : l'effet de bobine reste négligeable, le vrai danger est la chaleur.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi déconseille-t-on de brancher des multiprises en cascade, l'une sur l'autre ?",
+      "answer": "On risque de surcharger la première prise et son câble",
+      "wrong": [
+        "Le courant change de fréquence à chaque multiprise",
+        "La terre ne passe que dans la première multiprise",
+        "Le différentiel ne peut plus détecter de fuite"
+      ],
+      "explanation": "Une multiprise permet de brancher plusieurs appareils sur une seule prise murale, mais tout le courant passe alors par cette prise et par le cordon de la multiprise. Une prise 16 A ne peut fournir qu'environ 3 680 W (230 V × 16 A). En **cascade**, chaque multiprise ajoutée augmente le nombre d'appareils, mais pas cette limite : tout repasse par la première. Exemple : radiateur d'appoint de 2 000 W + bouilloire de 2 000 W = 4 000 W, soit 17 A, déjà trop pour la prise ; et si le circuit est protégé par 20 A, le disjoncteur ne coupera pas. Les contacts chauffent. Mieux vaut une seule multiprise de qualité, ou faire ajouter des prises murales.",
+      "difficulty": 1
+    },
+    {
+      "question": "En creusant une tranchée, tu tombes sur un grillage avertisseur de couleur rouge. Que signale-t-il en dessous ?",
+      "answer": "Un câble électrique",
+      "wrong": [
+        "Une conduite de gaz",
+        "Une canalisation d'eau potable",
+        "Un câble de télécommunication"
+      ],
+      "explanation": "Les réseaux enterrés (électricité, gaz, eau, télécoms) sont signalés par un grillage plastique coloré, posé au-dessus d'eux dans la tranchée. Sa couleur est normalisée : **rouge pour l'électricité**, jaune pour le gaz, bleu pour l'eau potable, vert pour les télécommunications. Ainsi, en creusant pour poser une clôture ou planter un arbre, l'apparition d'un grillage rouge annonce un câble juste en dessous, peut-être sous tension. Il faut alors arrêter de creuser à la machine, dégager à la main avec précaution ou se renseigner auprès du gestionnaire du réseau. Un câble endommagé peut provoquer une électrisation grave.",
+      "difficulty": 3
+    },
+    {
+      "question": "Où doivent se trouver les connexions (bornes automatiques, dominos) d'une installation électrique fixe ?",
+      "answer": "Dans une boîte de connexion qui reste accessible",
+      "wrong": [
+        "Noyées dans le plâtre, sous du ruban adhésif",
+        "Dans la gaine, entourées de ruban isolant",
+        "Derrière une plinthe, posées contre le mur"
+      ],
+      "explanation": "Une connexion est l'endroit où deux fils sont réunis, par exemple avec une borne automatique à levier ou un domino. C'est un point faible : elle peut chauffer ou se desserrer avec le temps. Toute connexion doit donc être placée dans une **boîte** (de dérivation, d'encastrement ou d'appareillage) fermée par un couvercle, et rester **accessible** sans casser le mur. Exemple : pour prolonger un circuit, on pose une boîte de dérivation dont le couvercle reste visible, plutôt que de cacher la jonction dans la saignée. Une épissure noyée dans le plâtre ou dans une gaine, même entourée de ruban adhésif, est interdite : un échauffement y passerait inaperçu jusqu'à l'incendie.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi une connexion mal serrée dans une boîte ou un tableau est-elle dangereuse ?",
+      "answer": "Le mauvais contact chauffe et peut provoquer un incendie",
+      "wrong": [
+        "Elle crée une surtension dans tout le circuit",
+        "Elle fait déclencher le différentiel en continu",
+        "Elle transforme le courant alternatif en continu"
+      ],
+      "explanation": "Dans un tableau ou une boîte, chaque fil est serré sous une vis ou dans une borne : de ce serrage dépend la qualité du contact. Un contact desserré présente une **résistance de contact** élevée, c'est-à-dire qu'il freine le passage du courant. Cette résistance dégage de la chaleur par **effet Joule** (P = R × I²), parfois avec de petits arcs électriques. Exemple : 0,1 Ω de mauvais contact traversé par 16 A dissipe environ 25 W, concentrés sur quelques millimètres, de quoi carboniser l'isolant. Ni le disjoncteur ni le différentiel ne le détectent, car le courant reste normal. Des bornes noircies ou une odeur de brûlé imposent de couper et de faire refaire la connexion.",
+      "difficulty": 2
+    }
+  ]
 }

@@ -288,6 +288,568 @@
       ],
       "explanation": "Le mousseur fractionne le jet et y incorpore de l'air : l'eau éclabousse moins et le débit consommé diminue pour une sensation équivalente. Ses grilles fines s'**entartrent** : un robinet dont le débit faiblit alors que les autres coulent normalement a souvent simplement besoin d'un mousseur détartré (trempage dans du vinaigre blanc). Il ne filtre pas l'eau, et la température constante est l'affaire du mitigeur thermostatique.",
       "difficulty": 1
+    },
+    {
+      "question": "Quel est le rôle principal du **siphon** placé sous un lavabo ?",
+      "answer": "Bloquer les odeurs d'égout grâce à une garde d'eau",
+      "wrong": [
+        "Ralentir l'eau pour éviter qu'elle éclabousse",
+        "Filtrer les cheveux avant le réseau d'égout",
+        "Augmenter la vitesse d'évacuation de l'eau"
+      ],
+      "explanation": "La forme coudée du siphon retient en permanence un peu d'eau, la **garde d'eau**, qui fait bouchon : les gaz et odeurs du réseau d'évacuation ne peuvent pas remonter dans la pièce. Il retient aussi, au passage, les petits objets tombés dans la bonde (bague, bouchon), ce qui permet de les récupérer en dévissant son culot. Chaque appareil sanitaire doit avoir son siphon ; la cuvette des WC intègre le sien.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle pente donne-t-on habituellement aux tuyaux d'évacuation horizontaux des eaux usées ?",
+      "answer": "De 1 à 3 cm par mètre",
+      "wrong": [
+        "De 1 à 3 mm par mètre",
+        "De 10 à 15 cm par mètre",
+        "Aucune : ils sont posés de niveau"
+      ],
+      "explanation": "La règle courante est une pente de **1 à 3 %**, soit 1 à 3 cm de dénivelé par mètre de tuyau. Avec moins, l'eau stagne, les dépôts s'accumulent et les bouchons se forment ; avec beaucoup plus, l'eau file trop vite. Sur un tuyau de 4 m, cela représente donc 4 à 12 cm de différence de hauteur entre les deux extrémités.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel est le diamètre usuel du tuyau d'évacuation d'un WC classique (non broyeur) ?",
+      "answer": "100 mm",
+      "wrong": [
+        "32 mm",
+        "40 mm",
+        "50 mm"
+      ],
+      "explanation": "Un WC évacue des matières solides et un gros volume d'eau d'un coup : on le raccorde en général en **100 mm** (on rencontre aussi du 80 ou du 90 mm selon les pipes et les configurations). Le 32 mm est réservé au lavabo et au bidet, le 40 mm à l'évier, à la douche, à la baignoire et au lave-linge. Ne jamais réduire le diamètre dans le sens de l'écoulement : c'est la garantie d'un bouchon.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel diamètre de tube PVC utilise-t-on couramment pour l'évacuation d'une **douche** ou d'un **évier** ?",
+      "answer": "40 mm",
+      "wrong": [
+        "25 mm",
+        "75 mm",
+        "125 mm"
+      ],
+      "explanation": "Repères usuels en évacuation : **32 mm** pour lavabo et bidet, **40 mm** pour évier, douche, baignoire, lave-linge et lave-vaisselle, **100 mm** pour les WC et les chutes ou collecteurs principaux. Le diamètre augmente toujours de l'amont vers l'aval, jamais l'inverse. Une douche raccordée en trop petite section se vide mal et déborde du receveur.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quand on parle d'un tube PVC d'évacuation « de 40 », à quoi correspond ce 40 mm ?",
+      "answer": "Au diamètre extérieur du tube",
+      "wrong": [
+        "Au diamètre intérieur du tube",
+        "À la longueur d'emboîtement",
+        "Au rayon de courbure minimal"
+      ],
+      "explanation": "Les tubes PVC sont désignés par leur **diamètre extérieur**, celui qui doit correspondre aux emboîtures des raccords ; le diamètre intérieur dépend de l'épaisseur de paroi. Attention, les conventions varient selon les matériaux : le cuivre se note intérieur/extérieur (12/14 = 12 mm intérieur, 14 mm extérieur) et le PER se note diamètre extérieur × épaisseur (16 × 1,5).",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment appelle-t-on les eaux évacuées par les **WC** ?",
+      "answer": "Les eaux vannes",
+      "wrong": [
+        "Les eaux ménagères",
+        "Les eaux grises",
+        "Les eaux pluviales"
+      ],
+      "explanation": "Les **eaux vannes** (ou eaux noires) proviennent des WC et contiennent urines et matières fécales. Les **eaux ménagères** (ou eaux grises) viennent de la cuisine, de la salle de bains et du lave-linge. L'ensemble forme les eaux usées domestiques, alors que les **eaux pluviales** (toitures, cours) relèvent d'un circuit à part.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Eaux_us%C3%A9es"
+    },
+    {
+      "question": "À quoi sert la **ventilation primaire**, prolongement de la chute d'eaux usées jusqu'au-dessus du toit ?",
+      "answer": "À équilibrer la pression d'air et évacuer les gaz d'égout",
+      "wrong": [
+        "À aérer les pièces humides comme une VMC",
+        "À évacuer la vapeur produite par le chauffe-eau",
+        "À laisser s'échapper le trop-plein des gouttières"
+      ],
+      "explanation": "Quand l'eau dévale une chute, elle pousse et aspire l'air devant et derrière elle. La ventilation primaire, ouverte à l'air libre en toiture, laisse l'air entrer et sortir : les gardes d'eau des siphons ne sont pas aspirées, et les gaz de fermentation du réseau s'échappent au-dessus du toit plutôt que dans la maison. Elle n'a rien à voir avec la VMC, qui renouvelle l'air des pièces.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quand on vide la baignoire, le siphon du lavabo voisin gargouille et des odeurs d'égout apparaissent. Quel phénomène est en cause ?",
+      "answer": "Le désiphonnage du lavabo",
+      "wrong": [
+        "Un coup de bélier",
+        "Une surpression d'eau potable",
+        "Un retour d'eau chaude"
+      ],
+      "explanation": "En s'écoulant, l'eau de la baignoire crée une **dépression** dans l'évacuation commune, qui aspire la garde d'eau du siphon voisin : c'est le **désiphonnage**. Sans garde d'eau, les odeurs remontent. Le remède est une ventilation correcte du réseau (ventilation primaire, éventuellement secondaire ou clapet aérateur) et des diamètres suffisants. Le coup de bélier, lui, concerne l'alimentation sous pression.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle est la limite d'un **clapet aérateur** (aérateur à membrane) comparé à une ventilation primaire débouchant en toiture ?",
+      "answer": "Il laisse entrer l'air mais pas sortir les gaz",
+      "wrong": [
+        "Il laisse sortir les gaz mais pas entrer l'air",
+        "Il ne fonctionne qu'avec des tuyaux en fonte",
+        "Il doit être placé sous le niveau des siphons"
+      ],
+      "explanation": "Le clapet aérateur s'ouvre quand une dépression apparaît dans l'évacuation, ce qui évite le désiphonnage, puis se referme : il **n'évacue pas** les gaz du réseau. C'est pourquoi on ne peut pas s'en contenter partout : une installation doit conserver une ventilation à l'air libre, notamment pour une fosse toutes eaux. Il se pose en point haut, au-dessus du niveau des siphons qu'il protège, et doit rester accessible.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi une pente **trop forte** est-elle déconseillée sur un tuyau d'évacuation de WC ?",
+      "answer": "L'eau file et abandonne les matières solides",
+      "wrong": [
+        "Le PVC se dilate puis finit par se fendre",
+        "L'eau stagne au point bas du tuyau",
+        "Les gaz d'égout remontent dans la cuvette"
+      ],
+      "explanation": "Avec une pente excessive, l'eau s'écoule plus vite que les matières solides, qui restent en arrière, s'accumulent et finissent par former un bouchon. C'est pour cela qu'on vise environ 1 à 3 cm par mètre. La stagnation est au contraire le défaut d'une pente **insuffisante**, et la remontée d'odeurs est bloquée par la garde d'eau de la cuvette.",
+      "difficulty": 3
+    },
+    {
+      "question": "Une odeur d'égout apparaît dans une salle d'eau inutilisée depuis plusieurs semaines. Quelle est la cause la plus probable ?",
+      "answer": "L'eau du siphon s'est évaporée",
+      "wrong": [
+        "Le chauffe-eau a surchauffé",
+        "Le réducteur de pression est déréglé",
+        "Le compteur d'eau fuit"
+      ],
+      "explanation": "Sans utilisation, la **garde d'eau** des siphons (douche, lavabo, siphon de sol) finit par s'évaporer, et plus rien ne bloque les gaz du réseau. Il suffit généralement de faire couler un peu d'eau pour la reconstituer ; dans une résidence secondaire, on peut verser un peu d'huile alimentaire pour ralentir l'évaporation avant un long départ. Si l'odeur persiste malgré des siphons pleins, il faut chercher un joint défectueux ou un problème de ventilation.",
+      "difficulty": 1
+    },
+    {
+      "question": "Tu débouches un lavabo à la **ventouse**. Que fais-tu du trop-plein ?",
+      "answer": "Je le bouche avec un chiffon humide",
+      "wrong": [
+        "Je le laisse ouvert pour faire entrer l'air",
+        "J'y verse un déboucheur en même temps",
+        "J'y applique la ventouse à la place de la bonde"
+      ],
+      "explanation": "La ventouse agit par **pression et dépression** sur l'eau du siphon. Si le trop-plein reste ouvert, l'air s'échappe par là et toute la force est perdue. Même principe pour un évier double : on bouche la seconde bonde. Mélanger ventouse et produit chimique est à éviter, car les pompages peuvent projeter du produit corrosif.",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment s'appelle l'outil formé d'un long ressort d'acier flexible qu'on fait tourner dans une canalisation bouchée ?",
+      "answer": "Un furet",
+      "wrong": [
+        "Un taraud",
+        "Un écouvillon",
+        "Une dudgeonnière"
+      ],
+      "explanation": "Le **furet** s'introduit dans le tuyau (de préférence après avoir démonté le siphon) ; en le faisant tourner, sa tête accroche ou fragmente le bouchon. Le taraud sert à fileter l'intérieur d'un trou, l'écouvillon est une brosse de nettoyage, et la dudgeonnière évase l'extrémité d'un tube en cuivre. Pour les bouchons profonds ou récurrents, un professionnel peut faire un **hydrocurage** (jet d'eau à haute pression).",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi ne faut-il **jamais** mélanger deux déboucheurs chimiques dans la même canalisation ?",
+      "answer": "Une réaction violente avec des gaz toxiques",
+      "wrong": [
+        "Le mélange fige en un bouchon plus dur",
+        "Le mélange gèle l'eau du siphon",
+        "Le mélange dissout aussitôt le PVC"
+      ],
+      "explanation": "Les déboucheurs sont souvent très **basiques** (soude caustique) ou très **acides** (acide sulfurique) : réunis, ils réagissent violemment avec un fort dégagement de chaleur et des projections. Un produit chloré (eau de Javel) mélangé à un acide libère du **chlore**, gaz toxique. On commence donc par les méthodes mécaniques (ventouse, démontage du siphon, furet) et, si l'on utilise un produit, un seul, avec gants et lunettes, en suivant la notice.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quoi sert un **té de visite** (ou bouchon de dégorgement) posé sur une évacuation ?",
+      "answer": "À accéder au tuyau pour le déboucher",
+      "wrong": [
+        "À ventiler la chute d'eaux usées",
+        "À raccorder un appareil supplémentaire",
+        "À vidanger le chauffe-eau dans l'égout"
+      ],
+      "explanation": "Le té de visite comporte un bouchon démontable qui donne accès à l'intérieur de la canalisation : on peut y passer un furet ou une tête d'hydrocurage sans démonter les tuyaux. On en place aux changements de direction et en pied de chute, là où les bouchons se forment le plus souvent. Il doit rester accessible, pas noyé dans une cloison sans trappe.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur un collecteur d'évacuation horizontal, pourquoi raccorde-t-on une arrivée secondaire avec une **culotte** à 45° plutôt qu'avec un té à 90° ?",
+      "answer": "Elle dirige l'arrivée dans le sens de l'écoulement",
+      "wrong": [
+        "Elle crée une garde d'eau contre les odeurs",
+        "Elle fait office de ventilation secondaire",
+        "Elle permet de réduire le diamètre du collecteur"
+      ],
+      "explanation": "La **culotte** (embranchement en Y) fait entrer l'eau de l'arrivée secondaire en biais, dans le sens du courant principal : moins de turbulences, moins de refoulement dans le branchement et moins de dépôts. Un té à angle droit fait buter les deux flux l'un contre l'autre. La culotte ne crée aucune garde d'eau (rôle du siphon) et ne ventile pas le réseau.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'est-ce qui distingue une **fosse toutes eaux** d'une ancienne **fosse septique** ?",
+      "answer": "Elle reçoit aussi les eaux ménagères, pas seulement les WC",
+      "wrong": [
+        "Elle reçoit aussi les eaux de pluie de la toiture",
+        "Elle rejette directement ses eaux dans un puits",
+        "Elle n'a plus jamais besoin d'être vidangée"
+      ],
+      "explanation": "La fosse septique ne recevait que les **eaux vannes** (WC) ; les eaux ménagères partaient souvent ailleurs, parfois via un bac dégraisseur. La **fosse toutes eaux** collecte l'ensemble des eaux usées de la maison. Dans les deux cas, les eaux pluviales sont proscrites, tout rejet dans un puits est interdit et une vidange périodique reste indispensable.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Fosse_septique"
+    },
+    {
+      "question": "Dans un assainissement non collectif classique avec fosse toutes eaux, où se fait l'essentiel de l'**épuration** des eaux usées ?",
+      "answer": "Dans le sol, par l'épandage après la fosse",
+      "wrong": [
+        "Dans la fosse, qui rejette une eau potable",
+        "Dans le regard de visite en sortie de maison",
+        "Dans la ventilation, qui oxyde les effluents"
+      ],
+      "explanation": "La fosse n'assure qu'un **prétraitement** : les matières lourdes décantent et sont liquéfiées par des bactéries anaérobies, mais l'eau qui en sort reste très polluée. Le **traitement** proprement dit a lieu ensuite dans le sol (tranchées d'épandage), dans un filtre à sable ou dans une filière agréée comme une microstation. Une eau sortant directement d'une fosse ne doit jamais être rejetée telle quelle.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Assainissement_non_collectif"
+    },
+    {
+      "question": "À partir de quel niveau de remplissage faut-il faire vidanger une fosse toutes eaux ?",
+      "answer": "Quand les boues atteignent la moitié du volume utile",
+      "wrong": [
+        "Dès qu'elle contient de l'eau jusqu'à la sortie",
+        "Quand les boues dépassent les trois quarts du volume",
+        "Seulement lorsque les WC commencent à refouler"
+      ],
+      "explanation": "La réglementation (arrêté du 7 septembre 2009) fixe que la hauteur de boues ne doit pas dépasser **50 % du volume utile** : au-delà, les boues risquent d'être entraînées vers l'épandage et de le colmater, ce qui coûte bien plus cher qu'une vidange. Une fosse en fonctionnement est normalement toujours pleine d'eau jusqu'à son niveau de sortie. La fréquence dépend donc de l'usage et la vidange doit être faite par un vidangeur agréé, qui remet un bordereau.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel service contrôle les installations d'assainissement **non collectif** (fosses, épandages) des particuliers ?",
+      "answer": "Le SPANC",
+      "wrong": [
+        "L'ARS",
+        "Le SDIS",
+        "L'ADEME"
+      ],
+      "explanation": "Le **Service public d'assainissement non collectif** (SPANC), géré par la commune ou l'intercommunalité, vérifie la conception et la réalisation des installations neuves, puis leur bon fonctionnement lors de contrôles périodiques. L'ARS (Agence régionale de santé) surveille notamment la qualité de l'eau potable, le SDIS est le service d'incendie et de secours, et l'ADEME est l'agence de la transition écologique.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Service_public_d%27assainissement_non_collectif"
+    },
+    {
+      "question": "Quand un réseau public d'égout est mis en service dans une rue, de quel délai dispose en règle générale un propriétaire pour s'y raccorder ?",
+      "answer": "Deux ans après la mise en service du réseau",
+      "wrong": [
+        "Six mois après la mise en service du réseau",
+        "Cinq ans après la mise en service du réseau",
+        "Aucun délai : le raccordement est facultatif"
+      ],
+      "explanation": "Le Code de la santé publique (article L1331-1) rend le raccordement au réseau public de collecte **obligatoire** dans un délai de **deux ans** à compter de sa mise en service. La commune peut accorder des prolongations dans certains cas, par exemple pour une installation autonome récente et conforme. Les frais de raccordement de la partie privée sont à la charge du propriétaire, et la fosse devenue inutile doit être vidangée et neutralisée.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Tout-%C3%A0-l%27%C3%A9gout"
+    },
+    {
+      "question": "Lors de la vente d'une maison en assainissement non collectif, le rapport de contrôle du SPANC joint au dossier doit dater de moins de… ?",
+      "answer": "3 ans",
+      "wrong": [
+        "6 mois",
+        "1 an",
+        "10 ans"
+      ],
+      "explanation": "Le diagnostic d'assainissement non collectif fait partie du dossier de diagnostics techniques et doit dater de **moins de 3 ans** à la signature de l'acte de vente. Si l'installation est non conforme, l'acquéreur dispose d'**un an** après la vente pour faire les travaux de mise en conformité. Ce rapport informe l'acheteur du coût potentiel d'une réhabilitation.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi ne faut-il pas envoyer les eaux de pluie de la toiture dans une fosse toutes eaux ?",
+      "answer": "Elles la noient et chassent les boues vers l'épandage",
+      "wrong": [
+        "Elles rendent l'effluent trop salé pour le sol",
+        "Elles font geler la fosse pendant l'hiver",
+        "Elles apportent trop de calcaire dans la fosse"
+      ],
+      "explanation": "Une averse sur un toit représente un volume d'eau énorme comparé aux eaux usées d'une famille : la fosse est **surchargée**, son effet de décantation disparaît et les boues sont entraînées vers l'épandage, qui se colmate. Les eaux pluviales doivent suivre un circuit séparé (infiltration sur la parcelle, cuve de récupération ou réseau pluvial). De même, en réseau public séparatif, elles ne doivent pas être raccordées sur le réseau des eaux usées.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi ne faut-il pas jeter de lingettes dans les WC, même si l'emballage les dit « biodégradables » ?",
+      "answer": "Elles ne se délitent pas assez vite et bouchent les réseaux",
+      "wrong": [
+        "Elles décolorent l'émail de la cuvette avec le temps",
+        "Elles font monter la pression dans le réservoir",
+        "Elles dissolvent les joints des raccords en PVC"
+      ],
+      "explanation": "Contrairement au papier toilette, conçu pour se désagréger en quelques secondes dans l'eau, les lingettes restent entières pendant des jours : elles s'accrochent dans les coudes, forment des amas avec les graisses et bloquent les pompes de relevage, les fosses et les stations d'épuration. « Biodégradable » signifie seulement qu'elles se dégradent un jour, pas qu'elles se délitent rapidement. Leur place est à la poubelle.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans quel cas faut-il installer une **pompe de relevage** pour les eaux usées ?",
+      "answer": "Quand les appareils sont plus bas que l'égout",
+      "wrong": [
+        "Quand la pression d'eau potable est faible",
+        "Quand la maison compte plus de deux étages",
+        "Quand l'eau du réseau est très calcaire"
+      ],
+      "explanation": "L'évacuation fonctionne normalement par **gravité**. Si une salle d'eau ou une buanderie en sous-sol se trouve sous le niveau du collecteur ou de l'égout, les eaux sont recueillies dans une cuve munie d'une pompe qui les **relève** jusqu'au réseau. Pour une faible pression d'eau potable, c'est un surpresseur qu'il faut, pas une pompe de relevage.",
+      "difficulty": 2
+    },
+    {
+      "question": "En plomberie, à quelle taille en pouces correspond le filetage appelé « **15x21** » ?",
+      "answer": "1/2 pouce",
+      "wrong": [
+        "3/8 de pouce",
+        "3/4 de pouce",
+        "1 pouce"
+      ],
+      "explanation": "En plomberie, les filetages des robinets, flexibles et raccords portent souvent des noms comme 15x21 ou 20x27. Ce sont des appellations françaises des filetages gaz (BSP), exprimés en pouces : 12x17 = 3/8, **15x21 = 1/2**, 20x27 = 3/4 et 26x34 = 1 pouce. Les deux nombres rappellent les diamètres intérieur et extérieur, en millimètres, des anciens tubes en acier filetés à cette taille. Exemple : le filet mâle d'un 15x21 mesure bien environ 21 mm de diamètre. C'est la taille la plus courante pour un robinet d'arrêt de lavabo ou un robinet de jardin. Piège : 3/4 de pouce correspond au 20x27, la taille au-dessus.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Filetage_gaz"
+    },
+    {
+      "question": "Sur quel filetage visse-t-on habituellement le tuyau d'arrivée d'eau d'un **lave-linge** ?",
+      "answer": "20x27 (3/4 de pouce)",
+      "wrong": [
+        "12x17 (3/8 de pouce)",
+        "15x21 (1/2 pouce)",
+        "26x34 (1 pouce)"
+      ],
+      "explanation": "Un lave-linge ou un lave-vaisselle se branche sur un robinet dédié, dit « robinet machine ». Le tuyau d'arrivée de ces appareils se termine par un écrou en **3/4 de pouce**, ce qui correspond à l'appellation française **20x27**. Le robinet machine a donc un nez fileté en 20x27. Exemple : si tu n'as qu'un robinet en 15x21 (1/2 pouce), il te faut un adaptateur 15x21 / 20x27 pour brancher la machine. L'écrou du tuyau contient un joint plat : c'est lui qui rend le raccord étanche, pas besoin de téflon. Piège : le 15x21 est plus courant ailleurs dans la maison, mais il est trop petit pour l'écrou de la machine.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans quel sens faut-il enrouler le **ruban téflon** sur un filetage mâle ?",
+      "answer": "Dans le sens du vissage",
+      "wrong": [
+        "Dans le sens inverse du vissage",
+        "Peu importe, l'effet est le même",
+        "En alternant de sens à chaque tour"
+      ],
+      "explanation": "Le ruban téflon (PTFE) sert à rendre étanche un raccord fileté, par exemple un robinet vissé sur un mamelon. On l'enroule sur le filetage **mâle**, dans le **sens du vissage**. Pour un filetage classique (pas à droite), cela veut dire dans le sens des aiguilles d'une montre quand on regarde le bout du tube. Ainsi, quand on visse la pièce femelle, le frottement plaque le ruban dans les filets. Exemple : enroulé à l'envers, le ruban se déroule et forme un bourrelet dès les premiers tours, et le raccord fuit. Piège : « peu importe le sens » est faux, c'est justement l'erreur de débutant la plus courante.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Polyt%C3%A9trafluoro%C3%A9thyl%C3%A8ne"
+    },
+    {
+      "question": "Pour étancher un filetage à la **filasse** de chanvre, que lui associe-t-on traditionnellement ?",
+      "answer": "Une pâte d'étanchéité",
+      "wrong": [
+        "De la colle PVC",
+        "Du mastic acrylique",
+        "De la mousse expansive"
+      ],
+      "explanation": "La filasse est la méthode traditionnelle pour étancher un raccord fileté, l'alternative au ruban téflon. Elle est faite de fibres de chanvre que l'on enroule dans les filets. On l'enduit ensuite de **pâte d'étanchéité** (pâte à joint). La pâte lubrifie au vissage, protège le chanvre et complète l'étanchéité ; le chanvre, lui, gonfle légèrement au contact de l'eau. Exemple : pour monter un groupe de sécurité ou un raccord de chauffage, beaucoup de plombiers utilisent filasse et pâte. Piège : la colle PVC sert à assembler les tubes d'évacuation et le mastic acrylique aux joints de finition, jamais aux filetages.",
+      "difficulty": 1
+    },
+    {
+      "question": "Sur un raccord à **écrou tournant avec joint plat** (comme l'écrou d'un flexible de douche), où se fait l'étanchéité ?",
+      "answer": "Sur le joint plat écrasé par l'écrou",
+      "wrong": [
+        "Dans les filets, grâce au téflon",
+        "Sur une olive pincée contre le tube",
+        "Sur la pâte étalée sur l'écrou"
+      ],
+      "explanation": "On trouve des écrous tournants avec joint plat partout : flexible de douche, flexible de lavabo, tuyau de lave-linge. Dans ce raccord, le filetage sert seulement à **serrer**. C'est le **joint plat** (une rondelle en fibre ou en caoutchouc), comprimé entre l'écrou et l'embout, qui rend l'ensemble étanche. Exemple : si le flexible de douche goutte au niveau de l'écrou, on change la rondelle, qui coûte quelques centimes, au lieu de forcer sur l'écrou. Piège : mettre du téflon dans les filets ne sert à rien ici, et il peut même empêcher de serrer correctement le joint.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans un **raccord à compression** pour tube cuivre, quelle pièce assure l'étanchéité en se déformant sur le tube ?",
+      "answer": "L'olive, une bague de serrage",
+      "wrong": [
+        "Le mamelon, un raccord mâle-mâle",
+        "Le contre-écrou de blocage",
+        "Le ruban téflon du filetage"
+      ],
+      "explanation": "Le raccord à compression permet de raccorder un tube cuivre sans brasure, avec deux clés. Il comprend un corps, un écrou et une **olive**, une petite bague en laiton ou en cuivre glissée sur le tube. En serrant l'écrou, on pousse l'olive dans le cône du corps : elle se déforme et pince le tube, ce qui crée l'étanchéité. Exemple : pour remplacer un robinet d'arrêt sous un lavabo, on utilise souvent ce type de raccord. Une olive déjà serrée reste prisonnière du tube : si on refait le raccord, on en met une neuve. Piège : le téflon n'assure pas l'étanchéité ici, c'est la déformation de l'olive.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pour monter un tube **PER** sur un raccord à compression, quelle pièce faut-il glisser **à l'intérieur** du tube ?",
+      "answer": "Une douille de renfort (insert)",
+      "wrong": [
+        "Une olive en laiton",
+        "Un joint fibre",
+        "Un ressort à cintrer"
+      ],
+      "explanation": "On peut raccorder un tube PER (polyéthylène réticulé, un plastique souple) avec un raccord à compression. Mais le PER est mou : sans soutien, il s'écraserait sous la bague de serrage. On glisse donc dans son extrémité une **douille de renfort**, aussi appelée insert, souvent en laiton. Elle sert de support rigide face au serrage. Exemple : un raccord monté sans insert peut sembler étanche le premier jour, puis fuir ou s'arracher quand la pression monte. Certains raccords intègrent déjà l'insert ; sinon, il est fourni avec. Piège : le ressort à cintrer ne sert que le temps de plier le tube, puis on le retire.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'est-ce qui distingue le **brasage** (souvent appelé « soudure » par les plombiers) d'un vrai soudage ?",
+      "answer": "Seul le métal d'apport fond, pas les tubes",
+      "wrong": [
+        "Il utilise un courant électrique",
+        "Il fait fondre les deux tubes",
+        "Il se fait sans aucune chaleur"
+      ],
+      "explanation": "Pour assembler des tubes en cuivre, les plombiers parlent souvent de « souder », mais il s'agit presque toujours de **brasage**. Braser, c'est chauffer les pièces sans les faire fondre et y apporter un autre métal, la **brasure**, qui fond à plus basse température. La brasure liquide est aspirée par **capillarité** (un liquide s'infiltre tout seul dans un interstice très fin) entre le tube et le raccord, puis les lie en refroidissant. Dans le vrai **soudage**, les métaux des pièces fondent et se mélangent. Exemple : le cuivre fond vers 1 085 °C, alors qu'une brasure tendre fond vers 230 °C. Piège : si les tubes fondaient, ce serait du soudage.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Brasage"
+    },
+    {
+      "question": "Quelle température de fusion du métal d'apport sépare conventionnellement la brasure **tendre** de la brasure **forte** ?",
+      "answer": "450 °C",
+      "wrong": [
+        "100 °C",
+        "250 °C",
+        "1 085 °C"
+      ],
+      "explanation": "Il existe deux familles de brasure pour le cuivre, choisies selon l'usage. La frontière conventionnelle est **450 °C**, la température de fusion du métal d'apport. En dessous, c'est la brasure **tendre** : des alliages à base d'étain qui fondent vers 220 à 300 °C, courants pour l'eau sanitaire. Au-dessus, c'est la brasure **forte** : des alliages cuivre-phosphore ou à l'argent qui fondent vers 700 à 800 °C, plus résistants. Exemple : pour une installation de gaz, la brasure forte est exigée. Piège : 1 085 °C est la température de fusion du cuivre lui-même, pas une limite entre brasures.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Brasage"
+    },
+    {
+      "question": "Tu dois braser un tube cuivre contre une cloison en bois. Quelle précaution s'impose ?",
+      "answer": "Placer un écran thermique entre la flamme et la cloison",
+      "wrong": [
+        "Mouiller la cloison pendant toute la brasure",
+        "Laisser l'eau couler dans le tube pendant la chauffe",
+        "Chauffer le plus vite possible à pleine flamme"
+      ],
+      "explanation": "Braser un tube en place, contre un mur ou dans un placard, est une cause classique d'incendie sur les chantiers de plomberie. La flamme d'un chalumeau dépasse largement le tube. On place donc un **écran thermique** (plaque métallique ou tapis ignifugé) entre la flamme et le support. Il protège la cloison, l'isolant ou les gaines électriques situés derrière. Exemple : un isolant ou un panneau de bois peut se mettre à couver sans flamme visible et s'enflammer bien après la fin du travail. On garde un extincteur à portée et on revient vérifier la zone. Piège : laisser l'eau couler empêche d'atteindre la température de brasage ; le tube doit être vide.",
+      "difficulty": 1
+    },
+    {
+      "question": "Avant une brasure tendre, à quoi sert le **décapant** (flux) appliqué sur le tube et le raccord ?",
+      "answer": "À éliminer les oxydes pour que la brasure accroche",
+      "wrong": [
+        "À refroidir le tube pour éviter la surchauffe",
+        "À coller le tube en attendant la brasure",
+        "À colorer le joint pour contrôler la chauffe"
+      ],
+      "explanation": "Une brasure ne tient que sur un métal propre, sans oxyde. On commence par aviver le cuivre (toile abrasive ou laine d'acier) jusqu'à ce qu'il brille. Puis on applique le **décapant**, aussi appelé flux : à la chauffe, il dissout les oxydes et empêche le métal de s'oxyder à nouveau. La brasure peut alors bien « mouiller » le cuivre, c'est-à-dire s'étaler, et être aspirée dans l'emboîture. Exemple : sans décapant, la brasure fait des perles qui roulent sur le tube sans pénétrer, et le raccord fuit. On essuie l'excédent après coup, car il est corrosif à la longue. Piège : le décapant ne refroidit rien et ne colle rien.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la différence entre un tube cuivre **écroui** et un tube cuivre **recuit** ?",
+      "answer": "L'écroui est rigide, le recuit est souple",
+      "wrong": [
+        "L'écroui est souple, le recuit est rigide",
+        "L'écroui est étamé, le recuit est nu",
+        "L'écroui sert au gaz, le recuit à l'eau"
+      ],
+      "explanation": "Le tube cuivre se vend sous deux états, à choisir selon le chantier. L'**écrouissage** est la déformation à froid subie à la fabrication : elle durcit le métal. Le tube **écroui** est donc **rigide** et vendu en barres droites, idéal pour des tuyaux apparents bien droits. Le **recuit** consiste à chauffer le cuivre pour lui rendre sa souplesse : le tube recuit est vendu en couronnes et se cintre à la main ou avec un ressort. Exemple : pour contourner un meuble avec une belle courbe, on prend du recuit. Chauffer localement un tube écroui au chalumeau le recuit d'ailleurs à cet endroit. Piège : on inverse souvent les deux termes.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans une installation en **PER gainé**, que signale habituellement une gaine **rouge** ?",
+      "answer": "Un tube d'eau chaude",
+      "wrong": [
+        "Un tube d'eau froide",
+        "Une conduite de gaz",
+        "Une évacuation d'eaux usées"
+      ],
+      "explanation": "Le PER est souvent posé dans une gaine annelée, notamment quand il est encastré dans une dalle ou une cloison. Par convention, la gaine **rouge** protège les tubes d'**eau chaude** et la gaine **bleue** ceux d'**eau froide**. Ce repère de couleur évite les erreurs au collecteur, là où partent tous les tubes. La gaine permet aussi de remplacer un tube encastré sans casser la chape : on le tire et on en glisse un neuf. Exemple : dans une distribution en pieuvre, on voit sortir du sol une rangée de gaines rouges et bleues, une par point d'eau. Piège : le PER ne sert ni au gaz ni à l'évacuation des eaux usées.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Poly%C3%A9thyl%C3%A8ne_r%C3%A9ticul%C3%A9"
+    },
+    {
+      "question": "Pourquoi un tube **PER** ne doit-il pas rester exposé au soleil ?",
+      "answer": "Les UV le dégradent et le fragilisent",
+      "wrong": [
+        "Il se dilate jusqu'à déboîter les raccords",
+        "Il devient conducteur d'électricité",
+        "Il libère du plomb dans l'eau"
+      ],
+      "explanation": "Le PER (polyéthylène réticulé) est un plastique souple très utilisé pour l'eau chaude et froide. Comme beaucoup de plastiques, il est sensible aux **rayons ultraviolets** du soleil. Les UV cassent peu à peu ses molécules : le tube devient cassant et peut se fendre sous la pression. On le stocke donc à l'abri de la lumière et on ne le laisse pas apparent dehors sans protection (gaine, fourreau, isolant). Exemple : une couronne de PER oubliée tout un été en plein soleil sur un chantier peut être fragilisée avant même d'être posée. Piège : le PER ne contient pas de plomb et ne conduit pas l'électricité.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qui permet à un tube **multicouche** de garder la forme qu'on lui donne en le cintrant ?",
+      "answer": "Sa couche intermédiaire en aluminium",
+      "wrong": [
+        "Sa gaine extérieure en PVC rigide",
+        "Son âme en fibre de verre tressée",
+        "Sa paroi intérieure en cuivre"
+      ],
+      "explanation": "Le multicouche est un tube d'alimentation qui combine plastique et métal. Il est formé de deux couches de polyéthylène, avec au milieu une couche d'**aluminium** collée. C'est ce métal qui « tient » la forme après cintrage, alors qu'un PER seul a tendance à revenir. L'aluminium limite aussi la dilatation (l'allongement à la chaleur) et empêche l'oxygène de traverser la paroi. Exemple : on peut cintrer un multicouche à la main pour longer un mur, et il reste bien en place sans revenir. Il se raccorde surtout par sertissage ou par compression. Piège : il n'y a ni cuivre ni PVC dans ce tube.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pour sertir un raccord sur un tube **multicouche**, quelle condition est indispensable ?",
+      "answer": "Des mâchoires au profil et au diamètre du raccord",
+      "wrong": [
+        "Un raccord chauffé au chalumeau au préalable",
+        "Du ruban téflon autour du tube avant sertissage",
+        "Une pâte à joint sur l'extérieur de la bague"
+      ],
+      "explanation": "Le sertissage est une façon rapide de raccorder du multicouche ou du PER : une pince écrase une bague métallique autour du tube. Chaque fabricant conçoit ses raccords pour un **profil** de mâchoires précis (TH, U, B, H…) et un diamètre donné. Avec des mâchoires inadaptées, la bague est mal écrasée. Exemple : le raccord peut tenir à l'essai, puis fuir quelques semaines plus tard, une fois les cloisons refermées. Il faut aussi couper le tube d'équerre, l'ébavurer et l'enfoncer jusqu'en butée. Le sertissage est définitif : on ne le démonte pas. Piège : ni téflon ni pâte à joint, l'étanchéité vient des joints toriques du raccord et du sertissage.",
+      "difficulty": 3
+    },
+    {
+      "question": "De quels métaux le **laiton** des raccords et robinets est-il principalement composé ?",
+      "answer": "Cuivre et zinc",
+      "wrong": [
+        "Cuivre et étain",
+        "Fer et carbone",
+        "Plomb et étain"
+      ],
+      "explanation": "Les raccords, robinets et corps de vannes de plomberie sont très souvent dorés : ils sont en laiton. Le **laiton** est un alliage de **cuivre et de zinc**. Il se moule et s'usine facilement et résiste bien à la corrosion par l'eau. Exemple : un mamelon, une réduction ou un robinet d'arrêt vendu en magasin de bricolage sont presque toujours en laiton, parfois chromé. Les laitons pour l'eau potable sont aujourd'hui formulés pour limiter le relargage de plomb. Piège : le **bronze** associe cuivre et étain ; l'acier est un alliage de fer et de carbone, et le plomb-étain servait autrefois aux soudures.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Laiton"
+    },
+    {
+      "question": "Dans une installation mixte, pourquoi ne faut-il pas placer de cuivre **en amont** de tuyaux en acier galvanisé ?",
+      "answer": "Les traces de cuivre emportées corrodent le galvanisé",
+      "wrong": [
+        "Le cuivre ferait chuter la pression dans l'acier",
+        "L'acier rendrait l'eau du cuivre toxique",
+        "Le cuivre gèlerait plus vite que l'acier"
+      ],
+      "explanation": "On rencontre des installations mixtes dans les maisons rénovées par morceaux : un peu d'acier galvanisé ancien, un peu de cuivre neuf. L'eau qui traverse du cuivre en emporte d'infimes quantités. Arrivées sur l'acier galvanisé (acier recouvert de zinc), ces particules de cuivre s'y déposent et forment de minuscules **piles galvaniques** : le zinc, puis l'acier, se dissolvent autour. Exemple : un tube galvanisé placé après du cuivre peut se percer de petites piqûres en quelques années. Règle : jamais de cuivre en amont du galvanisé dans le sens de l'écoulement ; l'inverse est toléré. Piège : le problème n'est ni la pression ni le gel, c'est la corrosion.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Corrosion_galvanique"
+    },
+    {
+      "question": "Comment appelle-t-on un raccord fileté **mâle-mâle** ?",
+      "answer": "Un mamelon",
+      "wrong": [
+        "Un manchon",
+        "Un coude",
+        "Un bouchon"
+      ],
+      "explanation": "En plomberie, beaucoup de pièces se vissent entre elles, et chaque raccord porte un nom selon ses filetages. Un filetage **mâle** est à l'extérieur de la pièce ; un filetage **femelle** (taraudage) est à l'intérieur. Le **mamelon** a un filetage mâle à chaque bout : il relie deux pièces femelles. Exemple : pour visser un robinet à entrée femelle sur une sortie femelle, on intercale un mamelon 15x21. Son contraire, le **manchon**, est femelle des deux côtés. Piège : le coude change la direction, le bouchon ferme une extrémité, et la réduction fait passer d'un diamètre à un autre.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel est l'intérêt d'un **raccord union** (raccord trois pièces) ?",
+      "answer": "Démonter sans faire tourner les tuyaux",
+      "wrong": [
+        "Raccorder trois tuyaux au même point",
+        "Changer de diamètre sans réduction",
+        "Se passer de tout joint d'étanchéité"
+      ],
+      "explanation": "Certains équipements doivent pouvoir être déposés facilement : chauffe-eau, pompe, adoucisseur. Le **raccord union**, ou raccord trois pièces, est fait pour cela. Il comporte deux parties fixées chacune sur un tuyau et un **écrou** central qui les assemble, avec un joint plat ou une portée conique. En dévissant l'écrou, on sépare les deux tuyaux sans faire tourner l'un ou l'autre. Exemple : avec un simple manchon, il faudrait faire tourner tout un tuyau, impossible s'il est fixé au mur. Piège : pour raccorder trois tuyaux, c'est un **té** qu'il faut ; « trois pièces » désigne les éléments du raccord.",
+      "difficulty": 2
+    },
+    {
+      "question": "Après avoir coupé un tube cuivre au **coupe-tube**, que faut-il faire avant de l'assembler ?",
+      "answer": "L'ébavurer à l'intérieur et à l'extérieur",
+      "wrong": [
+        "Le recuire entièrement au chalumeau",
+        "Le fileter avec une filière",
+        "L'enduire de colle PVC"
+      ],
+      "explanation": "Le coupe-tube est l'outil normal pour couper le cuivre : une molette tourne autour du tube et le tranche net et d'équerre. Mais elle laisse une **bavure** : un petit bourrelet vers l'intérieur et parfois une arête vive à l'extérieur. On l'enlève avec un **ébavureur**. La bavure intérieure réduit la section et crée des turbulences, sources de bruit. La bavure extérieure peut couper un joint ou empêcher le tube d'entrer dans le raccord. Exemple : sur un raccord à emboîter avec joint torique, un tube non ébavuré peut entailler le joint et provoquer une fuite. Piège : on ne recuit pas le tube, et la colle PVC n'a rien à faire sur du cuivre.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle clé à mâchoires dentées est conçue pour saisir et tourner des **tubes ronds** ?",
+      "answer": "La clé serre-tube",
+      "wrong": [
+        "La clé plate",
+        "La clé à pipe",
+        "La clé Allen"
+      ],
+      "explanation": "Pour serrer ou desserrer un tube rond ou un raccord grippé, une clé ordinaire glisse. La **clé serre-tube**, aussi appelée clé Stillson, a des mâchoires dentées : plus on force, plus les dents mordent le métal. Exemple : pour dévisser un vieux raccord sur un tube en acier galvanisé, c'est l'outil idéal, avec une deuxième clé pour tenir la contre-pièce. Revers : les dents marquent le métal, donc on ne l'utilise pas sur des pièces chromées, ou on les protège avec un chiffon. Piège : la clé plate et la clé à pipe sont faites pour des écrous à six pans, la clé Allen pour des vis à six pans creux.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel outil permet de réaliser un filetage **extérieur** (mâle) au bout d'un tube acier ?",
+      "answer": "Une filière",
+      "wrong": [
+        "Un taraud",
+        "Un alésoir",
+        "Une dudgeonnière"
+      ],
+      "explanation": "On fabrique encore parfois des filetages soi-même, surtout sur des tubes en acier. La **filière** taille un filetage **extérieur** (mâle) au bout d'un tube ou d'une tige. Le **taraud**, lui, taille un filetage **intérieur** (femelle) dans un trou. Exemple : pour raccourcir un vieux tube acier 20x27, on le coupe puis on le refile à la filière avant d'y visser un manchon. Le cuivre, lui, se raccorde plutôt par brasure, compression ou sertissage. Piège : le taraud fait l'inverse de la filière ; l'alésoir calibre l'intérieur d'un tube et la dudgeonnière évase le bout d'un tube cuivre.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle étape est indispensable avant d'encoller un tube et un raccord **PVC** d'évacuation ?",
+      "answer": "Les nettoyer avec un décapant PVC",
+      "wrong": [
+        "Les chauffer au décapeur thermique",
+        "Les enduire de pâte à joint",
+        "Les humidifier pour activer la colle"
+      ],
+      "explanation": "Les tubes d'évacuation en PVC s'assemblent le plus souvent par collage. La colle PVC agit comme une **soudure à froid** : son solvant ramollit la surface des deux pièces, qui fusionnent en séchant. Pour que cela marche, les surfaces doivent être propres et sans graisse, d'où le **décapant PVC**, un nettoyant spécial. Ordre classique : couper d'équerre, ébavurer, nettoyer au décapant, encoller, emboîter jusqu'en butée, puis attendre le séchage. Exemple : une trace de doigts graisseuse ou de poussière peut suffire à affaiblir un collage. Piège : chauffer le PVC le déforme, et l'eau empêche la colle de prendre.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans une maison ancienne, une descente d'eaux usées en **fibrociment** gris doit être remplacée. Quelle est la bonne attitude ?",
+      "answer": "Vérifier la présence d'amiante avant toute découpe",
+      "wrong": [
+        "La découper à la disqueuse pour aller vite",
+        "La poncer pour la peindre avant la dépose",
+        "La casser au marteau en petits morceaux"
+      ],
+      "explanation": "Dans les maisons construites avant la fin des années 1990, les descentes d'eaux usées sont parfois en **fibrociment**, un mélange de ciment et de fibres. Avant l'interdiction de l'amiante en France, en 1997, ces fibres étaient souvent de l'amiante. Découper, poncer ou casser ce matériau libère des fibres invisibles qui se logent dans les poumons et peuvent provoquer des maladies graves des années plus tard. On fait donc vérifier le matériau avant d'y toucher. S'il contient de l'amiante, on confie de préférence la dépose à une entreprise qualifiée, et les déchets suivent une filière spéciale. Piège : la disqueuse est le pire outil, car c'est elle qui produit le plus de poussière.",
+      "difficulty": 2
     }
   ]
 }

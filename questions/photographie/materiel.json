@@ -304,6 +304,546 @@
       "explanation": "Un capteur CMOS classique en obturation électronique lit ses lignes l'une après l'autre (*rolling shutter*) : si le sujet ou l'appareil bouge pendant cette lecture, les verticales penchent et les hélices se tordent. Un capteur à obturation globale lit tous les pixels au même instant, ce qui supprime ces déformations et permet de synchroniser le flash à toutes les vitesses. Il ne règle en rien le bruit, le vignettage ou le moiré.",
       "difficulty": 3,
       "source": "https://en.wikipedia.org/wiki/Rolling_shutter"
+    },
+    {
+      "question": "Qu'appelle-t-on une « focale fixe » ?",
+      "answer": "Un objectif dont on ne peut pas faire varier la focale",
+      "wrong": [
+        "Un objectif soudé au boîtier, non interchangeable",
+        "Un objectif à mise au point bloquée sur l'infini",
+        "Un objectif dont l'ouverture ne se règle pas"
+      ],
+      "explanation": "Une focale fixe (*prime*) a une seule longueur focale (35 mm, 50 mm, 85 mm…), à l'inverse d'un zoom qui couvre une plage. Pour cadrer, on se déplace. En échange, elle est souvent plus lumineuse, plus compacte et plus piquée qu'un zoom de même gamme. Un objectif à mise au point bloquée est un « fixfocus », une tout autre notion.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Prime_lens"
+    },
+    {
+      "question": "Sur un boîtier plein format, laquelle de ces focales est un grand-angle ?",
+      "answer": "24 mm",
+      "wrong": [
+        "50 mm",
+        "85 mm",
+        "200 mm"
+      ],
+      "explanation": "Sur plein format, on parle de grand-angle en dessous d'environ 35 mm : un 24 mm couvre environ 84° en diagonale, contre 47° pour le 50 mm, focale « normale ». Le 85 mm est un court téléobjectif apprécié en portrait et le 200 mm un téléobjectif. Sur un capteur plus petit, une même focale cadre plus serré : un 24 mm sur APS-C se comporte comme un 36 mm environ.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Wide-angle_lens"
+    },
+    {
+      "question": "Au sens optique strict, qu'est-ce qui définit un « téléobjectif » ?",
+      "answer": "Une longueur physique inférieure à sa focale",
+      "wrong": [
+        "Une focale supérieure à 300 mm",
+        "Un zoom couvrant au moins un rapport 3×",
+        "Un angle de champ inférieur à 5°"
+      ],
+      "explanation": "Dans la formule téléobjectif, un groupe convergent à l'avant est suivi d'un groupe divergent à l'arrière : le système se comporte comme une lentille unique placée en avant de l'objectif, si bien que l'objectif est plus court que sa focale. Un 400 mm de ce type mesure nettement moins de 40 cm. Dans le langage courant, on appelle téléobjectif toute longue focale, mais c'est cette construction qui définit le terme.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Telephoto_lens"
+    },
+    {
+      "question": "Pourquoi les grands-angles destinés aux reflex utilisent-ils une formule « rétrofocus » ?",
+      "answer": "Pour laisser la place au miroir qui se relève",
+      "wrong": [
+        "Pour corriger la distorsion en barillet",
+        "Pour rendre l'objectif plus léger et compact",
+        "Pour permettre la mise au point très rapprochée"
+      ],
+      "explanation": "Un grand-angle classique de 24 mm devrait se trouver à environ 24 mm du film, là où bat le miroir du reflex, qui exige environ 40 mm de dégagement. La formule rétrofocus (téléobjectif inversé : groupe divergent devant, convergent derrière) éloigne l'objectif du capteur tout en gardant une focale courte. Elle complique la correction de la distorsion et grossit l'objectif. Le nom vient d'une gamme de l'opticien français Pierre Angénieux, lancée en 1950.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Wide-angle_lens"
+    },
+    {
+      "question": "Qu'est-ce qui distingue un objectif fisheye d'un grand-angle classique (rectilinéaire) ?",
+      "answer": "Il courbe volontairement les lignes droites",
+      "wrong": [
+        "Il corrige toute distorsion sur les bords",
+        "Il resserre l'angle de champ du capteur",
+        "Il donne une profondeur de champ très faible"
+      ],
+      "explanation": "Un grand-angle rectilinéaire s'efforce de garder les droites droites, ce qui devient impossible au-delà d'un certain angle. Le fisheye adopte une autre projection : il accepte de courber les lignes qui ne passent pas par le centre pour couvrir jusqu'à 180° (ou plus) d'angle de champ. On distingue le fisheye circulaire, qui inscrit un cercle dans l'image, et le fisheye diagonal, qui couvre tout le cadre.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Fisheye_lens"
+    },
+    {
+      "question": "Que signifie un rapport de reproduction de 1:1 pour un objectif macro ?",
+      "answer": "Le sujet a sur le capteur sa taille réelle",
+      "wrong": [
+        "L'image est agrandie dix fois sur le capteur",
+        "La mise au point minimale est d'un mètre",
+        "La focale est égale à la distance au sujet"
+      ],
+      "explanation": "Au rapport 1:1 (grandissement ×1), un insecte de 10 mm occupe 10 mm sur le capteur. C'est la définition d'un vrai objectif macro ; un rapport 1:2 donne une image moitié moins grande que le sujet. Ce rapport ne dépend pas de la taille du capteur : c'est le cadrage final qui en dépend, un même sujet remplissant davantage un petit capteur.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Macro_photography"
+    },
+    {
+      "question": "Un objectif de 100 mm est ouvert à f/2. Quel est le diamètre de sa pupille d'entrée ?",
+      "answer": "50 mm",
+      "wrong": [
+        "200 mm",
+        "25 mm",
+        "2 mm"
+      ],
+      "explanation": "Le nombre d'ouverture est le rapport entre la focale et le diamètre de la pupille d'entrée : N = f / D, donc D = 100 / 2 = 50 mm. C'est pour cela que les téléobjectifs lumineux sont énormes : un 400 mm f/2.8 exige une pupille d'environ 143 mm. Et c'est aussi pourquoi un même f/2 laisse passer la même quantité de lumière par unité de surface quelle que soit la focale.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/F-number"
+    },
+    {
+      "question": "Que signifie l'inscription « 18-55 mm f/3.5-5.6 » sur un zoom ?",
+      "answer": "L'ouverture maximale passe de f/3.5 à 18 mm à f/5.6 à 55 mm",
+      "wrong": [
+        "Le diaphragme se règle uniquement entre f/3.5 et f/5.6",
+        "L'ouverture est f/3.5 de près et f/5.6 à l'infini",
+        "L'ouverture est f/3.5 en photo et f/5.6 en vidéo"
+      ],
+      "explanation": "Sur ce zoom à ouverture variable, l'ouverture maximale diminue quand on zoome : f/3.5 à 18 mm, f/5.6 à 55 mm. On peut évidemment fermer davantage (f/8, f/11…). Les zooms à ouverture constante, comme un 24-70 mm f/2.8, gardent la même ouverture maximale sur toute la plage, au prix d'un objectif plus gros et plus lourd.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Zoom_lens"
+    },
+    {
+      "question": "Quel est le rapport de zoom d'un objectif 24-240 mm ?",
+      "answer": "10×",
+      "wrong": [
+        "24×",
+        "9×",
+        "2,4×"
+      ],
+      "explanation": "Le rapport de zoom est la focale maximale divisée par la focale minimale : 240 / 24 = 10. Il indique l'amplitude de la plage, pas un grossissement absolu : un « zoom 10× » de compact et un 24-240 mm de boîtier plein format ont le même rapport mais pas forcément les mêmes focales équivalentes.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Zoom_lens"
+    },
+    {
+      "question": "Quel est approximativement l'angle de champ diagonal d'un objectif de 50 mm sur un capteur plein format ?",
+      "answer": "47°",
+      "wrong": [
+        "28°",
+        "63°",
+        "84°"
+      ],
+      "explanation": "L'angle de champ vaut 2 × arctan(d / 2f), où d est la diagonale du capteur (43,3 mm en plein format) : 2 × arctan(43,3 / 100) ≈ 46,8°. Avec la même formule, un 85 mm couvre environ 28°, un 35 mm environ 63° et un 24 mm environ 84°. Doubler la focale divise donc à peu près l'angle par deux, sans que la relation soit exactement proportionnelle.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Angle_of_view_(photography)"
+    },
+    {
+      "question": "On monte un multiplicateur de focale 1,4× sur un zoom 70-200 mm f/2.8. Qu'obtient-on ?",
+      "answer": "Un 98-280 mm f/4",
+      "wrong": [
+        "Un 98-280 mm f/2.8",
+        "Un 140-400 mm f/5.6",
+        "Un 70-280 mm f/4"
+      ],
+      "explanation": "Le multiplicateur agrandit le centre de l'image : focale et nombre d'ouverture sont tous deux multipliés par 1,4. On obtient 70 × 1,4 = 98 mm, 200 × 1,4 = 280 mm et 2,8 × 1,4 ≈ 3,9, soit f/4 : une perte d'environ 1 IL, car le diamètre de la pupille ne change pas. Un multiplicateur 2× donnerait un 140-400 mm f/5.6, avec 2 IL de perte.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Teleconverter"
+    },
+    {
+      "question": "Que permet une bague-allonge (tube d'extension) placée entre le boîtier et l'objectif ?",
+      "answer": "Faire la mise au point plus près du sujet",
+      "wrong": [
+        "Allonger la focale, comme un multiplicateur",
+        "Rendre l'objectif plus lumineux",
+        "Élargir l'angle de champ de l'objectif"
+      ],
+      "explanation": "La bague-allonge est un simple tube sans verre : en éloignant l'objectif du capteur, elle permet de faire le point plus près et donc d'augmenter le grandissement, pour la macro à petit budget. En contrepartie, on perd la mise au point à l'infini et un peu de lumière. Le multiplicateur de focale, lui, contient des lentilles et allonge réellement la focale.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Extension_tube"
+    },
+    {
+      "question": "Un objectif réglé sur l'infini reçoit une bonnette d'approche de +2 dioptries. À quelle distance du sujet se fait alors la mise au point ?",
+      "answer": "50 cm",
+      "wrong": [
+        "2 m",
+        "20 cm",
+        "1 m"
+      ],
+      "explanation": "La dioptrie est l'inverse de la focale exprimée en mètres : une bonnette de +2 δ a une focale de 1 / 2 = 0,5 m. Un sujet placé à son foyer, à 50 cm, émerge de la bonnette en rayons parallèles, que l'objectif réglé sur l'infini focalise sur le capteur. Contrairement à la bague-allonge, la bonnette est une lentille vissée à l'avant, comme un filtre, et ne coûte pas de lumière.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Close-up_filter"
+    },
+    {
+      "question": "En photographie d'architecture, à quoi sert surtout le décentrement d'un objectif *tilt-shift* ?",
+      "answer": "Garder les verticales droites sans incliner le boîtier",
+      "wrong": [
+        "Réduire le flou de bougé en basse lumière, à main levée",
+        "Obtenir un effet fisheye spectaculaire sur les façades",
+        "Supprimer les reflets gênants sur les vitres"
+      ],
+      "explanation": "Quand on incline l'appareil vers le haut pour cadrer un immeuble, ses verticales convergent. Avec le décentrement, on garde le capteur parallèle à la façade et on déplace l'objectif vers le haut, à l'intérieur de son grand cercle image : le haut du bâtiment entre dans le cadre et les verticales restent droites. La bascule (*tilt*) sert, elle, à incliner le plan de netteté.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Tilt%E2%80%93shift_photography"
+    },
+    {
+      "question": "Selon le principe de Scheimpflug, quand on bascule l'objectif, où se coupent le plan du capteur, le plan de l'objectif et le plan de netteté ?",
+      "answer": "Sur une même droite",
+      "wrong": [
+        "Au centre optique de l'objectif",
+        "Au foyer image de l'objectif",
+        "Nulle part : ils restent parallèles"
+      ],
+      "explanation": "La règle de Scheimpflug, du nom d'un officier autrichien qui l'a brevetée en 1904, énonce que ces trois plans se coupent selon une même droite. En basculant l'objectif, on incline donc le plan de netteté : on peut rendre net un champ du premier plan jusqu'à l'horizon, même à grande ouverture. Le parallélisme des trois plans n'est que le cas particulier d'un objectif non basculé.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Scheimpflug_principle"
+    },
+    {
+      "question": "Quel est le signe distinctif des flous d'arrière-plan produits par un objectif à miroir (catadioptrique) ?",
+      "answer": "Des taches lumineuses en forme d'anneaux",
+      "wrong": [
+        "Des taches en forme d'étoiles à six branches",
+        "Des disques polygonaux à six côtés",
+        "Des traînées horizontales et étirées"
+      ],
+      "explanation": "Un objectif catadioptrique replie le trajet de la lumière grâce à deux miroirs ; le miroir secondaire, placé au centre de la face avant, masque le milieu de la pupille. Les points lumineux flous prennent alors la forme d'anneaux (« donuts »). Ces objectifs, très compacts pour leur focale (500 mm ou plus), n'ont généralement pas de diaphragme : leur ouverture est fixe. Les disques polygonaux viennent, eux, des lamelles d'un diaphragme.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Catadioptric_system"
+    },
+    {
+      "question": "Fermé à f/16, un objectif dont le diaphragme compte 7 lamelles transforme les points lumineux en étoiles. Combien de branches ont-elles ?",
+      "answer": "14",
+      "wrong": [
+        "7",
+        "21",
+        "12"
+      ],
+      "explanation": "Chaque bord de lamelle diffracte la lumière en deux branches opposées. Avec un nombre pair de lamelles, les branches des bords parallèles se superposent : 8 lamelles donnent 8 branches. Avec un nombre impair, aucun bord n'est parallèle à un autre : 7 lamelles donnent 2 × 7 = 14 branches, 9 lamelles en donnent 18.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Diaphragm_(optics)"
+    },
+    {
+      "question": "À quoi sert principalement un pare-soleil fixé à l'avant d'un objectif ?",
+      "answer": "Limiter la lumière parasite et les reflets",
+      "wrong": [
+        "Filtrer les ultraviolets du soleil",
+        "Diminuer l'exposition en plein soleil",
+        "Protéger le capteur de la surchauffe"
+      ],
+      "explanation": "Le pare-soleil bloque la lumière qui arrive en biais de l'extérieur du champ : sans lui, elle se réfléchit entre les lentilles et provoque un voile qui fait chuter le contraste, ainsi que des images fantômes (*flare*). Il ne modifie pas l'exposition de la scène cadrée. Bonus : il protège la lentille frontale des chocs et des doigts.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Lens_hood"
+    },
+    {
+      "question": "Pourquoi le pare-soleil d'un grand-angle a-t-il souvent une forme en pétales (« tulipe ») ?",
+      "answer": "Pour ne pas assombrir les coins de l'image rectangulaire",
+      "wrong": [
+        "Pour pouvoir le ranger retourné sur l'objectif",
+        "Pour laisser circuler l'air et éviter la buée",
+        "Pour réduire sa prise au vent sur un trépied"
+      ],
+      "explanation": "Le capteur est rectangulaire : le champ couvert s'étend plus loin dans la direction de la diagonale que vers le haut ou le côté. Les échancrures du pare-soleil correspondent aux coins de l'image, ce qui permet de protéger au maximum ailleurs sans provoquer de vignettage. C'est aussi pour cela qu'il doit être monté dans le bon sens, ce que garantit sa baïonnette.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Lens_hood"
+    },
+    {
+      "question": "Une fiche technique indique « 15 lentilles en 11 groupes ». Que désigne un groupe ?",
+      "answer": "Une lentille seule ou plusieurs collées entre elles",
+      "wrong": [
+        "Une lentille en verre spécial, ED ou asphérique",
+        "Les lentilles utilisées à une focale donnée du zoom",
+        "Une couche de traitement antireflet sur une lentille"
+      ],
+      "explanation": "Les lentilles d'un objectif sont séparées par de l'air, sauf quand certaines sont collées pour former un bloc, comme le doublet achromatique (verre crown + verre flint). Chaque bloc, ou lentille isolée, compte pour un groupe : 15 lentilles en 11 groupes signifie que quatre collages réunissent des lentilles. Moins il y a de surfaces air-verre, moins il y a de reflets internes.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Achromatic_lens"
+    },
+    {
+      "question": "Comment se manifeste l'aberration chromatique sur une photo ?",
+      "answer": "Par des franges colorées sur les contours contrastés",
+      "wrong": [
+        "Par un assombrissement progressif des coins",
+        "Par des lignes droites courbées vers l'extérieur",
+        "Par des taches sombres dues aux poussières"
+      ],
+      "explanation": "L'indice de réfraction du verre varie avec la longueur d'onde (dispersion) : les différentes couleurs ne convergent pas exactement au même point. Il en résulte des liserés violets, verts ou magenta le long des contours très contrastés, par exemple des branches à contre-jour. L'assombrissement des coins est le vignettage et les droites courbées relèvent de la distorsion.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Aberration_chromatique"
+    },
+    {
+      "question": "Laquelle de ces aberrations diminue nettement quand on ferme le diaphragme ?",
+      "answer": "L'aberration chromatique longitudinale",
+      "wrong": [
+        "L'aberration chromatique latérale",
+        "La distorsion en barillet",
+        "La distorsion en coussinet"
+      ],
+      "explanation": "L'aberration chromatique longitudinale (axiale) fait converger les couleurs à des distances différentes le long de l'axe : franges magenta devant le plan de netteté, vertes derrière. Fermer le diaphragme augmente la profondeur de champ et la réduit. L'aberration latérale, due à un grandissement différent selon la couleur, apparaît sur les bords et ne dépend guère de l'ouverture, mais se corrige facilement en logiciel ; la distorsion est purement géométrique et indépendante de l'ouverture.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Chromatic_aberration"
+    },
+    {
+      "question": "Quelle déformation caractérise la distorsion « en barillet », fréquente à la focale la plus courte des zooms ?",
+      "answer": "Les droites se bombent vers les bords de l'image",
+      "wrong": [
+        "Les droites se creusent vers le centre de l'image",
+        "Les droites ondulent en forme de moustache",
+        "Les couleurs se décalent sur les bords"
+      ],
+      "explanation": "En barillet, le grandissement diminue en s'éloignant du centre : les droites qui ne passent pas par le centre se bombent vers l'extérieur, comme les douelles d'un tonneau. La distorsion en coussinet, inverse, creuse les droites vers le centre et touche plutôt les longues focales. La distorsion « en moustache » combine les deux. Toutes se corrigent bien en logiciel grâce aux profils d'objectifs.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Distortion_(optics)"
+    },
+    {
+      "question": "En astrophotographie au grand-angle à pleine ouverture, les étoiles des bords du cadre prennent l'aspect de petites comètes. Quelle aberration en est responsable ?",
+      "answer": "La coma",
+      "wrong": [
+        "L'aberration sphérique",
+        "La distorsion en coussinet",
+        "Le vignettage"
+      ],
+      "explanation": "La coma touche les points situés hors de l'axe : leur image s'étale en forme de virgule ou de comète, d'où son nom. Elle est très visible sur les étoiles, sources ponctuelles, et diminue quand on ferme le diaphragme. L'aberration sphérique, elle, agit aussi au centre de l'image en y ajoutant un halo diffus ; le vignettage n'assombrit que les coins, sans déformer les points.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Coma_(optics)"
+    },
+    {
+      "question": "Même avec un objectif parfait, l'éclairement diminue vers les bords de l'image. Selon quelle loi approximative ce vignettage naturel varie-t-il avec l'angle θ par rapport à l'axe ?",
+      "answer": "En cos⁴ θ",
+      "wrong": [
+        "En cos θ",
+        "En 1/θ²",
+        "En sin² θ"
+      ],
+      "explanation": "La loi en cos⁴ θ combine trois effets : la distance plus grande jusqu'aux bords du capteur (cos² θ), l'incidence oblique de la lumière sur le capteur (cos θ) et la pupille vue de biais (cos θ). À 30° de l'axe, cos⁴ θ ≈ 0,56 : près de 0,8 IL de perte. C'est pourquoi les grands-angles y sont particulièrement sensibles, et pourquoi les opticiens cherchent à réduire l'angle d'incidence des rayons sur le capteur.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Vignetting"
+    },
+    {
+      "question": "Pourquoi l'autofocus par détection de contraste a-t-il tendance à « pomper » (faire des allers-retours) avant de trouver la netteté ?",
+      "answer": "Il ne sait pas dans quel sens déplacer la mise au point",
+      "wrong": [
+        "Il ne fonctionne qu'à la plus grande ouverture",
+        "Il mesure la distance par ultrasons, peu précis",
+        "Il doit relever le miroir avant chaque mesure"
+      ],
+      "explanation": "L'autofocus fait la mise au point à ta place, et il existe deux grandes méthodes. La détection de contraste part d'une idée simple : une image nette est plus contrastée qu'une image floue. L'appareil déplace donc la mise au point et regarde si le contraste monte ou descend. Mais il ne sait pas d'avance dans quel sens aller : pour être sûr d'avoir trouvé le maximum, il doit le dépasser puis revenir, d'où ces allers-retours visibles (le « pompage »). La détection de phase, elle, compare deux images vues depuis les deux côtés de l'objectif : leur décalage indique directement le sens et l'ampleur de la correction. C'est pourquoi les hybrides récents combinent souvent les deux méthodes.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Autofocus"
+    },
+    {
+      "question": "Quel mode autofocus choisir pour suivre un sujet qui se déplace (sportif, oiseau en vol) ?",
+      "answer": "L'autofocus continu (AF-C / AI Servo)",
+      "wrong": [
+        "L'autofocus ponctuel (AF-S / One Shot)",
+        "La mise au point manuelle avec loupe",
+        "Le verrouillage de la mise au point (AF-L)"
+      ],
+      "explanation": "Le mode autofocus décide de ce que fait l'appareil une fois la netteté trouvée. En AF continu (AF-C chez Nikon, Sony ou Fujifilm, AI Servo chez Canon), il recalcule la mise au point en permanence tant que tu maintiens l'autofocus actif, et peut même anticiper la position du sujet au moment du déclenchement. Exemple : un cycliste à 36 km/h avance de 10 m par seconde ; entre la mise au point et la photo, sa distance a déjà changé, et l'AF continu suit. En AF ponctuel (AF-S, One Shot), la mise au point est faite une fois puis verrouillée : parfait pour un paysage ou un portrait posé, mais le cycliste serait flou. Le verrouillage AF-L, lui, fige volontairement la mise au point.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Autofocus"
+    },
+    {
+      "question": "En mise au point manuelle sur un hybride, que fait la fonction de « focus peaking » ?",
+      "answer": "Elle colore les contours nets de l'image",
+      "wrong": [
+        "Elle fait le point automatiquement au dernier moment",
+        "Elle agrandit le centre de l'image à l'écran",
+        "Elle bloque la bague de mise au point une fois net"
+      ],
+      "explanation": "En mise au point manuelle, c'est toi qui tournes la bague, et juger la netteté sur un petit écran n'est pas facile. Le *focus peaking* (surlignement de la mise au point) repère les zones où le contraste local est fort, c'est-à-dire les contours nets, et les colore d'une teinte vive (rouge, jaune, bleu…) dans le viseur ou sur l'écran. Exemple : en filmant un portrait, tu tournes la bague jusqu'à ce que le liseré rouge se pose sur les cils. L'agrandissement d'une partie de l'image est une autre aide, la loupe, souvent utilisée en complément. Le peaking ne fait jamais la mise au point à ta place.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Focus_peaking"
+    },
+    {
+      "question": "Quel appareil, sorti en 1977, est considéré comme le premier appareil photo autofocus produit en grande série ?",
+      "answer": "Le Konica C35 AF",
+      "wrong": [
+        "Le Minolta 7000",
+        "Le Nikon F3AF",
+        "Le Canon AE-1"
+      ],
+      "explanation": "L'autofocus, aujourd'hui partout, est apparu à la fin des années 1970. Le Konica C35 AF, un compact 24 × 36 lancé en 1977, a été le premier appareil autofocus vendu en grande série. Il utilisait un module de mesure de distance Honeywell appelé Visitronic, qui comparait deux images de la scène, puis réglait seul l'objectif. Les reflex ont suivi : le Nikon F3AF en 1983, puis le Minolta 7000 en 1985, premier grand succès de reflex dont le moteur autofocus est logé dans le boîtier. Le Canon AE-1 (1976) est célèbre pour son microprocesseur, mais sa mise au point restait manuelle.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Konica_C35_AF"
+    },
+    {
+      "question": "Comment fonctionne la stabilisation intégrée au boîtier (IBIS) ?",
+      "answer": "Le capteur se déplace pour compenser les mouvements",
+      "wrong": [
+        "Un groupe de lentilles de l'objectif se déplace",
+        "L'image est recadrée après coup par logiciel",
+        "L'obturateur raccourcit automatiquement la pose"
+      ],
+      "explanation": "La stabilisation d'image sert à éviter le flou de bougé, celui que causent les mains qui tremblent. Dans l'IBIS (*in-body image stabilization*, stabilisation dans le boîtier), le capteur est posé sur un support mobile. Des gyroscopes mesurent les mouvements de l'appareil et de petits moteurs déplacent le capteur en sens inverse, en continu pendant la pose. Gros avantage : elle marche avec tous les objectifs, même un vieil objectif manuel des années 1970 monté avec une bague d'adaptation. Les autres méthodes existent : la stabilisation optique déplace un groupe de lentilles dans l'objectif, et la stabilisation électronique recadre l'image, surtout en vidéo.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Image_stabilization"
+    },
+    {
+      "question": "Un objectif stabilisé annonce un gain de 4 IL. Si l'on obtient des photos nettes à main levée à 1/250 s sans stabilisation, quelle vitesse devient envisageable avec ?",
+      "answer": "Environ 1/15 s",
+      "wrong": [
+        "Environ 1/60 s",
+        "Environ 1/125 s",
+        "Environ 1/1000 s"
+      ],
+      "explanation": "Les fabricants mesurent l'efficacité d'une stabilisation en IL (indices de lumination, ou « stops ») : chaque IL gagné permet de doubler le temps de pose sans flou de bougé. Avec 4 IL, on double quatre fois : 1/250 → 1/125 → 1/60 → 1/30 → 1/15 s. En calcul : 250 / 2⁴ = 250 / 16 ≈ 15,6, soit environ 1/15 s. Ce chiffre est mesuré selon une norme de la CIPA, l'association japonaise des fabricants ; sur le terrain, le gain dépend de la focale et de ta tenue. Le piège 1/60 s ne correspond qu'à 2 IL. Attention : ces poses longues ne figent pas un sujet qui bouge.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Image_stabilization"
+    },
+    {
+      "question": "Que ne peut pas compenser la stabilisation d'image, même très performante ?",
+      "answer": "Le mouvement du sujet photographié",
+      "wrong": [
+        "Le tremblement des mains du photographe",
+        "Les petites rotations de l'appareil",
+        "Les vibrations dues à la respiration"
+      ],
+      "explanation": "La stabilisation sert à compenser les mouvements de l'appareil : tremblement des mains, petites rotations, souffle de la respiration. Des capteurs de mouvement les mesurent, puis un capteur d'image ou des lentilles mobiles les contrent. Elle permet ainsi de poser plus longtemps à main levée. Mais pendant ce temps, le sujet continue de bouger, et la stabilisation n'en sait rien. Exemple : un enfant qui court, photographié à 1/15 s, sera flou même si le décor est parfaitement net. Pour figer un sujet mobile, il faut une vitesse rapide (1/500 s par exemple) ou un éclair de flash.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Image_stabilization"
+    },
+    {
+      "question": "Quel mouvement la stabilisation optique d'un objectif ne corrige-t-elle généralement pas, contrairement à une stabilisation sur capteur 5 axes ?",
+      "answer": "La rotation autour de l'axe optique (roulis)",
+      "wrong": [
+        "L'inclinaison vers le haut ou le bas (tangage)",
+        "Le pivotement vers la gauche ou la droite (lacet)",
+        "Les tremblements lents de la main"
+      ],
+      "explanation": "Un appareil peut bouger de plusieurs façons : basculer vers le haut ou le bas (tangage), pivoter à gauche ou à droite (lacet), tourner autour de l'axe de l'objectif (roulis), ou se décaler en hauteur et en largeur (translations). La stabilisation optique déplace un groupe de lentilles perpendiculairement à l'axe : ce décalage corrige bien le tangage et le lacet, qui font glisser l'image, mais il ne peut pas faire tourner l'image sur elle-même. Le capteur mobile d'une stabilisation 5 axes peut, lui, pivoter : il corrige le tangage, le lacet, le roulis et les deux translations. Le roulis apparaît par exemple quand on appuie un peu fort sur le déclencheur lors d'une pose lente.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Image_stabilization"
+    },
+    {
+      "question": "Pourquoi, avec un obturateur à rideaux, un flash classique ne s'utilise-t-il pas au-delà d'environ 1/200 à 1/250 s ?",
+      "answer": "Les rideaux ne découvrent plus tout le capteur à la fois",
+      "wrong": [
+        "Le flash n'a pas le temps de se recharger",
+        "Le capteur sature au-delà de cette vitesse",
+        "L'éclair dure plus longtemps que la pose"
+      ],
+      "explanation": "Un obturateur à rideaux comporte deux rideaux qui glissent devant le capteur : le premier s'ouvre pour démarrer la pose, le second se ferme pour l'arrêter. À vitesse lente, le premier a fini sa course avant que le second parte : tout le capteur est découvert un instant. La vitesse la plus rapide où cela reste vrai s'appelle la vitesse de synchronisation flash, souvent 1/200 ou 1/250 s. Au-delà, le second rideau démarre avant la fin du premier : seule une fente qui défile expose le capteur. Un éclair très bref n'éclairerait qu'une bande de l'image, le reste restant noir. Le piège de la recharge est faux : elle concerne l'intervalle entre deux éclairs, pas une seule photo.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Flash_synchronization"
+    },
+    {
+      "question": "Comment le mode flash « haute vitesse » (HSS ou FP) permet-il de dépasser la vitesse de synchronisation ?",
+      "answer": "En émettant une rafale d'éclairs pendant le défilement",
+      "wrong": [
+        "En ralentissant le déplacement des rideaux",
+        "En déclenchant l'éclair avant l'ouverture du rideau",
+        "En réduisant la sensibilité du capteur pendant l'éclair"
+      ],
+      "explanation": "La synchronisation haute vitesse (HSS, ou FP chez Nikon) sert à utiliser le flash au-delà de la vitesse de synchronisation, par exemple à 1/2000 s pour déboucher un portrait en plein soleil à grande ouverture. À ces vitesses, seule une fente entre les deux rideaux parcourt le capteur. Le flash émet alors une série d'impulsions si rapprochées qu'elles forment une lumière quasi continue pendant tout le défilement : chaque bande du capteur reçoit la même lumière. Le prix à payer est une forte perte de puissance, donc de portée, car l'énergie est étalée sur toute la durée de la course. Le piège « ralentir les rideaux » est faux : leur vitesse de défilement ne change pas.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Flash_synchronization"
+    },
+    {
+      "question": "Quand un fabricant annonce un obturateur « testé pour 200 000 cycles », de quoi parle-t-il ?",
+      "answer": "De sa durée de vie estimée en déclenchements",
+      "wrong": [
+        "Du nombre d'images que la carte peut stocker",
+        "De sa vitesse maximale exprimée en 1/s",
+        "Du nombre de collimateurs autofocus"
+      ],
+      "explanation": "L'obturateur mécanique est une pièce d'usure : à chaque photo, ses rideaux accélèrent puis freinent brutalement. Le nombre de cycles annoncé (un cycle = un déclenchement) est une estimation statistique de sa durée de vie. Exemple : à 200 000 cycles, un amateur qui prend 10 000 photos par an a vingt ans de marge ; un photographe de sport qui fait 100 000 images par saison n'en a que deux. Ce n'est pas une garantie : certains obturateurs tiennent bien plus, d'autres moins, et l'on peut en faire remplacer un en atelier. L'obturation électronique, elle, ne sollicite pas ces pièces mécaniques.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Shutter_(photography)"
+    },
+    {
+      "question": "Sous un éclairage LED ou fluorescent, quel défaut l'obturateur électronique peut-il provoquer à vitesse rapide ?",
+      "answer": "Des bandes horizontales claires et sombres",
+      "wrong": [
+        "Un flou de bougé sur toute l'image",
+        "Un fort vignettage dans les coins",
+        "Des franges colorées sur les contours"
+      ],
+      "explanation": "L'obturateur électronique ne bouge aucune pièce : il lit le capteur ligne par ligne, du haut vers le bas, en plusieurs millisecondes. Or beaucoup de LED et de tubes fluorescents scintillent à deux fois la fréquence du courant, soit 100 fois par seconde en Europe (secteur à 50 Hz) : leur intensité fait un cycle complet en 10 ms. Si la lecture du capteur dure par exemple 30 ms, les lignes captent la lampe à des moments différents de son cycle, certaines plus claires, d'autres plus sombres : d'où des bandes horizontales (*banding*). L'obturateur mécanique, qui balaie le capteur plus vite, ou une vitesse plus lente limitent le problème. Le flou de bougé, lui, vient des mouvements, pas de l'éclairage.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Rolling_shutter"
+    },
+    {
+      "question": "Un flash a un nombre guide de 40 (en mètres, à 100 ISO). Jusqu'à quelle distance éclaire-t-il correctement un sujet à f/4, à pleine puissance ?",
+      "answer": "10 m",
+      "wrong": [
+        "160 m",
+        "4 m",
+        "20 m"
+      ],
+      "explanation": "Le nombre guide (NG) résume la puissance d'un flash : c'est la distance qu'il éclaire correctement, multipliée par le nombre d'ouverture. Formule : NG = distance × ouverture, donc distance = NG / ouverture. Ici, 40 / 4 = 10 m. Si tu fermes à f/8, la portée tombe à 40 / 8 = 5 m ; à f/2, elle monte à 20 m. Le nombre guide est toujours donné pour une sensibilité (souvent 100 ISO) et une position du zoom du flash : vérifie ces conditions avant de comparer deux modèles. Le piège 160 m vient d'une multiplication au lieu d'une division.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Guide_number"
+    },
+    {
+      "question": "Un flash a un nombre guide de 40 à 100 ISO. Quel nombre guide équivalent obtient-on en réglant le boîtier sur 400 ISO ?",
+      "answer": "80",
+      "wrong": [
+        "160",
+        "40",
+        "56"
+      ],
+      "explanation": "Le nombre guide (NG = distance × ouverture) est annoncé pour une sensibilité donnée, souvent 100 ISO. Passer à 400 ISO multiplie la sensibilité par 4, soit 2 IL. Mais l'éclairement d'un flash diminue avec le carré de la distance : avec un capteur quatre fois plus sensible, on ne peut aller que deux fois plus loin (√4 = 2). Le nombre guide devient donc 40 × 2 = 80 : à f/4, la portée passe de 10 m à 20 m. La règle : multiplier le NG par la racine carrée du rapport des ISO. Le piège 160 multiplie directement par 4, et 56 (40 × √2) correspond à 200 ISO.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Guide_number"
+    },
+    {
+      "question": "Si l'on double la distance entre un flash et le sujet, quelle quantité de lumière le sujet reçoit-il ?",
+      "answer": "Quatre fois moins",
+      "wrong": [
+        "Deux fois moins",
+        "Autant",
+        "Huit fois moins"
+      ],
+      "explanation": "Cette règle sert dès qu'on place un flash ou une lampe : elle dit comment la lumière faiblit avec la distance. La lumière d'une petite source se répand dans toutes les directions ; à une distance double, elle couvre une surface quatre fois plus grande (2² = 4). Chaque point reçoit donc quatre fois moins de lumière : c'est la loi de l'inverse du carré, soit 2 IL de perte. Exemple : un sujet à 1 m du flash est bien exposé ; un mur situé à 2 m du flash reçoit quatre fois moins de lumière et paraît sombre. Le piège « deux fois moins » oublie que la lumière s'étale à la fois en largeur et en hauteur.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Inverse-square_law"
+    },
+    {
+      "question": "Lors d'une pose lente au flash sur un sujet en mouvement, quel réglage place la traînée de flou derrière le sujet, de façon naturelle ?",
+      "answer": "La synchronisation sur le second rideau",
+      "wrong": [
+        "La synchronisation sur le premier rideau",
+        "La synchronisation haute vitesse",
+        "La réduction des yeux rouges"
+      ],
+      "explanation": "Avec un flash et une pose lente, la photo combine deux images : le sujet figé par l'éclair, et sa traînée floue enregistrée par la lumière ambiante. Par défaut, l'éclair part dès l'ouverture du premier rideau : le sujet est figé au début, puis sa traînée se forme devant lui, comme s'il reculait. Avec la synchronisation sur le second rideau, l'éclair part juste avant la fermeture : la traînée se forme d'abord et le sujet est figé à la fin. Exemple : pour une voiture de nuit posée 1 s, les traînées lumineuses s'étirent alors derrière elle, ce qui paraît naturel. La synchronisation haute vitesse sert à autre chose : utiliser le flash aux vitesses rapides.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Flash_synchronization"
+    },
+    {
+      "question": "Pourquoi le flash intégré, très proche de l'axe de l'objectif, provoque-t-il des yeux rouges ?",
+      "answer": "La lumière se reflète sur le fond de l'œil, très vascularisé",
+      "wrong": [
+        "L'éclair irrite les yeux, qui rougissent aussitôt",
+        "Le capteur sature dans les tons rouges",
+        "L'objectif filtre le bleu et le vert du flash"
+      ],
+      "explanation": "Les yeux rouges gâchent souvent les photos de soirée prises au flash intégré. En faible lumière, les pupilles sont grandes ouvertes. L'éclair entre dans l'œil, se réfléchit sur le fond de l'œil (la choroïde, riche en vaisseaux sanguins, donc rouge) et revient tout droit vers l'objectif, car le flash est presque dans le même axe. Exemple : sur un compact, flash et objectif ne sont séparés que de quelques centimètres, d'où un effet fréquent. Les remèdes : des pré-éclairs qui font contracter les pupilles, un flash cobra plus haut ou décalé, ou orienté vers le plafond. Les yeux ne rougissent pas vraiment : c'est un reflet instantané.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Red-eye_effect"
+    },
+    {
+      "question": "Pourquoi oriente-t-on souvent un flash cobra vers un plafond blanc plutôt que directement vers le sujet ?",
+      "answer": "Pour obtenir une lumière plus douce et diffuse",
+      "wrong": [
+        "Pour augmenter la portée du flash",
+        "Pour accélérer le temps de recharge",
+        "Pour désactiver la mesure TTL"
+      ],
+      "explanation": "Un flash cobra se fixe sur la griffe de l'appareil et sa tête peut souvent s'orienter. Dirigé droit vers le sujet, c'est une petite source : il donne des ombres dures et un aspect « flashé ». Tourné vers un plafond blanc, il éclaire le plafond, qui devient à son tour la source de lumière : une grande surface, qui produit des ombres douces et un rendu plus naturel. Exemple : dans un salon, un éclair renvoyé par le plafond adoucit les visages et évite l'ombre dure sur le mur. En contrepartie, la lumière fait un trajet plus long et le plafond en absorbe une partie : la portée diminue, ce qui exclut le piège « augmenter la portée ». Un plafond coloré teinterait aussi l'image.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Flash_(photography)"
+    },
+    {
+      "question": "Sur un flash cobra, que devient la durée de l'éclair quand on réduit sa puissance (par exemple de 1/1 à 1/16) ?",
+      "answer": "Elle raccourcit, ce qui fige mieux le mouvement",
+      "wrong": [
+        "Elle s'allonge, l'éclair étant moins intense",
+        "Elle reste identique, seule l'intensité baisse",
+        "Elle s'aligne sur la vitesse d'obturation"
+      ],
+      "explanation": "Pour figer un mouvement au flash, la durée de l'éclair compte autant que la vitesse d'obturation. Un flash cobra dose sa puissance en coupant la décharge de son condensateur plus tôt, grâce à un composant électronique (un transistor IGBT). Moins de puissance signifie donc un éclair plus court. Exemple : à faible puissance, l'éclair peut descendre vers 1/10 000 s, bien plus court que l'obturateur réglé à 1/200 s : idéal pour figer des gouttes d'eau qui éclaboussent. À pleine puissance, l'éclair est nettement plus long. Le piège « elle reste identique » oublie que c'est précisément la durée que le flash raccourcit pour réduire la quantité de lumière.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Flash_(photography)"
+    },
+    {
+      "question": "Que signifie la mesure flash « TTL » ?",
+      "answer": "La puissance est dosée par une mesure à travers l'objectif",
+      "wrong": [
+        "Le flash se déclenche à distance, sans câble",
+        "Le flash éclaire en continu pendant la pose",
+        "La puissance se règle uniquement à la main"
+      ],
+      "explanation": "Le flash doit envoyer juste assez de lumière pour bien exposer le sujet. En mode TTL (*Through The Lens*, « à travers l'objectif »), c'est l'appareil qui calcule ce dosage. Juste avant la photo, le flash émet un pré-éclair faible ; le boîtier mesure la lumière qui revient à travers l'objectif, puis règle la puissance de l'éclair principal. Le tout prend une fraction de seconde. Exemple : si tu te rapproches d'un sujet de 4 m à 2 m, le TTL réduit tout seul la puissance. En mode manuel, c'est toi qui choisis la puissance (1/1, 1/2, 1/4…). Le déclenchement sans fil est une fonction distincte, compatible avec les deux modes.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Through-the-lens_metering"
     }
   ]
 }
