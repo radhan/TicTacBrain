@@ -573,6 +573,233 @@
       "explanation": "Un **optocoupleur** transmet un signal entre deux circuits sans aucun fil commun, grâce à la lumière. Côté entrée, une **LED infrarouge** s'allume quand on lui envoie du courant ; côté sortie, un **phototransistor** devient conducteur quand il est éclairé. Un isolant transparent les sépare : c'est l'**isolation galvanique**, qui tient plusieurs kilovolts. Exemple : un microcontrôleur peut ainsi commander un circuit relié au secteur sans risque, et une alimentation à découpage renvoie ainsi l'information de sa tension de sortie vers son primaire. Le relais isole aussi, mais avec une bobine et un contact mécanique, plus lents et sujets à l'usure.",
       "difficulty": 2,
       "source": "https://fr.wikipedia.org/wiki/Photocoupleur"
+    },
+    {
+      "question": "Comment s'appellent les trois broches d'un transistor bipolaire ?",
+      "answer": "Base, collecteur, émetteur",
+      "wrong": [
+        "Grille, drain, source",
+        "Anode, cathode, gâchette",
+        "Entrée, masse, sortie"
+      ],
+      "explanation": "Le transistor est le composant de base de l'électronique moderne : il sert d'interrupteur commandé ou d'amplificateur. Le transistor **bipolaire** (NPN ou PNP) a trois broches : la **base**, qui reçoit la commande, puis le **collecteur** et l'**émetteur**, entre lesquels passe le courant principal. Un petit courant de base commande un courant collecteur-émetteur bien plus grand, par exemple 1 mA pour en piloter 100. Les autres propositions appartiennent à d'autres composants : grille, drain et source sont les broches d'un **MOSFET** ; anode, cathode et gâchette celles d'un thyristor ; entrée, masse et sortie celles d'un régulateur comme le 7805.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Transistor_bipolaire"
+    },
+    {
+      "question": "Sur le symbole d'un transistor bipolaire, la flèche de l'émetteur pointe vers l'extérieur. De quel type de transistor s'agit-il ?",
+      "answer": "Un NPN",
+      "wrong": [
+        "Un PNP",
+        "Cela dépend du sens du courant de base",
+        "Cela dépend de la tension d'alimentation"
+      ],
+      "explanation": "Sur le symbole d'un transistor bipolaire, la flèche est toujours placée sur l'**émetteur**. Elle indique le sens du **courant conventionnel** dans la jonction base-émetteur, comme la flèche d'une diode. Vers l'extérieur, c'est un **NPN** : le courant sort par l'émetteur. Vers l'intérieur, c'est un PNP. Moyen mnémotechnique : dans un PNP, la flèche « **P**é**N**ètre » dans le transistor. Exemple : le BC547 est un NPN, et son complémentaire, le BC557, un PNP. Le type est fixé à la fabrication par l'ordre des couches de semi-conducteur : il ne dépend ni du câblage ni de l'alimentation.",
+      "difficulty": 1
+    },
+    {
+      "question": "Un transistor NPN a un gain en courant β (ou hFE) de 100. En régime linéaire, son courant de base vaut 0,5 mA. Quel est son courant de collecteur ?",
+      "answer": "50 mA",
+      "wrong": [
+        "5 mA",
+        "500 mA",
+        "0,005 mA"
+      ],
+      "explanation": "Le transistor bipolaire **amplifie le courant** : le courant de collecteur est proportionnel au courant de base. Le coefficient s'appelle le **gain en courant**, noté β ou hFE. En **régime linéaire**, c'est-à-dire ni bloqué ni saturé, I_C = β × I_B = 100 × 0,5 mA = **50 mA**. Attention : β varie beaucoup d'un exemplaire à l'autre (du simple au triple pour une même référence) et avec la température. Un bon montage ne doit donc pas dépendre de sa valeur exacte. Le piège 0,005 mA divise au lieu de multiplier. Et en saturation, le courant de collecteur est limité par la charge, et non plus par β.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un transistor NPN, commandé par une broche à 5 V, doit commuter une charge. On vise un courant de base de 5 mA, et sa tension base-émetteur vaut 0,7 V. Quelle résistance de base faut-il ?",
+      "answer": "Environ 860 Ω",
+      "wrong": [
+        "Environ 140 Ω",
+        "Environ 4,3 kΩ",
+        "Environ 43 kΩ"
+      ],
+      "explanation": "Quand un transistor bipolaire sert d'interrupteur, une **résistance de base** limite le courant fourni par la commande. Elle voit la tension de commande moins la tension base-émetteur V_BE, d'environ 0,7 V : R = (5 − 0,7) / 0,005 = **860 Ω**, soit 820 Ω en série E12. Pourquoi viser 5 mA ? Pour une charge de 100 mA et un gain minimal de 100, il suffirait en théorie de 1 mA, mais on prend volontairement une marge (souvent ×2 à ×10) pour garantir la **saturation** malgré la dispersion du gain. Le piège 140 Ω utilise 0,7 V au lieu de 4,3 V, et 4,3 kΩ ne fournirait que 1 mA.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la tension collecteur-émetteur typique d'un petit transistor bipolaire saturé, utilisé en interrupteur à faible courant ?",
+      "answer": "Environ 0,1 à 0,3 V",
+      "wrong": [
+        "Environ 0,7 V",
+        "Exactement 0 V",
+        "La moitié de l'alimentation"
+      ],
+      "explanation": "Un transistor **saturé** est pleinement conducteur : on l'utilise ainsi pour allumer une LED, un relais ou un moteur. Mais ce n'est pas un interrupteur parfait : il reste à ses bornes une petite tension, la **V_CE(sat)**, de l'ordre de **0,1 à 0,3 V** pour un petit transistor à faible courant, davantage à fort courant. Exemple : un BC547 qui commute 10 mA présente typiquement moins de 0,25 V. Le piège 0,7 V est la tension **base-émetteur** V_BE, à ne pas confondre. La moitié de l'alimentation correspond au point de repos d'un amplificateur en régime linéaire, et 0 V exact n'existe pas pour un composant réel.",
+      "difficulty": 3
+    },
+    {
+      "question": "Comment commande-t-on un transistor MOSFET ?",
+      "answer": "Par la tension entre sa grille et sa source",
+      "wrong": [
+        "Par le courant injecté dans sa base",
+        "Par la lumière reçue sur sa grille",
+        "Par la fréquence du signal sur son drain"
+      ],
+      "explanation": "Le **MOSFET** est le transistor le plus utilisé au monde : on le trouve par milliards dans les processeurs, et en version de puissance dans les alimentations. Ses broches sont la **grille**, le **drain** et la **source**. La grille est **isolée** du reste par une fine couche d'oxyde : elle ne consomme quasiment aucun courant en régime établi. C'est la **tension V_GS**, entre grille et source, qui crée ou supprime un canal conducteur entre drain et source. Exemple : 10 V sur la grille d'un MOSFET de puissance peut laisser passer des dizaines d'ampères. Le bipolaire, lui, est commandé par un courant de base. Seule précaution : à chaque commutation, il faut charger et décharger la capacité de grille.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Transistor_à_effet_de_champ_à_grille_métal-oxyde"
+    },
+    {
+      "question": "Pourquoi un MOSFET comme l'IRF540N conduit-il mal quand on le commande directement avec une broche de microcontrôleur à 3,3 V ?",
+      "answer": "Sa faible R_DS(on) n'est garantie qu'avec V_GS = 10 V",
+      "wrong": [
+        "Sa grille consomme trop de courant pour la broche",
+        "Il lui faut une tension de grille négative pour conduire",
+        "Sa diode interne court-circuite la broche de commande"
+      ],
+      "explanation": "Un MOSFET de puissance n'est bon conducteur que si sa grille reçoit une tension suffisante. Sa **R_DS(on)** est la résistance entre drain et source quand il conduit : plus elle est faible, moins il chauffe. Pour l'IRF540N, elle n'est garantie qu'à **V_GS = 10 V**. Sa tension de seuil **V_GS(th)**, de 2 à 4 V, est seulement celle où il commence à laisser passer un courant minuscule. Avec 3,3 V, il conduit peu ou pas du tout, chauffe et limite le courant. Exemple : pour piloter un ruban LED depuis une carte en 3,3 V, on choisit un MOSFET dit « logic level » dont la R_DS(on) est garantie sous une tension de grille plus basse (2,5 V par exemple), ou on ajoute un étage de commande.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pour commuter une charge avec un MOSFET **canal N** monté en interrupteur côté bas (low side), où branche-t-on la source ?",
+      "answer": "À la masse",
+      "wrong": [
+        "Au + de l'alimentation",
+        "Sur la grille, via une résistance",
+        "Entre la charge et le + de l'alimentation"
+      ],
+      "explanation": "Un MOSFET canal N devient passant quand sa grille est plus positive que sa **source** de quelques volts. En montage **côté bas** (low side), la charge est placée entre le + et le **drain**, et la **source** est reliée à la **masse**. Ainsi, la tension V_GS est simplement la tension de commande mesurée par rapport à la masse : une broche de microcontrôleur peut suffire. Exemple : pour un moteur 12 V, on relie le moteur entre +12 V et drain, la source à la masse, et la grille à la commande. En montage côté haut, la source suivrait la tension de la charge et il faudrait une grille plus haute que l'alimentation : on utilise alors plutôt un canal P ou un circuit de commande spécial.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi ajoute-t-on souvent une résistance de 10 kΩ à 100 kΩ entre la grille et la source d'un MOSFET de commutation ?",
+      "answer": "Pour le maintenir bloqué si sa grille est laissée en l'air",
+      "wrong": [
+        "Pour limiter le courant de drain en cas de court-circuit",
+        "Pour accélérer la charge de la capacité de grille",
+        "Pour mesurer le courant qui traverse le transistor"
+      ],
+      "explanation": "La grille d'un MOSFET est isolée et forme un petit condensateur. Si la broche de commande est « en l'air », c'est-à-dire en haute impédance (microcontrôleur en démarrage, fil débranché), la grille peut garder une charge ou capter des parasites. Le transistor risque alors de conduire à moitié, voire de s'allumer seul, et de chauffer. La résistance **grille-source**, dite de rappel (pull-down), ramène la grille à 0 V par défaut. Exemple : sans elle, un moteur peut démarrer brièvement à chaque mise sous tension de la carte. La petite résistance placée en série avec la grille a un autre rôle : limiter les pics de courant de charge et amortir les oscillations.",
+      "difficulty": 2
+    },
+    {
+      "question": "On applique à un MOSFET canal N bloqué une tension inverse : sa source est plus positive que son drain. Que se passe-t-il ?",
+      "answer": "Sa diode intrinsèque conduit",
+      "wrong": [
+        "Il reste bloqué dans les deux sens",
+        "Il passe aussitôt en avalanche",
+        "Sa grille se décharge dans le drain"
+      ],
+      "explanation": "La structure interne d'un MOSFET de puissance crée une **diode parasite** entre source et drain, appelée **diode intrinsèque** (body diode). Pour un canal N, son anode est du côté de la source. Le transistor ne bloque donc que dans un sens : en inverse, cette diode conduit, même avec la grille à 0 V. Exemple : dans un pont en H qui pilote un moteur, ces diodes laissent circuler le courant du moteur pendant les commutations, à la manière de diodes de roue libre. C'est aussi pourquoi un MOSFET mal orienté ne protège pas d'une inversion de polarité. Pour bloquer dans les deux sens, on monte deux MOSFET tête-bêche.",
+      "difficulty": 3
+    },
+    {
+      "question": "En commutation, pourquoi peut-on mettre des MOSFET en parallèle plus facilement que des transistors bipolaires ?",
+      "answer": "Leur R_DS(on) augmente avec la température, le courant s'équilibre",
+      "wrong": [
+        "Leur grille consomme un courant qui s'équilibre seul",
+        "Leur tension de seuil augmente avec la température",
+        "Leur gain est identique d'un exemplaire à l'autre"
+      ],
+      "explanation": "Mettre plusieurs transistors en parallèle permet de partager un fort courant, à condition que chacun prenne sa part. Un MOSFET qui conduit se comporte comme une résistance, la **R_DS(on)**, qui **augmente quand il chauffe**. Si l'un d'eux prend plus de courant, il chauffe, sa résistance monte et le courant se reporte sur ses voisins : l'équilibrage est naturel. Chez le bipolaire, c'est l'inverse : sa tension V_BE baisse d'environ 2 mV par °C, donc le plus chaud conduit davantage et chauffe encore. C'est l'**emballement thermique**, qu'on évite avec des résistances d'émetteur. Le piège sur la tension de seuil est faux : elle **baisse** quand la température monte.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que fournit un régulateur de tension **7805** ?",
+      "answer": "Une tension fixe de +5 V",
+      "wrong": [
+        "Une tension fixe de −5 V",
+        "Une tension fixe de 7,8 V",
+        "Une tension réglable de 0 à 5 V"
+      ],
+      "explanation": "Un **régulateur de tension** maintient une tension de sortie constante, même si la tension d'entrée ou la consommation varient. Dans la famille **78xx**, les deux derniers chiffres donnent la tension de sortie : 7805 = **+5 V**, 7812 = +12 V. La famille **79xx** fournit les tensions négatives : le 7905 donne −5 V. Exemple : on alimente un 7805 avec une pile de 9 V pour obtenir un 5 V propre. Il lui faut environ 2 V de plus à l'entrée qu'à la sortie, et il délivre jusqu'à environ 1 A en boîtier TO-220. Pour une tension réglable, on utilise plutôt un LM317.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Régulateur_de_tension"
+    },
+    {
+      "question": "Un régulateur 7805 alimenté en 12 V débite 500 mA. Quelle puissance dissipe-t-il en chaleur ?",
+      "answer": "Environ 3,5 W",
+      "wrong": [
+        "Environ 2,5 W",
+        "Environ 6 W",
+        "Environ 0,35 W"
+      ],
+      "explanation": "Un régulateur **linéaire** comme le 7805 abaisse la tension en « brûlant » l'excédent : il se comporte comme une résistance variable. La puissance perdue vaut P = (U_entrée − U_sortie) × I = (12 − 5) × 0,5 = **3,5 W**. C'est beaucoup : sans radiateur, un boîtier TO-220 ne peut évacuer qu'environ 1 à 2 W, et le 7805 se mettrait en protection thermique. Le rendement n'est ici que de 5 / 12 ≈ 42 %. Le piège 2,5 W est la puissance fournie à la charge (5 × 0,5), et 6 W la puissance totale absorbée (12 × 0,5).",
+      "difficulty": 2
+    },
+    {
+      "question": "Un LM317 est réglé avec R1 = 240 Ω (entre sa sortie et sa broche ADJ) et R2 = 720 Ω (entre ADJ et la masse). Quelle tension de sortie obtient-on ?",
+      "answer": "5 V",
+      "wrong": [
+        "3,75 V",
+        "1,25 V",
+        "6,25 V"
+      ],
+      "explanation": "Le **LM317** est un régulateur réglable : deux résistances suffisent à choisir sa tension de sortie, de 1,25 V à environ 37 V. Il maintient en permanence **1,25 V** entre sa sortie et sa broche ADJ (ajustement). Le courant qui traverse R1 (1,25 / 240 ≈ 5,2 mA) traverse aussi R2. D'où la formule U_sortie = 1,25 × (1 + R2 / R1) = 1,25 × (1 + 3) = **5 V**, en négligeant le minuscule courant de la broche ADJ (environ 50 µA). Le piège 3,75 V oublie le « 1 + » de la formule, et 1,25 V n'est que la tension de référence interne.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'apporte un régulateur **LDO** (Low Drop-Out) par rapport à un 7805 classique ?",
+      "answer": "Il régule avec un faible écart entre entrée et sortie",
+      "wrong": [
+        "Il dissipe moins de chaleur, à tensions et courant égaux",
+        "Il peut élever la tension si l'entrée est trop basse",
+        "Il ne consomme aucun courant pour lui-même"
+      ],
+      "explanation": "La **tension de déchet** (dropout) est l'écart minimal entre l'entrée et la sortie pour qu'un régulateur fonctionne correctement. Elle vaut environ 2 V pour un 7805 : il lui faut au moins 7 V pour sortir 5 V. Un **LDO** se contente de quelques dixièmes de volt à environ 1 V selon les modèles. Exemple : avec un LDO adapté, on tire un 3,3 V stable d'une batterie lithium de 3,7 V, ce qu'un régulateur de la famille 78xx ne sait pas faire. Mais c'est toujours un régulateur **linéaire** : à tensions et courant égaux, il dissipe exactement la même chaleur, (U_entrée − U_sortie) × I. Et il ne sait pas élever une tension : c'est le rôle d'un convertisseur boost.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel type de convertisseur permet d'obtenir 5 V à partir d'une seule pile de 1,5 V ?",
+      "answer": "Un convertisseur élévateur (boost)",
+      "wrong": [
+        "Un régulateur linéaire LDO",
+        "Un convertisseur abaisseur (buck)",
+        "Un pont de diodes"
+      ],
+      "explanation": "Pour obtenir une tension **plus haute** que celle de la source, il faut un convertisseur à découpage **élévateur**, ou **boost**. Son principe : un transistor commute très vite. Quand il conduit, une **bobine** se charge en énergie ; quand il se bloque, la bobine restitue cette énergie en s'ajoutant à la tension d'entrée, ce qui dépasse la tension de la pile. Exemple : les batteries de secours USB utilisent ce principe pour fournir 5 V à partir d'une cellule lithium de 3,7 V. Contrepartie : le courant tiré sur la pile est plus élevé que le courant de sortie. Un régulateur linéaire, même LDO, et un buck ne savent qu'**abaisser** une tension.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Convertisseur_Boost"
+    },
+    {
+      "question": "Que devient la tension de sortie d'un 7805 si l'on insère une diode au silicium, en direct, entre sa broche de masse et la masse du montage ?",
+      "answer": "Environ 5,7 V",
+      "wrong": [
+        "Environ 4,3 V",
+        "Exactement 5 V",
+        "Environ 0,7 V"
+      ],
+      "explanation": "Un régulateur 78xx ne régule pas sa sortie par rapport à la masse du montage, mais par rapport à **sa propre broche commune** : il maintient 5 V entre sa sortie et cette broche. Si la broche est surélevée de 0,7 V par une diode, la sortie monte à 5 + 0,7 ≈ **5,7 V** par rapport à la masse. C'est une astuce classique pour obtenir une valeur non standard. Exemple : deux diodes en série donneraient environ 6,4 V. Limite : la tension de la diode varie avec la température et le courant, donc la sortie dérive un peu. Pour une tension réglable et précise, un LM317 est plus propre. Le piège 4,3 V soustrait la diode au lieu de l'ajouter.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur un relais, que signifie la borne marquée **NO** ?",
+      "answer": "Contact normalement ouvert, fermé quand la bobine est alimentée",
+      "wrong": [
+        "Contact normalement fermé, ouvert quand la bobine est alimentée",
+        "Borne non utilisée, à ne pas connecter",
+        "Borne de la bobine reliée à la masse"
+      ],
+      "explanation": "Un **relais** est un interrupteur commandé par un électroaimant : une petite tension sur sa bobine (5 V, par exemple) actionne un contact qui peut couper un circuit très différent, jusqu'au 230 V. **NO** (Normally Open, normalement ouvert) est ouvert au repos et se ferme sur la borne commune **COM** quand la bobine est alimentée. **NC** (Normally Closed) fait l'inverse : fermé au repos, il s'ouvre quand la bobine est excitée. Exemple : pour allumer une lampe quand la bobine est commandée, on la branche entre COM et NO. La bobine consomme trop pour une broche de microcontrôleur : on la commande via un transistor, avec une diode de roue libre.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Relais_électromécanique"
+    },
+    {
+      "question": "Sur une carte électronique, que désigne un fusible marqué **T2A** ?",
+      "answer": "Un fusible temporisé (lent) de 2 A",
+      "wrong": [
+        "Un fusible rapide de 2 A",
+        "Un fusible de 2 A pour courant triphasé",
+        "Un fusible testé sous 2 A de court-circuit"
+      ],
+      "explanation": "Un fusible protège un appareil en fondant si le courant dépasse trop longtemps sa valeur nominale. Son marquage indique deux choses : le calibre (ici **2 A**) et la **vitesse** de fusion. **T** vient de l'allemand *träge* : fusible **temporisé**, ou lent. **F** (*flink*) désigne un fusible rapide. Un fusible temporisé supporte sans fondre une brève surintensité, comme le courant d'appel d'un transformateur ou d'un moteur au démarrage, qui peut atteindre plusieurs fois le courant normal. Il fond en revanche sur une surcharge qui dure. Exemple : remplacer un T2A par un F2A peut le faire sauter à chaque mise sous tension. Il faut respecter le calibre, la vitesse et la tension.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Fusible_(électricité)"
+    },
+    {
+      "question": "Qu'est-ce qui distingue un triac d'un thyristor ?",
+      "answer": "Le triac conduit dans les deux sens, adapté à l'alternatif",
+      "wrong": [
+        "Le triac se bloque dès qu'on retire le courant de gâchette",
+        "Le triac ne possède que deux broches",
+        "Le triac ne fonctionne qu'en courant continu"
+      ],
+      "explanation": "Thyristors et triacs sont des interrupteurs à semi-conducteur utilisés en électronique de puissance. Un **thyristor** ne conduit que dans un sens, de l'anode vers la cathode, une fois amorcé par une impulsion sur sa **gâchette**. Le **triac** équivaut à deux thyristors montés tête-bêche avec une gâchette commune : il commande les **deux alternances** du secteur. Exemple : les variateurs de lumière et de vitesse de perceuse utilisent un triac. Dans les deux cas, une fois amorcé, le composant **reste conducteur** sans courant de gâchette, jusqu'à ce que le courant qui le traverse s'annule, ce qui arrive à chaque alternance. Le composant à deux broches souvent associé au triac est le **diac**.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Triac"
     }
   ]
 }

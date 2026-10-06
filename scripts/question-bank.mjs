@@ -20,7 +20,7 @@ const Q_SCHEMA = SUB_SCHEMA.definitions.question
 
 const ID_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/
 /** Les choix sont mélangés : une explication ne peut pas parler de « la dernière proposition ». */
-const POSITIONAL_RE = /respectivement|(premi[eè]re|deuxi[eè]me|derni[eè]re) (proposition|réponse)|ci-dessus|\b(option|réponse|choix) [A-F]\b/i
+const POSITIONAL_RE = /respectivement|(premi[eè]re|deuxi[eè]me|derni[eè]re) (proposition|réponse)|ci-dessus|\b(option|réponse|choix) [A-F]\b(?!['’])/i
 const RESERVED_IDS = new Set(['all'])
 
 /** Normalise un énoncé (détection de doublons, identifiant). */
