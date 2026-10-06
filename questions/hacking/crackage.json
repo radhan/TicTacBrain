@@ -820,6 +820,231 @@
       "explanation": "On **enveloppe** les anciennes empreintes : chaque ligne devient `bcrypt(MD5(mot de passe))`, ce qui protège toute la base d'un coup, y compris les comptes dormants. On marque la ligne avec une version de schéma. À la connexion suivante, le serveur calcule MD5 puis bcrypt pour vérifier, et si le mot de passe est correct, il le re-hache directement avec `bcrypt(mot de passe)` et met à jour la ligne. Les comptes qui ne reviennent jamais restent protégés par l'enveloppe, ou sont invités à réinitialiser leur mot de passe via un lien à usage unique. Un MD5 ne peut pas être « déchiffré » : c'est une empreinte.",
       "difficulty": 3,
       "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "Pourquoi faut-il changer immédiatement les identifiants par défaut (`admin`/`admin`) d'un routeur ou d'une caméra connectée ?",
+      "answer": "Ils figurent dans des listes publiques que les attaquants testent en premier",
+      "wrong": [
+        "Ils expirent automatiquement au bout de trente jours d'utilisation",
+        "Ils sont transmis en clair au fabricant à chaque démarrage de l'appareil",
+        "Ils empêchent l'appareil de recevoir ses mises à jour de sécurité"
+      ],
+      "explanation": "Les identifiants d'usine sont écrits dans les notices et recensés dans des **listes publiques**. Des robots parcourent en permanence Internet à la recherche d'appareils exposés et essaient ces couples dans l'ordre : c'est une attaque par dictionnaire, mais sans aucun effort. Beaucoup de caméras et de routeurs ont ainsi été détournés sans que leur propriétaire s'en aperçoive. Pour se protéger : changer l'identifiant et le mot de passe dès l'installation, choisir un mot de passe unique et robuste, mettre à jour le micrologiciel, et désactiver l'administration à distance si elle n'est pas indispensable.",
+      "difficulty": 1
+    },
+    {
+      "question": "Une empreinte digitale ou une reconnaissance faciale correspond à quel type de facteur d'authentification ?",
+      "answer": "Un facteur d'inhérence (ce que l'on est)",
+      "wrong": [
+        "Un facteur de connaissance (ce que l'on sait)",
+        "Un facteur de possession (ce que l'on a)",
+        "Un facteur temporel (le moment de la connexion)"
+      ],
+      "explanation": "On distingue trois grandes familles de facteurs : la **connaissance** (mot de passe, code PIN), la **possession** (téléphone, clé de sécurité, carte à puce) et l'**inhérence** (biométrie : empreinte, visage, iris). L'authentification multifacteur combine des facteurs de familles différentes : un mot de passe et une question secrète restent deux facteurs de connaissance, donc ce n'est pas du vrai multifacteur. Une particularité de la biométrie : elle ne se change pas en cas de fuite. Les passkeys l'utilisent donc seulement localement pour déverrouiller une clé, sans jamais l'envoyer au serveur.",
+      "difficulty": 1
+    },
+    {
+      "question": "Un site, après un oubli de mot de passe, vous envoie votre mot de passe actuel par e-mail. Que cela révèle-t-il ?",
+      "answer": "Qu'il conserve les mots de passe en clair ou sous une forme réversible",
+      "wrong": [
+        "Qu'il utilise un hachage particulièrement sûr, grâce au poivre",
+        "Qu'il applique la double authentification sur tous les comptes",
+        "Qu'il respecte les recommandations de l'ANSSI sur le stockage"
+      ],
+      "explanation": "Un hash est à sens unique : le serveur ne peut pas « retrouver » votre mot de passe. S'il vous le renvoie, c'est qu'il le garde en clair ou chiffré avec une clé qu'il possède, ce qui expose tous les comptes en cas de fuite. Un e-mail n'est de plus pas un canal confidentiel : il est stocké chez plusieurs serveurs. La bonne conception est un **lien de réinitialisation** : un jeton aléatoire, à usage unique, valable quelques dizaines de minutes et stocké haché côté serveur, qui permet de choisir un nouveau mot de passe.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi un verrouillage **définitif** du compte après trois échecs de connexion est-il une mauvaise idée ?",
+      "answer": "Un tiers peut verrouiller volontairement les comptes des autres (déni de service)",
+      "wrong": [
+        "Il oblige à stocker les mots de passe en clair pour les débloquer",
+        "Il rend la connexion plus lente pour les utilisateurs légitimes à chaque essai",
+        "Il désactive automatiquement la double authentification du compte"
+      ],
+      "explanation": "Si trois échecs bloquent un compte pour de bon, il suffit à un malveillant qui connaît un identifiant (souvent une adresse e-mail) de saisir trois mauvais mots de passe pour empêcher son propriétaire de se connecter : c'est un **déni de service** ciblé, qui peut viser un collaborateur, un administrateur ou un concurrent. Les systèmes modernes préfèrent des délais croissants (temporisation progressive), des blocages courts, un CAPTCHA, des alertes envoyées au propriétaire et une analyse de l'appareil ou de l'adresse IP. Le but est de ralentir la devinette sans offrir un moyen de nuisance.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que recommande la NIST SP 800-63B à propos des règles de composition (« une majuscule, un chiffre, un symbole ») ?",
+      "answer": "Ne pas les imposer, car elles produisent des mots de passe prévisibles",
+      "wrong": [
+        "Les imposer, avec au moins trois types de caractères différents",
+        "Les renforcer, avec un symbole obligatoire tous les quatre caractères",
+        "Les remplacer par un mot de passe imposé que l'utilisateur ne peut pas modifier"
+      ],
+      "explanation": "Face à une règle « une majuscule, un chiffre, un symbole », les utilisateurs écrivent `Password1!` : la contrainte pousse à des schémas **prévisibles** que les outils de cassage connaissent déjà. La NIST SP 800-63B (publiée en 2017) a donc renversé les anciennes pratiques : mieux vaut exiger une longueur minimale, accepter les mots de passe longs (au moins 64 caractères) et tous les caractères imprimables, autoriser le copier-coller pour les gestionnaires, et refuser les mots de passe courants ou déjà compromis. Ni indice de mot de passe ni question secrète ne doivent servir à la récupération.",
+      "difficulty": 2,
+      "source": "https://pages.nist.gov/800-63-3/sp800-63b.html"
+    },
+    {
+      "question": "Que recommande la NIST SP 800-63B à propos du changement périodique obligatoire des mots de passe ?",
+      "answer": "Ne pas l'imposer sans raison, sauf en cas de compromission avérée ou suspectée",
+      "wrong": [
+        "L'imposer tous les 30 jours pour réduire la durée d'exposition",
+        "L'imposer à chaque connexion depuis un nouvel appareil",
+        "L'imposer chaque année, avec interdiction de réutiliser l'ancien"
+      ],
+      "explanation": "Forcer un renouvellement tous les 90 jours pousse les utilisateurs à de petites modifications prévisibles (`Hiver2026!` devient `Printemps2026!`), que les règles des outils de cassage devinent aisément, ou à noter leurs mots de passe. Depuis 2017, la **NIST SP 800-63B** déconseille donc les changements arbitraires et périodiques : on change un mot de passe seulement s'il y a une preuve ou un soupçon de compromission (fuite, hameçonnage, vol de poste). La parade réelle est de surveiller les fuites, de refuser les mots de passe connus, d'imposer des mots de passe uniques et d'activer l'authentification multifacteur.",
+      "difficulty": 2,
+      "source": "https://pages.nist.gov/800-63-3/sp800-63b.html"
+    },
+    {
+      "question": "Pour vérifier un mot de passe dans Pwned Passwords sans le divulguer, qu'envoie-t-on à l'API ?",
+      "answer": "Les 5 premiers caractères hexadécimaux de son empreinte SHA-1",
+      "wrong": [
+        "Le mot de passe, chiffré avec la clé publique du service",
+        "Son empreinte SHA-1 complète de 40 caractères",
+        "Les cinq premiers caractères du mot de passe en clair"
+      ],
+      "explanation": "L'API de Pwned Passwords repose sur la **k-anonymité** : le client calcule le SHA-1 du mot de passe (pour `password` : `5BAA61E4C9B93F3F0682250B6CF8331B7EE68FD8`), n'envoie que le préfixe `5BAA6`, et reçoit la liste de tous les suffixes d'empreintes compromises commençant par ce préfixe (plusieurs centaines). C'est lui qui cherche ensuite son suffixe dans la liste, localement. Le service ne voit jamais ni le mot de passe ni l'empreinte complète. Les sites peuvent donc contrôler les mots de passe à la création ou à la connexion sans compromettre les utilisateurs.",
+      "difficulty": 2,
+      "source": "https://haveibeenpwned.com/API/v3#PwnedPasswords"
+    },
+    {
+      "question": "Un en-tête HTTP `Authorization: Basic YWRtaW46c2VjcmV0` circule sur un réseau en HTTP simple. Que peut lire un espion ?",
+      "answer": "L'identifiant et le mot de passe, car Base64 se décode sans clé",
+      "wrong": [
+        "Rien : le contenu est chiffré par l'encodage Base64",
+        "Seulement l'identifiant, le mot de passe étant haché",
+        "Uniquement la longueur du mot de passe, pas son contenu"
+      ],
+      "explanation": "L'authentification HTTP *Basic* envoie `identifiant:mot de passe` simplement encodé en **Base64** : `YWRtaW46c2VjcmV0` se décode en `admin:secret`. Il n'y a ni clé ni hachage, donc tout observateur du réseau lit les deux informations. La sécurité repose entièrement sur le transport : il faut du HTTPS partout (avec HSTS pour empêcher le retour au HTTP), ne jamais placer les identifiants dans l'URL, et préférer des sessions, des jetons à durée limitée ou OAuth plutôt que d'envoyer le mot de passe à chaque requête. Si un tel en-tête a circulé en clair, il faut changer le mot de passe.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans une connexion par **passkey**, que stocke le serveur du site pour authentifier l'utilisateur ?",
+      "answer": "Uniquement une clé publique, inutilisable pour se connecter à sa place",
+      "wrong": [
+        "Un hash Argon2id de la clé privée, transmise lors de l'inscription",
+        "La clé privée de l'utilisateur, chiffrée par une clé propre au serveur",
+        "L'empreinte biométrique de l'utilisateur, pour la comparer à chaque connexion"
+      ],
+      "explanation": "À l'inscription, l'appareil crée une paire de clés propre au site. Seule la **clé publique** est envoyée au serveur ; la clé privée ne quitte jamais l'authentificateur. À la connexion, le serveur envoie un défi aléatoire que l'appareil signe après un déverrouillage local (biométrie ou code PIN) ; le serveur vérifie la signature avec la clé publique. Si la base du site fuit, les attaquants n'obtiennent rien de réutilisable : une clé publique ne permet pas de signer. La biométrie, elle, ne sort jamais de l'appareil. Aucun secret partagé n'existe donc à voler ou à réutiliser ailleurs.",
+      "difficulty": 2
+    },
+    {
+      "question": "En 2013, la fuite de plus de 150 millions de comptes Adobe a révélé que les mots de passe étaient protégés de façon particulièrement faible. Comment ?",
+      "answer": "Ils étaient chiffrés en 3DES en mode ECB, avec une seule clé, sans sel",
+      "wrong": [
+        "Ils étaient stockés en clair dans une base de données non protégée",
+        "Ils étaient hachés en MD5 puis tronqués pour gagner de la place",
+        "Ils étaient hachés en SHA-1 avec un sel identique pour tous les comptes"
+      ],
+      "explanation": "Adobe avait **chiffré** (et non haché) les mots de passe avec 3DES en mode ECB et une clé unique. Le chiffrement est réversible : qui détient la clé retrouve tout. En mode ECB, deux mots de passe identiques donnent des blocs chiffrés identiques : en triant la base, on repère les plus fréquents, et les indices de mot de passe stockés en clair permettaient de deviner les valeurs correspondantes, sans casser la clé. La bonne méthode est un hachage lent et salé, comme Argon2id ou bcrypt, où chaque mot de passe est indépendant et où aucune clé magique n'existe.",
+      "difficulty": 2
+    },
+    {
+      "question": "Lors de la fuite de LinkedIn en 2012, pourquoi une grande partie des mots de passe a-t-elle été cassée rapidement ?",
+      "answer": "Ils étaient hachés en SHA-1 sans sel, un algorithme rapide",
+      "wrong": [
+        "Ils étaient chiffrés en 3DES avec une clé divulguée",
+        "Ils étaient stockés en clair sur un serveur de test",
+        "Ils étaient hachés avec bcrypt, mais avec un sel identique"
+      ],
+      "explanation": "En juin 2012, environ 6,5 millions d'empreintes de mots de passe de LinkedIn ont été publiées sur un forum. Elles avaient été calculées avec **SHA-1 sans sel** : deux utilisateurs ayant le même mot de passe avaient la même empreinte, les tables arc-en-ciel et les dictionnaires s'appliquaient à toute la base, et SHA-1 étant rapide, un GPU en testait des milliards par seconde. Les mots de passe courants sont tombés en quelques jours. En 2016, une base de plus de cent millions de comptes issue de la même intrusion est réapparue. La parade : un sel unique par compte et un algorithme lent.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans la famille **FIDO2**, WebAuthn est l'interface proposée aux sites web. Que désigne **CTAP** ?",
+      "answer": "Le protocole de dialogue avec l'authentificateur externe (clé USB, NFC, Bluetooth)",
+      "wrong": [
+        "Le format de signature des certificats utilisés par les serveurs web",
+        "Le protocole qui chiffre les échanges HTTPS entre site et navigateur",
+        "La liste des sites compatibles avec les passkeys, tenue par le W3C"
+      ],
+      "explanation": "**FIDO2** associe deux normes : **WebAuthn** (standard du W3C), l'API JavaScript par laquelle un site demande de créer ou d'utiliser une clé, et **CTAP** (*Client to Authenticator Protocol*, publié par la FIDO Alliance), qui permet au navigateur ou au système de dialoguer avec un authentificateur externe, comme une clé de sécurité USB, NFC ou Bluetooth. Les authentificateurs intégrés (Windows Hello, Touch ID) emploient un canal propre à la plate-forme. CTAP2 succède à U2F (CTAP1), la norme de second facteur. Le chiffrement HTTPS relève de TLS, indépendant de FIDO2.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/WebAuthn"
+    },
+    {
+      "question": "Dans un parc Windows cloné à partir d'une même image, l'administrateur local a le même mot de passe sur tous les postes. Pourquoi est-ce dangereux face au pass-the-hash ?",
+      "answer": "Un seul hash volé sur un poste ouvre l'accès administrateur aux autres",
+      "wrong": [
+        "Le hash NTLM devient réversible quand il est identique sur plusieurs postes",
+        "Les postes se bloquent mutuellement après trois échecs de connexion",
+        "Le mot de passe local est envoyé en clair au contrôleur de domaine"
+      ],
+      "explanation": "Avec le protocole NTLM, le hash suffit pour s'authentifier : un attaquant qui obtient le hash de l'administrateur local d'un poste peut le présenter sur un autre poste, sans connaître le mot de passe (*pass-the-hash*). Si le mot de passe est identique partout, le hash l'est aussi, et un seul poste compromis donne accès à tout le parc. La parade de Microsoft est **LAPS** (*Local Administrator Password Solution*, intégré à Windows depuis 2023) : chaque poste reçoit un mot de passe administrateur local aléatoire, unique et renouvelé, lisible seulement par les personnes habilitées. On y ajoute la limitation de NTLM et Credential Guard.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi compare-t-on des empreintes ou des jetons secrets avec une fonction à temps constant (`hmac.compare_digest` en Python) plutôt qu'avec `==` ?",
+      "answer": "`==` s'arrête au premier octet différent, et ce délai peut révéler la valeur",
+      "wrong": [
+        "`==` convertit les deux valeurs en minuscules avant de les comparer",
+        "`==` est impossible à utiliser sur des octets, seulement sur du texte",
+        "`==` ralentit trop la vérification et facilite les dénis de service"
+      ],
+      "explanation": "Une comparaison classique s'arrête dès qu'un octet diffère : plus les premiers octets sont corrects, plus la réponse est lente. En mesurant ces écarts sur de nombreuses requêtes, un attaquant peut deviner un jeton, une signature HMAC ou une empreinte octet par octet : c'est une **attaque par canal temporel** (*timing attack*). Les fonctions comme `hmac.compare_digest` (Python), `crypto.timingSafeEqual` (Node.js) ou `hash_equals` (PHP) prennent un temps indépendant du contenu. Les fonctions de vérification de bcrypt et d'Argon2 le font déjà : mieux vaut les utiliser que comparer à la main.",
+      "difficulty": 3
+    },
+    {
+      "question": "Une empreinte SHA-256 de 32 octets est écrite en Base64 avec son remplissage. Combien de caractères obtient-on ?",
+      "answer": "44",
+      "wrong": [
+        "43",
+        "48",
+        "64"
+      ],
+      "explanation": "**Base64** transforme chaque groupe de 3 octets (24 bits) en 4 caractères de 6 bits. Pour 32 octets : 10 groupes complets de 3 octets (30 octets) donnent 40 caractères, et les 2 octets restants donnent 3 caractères plus un `=` de remplissage, soit 44 caractères au total (43 sans le `=`). L'hexadécimal, lui, en demande 64 (2 par octet). Base64 allonge donc les données d'environ un tiers, l'hexadécimal du double. Ce ne sont que deux notations des mêmes octets : ni l'une ni l'autre ne protège rien, et seul un hash lent et salé protège un mot de passe stocké.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sous quelle forme le secret partagé d'un code TOTP est-il généralement affiché pour une saisie manuelle dans une application d'authentification ?",
+      "answer": "En Base32 : lettres majuscules A à Z et chiffres de 2 à 7",
+      "wrong": [
+        "En hexadécimal, sous forme de quarante caractères de 0 à f",
+        "En Base64, avec des lettres, des chiffres et les signes + et /",
+        "En décimal, sous forme d'un nombre de vingt chiffres"
+      ],
+      "explanation": "Le secret d'un compte TOTP (RFC 6238) est une suite d'octets aléatoires. Pour le saisir à la main ou le placer dans un QR code (`otpauth://totp/…?secret=JBSWY3DPEHPK3PXP`), on le présente en **Base32** (RFC 4648) : 32 symboles, les lettres A-Z et les chiffres 2 à 7, sans les chiffres 0, 1, 8 et 9, ce qui limite les confusions visuelles (0 et O, 1 et I, 8 et B), et insensible à la casse. Cet encodage ne protège rien : quiconque voit le QR code ou la chaîne peut générer les mêmes codes. Il faut donc garder le secret confidentiel, conserver des codes de secours et ne jamais le partager.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Base32"
+    },
+    {
+      "question": "À quoi sert un **CAPTCHA** placé sur une page de connexion après plusieurs échecs ?",
+      "answer": "À distinguer un humain d'un robot pour freiner les essais automatisés",
+      "wrong": [
+        "À chiffrer le mot de passe avant son envoi au serveur",
+        "À vérifier que le mot de passe respecte la politique du site",
+        "À mémoriser l'appareil de l'utilisateur pour ses prochaines visites"
+      ],
+      "explanation": "Le **CAPTCHA** (*Completely Automated Public Turing test to tell Computers and Humans Apart*) propose un défi facile pour un humain et pénible pour un programme. Les attaques en ligne (force brute, bourrage d'identifiants, password spraying) reposent sur des robots qui envoient des milliers de tentatives : après quelques échecs, on affiche donc un défi, ce qui ajoute une friction et un coût. Le CAPTCHA a des limites : des services de résolution, y compris par IA, le contournent, et il gêne l'accessibilité. On le combine avec la limitation de débit, la détection de comportements anormaux et surtout l'authentification multifacteur.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi la date de naissance ou le prénom d'un proche sont-ils de mauvais éléments pour un mot de passe ?",
+      "answer": "Ils sont faciles à deviner (réseaux sociaux) et testés en priorité",
+      "wrong": [
+        "Ils sont toujours trop courts pour être acceptés par un site",
+        "Ils s'effacent de la mémoire des appareils après quelques mois",
+        "Ils ne peuvent pas être hachés par les algorithmes modernes"
+      ],
+      "explanation": "Les informations personnelles (prénoms, dates, animaux, équipes sportives, ville) sont publiées sur les réseaux sociaux ou faciles à déduire. Un attaquant qui vise une personne construit un **dictionnaire ciblé** à partir de ces éléments, enrichi de variantes comme l'année ou un `!` final, et les teste en premier, aussi bien en ligne que sur des empreintes volées. Le mot de passe paraît personnel donc mémorisable, mais il est prévisible. Mieux vaut un mot de passe aléatoire généré par un gestionnaire, ou une phrase de passe de mots tirés au hasard, sans lien avec votre vie.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle méthode l'ANSSI cite-t-elle pour construire un mot de passe mémorisable à partir d'une phrase ?",
+      "answer": "Prendre la première lettre de chaque mot, en ajoutant chiffres et ponctuation",
+      "wrong": [
+        "Remplacer chaque lettre de la phrase par la suivante dans l'alphabet",
+        "Supprimer toutes les voyelles de la phrase et la répéter deux fois",
+        "Convertir la phrase en Base64 pour la rendre illisible"
+      ],
+      "explanation": "Dans ses guides sur les mots de passe, l'ANSSI décrit la **méthode des premières lettres** : on choisit une phrase personnelle, on garde l'initiale de chaque mot en variant majuscules et minuscules, et on y mêle chiffres et ponctuation. Par exemple, « Un tiens vaut mieux que deux tu l'auras » peut donner `1tvmq2tl'A`. La phrase doit être personnelle et non un proverbe célèbre, que les dictionnaires contiennent. Remplacer chaque lettre par la suivante ou passer en Base64 n'apporte rien : ce sont des transformations triviales. L'ANSSI conseille aussi un gestionnaire de mots de passe et l'authentification multifacteur.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi le vieux hash **LM** de Windows est-il cassé très rapidement, même pour un mot de passe de 14 caractères ?",
+      "answer": "Chaque moitié de 7 caractères en majuscules est hachée séparément",
+      "wrong": [
+        "Il emploie MD5 sans sel, comme tous les hashs Windows modernes",
+        "Il ne conserve que le premier caractère de chaque mot de passe",
+        "Il convertit le mot de passe en Base64 avant de le hacher"
+      ],
+      "explanation": "Le hash **LM** (LAN Manager), hérité des années 1980, passe le mot de passe en majuscules, le complète à 14 caractères et le coupe en **deux moitiés de 7 caractères**, hachées indépendamment (à l'aide de DES) et sans sel. Chaque moitié n'offre qu'environ 70 caractères possibles par position, soit de l'ordre de 7 × 10^12 combinaisons : des tables précalculées ou une force brute sur GPU la retrouvent en quelques minutes au plus, et la longueur du mot de passe n'apporte quasiment rien. Windows ne le stocke plus par défaut depuis Windows Vista, mais il peut subsister sur d'anciens systèmes. La stratégie « Ne pas stocker de valeur de hachage LAN Manager » doit rester activée.",
+      "difficulty": 3
     }
   ]
 }

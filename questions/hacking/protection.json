@@ -697,6 +697,241 @@
       ],
       "explanation": "Un VPN ne supprime pas l'observation, il la déplace : au lieu de ton fournisseur d'accès ou du Wi-Fi public, c'est l'opérateur du VPN qui peut voir à quels sites tu te connectes (et le contenu des échanges non chiffrés). Tout dépend donc de sa confiance : politique de non-conservation des journaux, audits indépendants, juridiction, modèle économique. Un service gratuit peut revendre tes données. De plus, tes cookies et connexions à des comptes continuent d'identifier ton activité. Choisis un fournisseur réputé et audité, ou, en entreprise, le VPN fourni par ton employeur.",
       "difficulty": 3
+    },
+    {
+      "question": "Pourquoi installer ses applications depuis les magasins officiels (App Store, Google Play) plutôt que depuis des sites tiers ?",
+      "answer": "Elles y subissent des contrôles et peuvent être retirées en cas de danger",
+      "wrong": [
+        "Les applications officielles sont toutes gratuites et sans publicité",
+        "Les sites tiers sont interdits par la loi dans toute l'Europe",
+        "Les applications officielles ne demandent jamais de permissions"
+      ],
+      "explanation": "Les magasins officiels analysent les applications avant publication, imposent des règles aux développeurs et peuvent retirer une application malveillante, voire la supprimer des appareils. Ces contrôles ne sont pas infaillibles : quelques applications piégées passent, d'où l'intérêt de regarder les avis, l'éditeur et les permissions demandées. Hors des magasins officiels (fichiers APK sur Android, sites de « versions gratuites »), aucun contrôle n'existe : des applications payantes trafiquées y contiennent souvent un logiciel espion. Garde aussi ton système à jour et désactive l'installation depuis des sources inconnues.",
+      "difficulty": 1,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Pourquoi faut-il se méfier d'une application qui demande le **service d'accessibilité** d'Android alors qu'elle n'a aucun lien avec le handicap ?",
+      "answer": "Il permet de lire l'écran et d'agir à ta place, ce que des fraudeurs détournent",
+      "wrong": [
+        "Il envoie automatiquement la liste des applications installées à Google",
+        "Il supprime le verrouillage de l'écran du téléphone sans code",
+        "Il active le mode développeur et le débogage USB en arrière-plan"
+      ],
+      "explanation": "Les services d'accessibilité d'Android ont été conçus pour aider des personnes à utiliser leur téléphone : ils peuvent lire le contenu affiché à l'écran, simuler des appuis et saisir du texte. Cette puissance intéresse les logiciels bancaires frauduleux, qui s'en servent pour lire les codes reçus, afficher de fausses fenêtres de connexion ou valider des opérations à l'insu de l'utilisateur. Pour t'en protéger : n'accorde cette autorisation qu'à des applications de confiance dont c'est la fonction (lecteur d'écran, gestionnaire de mots de passe), installe uniquement depuis le magasin officiel et vérifie régulièrement la liste dans Paramètres, Accessibilité.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi vaut-il mieux éviter de recharger son téléphone sur une borne USB publique ?",
+      "answer": "Le port USB transporte aussi des données : une borne ou un câble piégé peut en profiter",
+      "wrong": [
+        "Le courant des bornes publiques est toujours trop faible pour charger",
+        "Une charge sur borne efface le code de verrouillage de l'écran",
+        "Les bornes publiques coupent la connexion Wi-Fi du téléphone"
+      ],
+      "explanation": "Un câble USB ne sert pas qu'à l'alimentation : il peut aussi échanger des fichiers ou des commandes avec l'appareil. Une borne ou un câble modifié peut chercher à y accéder, c'est ce qu'on appelle le juice jacking (« jus » pour le courant). Les cas réels sont rares, mais le risque est facile à éviter. Utilise ton propre chargeur sur une prise secteur, une batterie externe ou un câble « charge seule » sans fils de données. Si le téléphone demande « Faire confiance à cet ordinateur ? » ou l'autorisation de transférer des fichiers, refuse toujours.",
+      "difficulty": 2
+    },
+    {
+      "question": "Ton smartphone vient d'être volé. Quelles sont les premières actions les plus utiles ?",
+      "answer": "Le verrouiller à distance et faire bloquer la ligne par l'opérateur",
+      "wrong": [
+        "Attendre quelques jours au cas où un inconnu le rapporterait",
+        "Changer seulement le fond d'écran et le nom de l'appareil",
+        "Supprimer les messageries pour qu'on ne lise pas les anciens messages"
+      ],
+      "explanation": "Dans les premières minutes, verrouille ou localise l'appareil depuis un autre terminal (« Localiser mon appareil » chez Google, « Localiser » chez Apple), puis demande à ton opérateur de bloquer la ligne SIM pour éviter les appels surtaxés et la réception de codes par SMS. Change les mots de passe des comptes importants, en particulier ta messagerie, et fais opposition à une carte stockée dans un portefeuille mobile si besoin. Tu peux aussi demander le blocage de l'IMEI, le numéro de série de 15 chiffres affiché avec `*#06#`, après avoir déposé plainte. Un code de verrouillage solide et le chiffrement protègent tes données en attendant.",
+      "difficulty": 2,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Qu'est-ce que l'**ingénierie sociale** (social engineering) en cybersécurité ?",
+      "answer": "Manipuler psychologiquement une personne pour obtenir une information ou une action",
+      "wrong": [
+        "Un logiciel qui devine automatiquement les mots de passe des réseaux sociaux",
+        "L'étude statistique des habitudes de navigation des internautes",
+        "La conception de réseaux sociaux sécurisés pour les entreprises"
+      ],
+      "explanation": "L'ingénierie sociale exploite l'humain plutôt que la machine : l'attaquant joue sur la confiance, l'autorité, l'urgence, la peur ou l'envie d'aider pour obtenir un mot de passe, un virement ou un accès. Hameçonnage, faux support technique, fraude au président et appels de faux conseillers bancaires en sont des variantes. Le pirate américain Kevin Mitnick a popularisé cette approche dans les années 1990. Aucune faille logicielle n'est nécessaire, donc aucun correctif ne suffit. Les parades sont la formation, la vérification systématique par un second canal et une culture où l'on a le droit de dire non.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Ing%C3%A9nierie_sociale_(s%C3%A9curit%C3%A9_de_l%27information)"
+    },
+    {
+      "question": "Un inconnu chargé de cartons te demande de passer derrière toi la porte à badge. Comment nomme-t-on cette technique d'intrusion ?",
+      "answer": "Le tailgating (ou piggybacking), qui consiste à suivre une personne autorisée",
+      "wrong": [
+        "Le shoulder surfing, qui consiste à lire par-dessus l'épaule",
+        "Le dumpster diving, qui consiste à fouiller les poubelles",
+        "Le baiting, qui consiste à laisser un appât tentant"
+      ],
+      "explanation": "Le tailgating (« coller au train ») exploite la politesse : tenir la porte à quelqu'un qui a les mains pleines paraît naturel, mais cela permet de contourner le contrôle d'accès. Une fois dans les locaux, l'intrus peut brancher un appareil, lire des documents ou voler du matériel. La règle de défense est simple : chacun badge pour lui-même, même pour un collègue ; un visiteur inconnu est accompagné à l'accueil, où l'on vérifie son identité. Dire non poliment fait partie de la sécurité, et les entreprises doivent encourager ce réflexe.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un employé trouve une clé USB sur le parking de son entreprise. Que doit-il faire ?",
+      "answer": "Ne pas la brancher et la remettre au service informatique ou sécurité",
+      "wrong": [
+        "La brancher sur son ordinateur personnel plutôt que professionnel",
+        "La brancher pour retrouver son propriétaire grâce à son contenu",
+        "La brancher seulement si l'antivirus du poste est activé"
+      ],
+      "explanation": "C'est le baiting (appât) : l'attaquant abandonne un support qui attise la curiosité, parfois avec une étiquette alléchante comme « Salaires 2026 ». Une clé USB peut contenir des fichiers piégés ou se faire passer pour un clavier et saisir des commandes toute seule dès le branchement, ce qu'un antivirus ne repère pas toujours. La brancher chez soi expose autant ses propres données. La bonne conduite est de ne jamais la brancher et de la remettre à l'équipe informatique, qui peut l'examiner dans un environnement isolé. Une politique de sécurité peut aussi bloquer les ports USB.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi faut-il changer les identifiants d'administration par défaut d'une box ou d'un routeur ?",
+      "answer": "Ils sont publics ou prévisibles, et testés en premier par les attaquants",
+      "wrong": [
+        "Ils expirent automatiquement au bout de trente jours d'utilisation",
+        "Ils sont interdits par la réglementation européenne depuis 2016",
+        "Ils empêchent l'appareil de se connecter à Internet"
+      ],
+      "explanation": "Beaucoup d'appareils sortent d'usine avec un identifiant comme `admin` / `admin` ou un mot de passe imprimé sur l'étiquette, parfois commun à toute une série. Les outils automatiques parcourent Internet à la recherche d'équipements (routeurs, caméras IP, NAS) et testent ces valeurs connues. Un appareil piraté peut servir à espionner le trafic, modifier les réglages DNS ou participer à des attaques. Après l'installation, remplace le mot de passe d'administration par un mot de passe long et unique, mets le micrologiciel à jour, désactive la gestion à distance et le WPS si tu n'en as pas besoin.",
+      "difficulty": 2
+    },
+    {
+      "question": "Selon le RGPD, qu'est-ce qu'une **donnée personnelle** ?",
+      "answer": "Toute information se rapportant à une personne physique identifiée ou identifiable",
+      "wrong": [
+        "Uniquement le nom, l'adresse postale et le numéro de téléphone",
+        "Seulement les données sensibles, comme la santé ou les opinions politiques",
+        "Toute donnée stockée sur un ordinateur ou un téléphone personnel"
+      ],
+      "explanation": "Le RGPD (règlement européen 2016/679, applicable depuis le 25 mai 2018) définit la donnée personnelle de façon très large : tout ce qui permet, directement ou indirectement, d'identifier une personne. Cela inclut un nom, mais aussi un numéro de sécurité sociale, une adresse e-mail professionnelle, une photo, une adresse IP ou un identifiant publicitaire. Les données dites sensibles (santé, opinions politiques, origine, orientation sexuelle, biométrie) font l'objet d'une protection renforcée. Ce qui compte n'est pas l'appareil qui stocke l'information, mais le fait qu'elle se rattache à une personne identifiable.",
+      "difficulty": 2,
+      "source": "https://www.cnil.fr/fr/definition/donnee-personnelle"
+    },
+    {
+      "question": "Quel est, en principe, le délai de réponse d'un organisme à une demande d'exercice de droits RGPD (accès, effacement…) ?",
+      "answer": "Un mois, prolongeable de deux mois dans les cas complexes",
+      "wrong": [
+        "48 heures, sans aucune exception possible",
+        "Six mois, prolongeables d'un an en cas de litige",
+        "Un an à partir de l'accusé de réception"
+      ],
+      "explanation": "L'article 12 du RGPD impose de répondre dans un délai d'un mois à compter de la demande. Si celle-ci est complexe ou si les demandes sont nombreuses, ce délai peut être prolongé de deux mois, à condition d'informer la personne et de motiver la prolongation. Exemple : tu écris au délégué à la protection des données d'un site pour obtenir une copie de tes données (droit d'accès). Sans réponse dans le délai, tu peux relancer par écrit, puis saisir la CNIL en ligne. Conserve la preuve de ta demande (accusé de réception ou copie du courrier).",
+      "difficulty": 3,
+      "source": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees"
+    },
+    {
+      "question": "En cas de violation de données personnelles présentant un risque, sous quel délai le responsable de traitement doit-il notifier la CNIL, si possible ?",
+      "answer": "72 heures après en avoir pris connaissance",
+      "wrong": [
+        "24 heures après le début supposé de l'attaque",
+        "Sept jours ouvrés après la fin de l'enquête interne",
+        "Un mois, après avoir informé tous les clients"
+      ],
+      "explanation": "L'article 33 du RGPD demande de notifier l'autorité de contrôle (la CNIL en France) dans les meilleurs délais et, si possible, 72 heures au plus tard après avoir pris connaissance de la violation, sauf si elle n'entraîne pas de risque pour les personnes. Le compte à rebours part de la découverte, pas de l'attaque. Si le risque est élevé, les personnes concernées doivent aussi être informées. Toutes les violations, même non notifiées, doivent figurer dans un registre interne. Exemple : une base clients dérobée par un pirate. Prévois à l'avance une procédure de gestion des incidents pour tenir ce délai.",
+      "difficulty": 3,
+      "source": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees"
+    },
+    {
+      "question": "Quel est le plafond des amendes prévu par le RGPD pour les manquements les plus graves ?",
+      "answer": "20 millions d'euros ou 4 % du chiffre d'affaires mondial, le plus élevé des deux",
+      "wrong": [
+        "10 millions d'euros ou 2 % du chiffre d'affaires mondial, le plus élevé",
+        "1 million d'euros, quelle que soit la taille de l'entreprise",
+        "10 % du chiffre d'affaires annuel, sans plafond en euros"
+      ],
+      "explanation": "L'article 83 du RGPD prévoit deux paliers. Pour les manquements les plus graves (principes de base du traitement, consentement, droits des personnes, transferts hors UE), l'amende peut atteindre 20 millions d'euros ou 4 % du chiffre d'affaires annuel mondial de l'exercice précédent, le montant le plus élevé étant retenu. Pour d'autres manquements (comme l'absence de mesures de sécurité adaptées ou de notification), le plafond est de 10 millions d'euros ou 2 %. Exemple : en janvier 2019, la CNIL a infligé 50 millions d'euros à Google pour défaut de transparence et de consentement valable.",
+      "difficulty": 3,
+      "source": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees"
+    },
+    {
+      "question": "Une donnée **pseudonymisée** (nom remplacé par un code) relève-t-elle encore du RGPD ?",
+      "answer": "Oui : tant qu'une réidentification reste possible avec d'autres informations",
+      "wrong": [
+        "Non : remplacer le nom par un code suffit à sortir du RGPD",
+        "Non : dès qu'elle est chiffrée avec un algorithme de type AES",
+        "Oui, mais seulement lorsqu'elle concerne des enfants mineurs"
+      ],
+      "explanation": "La pseudonymisation remplace les identifiants directs (nom, e-mail) par un pseudonyme, mais une table de correspondance, conservée ailleurs, permet de retrouver la personne : la donnée reste donc personnelle et soumise au RGPD, même si le risque est réduit. Seule l'anonymisation, irréversible, fait sortir les données du champ du règlement : personne ne doit pouvoir réidentifier l'individu, ni directement ni par recoupement. Exemple : un identifiant de patient `P-48213` dans une étude reste pseudonyme tant que l'hôpital détient la liste des correspondances. Séparer et protéger cette liste est une bonne mesure de sécurité.",
+      "difficulty": 3,
+      "source": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees"
+    },
+    {
+      "question": "À partir de quel âge un mineur peut-il, en France, consentir seul au traitement de ses données par un service en ligne (réseau social, jeu) ?",
+      "answer": "15 ans",
+      "wrong": [
+        "13 ans",
+        "16 ans",
+        "18 ans"
+      ],
+      "explanation": "Le RGPD fixe par défaut cet âge de consentement numérique à 16 ans, mais laisse chaque État le baisser jusqu'à 13 ans. La loi française de 2018 a retenu 15 ans. En dessous, le consentement doit être donné conjointement par le mineur et le titulaire de l'autorité parentale, et le service doit faire des efforts raisonnables pour le vérifier. Le droit à l'effacement s'applique aussi avec une attention particulière aux données publiées pendant la minorité. Pour protéger un enfant, active les réglages de confidentialité, limite les informations publiques et explique-lui qu'une photo publiée est difficile à retirer.",
+      "difficulty": 3,
+      "source": "https://www.cnil.fr/fr/recommandation-4-rechercher-le-consentement-dun-parent-pour-les-mineurs-de-moins-de-15-ans"
+    },
+    {
+      "question": "Que propose la plateforme **cybermalveillance.gouv.fr** ?",
+      "answer": "Un diagnostic et la mise en relation avec des professionnels pour aider les victimes",
+      "wrong": [
+        "Le remboursement des sommes dérobées lors d'une arnaque en ligne",
+        "Le dépôt de plainte en ligne à la place du commissariat",
+        "Un antivirus gratuit installé sur tous les ordinateurs français"
+      ],
+      "explanation": "Cybermalveillance.gouv.fr est le dispositif national d'assistance aux victimes de cybermalveillance (particuliers, entreprises, collectivités). Un parcours guidé aide à identifier le problème (hameçonnage, rançongiciel, faux support technique…), donne les conseils à suivre et peut mettre en relation avec des prestataires de proximité. Le site publie aussi des fiches de prévention et des alertes sur les arnaques en cours. Il ne rembourse pas, n'est pas un guichet de plainte et ne fournit pas de logiciel. Pour déposer plainte, il faut s'adresser à la police ou à la gendarmerie.",
+      "difficulty": 1,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Sur quelle plateforme officielle signale-t-on un contenu illicite rencontré sur Internet (escroquerie, contenu haineux, pédocriminalité) ?",
+      "answer": "Pharos, sur internet-signalement.gouv.fr",
+      "wrong": [
+        "Viginum, sur ssi.gouv.fr",
+        "Hadopi, sur hadopi.fr",
+        "CERT-FR, sur cert.ssi.gouv.fr"
+      ],
+      "explanation": "Pharos (Plateforme d'harmonisation, d'analyse, de recoupement et d'orientation des signalements) est le portail officiel de la police et de la gendarmerie où chacun peut signaler des contenus ou comportements illicites en ligne : escroqueries, harcèlement, incitation à la haine, contenus pédocriminels, apologie du terrorisme. Un signalement n'est pas une plainte : pour obtenir réparation, il faut déposer plainte. Pharos n'est pas non plus un service d'urgence : en cas de danger immédiat, appelle le 17 ou le 112. Pense à garder des captures d'écran et les adresses des pages avant de signaler.",
+      "difficulty": 2,
+      "source": "https://www.internet-signalement.gouv.fr/"
+    },
+    {
+      "question": "Tu viens de saisir les numéros de ta carte bancaire sur un faux site. Quel est le premier geste ?",
+      "answer": "Faire opposition à la carte immédiatement auprès de ta banque",
+      "wrong": [
+        "Attendre un prélèvement frauduleux avant de contester",
+        "Changer uniquement le mot de passe de ta messagerie",
+        "Bloquer le numéro de l'expéditeur du message"
+      ],
+      "explanation": "Les données saisies sont revendues ou utilisées en quelques minutes. Contacte ta banque (application ou numéro officiel d'opposition) pour bloquer la carte, ce qui interrompt aussi la plupart des paiements automatiques : elle te fournira une nouvelle carte. Vérifie ensuite tes relevés et signale toute opération inconnue. Garde les preuves (SMS, captures d'écran) pour la plainte et signale le message sur le 33700 ou à cybermalveillance.gouv.fr. Si tu as aussi saisi un mot de passe, change-le sur le vrai site, ainsi que partout où tu l'avais réutilisé.",
+      "difficulty": 1,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Dans quel délai maximal après le débit doit-on contester auprès de sa banque une opération de paiement **non autorisée** ?",
+      "answer": "13 mois",
+      "wrong": [
+        "30 jours",
+        "6 mois",
+        "3 ans"
+      ],
+      "explanation": "Le Code monétaire et financier (article L133-24), qui transpose la directive européenne sur les services de paiement, fixe à 13 mois après la date de débit le délai de contestation d'une opération non autorisée. Il faut cependant agir sans tarder : plus tôt la banque est prévenue, plus facilement elle peut bloquer la carte et enquêter. Une fois l'opération signalée, la banque doit en principe rembourser immédiatement, au plus tard à la fin du premier jour ouvrable suivant, sauf si elle soupçonne une fraude de la part du client. Conserve les preuves et dépose plainte, car la banque peut les demander.",
+      "difficulty": 3,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Quel service permet de dialoguer en ligne avec un policier ou un gendarme pour être aidé après une cyberattaque ou une arnaque ?",
+      "answer": "17Cyber, sur 17cyber.gouv.fr",
+      "wrong": [
+        "Pharos, sur internet-signalement.gouv.fr",
+        "Bloctel, sur bloctel.gouv.fr",
+        "Signal Spam, sur signal-spam.fr"
+      ],
+      "explanation": "17Cyber est une plateforme de la police et de la gendarmerie nationales pour les victimes de cybermalveillance : en répondant à quelques questions puis en discutant avec un agent, on est orienté, on reçoit des conseils pour limiter les dégâts et, si besoin, un accompagnement vers le dépôt de plainte. C'est un point d'entrée pratique quand on ne sait pas quoi faire. Elle ne remplace pas le 17 ou le 112 en cas de danger immédiat. Avant de la contacter, rassemble les éléments utiles : captures d'écran, adresses de pages, montants et dates, numéros de transaction.",
+      "difficulty": 2,
+      "source": "https://17cyber.gouv.fr/"
+    },
+    {
+      "question": "Pourquoi apposer un **filigrane** sur la copie d'une pièce d'identité que l'on envoie ?",
+      "answer": "Pour limiter sa réutilisation frauduleuse en précisant le destinataire et l'usage",
+      "wrong": [
+        "Pour que la copie soit acceptée par n'importe quel organisme sans autre vérification",
+        "Pour chiffrer le fichier et empêcher qu'il soit lu par un tiers",
+        "Pour en prouver la validité auprès des services de l'État"
+      ],
+      "explanation": "Une copie de carte d'identité circule souvent pour une location, un emploi ou l'ouverture d'un compte. En l'absence de précaution, un fichier volé ou mal conservé peut servir à ouvrir un compte, souscrire un crédit ou usurper ton identité. Un filigrane, c'est un texte en travers du document du type « Copie destinée à Agence X pour la location du 12/05, ne peut servir à un autre usage », qui réduit cette réutilisation. Il n'empêche pas la lecture du fichier et n'a aucune valeur officielle. Des outils gratuits en ligne, dont FiligraneFacile, permettent de l'ajouter facilement. N'envoie que ce qui est strictement demandé.",
+      "difficulty": 2,
+      "source": "https://filigrane.beta.gouv.fr/"
     }
   ]
 }
