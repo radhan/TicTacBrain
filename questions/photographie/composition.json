@@ -566,6 +566,239 @@
       ],
       "explanation": "Bien avant les flashs, peintres et photographes travaillaient à la lumière naturelle, et l'orientation de l'atelier était décisive. Dans l'hémisphère Nord, le soleil passe au **sud** : une verrière orientée au nord ne reçoit presque jamais de soleil direct. Elle n'apporte que la lumière **diffuse du ciel**, douce et surtout **stable** au fil des heures. Exemple : pendant une séance de pose de trois heures, l'éclairage reste presque identique, sans tache de soleil qui se déplace sur le modèle. C'est pourquoi de nombreux ateliers d'artistes, à Paris comme ailleurs, ont de grandes verrières au nord. Le piège : cette lumière n'est pas plus chaude ; elle est même un peu **plus froide** (bleutée) que celle du soleil direct.",
       "difficulty": 2
+    },
+    {
+      "question": "Comment appelle-t-on le petit reflet de la source de lumière visible dans les yeux d'un portrait ?",
+      "answer": "Un catchlight (reflet dans l'œil)",
+      "wrong": [
+        "Un flare (reflet parasite)",
+        "Un halo de diffraction",
+        "Un effet yeux rouges"
+      ],
+      "explanation": "En portrait, on surveille toujours les yeux, et notamment le petit point lumineux qui s'y reflète. Ce reflet de la source de lumière s'appelle un **catchlight** : il donne vie et éclat au regard, alors qu'un œil sans reflet paraît éteint. Sa forme et sa position trahissent l'éclairage utilisé. Exemple : un petit rectangle blanc en haut de la pupille révèle une boîte à lumière ou une fenêtre placée en hauteur ; un anneau signale un flash annulaire. Placer le modèle face à une fenêtre suffit souvent à en créer un. Le piège : le **flare** est un reflet parasite à l'intérieur de l'objectif, qui voile l'image. Les **yeux rouges**, eux, viennent de la lumière renvoyée par le fond de l'œil.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quel photographe associe-t-on la notion d'**instant décisif** ?",
+      "answer": "Henri Cartier-Bresson",
+      "wrong": [
+        "Robert Doisneau",
+        "Robert Capa",
+        "Willy Ronis"
+      ],
+      "explanation": "L'instant décisif est une idée centrale de la photo de rue et du reportage : déclencher au moment précis où la forme et le sens d'une scène s'organisent parfaitement. Elle est associée à **Henri Cartier-Bresson** (1908-2004). Son livre **Images à la sauvette** (1952), dont la couverture a été dessinée par Matisse, est paru en anglais sous le titre « The Decisive Moment », qui a donné l'expression. Exemple : sa photo Derrière la gare Saint-Lazare (1932) saisit un homme suspendu au-dessus d'une flaque, une fraction de seconde avant que son pied ne touche l'eau. Le piège : Doisneau et Ronis sont aussi de grands photographes de rue français, mais l'expression reste liée à Cartier-Bresson.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Henri_Cartier-Bresson"
+    },
+    {
+      "question": "Quel schéma d'éclairage de portrait se reconnaît au petit **triangle de lumière** sur la joue située du côté de l'ombre ?",
+      "answer": "L'éclairage Rembrandt",
+      "wrong": [
+        "L'éclairage papillon",
+        "L'éclairage split",
+        "L'éclairage clamshell"
+      ],
+      "explanation": "Les photographes de portrait utilisent quelques schémas d'éclairage classiques, chacun reconnaissable aux ombres qu'il dessine sur le visage. Dans l'**éclairage Rembrandt**, la source principale est placée en hauteur, à environ 45° sur le côté. L'ombre du nez rejoint alors celle de la joue et isole, sous l'œil du côté sombre, un petit **triangle de lumière**. Le nom vient du peintre hollandais, qui éclairait souvent ses modèles ainsi. Exemple : un modèle assis près d'une fenêtre, tourné légèrement vers la vitre, présente facilement ce triangle. Le piège : l'éclairage **split** laisse toute une moitié du visage dans l'ombre, sans triangle. L'éclairage **papillon** place la source face au sujet, au-dessus de lui.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Rembrandt_lighting"
+    },
+    {
+      "question": "Pourquoi un flash placé tout près de l'objectif provoque-t-il des **yeux rouges** dans la pénombre ?",
+      "answer": "La lumière se réfléchit au fond de l'œil, très vascularisé",
+      "wrong": [
+        "Le flash irrite la cornée, qui rougit aussitôt",
+        "Le capteur sature les tons rouges du visage",
+        "La lumière se réfléchit sur l'iris coloré"
+      ],
+      "explanation": "Les yeux rouges sont le défaut typique des photos de soirée prises avec le petit flash intégré d'un appareil ou d'un téléphone. Dans la pénombre, les **pupilles sont dilatées**. La lumière du flash, émise presque dans l'axe de l'objectif, entre dans l'œil, se réfléchit sur le **fond de l'œil**, riche en vaisseaux sanguins, et repart droit vers l'objectif : d'où la couleur rouge. Exemple : le même portrait pris avec un flash cobra orienté vers le plafond ne présente plus le défaut, car la lumière n'arrive plus dans l'axe. Autres remèdes : un pré-éclair qui fait contracter les pupilles, ou plus de lumière ambiante. Le piège : l'iris est la partie colorée de l'œil ; il ne renvoie pas cette lueur rouge.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pour son célèbre portrait de Winston Churchill (1941), à l'air renfrogné, qu'a fait Yousuf Karsh juste avant de déclencher ?",
+      "answer": "Il lui a retiré son cigare de la bouche",
+      "wrong": [
+        "Il lui a annoncé une mauvaise nouvelle",
+        "Il a éteint brusquement les lumières",
+        "Il lui a retiré ses lunettes de lecture"
+      ],
+      "explanation": "Ce portrait est un cas d'école sur la façon de provoquer une expression. Le 30 décembre 1941, à Ottawa, Churchill sort d'un discours devant le Parlement canadien et n'accorde que deux minutes au photographe. Il refuse de poser son **cigare**. Juste avant de déclencher, **Yousuf Karsh** le lui retire de la bouche : l'air outré et combatif de Churchill est saisi aussitôt. Surnommée « The Roaring Lion » (le lion rugissant), l'image est devenue l'une des plus reproduites de la Seconde Guerre mondiale et un symbole de la détermination britannique. Elle rappelle qu'en portrait, l'interaction avec le modèle compte autant que la lumière, que Karsh maîtrisait par ailleurs parfaitement.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/The_Roaring_Lion"
+    },
+    {
+      "question": "Que démontra Eadweard Muybridge en 1878 grâce à sa série de photos d'un cheval au galop ?",
+      "answer": "À un instant, les quatre sabots quittent le sol",
+      "wrong": [
+        "Le cheval garde toujours un sabot au sol",
+        "Les quatre jambes s'étendent à l'horizontale",
+        "Le cheval ne lève jamais deux sabots à la fois"
+      ],
+      "explanation": "Au XIXe siècle, l'œil humain ne pouvait pas décomposer le galop, trop rapide, et les peintres le représentaient de façon imaginaire. En 1878, **Eadweard Muybridge** installe une batterie de douze appareils le long d'une piste, déclenchés successivement au passage du cheval. Ses images prouvent qu'il existe un moment de **suspension**, où aucun sabot ne touche le sol. Mais ce moment survient quand les jambes sont **ramassées sous le corps**. Le piège : les tableaux de l'époque montraient un « galop volant », jambes tendues vers l'avant et l'arrière, une position qui n'existe pas. Ces travaux, commandés par Leland Stanford, ont ouvert la voie à la chronophotographie et au cinéma.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/The_Horse_in_Motion"
+    },
+    {
+      "question": "Quel est le titre de la plus ancienne photographie d'après nature qui nous soit parvenue, réalisée par Nicéphore Niépce vers 1827 ?",
+      "answer": "Point de vue du Gras",
+      "wrong": [
+        "Boulevard du Temple",
+        "La Fenêtre de l'abbaye de Lacock",
+        "Derrière la gare Saint-Lazare"
+      ],
+      "explanation": "La photographie est née en France dans les années 1820, des recherches de Nicéphore Niépce. **Point de vue du Gras** montre les toits et la cour de sa propriété de Saint-Loup-de-Varennes, en Bourgogne, vus depuis une fenêtre. Niépce l'a obtenue par **héliographie** : une plaque d'étain enduite de bitume de Judée, qui durcit à la lumière. Exemple de la difficulté : la pose a duré plusieurs heures, voire plusieurs jours selon les estimations, si bien que le soleil semble éclairer les deux côtés des bâtiments. L'image est conservée à l'université du Texas, à Austin. Le piège : Boulevard du Temple est un daguerréotype de 1838, et la fenêtre de Lacock un négatif de Talbot de 1835.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Point_de_vue_du_Gras"
+    },
+    {
+      "question": "Quelle était la particularité du **daguerréotype**, procédé rendu public en 1839 ?",
+      "answer": "Une image unique sur cuivre argenté, sans négatif",
+      "wrong": [
+        "Un négatif sur papier permettant plusieurs tirages",
+        "Une image en couleurs grâce à des grains d'amidon",
+        "Une épreuve bleue obtenue grâce à des sels de fer"
+      ],
+      "explanation": "Le daguerréotype est le premier procédé photographique diffusé à grande échelle. Mis au point par Louis Daguerre et présenté par François Arago en 1839, il produit une image très détaillée directement sur une **plaque de cuivre recouverte d'argent** poli. Revers de la médaille : c'est un **exemplaire unique**, impossible à dupliquer, car il n'y a pas de négatif. Exemple : pour obtenir deux exemplaires d'un portrait, il fallait faire deux prises de vue. L'image, inversée gauche-droite comme dans un miroir, se regarde sous un certain angle. Le piège : le négatif papier permettant plusieurs tirages est le **calotype** de Talbot ; les grains d'amidon colorés sont ceux de l'**autochrome**, et l'épreuve bleue aux sels de fer est le **cyanotype**.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Daguerr%C3%A9otype"
+    },
+    {
+      "question": "En quelle année l'agence coopérative **Magnum Photos** a-t-elle été fondée, notamment par Robert Capa et Henri Cartier-Bresson ?",
+      "answer": "1947",
+      "wrong": [
+        "1929",
+        "1937",
+        "1968"
+      ],
+      "explanation": "Magnum est l'agence de photojournalisme la plus célèbre au monde, et son modèle a changé le statut des photographes. Elle a été fondée en **1947**, juste après la Seconde Guerre mondiale, notamment par Robert Capa, Henri Cartier-Bresson, George Rodger et David « Chim » Seymour. Sa particularité : c'est une **coopérative** détenue par ses photographes. Ils gardent les droits sur leurs images et choisissent leurs sujets, à une époque où les magazines conservaient habituellement les négatifs. Exemple : un photographe de Magnum peut revendre la même série à plusieurs journaux, dans plusieurs pays. Le piège : en 1937, Capa couvrait déjà la guerre d'Espagne, mais en indépendant, dix ans avant la création de l'agence.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Magnum_Photos"
+    },
+    {
+      "question": "Qu'est-ce qui distingue l'éclairage **loop** de l'éclairage Rembrandt ?",
+      "answer": "L'ombre du nez ne rejoint pas celle de la joue",
+      "wrong": [
+        "La source principale est placée sous le visage",
+        "La moitié du visage est entièrement dans l'ombre",
+        "Deux sources égales éclairent les deux joues"
+      ],
+      "explanation": "Le loop et le Rembrandt sont deux schémas de portrait proches, qui se distinguent par un détail d'ombre. Dans les deux cas, la source principale est en hauteur et décalée sur le côté. En **loop**, elle est un peu moins latérale (environ 30 à 45°) : l'ombre du nez forme une petite **boucle** (« loop ») vers la commissure des lèvres, **sans toucher** l'ombre de la joue. En **Rembrandt**, la source plus latérale fait se rejoindre les deux ombres, ce qui isole un triangle de lumière sous l'œil. Exemple : en faisant pivoter lentement la lampe vers le côté, on voit l'ombre du nez s'allonger, puis se souder à celle de la joue ; on passe du loop au Rembrandt. Le loop flatte la plupart des visages, d'où son succès.",
+      "difficulty": 3
+    },
+    {
+      "question": "Le modèle tourne le visage de trois quarts. En **éclairage court** (short lighting), quel côté du visage reçoit la lumière principale ?",
+      "answer": "Le côté tourné à l'opposé de l'appareil",
+      "wrong": [
+        "Le côté tourné vers l'appareil",
+        "Les deux côtés de façon égale",
+        "Uniquement le dessous du menton"
+      ],
+      "explanation": "Quand un visage est de trois quarts, un côté paraît large à l'image (celui tourné vers l'appareil) et l'autre étroit (celui qui s'en détourne). L'**éclairage court** illumine le côté **étroit**, qui s'éloigne de l'appareil. Le côté le plus visible reste alors dans l'ombre, ce qui **affine** le visage et lui donne du relief. Exemple : pour un visage rond, place la lampe du côté vers lequel le modèle tourne la tête ; les joues paraîtront plus creusées. L'**éclairage large** (broad lighting) fait l'inverse : il éclaire le côté tourné vers l'appareil, ce qui élargit le visage. Le piège est de croire que « court » désigne une source proche ou faible : le mot décrit seulement le côté éclairé.",
+      "difficulty": 3
+    },
+    {
+      "question": "Tu photographies de nuit, au flash, une voiture qui roule phares allumés, avec une pose d'une seconde. Pour que la traînée lumineuse apparaisse **derrière** la voiture figée, sur quel mode synchronises-tu le flash ?",
+      "answer": "Sur le second rideau",
+      "wrong": [
+        "Sur le premier rideau",
+        "En synchro haute vitesse (HSS)",
+        "En mode stroboscopique"
+      ],
+      "explanation": "Combiner flash et pose longue permet de figer un sujet tout en gardant une trace de son mouvement. L'obturateur s'ouvre (premier rideau), reste ouvert une seconde, puis se ferme (second rideau). Avec la synchro sur le **premier rideau**, réglage par défaut, l'éclair part au début : la voiture est figée à sa position de départ, puis ses phares continuent de s'inscrire en avançant. La traînée apparaît **devant** elle, comme si elle reculait. Avec la synchro sur le **second rideau**, l'éclair part à la fin : la traînée s'est déjà formée et la voiture est figée au bout. Exemple : un cycliste de nuit semble ainsi laisser un sillage lumineux derrière lui. Le piège : le HSS sert à utiliser le flash à des vitesses très rapides.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans une pièce éclairée par des ampoules à incandescence, ton flash paraît bleuté par comparaison. Quelle gélatine places-tu devant le flash pour harmoniser les deux lumières ?",
+      "answer": "Une gélatine CTO (orange)",
+      "wrong": [
+        "Une gélatine CTB (bleue)",
+        "Une gélatine Plus Green (verte)",
+        "Une gélatine ND (gris neutre)"
+      ],
+      "explanation": "Mélanger des sources de couleurs différentes crée des dominantes qu'aucun réglage unique ne corrige. La **température de couleur** se mesure en kelvins : le flash émet une lumière proche du jour (environ 5 500 K), bien plus froide que celle des ampoules à incandescence (environ 2 700 à 3 200 K). Une gélatine **CTO** (Color Temperature Orange), filtre orange posé sur le flash, abaisse sa température au niveau de l'ambiance. On règle ensuite la balance des blancs sur « tungstène », et tout devient neutre. Exemple : un portrait au flash dans un salon éclairé par des lampes ne montre plus un visage bleuté sur un fond orange. Le piège : la **CTB** fait l'inverse et refroidit la lumière ; la **ND** ne réduit que l'intensité.",
+      "difficulty": 3
+    },
+    {
+      "question": "En studio, comment assombrir le fond **sans modifier les réglages de l'appareil ni la puissance de la lampe** qui éclaire le sujet ?",
+      "answer": "Éloigner le sujet et sa lampe du fond",
+      "wrong": [
+        "Rapprocher le sujet et sa lampe du fond",
+        "Remplacer la boîte à lumière par une plus grande",
+        "Placer un réflecteur blanc tourné vers le fond"
+      ],
+      "explanation": "C'est une application directe de la **loi du carré inverse** : la lumière reçue est divisée par 4 chaque fois que la distance à la source double. En déplaçant ensemble le sujet et sa lampe, l'exposition du sujet ne change pas, mais le fond s'éloigne de la lampe. Calcul : si la lampe est à 1 m du sujet et le fond 1 m derrière lui, le fond est à 2 m de la lampe et reçoit 4 fois moins de lumière que le sujet (−2 IL). S'il est à 3 m derrière, il est à 4 m de la lampe et reçoit 16 fois moins de lumière (−4 IL) : il devient presque noir. Le piège : rapprocher le sujet du fond ferait l'inverse et l'éclaircirait, tout comme un réflecteur tourné vers lui.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel photographe est considéré comme un maître du **portrait environnemental**, notamment avec son portrait d'Igor Stravinsky au piano (1946) ?",
+      "answer": "Arnold Newman",
+      "wrong": [
+        "Richard Avedon",
+        "Irving Penn",
+        "Yousuf Karsh"
+      ],
+      "explanation": "Le **portrait environnemental** montre une personne dans son milieu (atelier, bureau, instruments), le décor racontant qui elle est. **Arnold Newman** (1918-2006) en est la grande référence. Son portrait de Stravinsky est un cas d'école de composition : le couvercle ouvert d'un piano à queue forme une immense masse noire qui occupe presque toute l'image, et le compositeur est relégué dans un coin. La forme du couvercle évoque une note de musique géante. Exemple pour s'en inspirer : photographier un boulanger devant son four plutôt que sur un fond uni. Le piège : Richard Avedon est au contraire célèbre pour ses portraits sur **fond blanc** uni, sans décor, et Irving Penn pour ses sujets coincés dans un angle de murs.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Arnold_Newman"
+    },
+    {
+      "question": "Que reconnaît Robert Doisneau, au début des années 1990, à propos de son célèbre **Baiser de l'Hôtel de Ville** (1950) ?",
+      "answer": "La scène avait été posée par deux jeunes comédiens",
+      "wrong": [
+        "La photo avait été prise par un de ses assistants",
+        "Le cliché datait en réalité d'avant la guerre",
+        "Le couple avait été ajouté au tirage en chambre noire"
+      ],
+      "explanation": "Cette photo est devenue un symbole de Paris et de la photographie humaniste, qui saisit avec tendresse la vie quotidienne. Elle a été réalisée en 1950 pour le magazine américain **Life**, dans une série sur les amoureux de Paris. En 1992, un couple affirmant se reconnaître sur l'image réclame de l'argent à Doisneau. Le photographe révèle alors que la scène était **posée** : il avait remarqué deux étudiants en théâtre, Françoise Bornet et Jacques Carteaud, et leur avait demandé de s'embrasser pour lui. Exemple de l'effet produit : l'affaire a relancé le débat sur la part de mise en scène dans des images qu'on croyait prises sur le vif. Le piège : la photo est bien de Doisneau, et elle date bien de 1950.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Le_Baiser_de_l%27h%C3%B4tel_de_ville"
+    },
+    {
+      "question": "Dans quel lieu s'est tenue, en 1874, la première exposition des peintres impressionnistes ?",
+      "answer": "Dans l'ancien atelier du photographe Nadar",
+      "wrong": [
+        "Au Salon officiel, au palais de l'Industrie",
+        "Dans la galerie de Durand-Ruel à Londres",
+        "Au pavillon du Réalisme de Gustave Courbet"
+      ],
+      "explanation": "Photographie et peinture se sont croisées dès le XIXe siècle, et cette exposition en est un symbole. Monet, Renoir, Degas, Pissarro, Berthe Morisot et d'autres, en rupture avec le Salon officiel, exposent ensemble au **35, boulevard des Capucines**, dans l'ancien atelier de **Nadar**. Nadar ne fait que louer le lieu, mais son nom reste attaché à l'événement. Grand portraitiste (Baudelaire, Sarah Bernhardt, George Sand), il fut aussi un pionnier de la photographie aérienne en ballon, dès 1858. Exemple de la portée de l'exposition : c'est à partir du tableau de Monet Impression, soleil levant qu'un critique invente le mot « impressionnistes ». Le piège : le Salon officiel était justement l'institution que ces peintres contournaient.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Nadar"
+    },
+    {
+      "question": "Sur quoi reposait l'**autochrome**, procédé couleur des frères Lumière commercialisé à partir de 1907 ?",
+      "answer": "Des grains de fécule de pomme de terre teints",
+      "wrong": [
+        "Trois négatifs pris derrière des filtres colorés",
+        "Des interférences lumineuses dans l'émulsion",
+        "Des pigments peints à la main sur le tirage"
+      ],
+      "explanation": "L'autochrome est le premier procédé de photographie en couleurs diffusé à grande échelle, breveté en 1903 et utilisé jusque dans les années 1930. Une plaque de verre est recouverte de millions de minuscules grains de **fécule de pomme de terre**, teints en orangé, vert et violet. Ces grains servent de **filtres colorés** au-dessus de l'émulsion : chaque petite zone n'enregistre que la lumière de la couleur de son grain. Après développement, on obtient une image positive unique, à regarder par transparence. Exemple : de nombreuses vues en couleurs de la Première Guerre mondiale sont des autochromes. Le piège : les interférences lumineuses correspondent au procédé de Gabriel Lippmann, et les trois négatifs filtrés à la trichromie.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Autochrome"
+    },
+    {
+      "question": "Dans quel pays le livre **Les Américains** de Robert Frank, regard critique sur les États-Unis des années 1950, a-t-il été publié pour la première fois en 1958 ?",
+      "answer": "En France",
+      "wrong": [
+        "Aux États-Unis",
+        "En Suisse",
+        "Au Royaume-Uni"
+      ],
+      "explanation": "**Les Américains** est l'un des livres de photographie les plus influents du XXe siècle. Né en Suisse, Robert Frank a sillonné les États-Unis en 1955 et 1956 grâce à une bourse Guggenheim. Le livre paraît d'abord à **Paris**, en 1958, chez l'éditeur Robert Delpire. L'édition américaine, The Americans, suit en 1959, avec une préface de l'écrivain Jack Kerouac. Exemple de son style : des images grenues, penchées, parfois floues, prises sur le vif dans des cafés, des parades ou des enterrements, loin des cadrages soignés de l'époque. D'abord critiqué aux États-Unis, ce regard a profondément marqué la photographie de rue. Le piège : la Suisse est le pays natal de Frank, pas celui de la première édition.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Robert_Frank_(photographe)"
+    },
+    {
+      "question": "Quelle technique Gustave Le Gray a-t-il employée dans plusieurs de ses marines des années 1850 pour obtenir à la fois un ciel nuageux et une mer bien exposés ?",
+      "answer": "La combinaison de deux négatifs, ciel et mer",
+      "wrong": [
+        "Un filtre dégradé gris placé devant l'objectif",
+        "Une plaque panchromatique et un filtre rouge",
+        "Une très longue pose au clair de lune"
+      ],
+      "explanation": "Au XIXe siècle, photographier un paysage avec un beau ciel était presque impossible. Les émulsions de l'époque étaient très sensibles au bleu : quand la mer était correctement exposée, le ciel était surexposé, « brûlé » et blanc. **Gustave Le Gray** a contourné le problème avec la technique du **ciel rapporté** : un négatif exposé pour la mer, un autre pour le ciel, combinés au moment du tirage. Exemple : ses marines de Normandie et de Sète (1856-1858), avec des nuages spectaculaires au-dessus des vagues, ont fait sensation. Le piège : les plaques panchromatiques, sensibles à toutes les couleurs et donc utilisables avec un filtre rouge, n'apparaîtront qu'au début du XXe siècle.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Gustave_Le_Gray"
     }
   ]
 }
