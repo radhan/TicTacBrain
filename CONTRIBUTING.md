@@ -68,7 +68,13 @@ Le jeu est en mode série : une erreur et on retombe à zéro. Une question ambi
 2. **Des mauvaises réponses crédibles**, de même nature et de longueur proche de la bonne (sinon la plus longue/détaillée se devine).
 3. **Pas de « Toutes les réponses ci-dessus » / « Aucune »** : les choix sont mélangés. Pour la même raison, l'explication ne doit pas parler de « la dernière proposition » ou de l'« option B » : nomme la réponse.
 4. **Pas de faits périssables** : prix, records en cours, « la dernière version »… Ou alors datés (« En 2022, … »).
-5. **Une explication qui apprend quelque chose** : pourquoi c'est juste, et idéalement pourquoi le piège est faux.
+5. **Une explication qui apprend quelque chose**, lisible par un curieux qui découvre le sujet :
+   - le **contexte** en une phrase (à quoi sert la notion, où on la rencontre) ;
+   - **pourquoi c'est juste**, en définissant chaque terme technique ;
+   - un **exemple concret** (situation réelle, mini-calcul, extrait de commande ou de config) ;
+   - si utile, **pourquoi le piège principal est faux**.
+
+   Vise 450 à 900 caractères, en phrases courtes.
 6. Pour les questions de code : **exécute le code** pour vérifier la sortie.
 
 ## Ajouter un sous-thème ou un thème
