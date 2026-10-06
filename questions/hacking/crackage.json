@@ -364,6 +364,462 @@
       "explanation": "Argon2 existe en trois variantes : Argon2d (résistant au cassage GPU mais sensible aux attaques par canaux auxiliaires), Argon2i (résistant à ces canaux) et Argon2id, un hybride des deux. L'OWASP recommande Argon2id. « Argon2e » n'existe pas.",
       "difficulty": 3,
       "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "On calcule deux fois de suite l'empreinte **SHA-256** du même texte. Qu'obtient-on ?",
+      "answer": "Exactement la même empreinte, car le hachage est déterministe",
+      "wrong": [
+        "Deux empreintes différentes, car un aléa est ajouté à chaque calcul",
+        "Deux empreintes proches, qui ne diffèrent que de quelques caractères",
+        "Une empreinte deux fois plus longue, car le hachage est cumulatif"
+      ],
+      "explanation": "Une fonction de hachage est **déterministe** : la même entrée donne toujours la même empreinte, sur n'importe quelle machine. C'est ce qui permet de vérifier un mot de passe (on hache ce que l'utilisateur tape et on compare au hash stocké) ou l'intégrité d'un fichier. Exemple : le SHA-256 de `password` commence toujours par `5e884898da28`. Revers de la médaille : sans **sel**, deux comptes ayant le même mot de passe ont exactement la même empreinte, et un attaquant repère d'un coup d'œil les mots de passe courants. C'est pourquoi on ajoute un sel aléatoire avant de hacher.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Fonction_de_hachage"
+    },
+    {
+      "question": "Quelle est la taille de l'empreinte **SHA-256** d'un fichier de 4 Go, comparée à celle d'un fichier d'un seul octet ?",
+      "answer": "Identique : 256 bits (32 octets) dans les deux cas",
+      "wrong": [
+        "Mille fois plus grande, proportionnelle à la taille du fichier",
+        "Quatre fois plus grande, car le fichier est plus volumineux",
+        "Plus petite, car un gros fichier est compressé avant d'être haché"
+      ],
+      "explanation": "Une fonction de hachage transforme une entrée de **taille quelconque** en une empreinte de **taille fixe** : 256 bits pour SHA-256, soit 32 octets ou 64 caractères hexadécimaux. Comme il existe plus d'entrées possibles que d'empreintes, des collisions existent forcément en théorie, mais un bon hash rend leur découverte infaisable. Exemple concret : `sha256sum image.iso` affiche toujours 64 caractères, que l'image pèse 1 Mo ou 4 Go. Pour se protéger, on compare cette empreinte à celle publiée par l'éditeur, idéalement sur un canal distinct et signé.",
+      "difficulty": 1
+    },
+    {
+      "question": "On passe de `password` à `Password` (une seule lettre change) avant de calculer l'empreinte **MD5**. À quoi ressemble la nouvelle empreinte ?",
+      "answer": "À rien de comparable : elle est radicalement différente de l'ancienne",
+      "wrong": [
+        "Elle ne change que pour les caractères proches de la lettre modifiée",
+        "Elle reste identique, car le hachage ignore la casse des lettres",
+        "Elle ne diffère que par son dernier octet, les autres restant stables"
+      ],
+      "explanation": "C'est l'**effet avalanche** : modifier un seul bit de l'entrée change environ la moitié des bits de l'empreinte, de façon imprévisible. Exemple : `password` donne `5f4dcc3b5aa765d61d8327deb882cf99`, alors que `Password` donne `dc647eb65e6711e155375218212b3964`, sans aucune ressemblance. Conséquence défensive : un attaquant ne peut pas se rapprocher progressivement du bon mot de passe en comparant les empreintes, il doit tester chaque candidat en entier. Cela ne remplace pas un mot de passe robuste : un mot de passe courant reste trouvé par dictionnaire.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Effet_avalanche"
+    },
+    {
+      "question": "Un développeur « protège » les mots de passe en les encodant en **Base64** dans sa base de données. Pourquoi est-ce une très mauvaise idée ?",
+      "answer": "Base64 est un simple encodage que n'importe qui peut décoder, sans clé",
+      "wrong": [
+        "Base64 est un hachage trop rapide, que les GPU cassent en quelques secondes",
+        "Base64 est un chiffrement symétrique dont la clé de 64 bits est trop courte",
+        "Base64 allonge le mot de passe et facilite ainsi sa devinette par force brute"
+      ],
+      "explanation": "**Base64** représente des octets à l'aide de 64 caractères imprimables (`A-Z`, `a-z`, `0-9`, `+`, `/`) pour les faire voyager dans des formats textuels (e-mail, JSON, URL). Il n'y a ni clé ni secret : `cGFzc3dvcmQ=` se décode en `password` avec un outil en ligne ou la commande `base64 -d`. Il faut distinguer trois notions : l'**encodage** change seulement la forme des données, le **hachage** est à sens unique, le **chiffrement** est réversible avec une clé. Un mot de passe se stocke haché avec une fonction lente et salée (Argon2id, bcrypt).",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Base64"
+    },
+    {
+      "question": "Combien de chiffres **hexadécimaux** faut-il pour écrire un octet (8 bits) ?",
+      "answer": "2 chiffres, de `00` à `ff`",
+      "wrong": [
+        "1 chiffre, de `0` à `f`",
+        "4 chiffres, de `0000` à `ffff`",
+        "8 chiffres, de `00000000` à `ffffffff`"
+      ],
+      "explanation": "Un chiffre hexadécimal (base 16, de `0` à `f`) vaut 4 bits ; un octet de 8 bits s'écrit donc avec **2 chiffres**. C'est pourquoi une empreinte MD5 de 128 bits (16 octets) s'affiche sur 32 caractères, et un SHA-256 sur 64. L'hexadécimal est une simple **notation** et non un chiffrement : `48656c6c6f` correspond à `Hello` en ASCII, et la commande `xxd -r -p` le retransforme en texte. Une empreinte affichée en hexadécimal n'est donc pas « chiffrée » : c'est seulement la façon lisible d'écrire ses octets.",
+      "difficulty": 1
+    },
+    {
+      "question": "En cryptographie, qu'appelle-t-on une **collision** pour une fonction de hachage ?",
+      "answer": "Deux entrées différentes qui donnent la même empreinte",
+      "wrong": [
+        "Deux utilisateurs qui choisissent le même mot de passe",
+        "Une empreinte que l'on a réussi à inverser en clair",
+        "Un même sel réutilisé pour deux comptes différents"
+      ],
+      "explanation": "L'empreinte a une taille fixe alors que les entrées possibles sont infinies : des **collisions** existent donc mathématiquement. Un bon hash rend leur découverte infaisable (résistance aux collisions). Deux utilisateurs ayant le même mot de passe ne forment pas une collision : l'entrée est identique, donc l'empreinte aussi. MD5 (collisions trouvées dès 2004 par l'équipe de Wang Xiaoyun) et SHA-1 (SHAttered, 2017) sont brisés sur ce point. On ne les emploie plus pour des signatures ou des certificats, on leur préfère SHA-256 ou SHA-3.",
+      "difficulty": 1
+    },
+    {
+      "question": "Le facteur de coût d'un hash **bcrypt** passe de 10 à 12 (`$2b$10$…` devient `$2b$12$…`). Le temps de calcul d'un hachage est multiplié par environ :",
+      "answer": "4",
+      "wrong": [
+        "2",
+        "12",
+        "100"
+      ],
+      "explanation": "Dans bcrypt, le facteur de coût est un **exposant** : l'algorithme répète son étape de mise en place de clé 2^coût fois. Passer de 10 à 12 revient donc à multiplier le travail par 2^12 / 2^10 = 4 ; chaque unité de plus double le temps. L'intérêt : l'administrateur peut augmenter le coût au fil des ans pour compenser la puissance croissante des machines, et l'attaquant subit exactement le même surcoût à chaque essai. L'OWASP recommande un coût d'au moins 10. En pratique, on réajuste le coût et on re-hache le mot de passe lors de la connexion suivante de chaque utilisateur.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Bcrypt"
+    },
+    {
+      "question": "Un hash **bcrypt** fait 60 caractères : `$2b$12$` suivi de 53 caractères. Où le sel est-il stocké ?",
+      "answer": "Dans le hash lui-même : ce sont les 22 caractères qui suivent le coût",
+      "wrong": [
+        "Dans une colonne séparée que l'application doit créer",
+        "Dans une variable d'environnement partagée par tous les comptes",
+        "Nulle part : bcrypt fonctionne sans sel pour aller plus vite"
+      ],
+      "explanation": "Un hash bcrypt a la forme `$version$coût$` + **22 caractères de sel** (128 bits) + **31 caractères de hash** : 7 + 22 + 31 = 60 caractères. La fonction de vérification relit le sel directement dans la chaîne, sans colonne supplémentaire ni risque d'oubli ou de mélange entre comptes. Le sel n'est pas secret : son rôle est d'être unique et aléatoire pour que deux comptes de même mot de passe aient des hashs différents et que les tables précalculées soient inutiles. Un secret global à part (le poivre) est une protection complémentaire.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un site stocke `SHA-256(sel + mot de passe)` avec un sel aléatoire unique par compte. Quelle faiblesse majeure demeure ?",
+      "answer": "SHA-256 est trop rapide : on peut tester des milliards d'essais par seconde",
+      "wrong": [
+        "Le sel unique permet de retrouver le mot de passe d'origine",
+        "SHA-256 produit des collisions fréquentes sur les mots de passe courts",
+        "Le sel doit rester secret, or ici il est stocké avec le hash"
+      ],
+      "explanation": "Le sel bloque les **tables arc-en-ciel** et empêche de repérer les mots de passe partagés, mais il ne ralentit pas chaque essai. SHA-256 a été conçu pour être rapide : un GPU en calcule des milliards par seconde, donc après une fuite, tous les mots de passe faibles tombent par dictionnaire ou force brute. Le sel n'a d'ailleurs pas besoin d'être secret. La parade est une fonction **volontairement lente et coûteuse** : Argon2id, scrypt, bcrypt, ou PBKDF2 avec de nombreuses itérations. Elles réduisent le débit de l'attaquant de plusieurs ordres de grandeur.",
+      "difficulty": 2,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "Un attaquant teste 10^10 candidats par seconde contre un hash rapide (MD5), mais 10^5 par seconde contre un hash lent (bcrypt ou Argon2). Pour parcourir le même espace de mots de passe, la durée est multipliée par :",
+      "answer": "100 000",
+      "wrong": [
+        "10 000",
+        "1 000 000",
+        "10 milliards"
+      ],
+      "explanation": "Le rapport des débits est 10^10 / 10^5 = **10^5**, soit 100 000 (ces débits sont des ordres de grandeur illustratifs). Une attaque qui prend 1 heure contre MD5 prendrait donc 100 000 heures, soit environ 11 ans, contre le hash lent. C'est exactement l'objectif d'une fonction de hachage de mots de passe : multiplier le coût de chaque essai sans gêner l'utilisateur légitime, qui ne hache qu'un mot de passe par connexion. Ce calcul montre aussi que la lenteur compense un mot de passe moyen, mais pas un mot de passe vraiment trop faible comme `123456`.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'ont démontré les chercheurs de Google et du CWI d'Amsterdam avec l'attaque « **SHAttered** » en 2017 ?",
+      "answer": "Deux fichiers PDF différents ayant exactement la même empreinte SHA-1",
+      "wrong": [
+        "Qu'on peut retrouver un texte à partir de son empreinte SHA-1",
+        "Qu'une empreinte SHA-1 se casse en une seconde sur un smartphone",
+        "Qu'AES-128 peut être déchiffré sans clé grâce à une faille de SHA-1"
+      ],
+      "explanation": "SHAttered est la première **collision pratique** sur SHA-1 : deux PDF distincts partageant la même empreinte de 160 bits. Le calcul a demandé environ 2^63 opérations (près de 9×10^18), un exploit de plusieurs mois sur de gros clusters, mais très inférieur aux 2^80 attendus pour une recherche par anniversaire. Ce n'est pas une inversion : on ne retrouve pas un texte à partir d'une empreinte. Conséquence : les navigateurs ont cessé de faire confiance aux certificats signés en SHA-1, et on utilise SHA-256 ou SHA-3 pour les signatures. Pour les mots de passe, SHA-1 nu est de toute façon trop rapide.",
+      "difficulty": 2,
+      "source": "https://shattered.io/"
+    },
+    {
+      "question": "Qu'ajoute **HMAC** à une fonction de hachage comme SHA-256 ?",
+      "answer": "Une clé secrète, pour garantir l'intégrité et l'authenticité d'un message",
+      "wrong": [
+        "Un sel public pour empêcher l'usage des rainbow tables",
+        "Un chiffrement du message, qui le rend illisible sans la clé",
+        "Une compression de l'empreinte à 64 bits pour gagner de la place"
+      ],
+      "explanation": "**HMAC** (Hash-based Message Authentication Code, RFC 2104) combine une clé secrète et un message avec une fonction de hachage : sans la clé, impossible de produire un code valide. Le message reste lisible, ce n'est donc pas du chiffrement. Exemple : un service vérifie la signature HMAC-SHA256 d'un webhook reçu ; une requête forgée sans la clé est rejetée. On retrouve HMAC dans les cookies de session signés, les JWT en HS256, les codes TOTP et PBKDF2 (PBKDF2-HMAC-SHA256). Protection : la clé doit rester secrète, longue et aléatoire, et la comparaison se fait en temps constant.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans la chaîne `$argon2id$v=19$m=19456,t=2,p=1$…`, que désignent `m`, `t` et `p` ?",
+      "answer": "La mémoire utilisée (en Kio), le nombre de passes et le parallélisme",
+      "wrong": [
+        "Le nombre de mots du mot de passe, la taille du sel et la durée d'un essai",
+        "La taille maximale du mot de passe, la version du format et le nombre de comptes",
+        "Le mode de hachage, le type de sel employé et la présence d'un poivre"
+      ],
+      "explanation": "Argon2 se règle avec trois paramètres : **m**, le coût en mémoire exprimé en Kio (19456 Kio = 19 Mio) ; **t**, le coût en temps, c'est-à-dire le nombre de passes sur cette mémoire ; **p**, le degré de parallélisme (nombre de voies de calcul). `v=19` indique la version 1.3 de l'algorithme. Comme pour bcrypt, la chaîne contient aussi le sel et l'empreinte : elle est autonome. C'est la mémoire exigée qui gêne les GPU et les circuits dédiés. Le réglage 19 Mio, 2 passes, 1 voie fait partie des configurations minimales citées par l'OWASP pour Argon2id.",
+      "difficulty": 2,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "Un jeton **JWT** signé classique est composé de trois parties séparées par des points. Pourquoi ne faut-il jamais y mettre de mot de passe ou de donnée secrète ?",
+      "answer": "Son contenu n'est qu'encodé en Base64url : n'importe qui peut le lire",
+      "wrong": [
+        "Son contenu est chiffré, mais avec une clé publique connue de tous",
+        "Son contenu est haché en MD5, ce qui permet de le retrouver vite",
+        "Sa signature est supprimée avant l'envoi du jeton au serveur"
+      ],
+      "explanation": "Un JWT signé (JWS) contient un en-tête, une charge utile (*payload*) et une signature. Les deux premières parties sont de simples **encodages Base64url** : `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9` se décode en `{\"alg\":\"HS256\",\"typ\":\"JWT\"}`. La signature garantit l'**intégrité** (on ne peut pas modifier le contenu sans la clé), pas la **confidentialité**. Quiconque intercepte le jeton lit son contenu. Bonnes pratiques : n'y placer que des informations non sensibles, lui donner une courte durée de vie, le transmettre en HTTPS, et utiliser JWE si le contenu doit vraiment être chiffré.",
+      "difficulty": 2
+    },
+    {
+      "question": "En 2023, quel nombre minimal d'itérations l'OWASP préconisait-il pour **PBKDF2-HMAC-SHA256** dans son aide-mémoire sur le stockage des mots de passe ?",
+      "answer": "600 000",
+      "wrong": [
+        "1 000",
+        "10 000",
+        "100 000"
+      ],
+      "explanation": "PBKDF2 (RFC 2898, repris par la RFC 8018) applique HMAC de façon répétée. N'exigeant presque pas de mémoire, il se parallélise très bien sur GPU : la seule parade est un grand nombre d'**itérations**. L'OWASP donnait en 2023 le seuil de 600 000 pour HMAC-SHA256 et 210 000 pour HMAC-SHA512 ; ces valeurs sont réévaluées régulièrement, car elles montent avec la puissance des machines. L'ancien repère de 10 000 itérations, issu des recommandations NIST de 2017, est aujourd'hui très insuffisant. Vérifiez toujours la version courante de la recommandation avant de régler un système.",
+      "difficulty": 3,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "Dans quel cas l'OWASP conseille-t-il d'employer **PBKDF2** plutôt qu'Argon2id pour stocker des mots de passe ?",
+      "answer": "Quand la conformité FIPS-140 est exigée, car PBKDF2 est approuvé",
+      "wrong": [
+        "Quand le serveur peut consacrer beaucoup de mémoire vive à chaque hachage",
+        "Quand on veut résister au maximum aux attaques menées avec des GPU",
+        "Quand les mots de passe dépassent 72 octets, limite d'Argon2"
+      ],
+      "explanation": "**FIPS-140** est la norme américaine de validation des modules cryptographiques, exigée dans certains environnements publics ou réglementés. PBKDF2 y est approuvé, alors qu'Argon2 ne l'était pas dans les listes de référence. L'OWASP recommande donc PBKDF2 avec de nombreuses itérations (600 000 pour SHA-256 en 2023) dans ce seul cas, et Argon2id le reste du temps. PBKDF2 résiste moins bien aux GPU, puisqu'il n'est pas *memory-hard*. La limite de 72 octets concerne bcrypt, pas Argon2. Choisir l'algorithme dépend donc d'abord des contraintes réglementaires.",
+      "difficulty": 3,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "L'OWASP propose plusieurs jeux de paramètres **Argon2id** jugés équivalents (par exemple 19 Mio avec 2 passes, ou 12 Mio avec 3 passes). Que faut-il faire si l'on réduit la mémoire allouée ?",
+      "answer": "Augmenter le nombre de passes (t) pour conserver une résistance comparable",
+      "wrong": [
+        "Allonger le sel de 16 à 64 octets pour compenser le manque de mémoire",
+        "Passer à Argon2d, qui exige moins de mémoire qu'Argon2id",
+        "Ne rien changer, la mémoire n'influence pas la sécurité d'Argon2id"
+      ],
+      "explanation": "Le coût imposé à l'attaquant dépend à la fois de la **mémoire** (m) et du **nombre de passes** (t) : en baisser un oblige à monter l'autre. L'OWASP liste par exemple 46 Mio avec 1 passe, 19 Mio avec 2, 12 Mio avec 3, 9 Mio avec 4 et 7 Mio avec 5, toujours avec p=1. Choisir peu de mémoire et beaucoup de passes convient aux serveurs contraints, mais la mémoire est ce qui limite le plus la parallélisation sur GPU : on en donne autant que possible. On mesure ensuite le temps réel d'une vérification sur son propre serveur avant de figer les réglages.",
+      "difficulty": 3,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "Pourquoi construire une signature avec `SHA-256(secret + message)` est-il déconseillé par rapport à HMAC ?",
+      "answer": "On peut forger l'empreinte de `message + suffixe` sans connaître le secret",
+      "wrong": [
+        "Le secret se retrouve en clair dans la fin de l'empreinte",
+        "Deux messages différents donnent forcément la même signature",
+        "SHA-256 refuse de hacher une entrée qui contient un secret"
+      ],
+      "explanation": "SHA-256 et SHA-512 sont construits de façon itérative (Merkle-Damgård) : l'empreinte finale est l'état interne de l'algorithme. Un attaquant qui connaît `SHA-256(secret + message)` et la longueur du secret peut **poursuivre le calcul** et obtenir une empreinte valide pour `message + remplissage + suffixe`, sans le secret : c'est l'attaque par **extension de longueur**. Elle a touché de vraies API, dont celle de Flickr en 2009. HMAC est conçu pour l'empêcher, tout comme SHA-3 ou SHA-512/256. Parade : toujours employer HMAC pour authentifier un message avec une clé.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Length_extension_attack"
+    },
+    {
+      "question": "Un hash de 128 bits comme MD5 offre 2^128 empreintes possibles. Pourquoi une collision peut-elle pourtant être trouvée, en théorie, en environ 2^64 calculs seulement ?",
+      "answer": "Le paradoxe des anniversaires : on cherche une paire quelconque, pas une cible fixée",
+      "wrong": [
+        "MD5 n'utilise en réalité que 64 bits de son état interne",
+        "Chaque calcul MD5 teste en parallèle 2^64 entrées sur un GPU",
+        "La racine carrée d'une empreinte MD5 en révèle la moitié des bits"
+      ],
+      "explanation": "Dans un groupe de 23 personnes, il y a plus d'une chance sur deux que deux d'entre elles aient le même anniversaire : trouver une **paire quelconque** est bien plus facile que trouver quelqu'un né un jour précis. Pour un hash de n bits, une collision demande environ **2^(n/2)** essais. SHA-256 offre donc 128 bits de résistance aux collisions, mais MD5 seulement 64 bits en théorie, et des faiblesses de structure les ont ramenés à quelques secondes ou minutes sur un simple ordinateur. Pour toute utilisation sensible aux collisions (signatures, certificats), il faut une empreinte d'au moins 256 bits.",
+      "difficulty": 3
+    },
+    {
+      "question": "En décembre 2008, des chercheurs ont obtenu un faux certificat d'autorité de certification, accepté par les navigateurs. Quelle faiblesse ont-ils exploitée ?",
+      "answer": "Des collisions MD5 : une autorité signait encore ses certificats en MD5",
+      "wrong": [
+        "Un débordement de mémoire dans le code de plusieurs navigateurs",
+        "Le vol de la clé privée de l'autorité sur un serveur mal protégé",
+        "Une attaque par force brute sur des clés RSA de 512 bits"
+      ],
+      "explanation": "Des chercheurs (Alexander Sotirov, Marc Stevens et leurs collègues) ont fabriqué deux certificats ayant la **même empreinte MD5** : un certificat de site banal et un certificat d'autorité intermédiaire. La signature de l'autorité, obtenue sur le premier, était donc valable pour le second. Le calcul a utilisé un cluster de 200 consoles PlayStation 3. Parade : les autorités ont abandonné MD5, puis SHA-1, au profit de SHA-256, et les navigateurs rejettent les certificats signés avec des algorithmes cassés. L'attaque illustre pourquoi une fonction cassée en collision ne doit plus servir à signer.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/MD5"
+    },
+    {
+      "question": "Un utilisateur veut renforcer son mot de passe `soleil2024`. Quelle modification lui apporte le plus de robustesse ?",
+      "answer": "Passer à une phrase de passe de plusieurs mots tirés au hasard",
+      "wrong": [
+        "Remplacer les `e` par des `3` et les `o` par des `0`",
+        "Passer la première lettre en majuscule et ajouter `!` à la fin",
+        "Remplacer l'année 2024 par l'année en cours"
+      ],
+      "explanation": "Pour un mot de passe aléatoire, chaque caractère ajouté multiplie l'espace à explorer : c'est la **longueur** qui compte. Les substitutions (`e` en `3`), la majuscule initiale ou le `!` final sont des habitudes que les outils de cassage appliquent automatiquement à leurs dictionnaires, via des règles de mutation. Quant à l'année, elle est devinée en quelques essais. Une phrase de passe de quatre à six mots réellement aléatoires, comme celles produites par la méthode Diceware, est longue, mémorisable et bien plus robuste. L'ANSSI et le NIST insistent sur la longueur et l'unicité plutôt que sur les règles de composition.",
+      "difficulty": 1
+    },
+    {
+      "question": "Le **ROT13** (décalage de 13 lettres dans l'alphabet) protège-t-il efficacement un mot de passe ?",
+      "answer": "Non, c'est un décalage trivial qui s'inverse en le réappliquant",
+      "wrong": [
+        "Oui, car il s'agit d'un chiffrement symétrique robuste",
+        "Oui, à condition de garder secret le nombre de lettres du décalage",
+        "Non, car il produit une empreinte trop longue pour être stockée"
+      ],
+      "explanation": "Le ROT13 est un cas particulier du chiffre de César : chaque lettre est décalée de 13 positions. L'alphabet comptant 26 lettres, l'appliquer deux fois redonne le texte d'origine : `Hello` devient `Uryyb`, et `Uryyb` redevient `Hello`. Il n'y a **aucune clé**, donc aucun secret, et même un décalage variable ne compterait que 25 possibilités. On l'emploie sur les forums pour masquer un spoiler, jamais pour protéger une donnée. Pour un mot de passe, on stocke une empreinte Argon2id ou bcrypt ; pour des données à restituer, un vrai chiffrement comme AES-GCM avec une clé gérée à part.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi limiter le nombre de tentatives de connexion par compte et par adresse IP ?",
+      "answer": "Pour empêcher de tester des milliers de mots de passe par minute",
+      "wrong": [
+        "Pour économiser la bande passante et la mémoire du serveur",
+        "Pour chiffrer les mots de passe saisis avant leur envoi",
+        "Pour interdire les connexions depuis plusieurs appareils"
+      ],
+      "explanation": "Dans une attaque **en ligne**, chaque essai doit passer par le serveur d'authentification. En imposant des délais croissants, un blocage temporaire ou un CAPTCHA après quelques échecs, on réduit le débit de l'attaquant de milliers d'essais par minute à une poignée par heure. Exemple : à 10 essais par jour, deviner un code à 6 chiffres (un million de possibilités) prendrait en moyenne près de 137 ans. Une limite par IP seule ne suffit pas face à un réseau de machines : on la combine avec une limite par compte, la détection de comportements anormaux et l'authentification multifacteur.",
+      "difficulty": 1
+    },
+    {
+      "question": "Un administrateur veut tenter de casser les empreintes de mots de passe de l'annuaire de son entreprise avec `hashcat`, pour repérer les mots de passe faibles. Quelle condition est indispensable ?",
+      "answer": "Une autorisation écrite de la direction, avec résultats confidentiels",
+      "wrong": [
+        "Utiliser un VPN pour que l'opération ne soit pas tracée",
+        "Se limiter aux comptes des collègues avec lesquels on s'entend bien",
+        "Garder l'opération secrète pour ne pas alerter les utilisateurs"
+      ],
+      "explanation": "Tester la robustesse des mots de passe de son propre annuaire est une pratique d'audit légitime : on repère les mots de passe faibles ou réutilisés, puis on force leur changement et on alimente une liste d'interdits. Mais elle exige un **cadre écrit** (périmètre, durée, personnes habilitées, direction et responsable de la sécurité informés) et un traitement confidentiel des résultats, car les mots de passe retrouvés sont des données sensibles. Sans autorisation, accéder à un système ou en extraire des secrets est puni par le Code pénal (articles 323-1 et suivants). Cacher l'opération est le contraire d'un audit sérieux.",
+      "difficulty": 1
+    },
+    {
+      "question": "Un site où vous avez un compte annonce une fuite de données contenant des empreintes de mots de passe. Quel est le meilleur réflexe ?",
+      "answer": "Le changer partout où il est réutilisé, puis activer la double authentification",
+      "wrong": [
+        "Attendre de voir si quelqu'un tente réellement de se connecter",
+        "Ne rien faire, puisque les empreintes de mots de passe sont chiffrées",
+        "Ne changer que la dernière lettre du mot de passe, par commodité"
+      ],
+      "explanation": "Une empreinte n'est pas un chiffrement mais elle peut être **cassée** : si le mot de passe est courant ou l'algorithme rapide (MD5, SHA-1 nu), il est retrouvé en minutes. Les pirates le testent ensuite sur d'autres services : c'est le bourrage d'identifiants. Il faut donc changer le mot de passe du site touché et de tous ceux qui l'ont réutilisé, en choisissant un mot de passe unique par service (un gestionnaire aide beaucoup), puis activer la double authentification. On peut vérifier sa présence dans les fuites connues sur Have I Been Pwned, et rester vigilant face aux e-mails de hameçonnage qui suivent souvent une fuite.",
+      "difficulty": 1
+    },
+    {
+      "question": "Un e-mail alarmiste prétend venir de votre banque et vous demande de « confirmer » votre mot de passe via un lien. Quel est le bon réflexe ?",
+      "answer": "Ne pas cliquer et se connecter en tapant soi-même l'adresse officielle",
+      "wrong": [
+        "Cliquer sur le lien, mais seulement si le logo est bien reconnu",
+        "Répondre au message pour demander confirmation à l'expéditeur",
+        "Saisir un faux mot de passe pour observer la réaction du site"
+      ],
+      "explanation": "C'est du **hameçonnage** (phishing) : un faux site imite le vrai pour récolter les identifiants. Aucun service sérieux ne demande un mot de passe par message. Les indices sont l'urgence, les fautes, une adresse d'expéditeur ou un lien légèrement différent du site officiel. Le logo se copie en deux secondes, et répondre confirme que votre adresse est active. Le bon geste est de ne pas cliquer, d'ouvrir soi-même le site officiel, puis de signaler le message (signal-spam.fr, cybermalveillance.gouv.fr). Les passkeys protègent aussi, car elles ne fonctionnent que sur le vrai domaine.",
+      "difficulty": 1
+    },
+    {
+      "question": "Une phrase de passe de 6 mots tirés **au hasard** (avec des dés) dans une liste de 7 776 mots, selon la méthode Diceware, offre environ combien de bits d'entropie ?",
+      "answer": "Environ 78 bits",
+      "wrong": [
+        "Environ 52 bits",
+        "Environ 39 bits",
+        "Environ 91 bits"
+      ],
+      "explanation": "Chaque mot tiré dans une liste de 7 776 mots (6^5, soit 5 lancers de dé) apporte log₂(7 776) ≈ **12,9 bits**. Avec 6 mots : 6 × 12,9 ≈ 77,5 bits, soit 7 776^6 combinaisons. Chaque mot supplémentaire multiplie l'espace par 7 776. Les autres propositions correspondent à 4 mots (52 bits), 3 mots (39 bits) et 7 mots (91 bits). Attention : cette entropie suppose un tirage réellement aléatoire, avec des dés ou un générateur. Une phrase choisie par un humain (paroles de chanson, citation) a une entropie bien plus faible, car elle figure dans des listes de phrases connues.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Diceware"
+    },
+    {
+      "question": "Quelle mesure fait échouer un **bourrage d'identifiants** même quand le couple identifiant/mot de passe fuité est exact ?",
+      "answer": "Une authentification multifacteur, car le mot de passe seul ne suffit plus",
+      "wrong": [
+        "Un hachage bcrypt des mots de passe stockés côté serveur par le site",
+        "Un sel plus long dans la base de données du site visé par l'attaque",
+        "Un chiffrement TLS de la page de connexion avec un certificat valide"
+      ],
+      "explanation": "Dans le **credential stuffing**, l'attaquant dispose de vrais couples identifiant/mot de passe volés ailleurs et les rejoue sur d'autres services. Le stockage côté serveur (bcrypt, sel) ne joue aucun rôle, puisque le mot de passe saisi est le bon, et TLS protège le transport, pas la réutilisation. Les parades efficaces : l'**authentification multifacteur** ou les passkeys, la limitation des tentatives et la détection de robots, l'alerte lors d'une connexion depuis un nouvel appareil, et le refus à la création des mots de passe présents dans des fuites connues (Pwned Passwords). Côté utilisateur : un mot de passe unique par service.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un attaquant teste 10^10 mots de passe par seconde contre une seule empreinte rapide. Combien de temps lui faut-il, au maximum, pour parcourir tous les mots de passe de 8 lettres minuscules (26^8 ≈ 2,1 × 10^11) ?",
+      "answer": "Environ 21 secondes",
+      "wrong": [
+        "Environ 3 heures",
+        "Environ 21 jours",
+        "Environ 2 ans"
+      ],
+      "explanation": "Il suffit de diviser l'espace par le débit : 26^8 / 10^10 ≈ 20,9 secondes. Un tel débit est réaliste contre un hash rapide non protégé, avec quelques GPU. La longueur change tout : avec 12 minuscules, 26^12 / 10^10 ≈ 110 jours ; avec 8 caractères tirés parmi 95 symboles, environ 7,7 jours. Ces chiffres sont des **ordres de grandeur** pour un hash rapide : contre bcrypt ou Argon2, le débit tombe de plusieurs ordres de grandeur. Retenez qu'allonger le mot de passe est plus rentable que d'ajouter des symboles : chaque caractère multiplie l'espace par la taille de l'alphabet.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un jeton de réinitialisation de mot de passe est une chaîne de 32 caractères hexadécimaux tirés au hasard par un générateur cryptographique. Quelle est son entropie ?",
+      "answer": "128 bits",
+      "wrong": [
+        "32 bits",
+        "64 bits",
+        "256 bits"
+      ],
+      "explanation": "Chaque chiffre hexadécimal vaut 16 valeurs, soit 4 bits : 32 × 4 = **128 bits**, ce qui rend toute devinette impossible. Cette valeur n'est vraie que si le tirage est réellement imprévisible : il faut un générateur cryptographique (`secrets.token_hex(16)` en Python, `crypto.randomBytes(16)` en Node.js) et jamais `Math.random()`, une date ou un compteur. Bonnes pratiques complémentaires : un jeton à usage unique, valable quelques minutes, stocké sous forme d'empreinte côté serveur et invalidé après emploi. Un lien de réinitialisation est un mot de passe temporaire : il se protège comme tel.",
+      "difficulty": 2
+    },
+    {
+      "question": "Combien de candidats compte le **keyspace** du masque hashcat `?u?l?l?l?d?d` (une majuscule, trois minuscules, deux chiffres) ?",
+      "answer": "45 697 600",
+      "wrong": [
+        "124",
+        "1 757 600",
+        "56 800 235 584"
+      ],
+      "explanation": "Chaque position du masque est indépendante, donc on **multiplie** : `?u` = 26 majuscules, `?l` = 26 minuscules (trois fois), `?d` = 10 chiffres (deux fois). Cela donne 26 × 26 × 26 × 26 × 10 × 10 = 26^4 × 100 = 45 697 600. Additionner les tailles donnerait 124, une erreur classique ; 56 800 235 584 est 62^6, le cas où chaque position accepterait tous les caractères alphanumériques. À 10^10 essais par seconde contre un hash rapide, ce masque est épuisé en quelques millisecondes. Il imite des habitudes réelles (Majuscule, minuscules, année) : la parade est le hasard ou la longueur.",
+      "difficulty": 2
+    },
+    {
+      "question": "En quoi une attaque par **password spraying** diffère-t-elle d'une force brute classique sur un compte ?",
+      "answer": "Peu de mots de passe courants testés sur beaucoup de comptes, sans les verrouiller",
+      "wrong": [
+        "Tous les mots de passe possibles sont testés sur un seul compte à la fois",
+        "Les hashs d'une base volée sont cassés hors ligne sur un GPU",
+        "Des couples identifiant/mot de passe d'une autre fuite sont rejoués"
+      ],
+      "explanation": "Le **password spraying** (« arrosage ») inverse la logique : au lieu de tester beaucoup de mots de passe sur un compte, on teste un mot de passe très courant (du type `Saison2026!`) sur des centaines de comptes, avec de longues pauses. Chaque compte ne reçoit qu'un échec, ce qui reste sous les seuils de verrouillage. Signes à surveiller : de nombreux comptes en échec en peu de temps, depuis les mêmes sources. Parades : authentification multifacteur, interdiction des mots de passe trop prévisibles, verrouillage intelligent, désactivation des protocoles anciens d'authentification et alertes sur les échecs répartis. Le rejeu de couples fuités s'appelle le credential stuffing.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle différence fondamentale y a-t-il entre une attaque **en ligne** et une attaque **hors ligne** contre des mots de passe ?",
+      "answer": "En ligne, chaque essai passe par le serveur ; hors ligne, on teste des hashs volés chez soi",
+      "wrong": [
+        "En ligne, l'attaque dure plus d'un jour ; hors ligne, elle est instantanée",
+        "En ligne, les mots de passe sont chiffrés ; hors ligne, ils sont hachés",
+        "En ligne, on cible un utilisateur ; hors ligne, toute une entreprise"
+      ],
+      "explanation": "Une attaque **en ligne** vise le formulaire de connexion : le débit est limité par le serveur, qui peut ralentir, bloquer, journaliser et exiger un second facteur. Une attaque **hors ligne** suppose que l'attaquant a déjà volé la base d'empreintes : il teste alors ses candidats chez lui, à la vitesse maximale de ses GPU, sans limite ni alerte. Les parades diffèrent donc : contre l'attaque en ligne, limitation des tentatives, verrouillage progressif et MFA ; contre l'attaque hors ligne, un hash lent et salé (Argon2id, bcrypt) et des mots de passe longs, seules protections une fois la base volée.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi `P@ssw0rd!` est-il un mauvais mot de passe malgré ses quatre types de caractères ?",
+      "answer": "Ses substitutions classiques sont prévues par les règles des outils de cassage",
+      "wrong": [
+        "Les caractères spéciaux sont refusés par la plupart des serveurs",
+        "Mélanger quatre types de caractères réduit l'entropie du mot de passe",
+        "Les majuscules affaiblissent toujours un mot de passe face aux dictionnaires"
+      ],
+      "explanation": "`P@ssw0rd!` n'est que le mot `password` avec une majuscule, `a` remplacé par `@`, `o` par `0` et un `!` final. Les outils comme hashcat ou John the Ripper appliquent des **règles de mutation** (par exemple le fichier `best64.rule`) qui transforment chaque mot d'un dictionnaire de cette façon : il est testé presque immédiatement. L'entropie réelle est celle du choix du mot de base, pas celle de la liste de types de caractères. Pour se protéger : des mots de passe générés aléatoirement par un gestionnaire, ou des phrases de passe de mots tirés au hasard, et une liste de mots de passe interdits à la création.",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment une **table arc-en-ciel** (Philippe Oechslin, 2003) économise-t-elle de la mémoire par rapport à une table de tous les couples mot de passe/hash ?",
+      "answer": "Elle ne garde que le début et la fin de chaînes alternant hachage et réduction",
+      "wrong": [
+        "Elle ne retient que les premiers caractères de chaque empreinte",
+        "Elle chiffre chaque couple avec une clé pour le rendre plus compact",
+        "Elle remplace les mots de passe par un simple compteur d'essais"
+      ],
+      "explanation": "Une table arc-en-ciel applique le compromis temps/mémoire de Martin Hellman (1980). Une chaîne part d'un mot de passe, le hache, puis une **fonction de réduction** transforme l'empreinte en un autre mot de passe candidat, et ainsi de suite. Seuls le premier et le dernier maillon sont stockés. Pour chercher une empreinte, on applique les réductions jusqu'à retrouver une fin de chaîne connue, puis on rejoue la chaîne depuis son début. Le « arc-en-ciel » vient d'une réduction différente à chaque colonne, qui limite les fusions de chaînes. Un sel unique rend la table inutilisable, et un hash lent rend sa construction trop coûteuse.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Rainbow_table"
+    },
+    {
+      "question": "Un site ajoute le même sel fixe, écrit dans le code, devant tous les mots de passe avant de les hacher. Quelle faiblesse reste-t-il ?",
+      "answer": "Un précalcul unique pour ce sel casse tous les comptes d'un coup",
+      "wrong": [
+        "Les fonctions de hachage modernes refusent un sel identique pour tous",
+        "Le sel fixe permet de remonter du hash au mot de passe par calcul inverse",
+        "Le hachage devient impossible à vérifier côté serveur"
+      ],
+      "explanation": "Un sel remplit son rôle seulement s'il est **unique par mot de passe** et généré aléatoirement. Avec un sel global, deux comptes de même mot de passe ont le même hash, et un attaquant qui connaît le sel (il est dans le code, souvent dans les sauvegardes) peut construire un seul dictionnaire ou une seule table arc-en-ciel valable pour toute la base. Un sel fixe se rapproche d'un secret applicatif, mais ne remplace pas le sel individuel. Le bon schéma : un sel aléatoire par mot de passe, généré par les bibliothèques (bcrypt, Argon2), éventuellement complété par un poivre gardé hors de la base.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi utiliser l'identifiant de l'utilisateur (`admin`, `root`…) comme sel est-il une mauvaise pratique ?",
+      "answer": "Il est prévisible et identique d'un système à l'autre, d'où des précalculs",
+      "wrong": [
+        "Il est trop court : un sel doit toujours contenir au moins 64 caractères",
+        "Il peut être modifié par l'utilisateur, ce qui invalide son hash",
+        "Il est public, alors qu'un sel doit toujours rester secret"
+      ],
+      "explanation": "Le sel n'a pas besoin d'être secret, mais il doit être **aléatoire et unique à l'échelle de tous les systèmes**. Un identifiant comme `admin` ou `root` existe partout : un attaquant peut précalculer des tables pour les sels `admin` et `root` associés aux mots de passe courants, et les réutiliser sur toutes les bases. De plus, renommer un compte invaliderait son hash. Un sel de 16 octets tiré d'un générateur cryptographique ne présente aucun de ces défauts. Bonne pratique : ne jamais fabriquer son sel à la main, mais laisser la bibliothèque (bcrypt, Argon2, scrypt) le générer et l'inscrire dans la chaîne de hash.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un mot de passe de 12 caractères tirés au hasard parmi les 95 caractères ASCII imprimables est attaqué à 10^10 essais par seconde contre un hash rapide. Combien de temps faut-il pour explorer tout l'espace ?",
+      "answer": "Environ 1,7 million d'années",
+      "wrong": [
+        "Environ 17 000 ans",
+        "Environ 170 ans",
+        "Environ 17 jours"
+      ],
+      "explanation": "L'espace compte 95^12 ≈ 5,4 × 10^23 combinaisons, soit une entropie de 12 × log₂(95) ≈ 78,8 bits. Divisé par 10^10 essais par seconde, cela donne 5,4 × 10^13 secondes, soit environ 1,7 million d'années pour tout parcourir (la moitié en moyenne pour trouver). Aucun raccourci n'existe si le mot de passe est réellement aléatoire. En comparaison, 8 caractères parmi 95 tombent en environ une semaine. Conclusion : un mot de passe aléatoire d'une douzaine de caractères résiste à une attaque hors ligne même contre un hash rapide, mais le hash lent reste indispensable pour les mots de passe choisis par des humains.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle longueur minimale de sel la NIST SP 800-63B (révision 3, 2017) exige-t-elle pour stocker des secrets mémorisés ?",
+      "answer": "Au moins 32 bits",
+      "wrong": [
+        "Au moins 8 bits",
+        "Au moins 16 bits",
+        "Au moins 512 bits"
+      ],
+      "explanation": "La révision 3 de la **NIST SP 800-63B** (lignes directrices américaines sur l'authentification, souvent citées en référence) demande que les mots de passe soient stockés sous forme salée et hachée avec une fonction de dérivation de clé approuvée. Le sel doit faire au moins **32 bits**, choisi arbitrairement pour limiter les collisions entre sels, et le nombre d'itérations aussi élevé que les performances le permettent (au moins 10 000 pour PBKDF2). C'est un plancher : dans la pratique, bcrypt et Argon2 emploient des sels de 128 bits tirés au hasard par la bibliothèque, ce qui rend toute collision de sels improbable.",
+      "difficulty": 3,
+      "source": "https://pages.nist.gov/800-63-3/sp800-63b.html"
+    },
+    {
+      "question": "Une base contient des mots de passe hachés en MD5 non salé. Comment migrer vers bcrypt sans connaître les mots de passe en clair ni forcer un changement immédiat ?",
+      "answer": "Appliquer bcrypt aux empreintes MD5 existantes, puis re-hacher proprement à la connexion",
+      "wrong": [
+        "Remonter des empreintes MD5 aux mots de passe grâce à la clé de l'administrateur",
+        "Réinitialiser tous les comptes en envoyant un nouveau mot de passe en clair par e-mail",
+        "Conserver MD5 en allongeant chaque empreinte avec des zéros pour la rendre robuste"
+      ],
+      "explanation": "On **enveloppe** les anciennes empreintes : chaque ligne devient `bcrypt(MD5(mot de passe))`, ce qui protège toute la base d'un coup, y compris les comptes dormants. On marque la ligne avec une version de schéma. À la connexion suivante, le serveur calcule MD5 puis bcrypt pour vérifier, et si le mot de passe est correct, il le re-hache directement avec `bcrypt(mot de passe)` et met à jour la ligne. Les comptes qui ne reviennent jamais restent protégés par l'enveloppe, ou sont invités à réinitialiser leur mot de passe via un lien à usage unique. Un MD5 ne peut pas être « déchiffré » : c'est une empreinte.",
+      "difficulty": 3,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
     }
   ]
 }

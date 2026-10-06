@@ -8,7 +8,11 @@
     {
       "question": "Combien de couches compte le modèle **OSI** ?",
       "answer": "7",
-      "wrong": ["4", "5", "6"],
+      "wrong": [
+        "4",
+        "5",
+        "6"
+      ],
       "explanation": "Le modèle OSI comporte **7 couches** : Physique, Liaison, Réseau, Transport, Session, Présentation, Application. Le modèle TCP/IP, lui, en condense 4.",
       "difficulty": 1,
       "source": "https://en.wikipedia.org/wiki/OSI_model"
@@ -16,7 +20,11 @@
     {
       "question": "Sur quel port TCP le service **SSH** écoute-t-il par défaut ?",
       "answer": "22",
-      "wrong": ["21", "23", "80"],
+      "wrong": [
+        "21",
+        "23",
+        "80"
+      ],
       "explanation": "SSH utilise le port **22**. Le 21 est celui de FTP (commandes), le 23 celui de Telnet (en clair, à proscrire), et le 80 celui de HTTP.",
       "difficulty": 1,
       "source": "https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers"
@@ -24,21 +32,33 @@
     {
       "question": "Quel port est utilisé par défaut pour le **HTTPS** ?",
       "answer": "443",
-      "wrong": ["80", "8080", "22"],
+      "wrong": [
+        "80",
+        "8080",
+        "22"
+      ],
       "explanation": "HTTPS (HTTP sur TLS) utilise le port **443**. Le port 80 est réservé au HTTP en clair, et 8080 est un port alternatif courant pour des serveurs web de développement ou des proxys.",
       "difficulty": 1
     },
     {
       "question": "Quelle adresse IPv4 désigne l'interface de **bouclage** (loopback) de la machine locale ?",
       "answer": "`127.0.0.1`",
-      "wrong": ["`0.0.0.0`", "`192.168.0.1`", "`255.255.255.255`"],
+      "wrong": [
+        "`0.0.0.0`",
+        "`192.168.0.1`",
+        "`255.255.255.255`"
+      ],
       "explanation": "`127.0.0.1` (localhost) désigne la machine elle-même. `0.0.0.0` signifie « toutes les interfaces », `192.168.0.1` est une passerelle privée typique, et `255.255.255.255` est l'adresse de broadcast limité.",
       "difficulty": 1
     },
     {
       "question": "Quelle est la séquence correcte de la **poignée de main (handshake)** TCP ?",
       "answer": "SYN, SYN-ACK, ACK",
-      "wrong": ["SYN, ACK, SYN-ACK", "ACK, SYN, SYN-ACK", "SYN, SYN-ACK, FIN"],
+      "wrong": [
+        "SYN, ACK, SYN-ACK",
+        "ACK, SYN, SYN-ACK",
+        "SYN, SYN-ACK, FIN"
+      ],
       "explanation": "Le client envoie **SYN**, le serveur répond **SYN-ACK**, puis le client confirme avec **ACK** : la connexion est établie. `FIN` sert au contraire à clore la connexion.",
       "difficulty": 1,
       "source": "https://en.wikipedia.org/wiki/Transmission_Control_Protocol"
@@ -46,21 +66,33 @@
     {
       "question": "Sur quel port (TCP et UDP) fonctionne le **DNS** ?",
       "answer": "53",
-      "wrong": ["25", "110", "143"],
+      "wrong": [
+        "25",
+        "110",
+        "143"
+      ],
       "explanation": "Le DNS écoute sur le port **53** (UDP pour la plupart des requêtes, TCP notamment pour les transferts de zone). Le 25 est SMTP, le 110 POP3 et le 143 IMAP.",
       "difficulty": 1
     },
     {
       "question": "Quel protocole de transport garantit une livraison **fiable et ordonnée** des données ?",
       "answer": "TCP",
-      "wrong": ["UDP", "ICMP", "ARP"],
+      "wrong": [
+        "UDP",
+        "ICMP",
+        "ARP"
+      ],
       "explanation": "**TCP** établit une connexion, numérote les segments et les retransmet en cas de perte : la livraison est fiable et ordonnée. UDP est sans connexion et ne garantit rien, ICMP sert au diagnostic (ping), et ARP résout les adresses MAC.",
       "difficulty": 1
     },
     {
       "question": "Sur combien de bits est codée une adresse **IPv6** ?",
       "answer": "128",
-      "wrong": ["32", "64", "256"],
+      "wrong": [
+        "32",
+        "64",
+        "256"
+      ],
       "explanation": "Une adresse IPv6 fait **128 bits**, contre 32 bits pour IPv4. Cela offre un espace d'adressage colossal, répondant à la pénurie d'adresses IPv4.",
       "difficulty": 1,
       "source": "https://en.wikipedia.org/wiki/IPv6_address"
@@ -68,7 +100,11 @@
     {
       "question": "Que réalise l'option `-sS` de **nmap** ?",
       "answer": "Un scan SYN (half-open)",
-      "wrong": ["Un scan UDP", "Une détection de version de service", "Une détection du système d'exploitation"],
+      "wrong": [
+        "Un scan UDP",
+        "Une détection de version de service",
+        "Une détection du système d'exploitation"
+      ],
       "explanation": "`-sS` lance un **scan SYN** : nmap envoie un SYN et interprète la réponse sans finaliser le handshake (d'où « half-open »), ce qui est rapide et discret. `-sU` scanne l'UDP, `-sV` détecte les versions et `-O` le système d'exploitation.",
       "difficulty": 2,
       "source": "https://nmap.org/book/man-port-scanning-techniques.html"
@@ -76,7 +112,11 @@
     {
       "question": "Laquelle de ces plages fait partie des adresses **privées (RFC 1918)** ?",
       "answer": "`172.16.0.0/12`",
-      "wrong": ["`172.32.0.0/12`", "`11.0.0.0/8`", "`192.169.0.0/16`"],
+      "wrong": [
+        "`172.32.0.0/12`",
+        "`11.0.0.0/8`",
+        "`192.169.0.0/16`"
+      ],
       "explanation": "La RFC 1918 réserve `10.0.0.0/8`, `172.16.0.0/12` (soit 172.16 à 172.31) et `192.168.0.0/16`. Attention aux pièges : `172.32.x.x`, `11.x.x.x` et `192.169.x.x` sont **publiques**.",
       "difficulty": 2,
       "source": "https://www.rfc-editor.org/rfc/rfc1918"
@@ -84,21 +124,33 @@
     {
       "question": "Combien d'**hôtes utilisables** contient un sous-réseau en `/26` ?",
       "answer": "62",
-      "wrong": ["64", "30", "126"],
+      "wrong": [
+        "64",
+        "30",
+        "126"
+      ],
       "explanation": "Un `/26` laisse 32 − 26 = **6 bits** d'hôte, soit 2⁶ = 64 adresses. On retire l'adresse réseau et l'adresse de broadcast : 64 − 2 = **62** hôtes utilisables.",
       "difficulty": 2
     },
     {
       "question": "Quelle attaque consiste à empoisonner les tables ARP d'un réseau local pour s'interposer dans le trafic (MITM) ?",
       "answer": "ARP spoofing (poisoning)",
-      "wrong": ["DNS poisoning", "SYN flood", "VLAN hopping"],
+      "wrong": [
+        "DNS poisoning",
+        "SYN flood",
+        "VLAN hopping"
+      ],
       "explanation": "L'**ARP spoofing** envoie de fausses réponses ARP pour associer l'IP de la passerelle à la MAC de l'attaquant, qui relaie alors le trafic de la victime (man-in-the-middle). ARP n'ayant aucune authentification, cette attaque est classique sur un LAN.",
       "difficulty": 1
     },
     {
       "question": "Sur combien de bits est codée une adresse **MAC** ?",
       "answer": "48",
-      "wrong": ["32", "64", "128"],
+      "wrong": [
+        "32",
+        "64",
+        "128"
+      ],
       "explanation": "Une adresse MAC (EUI-48) fait **48 bits**, généralement notée en 6 octets hexadécimaux (ex: `00:1A:2B:3C:4D:5E`). Les 24 premiers bits identifient le fabricant (OUI).",
       "difficulty": 2,
       "source": "https://en.wikipedia.org/wiki/MAC_address"
@@ -106,21 +158,33 @@
     {
       "question": "Quel port TCP utilise par défaut le **RDP** (Bureau à distance de Windows) ?",
       "answer": "3389",
-      "wrong": ["3306", "445", "5900"],
+      "wrong": [
+        "3306",
+        "445",
+        "5900"
+      ],
       "explanation": "Le RDP écoute sur le port **3389**. Le 3306 est celui de MySQL, le 445 de SMB, et le 5900 de VNC (un autre protocole de bureau distant, à ne pas confondre).",
       "difficulty": 2
     },
     {
       "question": "Quel port TCP, ciblé par l'exploit **EternalBlue**, correspond au partage de fichiers Windows moderne (SMB) ?",
       "answer": "445",
-      "wrong": ["143", "389", "3306"],
+      "wrong": [
+        "143",
+        "389",
+        "3306"
+      ],
       "explanation": "SMB en mode direct (sans NetBIOS) utilise le port **445**, cible de la faille MS17-010 / EternalBlue. Le 143 est IMAP, le 389 LDAP et le 3306 MySQL.",
       "difficulty": 2
     },
     {
       "question": "Quel protocole de sécurité Wi-Fi est **obsolète** et cassable en quelques minutes ?",
       "answer": "WEP",
-      "wrong": ["WPA2", "WPA3", "WPA2-Enterprise"],
+      "wrong": [
+        "WPA2",
+        "WPA3",
+        "WPA2-Enterprise"
+      ],
       "explanation": "**WEP** souffre de faiblesses cryptographiques majeures (vecteurs d'initialisation RC4 trop courts) et se casse rapidement. WPA2 (AES-CCMP) et surtout WPA3 (SAE) sont les standards recommandés.",
       "difficulty": 2,
       "source": "https://en.wikipedia.org/wiki/Wired_Equivalent_Privacy"
@@ -128,35 +192,55 @@
     {
       "question": "Sur quel champ des paquets IP `traceroute` s'appuie-t-il pour découvrir les routeurs intermédiaires ?",
       "answer": "Le TTL (Time To Live)",
-      "wrong": ["Le numéro de port destination", "L'adresse MAC source", "Le champ Options IP"],
+      "wrong": [
+        "Le numéro de port destination",
+        "L'adresse MAC source",
+        "Le champ Options IP"
+      ],
       "explanation": "`traceroute` envoie des paquets avec un **TTL** croissant (1, 2, 3…). Chaque routeur décrémente le TTL ; quand il atteint 0, le routeur renvoie un message ICMP « Time Exceeded », révélant son adresse. On cartographie ainsi le chemin.",
       "difficulty": 2
     },
     {
       "question": "Quelle est la différence clé entre un **IDS** et un **IPS** ?",
       "answer": "L'IPS peut bloquer le trafic, l'IDS ne fait qu'alerter",
-      "wrong": ["L'IDS chiffre le trafic, pas l'IPS", "L'IPS ne fonctionne qu'en IPv6", "L'IDS bloque le trafic, l'IPS se contente d'alerter"],
+      "wrong": [
+        "L'IDS chiffre le trafic, pas l'IPS",
+        "L'IPS ne fonctionne qu'en IPv6",
+        "L'IDS bloque le trafic, l'IPS se contente d'alerter"
+      ],
       "explanation": "Un **IDS** (Intrusion Detection System) observe et alerte, mais laisse passer le trafic ; un **IPS** (Prevention) est en coupure et peut **bloquer** activement les flux malveillants, en temps réel. Attention au piège qui inverse les deux rôles.",
       "difficulty": 2
     },
     {
       "question": "Combien d'**hôtes utilisables** offre un sous-réseau `/30`, courant pour une liaison point-à-point ?",
       "answer": "2",
-      "wrong": ["4", "1", "6"],
+      "wrong": [
+        "4",
+        "1",
+        "6"
+      ],
       "explanation": "Un `/30` a 32 − 30 = 2 bits d'hôte, soit 2² = 4 adresses. Moins l'adresse réseau et le broadcast : 4 − 2 = **2** hôtes utilisables, juste de quoi relier deux équipements.",
       "difficulty": 3
     },
     {
       "question": "En WPA2-PSK, quelle donnée un attaquant capture-t-il pour tenter un **cassage hors-ligne** du mot de passe Wi-Fi ?",
       "answer": "Le 4-way handshake (échange EAPOL)",
-      "wrong": ["La trame beacon du point d'accès", "Une trame de désauthentification", "Une requête ARP de la victime"],
+      "wrong": [
+        "La trame beacon du point d'accès",
+        "Une trame de désauthentification",
+        "Une requête ARP de la victime"
+      ],
       "explanation": "Le **4-way handshake** (poignée de main en quatre temps), échangé à la connexion d'un client, contient de quoi vérifier une clé candidate. Capturé (parfois après une désauthentification forcée, qui ne sert qu'à provoquer une reconnexion), il permet une attaque par dictionnaire/force brute hors ligne. Le beacon ne fournit que le SSID, qui sert de sel au calcul de la clé mais ne permet pas à lui seul de tester un mot de passe.",
       "difficulty": 3
     },
     {
       "question": "Quelle requête DNS un attaquant tente-t-il pour récupérer **tous les enregistrements** d'une zone mal configurée ?",
       "answer": "Un transfert de zone (AXFR)",
-      "wrong": ["Une requête inverse (PTR)", "Une requête MX", "Une requête récursive"],
+      "wrong": [
+        "Une requête inverse (PTR)",
+        "Une requête MX",
+        "Une requête récursive"
+      ],
       "explanation": "Un **transfert de zone AXFR**, normalement réservé aux serveurs secondaires, livre l'intégralité des enregistrements d'une zone s'il est ouvert à tous : une mine d'or pour la reconnaissance. Les serveurs DNS doivent le restreindre aux seuls secondaires autorisés.",
       "difficulty": 3,
       "source": "https://en.wikipedia.org/wiki/DNS_zone_transfer"
@@ -164,29 +248,760 @@
     {
       "question": "Dans un **reverse shell**, qui initie la connexion réseau ?",
       "answer": "La machine victime se connecte vers l'attaquant",
-      "wrong": ["L'attaquant se connecte à un port ouvert par la victime", "Le routeur relaie automatiquement la connexion", "Les deux machines écoutent simultanément"],
+      "wrong": [
+        "L'attaquant se connecte à un port ouvert par la victime",
+        "Le routeur relaie automatiquement la connexion",
+        "Les deux machines écoutent simultanément"
+      ],
       "explanation": "Dans un **reverse shell**, c'est la victime qui se connecte à l'attaquant (qui est en écoute), ce qui franchit souvent les pare-feu bloquant les connexions entrantes. À l'inverse, un **bind shell** ouvre un port sur la victime auquel l'attaquant se connecte.",
       "difficulty": 3
     },
     {
       "question": "Combien d'**hôtes utilisables** contient un sous-réseau `/23` ?",
       "answer": "510",
-      "wrong": ["512", "254", "1022"],
+      "wrong": [
+        "512",
+        "254",
+        "1022"
+      ],
       "explanation": "Un `/23` dispose de 32 − 23 = 9 bits d'hôte, soit 2⁹ = 512 adresses. Moins le réseau et le broadcast : 512 − 2 = **510** hôtes utilisables (soit l'équivalent de deux `/24`).",
       "difficulty": 3
     },
     {
       "question": "À quelle **couche du modèle OSI** opère le protocole TCP ?",
       "answer": "Couche 4 (Transport)",
-      "wrong": ["Couche 3 (Réseau)", "Couche 7 (Application)", "Couche 2 (Liaison)"],
+      "wrong": [
+        "Couche 3 (Réseau)",
+        "Couche 7 (Application)",
+        "Couche 2 (Liaison)"
+      ],
       "explanation": "TCP est un protocole de **couche 4 (Transport)** : il gère la connexion de bout en bout, le découpage en segments et la fiabilité. IP opère à la couche 3 (Réseau) et Ethernet à la couche 2 (Liaison).",
       "difficulty": 2
     },
     {
       "question": "Quel type d'enregistrement DNS héberge les politiques **SPF** et les clés **DKIM** (lutte anti-spam) ?",
       "answer": "TXT",
-      "wrong": ["MX", "CNAME", "SRV"],
+      "wrong": [
+        "MX",
+        "CNAME",
+        "SRV"
+      ],
       "explanation": "Les enregistrements **TXT** stockent des données textuelles arbitraires, dont les politiques SPF et DMARC et les clés publiques DKIM. Le MX désigne les serveurs de messagerie, le CNAME crée un alias, et le SRV publie l'emplacement d'un service.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur quel port TCP le protocole **HTTP** (non chiffré) écoute-t-il par défaut ?",
+      "answer": "80",
+      "wrong": [
+        "21",
+        "25",
+        "110"
+      ],
+      "explanation": "Un port est un numéro (de 0 à 65535) qui indique à quel service d'une machine s'adresse un paquet TCP ou UDP. Le port **80** est celui du HTTP, le protocole du Web sans chiffrement : pages, cookies et mots de passe saisis dans un formulaire circulent en clair et peuvent être lus par n'importe qui sur le chemin, par exemple sur un Wi-Fi public. Les ports 21, 25 et 110 appartiennent à FTP, SMTP et POP3. Pour se protéger, on active HTTPS (port 443), on redirige automatiquement le port 80 vers le 443 et on envoie l'en-tête `Strict-Transport-Security` pour que le navigateur n'essaie plus jamais le HTTP.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel ancien protocole d'administration à distance, qui écoute sur le port 23, envoie les identifiants **en clair** et a été remplacé par **SSH** ?",
+      "answer": "Telnet",
+      "wrong": [
+        "RDP",
+        "Kerberos",
+        "SFTP"
+      ],
+      "explanation": "**Telnet** ouvre un terminal sur une machine distante, mais tout ce qui passe (identifiant, mot de passe, commandes) n'est ni chiffré ni protégé contre la falsification. Avec un sniffeur (outil qui capture les paquets) placé sur le même réseau, un curieux lit la session en direct. SSH reprend le même usage en chiffrant l'échange et en authentifiant le serveur. Exemple : `telnet 192.168.1.1` vers un vieux routeur affiche une invite de connexion parfaitement lisible sur le câble. Protection : désactiver Telnet sur les équipements, bloquer le port 23 au pare-feu et administrer en `ssh`. Telnet reste aussi une cible favorite des botnets, qui testent les mots de passe par défaut.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel est le rôle du protocole **DHCP** sur un réseau local ?",
+      "answer": "Attribuer automatiquement une adresse IP aux machines",
+      "wrong": [
+        "Traduire les noms de domaine en adresses IP",
+        "Associer chaque adresse IP à une adresse MAC",
+        "Chiffrer les échanges entre deux machines du réseau"
+      ],
+      "explanation": "**DHCP** (Dynamic Host Configuration Protocol) évite de configurer chaque appareil à la main : quand un ordinateur ou un téléphone se connecte, un serveur DHCP (souvent la box) lui prête pour une durée limitée, appelée bail, une adresse IP, un masque de sous-réseau, la passerelle par défaut et les serveurs DNS à utiliser. La traduction des noms en adresses relève du DNS, et l'association IP-MAC d'ARP. Côté sécurité, n'importe quelle machine du segment peut se faire passer pour un serveur DHCP et distribuer une fausse passerelle ou un faux DNS : c'est un détournement de trafic classique. Les commutateurs gérables y répondent avec le DHCP snooping, qui n'accepte les réponses DHCP que depuis les ports de confiance.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que renvoie une requête DNS portant sur un enregistrement de type **A** ?",
+      "answer": "L'adresse IPv4 associée à un nom de domaine",
+      "wrong": [
+        "L'adresse IPv6 associée à un nom de domaine",
+        "Le serveur de messagerie d'un domaine",
+        "Le nom de domaine associé à une adresse IP"
+      ],
+      "explanation": "Le **DNS** (Domain Name System) est l'annuaire d'Internet : il traduit un nom lisible en adresse IP. Chaque type d'enregistrement répond à une question différente : **A** donne l'adresse IPv4, `AAAA` l'adresse IPv6, `MX` les serveurs de messagerie, `PTR` le nom associé à une adresse (résolution inverse). Exemple : `dig +short exemple.fr A` affiche une ou plusieurs adresses IPv4. Piège : le DNS classique n'est ni chiffré ni authentifié, donc une réponse peut être falsifiée en chemin. DNSSEC (signatures des réponses) protège l'authenticité, et DNS over TLS ou HTTPS protège la confidentialité des requêtes.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quoi sert le protocole **ARP** sur un réseau local IPv4 ?",
+      "answer": "Trouver l'adresse MAC correspondant à une adresse IP",
+      "wrong": [
+        "Trouver l'adresse IP correspondant à un nom de domaine",
+        "Attribuer une adresse IP à une machine qui démarre",
+        "Découvrir le chemin des routeurs vers une destination"
+      ],
+      "explanation": "Pour envoyer une trame Ethernet à une machine voisine, il faut connaître son adresse MAC (l'identifiant matériel de sa carte réseau), alors qu'on ne connaît que son adresse IP. **ARP** (Address Resolution Protocol) diffuse à tout le segment la question « Qui a 192.168.1.1 ? » ; le propriétaire répond avec sa MAC, et chaque machine garde la réponse dans son cache ARP (`arp -a` l'affiche). Faiblesse : ARP n'authentifie rien et accepte des réponses non sollicitées, ce qui permet l'ARP spoofing (se faire passer pour la passerelle). On s'en protège avec la Dynamic ARP Inspection des commutateurs gérables et en surveillant les changements de MAC de la passerelle.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que permet principalement le **NAT** (Network Address Translation) sur une box Internet ?",
+      "answer": "Faire partager une adresse IP publique par plusieurs machines privées",
+      "wrong": [
+        "Chiffrer tous les échanges entre le réseau local et Internet",
+        "Attribuer automatiquement une adresse à chaque appareil du réseau",
+        "Bloquer tous les paquets provenant d'Internet sans exception"
+      ],
+      "explanation": "Les adresses IPv4 sont comptées (environ 4,3 milliards) : à la maison, tous les appareils reçoivent donc des adresses privées comme `192.168.1.x`, non routables sur Internet. La box remplace l'adresse source privée par son unique adresse publique et mémorise la correspondance (adresse et port) dans une table pour renvoyer les réponses au bon appareil. Un effet de bord : une connexion entrante non sollicitée ne correspond à aucune entrée et est ignorée. Ce n'est pas un vrai pare-feu pour autant. Les redirections de ports et l'UPnP, qui ouvrent des accès depuis Internet, sont à limiter au strict nécessaire.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel protocole la commande `ping` utilise-t-elle pour tester la joignabilité d'une machine ?",
+      "answer": "ICMP (Echo Request et Echo Reply)",
+      "wrong": [
+        "UDP sur le port 7 (service Echo)",
+        "TCP sur le port 80 (HTTP)",
+        "DNS (requêtes sur le port 53)"
+      ],
+      "explanation": "**ICMP** (Internet Control Message Protocol) transporte des messages de contrôle et d'erreur entre équipements IP. `ping` envoie un message Echo Request, attend l'Echo Reply et affiche le temps aller-retour (RTT) en millisecondes. Exemple : `ping -c 4 192.168.1.1` envoie quatre requêtes. Une absence de réponse ne prouve pas qu'une machine est éteinte : beaucoup de pare-feu bloquent l'ICMP. À l'inverse, bloquer tout l'ICMP est une mauvaise idée, car certains messages (comme « fragmentation nécessaire ») sont indispensables au bon fonctionnement de TCP. On filtre plutôt les types inutiles.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que fait un **pare-feu** (firewall) réseau ?",
+      "answer": "Il autorise ou bloque les flux selon des règles prédéfinies",
+      "wrong": [
+        "Il détecte et supprime les virus présents sur les fichiers",
+        "Il chiffre tous les paquets qui traversent le réseau",
+        "Il attribue une adresse IP à chaque machine connectée"
+      ],
+      "explanation": "Un **pare-feu** inspecte les paquets qui le traversent et applique des règles fondées sur les adresses source et destination, les ports et les protocoles : chaque flux est autorisé ou rejeté. Ce n'est ni un antivirus (qui analyse des fichiers) ni un outil de chiffrement. Exemple de configuration défensive sous Linux avec `ufw` : `ufw default deny incoming` puis `ufw allow 443/tcp` n'ouvre que le HTTPS. Limite : un flux autorisé (par exemple vers un site web vulnérable) passe sans être jugé. D'où la défense en profondeur, qui combine pare-feu, mises à jour, IDS/IPS et surveillance des journaux.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel est l'intérêt d'un **VPN** pour un salarié en télétravail qui se connecte à son entreprise ?",
+      "answer": "Créer un tunnel chiffré entre son poste et le réseau de l'entreprise",
+      "wrong": [
+        "Rendre sa connexion Internet plus rapide en la compressant",
+        "Supprimer tout risque de virus sur son ordinateur",
+        "Supprimer le besoin de mot de passe pour accéder aux serveurs"
+      ],
+      "explanation": "Un **VPN** (Virtual Private Network) encapsule le trafic dans un tunnel chiffré qui traverse Internet, via des technologies comme IPsec, OpenVPN ou WireGuard. Même depuis un Wi-Fi d'hôtel, personne sur le chemin ne peut lire ni modifier les échanges, et le poste accède aux ressources internes comme s'il était sur place. Limites : un VPN ne protège ni un ordinateur déjà infecté ni un mot de passe volé. Les passerelles VPN étant des cibles de choix, on les maintient à jour et on ajoute une authentification multifacteur (code, application ou clé physique en plus du mot de passe).",
+      "difficulty": 1
+    },
+    {
+      "question": "Que garantit réellement le cadenas **HTTPS** affiché par le navigateur ?",
+      "answer": "Un échange chiffré avec le serveur du domaine affiché",
+      "wrong": [
+        "Un site légitime, sans arnaque ni logiciel malveillant",
+        "Un serveur protégé contre toute intrusion informatique",
+        "Un éditeur dont l'identité a été vérifiée par l'État"
+      ],
+      "explanation": "**HTTPS** est du HTTP transporté dans le protocole TLS : il apporte le chiffrement des échanges, leur intégrité (personne ne les modifie en route) et l'authentification du serveur par un certificat valide pour le nom de domaine affiché. Mais rien n'indique que le site est honnête : des certificats gratuits sont délivrés automatiquement, et un site de phishing en possède très souvent un. Exemple : `https://paypa1-securite.example` affiche un cadenas alors qu'il imite un service connu. Le bon réflexe est donc de lire attentivement le nom de domaine, pas de se fier au cadenas seul.",
+      "difficulty": 1
+    },
+    {
+      "question": "Combien d'adresses distinctes l'**IPv4** peut-elle théoriquement fournir ?",
+      "answer": "Environ 4,3 milliards (2^32)",
+      "wrong": [
+        "Environ 65 000 (2^16)",
+        "Environ 16 millions (2^24)",
+        "Environ 281 000 milliards (2^48)"
+      ],
+      "explanation": "Une adresse IPv4 tient sur 32 bits, écrits en quatre octets comme `192.168.1.10`. Il y a donc 2^32, soit 4 294 967 296 combinaisons, dont une partie est réservée (plages privées, bouclage, multicast). Le stock libre de blocs d'adresses de l'IANA, l'organisme qui les distribue aux registres régionaux, est épuisé depuis 2011. Le NAT a permis de faire durer la pénurie, et l'IPv6 (128 bits) la résout vraiment. Côté sécurité, l'IPv6 ne dispense pas de pare-feu : chaque appareil peut y recevoir une adresse joignable depuis Internet, donc les règles de filtrage doivent aussi couvrir cette famille d'adresses.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quelle couche du modèle OSI un **routeur** prend-il ses décisions d'acheminement ?",
+      "answer": "Couche 3 (Réseau)",
+      "wrong": [
+        "Couche 2 (Liaison de données)",
+        "Couche 4 (Transport)",
+        "Couche 7 (Application)"
+      ],
+      "explanation": "Le modèle OSI découpe la communication en sept couches : 1 physique, 2 liaison de données (trames, adresses MAC, commutateurs), **3 réseau** (paquets, adresses IP, routeurs), 4 transport (TCP, UDP, ports), 5 session, 6 présentation, 7 application. Un routeur lit l'adresse IP de destination, consulte sa table de routage et choisit le prochain saut vers lequel envoyer le paquet. Un simple commutateur, lui, ne regarde que les adresses MAC. Sur le plan défensif, les listes de contrôle d'accès (ACL) d'un routeur filtrent aux couches 3 et 4, tandis qu'un pare-feu applicatif (WAF) inspecte la couche 7.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel enregistrement DNS indique à quels serveurs envoyer les courriels destinés à un domaine ?",
+      "answer": "MX (Mail eXchanger)",
+      "wrong": [
+        "CNAME (Canonical Name)",
+        "NS (Name Server)",
+        "SOA (Start of Authority)"
+      ],
+      "explanation": "Quand on écrit à `alice@exemple.fr`, le serveur d'envoi interroge le DNS : `dig exemple.fr MX` renvoie par exemple `10 mx1.exemple.fr.`, où le nombre est une priorité (la plus petite valeur est essayée en premier). L'enregistrement `NS` désigne les serveurs de noms faisant autorité sur la zone, `CNAME` est un alias vers un autre nom et `SOA` décrit l'administration de la zone. Si un attaquant modifie un MX en piratant le compte du registrar (le prestataire qui gère le nom de domaine), il détourne tous les courriels. On protège donc ce compte par une authentification multifacteur et le verrouillage du domaine, et on complète avec SPF, DKIM et DMARC.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel port TCP est traditionnellement utilisé par **SMTP** pour transférer le courrier **entre serveurs** de messagerie ?",
+      "answer": "25",
+      "wrong": [
+        "110",
+        "143",
+        "993"
+      ],
+      "explanation": "**SMTP** (Simple Mail Transfer Protocol) sert à envoyer et relayer les courriels, alors que POP3 (port 110) et IMAP (143, ou 993 chiffré) servent à les lire. Les clients de messagerie soumettent leurs messages sur le port 587 (STARTTLS) ou 465 (TLS dès la connexion), et le port 25 est réservé au relais de serveur à serveur. Beaucoup de fournisseurs d'accès bloquent le port 25 sortant des abonnés résidentiels, pour empêcher des ordinateurs infectés d'envoyer du spam. SMTP ne vérifiant pas l'expéditeur à l'origine, on le complète par SPF, DKIM et DMARC, et on impose STARTTLS entre serveurs lorsque c'est possible.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur quel protocole repose **SFTP** (SSH File Transfer Protocol) pour transférer des fichiers de manière sécurisée ?",
+      "answer": "SSH, via le port TCP 22",
+      "wrong": [
+        "TLS, via le port TCP 990",
+        "FTP, via le port TCP 21",
+        "HTTPS, via le port TCP 443"
+      ],
+      "explanation": "**FTP** envoie identifiants et fichiers en clair, avec un canal de commande sur le port 21. Deux remplaçants se ressemblent par leur nom mais n'ont rien à voir : **SFTP** est un sous-système de **SSH**, qui tient sur un seul port (22) et authentifie par mot de passe ou par clé ; **FTPS** est du vrai FTP encapsulé dans TLS (port 990 en mode implicite). Exemple : `sftp utilisateur@serveur` ouvre une session chiffrée. Pour se protéger, on désactive FTP en clair et l'accès anonyme, on préfère l'authentification par clé et on enferme chaque compte dans son répertoire (chroot).",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel enregistrement DNS sert à la résolution **inverse**, c'est-à-dire retrouver le nom associé à une adresse IP ?",
+      "answer": "PTR (Pointer)",
+      "wrong": [
+        "SRV (Service)",
+        "AAAA (adresse IPv6)",
+        "NS (Name Server)"
+      ],
+      "explanation": "La résolution inverse interroge un enregistrement **PTR** placé dans une zone spéciale : pour `192.0.2.10`, le DNS cherche `10.2.0.192.in-addr.arpa`, avec les octets inversés. Exemple : `dig -x 192.0.2.10` fait cette requête. Elle sert à rendre les journaux lisibles et à lutter contre le spam, car de nombreux serveurs de messagerie refusent les expéditeurs sans DNS inverse cohérent. Attention : le PTR est géré par le propriétaire du bloc d'adresses (le fournisseur d'accès), pas par le titulaire du domaine, et il peut afficher n'importe quel nom. Ce n'est donc pas une preuve d'identité.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un PC Windows affiche l'adresse `169.254.12.34`. Que cela indique-t-il le plus souvent ?",
+      "answer": "Il n'a obtenu aucun bail DHCP et s'est auto-configuré",
+      "wrong": [
+        "Il est directement relié à Internet avec une IP publique",
+        "Il utilise un VPN dont le tunnel est bien établi",
+        "Il est victime d'une attaque d'usurpation ARP en cours"
+      ],
+      "explanation": "La plage `169.254.0.0/16` est réservée à l'adressage **link-local** IPv4 (RFC 3927, appelé APIPA chez Microsoft). Quand aucun serveur DHCP ne répond, la machine se choisit toute seule une adresse dans cette plage : elle peut parler à ses voisins directs, mais sans passerelle elle n'a pas Internet. Pour diagnostiquer, on vérifie le câble ou le Wi-Fi, l'état du serveur DHCP et son pool d'adresses libres, puis on lance `ipconfig /renew`. Un pool vidé volontairement par un attaquant (DHCP starvation) provoque le même symptôme : le port security et le DHCP snooping des commutateurs limitent ce risque.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans quel ordre se déroulent les quatre messages d'un échange **DHCP** classique ?",
+      "answer": "Discover, Offer, Request, Acknowledge",
+      "wrong": [
+        "Request, Offer, Discover, Acknowledge",
+        "Offer, Discover, Acknowledge, Request",
+        "Discover, Request, Offer, Acknowledge"
+      ],
+      "explanation": "On retient l'ordre avec le mot « DORA ». Le client, qui n'a pas encore d'adresse, diffuse un **Discover** (UDP, du port 68 vers le port 67) ; le serveur répond par un **Offer** qui propose une adresse ; le client confirme son choix par un **Request** ; le serveur valide avec un **Acknowledge** et le bail commence. Comme le premier message est une diffusion, n'importe quelle machine du segment peut répondre et jouer le serveur DHCP (rogue DHCP). Un commutateur configuré en DHCP snooping n'accepte les messages Offer et Acknowledge que depuis ses ports de confiance.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel mécanisme remplace **ARP** en IPv6 pour associer une adresse IP à une adresse MAC ?",
+      "answer": "NDP (Neighbor Discovery), fondé sur ICMPv6",
+      "wrong": [
+        "DHCPv6, qui tient un registre central des MAC",
+        "IGMP, qui gère les groupes de diffusion multicast",
+        "RARP, une version inversée d'ARP adaptée à IPv6"
+      ],
+      "explanation": "L'IPv6 n'a pas de diffusion générale (broadcast) : ARP disparaît au profit du protocole **NDP** (Neighbor Discovery Protocol), qui repose sur des messages ICMPv6. Un Neighbor Solicitation demande « Qui possède cette adresse ? » à un groupe multicast restreint, et un Neighbor Advertisement répond. NDP annonce aussi les routeurs (Router Advertisement), ce qui permet l'auto-configuration des adresses. Il fait confiance à tout le monde, comme ARP : un faux Router Advertisement ou un faux Neighbor Advertisement suffit à détourner le trafic. Parade : la fonction RA Guard et l'inspection ND des commutateurs gérables.",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment nomme-t-on l'unité de données de la couche **Liaison** (niveau 2 du modèle OSI), par exemple en Ethernet ?",
+      "answer": "Une trame (frame)",
+      "wrong": [
+        "Un segment",
+        "Un paquet",
+        "Un message"
+      ],
+      "explanation": "Chaque couche encapsule les données de la couche supérieure : un message applicatif est découpé en **segments** TCP (en-tête avec les ports), placés dans des **paquets** IP (adresses IP), eux-mêmes placés dans des **trames** Ethernet (adresses MAC, contrôle d'erreurs) avant de partir en bits sur le câble. Wireshark affiche ces couches dans l'ordre : Frame, Ethernet II, Internet Protocol, Transmission Control Protocol. Chaque niveau a ses attaques propres : ARP spoofing au niveau 2, usurpation d'adresse IP au niveau 3, SYN flood au niveau 4. Les protections sont donc à penser couche par couche.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel préfixe IPv6 correspond aux adresses **link-local**, valables uniquement sur le segment local ?",
+      "answer": "`fe80::/10`",
+      "wrong": [
+        "`fc00::/7`",
+        "`2000::/3`",
+        "`ff00::/8`"
+      ],
+      "explanation": "Toute interface IPv6 se donne automatiquement une adresse **link-local** en `fe80::/10`. Elle n'est jamais routée au-delà du segment, mais elle sert à NDP, aux échanges entre routeurs voisins et d'adresse source aux annonces de routeur. Les autres préfixes sont `fc00::/7` (adresses locales uniques, l'équivalent des plages privées IPv4), `2000::/3` (adresses globales, publiques) et `ff00::/8` (multicast). `ip -6 addr` liste les adresses d'une machine Linux. Détail défensif : l'IPv6 est activé par défaut sur la plupart des systèmes, même quand on ne pense qu'à l'IPv4. Il faut donc filtrer aussi ce trafic et activer RA Guard sur les commutateurs.",
+      "difficulty": 3
+    },
+    {
+      "question": "**TLS** est le successeur de quel protocole de sécurisation des échanges ?",
+      "answer": "SSL (Secure Sockets Layer)",
+      "wrong": [
+        "IPsec (IP Security)",
+        "SSH (Secure Shell)",
+        "PGP (Pretty Good Privacy)"
+      ],
+      "explanation": "**SSL** a été conçu par Netscape au milieu des années 1990 pour protéger les échanges du Web. Sa version 3.0 a donné naissance à **TLS** 1.0 en 1999. SSL 2.0 et 3.0 sont aujourd'hui interdits car cassés (l'attaque POODLE a visé SSL 3.0 en 2014), et TLS 1.0 et 1.1 sont à leur tour dépréciés depuis 2021 : on n'utilise plus que TLS 1.2 et 1.3. On parle pourtant encore de « certificat SSL » par habitude. Sur un serveur nginx, une configuration défensive tient en une ligne : `ssl_protocols TLSv1.2 TLSv1.3;`. Les protocoles obsolètes sont ainsi refusés, ce qui bloque les attaques par rétrogradation.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pour une authentification **SSH par clé**, quel élément ne doit **jamais** quitter le poste du client ?",
+      "answer": "La clé privée",
+      "wrong": [
+        "La clé publique",
+        "L'empreinte de la clé du serveur",
+        "Le nom de l'utilisateur distant"
+      ],
+      "explanation": "L'authentification par clé repose sur une paire : la clé **privée** reste secrète sur le poste du client, la clé **publique** est copiée dans le fichier `~/.ssh/authorized_keys` du serveur. À la connexion, le serveur lance un défi que seul le détenteur de la clé privée sait signer ; celle-ci n'est jamais transmise. Exemple : `ssh-keygen -t ed25519` crée la paire. Pour se protéger, on chiffre la clé privée avec une phrase de passe, on garde ses droits à `600` et, côté serveur, on ajoute `PasswordAuthentication no` dans `sshd_config` pour couper court aux attaques par force brute sur les mots de passe.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quoi sert **Wireshark** ?",
+      "answer": "À capturer et analyser en détail le trafic réseau",
+      "wrong": [
+        "À scanner les ports ouverts d'un réseau à distance",
+        "À bloquer les connexions entrantes non autorisées",
+        "À chiffrer les communications d'un poste de travail"
+      ],
+      "explanation": "**Wireshark** est un analyseur de paquets (ou sniffeur) : il capture les trames qui passent sur une interface réseau et les décode couche par couche, d'Ethernet jusqu'aux protocoles applicatifs. Les filtres d'affichage aident à s'y retrouver : `dns` ne montre que les requêtes DNS, `tcp.flags.syn == 1 && tcp.flags.ack == 0` isole les tentatives de connexion TCP. Il sert à diagnostiquer une lenteur, une erreur de configuration ou une intrusion. Il ne doit être utilisé que sur ses propres réseaux ou avec autorisation. Il rappelle aussi pourquoi HTTP, FTP et Telnet sont dangereux : leur contenu est lisible en clair, alors que TLS ou SSH le rendent illisible.",
+      "difficulty": 1
+    },
+    {
+      "question": "Ton navigateur affiche un avertissement de **certificat invalide** en ouvrant le site de ta banque. Quel est le bon réflexe ?",
+      "answer": "Ne pas poursuivre, vérifier l'adresse et le réseau utilisés",
+      "wrong": [
+        "Cliquer sur « Continuer » : c'est sûrement une erreur bénigne",
+        "Désactiver temporairement l'antivirus puis recharger la page",
+        "Se connecter quand même, mais avec un autre mot de passe"
+      ],
+      "explanation": "Le navigateur alerte quand la chaîne de confiance échoue : certificat expiré, émis pour un autre nom de domaine ou signé par une autorité inconnue. Parfois, ce n'est qu'une négligence de l'administrateur du site. Mais cela peut aussi révéler une interception (homme du milieu) sur un Wi-Fi piégé ou une faute de frappe dans l'adresse. Sur un site sensible, on n'ajoute jamais d'exception : on relit l'adresse, on change de réseau (par exemple en 4G) et on contacte le support. En entreprise, un proxy peut inspecter le trafic HTTPS avec un certificat interne, mais celui-ci est alors installé à l'avance sur les postes.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel est le rôle d'une **autorité de certification** (AC) dans HTTPS ?",
+      "answer": "Signer des certificats liant une clé publique à une identité",
+      "wrong": [
+        "Chiffrer le contenu des pages à la place du serveur",
+        "Héberger les sites web et fournir leurs noms de domaine",
+        "Stocker les mots de passe des utilisateurs du site"
+      ],
+      "explanation": "Un certificat X.509 contient le nom de domaine d'un site, sa clé publique, une durée de validité et la **signature** d'une autorité de certification. Les navigateurs et systèmes embarquent une liste d'AC racines de confiance : le certificat du serveur est validé via une chaîne (serveur, intermédiaire, racine). L'AC doit donc vérifier que le demandeur contrôle bien le domaine. Quand une AC est piratée, tout s'effondre : en 2011, DigiNotar a émis de faux certificats pour Google, utilisés pour intercepter des courriels d'internautes iraniens. Parades : les journaux publics Certificate Transparency et l'enregistrement DNS `CAA`, qui limite les AC autorisées à émettre pour un domaine.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quoi sert l'en-tête HTTP `Strict-Transport-Security` (**HSTS**) ?",
+      "answer": "Obliger le navigateur à n'utiliser que HTTPS avec ce site",
+      "wrong": [
+        "Interdire l'intégration du site dans une iframe tierce",
+        "Limiter les domaines depuis lesquels charger les scripts",
+        "Chiffrer les cookies de session côté serveur"
+      ],
+      "explanation": "Avec `Strict-Transport-Security: max-age=31536000; includeSubDomains`, le serveur ordonne au navigateur, pendant un an ici, de convertir tout accès `http://` en `https://` et de refuser les certificats invalides sans bouton « continuer ». Cela déjoue le SSL stripping, où un attaquant garde la victime en HTTP. Limite : la protection ne démarre qu'après une première visite en HTTPS, sauf si le domaine figure dans la liste de préchargement (« preload ») des navigateurs. Les autres propositions décrivent `X-Frame-Options` (anti-iframe) et `Content-Security-Policy` (sources autorisées pour les scripts).",
+      "difficulty": 2
+    },
+    {
+      "question": "Lors de ta première connexion SSH à un serveur, le client affiche l'**empreinte** de sa clé et demande confirmation. Pourquoi la vérifier ?",
+      "answer": "S'assurer qu'on parle au vrai serveur, pas à un intercepteur",
+      "wrong": [
+        "Vérifier que le mot de passe saisi est suffisamment robuste",
+        "Savoir si le serveur dispose des derniers correctifs",
+        "Choisir l'algorithme de chiffrement de la session"
+      ],
+      "explanation": "Un serveur SSH possède sa propre clé d'hôte, et l'empreinte (fingerprint) en est un résumé court. Si on accepte sans comparer, un homme du milieu peut se faire passer pour le serveur. On compare donc avec une empreinte obtenue par un autre canal (console d'hébergeur, administrateur), par exemple affichée par `ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub`. Le client la mémorise ensuite dans `~/.ssh/known_hosts` (principe de confiance à la première utilisation). Si elle change, le message « REMOTE HOST IDENTIFICATION HAS CHANGED » apparaît : réinstallation légitime ou interception, mais il ne faut jamais l'ignorer.",
+      "difficulty": 2
+    },
+    {
+      "question": "Déplacer SSH du port 22 vers un port inhabituel (par exemple 2222) : quelle est la valeur de cette mesure ?",
+      "answer": "Elle réduit le bruit des scans automatiques, sans vraie protection",
+      "wrong": [
+        "Elle empêche tout scanner de ports de découvrir le service",
+        "Elle chiffre la session mieux qu'avec le port standard",
+        "Elle rend inutile l'authentification par clé ou mot de passe"
+      ],
+      "explanation": "Changer de port relève de la « sécurité par l'obscurité » : elle ne repose que sur le secret d'un numéro. Un scan complet des 65535 ports (avec nmap par exemple) retrouve le service en quelques minutes. L'avantage est modeste mais réel : les robots qui testent uniquement le port 22 ne le voient pas, et les journaux sont moins encombrés. Les vraies protections sont ailleurs : authentification par clé uniquement (`PasswordAuthentication no`), `PermitRootLogin no`, outil comme Fail2ban, filtrage des adresses autorisées ou accès par VPN, et mises à jour régulières d'OpenSSH.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que fait un outil comme **Fail2ban** face à des tentatives de connexion SSH échouées en série ?",
+      "answer": "Il lit les journaux et bannit l'adresse IP source via le pare-feu",
+      "wrong": [
+        "Il chiffre les mots de passe saisis avant leur envoi",
+        "Il remplace le mot de passe par un code à usage unique",
+        "Il met à jour automatiquement le serveur SSH"
+      ],
+      "explanation": "Une attaque par force brute essaie des milliers de mots de passe en rafale. **Fail2ban** surveille les journaux (comme `/var/log/auth.log`) grâce à des « jails », des règles qui repèrent les échecs de connexion. Au-delà d'un seuil, par exemple `maxretry = 5` en dix minutes, il ajoute une règle de pare-feu qui bloque l'adresse IP pendant `bantime`. Limites : un attaquant qui répartit ses essais sur des centaines d'adresses passe sous le seuil, et une faute de frappe répétée peut bannir un utilisateur légitime. Il complète donc, sans les remplacer, l'authentification par clé et l'authentification multifacteur.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'apporte un pare-feu **à états** (stateful) par rapport à un simple filtre de paquets sans état ?",
+      "answer": "Il suit les connexions et n'accepte que les réponses attendues",
+      "wrong": [
+        "Il déchiffre tout le trafic HTTPS pour l'analyser en clair",
+        "Il bloque automatiquement tout le trafic venant de l'étranger",
+        "Il ne s'applique qu'au trafic sortant du réseau local"
+      ],
+      "explanation": "Un filtre sans état juge chaque paquet isolément : pour laisser revenir les réponses, il faut ouvrir de larges plages de ports depuis l'extérieur. Un pare-feu à états tient une table des connexions (adresses, ports, état TCP) : un paquet entrant qui répond à une connexion lancée de l'intérieur est accepté, tout le reste est rejeté. Avec nftables, la règle `ct state established,related accept` exprime cette idée. Limite : il ne comprend pas le contenu applicatif, ce qui est le rôle d'un pare-feu applicatif ou d'un IPS.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle approche est recommandée pour écrire les règles d'un pare-feu d'entreprise ?",
+      "answer": "Tout interdire par défaut, puis autoriser explicitement le nécessaire",
+      "wrong": [
+        "Tout autoriser par défaut, puis bloquer les menaces connues",
+        "Bloquer seulement les pays jugés à risque, le reste est permis",
+        "Désactiver le filtrage interne pour ne protéger que la périphérie"
+      ],
+      "explanation": "La politique du « refus par défaut » (default deny) repose sur une liste blanche : seuls les flux justifiés et documentés passent, tout le reste est rejeté. Sous Linux, `iptables -P INPUT DROP` fixe cette politique avant d'ajouter les règles d'autorisation. L'approche inverse, la liste noire, oblige à connaître à l'avance toutes les menaces : un nouveau port ou une nouvelle adresse malveillante passe donc au travers. On applique aussi le principe au trafic sortant, afin de gêner l'exfiltration de données et les communications d'un poste compromis avec son pirate.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qu'un **VLAN** ?",
+      "answer": "Un découpage logique d'un commutateur en réseaux de niveau 2 séparés",
+      "wrong": [
+        "Un tunnel chiffré qui relie deux sites distants via Internet",
+        "Un protocole de routage dynamique entre deux routeurs",
+        "Un réseau Wi-Fi réservé aux visiteurs de l'entreprise"
+      ],
+      "explanation": "Un **VLAN** (Virtual LAN) répartit les ports d'un même commutateur dans des réseaux logiques indépendants. La norme 802.1Q étiquette les trames avec un identifiant de 12 bits (de 1 à 4094). Deux machines de VLAN différents ne communiquent pas directement : il faut passer par un routeur ou un pare-feu, qui peut filtrer. Exemple : VLAN 10 pour les postes, 20 pour les serveurs, 30 pour les invités, 40 pour les caméras IP. On réduit ainsi les domaines de diffusion et les mouvements d'un attaquant. Attention : une mauvaise configuration (VLAN hopping) peut annuler cette séparation.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi segmenter un réseau d'entreprise (postes, serveurs, invités, caméras) en zones séparées ?",
+      "answer": "Limiter la propagation d'une compromission d'une zone à l'autre",
+      "wrong": [
+        "Augmenter la vitesse de chaque connexion Internet",
+        "Réduire le nombre d'adresses IP publiques utilisées",
+        "Éviter d'avoir à installer des correctifs de sécurité"
+      ],
+      "explanation": "Une fois un poste compromis, l'attaquant cherche à se déplacer vers d'autres machines : c'est le mouvement latéral. Dans un réseau « à plat », rien ne l'arrête. En zones séparées par un pare-feu qui n'autorise que les flux nécessaires, une infection reste confinée. Exemple : bloquer le partage de fichiers SMB (port 445) entre postes de travail freine fortement la propagation d'un rançongiciel. Les caméras et objets connectés, souvent mal mis à jour, se placent dans une zone isolée. Cette segmentation figure parmi les mesures de base des guides de l'ANSSI, mais elle ne dispense pas des correctifs.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel port UDP le protocole **IKE** utilise-t-il par défaut pour négocier un tunnel **IPsec** ?",
+      "answer": "500",
+      "wrong": [
+        "1194",
+        "123",
+        "161"
+      ],
+      "explanation": "**IPsec** est un ensemble de protocoles qui sécurisent le trafic IP, et **IKE** (Internet Key Exchange) en est la phase de négociation : il authentifie les deux extrémités et convient des algorithmes et des clés. Il écoute en UDP 500, ou en UDP 4500 lorsqu'un NAT se trouve sur le chemin (NAT traversal). Les autres numéros sont ceux d'OpenVPN (1194), de NTP (123) et de SNMP (161). Bonnes pratiques : IKEv2 avec des algorithmes modernes, authentification par certificats, filtrage des pairs autorisés. Le mode agressif d'IKEv1 avec clé prépartagée expose un condensat qu'un attaquant peut casser hors ligne.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel standard IEEE permet d'authentifier un utilisateur ou un appareil **avant** de lui ouvrir l'accès à un port de commutateur ou à un Wi-Fi d'entreprise ?",
+      "answer": "`802.1X`",
+      "wrong": [
+        "`802.1Q`",
+        "`802.3af`",
+        "`802.11n`"
+      ],
+      "explanation": "**802.1X** est un contrôle d'accès par port. Le poste (supplicant) s'authentifie auprès du commutateur ou de la borne Wi-Fi (authenticator), qui relaie la demande à un serveur RADIUS ; tant que la vérification n'a pas réussi, seules les trames d'authentification EAP passent. Les méthodes comme EAP-TLS (certificat) ou PEAP (mot de passe) permettent des identifiants individuels, révocables sans changer la clé de tout le monde, et même d'affecter dynamiquement un VLAN. Les autres normes sont le marquage VLAN (802.1Q), l'alimentation par câble réseau (802.3af) et un ancien Wi-Fi (802.11n). Pièges : les clients doivent vérifier le certificat du serveur, sinon un faux point d'accès vole les identifiants.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi préférer **SNMPv3** à SNMPv1 ou v2c pour superviser des équipements réseau ?",
+      "answer": "Il ajoute l'authentification et le chiffrement des messages",
+      "wrong": [
+        "Il utilise TCP plutôt qu'UDP pour fiabiliser les alertes",
+        "Il supporte davantage de marques d'équipements réseau",
+        "Il remplace la supervision par la lecture des journaux"
+      ],
+      "explanation": "**SNMP** (Simple Network Management Protocol, UDP 161 et 162) permet à un outil de supervision d'interroger routeurs, commutateurs et imprimantes (charge, état des interfaces…). En v1 et v2c, l'accès est protégé par une « communauté », simple mot de passe transmis en clair, souvent laissé à `public` ou `private` : un sniffeur la lit, et avec une communauté en écriture on peut reconfigurer l'équipement. SNMPv3 introduit de vrais utilisateurs, une authentification par HMAC et un chiffrement AES (niveau `authPriv`). On limite en plus l'accès par liste d'adresses ou VLAN d'administration, et on désactive l'écriture.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'impose **TLS 1.3** pour l'échange de clés par rapport aux anciennes versions ?",
+      "answer": "Un échange à clés éphémères, donnant la confidentialité persistante",
+      "wrong": [
+        "Le chiffrement de la clé de session par la clé RSA du serveur",
+        "L'abandon des certificats au profit de mots de passe partagés",
+        "L'envoi de la clé de session en clair avant le chiffrement"
+      ],
+      "explanation": "Avec TLS 1.2 et un transport de clé RSA, un attaquant qui enregistre le trafic aujourd'hui puis vole la clé privée du serveur demain peut tout déchiffrer. **TLS 1.3** (RFC 8446, 2018) supprime ce mode et impose un échange Diffie-Hellman éphémère : chaque session utilise des clés jetables, et le vol ultérieur de la clé du serveur ne dévoile pas les échanges passés. C'est la confidentialité persistante (forward secrecy). TLS 1.3 retire aussi des algorithmes obsolètes (RC4, modes CBC, compression), chiffre une grande partie de la négociation et la réduit à un seul aller-retour.",
+      "difficulty": 3
+    },
+    {
+      "question": "Avec TLS classique (hors ECH), quelle information un observateur du réseau peut-il lire grâce au **SNI** ?",
+      "answer": "Le nom d'hôte du site auquel le client se connecte",
+      "wrong": [
+        "Le contenu complet de la page et les cookies envoyés",
+        "L'URL complète demandée, avec son chemin et ses paramètres",
+        "Le mot de passe saisi dans le formulaire de connexion"
+      ],
+      "explanation": "Le **SNI** (Server Name Indication) est une extension du message ClientHello, envoyé avant que le chiffrement ne soit en place. Il permet à un serveur qui héberge plusieurs sites sur une même adresse IP de présenter le bon certificat. Conséquence : un fournisseur d'accès ou un pare-feu voit `www.exemple.fr` et peut s'en servir pour filtrer, mais ne voit ni le chemin, ni les paramètres, ni les cookies, ni le contenu, qui sont chiffrés. L'extension Encrypted Client Hello (ECH), en cours de déploiement, chiffre aussi ce nom. Les requêtes DNS le révèlent également si elles ne sont pas chiffrées (DoT ou DoH).",
+      "difficulty": 3
+    },
+    {
+      "question": "Un attaquant placé en homme du milieu réécrit les liens `https://` en `http://` pour que la victime reste sans chiffrement. Comment s'appelle cette attaque ?",
+      "answer": "SSL stripping (dégradation vers HTTP)",
+      "wrong": [
+        "DNS cache poisoning (empoisonnement du cache)",
+        "Session fixation (fixation de session)",
+        "Smurf attack (diffusion ICMP)"
+      ],
+      "explanation": "Quand l'utilisateur tape `banque.fr`, le navigateur tente d'abord le HTTP. L'attaquant intercepte cette requête, dialogue en HTTPS avec le vrai serveur et en HTTP avec la victime, donc il lit et modifie tout. L'outil `sslstrip`, présenté en 2009 par Moxie Marlinspike, a popularisé la technique. Parades : l'en-tête HSTS (avec préchargement) force le HTTPS dès le départ, les navigateurs récents proposent un mode « HTTPS d'abord », et on tape explicitement `https://`. Un réseau Wi-Fi public, où l'on peut s'interposer, reste le terrain favori de ce type d'attaque.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que garantit **DNSSEC** ?",
+      "answer": "L'authenticité et l'intégrité des réponses DNS",
+      "wrong": [
+        "La confidentialité des requêtes face au fournisseur d'accès",
+        "La disponibilité du DNS face aux attaques par déni de service",
+        "Le chiffrement des échanges entre le navigateur et un site"
+      ],
+      "explanation": "**DNSSEC** ajoute des signatures numériques aux enregistrements (types `RRSIG`, `DNSKEY`, `DS`) : un résolveur vérifie la chaîne de confiance depuis la racine du DNS jusqu'à la zone du domaine, et détecte une réponse falsifiée, comme lors d'un empoisonnement de cache. En revanche, il ne chiffre rien : les requêtes restent lisibles (c'est le rôle de DoT ou DoH) et il n'empêche pas le déni de service, car les réponses signées, plus volumineuses, peuvent même amplifier une attaque. Il ne protège que si le propriétaire du domaine signe sa zone et si le résolveur valide les signatures. `dig +dnssec` permet d'observer ces enregistrements.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel port TCP **DNS over TLS** (DoT) utilise-t-il par défaut ?",
+      "answer": "853",
+      "wrong": [
+        "5353",
+        "993",
+        "636"
+      ],
+      "explanation": "**DoT** (RFC 7858) encapsule les requêtes DNS dans une session TLS sur le port dédié 853, ce qui les protège contre l'écoute et la modification entre le client et son résolveur. **DoH** (DNS over HTTPS) les noie dans du trafic HTTPS sur le port 443, plus difficile à distinguer et à filtrer. Les autres numéros sont ceux de mDNS (5353), d'IMAPS (993) et de LDAPS (636). Le résolveur, lui, voit toujours toutes les requêtes. En entreprise, un DoH non maîtrisé peut contourner le filtrage DNS interne : on le configure volontairement ou on le bloque.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans **IPsec**, quel protocole peut **chiffrer** le contenu des paquets IP ?",
+      "answer": "ESP (Encapsulating Security Payload)",
+      "wrong": [
+        "AH (Authentication Header)",
+        "IKE (Internet Key Exchange)",
+        "GRE (Generic Routing Encapsulation)"
+      ],
+      "explanation": "**ESP** (protocole IP numéro 50) chiffre la charge utile et assure aussi l'intégrité et l'authentification des paquets. **AH** (protocole 51) ne fait que signer le paquet, y compris l'en-tête IP : rien n'est chiffré, et il est incompatible avec le NAT, qui modifie justement cet en-tête, ce qui le rend très rare. IKE ne transporte pas les données, il négocie les clés. GRE encapsule sans protéger. Un VPN entre deux sites utilise ESP en mode tunnel, où le paquet d'origine est entièrement enfermé dans un nouveau paquet. On choisit un chiffrement moderne comme AES-GCM.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel est le premier réflexe de sécurité en installant une box ou un routeur neuf ?",
+      "answer": "Changer le mot de passe d'administration par défaut",
+      "wrong": [
+        "Désactiver le pare-feu intégré pour faciliter la configuration",
+        "Activer l'administration à distance depuis Internet",
+        "Augmenter la puissance d'émission du Wi-Fi"
+      ],
+      "explanation": "Les identifiants d'usine (`admin/admin`, `admin/password`…) figurent dans des listes publiques : n'importe qui peut les essayer sur un équipement exposé. En 2016, le botnet Mirai a recruté des centaines de milliers de caméras et de routeurs en testant simplement quelques dizaines de couples d'identifiants par défaut, puis a servi à des attaques DDoS géantes, notamment contre le fournisseur DNS Dyn en octobre. À l'installation, on change donc le mot de passe d'administration, on met à jour le micrologiciel, on désactive l'administration depuis Internet, le WPS et l'UPnP, et on choisit une phrase de passe Wi-Fi longue avec WPA2 ou WPA3.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce qui distingue une attaque **DDoS** d'un simple DoS ?",
+      "answer": "Elle provient de très nombreuses machines coordonnées",
+      "wrong": [
+        "Elle vise uniquement les serveurs de messagerie",
+        "Elle nécessite d'avoir volé des identifiants au préalable",
+        "Elle n'utilise que des paquets ICMP"
+      ],
+      "explanation": "Un **déni de service** (DoS) cherche à rendre un service indisponible, en saturant la bande passante ou les ressources du serveur, ou en exploitant un défaut qui le fait planter. Dans un déni de service **distribué** (DDoS), l'attaque vient de milliers de machines, souvent un botnet d'ordinateurs ou d'objets connectés infectés : bloquer une adresse IP ne suffit plus. On distingue les attaques volumétriques (saturation du tuyau), protocolaires (comme le SYN flood) et applicatives (inondation de requêtes HTTP). Parades : service anti-DDoS de l'opérateur ou CDN réparti en anycast, limitation de débit, capacité de montée en charge et plan de réponse préparé à l'avance.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans une attaque de l'**homme du milieu** (MITM), que fait l'attaquant ?",
+      "answer": "Il s'interpose pour lire ou modifier des échanges",
+      "wrong": [
+        "Il sature un serveur avec un déluge de requêtes",
+        "Il devine un mot de passe en testant des combinaisons",
+        "Il installe un programme espion sur le serveur cible"
+      ],
+      "explanation": "Les deux interlocuteurs croient dialoguer directement, alors que tout passe par l'attaquant, qui peut espionner, voler des identifiants ou des sessions, et modifier les données. Il s'y prend par ARP spoofing sur un réseau local, faux point d'accès Wi-Fi, faux serveur DHCP ou DNS, voire équipement réseau compromis. Le remède de fond est un chiffrement **authentifié** de bout en bout : avec TLS et la vérification du certificat, SSH et la vérification de l'empreinte du serveur, ou un VPN, l'intercepteur ne peut ni lire ni modifier sans se faire détecter. Côté réseau, on ajoute l'inspection ARP dynamique et l'authentification 802.1X.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quoi sert un **reverse proxy** placé devant des serveurs web ?",
+      "answer": "Recevoir les requêtes à leur place pour les filtrer et les répartir",
+      "wrong": [
+        "Cacher l'identité des internautes qui visitent d'autres sites",
+        "Chiffrer les disques durs des serveurs web",
+        "Attribuer des adresses IP aux serveurs du réseau"
+      ],
+      "explanation": "Un reverse proxy (nginx, HAProxy…) est l'unique point d'entrée : il termine le TLS, répartit la charge entre plusieurs serveurs, met en cache, applique des limites de débit et peut intégrer un pare-feu applicatif. Les serveurs internes ne sont pas joignables directement, ce qui cache leur topologie et réduit la surface d'attaque. Exemple nginx : `limit_req_zone $binary_remote_addr zone=api:10m rate=10r/s;` freine un client trop insistant. Ne pas confondre avec le proxy **direct** (forward), qui agit pour les utilisateurs internes vers Internet : filtrage des sites visités, journalisation et cache. C'est le même mot, mais dans l'autre sens.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la différence entre un **NIDS** et un **HIDS** ?",
+      "answer": "Le NIDS analyse le trafic réseau, le HIDS surveille une machine",
+      "wrong": [
+        "Le NIDS surveille une machine, le HIDS le trafic réseau",
+        "Le NIDS bloque les attaques, alors que le HIDS ne fait qu'alerter",
+        "Le NIDS ne traite que les protocoles chiffrés, le HIDS les autres"
+      ],
+      "explanation": "Un **NIDS** (Network Intrusion Detection System), comme Snort ou Suricata, écoute le trafic d'un segment réseau, en général via un port miroir (SPAN) ou une prise réseau passive (TAP), et le compare à des signatures d'attaques ou à un comportement normal. Il est aveugle au contenu chiffré. Un **HIDS** (Host IDS), comme OSSEC ou Wazuh, s'installe sur la machine : il surveille journaux, processus, intégrité des fichiers et changements de configuration, et voit donc ce que le chiffrement cache au réseau. Les deux se complètent. Tous deux détectent et alertent ; c'est un IPS, placé en coupure, qui bloque.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qu'un **honeypot** (pot de miel) en sécurité informatique ?",
+      "answer": "Un système leurre qui sert à détecter et observer les attaques",
+      "wrong": [
+        "Un coffre numérique chiffré pour stocker les mots de passe",
+        "Un pare-feu qui ralentit volontairement les connexions suspectes",
+        "Une sauvegarde cachée où conserver une copie des données"
+      ],
+      "explanation": "Un **honeypot** est un faux serveur ou service, attirant en apparence, qui n'a aucun usage légitime : toute connexion qui le touche est donc suspecte, ce qui produit très peu de fausses alertes. Il sert à repérer un intrus qui se promène dans le réseau, à étudier les techniques des attaquants et à recueillir des indicateurs de compromission. Un honeypot à faible interaction émule seulement un service (comme Cowrie pour SSH), un honeypot à forte interaction est un vrai système. Règle d'or : l'isoler strictement, sans donnée réelle, pour qu'il ne serve pas de tremplin vers le reste du réseau.",
+      "difficulty": 2
+    },
+    {
+      "question": "Tu dois consulter ta messagerie depuis le Wi-Fi ouvert d'un café. Quelle précaution est la plus efficace ?",
+      "answer": "Utiliser un VPN de confiance et des sites en HTTPS",
+      "wrong": [
+        "Choisir le réseau qui affiche le signal le plus fort",
+        "Désactiver le pare-feu pour éviter les blocages",
+        "Autoriser la connexion automatique à tous les réseaux ouverts"
+      ],
+      "explanation": "Sur un Wi-Fi ouvert, rien n'est chiffré entre l'ordinateur et la borne : un voisin muni d'un sniffeur peut lire le trafic en clair, et un faux point d'accès peut imiter le réseau du café (evil twin). Un signal fort ne prouve rien, il peut même trahir un faux point d'accès. Un VPN chiffre tout le trafic jusqu'à son serveur, et HTTPS protège le contenu des sites. On ajoute l'authentification multifacteur, on désactive la connexion automatique et le partage de fichiers, et pour une opération sensible on préfère le partage de connexion du téléphone (4G ou 5G).",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment une attaque par **SYN flood** sature-t-elle un serveur ?",
+      "answer": "En envoyant une multitude de SYN sans terminer les connexions",
+      "wrong": [
+        "En diffusant de faux paquets ARP sur le réseau local",
+        "En testant en rafale des mots de passe sur un compte",
+        "En demandant à des résolveurs DNS de répondre à la victime"
+      ],
+      "explanation": "À la réception d'un SYN, première étape de la poignée de main TCP, le serveur réserve des ressources dans une file de connexions semi-ouvertes et répond par SYN-ACK. L'attaquant, souvent avec des adresses source forgées, n'envoie jamais le ACK final : la file se remplit et les vrais clients sont refusés. La parade classique est le mécanisme des **SYN cookies** : le serveur encode l'état de la connexion dans le numéro de séquence de son SYN-ACK et ne réserve rien tant qu'un ACK valide ne revient pas. Sous Linux : `sysctl -w net.ipv4.tcp_syncookies=1`. On ajoute la limitation de débit et le filtrage chez l'opérateur.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel est l'effet d'un **empoisonnement du cache DNS** réussi ?",
+      "answer": "Un résolveur renvoie une fausse adresse à tous ses utilisateurs",
+      "wrong": [
+        "Le serveur web visé est saturé de requêtes jusqu'à tomber",
+        "Les mots de passe enregistrés par le navigateur sont exposés",
+        "Les certificats du site visité sont révoqués automatiquement"
+      ],
+      "explanation": "Un résolveur DNS garde les réponses en cache pendant leur durée de vie (TTL) pour éviter de répéter les requêtes. Si un attaquant réussit à faire accepter une fausse réponse, par exemple en devinant l'identifiant de la requête, tous les clients de ce résolveur qui demandent `banque.fr` sont dirigés vers le serveur de l'attaquant, jusqu'à expiration du cache. En 2008, Dan Kaminsky a montré une variante très efficace, corrigée surtout par le tirage aléatoire des ports source. Parades : résolveurs à jour, validation DNSSEC, résolveur non ouvert à tous, et HTTPS, dont l'alerte de certificat trahit le faux site.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un attaquant crée un point d'accès Wi-Fi portant le même nom qu'un réseau légitime pour attirer les victimes. Comment appelle-t-on cette attaque ?",
+      "answer": "Evil twin (jumeau maléfique)",
+      "wrong": [
+        "Wardriving (repérage de réseaux en roulant)",
+        "Bluejacking (messages non sollicités en Bluetooth)",
+        "Port knocking (frappe de ports)"
+      ],
+      "explanation": "Un appareil se reconnecte automatiquement à un nom de réseau (SSID) connu, de préférence au signal le plus fort. Un **evil twin** en profite pour s'interposer : il lit le trafic en clair, affiche un faux portail de connexion pour voler des identifiants, ou relaie les échanges en homme du milieu. Il utilise souvent des trames de désauthentification pour éjecter les clients du vrai point d'accès. Parades : WPA3 ou 802.1X avec validation du certificat du serveur, protection des trames de gestion (802.11w, PMF), VPN, HTTPS, et désactivation de la connexion automatique aux réseaux ouverts. Le wardriving ne fait que cartographier des réseaux.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle fonction pratique des routeurs Wi-Fi, reposant sur un code PIN à 8 chiffres, souffre de failles de conception et qu'il vaut mieux désactiver ?",
+      "answer": "WPS (Wi-Fi Protected Setup)",
+      "wrong": [
+        "WDS (Wireless Distribution System)",
+        "WMM (Wi-Fi Multimedia)",
+        "WIDS (Wireless Intrusion Detection)"
+      ],
+      "explanation": "Le **WPS** simplifie l'association d'un appareil : bouton ou code PIN. Or le huitième chiffre du PIN n'est qu'une somme de contrôle, et le protocole valide le code en deux moitiés. Il reste donc au plus 10 000 + 1 000 = 11 000 essais, qu'un attaquant parcourt en quelques heures, ce qui lui donne la phrase de passe WPA2 même si elle est très robuste. Ce défaut a été publié en 2011 par Stefan Viehböck. Parade : désactiver le WPS dans l'interface du routeur, mettre à jour son micrologiciel, et saisir la phrase de passe à la main.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur quel port UDP le protocole **syslog** envoie-t-il classiquement les journaux vers un serveur de collecte ?",
+      "answer": "514",
+      "wrong": [
+        "161",
+        "123",
+        "69"
+      ],
+      "explanation": "Les équipements réseau et les serveurs envoient leurs messages (avec une catégorie et une gravité de 0, urgence, à 7, débogage) à un serveur central en **UDP 514**. Ce transport n'assure pas la livraison ; TCP ou TLS (port 6514) sont plus fiables et chiffrés. Centraliser sert à deux choses : un intrus qui prend le contrôle d'une machine efface d'abord ses journaux locaux, mais pas la copie distante ; et un SIEM peut corréler les événements de plusieurs sources. Les autres numéros sont ceux de SNMP (161), de NTP (123) et de TFTP (69). Il faut aussi synchroniser les horloges (NTP), sinon les événements ne se recoupent pas.",
+      "difficulty": 2
+    },
+    {
+      "question": "Masquer le nom (**SSID**) de son réseau Wi-Fi constitue-t-il une vraie protection ?",
+      "answer": "Non : le SSID reste détectable dès qu'un appareil se connecte",
+      "wrong": [
+        "Oui : un réseau invisible ne peut plus être attaqué",
+        "Oui : le chiffrement WPA3 devient alors inutile à activer",
+        "Non : cela désactive automatiquement le chiffrement du réseau"
+      ],
+      "explanation": "Masquer le SSID revient seulement à retirer le nom des balises que la borne diffuse. Dès qu'un appareil se connecte, ou même qu'il sonde les alentours, le nom circule en clair dans les trames : un outil comme Wireshark, avec une carte en mode moniteur, le révèle en quelques secondes. Les appareils configurés pour un réseau masqué le recherchent partout où ils vont, ce qui divulgue ce nom. Les vraies protections sont WPA2 ou WPA3 avec une longue phrase de passe, WPS désactivé, firmware à jour et un réseau invité séparé. Le filtrage par adresse MAC est aussi inefficace, car une adresse MAC s'usurpe facilement.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans une attaque DDoS par **amplification**, quel mensonge l'attaquant glisse-t-il dans sa requête ?",
+      "answer": "Il usurpe l'adresse IP source pour y mettre celle de la victime",
+      "wrong": [
+        "Il chiffre la requête pour qu'elle échappe aux pare-feu",
+        "Il fixe un TTL très élevé pour que le paquet circule longtemps",
+        "Il remplace l'adresse MAC de destination par celle du routeur"
+      ],
+      "explanation": "UDP n'a pas de poignée de main, donc l'adresse source d'un paquet peut être forgée. L'attaquant envoie une petite requête (DNS, NTP, memcached) à des serveurs ouverts, en y inscrivant l'adresse de sa victime : les serveurs répondent, et leurs réponses, bien plus volumineuses, inondent la victime. En 2018, GitHub a subi un pic d'environ 1,35 Tbit/s par ce moyen, via des serveurs memcached exposés. Parades : ne pas exposer de résolveur ou de service UDP à tout Internet, limiter le débit des réponses, filtrer l'usurpation chez les opérateurs, et recourir à un service anti-DDoS pour la victime.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle bonne pratique des opérateurs (RFC 2827, BCP 38) limite l'usurpation d'adresses IP source ?",
+      "answer": "Le filtrage en entrée (ingress filtering) des adresses source",
+      "wrong": [
+        "Le chiffrement systématique de tous les en-têtes IP",
+        "La traduction d'adresses (NAT) à l'entrée du réseau",
+        "Le blocage de tous les paquets UDP vers Internet"
+      ],
+      "explanation": "Le **filtrage en entrée** consiste, pour le routeur en bordure d'un réseau client, à rejeter tout paquet dont l'adresse source n'appartient pas aux plages attribuées à ce client. Si tous les opérateurs le faisaient, les attaques à adresse source forgée (amplification, SYN flood aux sources aléatoires) ne pourraient plus quitter leur réseau d'origine. Il est défini dans la RFC 2827 (BCP 38, publiée en 2000), mais son déploiement reste partiel : celui qui l'applique en protège surtout les autres. Sous Linux, un contrôle voisin existe avec `net.ipv4.conf.all.rp_filter=1`, qui vérifie que la route de retour correspond à l'interface d'arrivée.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle fonction d'un commutateur gérable permet de contrer l'**ARP spoofing** en vérifiant les réponses ARP ?",
+      "answer": "La Dynamic ARP Inspection (DAI)",
+      "wrong": [
+        "Le Spanning Tree Protocol (STP)",
+        "Le routage inter-VLAN",
+        "Le mirroring de port (SPAN)"
+      ],
+      "explanation": "La **Dynamic ARP Inspection** compare chaque message ARP à la table de correspondance IP, MAC, port et VLAN apprise par le DHCP snooping ; une réponse qui ne correspond pas est rejetée et journalisée, ce qui empêche un attaquant de se faire passer pour la passerelle. Pour les équipements en adresse fixe, on déclare des entrées statiques. Le STP évite les boucles, le routage inter-VLAN relie les VLAN et le port miroir copie le trafic vers une sonde. En complément, des entrées ARP statiques pour la passerelle et un outil de surveillance comme arpwatch, qui signale les changements d'adresse MAC, renforcent la détection.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un attaquant inonde un commutateur de trames avec des adresses MAC source fictives. Quel est l'objectif visé ?",
+      "answer": "Saturer sa table d'adresses pour qu'il diffuse le trafic partout",
+      "wrong": [
+        "Épuiser le pool d'adresses IP distribuées par le serveur DHCP",
+        "Forcer le commutateur à redémarrer en vidant sa mémoire flash",
+        "Récupérer la clé WPA2 des machines connectées au commutateur"
+      ],
+      "explanation": "Un commutateur apprend quel port mène à quelle adresse MAC dans une table de taille limitée (table CAM). Quand elle est pleine, certains modèles se mettent à diffuser sur tous les ports les trames dont ils ignorent le destinataire, comme un concentrateur (hub) : l'attaquant, avec un sniffeur, voit alors le trafic des autres. C'est le **MAC flooding**. Parade : le port security, qui limite le nombre d'adresses MAC par port et coupe ou restreint le port en cas de dépassement (Cisco : `switchport port-security maximum 2`), complété par 802.1X et la surveillance des journaux du commutateur. L'épuisement du pool DHCP est une autre attaque, la DHCP starvation.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle attaque contre les VLAN exploite la négociation automatique de trunk (DTP) ou le double marquage 802.1Q pour atteindre un autre VLAN ?",
+      "answer": "Le VLAN hopping (saut de VLAN)",
+      "wrong": [
+        "Le MAC flooding (inondation de la table)",
+        "Le DHCP starvation (épuisement du pool)",
+        "Le DNS tunneling (données dans le DNS)"
+      ],
+      "explanation": "Dans le **VLAN hopping**, l'attaquant passe d'un VLAN à un autre sans routeur. Première méthode, le « switch spoofing » : il se fait passer pour un commutateur et négocie un lien trunk par DTP, ce qui lui donne accès à tous les VLAN. Seconde méthode, le double marquage : il envoie une trame portant deux étiquettes 802.1Q, la première est retirée par le premier commutateur et la seconde pousse la trame dans le VLAN visé (possible si son port est dans le VLAN natif). Parades : configurer explicitement les ports d'accès (`switchport mode access`, `switchport nonegotiate`), éteindre les ports inutilisés et utiliser un VLAN natif inutilisé.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel mécanisme de **WPA3-Personnel** remplace la dérivation de clé de WPA2-PSK et résiste aux attaques par dictionnaire hors ligne ?",
+      "answer": "SAE (Simultaneous Authentication of Equals)",
+      "wrong": [
+        "TKIP (Temporal Key Integrity Protocol)",
+        "WPS (Wi-Fi Protected Setup)",
+        "PEAP (Protected Extensible Authentication Protocol)"
+      ],
+      "explanation": "Avec WPA2-PSK, quiconque capture la poignée de main à 4 temps peut tester ensuite des millions de mots de passe sur son propre ordinateur, sans que la borne le sache. **SAE** (la poignée de main « Dragonfly », introduite avec WPA3 en 2018) est un échange de clés authentifié par mot de passe : chaque essai exige un échange interactif avec la borne, donc l'attaque hors ligne disparaît et seules les tentatives en ligne, limitables, restent possibles. Il apporte aussi la confidentialité persistante : découvrir le mot de passe plus tard ne permet pas de déchiffrer le trafic déjà enregistré. Des failles d'implémentation (Dragonblood, 2019) ont été corrigées. Une phrase de passe longue reste recommandée.",
+      "difficulty": 3
+    },
+    {
+      "question": "En 2017, l'attaque **KRACK** a révélé une faiblesse dans quel mécanisme du Wi-Fi WPA2 ?",
+      "answer": "La réinstallation de clé lors de la poignée de main à 4 temps",
+      "wrong": [
+        "La longueur trop faible des mots de passe de 8 caractères",
+        "La diffusion en clair du nom du réseau (SSID)",
+        "Le chiffrement RC4 utilisé par WPA2 par défaut"
+      ],
+      "explanation": "**KRACK** (Key Reinstallation Attack), publiée en octobre 2017 par le chercheur Mathy Vanhoef, exploite la troisième étape du 4-way handshake : si la borne ne reçoit pas d'accusé de réception, elle retransmet ce message, et le client réinstalle une clé déjà utilisée en remettant à zéro ses compteurs. La réutilisation du flux de chiffrement permet alors de déchiffrer, voire d'injecter, des paquets. L'attaque ne révèle pas le mot de passe du Wi-Fi et exige d'être à portée radio. La parade est de mettre à jour les systèmes des clients et le micrologiciel des bornes, en gardant HTTPS et VPN comme protection supplémentaire. WPA2 chiffre avec AES, pas avec RC4.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un scan de ports indique qu'un port est **filtered**. Que cela signifie-t-il ?",
+      "answer": "Un filtre bloque ou ignore les sondes : l'état réel est inconnu",
+      "wrong": [
+        "Le port est ouvert et un service y répond normalement",
+        "Le port est fermé et la machine répond par un RST",
+        "Le port est ouvert, mais son service chiffre les réponses"
+      ],
+      "explanation": "Un scanneur comme nmap déduit l'état d'un port de la réponse à une sonde. Un SYN-ACK signale un port **ouvert**, un RST signale un port **fermé** (la machine répond, mais aucun service n'écoute). **Filtered** signifie qu'aucune réponse n'arrive ou qu'un message ICMP « interdit administrativement » revient : un pare-feu se trouve sur le chemin et empêche de conclure. Un pare-feu en refus par défaut met ainsi tous les ports en « filtered » et révèle moins qu'un RST. Pour auditer sa propre exposition : `nmap -sS -p- 192.168.1.10`, uniquement sur des machines dont on est responsable.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel mode de chiffrement, fondé sur **AES**, est imposé par le standard WPA2 ?",
+      "answer": "CCMP (Counter Mode CBC-MAC Protocol)",
+      "wrong": [
+        "TKIP (Temporal Key Integrity Protocol)",
+        "WEP (Wired Equivalent Privacy)",
+        "RC4 (Rivest Cipher 4)"
+      ],
+      "explanation": "Le WEP, cassable en quelques minutes, chiffrait avec RC4. Le WPA (2003) l'a rafistolé avec **TKIP**, une surcouche sur RC4 pour les anciennes cartes. Avec WPA2 (norme 802.11i), le chiffrement devient **CCMP** : AES en mode compteur pour la confidentialité, associé à un CBC-MAC pour l'intégrité des trames. TKIP est aujourd'hui déprécié : un point d'accès réglé en mode mixte « WPA/WPA2 » ou « TKIP+AES » garde une faiblesse, et on le règle sur « WPA2-AES » ou « WPA3 » uniquement. Dans les réglages d'une box, c'est cette mention AES qu'il faut chercher.",
       "difficulty": 3
     }
   ]

@@ -296,6 +296,263 @@
       "explanation": "Une origine est le triplet **schéma + hôte + port**. Ainsi `https://site.com` et `http://site.com` diffèrent (schéma), tout comme `https://site.com` et `https://site.com:8443` (port). La SOP isole les contextes pour empêcher un site d'en lire un autre.",
       "difficulty": 3,
       "source": "https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy"
+    },
+    {
+      "question": "Une page affiche tel quel le commentaire d'un visiteur. Quelle mesure fondamentale évite qu'un commentaire contenant du HTML ne s'exécute (XSS) ?",
+      "answer": "Encoder les caractères spéciaux à l'affichage (`<` devient `&lt;`)",
+      "wrong": [
+        "Supprimer le mot `script` dans les commentaires reçus",
+        "Passer tous les commentaires en minuscules avant stockage",
+        "Limiter les commentaires à 200 caractères maximum"
+      ],
+      "explanation": "L'encodage de sortie (output encoding) transforme les caractères qui ont un sens en HTML en entités inertes : `<` devient `&lt;`, `>` devient `&gt;`, `\"` devient `&quot;`. Le navigateur affiche alors le texte au lieu de l'interpréter comme une balise : le commentaire `<script>…</script>` s'affiche tel quel au lieu de s'exécuter. L'encodage dépend du contexte (corps HTML, attribut, JavaScript, URL) et les moteurs de gabarits modernes (Jinja2, Twig, React…) l'appliquent par défaut. Retirer le mot `script` est une liste noire facile à contourner avec une autre balise ; les minuscules ou une limite de longueur ne changent rien au risque.",
+      "difficulty": 1,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+    },
+    {
+      "question": "Que garantit l'attribut `Secure` ajouté à un cookie ?",
+      "answer": "Le navigateur ne l'envoie que sur une connexion HTTPS",
+      "wrong": [
+        "Le code JavaScript de la page ne peut pas le lire",
+        "Le contenu du cookie est chiffré dans le navigateur",
+        "Le cookie n'est jamais envoyé depuis un autre site"
+      ],
+      "explanation": "Un cookie de session circule dans chaque requête. S'il part en clair sur une connexion HTTP, une personne qui écoute le réseau (Wi-Fi public, par exemple) peut le copier et se faire passer pour l'utilisateur. Avec l'attribut `Secure`, le navigateur refuse de l'envoyer en HTTP : `Set-Cookie: session=abc123; Secure; HttpOnly; SameSite=Lax`. Les confusions courantes : interdire la lecture par JavaScript est le rôle de `HttpOnly`, et limiter l'envoi depuis d'autres sites celui de `SameSite`. `Secure` ne chiffre rien, le cookie reste lisible dans le navigateur. On l'associe à HSTS pour que le site ne soit jamais servi en HTTP.",
+      "difficulty": 1
+    },
+    {
+      "question": "Comment un **jeton anti-CSRF** protège-t-il un formulaire de virement ?",
+      "answer": "Il exige une valeur aléatoire que le site pirate ne connaît pas",
+      "wrong": [
+        "Il chiffre le formulaire avant son envoi au serveur",
+        "Il demande à nouveau le mot de passe de l'utilisateur",
+        "Il bloque les formulaires envoyés depuis un autre navigateur"
+      ],
+      "explanation": "Le CSRF (Cross-Site Request Forgery) exploite le fait que le navigateur joint automatiquement les cookies de session, même quand la requête est déclenchée par un autre site. Un jeton anti-CSRF est une valeur aléatoire, liée à la session, placée dans un champ caché (`<input type=\"hidden\" name=\"csrf_token\" value=\"…\">`) et vérifiée par le serveur à chaque action sensible. Le site pirate peut provoquer l'envoi de la requête avec le cookie, mais ne peut pas lire le jeton (la Same-Origin Policy l'en empêche) : sa requête est rejetée. Les frameworks (Django, Rails, Symfony…) le gèrent nativement, et `SameSite` en est un bon complément.",
+      "difficulty": 1,
+      "source": "https://portswigger.net/web-security/csrf"
+    },
+    {
+      "question": "Quelle méthode est recommandée pour stocker les mots de passe des utilisateurs d'un site ?",
+      "answer": "Des empreintes salées, calculées par un algorithme lent dédié",
+      "wrong": [
+        "Chiffrés avec AES, la clé étant conservée dans la même base",
+        "En clair, dans une colonne accessible uniquement à l'application",
+        "Encodés en Base64 pour rendre leur lecture impossible"
+      ],
+      "explanation": "Un site n'a jamais besoin de connaître un mot de passe, seulement de vérifier qu'il est correct. On stocke donc une empreinte (hash), résultat d'une fonction à sens unique, et on compare l'empreinte du mot de passe saisi. On y ajoute un sel (valeur aléatoire propre à chaque utilisateur) et on utilise un algorithme volontairement lent : Argon2id, scrypt ou bcrypt. Si la base fuit, l'attaquant doit deviner chaque mot de passe un par un. Le chiffrement est réversible : qui vole la base et la clé récupère tout. Le Base64 n'est qu'un encodage, lisible par n'importe qui. En 2012, la fuite de LinkedIn exposait des empreintes SHA-1 sans sel, très largement cassées.",
+      "difficulty": 1,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "Pourquoi les contrôles de saisie d'un formulaire doivent-ils **aussi** être effectués côté serveur ?",
+      "answer": "Le contrôle fait dans le navigateur peut être contourné",
+      "wrong": [
+        "Les navigateurs récents ignorent le JavaScript des formulaires",
+        "Le serveur contrôle plus vite que le navigateur",
+        "HTTPS désactive les contrôles faits dans la page"
+      ],
+      "explanation": "Tout ce qui s'exécute dans le navigateur appartient à l'utilisateur : il peut désactiver le JavaScript, modifier la page avec les outils de développement ou envoyer directement une requête HTTP avec `curl` ou Burp Suite, sans jamais passer par le formulaire. Les contrôles côté client (`required`, `maxlength`, expression régulière JS) ne servent qu'au confort de l'utilisateur, avec un message d'erreur immédiat. La barrière de sécurité est côté serveur, où l'on revérifie type, longueur, format, plage de valeurs et droits pour chaque requête. Exemple : un champ `quantite` limité à 10 dans la page peut être envoyé à `-5` ou `99999` si le serveur ne le contrôle pas.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que fait un **WAF** (Web Application Firewall) ?",
+      "answer": "Il analyse les requêtes HTTP et bloque celles qui semblent malveillantes",
+      "wrong": [
+        "Il filtre les paquets réseau selon leurs adresses IP et leurs ports",
+        "Il chiffre le trafic entre le navigateur et le serveur",
+        "Il analyse les postes des employés pour y détecter des virus"
+      ],
+      "explanation": "Un WAF se place devant l'application (reverse proxy, service cloud ou module comme ModSecurity) et inspecte le trafic HTTP au niveau applicatif, bien au-delà des adresses IP et des ports que regarde un pare-feu réseau. Il applique des règles (par exemple l'OWASP Core Rule Set) qui repèrent des motifs d'injection SQL, de XSS ou de traversée de répertoire, et peut limiter le débit des clients abusifs. Il permet aussi un « patch virtuel » : bloquer une faille connue en attendant la correction du code. Mais il ne remplace pas un code sûr, car des variantes d'attaque peuvent passer entre les mailles : c'est une couche de défense en profondeur.",
+      "difficulty": 1
+    },
+    {
+      "question": "Comment fonctionne un **clickjacking** ?",
+      "answer": "Une page cible invisible est superposée à un bouton attractif",
+      "wrong": [
+        "Un faux clavier virtuel enregistre les touches tapées",
+        "Un lien de téléchargement légitime est remplacé par un piège",
+        "Un script lit les clics faits dans les autres onglets"
+      ],
+      "explanation": "Le clickjacking (détournement de clic) charge le site cible dans une `iframe` rendue transparente (`opacity: 0`) et la place au-dessus d'un élément alléchant (« Gagnez un cadeau »). La victime croit cliquer sur le bouton visible, mais clique en réalité sur « Supprimer mon compte » ou « Autoriser » du site cible, où sa session est ouverte. La parade consiste à interdire l'inclusion de la page dans un cadre étranger : `Content-Security-Policy: frame-ancestors 'none'` (ou `'self'`), ou l'en-tête historique `X-Frame-Options: DENY`. Un script « frame-buster » côté client est beaucoup moins fiable.",
+      "difficulty": 1,
+      "source": "https://portswigger.net/web-security/clickjacking"
+    },
+    {
+      "question": "Quelle contre-mesure protège de la **fixation de session** (session fixation) ?",
+      "answer": "Régénérer l'identifiant de session après la connexion",
+      "wrong": [
+        "Mettre l'identifiant de session dans l'URL de la page",
+        "Encoder l'identifiant de session en Base64",
+        "Allonger la durée de validité du cookie de session"
+      ],
+      "explanation": "Dans une fixation de session, l'attaquant impose à la victime un identifiant de session qu'il connaît déjà (par un lien contenant l'identifiant, ou un cookie posé depuis un sous-domaine), puis attend qu'elle s'authentifie. Si le serveur conserve le même identifiant après la connexion, cet identifiant devient celui d'une session authentifiée et l'attaquant peut l'utiliser. La parade est de **régénérer** l'identifiant à chaque changement de niveau de privilège (connexion, élévation de droits) et d'invalider l'ancien : en PHP, `session_regenerate_id(true)`. L'identifiant ne doit jamais être accepté dans l'URL. Le Base64 n'est pas un secret.",
+      "difficulty": 2,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html"
+    },
+    {
+      "question": "Une application utilise un ORM, mais concatène une saisie utilisateur dans une requête SQL brute (`raw`). Que risque-t-elle ?",
+      "answer": "Une injection SQL, malgré la présence de l'ORM",
+      "wrong": [
+        "Rien : un ORM protège automatiquement toutes les requêtes",
+        "Seulement un ralentissement des requêtes, sans risque",
+        "Une faille XSS dans les pages qui affichent les résultats"
+      ],
+      "explanation": "Un ORM (Object-Relational Mapper : SQLAlchemy, Hibernate, Eloquent…) construit des requêtes paramétrées pour ses méthodes habituelles comme `filter(nom=x)`, ce qui neutralise l'injection. Mais la protection vient de la **paramétrisation**, pas de l'ORM lui-même : dès qu'on assemble du SQL par concaténation (`raw(\"… WHERE nom = '\" + saisie + \"'\")`, `execute(f\"…\")`), l'entrée redevient du code SQL et l'injection redevient possible. Il faut alors passer les valeurs en paramètres liés, par exemple `raw(\"… WHERE nom = %s\", [saisie])`. Le XSS concerne l'affichage dans le navigateur, pas l'accès à la base.",
+      "difficulty": 2,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+    },
+    {
+      "question": "Pourquoi le compte de base de données utilisé par une application web ne doit-il pas disposer de droits d'administrateur ?",
+      "answer": "Pour limiter les dégâts si une injection SQL aboutit",
+      "wrong": [
+        "Pour que les requêtes préparées s'exécutent plus vite",
+        "Pour rendre impossible toute injection SQL",
+        "Pour chiffrer les données stockées dans la base"
+      ],
+      "explanation": "C'est le principe du **moindre privilège** : chaque composant ne reçoit que les droits indispensables à sa mission. Un compte applicatif qui ne peut faire que `SELECT`, `INSERT` et `UPDATE` sur quelques tables ne pourra pas, même en cas d'injection SQL réussie, supprimer des tables (`DROP`), lire d'autres bases, créer des comptes ou, selon le SGBD, toucher au système de fichiers. Ce n'est pas une protection contre l'injection elle-même, qui reste possible dans les limites de ces droits, mais une façon d'en réduire l'impact. La vraie parade reste les requêtes paramétrées. On sépare aussi les comptes : lecture seule pour la consultation, compte distinct pour les migrations.",
+      "difficulty": 2
+    },
+    {
+      "question": "En JavaScript, quelle instruction insère une saisie utilisateur dans la page **comme du texte**, sans interpréter le HTML qu'elle contient ?",
+      "answer": "`element.textContent = saisie`",
+      "wrong": [
+        "`element.innerHTML = saisie`",
+        "`element.outerHTML = saisie`",
+        "`document.write(saisie)`"
+      ],
+      "explanation": "Le XSS basé sur le DOM apparaît quand du JavaScript côté client écrit des données non fiables (paramètre d'URL, saisie) dans la page avec une fonction qui **interprète le HTML**. `innerHTML`, `outerHTML` et `document.write` analysent la chaîne comme du balisage : une balise `<img>` contenue dans la saisie créerait un élément actif. `textContent`, lui, insère la chaîne comme un simple nœud texte : `<` reste `<` à l'écran. C'est l'équivalent de l'encodage de sortie côté navigateur. S'il faut absolument insérer du HTML venu d'un tiers, on le nettoie avec une bibliothèque dédiée comme DOMPurify et l'on renforce la politique CSP.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent"
+    },
+    {
+      "question": "Qu'est-ce que le **credential stuffing** ?",
+      "answer": "Tester sur un site des identifiants volés sur un autre",
+      "wrong": [
+        "Essayer toutes les combinaisons de caractères possibles",
+        "Saturer un site de requêtes pour le rendre indisponible",
+        "Voler un cookie de session grâce à un script injecté"
+      ],
+      "explanation": "Les internautes réutilisent souvent le même mot de passe sur plusieurs services. Quand un site subit une fuite, des attaquants prennent la liste de couples identifiant/mot de passe et les essaient automatiquement sur d'autres sites (banque, boutique, messagerie) : c'est le *credential stuffing* (« bourrage d'identifiants »). Contrairement à la force brute, qui teste des combinaisons au hasard, il utilise des identifiants **réels** : le taux de réussite est faible, mais sur des millions d'essais il suffit. Protections côté site : authentification multifacteur, limitation de débit, détection des comportements anormaux, refus des mots de passe connus comme compromis. Côté utilisateur : un mot de passe unique par service, avec un gestionnaire de mots de passe.",
+      "difficulty": 2,
+      "source": "https://owasp.org/www-community/attacks/Credential_stuffing"
+    },
+    {
+      "question": "Pourquoi une page de connexion affiche-t-elle de préférence « Identifiant ou mot de passe incorrect » plutôt que « Mot de passe incorrect » ?",
+      "answer": "Pour ne pas révéler quels comptes existent",
+      "wrong": [
+        "Pour que la réponse soit plus courte à transmettre",
+        "Pour éviter l'injection SQL dans le formulaire",
+        "Pour aider l'utilisateur qui a oublié son identifiant"
+      ],
+      "explanation": "Si le site répond « Mot de passe incorrect », il confirme que l'identifiant existe. Un attaquant peut alors tester une longue liste d'adresses e-mail pour savoir lesquelles ont un compte (énumération d'utilisateurs), puis concentrer ses attaques sur elles : hameçonnage ciblé, credential stuffing. Un message identique dans les deux cas supprime cette fuite d'information. Il faut aussi uniformiser le reste : même code HTTP, temps de réponse comparable, et pour la fonction « mot de passe oublié » un message du type « Si ce compte existe, un e-mail vient d'être envoyé ». Le message d'erreur n'a aucun effet sur l'injection SQL, qui se traite avec des requêtes paramétrées.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quoi sert l'attribut `integrity` d'une balise `<script src=\"…\">` (Subresource Integrity) ?",
+      "answer": "À vérifier que le fichier reçu n'a pas été modifié",
+      "wrong": [
+        "À chiffrer le script pendant son transfert",
+        "À interdire au script de lire les cookies",
+        "À autoriser le script malgré la politique CSP"
+      ],
+      "explanation": "Quand une page charge une bibliothèque depuis un CDN, elle fait confiance à ce tiers : s'il est compromis, un script piégé s'exécute chez tous vos visiteurs (attaque de la chaîne d'approvisionnement). Avec SRI, on indique l'empreinte attendue du fichier : `<script src=\"https://cdn.example/lib.js\" integrity=\"sha384-…\" crossorigin=\"anonymous\"></script>`. Le navigateur calcule l'empreinte du fichier reçu et **refuse de l'exécuter** si elle diffère. SRI ne chiffre rien (c'est le rôle de HTTPS) et ne limite pas les droits du script : il garantit seulement l'intégrité du contenu. Il faut mettre l'empreinte à jour à chaque nouvelle version de la bibliothèque.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity"
+    },
+    {
+      "question": "Pourquoi une **redirection ouverte** (`?next=https://…` non contrôlé) est-elle utile à un hameçonneur ?",
+      "answer": "Le lien commence par le vrai domaine du site, ce qui inspire confiance",
+      "wrong": [
+        "Elle donne un accès direct à la base de données du site",
+        "Elle désactive le chiffrement HTTPS sur la page d'arrivée",
+        "Elle permet de lire les cookies de n'importe quel site"
+      ],
+      "explanation": "Une redirection ouverte (open redirect) survient quand une page redirige vers l'URL reçue en paramètre sans la contrôler : `https://banque.example/login?next=https://site-pirate.example`. Le lien envoyé à la victime commence par le vrai nom de domaine, passe les filtres de messagerie et inspire confiance ; après la connexion, elle atterrit sur un faux site qui peut lui redemander ses identifiants. La faille sert aussi à contourner des listes d'autorisation (SSRF, OAuth). Protection : n'accepter que des chemins relatifs internes, ou comparer la destination à une liste blanche de domaines ; à défaut, afficher une page d'avertissement avant de quitter le site.",
+      "difficulty": 2,
+      "source": "https://portswigger.net/web-security/dom-based/open-redirection"
+    },
+    {
+      "question": "Pourquoi une politique `Content-Security-Policy: script-src 'self' 'unsafe-inline'` protège-t-elle mal contre le XSS ?",
+      "answer": "Elle autorise aussi les scripts écrits directement dans la page",
+      "wrong": [
+        "Elle bloque tous les scripts, y compris les légitimes",
+        "Elle ne s'applique qu'aux scripts hébergés sur un CDN",
+        "Elle désactive la politique de même origine du navigateur"
+      ],
+      "explanation": "Une attaque XSS réussie consiste précisément à insérer un script **dans** la page, par exemple dans une balise `<script>` ou un attribut `onclick`. Avec `'unsafe-inline'`, la CSP autorise ces scripts en ligne : l'injection fonctionne comme si la politique n'existait pas. Une CSP efficace interdit les scripts en ligne et n'autorise que ceux qui portent un **nonce**, valeur aléatoire régénérée à chaque réponse : `script-src 'nonce-r4nd0m'` avec `<script nonce=\"r4nd0m\">…</script>`, ou dont l'empreinte (hash) est déclarée. Un attaquant qui injecte du HTML ne connaît pas le nonce de la réponse en cours, son script est donc bloqué.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qu'une injection SQL de **second ordre** (second-order) ?",
+      "answer": "Une saisie stockée, puis concaténée plus tard dans une requête",
+      "wrong": [
+        "Une injection qui n'aboutit qu'après deux tentatives successives",
+        "Une injection répartie sur deux requêtes HTTP envoyées en parallèle",
+        "Une injection qui vise une base secondaire de réplication"
+      ],
+      "explanation": "Dans une injection classique, la saisie malveillante est exécutée immédiatement. Ici, elle est d'abord **enregistrée** telle quelle en base : elle s'insère sans erreur, par exemple grâce à une requête paramétrée. Plus tard, une autre partie de l'application relit cette valeur et la **concatène** dans une requête SQL en la croyant fiable, par exemple lors d'un changement de mot de passe. C'est à ce moment que l'injection se déclenche. Leçon : une donnée issue de la base n'est pas plus sûre qu'une saisie utilisateur. Il faut paramétrer **toutes** les requêtes, y compris celles qui réutilisent des valeurs déjà stockées.",
+      "difficulty": 3,
+      "source": "https://portswigger.net/web-security/sql-injection"
+    },
+    {
+      "question": "Une page de liste permet de trier selon une colonne choisie par l'utilisateur (`ORDER BY <colonne>`). Comment sécuriser ce paramètre ?",
+      "answer": "Le comparer à une liste blanche de colonnes autorisées",
+      "wrong": [
+        "Le passer comme paramètre lié d'une requête préparée",
+        "L'entourer d'apostrophes dans la requête SQL",
+        "Retirer les espaces et les points-virgules de la saisie"
+      ],
+      "explanation": "Les paramètres liés (`?`, `:nom`, `%s`) ne remplacent que des **valeurs** : le SGBD prépare la structure de la requête avant d'y insérer les données. Un nom de colonne, de table ou le sens du tri (`ASC`/`DESC`) fait partie de la structure et ne peut pas être lié : placé en paramètre, il serait traité comme une simple chaîne constante, sans effet sur le tri. Entourer d'apostrophes ou retirer quelques caractères est un filtrage fragile. La solution est une correspondance explicite, par exemple `{\"prix\": \"price\", \"nom\": \"name\"}` : l'utilisateur ne choisit qu'une clé, le SQL n'utilise que des identifiants écrits par les développeurs, et toute valeur inconnue est rejetée ou remplacée par un tri par défaut.",
+      "difficulty": 3
+    },
+    {
+      "question": "Chrome rejette un cookie déclaré avec `SameSite=None` s'il n'a pas aussi quel attribut ?",
+      "answer": "`Secure`",
+      "wrong": [
+        "`HttpOnly`",
+        "`Domain`",
+        "`Path=/`"
+      ],
+      "explanation": "`SameSite=None` autorise l'envoi du cookie dans **tous** les contextes cross-site (widgets tiers, contenus intégrés). Pour éviter qu'il circule en clair, Chrome (et les navigateurs Chromium) exige qu'il porte aussi `Secure`, donc HTTPS : `Set-Cookie: widget=abc; SameSite=None; Secure`. Contexte : depuis 2020, Chrome traite un cookie sans attribut `SameSite` comme `Lax` (envoyé seulement lors d'une navigation de premier niveau en GET), ce qui bloque une grande partie des CSRF. Les cookies qui doivent réellement voyager entre sites doivent donc déclarer explicitement `None; Secure`. `HttpOnly`, `Domain` et `Path` ne conditionnent pas l'acceptation de `SameSite=None`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies"
+    },
+    {
+      "question": "Que garantit le préfixe `__Host-` dans le nom d'un cookie (`__Host-session`) ?",
+      "answer": "Il est `Secure`, sans `Domain` et limité à `Path=/`",
+      "wrong": [
+        "Il est lié à l'adresse IP du client qui l'a reçu",
+        "Il est chiffré par le navigateur avec une clé du domaine",
+        "Il n'est envoyé que pour les requêtes de même site"
+      ],
+      "explanation": "Les préfixes `__Secure-` et `__Host-` sont des règles que le navigateur impose à la création du cookie. `__Host-` exige l'attribut `Secure` (donc HTTPS), l'absence d'attribut `Domain` et `Path=/`. Le cookie est alors lié à l'hôte exact qui l'a défini : un sous-domaine (ou un site frère compromis) ne peut pas écraser ou injecter un cookie de ce nom, ce qui bloque les attaques de « cookie tossing » visant à fixer ou remplacer une session. Exemple : `Set-Cookie: __Host-session=abc; Secure; HttpOnly; Path=/; SameSite=Lax`. Le préfixe n'ajoute ni chiffrement, ni `HttpOnly`, ni `SameSite` : ces attributs se déclarent à part.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies"
+    },
+    {
+      "question": "Un formulaire d'inscription envoie `name` et `email`, mais le serveur copie **tous** les champs reçus dans l'objet utilisateur ; un attaquant ajoute `isAdmin=true`. Quelle faille est-ce ?",
+      "answer": "Mass assignment (affectation de masse)",
+      "wrong": [
+        "Redirection ouverte (open redirect)",
+        "Fixation de session (session fixation)",
+        "Désérialisation non sécurisée"
+      ],
+      "explanation": "Beaucoup de frameworks lient automatiquement les champs d'une requête aux attributs d'un objet (`User.create(params)`). Si le développeur ne limite pas les champs acceptés, un attaquant peut en ajouter que le formulaire ne montre pas : rôle, solde, `isAdmin`, identifiant du propriétaire. C'est l'affectation de masse (mass assignment), une forme de contrôle d'accès défaillant. En 2012, ce défaut a permis à un chercheur de s'ajouter à l'organisation Rails sur GitHub. Protection : liste blanche explicite des champs modifiables (strong parameters en Rails, objets de transfert dédiés ailleurs), jamais l'objet de la requête brut ; les champs sensibles sont fixés côté serveur.",
+      "difficulty": 3,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Mass_Assignment_Cheat_Sheet.html"
+    },
+    {
+      "question": "Dans une attaque de **confusion d'algorithme** contre un JWT signé en `RS256`, que cherche l'attaquant ?",
+      "answer": "Faire vérifier le jeton en HMAC avec la clé publique comme secret",
+      "wrong": [
+        "Faire déchiffrer le jeton en AES par le serveur",
+        "Obtenir que la clé privée expire avant la date prévue",
+        "Retirer la signature en indiquant `alg: none`"
+      ],
+      "explanation": "`RS256` signe avec une clé privée (secrète) et vérifie avec une clé publique, diffusée par exemple dans un JWKS. `HS256` utilise un unique secret partagé pour signer **et** vérifier. Si le serveur choisit l'algorithme de vérification d'après l'en-tête `alg` du jeton, l'attaquant peut déclarer `HS256` et signer son jeton en prenant comme secret HMAC la clé publique, connue de tous : le serveur, qui utilisera cette même clé pour vérifier, validera la contrefaçon. Protection : imposer côté serveur l'algorithme attendu pour chaque clé (liste blanche), ignorer l'`alg` annoncé par le jeton et employer des bibliothèques à jour.",
+      "difficulty": 3,
+      "source": "https://portswigger.net/web-security/jwt/algorithm-confusion"
     }
   ]
 }

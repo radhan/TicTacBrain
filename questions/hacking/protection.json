@@ -4,5 +4,469 @@
   "icon": "🛡️",
   "description": "Hameçonnage, mots de passe, double authentification, sauvegardes, mises à jour, arnaques en ligne : les bons réflexes pour ne pas se faire avoir.",
   "order": 0,
-  "questions": []
+  "questions": [
+    {
+      "question": "Qu'est-ce que l'**hameçonnage** (phishing) ?",
+      "answer": "Un faux message qui imite un organisme connu pour voler des informations",
+      "wrong": [
+        "Une attaque qui sature un site de requêtes jusqu'à le rendre inaccessible",
+        "Un virus qui chiffre les fichiers d'un ordinateur contre une rançon",
+        "Une écoute discrète d'un réseau Wi-Fi pour y lire les mots de passe"
+      ],
+      "explanation": "L'hameçonnage est une technique d'ingénierie sociale : l'attaquant se fait passer par une banque, un opérateur, une administration ou un transporteur pour pousser la victime à cliquer sur un lien, ouvrir une pièce jointe ou saisir ses identifiants sur un faux site. Le mot vient de l'anglais phishing, un jeu de mots avec fishing (pêche) : on lance un appât et on attend que quelqu'un morde. Exemple : un e-mail « impots.gouv » annonçant un remboursement, avec un lien vers une copie du site officiel. Pour t'en protéger, ne te connecte jamais via un lien reçu : tape toi-même l'adresse ou utilise ton application habituelle.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Hame%C3%A7onnage"
+    },
+    {
+      "question": "Pour repérer un e-mail frauduleux, quel élément est le plus fiable à examiner ?",
+      "answer": "L'adresse réelle de l'expéditeur, au domaine différent de l'organisme",
+      "wrong": [
+        "Le logo de l'entreprise affiché en en-tête du message reçu",
+        "Le nom d'expéditeur affiché dans la boîte de réception du mail",
+        "La signature avec le nom et le poste d'un employé connu"
+      ],
+      "explanation": "Un logo, un nom d'affichage ou une signature se copient en quelques secondes : un escroc peut appeler son expéditeur « Service client Banque Postale » alors que l'adresse derrière est du type support@banque-verif.xyz. Seule l'adresse complète, que l'on voit en cliquant sur le nom ou sur « Afficher les détails », donne un indice solide, car son domaine (ce qui suit le @) doit être celui de l'organisme. Sur mobile, le client de messagerie masque souvent l'adresse : appuie sur le nom pour la révéler. Au moindre doute, contacte l'organisme par ses canaux officiels plutôt qu'en répondant au message.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que faire avant de cliquer sur un lien dans un e-mail douteux ?",
+      "answer": "Survoler le lien pour lire l'adresse réelle de destination dans la barre d'état",
+      "wrong": [
+        "Cliquer, puis vérifier si la page affiche un cadenas",
+        "Répondre à l'expéditeur pour lui demander si le lien est sûr",
+        "Ouvrir le lien dans une fenêtre de navigation privée"
+      ],
+      "explanation": "Le texte visible d'un lien peut afficher une adresse alors que le lien pointe ailleurs. En survolant le lien avec la souris (ou en appuyant longuement dessus sur mobile), le navigateur ou la messagerie montre la vraie destination. Exemple : le texte « www.impots.gouv.fr » peut cacher un lien vers un site pirate. La navigation privée n'apporte aucune protection contre un faux site, et répondre à l'expéditeur prévient l'escroc que ton adresse est active. Le plus sûr reste de ne pas passer par le lien : saisis toi-même l'adresse du site officiel.",
+      "difficulty": 1
+    },
+    {
+      "question": "Tu reçois un SMS « Colis en attente : réglez 1,99 € de frais de livraison » avec un lien. Quel est le bon réflexe ?",
+      "answer": "Ne pas cliquer, vérifier sur le site du transporteur, signaler au 33700",
+      "wrong": [
+        "Payer les 1,99 € : la somme est trop faible pour une arnaque",
+        "Répondre STOP au SMS pour ne plus recevoir ces messages",
+        "Ouvrir le lien sans rien saisir tant que la page semble sérieuse"
+      ],
+      "explanation": "Cette arnaque au faux colis (smishing, de SMS et phishing) vise surtout à récupérer les numéros de carte bancaire : les 1,99 € ne sont qu'un prétexte, et les escrocs utilisent ensuite les données saisies pour des paiements bien plus élevés. Répondre STOP confirme que ton numéro est actif. Le bon réflexe : ne pas cliquer, suivre ton colis depuis l'application ou le site officiel du transporteur en saisissant toi-même l'adresse, puis transférer le SMS au 33700, la plateforme nationale de signalement des SMS et appels indésirables. Si tu as saisi ta carte, fais opposition immédiatement auprès de ta banque.",
+      "difficulty": 1,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Une page plein écran affiche « Virus détecté ! Appelez le support Microsoft » avec une alarme sonore. Que faire ?",
+      "answer": "Fermer le navigateur sans appeler, puis analyser le poste avec un antivirus",
+      "wrong": [
+        "Appeler vite le numéro pour qu'un technicien nettoie l'ordinateur",
+        "Installer l'outil de nettoyage proposé sur la page",
+        "Saisir son adresse e-mail pour recevoir un rapport d'analyse gratuit"
+      ],
+      "explanation": "C'est une arnaque au faux support technique : la page n'est qu'un site web qui imite une alerte système, aucun virus n'a été détecté. Le but est de te faire appeler un faux technicien, qui te demandera d'installer un outil de prise de main à distance (comme AnyDesk ou TeamViewer), puis de payer un faux « dépannage » ou de te faire saisir tes identifiants bancaires. Les éditeurs comme Microsoft ne te contactent jamais ainsi. Ferme l'onglet ou, s'il est bloqué, le navigateur via le gestionnaire de tâches, puis lance une analyse avec ton antivirus. Si tu as donné la main, coupe la connexion, change tes mots de passe et préviens ta banque.",
+      "difficulty": 2,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Un appelant se disant de ta banque, avec le numéro de ton agence à l'écran, parle d'une fraude en cours. Quel est le bon réflexe ?",
+      "answer": "Raccrocher et rappeler soi-même la banque via un numéro officiel",
+      "wrong": [
+        "Suivre ses consignes pour déplacer ses fonds sur un compte de sécurité",
+        "Lui demander son matricule, puis continuer s'il le donne",
+        "Valider la notification reçue sur l'application si le montant est faible"
+      ],
+      "explanation": "Le numéro affiché peut être usurpé (spoofing) : il suffit d'un service de téléphonie en ligne pour afficher n'importe quel numéro. Les escrocs créent un sentiment d'urgence puis demandent de valider une opération dans l'application ou de virer l'argent vers un « compte sécurisé », qui est en réalité le leur. Un matricule ne prouve rien non plus. Une vraie banque ne demande jamais ton mot de passe, un code reçu par SMS ni un virement vers un autre compte. Raccroche, attends quelques instants pour que la ligne se libère, puis rappelle en utilisant le numéro figurant sur ton application ou au dos de ta carte. Si tu as validé, fais opposition tout de suite.",
+      "difficulty": 2,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Un e-mail affirme avoir filmé ta webcam, cite l'un de tes anciens mots de passe et réclame des bitcoins. Que révèle ce mot de passe ?",
+      "answer": "Il vient sans doute d'une ancienne fuite de données, pas de ton appareil",
+      "wrong": [
+        "Que ton ordinateur est infecté par un logiciel espion toujours actif",
+        "Que ta messagerie actuelle vient d'être piratée en direct par l'escroc",
+        "Que l'escroc possède réellement la vidéo annoncée dans le message"
+      ],
+      "explanation": "C'est de la sextorsion par e-mail de masse : le même message part vers des millions d'adresses. Le mot de passe cité provient généralement d'une fuite de données ancienne (un site piraté il y a des années), que les escrocs achètent et croisent avec les adresses. Cela fait peur, mais ne prouve aucune intrusion. Ne paie pas, ne réponds pas, signale le message (Pharos, cybermalveillance.gouv.fr) et change ce mot de passe partout où tu l'as réutilisé. Tu peux vérifier si ton adresse figure dans une fuite sur haveibeenpwned.com. Si de vraies images intimes sont en jeu, garde les preuves et dépose plainte.",
+      "difficulty": 2,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "En quoi consiste la « fraude au président » (faux ordre de virement) ?",
+      "answer": "Un escroc se fait passer pour un dirigeant afin d'obtenir un virement urgent",
+      "wrong": [
+        "Un dirigeant détourne lui-même les fonds de sa société",
+        "Un faux site collecte des dons au nom de la présidence de l'État",
+        "Un rançongiciel bloque les comptes du président de l'entreprise"
+      ],
+      "explanation": "La fraude au président (FOVI, ou BEC pour Business Email Compromise en anglais) vise le service comptable : un faux e-mail, ou un appel, imite le PDG ou un partenaire et réclame un virement confidentiel et urgent, souvent vers l'étranger, en invoquant une acquisition secrète. L'attaque n'utilise aucun logiciel malveillant : tout repose sur la confiance, l'autorité et la pression du temps. L'escroc a souvent préparé son coup en étudiant l'organigramme sur les réseaux sociaux. La parade est une procédure : tout virement inhabituel doit être contre-vérifié par un autre canal.",
+      "difficulty": 1,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Quelle mesure protège le mieux une entreprise contre la fraude au président ?",
+      "answer": "Une double validation des virements inhabituels, avec rappel sur un numéro connu",
+      "wrong": [
+        "Un antivirus à jour sur chaque poste du service comptable",
+        "Un filtre anti-spam renforcé sur la messagerie de l'entreprise",
+        "Un renouvellement des mots de passe tous les trois mois"
+      ],
+      "explanation": "Cette fraude repose sur la tromperie d'un humain, non sur un virus : l'antivirus n'a rien à bloquer, et le message peut venir d'une adresse très proche de celle du dirigeant ou d'un vrai compte piraté. Un anti-spam réduit le risque sans le supprimer. Ce qui marche est organisationnel : la règle des quatre yeux (deux personnes valident), un rappel au dirigeant sur son numéro habituel, jamais sur celui fourni dans le message, et un refus de toute exception « confidentielle ». Exemple : une demande de virement à un nouveau RIB doit toujours être confirmée par téléphone auprès du fournisseur.",
+      "difficulty": 2,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Face au risque de deepfake audio ou vidéo dans une demande de virement, quel principe appliquer ?",
+      "answer": "Vérifier la demande par un second canal indépendant, quelle que soit la voix ou l'image",
+      "wrong": [
+        "Se fier à la voix, devenue impossible à imiter",
+        "Exiger que la demande passe par une visioconférence plutôt qu'un appel",
+        "Accepter si l'interlocuteur cite des détails internes à l'entreprise"
+      ],
+      "explanation": "Un deepfake est un contenu audio ou vidéo généré ou modifié par IA pour imiter une personne réelle. En 2019, une entreprise britannique aurait ainsi viré environ 220 000 € à la suite d'un appel imitant la voix de son dirigeant. Début 2024, à Hong Kong, un employé du cabinet Arup a effectué des virements d'environ 25 millions de dollars après une visioconférence où les « collègues » étaient générés. Voix, visage et détails internes (volés ou devinés) ne prouvent donc plus rien. La parade : raccrocher et recontacter la personne via un numéro ou un canal déjà connu, selon une procédure de validation fixée à l'avance.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un QR code collé sur un horodateur invite à payer le stationnement. Quel est le risque principal ?",
+      "answer": "Un autocollant peut recouvrir le vrai code et mener vers un faux site de paiement",
+      "wrong": [
+        "Le simple scan installe automatiquement un virus sur le téléphone",
+        "L'horodateur peut ainsi suivre la position GPS du téléphone en continu",
+        "Un QR code ne contient que du texte : aucun risque n'existe"
+      ],
+      "explanation": "Le quishing (QR code et phishing) exploite le fait qu'on ne lit pas le contenu d'un QR code : ce n'est qu'une adresse web encodée. En France, des escrocs ont collé de faux autocollants sur des horodateurs pour rediriger vers un faux site qui récupère les données de carte bancaire. Le scan seul n'installe rien, mais le site ouvert peut être piégé. Pour t'en protéger : vérifie que le code n'est pas un autocollant superposé, regarde l'adresse que ton téléphone affiche avant de l'ouvrir, et préfère l'application officielle de la ville ou le paiement à l'horodateur lui-même.",
+      "difficulty": 2,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Pourquoi ne suffit-il plus de chercher les fautes d'orthographe pour repérer un message d'hameçonnage ?",
+      "answer": "Les IA génératives permettent d'écrire des messages sans faute dans toutes les langues",
+      "wrong": [
+        "Les messages d'hameçonnage sont désormais tous rédigés par des avocats",
+        "Les fautes d'orthographe n'ont jamais été fréquentes dans ces messages",
+        "Les antivirus corrigent automatiquement l'orthographe des e-mails reçus"
+      ],
+      "explanation": "Pendant longtemps, un français approximatif trahissait des messages traduits à la hâte. Aujourd'hui, les outils d'IA générative produisent en quelques secondes un texte parfaitement rédigé et adapté à la victime. L'absence de fautes ne prouve donc plus rien. Les vrais signaux restent ailleurs : une demande inhabituelle, une urgence ou une menace, un expéditeur dont le domaine est étrange, un lien qui ne mène pas au site officiel, une demande d'identifiants ou de paiement. Face à un tel message, contacte directement l'organisme par un canal que tu connais déjà.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qui caractérise le **spear phishing** (harponnage) par rapport à l'hameçonnage classique ?",
+      "answer": "Un message personnalisé et ciblé sur une personne ou une organisation précise",
+      "wrong": [
+        "Un envoi massif et identique à des millions d'adresses tirées au hasard",
+        "Un hameçonnage qui passe uniquement par des clés USB déposées",
+        "Un message rédigé uniquement à l'aide d'un traducteur automatique"
+      ],
+      "explanation": "Le spear phishing (spear = lance) est préparé à partir d'informations glanées sur la cible : nom de ses collègues, projets en cours, fournisseurs habituels, voyage récent. Le message paraît donc légitime et passe plus facilement les filtres. Quand la cible est un dirigeant, on parle de whaling (chasse à la baleine). Exemple : un faux e-mail du service RH, rédigé avec les bons noms, demande de consulter un document partagé. Pour s'en protéger : limiter les informations publiées sur les réseaux sociaux, former les équipes, vérifier toute demande inhabituelle par un second canal et activer une authentification forte.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Hame%C3%A7onnage"
+    },
+    {
+      "question": "Un nom de domaine qui commence par `xn--` indique en général :",
+      "answer": "Un nom international encodé en Punycode, pouvant imiter un domaine connu",
+      "wrong": [
+        "Un domaine réservé aux administrations et aux services d'urgence",
+        "Un sous-domaine de test non accessible au public",
+        "Un site protégé par un certificat de validation étendue"
+      ],
+      "explanation": "Les noms de domaine acceptent des lettres d'autres alphabets (IDN), encodées en ASCII avec le Punycode, d'où le préfixe `xn--`. Certaines lettres sont visuellement identiques : le « а » cyrillique (U+0430) ressemble au « a » latin. Un attaquant peut donc enregistrer un domaine qui s'affiche comme apple.com mais qui est un autre site : c'est une attaque par homographe. Une démonstration publique en 2017 l'a montré. Les navigateurs affichent désormais le Punycode brut quand les alphabets sont mélangés. Pour te protéger : utilise tes favoris, un gestionnaire de mots de passe qui ne remplit pas un faux domaine, et méfie-toi des liens reçus.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Nom_de_domaine_internationalis%C3%A9"
+    },
+    {
+      "question": "Dans `https://secure.mabanque.fr.verif-compte.com/connexion`, à quel domaine appartient réellement le site ?",
+      "answer": "`verif-compte.com`",
+      "wrong": [
+        "`mabanque.fr`",
+        "`secure.mabanque.fr`",
+        "`fr` (le domaine de premier niveau)"
+      ],
+      "explanation": "Pour identifier le vrai propriétaire d'une adresse, on lit le nom d'hôte de droite à gauche en partant de la fin, jusqu'à la première barre oblique. Ici, l'extension est `.com`, le domaine enregistré est `verif-compte.com`, et tout ce qui précède (`secure.mabanque.fr`) n'est qu'un sous-domaine librement choisi par son propriétaire. Les escrocs placent un nom connu au début pour tromper un regard rapide. Sur mobile, où l'adresse est tronquée, le piège est encore plus efficace. Le bon réflexe : repérer le mot juste avant l'extension et, au moindre doute, saisir soi-même l'adresse officielle.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que signifie le cadenas affiché dans la barre d'adresse d'un navigateur ?",
+      "answer": "La connexion est chiffrée, mais le site peut quand même être malveillant",
+      "wrong": [
+        "Le site est garanti sans aucun logiciel malveillant ni piège",
+        "Le site est garanti authentique et officiel, sans usurpation",
+        "Le site ne peut pas collecter de données personnelles de visiteur"
+      ],
+      "explanation": "Le cadenas indique que la connexion entre ton navigateur et le serveur est chiffrée en HTTPS : un voisin sur le même Wi-Fi ne peut pas lire les échanges. Il ne dit rien sur l'honnêteté du site. Des autorités comme Let's Encrypt délivrent gratuitement des certificats après une simple vérification du nom de domaine, et de nombreux sites d'hameçonnage affichent donc un cadenas. Exemple : un faux site de livraison peut très bien être en HTTPS. Pour juger un site, vérifie le nom de domaine exact, son historique et ses mentions légales, pas seulement le cadenas.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi l'arnaque dite « à la nigériane » est-elle aussi appelée « fraude 419 » ?",
+      "answer": "Le 419 est le numéro de l'article du code pénal nigérian sur la fraude",
+      "wrong": [
+        "Elle est née en 2019 avec l'essor des cryptomonnaies",
+        "Elle réclame toujours un virement de 419 euros",
+        "C'est le numéro de téléphone du premier réseau de fraudeurs"
+      ],
+      "explanation": "Dans ce scénario, un inconnu promet une fortune (héritage, gains, transfert de fonds) à condition de payer d'abord des frais : c'est l'avance de frais. Le 419 vient de l'article 419 du code pénal nigérian, qui réprime ce type de fraude. Le procédé existait avant Internet, par courrier postal et par télécopie, et reste très répandu sous forme de courriels, de messages sur les réseaux sociaux ou de fausses loteries. Un gain n'arrive jamais à quelqu'un qui n'a pas joué, et aucun organisme sérieux ne demande de payer pour débloquer une somme. Signale ces messages sur signal-spam.fr.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Arnaque_%C3%A0_la_nig%C3%A9riane"
+    },
+    {
+      "question": "Ton téléphone sonne une seule fois depuis un numéro étranger inconnu, puis s'arrête. Quel est le bon réflexe ?",
+      "answer": "Ne pas rappeler : c'est un piège pour te faire joindre un numéro surtaxé",
+      "wrong": [
+        "Rappeler pour savoir qui cherchait à te joindre au téléphone",
+        "Envoyer un SMS à ce numéro pour lui demander son identité",
+        "Rappeler uniquement depuis un téléphone fixe plutôt que mobile"
+      ],
+      "explanation": "C'est la technique du Wangiri (« une sonnerie » en japonais), ou ping call : l'escroc laisse sonner une fois pour provoquer un appel manqué, en espérant que la victime rappelle un numéro surtaxé à l'étranger, facturé à la minute. Le rappel depuis un fixe est tout aussi facturé. Un SMS peut confirmer que ton numéro est actif. Ne rappelle pas, bloque le numéro et signale-le. Si le contact est légitime, il laissera un message vocal ou te recontactera par un autre canal. En cas de doute, cherche le numéro sur un annuaire inversé fiable avant toute action.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce que l'arnaque dite « pig butchering » ?",
+      "answer": "Une relation nouée longtemps à distance pour pousser à investir sur une fausse plateforme",
+      "wrong": [
+        "Une attaque par force brute répétée sur des comptes de courtage",
+        "Un faux site de rencontres qui vend un abonnement sans fin",
+        "Un détournement de virement par modification d'un RIB dans une facture"
+      ],
+      "explanation": "Le pig butchering (« engraissement du cochon », du chinois sha zhu pan) combine arnaque sentimentale et faux investissement : un inconnu contacte la victime par message, noue une relation de confiance pendant des semaines, puis la convainc d'investir, souvent en cryptomonnaies, sur une plateforme truquée où ses gains semblent grimper. Quand elle veut retirer ses fonds, on lui réclame des frais ou on disparaît. Pour t'en protéger : ne confie jamais d'argent à quelqu'un que tu n'as jamais rencontré, méfie-toi de rendements trop beaux, et consulte la liste noire de l'AMF des sites non autorisés.",
+      "difficulty": 3,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Un ami t'écrit sur une messagerie pour te demander en urgence de lui envoyer de l'argent. Quel est le bon réflexe ?",
+      "answer": "Le joindre par un autre canal, par exemple un appel, pour confirmer sa demande",
+      "wrong": [
+        "Envoyer la somme, puis lui demander des explications ensuite",
+        "Lui poser une question sur un détail de sa vie dans la même conversation",
+        "Demander à un tiers inscrit dans la conversation de confirmer"
+      ],
+      "explanation": "Les escrocs piratent un compte de réseau social ou de messagerie, ou créent un faux profil cloné avec la photo et le nom de ton ami, puis écrivent à ses contacts pour réclamer un virement ou des cartes prépayées. Rester dans la même conversation ne protège pas : l'escroc, qui lit les réponses, peut répondre à ta question grâce aux messages déjà échangés. Contacte ton ami par un autre moyen (appel, SMS sur son numéro habituel) et préviens-le que son compte est peut-être compromis. Signale le compte au réseau social concerné et change tes propres mots de passe si tu as cliqué sur un lien.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pour qu'un mot de passe résiste mieux aux attaques, que faut-il privilégier avant tout ?",
+      "answer": "Sa longueur, avec une phrase de passe de plusieurs mots sans lien entre eux",
+      "wrong": [
+        "Quelques symboles rares comme `@` ou `#` placés au milieu d'un mot",
+        "Un mot du dictionnaire suivi d'un chiffre à la fin",
+        "Des lettres remplacées par des chiffres (a par 4, o par 0)"
+      ],
+      "explanation": "Chaque caractère supplémentaire multiplie le nombre de combinaisons à tester, alors qu'une astuce connue (remplacer a par @, ajouter 1 à la fin) est déjà prévue par les outils de cassage. Un mot de passe comme `P@ssw0rd1` est donc faible malgré son apparence. Les guides de l'ANSSI et de la CNIL recommandent plutôt des mots de passe longs, ou des phrases de passe de plusieurs mots, et surtout un mot de passe unique pour chaque service. Exemple : quatre ou cinq mots tirés au hasard offrent bien plus de résistance qu'un mot de huit caractères truffé de symboles. Un gestionnaire de mots de passe évite de tout mémoriser.",
+      "difficulty": 1,
+      "source": "https://cyber.gouv.fr/"
+    },
+    {
+      "question": "Qu'est-ce qu'une **phrase de passe** ?",
+      "answer": "Une suite de plusieurs mots choisis au hasard, longue mais facile à mémoriser",
+      "wrong": [
+        "Une citation célèbre utilisée telle quelle comme mot de passe",
+        "Un mot du dictionnaire suivi de plusieurs chiffres",
+        "Une phrase tirée de ses propres publications sur les réseaux sociaux"
+      ],
+      "explanation": "Une phrase de passe (passphrase) est un mot de passe formé de plusieurs mots, par exemple cinq mots tirés au hasard. Sa force vient de sa longueur et du caractère aléatoire du choix des mots : un attaquant doit tester toutes les combinaisons de mots possibles. Une citation connue, une phrase publiée en ligne ou un proverbe sont en revanche déjà dans les dictionnaires des attaquants. La bande dessinée xkcd (2011) a popularisé l'idée avec « correct horse battery staple ». Pour t'en protéger, ne réutilise pas la phrase sur plusieurs services, et conserve-la dans ta mémoire ou dans un gestionnaire de mots de passe.",
+      "difficulty": 1,
+      "source": "https://xkcd.com/936/"
+    },
+    {
+      "question": "À quoi sert un **gestionnaire de mots de passe** ?",
+      "answer": "À conserver dans un coffre chiffré des mots de passe uniques, protégé par un mot de passe maître",
+      "wrong": [
+        "À retrouver les mots de passe d'autres personnes qu'on a oubliés",
+        "À envoyer ses mots de passe aux sites pour qu'ils les vérifient à l'avance",
+        "À afficher tous ses mots de passe en clair dans la barre du navigateur"
+      ],
+      "explanation": "Un gestionnaire est un coffre-fort numérique chiffré : il génère, stocke et remplit des mots de passe longs et différents pour chaque compte, et tu ne retiens qu'un seul mot de passe maître. Cela supprime la tentation de réutiliser le même mot de passe partout, qui rend une fuite sur un site dangereuse pour tous les autres comptes. L'ANSSI et la CNIL en recommandent l'usage. Exemples : KeePassXC (local et libre) ou Bitwarden. Pour t'en protéger toi-même : choisis un mot de passe maître long, active la double authentification sur le coffre et garde une sauvegarde de celui-ci.",
+      "difficulty": 1,
+      "source": "https://www.cnil.fr/"
+    },
+    {
+      "question": "Pourquoi un gestionnaire de mots de passe aide-t-il aussi à déjouer l'hameçonnage ?",
+      "answer": "Il ne propose les identifiants que sur le domaine enregistré, pas sur une copie du site",
+      "wrong": [
+        "Il supprime automatiquement les e-mails frauduleux de la boîte de réception",
+        "Il bloque l'accès à tous les sites que l'on n'a jamais visités",
+        "Il remplace le mot de passe par un code envoyé par SMS"
+      ],
+      "explanation": "Le gestionnaire associe chaque identifiant au nom de domaine exact du site pour lequel il a été créé. Sur un faux site comme `mabanque-secure.com`, il ne propose rien, car le domaine ne correspond à aucune entrée du coffre. Ce silence est un signal : si ton gestionnaire ne reconnaît pas la page, c'est peut-être un site factice. Un humain, lui, peut se laisser tromper par un logo identique. Pour en profiter, ne copie-colle pas à la main un mot de passe sur une page douteuse, et préfère le remplissage automatique du gestionnaire ou son extension de navigateur à jour.",
+      "difficulty": 2
+    },
+    {
+      "question": "En 2022, des sauvegardes de coffres de mots de passe d'utilisateurs de LastPass ont été copiées. Qu'est-ce qui protégeait les mots de passe qu'elles contenaient ?",
+      "answer": "Le chiffrement du coffre, dont la solidité dépend du mot de passe maître",
+      "wrong": [
+        "La double authentification, qui chiffre elle-même le contenu des coffres",
+        "Le fait que les sites changent seuls leurs mots de passe après une fuite",
+        "Rien, car les coffres étaient stockés sans aucun chiffrement"
+      ],
+      "explanation": "En août 2022, puis en fin d'année, LastPass a reconnu qu'un attaquant avait copié des sauvegardes de coffres clients. Les mots de passe, notes et autres champs sensibles y restaient chiffrés, mais pas les adresses des sites enregistrés. La clé de chiffrement étant dérivée du mot de passe maître, les coffres associés à un mot de passe maître faible pouvaient être attaqués hors ligne. La double authentification protège la connexion au service, pas un fichier déjà volé. Leçon : choisis un mot de passe maître long et unique, et change les mots de passe des comptes sensibles quand un coffre est compromis.",
+      "difficulty": 3
+    },
+    {
+      "question": "Que recommande-t-on aujourd'hui, par exemple le NIST (États-Unis), à propos du renouvellement des mots de passe ?",
+      "answer": "Ne pas l'imposer à intervalle fixe, mais le changer en cas de compromission",
+      "wrong": [
+        "Le renouveler tous les 30 jours sans exception",
+        "Le renouveler à chaque connexion depuis un nouvel appareil",
+        "Le renouveler en ajoutant un chiffre à la version précédente"
+      ],
+      "explanation": "Les changements imposés à intervalle régulier poussent les utilisateurs à des variantes prévisibles comme `Printemps2026!` puis `Printemps2027!`, ce qui n'améliore pas la sécurité. Depuis sa publication 800-63B (2017), le NIST déconseille donc le renouvellement périodique obligatoire et recommande de changer un mot de passe seulement s'il y a une preuve ou un soupçon de compromission, par exemple une fuite de données. Il conseille aussi de refuser les mots de passe déjà présents dans des listes de fuites. Dans la pratique : un mot de passe long, unique et protégé par la double authentification vaut mieux qu'un mot de passe changé souvent.",
+      "difficulty": 2,
+      "source": "https://pages.nist.gov/800-63-3/sp800-63b.html"
+    },
+    {
+      "question": "Pourquoi les **questions secrètes** (ville de naissance, nom du premier animal) sont-elles un point faible ?",
+      "answer": "Leurs réponses sont souvent trouvables en ligne : mieux vaut y répondre au hasard",
+      "wrong": [
+        "Elles sont interdites par la CNIL depuis l'entrée en vigueur du RGPD",
+        "Elles n'acceptent que des chiffres, ce qui facilite les essais",
+        "Elles désactivent automatiquement la double authentification du compte"
+      ],
+      "explanation": "Une question secrète est en réalité un second mot de passe, mais sa réponse est souvent publique ou devinable. En 2008, le compte e-mail de Sarah Palin, alors candidate à la vice-présidence américaine, a été pris en répondant à des questions comme sa date de naissance et son code postal, trouvés en quelques minutes. Si un site t'impose encore ces questions, invente des réponses aléatoires (ou une phrase de passe) et enregistre-les dans ton gestionnaire de mots de passe. Mieux : choisis une récupération de compte par application d'authentification ou par code de secours.",
+      "difficulty": 2
+    },
+    {
+      "question": "Utiliser un mot de passe puis répondre à une question secrète, est-ce de la double authentification ?",
+      "answer": "Non : les deux éléments sont de même nature, des facteurs de connaissance",
+      "wrong": [
+        "Oui : il y a bien deux étapes successives pour se connecter",
+        "Oui, si la question compte au moins huit caractères de long",
+        "Oui, si la question s'affiche sur un autre écran que le mot de passe"
+      ],
+      "explanation": "On distingue trois familles de facteurs : ce que l'on sait (mot de passe, code PIN, réponse secrète), ce que l'on possède (téléphone, clé de sécurité, carte) et ce que l'on est (empreinte, visage). Une authentification à deux facteurs combine deux familles différentes. Un mot de passe et une question secrète relèvent de la même famille : une personne qui devine ou vole l'un peut souvent obtenir l'autre, par exemple par hameçonnage. La combinaison solide est mot de passe plus application d'authentification, ou clé de sécurité. C'est le principe de l'authentification forte exigée pour les paiements en ligne par la directive européenne DSP2.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce que le **SIM swapping** ?",
+      "answer": "Un escroc fait transférer ton numéro de téléphone vers une carte SIM qu'il contrôle",
+      "wrong": [
+        "Un virus qui copie à distance les contacts stockés sur la carte SIM",
+        "Une saturation du réseau mobile par des SMS envoyés en masse",
+        "Le blocage d'un téléphone volé par l'opérateur grâce à son IMEI"
+      ],
+      "explanation": "Le SIM swapping (détournement de carte SIM) consiste à tromper le service client de l'opérateur, souvent avec de fausses pièces d'identité, pour faire activer ton numéro sur une carte SIM détenue par l'attaquant. Il reçoit alors tes appels et tes SMS, donc les codes de validation, et peut prendre le contrôle de comptes protégés par SMS. Signe typique : ton téléphone perd soudainement tout réseau. Pour t'en protéger : privilégie une application d'authentification ou une clé de sécurité plutôt que le SMS, active le code PIN de la SIM, ajoute si possible un mot de passe auprès de l'opérateur et préviens-le immédiatement en cas de perte de réseau inexpliquée.",
+      "difficulty": 2,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Où est-il préférable de conserver les **codes de secours** de la double authentification ?",
+      "answer": "Imprimés ou dans un coffre chiffré, séparés du téléphone",
+      "wrong": [
+        "Dans un fichier texte intitulé « codes » sur le bureau de l'ordinateur",
+        "Dans une capture d'écran rangée dans la galerie photos du téléphone",
+        "Dans un message envoyé à soi-même sur sa messagerie principale"
+      ],
+      "explanation": "Les codes de secours (backup codes) sont à usage unique : ils te permettent de récupérer ton compte si tu perds ou changes de téléphone. Ils valent donc autant qu'un second facteur. Les stocker dans un lieu accessible à un attaquant, comme un fichier ou une photo sur le même appareil, ou dans la messagerie qu'ils protègent, annule leur intérêt, et ils seraient perdus avec le téléphone. Imprime-les et range-les en lieu sûr, ou place-les dans ton gestionnaire de mots de passe. Pense aussi à les régénérer si tu penses qu'ils ont été exposés.",
+      "difficulty": 1
+    },
+    {
+      "question": "Un attaquant qui connaît ton mot de passe envoie des dizaines de demandes de connexion pour que tu finisses par appuyer sur « Approuver ». Quel nom porte cette technique ?",
+      "answer": "La fatigue de double authentification (MFA fatigue ou push bombing)",
+      "wrong": [
+        "Le credential stuffing, par réutilisation d'identifiants",
+        "Le pass-the-hash, par réutilisation d'une empreinte",
+        "Le détournement de session, par vol de cookie"
+      ],
+      "explanation": "Quand la double authentification repose sur des notifications push du type « Était-ce vous ? », un attaquant ayant déjà le mot de passe peut déclencher des demandes en rafale, souvent la nuit, jusqu'à ce que la victime, excédée ou croyant à un bug, accepte. En septembre 2022, un intrus a ainsi pu entrer dans les systèmes d'Uber après avoir inondé de demandes un sous-traitant de l'entreprise, puis l'avoir contacté sur WhatsApp en se faisant passer pour le support informatique. Parades : refuser toute demande que tu n'as pas déclenchée et prévenir le support, activer le « number matching » (saisie d'un nombre affiché à l'écran), limiter le nombre de demandes et préférer des clés FIDO2.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi un code à 6 chiffres TOTP ne protège-t-il pas contre un faux site qui relaie tes saisies en temps réel ?",
+      "answer": "Le faux site transmet aussitôt le code au vrai site, alors qu'il est encore valable",
+      "wrong": [
+        "Le code TOTP circule toujours en clair sur le réseau mobile",
+        "Le code TOTP est identique pour tous les utilisateurs du site",
+        "Le code TOTP reste valable plusieurs jours après sa génération"
+      ],
+      "explanation": "Un code TOTP change toutes les 30 secondes environ, mais rien ne le lie au site sur lequel tu le saisis. Dans une attaque dite de l'adversaire au milieu (AitM), le faux site joue les intermédiaires : il affiche une page identique, transmet immédiatement à la vraie page ton identifiant, ton mot de passe, puis ton code, et récupère le cookie de session qui en résulte. La double authentification par code est donc meilleure que le mot de passe seul, mais pas à l'épreuve de l'hameçonnage. Les clés de sécurité FIDO2 et les passkeys répondent à ce problème en vérifiant le nom de domaine réel.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi une clé de sécurité physique (norme **FIDO2**) résiste-t-elle à l'hameçonnage ?",
+      "answer": "Elle ne répond qu'au vrai domaine du site, que le navigateur vérifie automatiquement",
+      "wrong": [
+        "Elle génère des codes plus longs, impossibles à recopier à la main",
+        "Elle mémorise le mot de passe et le saisit à la place de l'utilisateur",
+        "Elle bloque l'accès aux sites dont le certificat a expiré"
+      ],
+      "explanation": "Avec FIDO2 (et son protocole WebAuthn), la clé crée pour chaque site une paire de clés cryptographiques : la clé publique est enregistrée chez le site, la clé privée ne quitte jamais la clé de sécurité. À la connexion, la clé signe un défi lié au nom de domaine que le navigateur lui indique. Sur un faux site au nom différent, la signature ne correspondra à aucun compte et l'attaque échoue, même si tu es trompé visuellement. Aucun secret n'est à recopier, donc rien à voler par hameçonnage. Il est conseillé d'enregistrer au moins deux clés, dont une de secours.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'est-ce qu'une **passkey** (clé d'accès) ?",
+      "answer": "Un identifiant à clé cryptographique, déverrouillé par biométrie ou PIN, qui remplace le mot de passe",
+      "wrong": [
+        "Un mot de passe de grande longueur généré automatiquement par le navigateur web",
+        "Un code à usage unique reçu par SMS à chaque connexion à un compte",
+        "Un second mot de passe à saisir juste après le premier, sur le même écran"
+      ],
+      "explanation": "Une passkey repose sur la même technologie que les clés FIDO2 : à l'inscription, ton appareil crée une paire de clés, dont la publique est confiée au site. Pour te connecter, tu déverrouilles l'appareil avec ton empreinte, ton visage ou ton code PIN : l'appareil signe alors un défi lié au site. Il n'y a aucun mot de passe à retenir, à réutiliser ou à se faire voler lors d'une fuite de données côté site. Les passkeys sont portées par l'alliance FIDO et soutenues par Apple, Google et Microsoft (annonce commune en 2022). Selon les services, elles peuvent être synchronisées de façon chiffrée entre tes appareils.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Passkey"
+    },
+    {
+      "question": "À quoi sert le site **Have I Been Pwned** ?",
+      "answer": "À vérifier si une adresse e-mail apparaît dans des fuites de données connues",
+      "wrong": [
+        "À mesurer le débit de sa connexion Internet",
+        "À analyser un fichier suspect avec plusieurs antivirus à la fois",
+        "À scanner les ports ouverts de sa box Internet"
+      ],
+      "explanation": "Have I Been Pwned (haveibeenpwned.com) a été créé en 2013 par le chercheur Troy Hunt. Il rassemble des données issues de fuites publiques et te permet de savoir si ton adresse e-mail a été exposée, et lors de quelle fuite. Le site propose aussi de s'abonner à une alerte. Son service Pwned Passwords permet de vérifier si un mot de passe figure dans des listes de fuites, sans l'envoyer en clair grâce à une technique de k-anonymat. Si ton adresse apparaît, change le mot de passe concerné et active la double authentification. Évite de saisir tes mots de passe réels sur des sites inconnus.",
+      "difficulty": 1,
+      "source": "https://haveibeenpwned.com/"
+    },
+    {
+      "question": "Ton adresse e-mail apparaît dans la fuite de données d'un site où tu as un compte. Quel est le premier réflexe ?",
+      "answer": "Changer le mot de passe de ce compte et celui de tous les comptes où il a servi",
+      "wrong": [
+        "Supprimer ton adresse e-mail principale pour en créer une autre",
+        "Attendre que le site t'écrive pour confirmer la fuite",
+        "Ne changer que ton nom d'utilisateur, le mot de passe étant chiffré"
+      ],
+      "explanation": "Les identifiants volés sont rapidement testés sur d'autres services (c'est le credential stuffing) : c'est pourquoi il faut changer le mot de passe du site touché et de chaque compte où il a été réutilisé. Un mot de passe « chiffré » peut être cassé hors ligne si le site le protégeait mal. Active aussi la double authentification, surveille tes comptes bancaires et sois vigilant face aux messages d'hameçonnage qui citeront peut-être la fuite pour paraître crédibles. Attendre une confirmation du site fait perdre un temps précieux, et changer d'adresse e-mail n'est pas nécessaire.",
+      "difficulty": 1,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Combien de bits d'entropie offre environ une phrase de passe de **6 mots** tirés au hasard dans une liste Diceware de 7 776 mots ?",
+      "answer": "Environ 77 bits",
+      "wrong": [
+        "Environ 36 bits",
+        "Environ 52 bits",
+        "Environ 128 bits"
+      ],
+      "explanation": "Chaque mot tiré au hasard dans une liste de 7 776 mots (la liste Diceware, correspondant à 6^5 résultats de cinq dés) apporte log2(7776), soit environ 12,9 bits. Six mots donnent donc 6 × 12,9 ≈ 77 bits, soit environ 2^77 combinaisons possibles. Quatre mots ne donnent qu'environ 52 bits, l'équivalent d'un mot de passe de 8 caractères choisis au hasard parmi 95 caractères imprimables. Cette estimation suppose que les mots sont réellement tirés au hasard (par des dés ou un générateur), et non choisis par l'utilisateur.",
+      "difficulty": 3,
+      "source": "https://theworld.com/~reinhold/diceware.html"
+    },
+    {
+      "question": "Pourquoi le compte de messagerie principal est-il le compte le plus important à protéger ?",
+      "answer": "Il permet de réinitialiser les mots de passe de presque tous les autres comptes",
+      "wrong": [
+        "Il contient obligatoirement les numéros de carte bancaire de son titulaire",
+        "C'est le seul de tous les comptes à posséder un mot de passe",
+        "C'est le seul compte ciblé par les messages d'hameçonnage"
+      ],
+      "explanation": "Quand on clique sur « Mot de passe oublié », le service envoie un lien de réinitialisation à l'adresse e-mail du compte. Celui qui contrôle ta boîte de réception peut donc prendre la main sur tes réseaux sociaux, tes achats en ligne, voire tes services bancaires. Cette adresse est ainsi la clé qui ouvre toutes les autres portes. Protège-la par un mot de passe long et unique, active la double authentification (idéalement une clé de sécurité ou une application, pas seulement un SMS), et vérifie régulièrement les règles de transfert et les appareils connectés, souvent modifiés par les pirates.",
+      "difficulty": 1,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "En cybersécurité, que désigne le **password spraying** ?",
+      "answer": "Essayer quelques mots de passe très courants sur un grand nombre de comptes",
+      "wrong": [
+        "Essayer tous les mots de passe possibles sur un seul compte",
+        "Réutiliser sur d'autres sites des identifiants issus d'une fuite",
+        "Saturer un serveur d'authentification avec des requêtes simultanées"
+      ],
+      "explanation": "Le password spraying (pulvérisation) inverse la logique de la force brute : au lieu d'essayer des milliers de mots de passe sur un seul compte, ce qui verrouille le compte après quelques échecs, l'attaquant teste un ou deux mots de passe courants (comme `Bienvenue2026`) sur des milliers de comptes d'une organisation. Chaque compte ne subit que peu d'échecs, ce qui contourne le verrouillage. Côté défense : imposer la double authentification, refuser les mots de passe courants ou déjà fuités, surveiller les échecs de connexion répartis sur beaucoup de comptes, et limiter les tentatives par adresse IP.",
+      "difficulty": 3,
+      "source": "https://owasp.org/www-community/attacks/Password_Spraying_Attack"
+    },
+    {
+      "question": "Tu consultes ta messagerie sur un ordinateur de cybercafé. Quelle précaution est la plus importante ?",
+      "answer": "Te déconnecter à la fin et ne jamais enregistrer le mot de passe dans le navigateur",
+      "wrong": [
+        "Cocher « rester connecté » pour gagner du temps à la prochaine visite",
+        "Fermer simplement l'onglet sans passer par la déconnexion",
+        "Passer le navigateur en plein écran pour masquer la barre d'adresse"
+      ],
+      "explanation": "Un ordinateur partagé peut être configuré pour enregistrer les frappes (keylogger) ou garder les sessions ouvertes. Si tu laisses ta session active ou si tu enregistres le mot de passe, la personne suivante peut entrer dans ton compte. La navigation privée limite les traces locales mais n'empêche pas un enregistreur de frappe. Évite donc les comptes sensibles, par exemple bancaires, sur un appareil public ; si c'est inévitable, déconnecte-toi, ferme le navigateur et change ensuite ton mot de passe depuis un appareil de confiance. La double authentification limite les dégâts, car le seul mot de passe volé ne suffit plus.",
+      "difficulty": 1
+    }
+  ]
 }
