@@ -1,8 +1,8 @@
 {
   "$schema": "../../schemas/theme.schema.json",
-  "name": "Hacking",
+  "name": "Cybersécurité",
   "icon": "🕵️",
-  "description": "Sécurité offensive, malwares, web, réseau et CTF.",
+  "description": "Comprendre les attaques pour mieux s'en protéger : web, réseau, mots de passe, forensics, culture cyber.",
   "color": "#22c55e",
   "order": 2
 }

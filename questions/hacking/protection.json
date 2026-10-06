@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Se protéger",
+  "icon": "🛡️",
+  "description": "Hameçonnage, mots de passe, double authentification, sauvegardes, mises à jour, arnaques en ligne : les bons réflexes pour ne pas se faire avoir.",
+  "order": 0,
+  "questions": []
+}

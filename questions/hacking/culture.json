@@ -1,0 +1,8 @@
+{
+  "$schema": "../../schemas/subtheme.schema.json",
+  "name": "Culture cyber",
+  "icon": "📜",
+  "description": "Grandes attaques de l'histoire, CVE et CVSS, OWASP, MITRE ATT&CK, ANSSI, métiers, CTF et vocabulaire du milieu.",
+  "order": 9,
+  "questions": []
+}
