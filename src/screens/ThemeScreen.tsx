@@ -80,13 +80,13 @@ export function ThemeScreen({ theme, timer, onTimer }: {
                     )}
                   </span>
                   {played && (
-                    <span class="mastery" aria-label={perfect ? 'Terminé sans faute' : `Record ${best} sur ${sub.count}`}>
+                    <span class="mastery" aria-label={perfect ? 'Désamorcé : tout bon sans une erreur' : `Record ${best} sur ${sub.count}`}>
                       <span class="mastery-track" aria-hidden="true">
                         <span class={perfect ? 'mastery-fill perfect' : 'mastery-fill'} style={{ width: `${mastery * 100}%` }} />
                       </span>
                       <span class="mastery-label" aria-hidden="true">
                         {perfect ? (
-                          <span>Sans faute</span>
+                          <span>Désamorcé</span>
                         ) : (
                           <>
                             <Trophy size={12} />
@@ -108,17 +108,17 @@ export function ThemeScreen({ theme, timer, onTimer }: {
 
       <section class="home-block" aria-labelledby="h-all">
         <h2 class="section-title" id="h-all">
-          Mode difficile
+          Gros calibre
         </h2>
         <button type="button" class="topic-row topic-row-all" onClick={() => play(themeKey, `/play/${theme.id}`)}>
           <span class="topic-chip">
             <Layers size={22} aria-hidden="true" />
           </span>
           <span class="topic-body">
-            <span class="topic-name">{themeRun ? 'Reprendre tout le thème' : 'Tout le thème'}</span>
+            <span class="topic-name">{themeRun ? 'Reprendre tout le thème' : 'Tout le thème d\'un coup'}</span>
             <span class="topic-meta">
               <span>
-                {themeRun ? `Série en cours : ${themeRun.streak} d'affilée` : `Les ${theme.count} questions mélangées`}
+                {themeRun ? `La mèche brûle encore : ${themeRun.streak} d'affilée` : `Les ${theme.count} questions en vrac`}
               </span>
               {themeBest > 0 && (
                 <span class="meta-best">

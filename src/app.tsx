@@ -38,7 +38,7 @@ export function App() {
           </button>
         </main>
       ) : !catalog ? (
-        <main class="screen center loading">Chargement…</main>
+        <main class="screen center loading">Tic, tac…</main>
       ) : (
         <Screen catalog={catalog} route={route} timer={timer} onTimer={onTimer} />
       )}
@@ -73,7 +73,7 @@ function NotFound() {
         <SearchX size={26} aria-hidden="true" />
       </span>
       <h1 class="center-title">Introuvable</h1>
-      <p>Ce thème n'existe pas (ou plus).</p>
+      <p>Ce thème a déjà explosé (ou n'a jamais existé).</p>
       <button type="button" class="btn btn-secondary" onClick={() => goBack('/')}>
         Retour à l'accueil
       </button>

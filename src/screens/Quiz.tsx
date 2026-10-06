@@ -23,6 +23,8 @@ interface Turn {
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F']
 const DIFFICULTY = { 1: 'Facile', 2: 'Moyen', 3: 'Difficile' } as const
+/** Titres d'une bonne réponse, en alternance : la bombe tient, le crâne se remplit. */
+const CHEERS = ['Ça rentre !', 'Neurone validé.', 'La mèche tient.', 'Tic, tac… toujours en vie.', 'Imprimé dans le crâne.', 'Bien vu !']
 
 /** Niveau de difficulté : trois barres, autant de pleines que le niveau. */
 function DifficultyBars({ level }: { level: 1 | 2 | 3 }) {
@@ -67,7 +69,7 @@ export function Quiz({ pool, timer }: { pool: PoolInfo; timer: TimerSetting }) {
       </main>
     )
   }
-  if (!questions) return <main class="screen center loading">Chargement des questions…</main>
+  if (!questions) return <main class="screen center loading">Chargement des munitions…</main>
   return <Run pool={pool} questions={questions} timer={timer} />
 }
 
@@ -220,7 +222,7 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
     if (timer && run.phase === 'question' && (run.deadline ?? 0) - Date.now() < 1500) {
       asked.current.delete(run.qId)
       nextQuestion()
-      if (run.streak > 0) setNotice(`Reprise : ${run.streak} d'affilée · nouvelle question`)
+      if (run.streak > 0) setNotice(`La mèche brûle encore (${run.streak}) · nouvelle question`)
       return
     }
     const t: Turn = { q, choices: run.choices, n: 1, num: run.num }
@@ -228,7 +230,7 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
     setTurn(t)
     setPhase(run.phase)
     setPicked(run.picked)
-    if (run.streak > 0) setNotice(`Reprise de ta série : ${run.streak} d'affilée`)
+    if (run.streak > 0) setNotice(`La mèche brûle encore : ${run.streak} d'affilée`)
   }, [nextQuestion, pool.key, questions, timer])
 
   /** `null` = temps écoulé. */
@@ -252,7 +254,7 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
       if (correct) {
         setStreak(newStreak)
         setBest((b) => Math.max(b, newStreak))
-        setNotice(!perfect && isMilestone(newStreak) ? `${newStreak} bonnes réponses d'affilée !` : null)
+        setNotice(!perfect && isMilestone(newStreak) ? `${newStreak} d'affilée, ça rentre !` : null)
       } else {
         setNotice(null)
         navigator.vibrate?.(200)
@@ -340,7 +342,7 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
     return () => window.removeEventListener('keydown', onKey)
   }, [answer, nextQuestion, restart])
 
-  if (!turn) return <main class="screen center loading">Mélange des questions…</main>
+  if (!turn) return <main class="screen center loading">On secoue la bombe…</main>
 
   const { q, choices } = turn
   const ended = phase === 'wrong' || phase === 'timeout' || phase === 'victory'
@@ -354,23 +356,23 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
 
   const verdict =
     phase === 'correct'
-      ? { tone: 'ok', Icon: CircleCheck, title: 'Bonne réponse !' }
+      ? { tone: 'ok', Icon: CircleCheck, title: CHEERS[turn.n % CHEERS.length] }
       : phase === 'victory'
-        ? { tone: 'ok', Icon: Trophy, title: `Sans faute ! ${streak}/${total}` }
-        : { tone: 'ko', Icon: phase === 'timeout' ? TimerOff : CircleX, title: phase === 'timeout' ? 'Temps écoulé' : 'Raté !' }
+        ? { tone: 'ok', Icon: Trophy, title: `Bombe désamorcée ! ${streak}/${total}` }
+        : { tone: 'ko', Icon: phase === 'timeout' ? TimerOff : CircleX, title: phase === 'timeout' ? 'Tic, tac… BOUM !' : 'BOUM !' }
 
   const recordLine =
     phase === 'victory'
-      ? `Les ${total} questions de « ${pool.title} », sans une seule erreur.`
+      ? `Les ${total} questions de « ${pool.title} », sans une seule erreur. Crâne officiellement bourré.`
       : newRecord
         ? bestAtStart > 0
-          ? `Nouveau record : ${streak} (ancien : ${bestAtStart})`
-          : `Premier record : ${streak}`
+          ? `Nouveau record : ${streak} (l'ancien : ${bestAtStart})`
+          : `Premier record : ${streak}. Il ne tiendra pas longtemps.`
         : streak > 0
-          ? `Série terminée à ${streak}${bestAtStart > 0 ? ` · Record : ${bestAtStart}` : ''}`
+          ? `Explosé à ${streak}${bestAtStart > 0 ? ` · record : ${bestAtStart}` : ''}`
           : bestAtStart > 0
-            ? `Record à battre : ${bestAtStart}`
-            : 'Lis l\'explication, puis retente ta chance.'
+            ? `Explosé d'entrée. Record à battre : ${bestAtStart}`
+            : 'Explosé d\'entrée. Lis l\'explication : ça finira par rentrer.'
 
   const closeExplain = () => {
     setExplainOpen(false)
@@ -478,7 +480,7 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
             </button>
             {phase === 'correct' ? (
               <button ref={primaryRef} type="button" class="btn btn-success" onClick={guard(nextQuestion)}>
-                Continuer <ArrowRight size={18} aria-hidden="true" />
+                Encore ! <ArrowRight size={18} aria-hidden="true" />
               </button>
             ) : (
               <button ref={primaryRef} type="button" class={phase === 'victory' ? 'btn btn-success' : 'btn btn-danger'} onClick={guard(restart)}>
@@ -529,7 +531,7 @@ function Run({ pool, questions, timer }: { pool: PoolInfo; questions: PoolQuesti
             } else closeExplain()
           }}
         >
-          {phase === 'correct' ? 'Question suivante' : 'Fermer'}
+          {phase === 'correct' ? 'Encore une !' : 'Fermer'}
         </button>
       </Modal>
     </main>

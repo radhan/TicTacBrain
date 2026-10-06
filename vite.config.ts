@@ -72,9 +72,9 @@ export default defineConfig({
       includeAssets: ['favicon.svg', 'icons/apple-touch-icon.png'],
       manifest: {
         id: './',
-        name: 'TicTacBrain — Quiz en mode série',
+        name: 'TicTacBrain — Le quiz qui fait boum',
         short_name: 'TicTacBrain',
-        description: 'Quiz QCM par thèmes en mode série : va le plus loin possible sans te tromper.',
+        description: 'Le quiz qui te bourre le crâne : enchaîne les bonnes réponses avant que ça fasse BOUM.',
         lang: 'fr',
         start_url: './',
         scope: './',

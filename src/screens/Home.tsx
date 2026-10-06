@@ -43,8 +43,8 @@ export function Home({ catalog, timer, onTimer }: {
       </header>
 
       <section class="intro">
-        <h1>Prêt pour une série ?</h1>
-        <p>Enchaîne les bonnes réponses. À la première erreur, la série repart de zéro : on apprend au passage.</p>
+        <h1>Tic, tac… ça rentre ou ça fait boum.</h1>
+        <p>Bonne réponse : la mèche tient. Une erreur : BOUM, retour à zéro. On recommence jusqu'à ce que ça rentre. C'est du bourrage de crâne, mais c'est pour ton bien.</p>
       </section>
 
       <InstallBanner />
@@ -59,7 +59,7 @@ export function Home({ catalog, timer, onTimer }: {
           }}
         >
           <span class="hero-action-top">
-            <span class="hero-action-label">Reprendre ta série</span>
+            <span class="hero-action-label">La mèche brûle encore</span>
             <span class="hero-action-play" aria-hidden="true">
               <Play size={18} fill="currentColor" />
             </span>
@@ -71,7 +71,7 @@ export function Home({ catalog, timer, onTimer }: {
           <span class="hero-action-meta">
             <Flame size={15} aria-hidden="true" />
             <span>
-              {run.streak} / {runPool.count} bonnes réponses d'affilée
+              {run.streak} / {runPool.count} sans exploser
             </span>
           </span>
         </button>
@@ -82,33 +82,33 @@ export function Home({ catalog, timer, onTimer }: {
           <div class="kpi">
             <Flame size={16} aria-hidden="true" class="kpi-icon" />
             <strong>{stats.bestEver}</strong>
-            <span>Meilleure série</span>
+            <span>Mèche record</span>
           </div>
           <div class="kpi">
             <CircleCheck size={16} aria-hidden="true" class="kpi-icon" />
             <strong>{stats.correct}</strong>
-            <span>Bonnes réponses</span>
+            <span>Neurones gavés</span>
           </div>
           <div class="kpi">
             <Target size={16} aria-hidden="true" class="kpi-icon" />
             <strong>{accuracy} %</strong>
-            <span>Réussite</span>
+            <span>Taux de survie</span>
           </div>
         </section>
       )}
 
       <section class="home-block" aria-labelledby="h-play">
         <h2 class="section-title" id="h-play">
-          Jouer
+          Allume la mèche
         </h2>
         <button type="button" class={run ? 'quickplay' : 'quickplay quickplay-primary'} onClick={() => navigate('/play/all')}>
           <span class="topic-chip">
             <Shuffle size={22} aria-hidden="true" />
           </span>
           <span class="topic-body">
-            <span class="topic-name">Tout mélangé</span>
+            <span class="topic-name">Le grand mélange</span>
             <span class="topic-meta">
-              <span>{catalog.total} questions · tous thèmes</span>
+              <span>{catalog.total} questions · tous thèmes, sans pitié</span>
               {bestAll > 0 && (
                 <span class="meta-best">
                   <Trophy size={13} aria-hidden="true" />
@@ -127,7 +127,7 @@ export function Home({ catalog, timer, onTimer }: {
 
       <section class="home-block" aria-labelledby="h-themes">
         <h2 class="section-title" id="h-themes">
-          Thèmes <span class="count">{catalog.themes.length}</span>
+          Matières à bourrer <span class="count">{catalog.themes.length}</span>
         </h2>
         <div class="topic-list">
           {catalog.themes.map((theme) => {
@@ -160,7 +160,7 @@ export function Home({ catalog, timer, onTimer }: {
       </section>
 
       <footer class="footer">
-        Une question à proposer ? Tout se passe dans un simple fichier JSON :{' '}
+        Une question qui te démange ? Ajoute-la à l'arsenal, c'est un simple fichier JSON :{' '}
         <a href={`${REPO_URL}/blob/main/CONTRIBUTING.md`} target="_blank" rel="noreferrer">
           contribuer sur GitHub
         </a>

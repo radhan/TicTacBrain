@@ -11,8 +11,8 @@ export function InstallBanner() {
     <section class="install" aria-label="Installer l'application">
       <img class="install-logo" src={LOGO} alt="" width="44" height="44" />
       <div class="install-text">
-        <strong>Installe TicTacBrain</strong>
-        {mode === 'prompt' && <span>Ouvre-la depuis ton écran d'accueil, en plein écran et même hors connexion.</span>}
+        <strong>Garde la bombe dans ta poche</strong>
+        {mode === 'prompt' && <span>Installe l'app : plein écran, lancement depuis l'accueil, et même hors connexion.</span>}
         {mode === 'ios' && (
           <span>
             Dans Safari, touche <Share size={15} aria-label="Partager" class="inline-icon" /> <b>Partager</b>, puis{' '}

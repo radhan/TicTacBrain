@@ -30,7 +30,7 @@ export function UpdateToast({ hidden }: { hidden: boolean }) {
     return (
       <div class="toast" role="status">
         <Sparkles size={18} aria-hidden="true" class="toast-icon" />
-        <span>Nouvelle version disponible</span>
+        <span>Nouvelles munitions disponibles</span>
         <button type="button" class="btn btn-sm btn-primary" onClick={() => updateServiceWorker(true)}>
           Mettre à jour
         </button>
@@ -45,7 +45,7 @@ export function UpdateToast({ hidden }: { hidden: boolean }) {
     return (
       <div class="toast" role="status">
         <CircleCheck size={18} aria-hidden="true" class="toast-icon" />
-        <span>Disponible hors connexion</span>
+        <span>Fonctionne aussi hors connexion</span>
       </div>
     )
   }
