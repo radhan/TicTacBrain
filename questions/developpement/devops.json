@@ -13,7 +13,7 @@
         "Surveiller en continu les performances en production",
         "Regrouper toutes les fusions de branches en fin de sprint"
       ],
-      "explanation": "L'**intégration continue** consiste à intégrer très souvent (au moins quotidiennement) les modifications dans la branche principale, chaque intégration déclenchant automatiquement un build et des tests. Les problèmes sont ainsi détectés tôt, quand ils sont encore petits. Déployer automatiquement en production relève du **déploiement continu**, une étape plus loin dans le pipeline.",
+      "explanation": "Quand plusieurs développeurs modifient le même projet, plus ils attendent pour mettre leur code en commun, plus la fusion est pénible. L'**intégration continue** (CI) évite cela : on fusionne ses changements dans la branche principale très souvent (au moins une fois par jour), et chaque fusion déclenche automatiquement un build et des tests.\nExemple : dès que tu ouvres une pull request, un serveur (GitHub Actions, GitLab CI…) compile le projet et lance les tests ; si l'un d'eux casse, tu le sais en quelques minutes. Envoyer chaque commit en production sans validation, c'est autre chose : le **déploiement continu**, une étape de plus qui vient après la CI.",
       "difficulty": 1,
       "source": "https://martinfowler.com/articles/continuousIntegration.html"
     },
@@ -25,7 +25,7 @@
         "`IMAGE`",
         "`USE`"
       ],
-      "explanation": "`FROM` démarre une étape de build et définit l'image de base, par exemple `FROM node:24-alpine`, ou `FROM scratch` pour partir d'une image vide. Un Dockerfile doit commencer par `FROM` (seuls des `ARG`, des commentaires et des directives du parser peuvent le précéder). Plusieurs `FROM` dans un même fichier créent un build multi-stage.",
+      "explanation": "Un **Dockerfile** est la recette qui décrit comment fabriquer une image Docker, couche après couche. Toute recette part d'un point de départ : c'est le rôle de `FROM`, qui désigne l'**image de base** (un système minimal, ou un système avec un runtime déjà installé).\n```dockerfile\nFROM node:22-alpine\nWORKDIR /app\nCOPY . .\n```\nIci, on démarre d'une image Node.js sur Alpine Linux, puis on ajoute son code par-dessus. `FROM scratch` signifie « image totalement vide », pratique pour un binaire autonome. `BASE`, `IMAGE` et `USE` n'existent pas dans Docker. Plusieurs `FROM` dans un même fichier donnent un build multi-stage.",
       "difficulty": 1,
       "source": "https://docs.docker.com/reference/dockerfile/"
     },
@@ -37,7 +37,7 @@
         "Le Node",
         "Le ReplicaSet"
       ],
-      "explanation": "Un **Pod** regroupe un ou plusieurs conteneurs qui partagent le même réseau (une IP, un `localhost` commun) et peuvent partager des volumes. Kubernetes ne gère jamais un conteneur isolé : il planifie des Pods sur des nœuds (**Nodes**). En pratique, on crée rarement des Pods à la main : un **Deployment** gère des ReplicaSets, qui gèrent eux-mêmes des Pods.",
+      "explanation": "Kubernetes est un orchestrateur : il décide sur quelles machines (les **nœuds**, ou *Nodes*) faire tourner tes conteneurs. Mais il ne manipule jamais un conteneur seul : l'unité de base est le **Pod**, un petit groupe d'un ou plusieurs conteneurs qui partagent la même adresse IP et peuvent partager des volumes.\nExemple : un Pod contenant ton appli web et un second conteneur qui collecte ses logs ; les deux se parlent via `localhost`. Le conteneur est un niveau en dessous (il vit dans un Pod), tandis que le Node (la machine) et le **ReplicaSet** (qui maintient N Pods identiques) sont au-dessus. En pratique, on crée un **Deployment**, qui gère des ReplicaSets, qui gèrent des Pods.",
       "difficulty": 1,
       "source": "https://kubernetes.io/docs/concepts/workloads/pods/"
     },
@@ -49,7 +49,7 @@
         "`terraform validate`",
         "`terraform init`"
       ],
-      "explanation": "`terraform plan` compare la configuration au state et à l'infrastructure réelle, puis affiche ce qui serait créé (`+`), modifié (`~`) ou détruit (`-`). C'est l'étape de revue avant `terraform apply`. `terraform validate` vérifie seulement la syntaxe et la cohérence de la configuration, sans interroger les APIs des fournisseurs, et `terraform init` prépare le répertoire (providers, backend).",
+      "explanation": "**Terraform** décrit une infrastructure (serveurs, réseaux, bases de données…) dans des fichiers de configuration, puis la crée chez un fournisseur cloud. Avant de toucher à quoi que ce soit, on veut voir ce qui va changer : c'est `terraform plan`. Il compare ton code, le **state** (la mémoire de Terraform sur ce qu'il gère) et l'infrastructure réelle, puis affiche `+` pour créer, `~` pour modifier, `-` pour détruire.\n```\nPlan: 1 to add, 1 to change, 0 to destroy.\n```\nOn relit ce résumé, et seulement ensuite `terraform apply` exécute les changements. `terraform validate` vérifie juste que la configuration est correcte, et `terraform init` télécharge les providers : aucun des deux ne calcule de changements.",
       "difficulty": 1,
       "source": "https://developer.hashicorp.com/terraform/cli/commands/plan"
     },
@@ -61,7 +61,7 @@
         "Via une API REST exposée par chaque serveur",
         "Via un démon qui tire sa config d'un maître"
       ],
-      "explanation": "Ansible est **agentless** : depuis le nœud de contrôle, il se connecte en **SSH**, copie de petits modules Python sur la machine cible, les exécute puis les supprime. À l'inverse, Puppet et Chef reposent classiquement sur un agent installé sur chaque serveur, qui tire sa configuration d'un serveur central (modèle *pull*).",
+      "explanation": "**Ansible** automatise la configuration de serveurs (installer un paquet, copier un fichier, démarrer un service). Sa particularité : il est **agentless**, donc rien à installer sur les serveurs gérés. Depuis ta machine, le « nœud de contrôle », il ouvre une connexion **SSH**, envoie de petits modules Python, les exécute, puis les supprime.\n```\nansible web -i inventaire.ini -m ping\n```\nCette commande teste la connexion SSH vers tous les serveurs du groupe `web`. À l'inverse, Puppet et Chef installent classiquement un agent sur chaque machine, qui va chercher sa configuration auprès d'un serveur central (modèle *pull*). Ansible, lui, *pousse* depuis le contrôleur.",
       "difficulty": 1
     },
     {
@@ -72,7 +72,7 @@
         "Rolling update",
         "Recreate"
       ],
-      "explanation": "En **blue/green**, la nouvelle version (green) est déployée à côté de la version en service (blue), testée, puis le routeur ou le load balancer bascule tout le trafic vers elle. Le rollback est quasi instantané : il suffit de rebasculer vers blue. La contrepartie est de devoir faire tourner temporairement le double de ressources.",
+      "explanation": "Quand on déploie une nouvelle version, comment passer de l'ancienne à la nouvelle sans coupure ni mauvaise surprise ? En **blue/green**, on garde deux environnements de production identiques. « Blue » sert les utilisateurs ; on déploie la nouvelle version dans « green », on la teste, puis le load balancer (le répartiteur de trafic) bascule **tout** le trafic d'un coup vers green.\nExemple : si green se met à planter après la bascule, on remet le trafic sur blue en quelques secondes. Contrepartie : il faut payer le double de ressources pendant la transition. À l'inverse, le **canary** envoie le trafic petit à petit, et le **rolling update** remplace les instances une par une.",
       "difficulty": 1,
       "source": "https://martinfowler.com/bliki/BlueGreenDeployment.html"
     },
@@ -84,7 +84,7 @@
         "Métriques, SLA et incidents",
         "Traces, tests et audits"
       ],
-      "explanation": "Les **logs** décrivent des événements ponctuels, les **métriques** des valeurs numériques agrégées dans le temps (latence, taux d'erreur…) et les **traces** le parcours d'une requête à travers plusieurs services. Une stack typique : Prometheus pour les métriques, Loki ou Elasticsearch pour les logs, Jaeger ou Tempo pour les traces, et **Grafana** pour visualiser le tout. OpenTelemetry standardise leur collecte.",
+      "explanation": "L'**observabilité** est la capacité à comprendre ce qui se passe dans un système à partir de ce qu'il émet. Elle repose sur trois types de données. Les **logs** : des lignes de texte qui racontent des événements ponctuels (« paiement refusé pour la commande 42 »). Les **métriques** : des chiffres mesurés dans le temps (latence, taux d'erreur, CPU). Les **traces** : le parcours d'une requête à travers plusieurs services, avec le temps passé dans chacun.\nExemple : une métrique t'alerte que le site ralentit, la trace montre que le service de paiement est en cause, et ses logs révèlent pourquoi. Alertes, dashboards, SLA ou audits sont des usages ou des conséquences de ces données, pas des piliers.",
       "difficulty": 1,
       "source": "https://opentelemetry.io/docs/concepts/observability-primer/"
     },
@@ -96,7 +96,7 @@
         "SLI",
         "MTTR"
       ],
-      "explanation": "Le **SLA** (*Service Level Agreement*) est un contrat, avec des compensations en cas de non-respect. Le **SLO** (*Service Level Objective*) est l'objectif interne, généralement plus exigeant que le SLA pour garder une marge, et le **SLI** (*Service Level Indicator*) la mesure réelle, par exemple le pourcentage de requêtes servies en moins de 300 ms. Le MTTR est le temps moyen de rétablissement après un incident.",
+      "explanation": "Pour parler de fiabilité, les équipes utilisent trois sigles proches. Le **SLI** (*Service Level Indicator*) est la mesure : par exemple « 99,95 % des requêtes ont reçu une réponse en moins de 300 ms ». Le **SLO** (*Service Level Objective*) est l'objectif interne qu'on se fixe : « 99,9 % ». Le **SLA** (*Service Level Agreement*) est le **contrat** passé avec le client, avec des pénalités (remboursement, crédits) si l'engagement n'est pas tenu.\nExemple : un hébergeur promet 99,9 % de disponibilité dans son SLA et vise 99,95 % en interne comme SLO, pour garder une marge avant de devoir payer. Le MTTR, lui, n'est pas un engagement : c'est le temps moyen pour rétablir un service après un incident.",
       "difficulty": 1,
       "source": "https://sre.google/sre-book/service-level-objectives/"
     },
@@ -108,7 +108,7 @@
         "Le déploiement continu se passe des tests automatisés",
         "La livraison continue ne vise que les applis mobiles"
       ],
-      "explanation": "En **livraison continue**, chaque changement qui passe le pipeline est *prêt* à partir en production, mais la mise en prod reste déclenchée par une décision humaine (souvent un simple clic). En **déploiement continu**, cette dernière étape est elle aussi automatisée : tout commit qui passe les tests est déployé. Les deux reposent sur l'intégration continue et sur des tests automatisés solides.",
+      "explanation": "Ces deux notions ont le même sigle (CD) et se ressemblent, mais elles diffèrent sur un point : qui appuie sur le bouton de la mise en production. En **livraison continue** (*continuous delivery*), chaque changement qui passe tous les tests automatiques est *prêt* à partir en prod, mais un humain décide quand (souvent un simple clic d'approbation). En **déploiement continu** (*continuous deployment*), cette dernière étape est automatisée aussi : tout commit qui passe les tests est déployé sans intervention.\nExemple : une équipe qui fait valider chaque version par un responsable pratique la livraison continue ; celle qui déploie dès que la CI est verte pratique le déploiement continu. Dans les deux cas, les tests automatisés restent indispensables.",
       "difficulty": 2,
       "source": "https://martinfowler.com/bliki/ContinuousDelivery.html"
     },
@@ -120,7 +120,7 @@
         "Pour réduire le nombre total de couches de l'image",
         "Parce que `npm ci` exige un dossier sans code source"
       ],
-      "explanation": "Docker met chaque couche en cache, et un changement dans les fichiers copiés invalide le cache de cette instruction **et de toutes les suivantes**. En copiant d'abord uniquement les manifestes de dépendances, l'étape coûteuse `npm ci` n'est rejouée que si `package.json` ou le lockfile changent ; une modification du code n'invalide que le dernier `COPY`. Cet ordre ajoute d'ailleurs une couche au lieu d'en retirer.",
+      "explanation": "Docker construit une image par **couches** : chaque instruction (`COPY`, `RUN`…) crée une couche, gardée en cache pour ne pas être refaite à chaque build. Règle clé : si une instruction change (ou si les fichiers qu'elle copie changent), son cache est invalidé **ainsi que celui de toutes les instructions suivantes**.\nIci, on copie d'abord seulement `package.json` et le lockfile, puis on lance `npm ci` (l'installation des dépendances, lente). Quand tu modifies juste ton code, ces deux couches sont réutilisées et seul `COPY . .` est refait : quelques secondes au lieu de minutes. Avec `COPY . .` en premier, chaque retouche de code relancerait `npm ci`. Le nombre de couches, lui, ne diminue pas : cet ordre en ajoute une.",
       "difficulty": 2,
       "source": "https://docs.docker.com/build/cache/"
     },
@@ -132,7 +132,7 @@
         "Lancer plusieurs conteneurs depuis un seul Dockerfile",
         "Répartir les étapes du build sur plusieurs machines"
       ],
-      "explanation": "Un build multi-stage enchaîne plusieurs `FROM` : une première étape compile avec tout l'outillage nécessaire (SDK, compilateur…), puis l'étape finale part d'une image minimale et ne récupère que l'artefact via `COPY --from=build`. L'image livrée est plus petite et offre moins de surface d'attaque. Le build multi-architecture (amd64/arm64) est une autre fonctionnalité, proposée par `docker buildx`.",
+      "explanation": "Compiler une application demande souvent beaucoup d'outils (compilateur, SDK, dépendances de développement) qui ne servent plus une fois le programme construit. Avec un build **multi-stage**, on enchaîne plusieurs `FROM` dans le même Dockerfile : la première étape compile, la dernière repart d'une image minimale et ne copie que le résultat.\n```dockerfile\nFROM golang:1.23 AS build\nWORKDIR /src\nCOPY . .\nRUN CGO_ENABLED=0 go build -o /app .\n\nFROM alpine\nCOPY --from=build /app /app\nCMD [\"/app\"]\n```\nL'image finale ne contient que le binaire : elle est plus légère et offre moins de prise aux attaquants. Construire pour plusieurs architectures (amd64, arm64) est une autre fonctionnalité, gérée par `docker buildx`.",
       "difficulty": 2,
       "source": "https://docs.docker.com/build/building/multi-stage/"
     },
@@ -144,7 +144,7 @@
         "Un Deployment",
         "Une ConfigMap"
       ],
-      "explanation": "Un **Service** sélectionne des Pods grâce à leurs labels et expose une IP virtuelle stable (ClusterIP) ainsi qu'un nom DNS (`mon-service.mon-namespace.svc.cluster.local`), en répartissant le trafic entre les Pods prêts. Un **Ingress** se place en amont : il route le trafic HTTP(S) externe vers des Services selon l'hôte ou le chemin, mais ne cible pas directement les Pods.",
+      "explanation": "Dans Kubernetes, un Pod peut être détruit et recréé à tout moment, avec une nouvelle adresse IP : impossible de s'y connecter directement de façon fiable. Un **Service** résout ce problème : il choisit ses Pods grâce à leurs **labels** (étiquettes) et offre une adresse IP virtuelle stable et un nom DNS, en répartissant le trafic entre les Pods prêts.\n```yaml\napiVersion: v1\nkind: Service\nmetadata:\n  name: api\nspec:\n  selector:\n    app: api\n  ports:\n    - port: 80\n```\nTes autres applications appellent simplement `http://api` (dans le même namespace), quels que soient les Pods derrière. Un **Ingress**, lui, route le trafic HTTP venu de l'extérieur vers des Services, sans cibler directement les Pods.",
       "difficulty": 2,
       "source": "https://kubernetes.io/docs/concepts/services-networking/service/"
     },
@@ -156,7 +156,7 @@
         "À stocker la configuration HCL sous forme compilée",
         "À conserver l'historique des commandes exécutées"
       ],
-      "explanation": "Le **state** mémorise la correspondance entre chaque ressource déclarée et l'objet réel créé (son identifiant chez le fournisseur), ainsi que ses attributs : sans lui, Terraform ne saurait pas quoi modifier ou détruire. Le verrouillage des versions de providers est le rôle du fichier `.terraform.lock.hcl`. Comme le state peut contenir des secrets, on le stocke dans un backend distant sécurisé, avec verrouillage, plutôt que dans Git.",
+      "explanation": "Quand tu écris `resource \"aws_instance\" \"web\"`, comment Terraform sait-il, la fois suivante, quelle machine réelle correspond à ce bloc ? Grâce au **state** (`terraform.tfstate`) : un fichier qui associe chaque ressource déclarée à l'objet réel (par exemple l'identifiant `i-0abc…` de l'instance EC2), avec ses attributs. Sans lui, Terraform ne saurait pas quoi modifier ou supprimer, et pourrait recréer ce qui existe déjà.\nLe verrouillage des versions de providers n'est pas son rôle : c'est celui de `.terraform.lock.hcl`. Comme le state peut contenir des secrets en clair, on le range dans un **backend distant** sécurisé (par exemple un bucket S3 chiffré avec verrou), pas dans Git.",
       "difficulty": 2,
       "source": "https://developer.hashicorp.com/terraform/language/state"
     },
@@ -168,7 +168,7 @@
         "Elle est annulée automatiquement en cas d'erreur",
         "Elle ne peut être exécutée qu'une fois par hôte"
       ],
-      "explanation": "Une tâche idempotente décrit un **état souhaité** (« le paquet nginx est installé ») plutôt qu'une action : si cet état est déjà atteint, Ansible ne change rien et rapporte `ok` au lieu de `changed`. On peut donc relancer un playbook sans risque. Attention : les modules `command` et `shell` ne sont pas idempotents par nature, d'où des options comme `creates` ou `changed_when`.",
+      "explanation": "Une opération est **idempotente** quand la refaire ne change rien de plus que la faire une fois. Une tâche Ansible idempotente décrit un **état souhaité**, pas une action.\n```yaml\n- name: nginx est installé\n  ansible.builtin.apt:\n    name: nginx\n    state: present\n```\nPremier passage : Ansible installe nginx (résultat `changed`). Deuxième passage : nginx est déjà là, Ansible ne touche à rien (`ok`). On peut donc relancer un playbook sans risque. Attention : `shell` et `command` exécutent une commande brute et ne sont pas idempotents par nature, sauf si tu ajoutes `creates:` ou `changed_when:`. Idempotent ne veut pas dire « exécuté une seule fois » ni « exécuté en parallèle ».",
       "difficulty": 2
     },
     {
@@ -179,7 +179,7 @@
         "Un opérateur applique les manifests à la main après revue",
         "Le cluster pousse sa configuration courante vers Git"
       ],
-      "explanation": "En GitOps, le dépôt Git est la **source de vérité** de l'état désiré. Un contrôleur qui tourne dans le cluster (Argo CD, Flux) surveille le dépôt et **réconcilie** en continu l'état réel avec celui décrit dans Git : c'est le modèle *pull*. Déployer revient à merger une pull request, et la CI n'a plus besoin d'identifiants d'accès au cluster, contrairement au modèle *push* où elle lance elle-même `kubectl apply`.",
+      "explanation": "Le **GitOps** consiste à décrire l'état voulu de l'infrastructure dans un dépôt Git, qui devient la **source de vérité**. Avec Argo CD ou Flux, un contrôleur installé *dans* le cluster surveille ce dépôt et **réconcilie** en continu : si ce que Git décrit diffère de ce qui tourne, il corrige le cluster. C'est le modèle *pull* : le cluster tire ses changements.\nExemple : tu veux passer l'appli de 2 à 5 réplicas ; tu modifies `replicas: 5` dans un manifest, tu fais merger la pull request, et l'agent applique le changement tout seul. Avantage : la CI n'a plus besoin des identifiants du cluster, et Git garde l'historique. Faire lancer `kubectl apply` par la CI est le modèle *push* classique, pas du GitOps.",
       "difficulty": 2,
       "source": "https://opengitops.dev/"
     },
@@ -191,7 +191,7 @@
         "Recreate",
         "Shadow"
       ],
-      "explanation": "Le **canary** (en référence aux canaris que les mineurs emportaient pour détecter les gaz toxiques) expose la nouvelle version à une petite fraction du trafic réel, compare ses métriques à celles de l'ancienne, puis élargit progressivement, ou annule au moindre problème. Un déploiement **shadow**, lui, duplique le trafic vers la nouvelle version sans jamais renvoyer ses réponses aux utilisateurs. Des outils comme Argo Rollouts ou Flagger automatisent l'analyse canary.",
+      "explanation": "Déployer d'un coup une version qu'on n'a testée qu'en pré-production est risqué. La stratégie **canary** limite les dégâts : on envoie la nouvelle version à une petite part du trafic réel (ici 5 %), on compare ses métriques (erreurs, latence) à celles de l'ancienne, puis on élargit par paliers (25 %, 50 %, 100 %) ou on annule au moindre souci. Le nom vient des canaris que les mineurs emportaient pour détecter les gaz toxiques.\nLes autres stratégies : en **blue/green**, tout le trafic bascule d'un coup ; en **recreate**, on arrête l'ancienne version avant de lancer la nouvelle ; en **shadow**, on duplique le trafic vers la nouvelle version sans jamais renvoyer ses réponses aux utilisateurs.",
       "difficulty": 2,
       "source": "https://martinfowler.com/bliki/CanaryRelease.html"
     },
@@ -203,7 +203,7 @@
         "Le délai de mise en production d'un changement",
         "Le taux d'échec des changements"
       ],
-      "explanation": "Les métriques **DORA** (DevOps Research and Assessment, popularisées par le livre *Accelerate*) mesurent le débit et la stabilité : **fréquence de déploiement**, **délai de mise en production** (*lead time for changes*), **taux d'échec des changements**, **temps de restauration** après un déploiement raté et, depuis 2024, **taux de reprise** (*rework rate*). La couverture de code est un indicateur de qualité interne utile, mais elle n'en fait pas partie.",
+      "explanation": "**DORA** (*DevOps Research and Assessment*) est un programme de recherche, popularisé par le livre *Accelerate*, qui a retenu quelques métriques pour mesurer la performance d'une équipe de livraison logicielle : à quelle vitesse et avec quelle stabilité elle livre. On y trouve la **fréquence de déploiement**, le **délai de mise en production** (du commit à la prod), le **taux d'échec des changements** et le **temps de restauration** après un incident ; le rapport 2024 y ajoute le taux de reprise (*rework rate*).\nExemple : une équipe qui déploie dix fois par jour avec peu de retours arrière a de bons scores. Le **taux de couverture de code** (la part du code exécutée par les tests) est un indicateur de qualité utile, mais il ne mesure pas la livraison.",
       "difficulty": 2,
       "source": "https://dora.dev/guides/dora-metrics-four-keys/"
     },
@@ -215,7 +215,7 @@
         "On lance Ansible pour mettre à jour le serveur en place",
         "On redémarre le serveur pour charger le correctif"
       ],
-      "explanation": "En infrastructure **immuable**, un serveur n'est jamais modifié après son déploiement : tout changement passe par une nouvelle image (AMI construite avec Packer, image Docker…) qui remplace les anciennes instances. On élimine ainsi la dérive de configuration (*configuration drift*) et chaque déploiement devient reproductible. C'est l'approche « cattle, not pets » : on remplace plutôt que de réparer.",
+      "explanation": "Deux philosophies s'opposent pour gérer des serveurs. En approche **mutable**, on se connecte au serveur et on le modifie sur place (installer un correctif, changer une config), ce qui crée au fil du temps des différences entre serveurs : la **dérive de configuration**. En **infrastructure immuable**, un serveur n'est jamais modifié après son déploiement : pour changer quoi que ce soit, on construit une nouvelle image (AMI avec Packer, image Docker…), on lance de nouvelles instances et on supprime les anciennes.\nExemple : pour corriger une faille dans une bibliothèque, on reconstruit l'image, on la déploie et on retire les vieux serveurs. C'est l'idée « cattle, not pets » : on remplace le bétail, on ne soigne pas l'animal de compagnie.",
       "difficulty": 2,
       "source": "https://martinfowler.com/bliki/ImmutableServer.html"
     },
@@ -227,7 +227,7 @@
         "`Docker`",
         "`Hello World Docker`"
       ],
-      "explanation": "En forme exec, `CMD` fournit les **arguments par défaut** de l'`ENTRYPOINT`. Les arguments passés à `docker run` après le nom de l'image **remplacent** `CMD`, mais pas l'`ENTRYPOINT` : la commande exécutée est donc `echo Hello Docker`. Sans argument, on obtiendrait `Hello World` ; pour remplacer l'`ENTRYPOINT` lui-même, il faut l'option `--entrypoint`.",
+      "explanation": "Deux instructions définissent ce que lance un conteneur : **ENTRYPOINT** est la commande fixe, **CMD** fournit ses arguments par défaut. Ce qu'on écrit après le nom de l'image dans `docker run` remplace `CMD`, mais jamais l'`ENTRYPOINT`.\n```\ndocker run mon-image          # echo Hello World\ndocker run mon-image Docker   # echo Hello Docker\n```\nIci, `Docker` prend la place de `World` : la commande finale est `echo Hello Docker`. Pas de `Hello World Docker`, car `CMD` est remplacé et non complété ; et pas `Docker` seul, car l'`ENTRYPOINT` reste en place. Pour changer l'`ENTRYPOINT` lui-même, il faut l'option `--entrypoint`.",
       "difficulty": 3,
       "source": "https://docs.docker.com/reference/dockerfile/#understand-how-cmd-and-entrypoint-interact"
     },
@@ -239,7 +239,7 @@
         "Il supprime le Pod et le recrée sur un autre nœud",
         "Il annule le dernier rollout du Deployment"
       ],
-      "explanation": "Une **readiness probe** en échec signale que le conteneur n'est pas prêt à recevoir du trafic : le Pod est retiré des endpoints des Services jusqu'à ce que la probe réussisse de nouveau. C'est la **liveness probe** qui, en cas d'échec, fait redémarrer le conteneur par le kubelet. Confondre les deux peut créer des boucles de redémarrage, par exemple quand une dépendance externe est lente.",
+      "explanation": "Kubernetes surveille tes conteneurs avec deux sondes (*probes*) aux rôles différents. La **liveness probe** pose la question « es-tu encore en vie ? » : si elle échoue trop souvent, le kubelet (l'agent de Kubernetes sur le nœud) redémarre le conteneur. La **readiness probe** demande « es-tu prêt à recevoir du trafic ? » : si elle échoue, le Pod est retiré des *endpoints* du Service (la liste des Pods qui reçoivent les requêtes), mais il n'est pas redémarré.\nExemple : une appli qui charge un gros cache au démarrage répond « pas prêt » pendant 30 secondes, sans être tuée. Piège : mettre une base de données externe dans la liveness, car une panne de celle-ci ferait redémarrer en boucle des Pods qui vont bien.",
       "difficulty": 3,
       "source": "https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/"
     },
@@ -251,7 +251,7 @@
         "`avg(http_requests_total[5m])`",
         "`delta(http_requests_total[5m])`"
       ],
-      "explanation": "Un **counter** ne fait qu'augmenter (et repart à zéro quand le processus redémarre) : sa valeur brute a peu d'intérêt. `rate()` calcule son taux d'augmentation **par seconde** sur la fenêtre `[5m]`, en gérant ces remises à zéro. `delta()` est prévu pour les gauges, et `sum`/`avg` agrègent des séries entre elles sans accepter de *range vector*. Pour un total sur la période, on utilise `increase()`.",
+      "explanation": "**Prometheus** collecte des métriques. Un **counter** est un compteur qui ne fait qu'augmenter (requêtes reçues depuis le démarrage) et repart à zéro quand le processus redémarre. Sa valeur brute (« 1 482 930 requêtes ») dit peu de chose ; ce qui intéresse, c'est le rythme.\n```\nrate(http_requests_total[5m])\n```\n`rate()` calcule l'augmentation moyenne **par seconde** sur les 5 dernières minutes (`[5m]`), en corrigeant les remises à zéro. Si le compteur passe de 1 000 à 4 000 en 300 s, on obtient 10 requêtes par seconde. `delta()` est prévu pour les *gauges* (valeurs qui montent et descendent), et `sum`/`avg` agrègent des séries sans accepter une fenêtre `[5m]`. Pour le total sur la période, on utilise `increase()`.",
       "difficulty": 3,
       "source": "https://prometheus.io/docs/prometheus/latest/querying/functions/"
     },
@@ -263,7 +263,7 @@
         "Environ 7 heures",
         "Environ 8 heures 45"
       ],
-      "explanation": "30 jours = 30 × 24 × 60 = 43 200 minutes, et le budget d'erreur vaut 100 % − 99,9 % = 0,1 % de cette durée, soit **43,2 minutes**. 8 h 45 correspond à 99,9 % sur une année entière, environ 7 h à 99 % sur 30 jours, et environ 4 minutes à 99,99 %. Tant qu'il reste du budget, l'équipe peut livrer et prendre des risques ; une fois épuisé, la priorité passe à la fiabilité.",
+      "explanation": "Le **budget d'erreur** est la part d'indisponibilité qu'un SLO autorise : c'est 100 % moins l'objectif. Les équipes SRE s'en servent pour arbitrer entre livrer de nouvelles fonctions (risque) et fiabiliser (stabilité).\nCalcul : 30 jours × 24 h × 60 min = 43 200 minutes. Avec 99,9 %, on tolère 0,1 % d'indisponibilité : 43 200 × 0,001 = **43,2 minutes**.\nLes autres chiffres sont des pièges : 99,99 % donnerait environ 4,3 minutes, 99 % environ 7,2 heures, et 99,9 % sur une année entière (8 760 h) autorise environ 8 h 45. Tant qu'il reste du budget, on déploie ; une fois épuisé, on gèle les nouveautés pour se concentrer sur la fiabilité.",
       "difficulty": 3,
       "source": "https://sre.google/sre-book/embracing-risk/"
     },
@@ -275,7 +275,7 @@
         "Availability",
         "Alignment"
       ],
-      "explanation": "**CALMS** = **C**ulture, **A**utomation, **L**ean, **M**easurement, **S**haring. Le modèle CAMS a été formulé par John Willis et Damon Edwards, puis Jez Humble y a ajouté le L de *Lean*. Il rappelle que DevOps n'est pas qu'une affaire d'outils : la culture et le partage comptent autant que l'automatisation.",
+      "explanation": "**CALMS** est un moyen mnémotechnique pour retenir les piliers du DevOps : **C**ulture (développeurs et exploitants collaborent au lieu de se renvoyer la balle), **A**utomation (le répétitif devient un script ou un pipeline), **L**ean (réduire les gaspillages, livrer en petits lots), **M**easurement (mesurer pour s'améliorer) et **S**haring (partager connaissances et responsabilités).\nExemple pour le A : plutôt que de déployer à la main avec une checklist de 20 étapes, on écrit un pipeline qui s'en charge à chaque merge. Le modèle a d'abord été formulé en CAMS par John Willis et Damon Edwards ; Jez Humble y a ajouté le L. DevOps n'est donc pas qu'une affaire d'outils.",
       "difficulty": 3,
       "source": "https://www.atlassian.com/devops/frameworks/calms-framework"
     },
@@ -287,7 +287,7 @@
         "Elle ouvre le port 8080 dans le pare-feu de l'hôte",
         "Elle redirige le port 80 du conteneur vers le 8080"
       ],
-      "explanation": "`EXPOSE` sert de **documentation** entre l'auteur de l'image et la personne qui l'exécute : elle indique le port sur lequel l'application écoute, mais ne publie rien. Pour rendre le port accessible depuis l'hôte, il faut `docker run -p 8080:8080` (port de l'hôte à gauche, port du conteneur à droite), ou `-P`, qui publie tous les ports exposés sur des ports aléatoires de l'hôte.",
+      "explanation": "Un conteneur est isolé : même si l'application à l'intérieur écoute sur le port 8080, personne à l'extérieur ne peut l'atteindre par défaut. `EXPOSE 8080` ne change rien à cela : c'est une simple **documentation** qui dit à qui lit l'image « cette appli écoute sur 8080 ». Rien n'est publié, rien n'est ouvert dans un pare-feu.\nPour rendre le port accessible, on le **publie** au lancement :\n```\ndocker run -p 3000:8080 mon-image\n```\nLe format est `port-hôte:port-conteneur` : ici, `http://localhost:3000` atteint le port 8080 du conteneur. L'option `-P` publie tous les ports déclarés avec `EXPOSE` sur des ports aléatoires de l'hôte. `EXPOSE` ne redirige pas non plus le port 80 vers le 8080.",
       "difficulty": 3,
       "source": "https://docs.docker.com/reference/dockerfile/#expose"
     },
@@ -299,7 +299,7 @@
         "Terraform refuse car l'instance existe encore",
         "L'instance est seulement retirée du state"
       ],
-      "explanation": "Terraform compare la configuration au state : une ressource présente dans le state mais absente du code est considérée comme à **détruire**, et le plan l'affiche avec un `-`. Pour arrêter de gérer une ressource sans la supprimer, il faut la retirer du state avec `terraform state rm`, ou, depuis Terraform 1.7, utiliser un bloc `removed` avec `destroy = false`. D'où l'importance de toujours relire le plan avant d'appliquer.",
+      "explanation": "Terraform raisonne par comparaison : il confronte ton code au **state** (sa mémoire de ce qu'il gère). Une ressource présente dans le state mais plus dans le code ? Il en conclut que tu veux la supprimer.\n```\n# aws_instance.web will be destroyed\n  - resource \"aws_instance\" \"web\" { ... }\nPlan: 0 to add, 0 to change, 1 to destroy.\n```\nAu `terraform apply` suivant, l'instance EC2 réelle est donc **détruite**. Pour que Terraform cesse seulement de la gérer, sans la supprimer, il faut la retirer du state (`terraform state rm aws_instance.web`) ou, depuis Terraform 1.7, utiliser un bloc `removed` avec `destroy = false`. D'où l'intérêt de toujours relire le `plan` avant d'appliquer.",
       "difficulty": 3,
       "source": "https://developer.hashicorp.com/terraform/cli/commands/state/rm"
     },

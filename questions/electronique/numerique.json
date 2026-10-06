@@ -888,6 +888,303 @@
       "explanation": "Oublier `pinMode()` est l'erreur la plus classique avec une LED. Au démarrage, toutes les broches de l'Uno sont configurées en entrée. Sur une carte AVR, `digitalWrite(HIGH)` sur une broche en entrée n'impose pas 5 V : il active sa résistance de tirage interne, de 20 à 50 kΩ environ. La LED est alors alimentée à travers cette grosse résistance. Exemple : avec environ 3 V aux bornes de la résistance interne et 30 kΩ, le courant vaut à peu près 0,1 mA, contre une dizaine de milliampères normalement. La LED luit donc très faiblement. La documentation officielle de `digitalWrite()` signale ce piège ; le compilateur, lui, ne vérifie rien.",
       "difficulty": 3,
       "source": "https://docs.arduino.cc/language-reference/en/functions/digital-io/digitalwrite/"
+    },
+    {
+      "question": "Que signifie le sigle **PWM**, utilisé pour faire varier la luminosité d'une LED ou la vitesse d'un moteur ?",
+      "answer": "Modulation de largeur d'impulsion",
+      "wrong": [
+        "Modulation d'amplitude pulsée",
+        "Mesure de la puissance moyenne",
+        "Modulation de fréquence par impulsions"
+      ],
+      "explanation": "Un microcontrôleur ne sait produire que deux niveaux sur une broche numérique : 0 V ou 5 V. Pour obtenir un effet « intermédiaire », il utilise la PWM, de l'anglais *Pulse Width Modulation* : modulation de largeur d'impulsion. La broche bascule très vite entre 0 et 5 V, à fréquence fixe, et on règle la durée de l'état haut dans chaque période. Ce réglage s'appelle le rapport cyclique. Exemple : une LED alimentée 20 % du temps paraît faiblement allumée, car l'œil ne perçoit que la moyenne de ces clignotements trop rapides. La fréquence, elle, ne change pas : ce n'est donc pas une modulation de fréquence.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Modulation_de_largeur_d'impulsion"
+    },
+    {
+      "question": "Sur une Arduino Uno, quel rapport cyclique produit `analogWrite(9, 127)` ?",
+      "answer": "Environ 50 %",
+      "wrong": [
+        "Environ 12,7 %",
+        "Environ 25 %",
+        "Environ 100 %"
+      ],
+      "explanation": "`analogWrite()` produit un signal PWM sur une broche compatible. Son second paramètre règle le rapport cyclique, c'est-à-dire la part de chaque période où la broche est à l'état haut. Il va de 0 (toujours à 0 V) à 255 (toujours à 5 V), car la PWM de l'Uno est codée sur 8 bits. Ici, 127 / 255 ≈ 0,498, soit environ 50 % : la broche est à 5 V la moitié du temps. Exemple : une LED branchée sur cette broche reçoit en moyenne moitié moins d'énergie qu'à pleine puissance. Le piège 12,7 % suppose une échelle de 0 à 1000 ; 25 % correspondrait à une valeur d'environ 64.",
+      "difficulty": 1,
+      "source": "https://docs.arduino.cc/language-reference/en/functions/analog-io/analogWrite/"
+    },
+    {
+      "question": "Sur une Arduino Uno, quel symbole marque les broches capables de produire un signal PWM avec `analogWrite()` ?",
+      "answer": "Un tilde « ~ »",
+      "wrong": [
+        "Un astérisque « * »",
+        "Un dièse « # »",
+        "Une flèche « → »"
+      ],
+      "explanation": "Toutes les broches numériques ne savent pas produire de PWM : il faut qu'un timer matériel du microcontrôleur leur soit relié. Un timer est un compteur interne qui avance au rythme de l'horloge et peut faire basculer une broche automatiquement. Sur l'Uno, les broches compatibles sont repérées par un tilde « ~ » sérigraphié devant leur numéro : 3, 5, 6, 9, 10 et 11, soit six broches. Exemple : pour faire varier la luminosité d'une LED, on la branche sur ~9 plutôt que sur 8. Sur une broche sans tilde, `analogWrite()` se contente d'allumer la sortie (valeur 128 ou plus) ou de l'éteindre.",
+      "difficulty": 1,
+      "source": "https://docs.arduino.cc/language-reference/en/functions/analog-io/analogWrite/"
+    },
+    {
+      "question": "Comment relie-t-on les broches TX et RX de deux modules qui communiquent en UART ?",
+      "answer": "Le TX de chacun sur le RX de l'autre",
+      "wrong": [
+        "TX sur TX et RX sur RX",
+        "Les deux TX et les deux RX à la masse",
+        "TX et RX reliés ensemble sur chaque module"
+      ],
+      "explanation": "L'UART est la liaison série la plus simple, utilisée par les modules GPS, les modules Bluetooth HC-05 ou le lien USB des Arduino. Chaque appareil a une broche TX (*transmit*), par laquelle il envoie, et une broche RX (*receive*), par laquelle il écoute. Ce que l'un émet doit arriver là où l'autre écoute : on croise donc les fils. Il faut aussi relier les masses (GND), pour que les deux appareils aient la même référence de tension. Exemple : TX de l'Arduino (broche 1) vers RX du GPS, et TX du GPS vers RX de l'Arduino (broche 0). Relier TX sur TX ferait parler deux émetteurs sur le même fil, sans personne pour écouter.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/UART"
+    },
+    {
+      "question": "Comment s'appellent les deux lignes de signal du bus I2C ?",
+      "answer": "SDA et SCL",
+      "wrong": [
+        "MOSI et MISO",
+        "TX et RX",
+        "D+ et D−"
+      ],
+      "explanation": "L'I2C est un bus très répandu pour relier un microcontrôleur à des capteurs, des écrans OLED ou des horloges temps réel. Il n'utilise que deux fils, en plus de la masse. SDA (*Serial Data*) transporte les données, dans les deux sens. SCL (*Serial Clock*) porte l'horloge, fournie par le maître, qui cadence chaque bit. Plusieurs composants peuvent se partager ces deux fils, chacun ayant sa propre adresse. Exemple : un écran OLED et un capteur de température branchés sur les mêmes broches SDA et SCL d'une Arduino. MOSI et MISO sont des lignes du bus SPI, TX et RX celles de l'UART, D+ et D− celles de l'USB.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/I2C"
+    },
+    {
+      "question": "Combien de lignes de signal le bus SPI standard utilise-t-il entre un maître et un seul esclave ?",
+      "answer": "4",
+      "wrong": [
+        "2",
+        "3",
+        "8"
+      ],
+      "explanation": "Le SPI est un bus série rapide, utilisé par les cartes SD, de nombreux écrans et des convertisseurs. Il utilise quatre lignes, en plus de la masse. SCLK est l'horloge, fournie par le maître. MOSI (*Master Out, Slave In*) transporte les données du maître vers l'esclave, et MISO (*Master In, Slave Out*) dans l'autre sens. Enfin, CS ou SS (*Chip Select*) sélectionne l'esclave à qui l'on parle. Exemple : un lecteur de carte SD sur Arduino Uno utilise les broches 13 (SCK), 11 (MOSI), 12 (MISO) et une broche CS, souvent la 10. Le piège 2 est le nombre de lignes de l'I2C. Les noms MOSI et MISO sont aujourd'hui souvent remplacés par COPI et CIPO.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Serial_Peripheral_Interface"
+    },
+    {
+      "question": "Quelle bibliothèque standard d'Arduino permet de communiquer sur le bus I2C ?",
+      "answer": "`Wire`",
+      "wrong": [
+        "`SPI`",
+        "`Servo`",
+        "`SoftwareSerial`"
+      ],
+      "explanation": "Sur Arduino, chaque bus a sa bibliothèque, fournie avec l'IDE. Pour l'I2C, c'est `Wire`, qu'on inclut avec `#include <Wire.h>`. On démarre le bus avec `Wire.begin()`. On parle ensuite à un composant avec `Wire.beginTransmission(adresse)`, `Wire.write()` et `Wire.endTransmission()`, et on lui demande des données avec `Wire.requestFrom()`. Exemple : la plupart des bibliothèques de capteurs ou d'écrans I2C s'appuient sur `Wire` en interne. Les leurres existent bien, mais pour d'autres usages : `SPI` pour le bus SPI, `Servo` pour les servomoteurs et `SoftwareSerial` pour un port série logiciel.",
+      "difficulty": 1,
+      "source": "https://docs.arduino.cc/language-reference/en/functions/communication/wire/"
+    },
+    {
+      "question": "Quel instrument permet d'observer plusieurs signaux numériques en même temps et de décoder automatiquement des trames I2C, SPI ou UART ?",
+      "answer": "Un analyseur logique",
+      "wrong": [
+        "Un multimètre",
+        "Un fréquencemètre",
+        "Un générateur de fonctions"
+      ],
+      "explanation": "Quand un capteur ne répond pas, il faut voir ce qui circule réellement sur les fils. L'analyseur logique enregistre plusieurs signaux numériques en même temps (souvent 8 ou 16 voies), sous forme de 0 et de 1, sur une longue durée. Son logiciel sait ensuite décoder les protocoles : il affiche directement les octets, les adresses I2C ou les caractères UART. Exemple : on branche deux voies sur SDA et SCL, et l'on constate qu'aucun acquittement ne revient, signe d'une mauvaise adresse. Le multimètre ne mesure qu'une valeur moyenne, le fréquencemètre une fréquence, et le générateur de fonctions produit des signaux au lieu de les mesurer. Certains oscilloscopes savent aussi décoder ces bus.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Analyseur_logique"
+    },
+    {
+      "question": "Un signal PWM de 5 V a un rapport cyclique de 25 %. Quelle est sa tension moyenne ?",
+      "answer": "1,25 V",
+      "wrong": [
+        "2,5 V",
+        "3,75 V",
+        "0,25 V"
+      ],
+      "explanation": "La tension moyenne d'un signal PWM explique pourquoi on peut s'en servir pour faire varier une luminosité ou une vitesse. Le rapport cyclique est la part de chaque période où le signal est à l'état haut. Ici, la broche est à 5 V pendant 25 % du temps et à 0 V le reste du temps. La moyenne vaut donc 5 V × 0,25 = 1,25 V. Exemple : un moteur à courant continu, trop lent pour suivre chaque commutation, se comporte à peu près comme s'il recevait cette tension moyenne. Le piège 3,75 V correspond à la durée de l'état **bas** (75 %), et 2,5 V à un rapport cyclique de 50 %.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Modulation_de_largeur_d'impulsion"
+    },
+    {
+      "question": "Un signal PWM reste à l'état haut pendant 1 ms, puis à l'état bas pendant 3 ms, et ainsi de suite. Quels sont sa fréquence et son rapport cyclique ?",
+      "answer": "250 Hz et 25 %",
+      "wrong": [
+        "250 Hz et 33 %",
+        "1 kHz et 25 %",
+        "333 Hz et 25 %"
+      ],
+      "explanation": "Deux grandeurs décrivent un signal PWM : sa fréquence et son rapport cyclique. La période est la durée d'un motif complet : 1 ms à l'état haut + 3 ms à l'état bas = 4 ms. La fréquence est l'inverse de la période : 1 / 0,004 s = 250 Hz. Le rapport cyclique est la part de la période passée à l'état haut : 1 ms / 4 ms = 25 %. Le piège 33 % divise la durée haute par la durée basse (1 / 3) au lieu de la période entière. Le piège 1 kHz ne tient compte que de l'état haut (1 / 1 ms), et 333 Hz que de l'état bas (1 / 3 ms).",
+      "difficulty": 2
+    },
+    {
+      "question": "Un servomoteur de modélisme standard reçoit une impulsion environ toutes les 20 ms. Que fait-il quand chaque impulsion dure 1,5 ms ?",
+      "answer": "Il se place en position médiane",
+      "wrong": [
+        "Il tourne en continu à mi-vitesse",
+        "Il se place à l'une de ses butées",
+        "Il se met en veille et devient libre"
+      ],
+      "explanation": "Un servomoteur est un petit moteur avec réducteur et électronique de contrôle, qui se place à un angle précis : direction d'une voiture radiocommandée, bras robotisé. On lui indique l'angle par un signal répété environ toutes les 20 ms (50 Hz). C'est la **durée** de l'impulsion qui code la position : environ 1 ms pour une extrémité, 2 ms pour l'autre, et 1,5 ms pour le milieu. Les valeurs exactes varient un peu selon les modèles. Exemple : sur Arduino, la bibliothèque `Servo` génère ce signal, et `monServo.write(90)` donne une impulsion d'environ 1,5 ms. Le piège de la rotation continue concerne des servos modifiés, pour lesquels 1,5 ms signifie au contraire l'arrêt.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Servomoteur"
+    },
+    {
+      "question": "Que signifie la configuration **8N1** d'une liaison série UART ?",
+      "answer": "8 bits de données, pas de parité, 1 bit de stop",
+      "wrong": [
+        "8 bits de données, parité paire, 1 bit de start",
+        "8 octets par trame, aucune erreur, 1 seul esclave",
+        "8 niveaux de tension, aucun retour, 1 seul fil"
+      ],
+      "explanation": "Une liaison UART découpe chaque octet en une petite trame, et les deux appareils doivent utiliser le même format. On le note souvent sous forme abrégée, comme 8N1. « 8 » : chaque trame transporte 8 bits de données. « N » (*None*) : aucun bit de parité n'est ajouté pour contrôler les erreurs ; on écrirait E pour une parité paire (*Even*) ou O pour une parité impaire (*Odd*). « 1 » : un bit de stop termine la trame. Un bit de start, toujours présent, précède les données sans figurer dans la notation. Exemple : `Serial.begin(9600)` sur Arduino utilise ce format 8N1 par défaut.",
+      "difficulty": 2,
+      "source": "https://docs.arduino.cc/language-reference/en/functions/communication/serial/begin/"
+    },
+    {
+      "question": "Une liaison UART fonctionne à 9600 bauds avec des trames 8N1. Combien d'octets de données peut-elle transmettre au maximum par seconde ?",
+      "answer": "960",
+      "wrong": [
+        "1 200",
+        "9 600",
+        "4 800"
+      ],
+      "explanation": "Le débit d'une liaison série se règle en bauds ; en UART, un baud correspond à un bit transmis par seconde sur le fil. Mais tous ces bits ne sont pas des données. Chaque octet voyage dans une trame qui ajoute un bit de start au début et un bit de stop à la fin : 10 bits sur le fil pour 8 bits utiles. À 9600 bauds, on envoie donc au plus 9600 / 10 = 960 octets par seconde. Exemple : transmettre un texte de 1 000 caractères prend un peu plus d'une seconde. Le piège 1 200 (9600 / 8) oublie les bits de start et de stop, qui représentent 20 % du trafic. À 115 200 bauds, on monte à 11 520 octets par seconde.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi le bus I2C a-t-il besoin de résistances de tirage (pull-up) sur SDA et SCL ?",
+      "answer": "Ses sorties ne savent que tirer la ligne vers 0 V",
+      "wrong": [
+        "Elles filtrent les parasites de l'alimentation",
+        "Elles protègent contre une inversion de polarité",
+        "Elles fixent l'adresse de chaque composant"
+      ],
+      "explanation": "Sur l'I2C, plusieurs composants partagent les mêmes fils et peuvent vouloir parler en même temps. Pour éviter les courts-circuits, leurs sorties sont à drain ouvert (ou collecteur ouvert) : un transistor peut relier la ligne à la masse, mais rien ne la pousse vers le haut. C'est la résistance de tirage, reliée à l'alimentation, qui ramène la ligne à l'état haut quand personne ne la tire vers 0. Exemple : on utilise souvent 4,7 kΩ vers 3,3 V ou 5 V, et beaucoup de modules les intègrent déjà. Sans elles, le niveau haut n'est jamais correctement établi et la communication échoue. Elles ne fixent pas l'adresse, qui est gravée dans le composant ou choisie par des broches dédiées.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/I2C"
+    },
+    {
+      "question": "Quelle est la fréquence d'horloge maximale du mode standard (*Standard-mode*) du bus I2C ?",
+      "answer": "100 kHz",
+      "wrong": [
+        "400 kHz",
+        "1 MHz",
+        "16 MHz"
+      ],
+      "explanation": "La spécification I2C définit plusieurs vitesses, exprimées comme fréquence maximale de l'horloge SCL. Le mode standard, le plus ancien et le plus compatible, va jusqu'à 100 kHz. Le mode rapide (*Fast-mode*) monte à 400 kHz, le *Fast-mode Plus* à 1 MHz et le mode haute vitesse à 3,4 MHz. Exemple : la bibliothèque `Wire` d'Arduino démarre à 100 kHz, et `Wire.setClock(400000)` passe en mode rapide si tous les composants du bus le supportent. À 100 kHz, avec 9 coups d'horloge par octet (8 bits plus l'acquittement), on transfère au mieux environ 11 000 octets par seconde. 16 MHz est la fréquence du processeur de l'Uno, pas celle du bus.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/I2C"
+    },
+    {
+      "question": "Sur un bus SPI à plusieurs esclaves, comment le maître choisit-il l'esclave avec lequel il communique ?",
+      "answer": "En mettant à l'état bas la ligne CS de cet esclave",
+      "wrong": [
+        "En envoyant d'abord l'adresse de l'esclave sur MOSI",
+        "En changeant la fréquence de l'horloge SCLK",
+        "En mettant à l'état haut la ligne MISO de l'esclave"
+      ],
+      "explanation": "Contrairement à l'I2C, le SPI n'utilise pas d'adresses. Chaque esclave a sa propre ligne de sélection, appelée CS (*Chip Select*) ou SS (*Slave Select*), reliée à une broche du maître. Cette ligne est active à l'état bas : au repos, le maître la maintient à l'état haut. Pour parler à un esclave, il abaisse sa ligne CS, échange les octets, puis la relève. Les esclaves non sélectionnés ignorent l'horloge et laissent leur sortie MISO en haute impédance, pour ne pas perturber le bus. Exemple : une carte SD et un écran partagent SCK, MOSI et MISO, mais ont chacun leur propre CS. Le piège de l'adresse vient de l'I2C.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Serial_Peripheral_Interface"
+    },
+    {
+      "question": "Sur une Arduino Uno, sur quelles broches se trouvent les lignes SDA et SCL du bus I2C ?",
+      "answer": "A4 (SDA) et A5 (SCL)",
+      "wrong": [
+        "A5 (SDA) et A4 (SCL)",
+        "0 (SDA) et 1 (SCL)",
+        "11 (SDA) et 13 (SCL)"
+      ],
+      "explanation": "Sur l'ATmega328P, le module I2C matériel (appelé TWI dans la documentation du fabricant) est câblé sur deux broches précises. Sur l'Uno, ce sont A4 pour SDA (données) et A5 pour SCL (horloge). Ces deux broches ne peuvent donc pas servir d'entrées analogiques en même temps que le bus I2C. L'Uno R3 les recopie aussi sur deux broches marquées SDA et SCL, près de la broche AREF : ce sont les mêmes signaux. Exemple : un écran OLED I2C se branche sur A4 et A5, plus l'alimentation et la masse. Les broches 0 et 1 sont celles du port série, et 11 et 13 celles du SPI (MOSI et SCK).",
+      "difficulty": 2,
+      "source": "https://docs.arduino.cc/language-reference/en/functions/communication/wire/"
+    },
+    {
+      "question": "Sur une Arduino Uno, la PWM de `analogWrite()` tourne à environ 490 Hz sur la plupart des broches. Quelles broches font exception, à environ 980 Hz ?",
+      "answer": "Les broches 5 et 6",
+      "wrong": [
+        "Les broches 9 et 10",
+        "Les broches 3 et 11",
+        "Les broches 10 et 11"
+      ],
+      "explanation": "Sur l'Uno, chaque paire de broches PWM dépend d'un des trois timers de l'ATmega328P. Un timer est un compteur matériel qui génère la PWM sans occuper le processeur. Les broches 5 et 6 sont pilotées par le Timer0, configuré en mode « Fast PWM » : environ 980 Hz. Les autres (9 et 10 avec le Timer1, 3 et 11 avec le Timer2) sont en mode « phase correcte », deux fois plus lent : environ 490 Hz. Exemple : `analogWrite(5, 128)` donne une période d'environ 1 ms, contre 2 ms sur la broche 9. Attention : le Timer0 sert aussi à `millis()` et `delay()`, donc modifier son réglage pour changer la fréquence PWM fausse la mesure du temps.",
+      "difficulty": 3,
+      "source": "https://docs.arduino.cc/language-reference/en/functions/analog-io/analogWrite/"
+    },
+    {
+      "question": "En mode Fast PWM 8 bits, un timer d'ATmega328P cadencé à 16 MHz, avec un prédiviseur de 64, produit une PWM de quelle fréquence ?",
+      "answer": "Environ 977 Hz",
+      "wrong": [
+        "Environ 490 Hz",
+        "Environ 250 kHz",
+        "Environ 62,5 kHz"
+      ],
+      "explanation": "Ce calcul explique d'où viennent les fréquences PWM d'une Arduino. Le prédiviseur divise l'horloge du processeur avant qu'elle n'atteigne le timer : 16 MHz / 64 = 250 kHz. En mode Fast PWM 8 bits, le timer compte de 0 à 255, soit 256 pas par période. La fréquence vaut donc 250 000 / 256 ≈ 977 Hz : ce sont les « 980 Hz » des broches 5 et 6 de l'Uno. Le piège 490 Hz correspond au mode « phase correcte », où le timer monte puis redescend, ce qui double presque la période (16 MHz / 64 / 510). Le leurre 250 kHz oublie de diviser par 256, et 62,5 kHz divise 16 MHz par 256 en oubliant le prédiviseur.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur une Arduino Uno, quelle conséquence a l'utilisation de la bibliothèque `Servo` sur `analogWrite()` ?",
+      "answer": "Elle désactive la PWM des broches 9 et 10",
+      "wrong": [
+        "Elle désactive la PWM des broches 5 et 6",
+        "Elle double la fréquence PWM de toutes les broches",
+        "Elle réserve les broches 3 et 11 aux servos"
+      ],
+      "explanation": "Les bibliothèques Arduino s'appuient souvent sur les timers du microcontrôleur, et un même timer ne peut pas tout faire à la fois. Pour générer les impulsions précises des servomoteurs, la bibliothèque `Servo` réquisitionne le Timer1 de l'ATmega328P. Or ce timer produit aussi la PWM des broches 9 et 10. La documentation officielle l'indique : sur les cartes autres que la Mega, `analogWrite()` ne fonctionne plus sur ces deux broches, qu'un servo y soit branché ou non. Exemple : un projet qui pilote un servo et fait varier une LED sur la broche 9 voit la LED cesser de varier. Il suffit de déplacer la LED sur une autre broche PWM, comme la 3, la 5 ou la 6.",
+      "difficulty": 3,
+      "source": "https://docs.arduino.cc/libraries/servo/"
+    },
+    {
+      "question": "Pourquoi ne faut-il pas relier directement un port série RS-232 (connecteur DB9 d'un ancien PC) aux broches RX et TX d'une Arduino Uno ?",
+      "answer": "Le RS-232 utilise des tensions allant jusqu'à ±15 V",
+      "wrong": [
+        "Le RS-232 transmet tous les bits en parallèle",
+        "Le RS-232 n'utilise aucun bit de start",
+        "Le RS-232 fonctionne uniquement à 9600 bauds"
+      ],
+      "explanation": "Le RS-232 est la norme des anciens ports série de PC et de nombreux équipements industriels. Il transmet les mêmes trames qu'une UART (start, données, stop), mais avec d'autres niveaux électriques. Un 1 logique y est représenté par une tension négative, de −3 à −15 V, et un 0 par une tension positive, de +3 à +15 V. La logique est donc inversée, et les tensions dépassent largement les 0 à 5 V que supportent les broches de l'Uno. Exemple : un port RS-232 branché directement peut envoyer −12 V sur la broche RX et l'endommager. On intercale un convertisseur de niveaux, comme le classique MAX232. Quant au débit, le RS-232 en accepte beaucoup : 9600 bauds n'est qu'un réglage courant.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/RS-232"
+    },
+    {
+      "question": "Sur le bus I2C, comment le récepteur acquitte-t-il (ACK) un octet qu'il vient de recevoir ?",
+      "answer": "SDA tenue à 0 lors du 9e coup d'horloge",
+      "wrong": [
+        "SCL maintenue à 0 pendant une milliseconde",
+        "Il renvoie l'octet reçu à l'émetteur",
+        "Il envoie un octet spécial `0xFF`"
+      ],
+      "explanation": "En I2C, chaque octet est suivi d'un accusé de réception, ce qui permet de savoir si quelqu'un l'a bien reçu. Après les 8 bits de données, l'émetteur relâche la ligne SDA et le maître génère une 9e impulsion d'horloge. Pendant cette impulsion, le récepteur tire SDA à l'état bas : c'est l'ACK (*acknowledge*). Si SDA reste haute, c'est un NACK : personne n'a répondu, ou le récepteur ne veut plus de données. Exemple : un « scanner I2C » sur Arduino essaie toutes les adresses et note celles où un ACK revient ; c'est ainsi qu'on découvre l'adresse d'un module inconnu. Un octet coûte donc 9 coups d'horloge, et non 8.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/I2C"
+    },
+    {
+      "question": "La fiche technique d'un capteur I2C indique l'adresse 7 bits `0x68`, et un tutoriel parle d'« adresse `0xD0` en écriture ». Quelle valeur faut-il passer à `Wire.beginTransmission()` ?",
+      "answer": "`0x68`",
+      "wrong": [
+        "`0xD0`",
+        "`0xD1`",
+        "`0x34`"
+      ],
+      "explanation": "En I2C, le premier octet d'un échange contient l'adresse de l'esclave sur 7 bits, suivie d'un 8e bit qui indique le sens : 0 pour écrire, 1 pour lire. Certains documents donnent donc une adresse « 8 bits » qui inclut ce bit : 0x68 décalé d'un cran vers la gauche donne 0xD0 en écriture, et 0xD1 en lecture. La bibliothèque `Wire` attend l'adresse sur 7 bits et ajoute elle-même le bit de sens. Exemple : l'horloge DS1307 répond à `Wire.beginTransmission(0x68)`. Passer 0xD0 ne peut pas marcher, puisqu'une adresse sur 7 bits ne dépasse jamais 0x7F. Le piège 0x34 résulte d'un décalage dans le mauvais sens.",
+      "difficulty": 3,
+      "source": "https://docs.arduino.cc/language-reference/en/functions/communication/wire/"
+    },
+    {
+      "question": "En SPI **mode 0** (CPOL = 0, CPHA = 0), quel est le niveau de repos de l'horloge et sur quel front les données sont-elles lues ?",
+      "answer": "Repos à 0, lecture sur le front montant",
+      "wrong": [
+        "Repos à 1, lecture sur le front montant",
+        "Repos à 0, lecture sur le front descendant",
+        "Repos à 1, lecture sur le front descendant"
+      ],
+      "explanation": "Le SPI n'a pas un format unique : maître et esclave doivent choisir le même parmi quatre modes, définis par deux paramètres. CPOL (polarité) fixe le niveau de l'horloge au repos : 0 pour bas, 1 pour haut. CPHA (phase) fixe le front où les données sont lues : 0 pour le premier front de chaque impulsion, 1 pour le second. En mode 0, l'horloge repose à 0 : le premier front est donc montant, et c'est là que les données sont échantillonnées ; elles changent sur le front descendant. Exemple : c'est le mode par défaut de la bibliothèque `SPI` d'Arduino (`SPI_MODE0`). Un mauvais mode donne des octets décalés ou faux, sans aucun message d'erreur.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Serial_Peripheral_Interface"
+    },
+    {
+      "question": "Comment un maître SPI sait-il qu'un esclave a bien reçu l'octet qu'il vient d'envoyer ?",
+      "answer": "Il ne le sait pas : SPI ne prévoit aucun acquittement",
+      "wrong": [
+        "L'esclave tire MISO à 0 au 9e coup d'horloge",
+        "L'esclave relâche la ligne CS après chaque octet",
+        "L'esclave renvoie un bit de parité sur MOSI"
+      ],
+      "explanation": "Le SPI est un protocole minimaliste, ce qui le rend très rapide mais aussi « aveugle ». Le maître génère l'horloge et envoie ses bits sur MOSI, que l'esclave soit présent ou non : aucun accusé de réception n'est prévu, contrairement à l'ACK de l'I2C. Si l'esclave est débranché, le maître lit simplement des octets sans signification sur MISO, souvent tous à 0 ou tous à 1. Exemple : pour vérifier qu'une puce répond, on lit un registre d'identification dont la valeur est donnée par sa fiche technique. Les autres leurres inversent les rôles : la ligne CS est pilotée par le maître, et MOSI ne transporte que les données du maître.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Serial_Peripheral_Interface"
     }
   ]
 }

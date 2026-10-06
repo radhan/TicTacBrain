@@ -13,7 +13,7 @@
         "Le jeton de gouvernance d'un grand protocole établi",
         "Une pièce physique en métal représentant un bitcoin"
       ],
-      "explanation": "Un **shitcoin** est un terme péjoratif pour un token jugé sans projet solide, sans adoption ni utilité, dont le cours ne repose que sur la spéculation et le battage. Beaucoup sont créés en quelques minutes dans un seul but d'enrichissement rapide des fondateurs, ce qui en fait un terrain propice aux arnaques.",
+      "explanation": "Un **shitcoin** est un jeton que la communauté juge sans projet sérieux : pas d'usage réel, pas de produit, juste l'espoir qu'un autre acheteur le rachètera plus cher. Le mot est péjoratif et n'a pas de définition officielle. Exemple : quelqu'un crée un jeton en quelques minutes, lui donne un nom rigolo, promet « ×100 » sur Telegram et garde 40 % de l'offre pour lui. Si le cours monte, il vend ; sinon, il n'y a rien derrière. À ne pas confondre avec un stablecoin (adossé à une monnaie) ou le jeton d'un grand protocole, qui ont une utilité concrète.",
       "difficulty": 1
     },
     {
@@ -24,7 +24,7 @@
         "Un token qui récompense la création de mèmes sur les réseaux sociaux",
         "Une cryptomonnaie officielle émise par une banque centrale"
       ],
-      "explanation": "Un **memecoin** tire sa notoriété d'un mème ou d'une communauté plutôt que d'une innovation technique. Sa valeur dépend presque entièrement de l'attention et de la viralité, ce qui le rend extrêmement volatil et vulnérable aux manipulations.",
+      "explanation": "Un **memecoin** est un jeton dont l'identité vient d'une blague, d'un mème internet ou d'une mascotte (un chien, une grenouille…), pas d'une innovation technique. Sa valeur dépend de l'attention : tant que la communauté en parle, le prix monte ; quand elle passe à autre chose, il peut s'effondrer. Exemple : un jeton à thème animalier fait ×50 en une semaine grâce à un tweet viral, puis perd 90 % en deux jours. Il est aussi facile à manipuler : quelques gros portefeuilles suffisent à faire bouger le prix. Ce n'est ni un stablecoin ni une monnaie de banque centrale : rien ne garantit sa valeur.",
       "difficulty": 1
     },
     {
@@ -35,7 +35,7 @@
         "Volume échangé sur 24 h × prix d'un token",
         "Prix le plus haut historique × prix actuel"
       ],
-      "explanation": "La **market cap** = prix unitaire × **circulating supply** (tokens réellement en circulation). Elle donne une idée de la taille du projet, bien mieux que le prix unitaire seul : un token à 0,01 $ avec des milliards d'unités peut valoir plus qu'un token à 100 $ rare. Le calcul fondé sur le nombre maximal de tokens donne la FDV, pas la market cap.",
+      "explanation": "La **capitalisation boursière** (market cap) mesure la taille d'un projet : prix d'un token × nombre de tokens réellement en circulation (la **circulating supply**). Le prix seul ne dit rien : un token à 0,01 $ avec 100 milliards d'unités vaut 1 milliard de dollars, alors qu'un token à 100 $ avec 1 million d'unités n'en vaut que 100 millions. Multiplier par le nombre maximal de tokens possibles donne autre chose : la **FDV**. Le volume échangé sur 24 h ou le record historique n'entrent pas dans ce calcul.",
       "difficulty": 1
     },
     {
@@ -46,7 +46,7 @@
         "Double Your Online Return",
         "Decentralized Yield Operations Reserve"
       ],
-      "explanation": "**DYOR** rappelle de vérifier soi-même un projet avant d'y mettre de l'argent, au lieu de se fier aux promesses d'influenceurs. C'est un réflexe de prudence : lire le livre blanc, examiner l'équipe, la répartition des tokens et la liquidité. Attention, certains escrocs l'emploient aussi pour se dédouaner (« tu aurais dû DYOR »).",
+      "explanation": "**DYOR** veut dire « Do Your Own Research » : fais tes propres recherches avant d'investir, au lieu de croire un influenceur ou un message Telegram. Concrètement : lire le livre blanc (le document de présentation du projet), vérifier si l'équipe est identifiable, regarder comment les tokens sont répartis et si la liquidité est verrouillée. Exemple : un influenceur crie « ce jeton va faire ×100 » ; dix minutes de recherche montrent que 70 % de l'offre appartient à 3 portefeuilles. Attention : des escrocs utilisent aussi ce mot pour se dédouaner (« tu aurais dû DYOR ») une fois que tu as perdu.",
       "difficulty": 1
     },
     {
@@ -57,7 +57,7 @@
         "Un type d'ordre d'achat automatique",
         "La peur de perdre tout son capital d'un coup"
       ],
-      "explanation": "**FOMO** = Fear Of Missing Out. Voir un cours grimper fait craindre de « louper le train » et pousse à acheter impulsivement, souvent près d'un sommet. Les escrocs exploitent ce biais avec des comptes à rebours et de faux signaux d'urgence pour forcer des décisions irréfléchies.",
+      "explanation": "Le **FOMO** (Fear Of Missing Out, « peur de rater quelque chose ») est l'envie d'acheter parce que tout le monde semble gagner, sans analyse. Exemple : un jeton passe de 1 $ à 3 $ en trois jours, tes amis en parlent, tu achètes 1 000 $ à 3 $ de peur de rater la suite. Il retombe à 1,50 $ : tu as perdu 500 $. Acheter tard, près du sommet, est le piège classique. Les escrocs entretiennent ce réflexe avec des comptes à rebours (« plus que 2 h pour la prévente ! ») pour t'empêcher de réfléchir. Ce n'est pas une stratégie, ni la peur de tout perdre.",
       "difficulty": 1
     },
     {
@@ -68,7 +68,7 @@
         "Automated Trading Hub : une plateforme de trading automatisé",
         "All The Holders : l'ensemble des détenteurs"
       ],
-      "explanation": "L'**ATH** (All-Time High) est le record de prix historique d'un actif ; son opposé est l'**ATL** (All-Time Low), le plus bas historique. Ces repères servent à situer un cours, mais un ATH passé ne garantit rien pour l'avenir.",
+      "explanation": "L'**ATH** (All-Time High) est le prix le plus haut jamais atteint par un actif ; l'**ATL** (All-Time Low) est son plus bas historique. Ces repères servent à situer un cours : si un jeton vaut 20 $ alors que son ATH est de 100 $, il est 80 % sous son record. Mais attention : être loin de son ATH ne veut pas dire « en solde ». Beaucoup de projets ne retrouvent jamais leur ancien sommet, et un record passé ne garantit rien pour l'avenir.",
       "difficulty": 1
     },
     {
@@ -79,7 +79,7 @@
         "Une CEX est réservée aux professionnels, une DEX aux particuliers",
         "Une CEX est gratuite, une DEX facture toujours des frais fixes"
       ],
-      "explanation": "Sur une **CEX** (Centralized Exchange, ex. une plateforme classique), un intermédiaire détient vos fonds et exécute les ordres via un carnet d'ordres. Sur une **DEX** (Decentralized Exchange), les échanges se font par contrats intelligents, de portefeuille à portefeuille : vous gardez le contrôle de vos clés, mais vous êtes seul responsable en cas d'erreur.",
+      "explanation": "Une **CEX** (Centralized Exchange) est la plateforme d'une entreprise : tu crées un compte, elle garde tes fonds et gère un carnet d'ordres (la liste des offres d'achat et de vente). Une **DEX** (Decentralized Exchange) fonctionne par contrats intelligents : tu connectes ton portefeuille et tu gardes tes clés privées. Avantage de la CEX : support client et récupération de compte ; risque : si elle fait faillite, tes fonds peuvent être perdus (cas FTX en 2022). Avantage de la DEX : personne ne détient tes fonds ; risque : une erreur d'adresse ou une signature piégée est irréversible.",
       "difficulty": 1
     },
     {
@@ -90,7 +90,7 @@
         "Le token le plus ancien d'une blockchain",
         "Une cryptomonnaie réservée à l'épargne à long terme et non échangeable"
       ],
-      "explanation": "Un **stablecoin** vise à maintenir une parité stable (par ex. 1 token ≈ 1 $), via des réserves en monnaie, d'autres actifs, ou des mécanismes algorithmiques. Il sert à se mettre « à l'abri » de la volatilité sans sortir de l'écosystème crypto. Stable ne veut pas dire sans risque : certains ont déjà perdu leur ancrage (depeg).",
+      "explanation": "Un **stablecoin** est un jeton conçu pour valoir toujours à peu près la même chose, le plus souvent 1 $. Il sert de refuge : quand tu crains une chute du marché, tu convertis tes jetons en stablecoin sans quitter l'écosystème crypto. Exemple : tu vends 1 000 $ de jetons volatils contre 1 000 stablecoins ; si le marché baisse de 30 %, ton solde reste proche de 1 000 $. Mais stable ne veut pas dire sans risque : un stablecoin peut perdre son ancrage (« depeg »), comme TerraUSD qui s'est effondré en mai 2022.",
       "difficulty": 1
     },
     {
@@ -101,7 +101,7 @@
         "L'ordre au marché n'achète que des stablecoins",
         "L'ordre au marché est réservé aux ventes, l'ordre limité aux achats"
       ],
-      "explanation": "Un **ordre au marché** privilégie la rapidité : il se remplit tout de suite au prix courant, quitte à subir du slippage sur un marché peu liquide. Un **ordre limité** ne s'exécute qu'au prix choisi ou mieux : vous maîtrisez le prix, mais l'ordre peut ne jamais partir si le marché ne l'atteint pas.",
+      "explanation": "Un **ordre au marché** dit : « achète tout de suite, au meilleur prix disponible ». Un **ordre limité** dit : « achète seulement si le prix atteint tel niveau ». Exemple : un jeton vaut 10 $. Avec un ordre limité d'achat à 9 $, tu attends ; si le prix ne descend jamais à 9 $, tu n'achètes rien. Avec un ordre au marché, tu achètes tout de suite à 10 $ (un peu plus si peu de vendeurs : c'est le slippage). Le marché garantit l'exécution, la limite garantit le prix. Les deux types existent à l'achat comme à la vente.",
       "difficulty": 1
     },
     {
@@ -112,7 +112,7 @@
         "La valeur totale verrouillée dans les protocoles DeFi",
         "Le volume d'échange cumulé depuis le lancement"
       ],
-      "explanation": "La **FDV** = prix × nombre total (ou maximal) de tokens, émis ou non. Un écart énorme entre market cap et FDV signale que beaucoup de tokens restent à débloquer : leur arrivée progressive (vesting) peut diluer et faire pression à la baisse sur le cours. C'est un indicateur clé à examiner avant d'investir.",
+      "explanation": "La **FDV** (Fully Diluted Valuation) répond à : « combien vaudrait le projet si tous les tokens prévus existaient déjà ? ». Formule : prix × supply maximale. Exemple : un token à 2 $ avec 100 millions en circulation sur 1 milliard prévus a une market cap de 200 M$, mais une FDV de 2 Md$. Les 900 millions restants seront débloqués peu à peu (**vesting**) : si leurs détenteurs les vendent, l'offre augmente et le prix subit une pression à la baisse. Un gros écart entre market cap et FDV est donc un signal à surveiller.",
       "difficulty": 2
     },
     {
@@ -123,7 +123,7 @@
         "200 millions de dollars",
         "1 milliard de dollars"
       ],
-      "explanation": "Market cap = prix × circulating supply = 0,50 $ × 200 000 000 = **100 M$**. Le piège à 500 M$ est la **FDV** (0,50 $ × 1 milliard), qui suppose tous les tokens déjà émis. Confondre les deux fait croire qu'un projet est bien plus gros qu'il ne l'est réellement.",
+      "explanation": "Cette question teste le calcul de la taille d'un projet. Market cap = prix × tokens **en circulation**, pas la supply maximale : 0,50 $ × 200 000 000 = **100 millions de dollars**. Le piège à 500 M$ est la **FDV** : 0,50 $ × 1 000 000 000. Elle suppose que les 800 millions de tokens restants sont déjà émis, ce qui n'est pas le cas. Confondre les deux fait croire qu'un projet est cinq fois plus gros qu'il ne l'est. Les valeurs 200 M$ et 1 Md$ ne correspondent à aucun de ces calculs.",
       "difficulty": 2
     },
     {
@@ -134,7 +134,7 @@
         "Une chute de prix due à une mauvaise nouvelle du marché",
         "Un rachat massif de tokens par l'équipe pour soutenir le cours"
       ],
-      "explanation": "Dans un **rug pull** (littéralement « tirer le tapis »), les porteurs vident la liquidité ou vendent leur énorme réserve d'un coup, puis abandonnent le projet. Le cours s'effondre à zéro et les détenteurs ne peuvent plus revendre. Une liquidité non verrouillée et une équipe anonyme sont des signaux d'alerte majeurs.",
+      "explanation": "Un **rug pull** (« tirer le tapis ») est une arnaque où les créateurs d'un projet retirent l'argent déposé par les investisseurs, puis disparaissent. Exemple : des fondateurs lancent un jeton avec 50 000 $ de liquidité dans le pool (l'argent qui permet d'acheter et de vendre). 2 000 personnes achètent, le prix monte. Les fondateurs retirent alors toute la liquidité : plus personne ne peut racheter le jeton, qui tombe à zéro. Signaux d'alerte : équipe anonyme, liquidité non verrouillée, quelques portefeuilles qui détiennent l'essentiel de l'offre, promesses de gains énormes.",
       "difficulty": 2
     },
     {
@@ -145,7 +145,7 @@
         "Une file d'attente des ordres d'achat et de vente",
         "Un fonds commun géré par la plateforme centralisée"
       ],
-      "explanation": "Un **pool de liquidité** contient une paire de tokens (ex. TOKEN/USDC) fournie par des **liquidity providers (LP)**. Les échanges puisent dans ce pool et un algorithme fixe le prix selon le ratio des réserves. En échange, les LP touchent une part des frais de transaction, mais s'exposent au risque d'impermanent loss.",
+      "explanation": "Sur une DEX à **AMM** (Automated Market Maker, teneur de marché automatique), il n'y a pas de carnet d'ordres : tu échanges directement contre un **pool de liquidité**, une réserve de deux jetons déposés dans un contrat. Un algorithme fixe le prix selon le ratio entre les deux réserves. Exemple : un pool contient 100 TOKEN et 1 000 USDC, donc 1 TOKEN vaut environ 10 USDC. Si tu achètes des TOKEN, le stock de TOKEN baisse et leur prix monte. Les déposants (**LP**) touchent une part des frais, mais risquent l'impermanent loss (un manque à gagner par rapport à garder leurs jetons).",
       "difficulty": 2
     },
     {
@@ -156,7 +156,7 @@
         "Pour augmenter automatiquement le rendement du staking",
         "Pour interdire tout achat du token pendant la période"
       ],
-      "explanation": "Verrouiller la liquidité confie les jetons LP à un contrat tiers qui empêche de les récupérer avant l'échéance. Cela réduit le risque qu'un fondateur vide le pool du jour au lendemain. Attention : un lock court, ou qui ne couvre qu'une partie de la liquidité, offre une fausse impression de sécurité.",
+      "explanation": "Le rug pull classique consiste à retirer la liquidité du pool. Pour rassurer, un projet peut **verrouiller** (lock) ses jetons LP, les titres qui prouvent la propriété de la liquidité, dans un contrat tiers qui les bloque jusqu'à une date fixée. Exemple : liquidité verrouillée 12 mois : même si l'équipe veut partir avec l'argent, elle ne peut pas vider le pool avant l'échéance. Attention : un lock de 7 jours, ou qui ne couvre que 10 % de la liquidité, ne protège presque de rien. Il ne gèle pas le prix et n'interdit pas d'acheter.",
       "difficulty": 2
     },
     {
@@ -167,7 +167,7 @@
         "La vente anticipée de tokens à prix réduit",
         "Un retrait automatique de frais sur chaque transaction"
       ],
-      "explanation": "Un **airdrop** envoie des tokens gratuitement, par exemple aux premiers utilisateurs ou détenteurs d'un autre token, pour amorcer une communauté. Prudence : de faux airdrops déposent des tokens piégés dans votre portefeuille pour vous inciter à interagir avec un site malveillant et signer une transaction dangereuse.",
+      "explanation": "Un **airdrop** est une distribution gratuite de jetons vers des portefeuilles, en général pour récompenser les premiers utilisateurs ou faire connaître un projet. Exemple légitime : un protocole offre des jetons à ceux qui l'ont utilisé avant une certaine date. Exemple d'arnaque : un jeton inconnu apparaît dans ton portefeuille avec un nom du type « Claim ton bonus sur site-xyz.com » ; le site te demande de signer une transaction qui vide tes fonds. Règle : ne touche pas à un jeton que tu n'as pas demandé et ne clique pas sur le lien qu'il affiche.",
       "difficulty": 2
     },
     {
@@ -178,7 +178,7 @@
         "Il convertit les tokens en stablecoins",
         "Il met les tokens en pause le temps d'une mise à jour"
       ],
-      "explanation": "Un **burn** envoie des tokens vers une adresse dont personne ne possède la clé (adresse « morte ») : ils deviennent irrécupérables, ce qui réduit la supply en circulation. Certains protocoles brûlent régulièrement des tokens par conception. Un burn ne garantit en rien une hausse du prix, contrairement à ce que promettent certains marketings.",
+      "explanation": "Un **burn** (« brûler ») envoie des tokens vers une adresse dont personne ne possède la clé privée : ils sont définitivement hors circulation. Exemple : un jeton compte 1 milliard d'unités et le projet en brûle 100 millions : il en reste 900 millions. Avec moins de tokens, chaque unité est théoriquement plus rare. Mais un burn ne garantit pas une hausse : si personne ne veut du jeton, le prix baisse quand même. Méfiance envers un projet qui vend le burn comme une promesse de gain. Il ne crée pas de nouveaux jetons et ne les convertit pas en stablecoins.",
       "difficulty": 2
     },
     {
@@ -189,7 +189,7 @@
         "Échanger un token contre un autre sur une DEX",
         "Emprunter des tokens en déposant une garantie"
       ],
-      "explanation": "Le **staking** consiste à bloquer des tokens, souvent dans un réseau en preuve d'enjeu (Proof of Stake), pour participer à la validation et toucher des récompenses. Les fonds peuvent être soumis à une période de déblocage. Méfiance envers les plateformes promettant des rendements de staking anormalement élevés : c'est un classique des arnaques.",
+      "explanation": "Le **staking** consiste à immobiliser des tokens pour contribuer au fonctionnement d'un réseau en **Proof of Stake** (preuve d'enjeu : les validateurs sont choisis selon la quantité de tokens bloqués). En échange, tu reçois des récompenses. Exemple : tu stakes 1 000 jetons à 5 % par an ; au bout d'un an, tu en reçois environ 50 de plus. Les fonds peuvent rester bloqués pendant une période de déblocage. Signal d'arnaque : une plateforme qui promet 300 % par an « garantis » ; un tel rendement est presque toujours payé avec l'argent des nouveaux arrivants.",
       "difficulty": 2
     },
     {
@@ -200,7 +200,7 @@
         "L'APR s'applique au staking, l'APY uniquement aux stablecoins",
         "L'APR est mensuel, l'APY est hebdomadaire"
       ],
-      "explanation": "L'**APR** (Annual Percentage Rate) est le taux annuel simple, sans réinvestissement des gains. L'**APY** (Annual Percentage Yield) intègre la **composition** : les intérêts génèrent eux-mêmes des intérêts. À taux nominal égal, l'APY est donc toujours supérieur ou égal à l'APR, d'autant plus que la fréquence de composition est élevée.",
+      "explanation": "L'**APR** est le taux annuel **simple** : les gains ne sont pas réinvestis. L'**APY** inclut les **intérêts composés** : les intérêts gagnés produisent eux-mêmes des intérêts. Exemple : 1 000 $ à 12 % d'APR rapportent 120 $ en un an. Si les gains sont réinvestis chaque mois (1 % par mois), tu obtiens 1 000 × 1,01^12 ≈ 1 126,83 $, soit environ 12,68 % d'APY. Plus la composition est fréquente, plus l'écart grandit. Certaines plateformes mettent en avant l'APY, plus gros, parce qu'il est plus attractif.",
       "difficulty": 2
     },
     {
@@ -211,7 +211,7 @@
         "Le délai de confirmation d'une transaction sur la blockchain",
         "La baisse de valeur d'un token pendant la nuit"
       ],
-      "explanation": "Le **slippage** survient quand le marché bouge ou manque de liquidité entre le moment où l'on passe l'ordre et son exécution : on obtient un prix moins favorable que prévu. Sur une DEX, on règle souvent une tolérance de slippage ; la fixer trop haut expose à des exécutions désastreuses, notamment sur les tokens peu liquides.",
+      "explanation": "Le **slippage** est l'écart entre le prix que tu espérais et le prix auquel ton ordre est réellement exécuté. Il apparaît quand le prix bouge entre ton clic et l'exécution, ou quand la **liquidité** (la quantité disponible à l'achat ou à la vente) est trop faible. Exemple : tu veux acheter à 1,00 $ avec une tolérance de 1 % ; si le prix passe à 1,03 $ avant l'exécution, l'ordre est refusé. Avec 20 % de tolérance, il passerait même à un prix 20 % plus cher, et des robots dits « sandwich » en profitent. Ce ne sont pas les frais de la plateforme.",
       "difficulty": 2
     },
     {
@@ -222,7 +222,7 @@
         "Le fondateur anonyme d'une blockchain",
         "Un robot qui exécute des ordres automatiquement"
       ],
-      "explanation": "Une **whale** détient assez de tokens pour que ses mouvements pèsent sur le marché : une grosse vente peut faire chuter un cours peu liquide. Suivre l'activité des whales (via les adresses publiques) est une pratique courante, mais elles peuvent aussi manipuler volontairement le marché.",
+      "explanation": "Une **whale** (baleine) est un portefeuille qui détient une énorme quantité d'un jeton, assez pour faire bouger le prix à lui seul. Exemple : sur un jeton dont la liquidité totale est de 200 000 $, une baleine qui vend 100 000 $ d'un coup peut le faire chuter de façon spectaculaire. Comme la blockchain est publique, on peut suivre ces portefeuilles. Mais une baleine peut aussi te tromper : elle simule un achat pour attirer du monde, puis revend dans l'élan. Ce n'est ni un petit trader ni un robot.",
       "difficulty": 2
     },
     {
@@ -233,7 +233,7 @@
         "Répartir ses achats sur plusieurs plateformes pour réduire les frais",
         "Verrouiller la liquidité d'un projet pour stabiliser son cours"
       ],
-      "explanation": "Dans un **pump and dump**, des organisateurs accumulent un token peu liquide, orchestrent un battage (groupes, influenceurs) pour attirer les acheteurs et faire grimper le prix (pump), puis revendent tout au sommet (dump). Le cours s'effondre et les derniers entrés perdent. C'est une manipulation de marché illégale dans de nombreux pays.",
+      "explanation": "Un **pump and dump** (« gonfler puis jeter ») est une manipulation en deux temps. D'abord, un groupe accumule un jeton peu cher et peu liquide, puis fait de la pub (groupes Telegram, influenceurs, « signal secret ») pour attirer des acheteurs : le prix monte (pump). Ensuite, il revend tout au sommet (dump). Exemple : un jeton passe de 0,10 $ à 0,50 $ en 2 heures, puis retombe à 0,08 $ en 10 minutes : ceux qui ont acheté à 0,50 $ perdent 84 %. C'est souvent illégal comme manipulation de marché.",
       "difficulty": 2
     },
     {
@@ -244,7 +244,7 @@
         "Le remboursement des premiers investisseurs",
         "Une période où tout achat est interdit avant le lancement"
       ],
-      "explanation": "Lors d'une **presale** (proche des ICO/IDO), on acquiert des tokens avant leur cotation, souvent à prix préférentiel, pour financer le projet. Le risque est élevé : l'équipe peut disparaître avec les fonds, ou les premiers acheteurs peuvent revendre dès la cotation et faire chuter le cours. Les débloquages (vesting) conditionnent fortement l'issue.",
+      "explanation": "Une **presale** est la vente de jetons avant leur lancement public, souvent moins chers, pour financer le projet. Exemple : prévente à 0,01 $, lancement prévu à 0,02 $ : sur le papier, tu doubles ta mise. Mais le projet peut disparaître avec l'argent, et si tous les jetons de prévente sont débloqués d'un coup, tout le monde vend en même temps et le prix chute. C'est pourquoi on regarde le **vesting** (le calendrier de déblocage). Signaux d'alerte : un ×10 « garanti », une équipe anonyme, aucun audit du contrat.",
       "difficulty": 3
     },
     {
@@ -255,7 +255,7 @@
         "Un stablecoin garanti par de l'or physique",
         "Un token qui récompense les premiers acheteurs par un bonus"
       ],
-      "explanation": "Un **honeypot** attire les acheteurs avec une courbe de prix alléchante, mais son contrat intelligent contient une règle bloquant la vente pour tout le monde sauf les escrocs. Les victimes se retrouvent avec des tokens invendables. Des outils d'analyse de contrat et de simulation de vente aident à repérer ce piège avant d'acheter.",
+      "explanation": "Un **honeypot** (« pot de miel ») est un jeton piège : son contrat permet d'acheter, mais bloque la vente pour tout le monde sauf son créateur. Le graphique ne montre que des hausses (personne ne peut vendre), ce qui attire les victimes. Exemple : tu achètes 500 $ d'un jeton qui a doublé en deux jours ; au moment de revendre, la transaction échoue à chaque fois et tes 500 $ sont bloqués. Parade : avant d'acheter, passer le contrat dans un outil d'analyse qui simule une vente, et se méfier d'un jeton que personne ne vend jamais.",
       "difficulty": 3
     },
     {
@@ -266,7 +266,7 @@
         "Un virus qui ralentit la synchronisation de la blockchain ; un simple antivirus suffit à s'en débarrasser",
         "Une taxe prélevée sur les retraits d'une DEX ; on l'évite en ne retirant que de gros montants à la fois"
       ],
-      "explanation": "Un **wallet drainer** pousse la victime à signer une approbation ou une transaction qui donne au pirate le droit de transférer ses tokens. Il circule via faux airdrops, sites de phishing ou fausses mint. Protection : ne jamais signer une transaction qu'on ne comprend pas, vérifier le domaine, révoquer les approbations inutiles et se méfier des offres « trop belles ».",
+      "explanation": "Un **wallet drainer** est un site ou un contrat malveillant qui te fait signer une transaction ou une approbation, puis vide ton portefeuille. Une **approbation** donne à un contrat le droit de dépenser tes jetons à ta place. Exemple : un faux site « Claim ton airdrop » affiche un bouton ; tu signes sans lire, et tu viens en réalité d'autoriser l'accès à tous tes USDC. Parade : lire ce que tu signes, vérifier le nom de domaine, révoquer les approbations inutiles, ne rien signer venant d'un lien reçu en message privé. Un simple antivirus ne suffit pas : c'est toi qui signes.",
       "difficulty": 3
     },
     {
