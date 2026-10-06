@@ -1335,7 +1335,7 @@
         "Un golden cross",
         "Un all-time high"
       ],
-      "explanation": "L'expression vient d'un adage boursier cynique : « même un chat mort rebondit s'il tombe d'assez haut ». Un **dead cat bounce** est une remontée temporaire dans une tendance baissière, alimentée par des acheteurs qui croient au creux et par des vendeurs à découvert qui rachètent. Il piège ceux qui achètent en pensant la baisse terminée. On ne sait souvent qu'après coup s'il s'agissait d'un vrai retournement ou d'un rebond sans lendemain.",
+      "explanation": "L'expression vient d'un adage boursier cynique : « même un chat mort rebondit s'il tombe d'assez haut ». Un **dead cat bounce** est une remontée temporaire au sein d'une tendance baissière, alimentée par des acheteurs qui croient au creux et par des vendeurs à découvert qui rachètent. Exemple : un token passe de 10 $ à 4 $ (−60 %), rebondit de 15 % à 4,60 $, puis retombe à 2,50 $. Ceux qui ont acheté à 4,60 $ perdent 46 %. Même après ce rebond, le prix était encore 54 % sous son niveau de départ. On ne sait souvent qu'après coup s'il s'agissait d'un vrai retournement ou d'un rebond sans lendemain.",
       "difficulty": 2
     },
     {
@@ -1346,7 +1346,7 @@
         "Un marché parfaitement neutre et stable",
         "Une hausse de 10 % du marché sur la journée"
       ],
-      "explanation": "Les indices **Fear & Greed** combinent plusieurs mesures (volatilité, volume, réseaux sociaux, dominance…) en un score allant de 0 (**peur extrême**) à 100 (**avidité extrême**). Certains investisseurs s'en servent à contre-courant, selon l'adage « sois avide quand les autres ont peur ». Ce n'est qu'un thermomètre de l'humeur du marché : une peur extrême peut durer pendant que le prix continue de baisser.",
+      "explanation": "L'indice **Fear & Greed** (peur et avidité) résume l'humeur du marché en un score de 0 à 100, à partir de plusieurs mesures comme la volatilité, les volumes, les réseaux sociaux ou la dominance du bitcoin. Proche de 0 : **peur extrême** ; proche de 100 : **avidité extrême**. Un score de 10 signifie donc que les investisseurs paniquent, souvent après une forte chute. Certains s'en servent à contre-courant, selon l'adage « sois avide quand les autres ont peur ». Ce n'est qu'un thermomètre : une peur extrême peut durer des semaines pendant que le prix continue de baisser. Un marché parfaitement neutre serait autour de 50.",
       "difficulty": 2
     },
     {
@@ -1357,7 +1357,7 @@
         "À 140 $",
         "À 110 $"
       ],
-      "explanation": "Un **stop suiveur** accompagne le prix à la hausse en gardant toujours le même écart : ici 10 % sous le plus haut atteint. Au sommet de 150 $, le seuil est remonté à 150 × 0,9 = **135 $**, et il ne redescend jamais. Il protège une partie des gains tout en laissant courir la hausse. Le piège à 90 $ correspond à un stop-loss fixe calculé sur le prix d'achat.",
+      "explanation": "Un **stop suiveur** (trailing stop) accompagne le prix à la hausse en gardant le même écart, ici 10 % sous le plus haut atteint. Il ne peut que monter, jamais redescendre. Exemple : tu achètes à 100 $, le seuil est à 90 $. Le prix monte à 120 $ : seuil à 108 $. Il atteint 150 $ : seuil à 150 × 0,9 = **135 $**. Quand le prix redescend, la vente se déclenche à 135 $, soit +35 % pour toi. Il protège une partie des gains tout en laissant la hausse courir. Le piège à 90 $ correspond à un stop-loss fixe calculé sur le prix d'achat, qui ne suit pas le prix.",
       "difficulty": 2
     },
     {
@@ -1368,7 +1368,7 @@
         "Transférer ton BTC vers un portefeuille matériel",
         "Placer un ordre d'achat limité sous le prix actuel"
       ],
-      "explanation": "Une **couverture** compense les pertes d'une position par les gains d'une autre. Avec 1 BTC détenu et 1 BTC vendu à découvert, une baisse fait perdre sur le premier mais gagner à peu près autant sur le second : la valeur globale est quasi figée, hors frais et funding. En contrepartie, on renonce aussi aux gains en cas de hausse : la couverture réduit le risque, elle ne crée pas de profit. Un portefeuille matériel protège du piratage, pas des variations de prix.",
+      "explanation": "Une **couverture** (hedge) compense les pertes d'une position par les gains d'une autre. Exemple : tu détiens 1 BTC valant 60 000 $ et tu ouvres un short d'environ 1 BTC sur un contrat dérivé. Si le prix tombe à 50 000 $, tu perds 10 000 $ sur ton BTC mais gagnes environ 10 000 $ sur le short : la valeur globale est quasi figée. En contrepartie, si le prix monte à 70 000 $, le short efface ton gain. La couverture réduit le risque, elle ne crée pas de profit, et coûte des frais et du funding. Acheter plus avec du levier augmente le risque, et un portefeuille matériel protège du piratage, pas de la baisse.",
       "difficulty": 2
     },
     {
@@ -1379,7 +1379,7 @@
         "La Commission nationale de l'informatique et des libertés (CNIL)",
         "L'Institut national de la statistique (Insee)"
       ],
-      "explanation": "L'**AMF** tient des listes noires de sites et d'entités non autorisés qui proposent des placements atypiques, du Forex, des produits dérivés ou des crypto-actifs. Avant d'utiliser un prestataire, on peut aussi vérifier qu'il est bien enregistré ou agréé auprès d'elle, ses registres officiels étant publics. Une plateforme absente de ces registres qui démarche des particuliers en France doit éveiller la méfiance.",
+      "explanation": "En France, l'**AMF** (Autorité des marchés financiers) publie des **listes noires** de sites et d'entités qui proposent sans autorisation des placements atypiques, du Forex, des produits dérivés ou des crypto-actifs. Scénario : un contact WhatsApp te vante une plateforme qui « garantit 3 % par semaine ». Avant tout dépôt, tu vérifies sur le site de l'AMF si elle est listée et si elle figure dans les registres officiels des prestataires enregistrés ou agréés. Attention : ne pas être sur la liste noire ne prouve rien, car de nouveaux sites apparaissent chaque jour. Une plateforme absente des registres qui démarche des particuliers est un signal d'alerte.",
       "difficulty": 1
     },
     {
@@ -1390,7 +1390,7 @@
         "Key Your Crypto : la création d'une clé privée par la plateforme",
         "Know Your Coin : l'analyse technique d'un token avant sa cotation"
       ],
-      "explanation": "Le **KYC** (Know Your Customer, « connaître son client ») oblige les plateformes régulées à vérifier l'identité de leurs utilisateurs (pièce d'identité, justificatif de domicile…) pour lutter contre le blanchiment et la fraude. Une plateforme sérieuse le fait à l'inscription, via son site ou son application officielle. Méfiance en revanche envers un « KYC » demandé par message privé, ou envers une plateforme qui exige des frais pour « valider » ton identité.",
+      "explanation": "Le **KYC** (Know Your Customer, « connaître son client ») oblige les plateformes régulées à vérifier l'identité de leurs utilisateurs (pièce d'identité, selfie, justificatif de domicile) pour lutter contre le blanchiment et la fraude. Une plateforme sérieuse le fait à l'inscription, dans son site ou son application officielle. Signaux d'arnaque : un « conseiller » qui te réclame ta pièce d'identité par message privé ; un lien qui te demande de téléverser tes documents sur un site inconnu ; des « frais de validation d'identité » à payer. Ces documents servent ensuite à des usurpations d'identité. Ce n'est ni un blocage des retraits ni une clé privée.",
       "difficulty": 1
     },
     {
@@ -1401,7 +1401,7 @@
         "Le transférer vers un portefeuille matériel pour le sécuriser",
         "Le signaler aux autorités comme une arnaque présumée"
       ],
-      "explanation": "**Shiller** (de l'anglais *shill*, le complice qui fait l'article) signifie vanter un token avec insistance, sur les réseaux sociaux ou dans des groupes, souvent parce qu'on en détient ou qu'on est payé pour le faire, sans toujours le dire. Un enthousiasme débordant n'est pas une analyse : demande-toi toujours ce que gagne celui qui te pousse à acheter.",
+      "explanation": "**Shiller** vient de l'anglais *shill*, le complice glissé dans la foule pour vanter un produit. En crypto, c'est promouvoir un token avec insistance, souvent parce qu'on en détient ou qu'on est payé pour le faire, sans toujours le dire. Exemple : un influenceur écrit trois fois par jour « ce jeton va faire ×100, je suis à fond dedans » ; en réalité, il a reçu 5 % de l'offre gratuitement et vend pendant qu'il promeut. Signaux : promotion sans mention de lien d'intérêt, messages copiés-collés par de nombreux comptes, promesses de gains, « not financial advice » en guise de décharge. Demande-toi ce que gagne celui qui te pousse à acheter.",
       "difficulty": 1
     },
     {
@@ -1412,7 +1412,7 @@
         "Avoir fait vérifier son identité par une plateforme",
         "Avoir verrouillé ses tokens en staking"
       ],
-      "explanation": "**Rekt** est une déformation de *wrecked* (« détruit, ruiné »). On l'emploie pour un trader liquidé, une victime de rug pull ou un portefeuille effondré. Le mot circule beaucoup sur les réseaux, souvent avec humour, mais il rappelle une réalité : le levier, les memecoins et les arnaques produisent énormément de comptes rekt.",
+      "explanation": "**Rekt** est une déformation de l'anglais *wrecked* (« détruit, ruiné »). On l'emploie pour un trader liquidé, une victime de rug pull ou un portefeuille effondré. Exemple : tu ouvres un long à levier ×10 avec 1 000 € de marge ; le prix baisse de 10 %, ta position est liquidée et tu perds 1 000 € : tu es rekt. Le mot circule souvent avec humour sur les réseaux, mais il rappelle une réalité : le levier, les memecoins et les arnaques produisent énormément de comptes rekt. C'est l'opposé d'un gain record.",
       "difficulty": 1
     },
     {
@@ -1423,7 +1423,7 @@
         "Un investisseur qui note ses clés privées sur papier",
         "Un investisseur qui n'achète que des actifs physiques"
       ],
-      "explanation": "Les **paper hands** vendent vite, sous l'effet de la peur. Leur opposé, les **diamond hands**, gardent coûte que coûte. Ces expressions servent souvent de pression sociale dans les communautés : traiter quelqu'un de paper hands le culpabilise de vendre, ce qui arrange ceux qui veulent soutenir le cours. Vendre selon un plan décidé à l'avance n'a rien de honteux.",
+      "explanation": "Les **paper hands** (« mains de papier ») vendent vite, dès que le prix baisse, sous l'effet de la peur. Leur opposé, les **diamond hands**, gardent coûte que coûte. Exemple : un token perd 15 % en une heure ; le paper hand vend. Si le prix remonte de 30 % le lendemain, il a raté la remontée. Mais garder aveuglément n'est pas une stratégie non plus : si le projet est une arnaque, les diamond hands perdent tout. Dans certains groupes, ces expressions servent de pression sociale : traiter quelqu'un de paper hands le culpabilise de vendre, ce qui arrange ceux qui veulent soutenir le cours. Vendre selon un plan décidé à l'avance n'a rien de honteux.",
       "difficulty": 1
     },
     {
@@ -1434,7 +1434,7 @@
         "Vendre juste avant une baisse annoncée par la presse",
         "Acheter un token juste avant sa cotation officielle"
       ],
-      "explanation": "**Buy the dip** (« acheter le creux ») consiste à profiter d'une baisse pour acheter moins cher. La stratégie peut fonctionner sur un actif solide, mais elle est dangereuse sur un token qui s'effondre pour de bonnes raisons (rug pull, faille, abandon du projet) : il n'y aura alors pas de rebond. Acheter pendant une chute brutale, c'est parfois « attraper un couteau qui tombe ».",
+      "explanation": "**Buy the dip** (« acheter le creux ») consiste à profiter d'une baisse pour acheter moins cher, en pariant sur un rebond. Sur un actif solide, cela peut fonctionner. Mais c'est dangereux sur un token qui s'effondre pour de bonnes raisons. Exemple : un memecoin passe de 1 $ à 0,50 $ après l'abandon du projet par son développeur ; tu « achètes le creux » pour 500 $. Il tombe à 0,05 $ : tes 500 $ valent 50 $. Il n'y a pas de rebond quand un projet est mort. D'où l'image du « couteau qui tombe » : attraper un actif en pleine chute peut faire très mal.",
       "difficulty": 1
     },
     {
@@ -1445,7 +1445,7 @@
         "Le gel des comptes d'une plateforme décidé par la justice",
         "La saison des airdrops organisés en fin d'année civile"
       ],
-      "explanation": "Un **crypto winter** est un marché baissier prolongé : les prix chutent fortement et durablement, les volumes s'effondrent, des entreprises font faillite et l'intérêt du public retombe. Les années 2018 et 2022 sont souvent citées comme des hivers crypto. Ces périodes révèlent aussi de nombreuses fraudes, quand les plateformes fragiles ne peuvent plus honorer les retraits.",
+      "explanation": "Un **crypto winter** (hiver crypto) est un marché baissier prolongé : les prix chutent fortement et durablement, les volumes s'effondrent, des entreprises font faillite et l'intérêt du public retombe. Exemple : entre fin 2021 et fin 2022, le bitcoin est passé d'environ 69 000 $ à environ 16 000 $ (près de −77 %), alors que beaucoup d'altcoins ont perdu plus de 90 %. Des acteurs comme Celsius, Voyager ou FTX ont fait faillite en 2022. 2018 est l'autre hiver souvent cité. Ces périodes révèlent aussi de nombreuses fraudes, quand les plateformes fragiles ne peuvent plus honorer les retraits.",
       "difficulty": 1
     },
     {
@@ -1456,7 +1456,7 @@
         "Celui qui conserve ses cryptos sur un portefeuille matériel",
         "Celui qui gère la trésorerie d'un projet crypto"
       ],
-      "explanation": "Un **bag holder** porte un « sac » de tokens achetés cher, dont la valeur s'est effondrée, et qu'il ne parvient pas ou ne se résout pas à vendre. C'est souvent le sort des derniers acheteurs d'un pump and dump : ils servent de contrepartie aux initiés qui sortent au sommet. Attendre de revenir « au prix d'achat » sur un projet abandonné mène souvent à tout perdre.",
+      "explanation": "Un **bag holder** porte un « sac » de tokens achetés cher, dont la valeur s'est effondrée, et qu'il ne parvient pas ou ne se résout pas à vendre. Exemple : tu achètes 1 000 $ d'un token à 0,50 $, juste au sommet d'un pump. Il tombe à 0,05 $ : −90 %. Pour revenir à ta mise, il devrait faire ×10, soit +900 %. Attendre de revenir « au prix d'achat » sur un projet abandonné mène souvent à tout perdre. C'est souvent le sort des derniers acheteurs d'un pump and dump : ils servent de contrepartie aux initiés qui sortent au sommet. Ce n'est ni le plus gros détenteur ni un trésorier.",
       "difficulty": 1
     },
     {
@@ -1467,7 +1467,7 @@
         "La technique sert aux achats ; la fondamentale, uniquement aux ventes",
         "La technique est réservée aux robots ; la fondamentale, aux humains"
       ],
-      "explanation": "L'**analyse technique** cherche des signaux dans l'historique des prix et des volumes : tendances, supports, résistances, indicateurs. L'**analyse fondamentale** évalue le projet lui-même : utilité, adoption, équipe, tokenomics, revenus, concurrence. Pour repérer une arnaque, c'est la seconde qui compte : un joli graphique ne dit rien d'un contrat piégé ou d'une équipe qui détient 60 % de l'offre.",
+      "explanation": "L'**analyse technique** cherche des signaux dans l'historique des prix et des volumes : tendances, supports, résistances, indicateurs comme le RSI. L'**analyse fondamentale** évalue le projet lui-même : utilité, adoption, équipe, tokenomics, revenus, concurrence. Exemple : un token affiche un graphique magnifique (cassure d'une résistance, RSI favorable), mais son contrat contient une fonction `mint` illimitée et l'équipe détient 60 % de l'offre. Aucun graphique ne le montre : seule l'analyse fondamentale (et la lecture du contrat) le révèle. Pour repérer une arnaque, c'est elle qui compte. L'analyse technique aide surtout à choisir le moment d'entrer ou de sortir.",
       "difficulty": 1
     },
     {
@@ -1478,7 +1478,7 @@
         "Emprunter pour investir davantage chaque fois que le marché baisse",
         "Concentrer tout son capital sur un seul petit token prometteur"
       ],
-      "explanation": "Les cryptos, surtout les petits tokens, peuvent perdre 90 % de leur valeur ou plus, voire disparaître, et les arnaques sont nombreuses. D'où la règle : n'y placer qu'une somme dont la perte totale ne mettrait en danger ni ton budget, ni ton logement, ni tes projets. Emprunter ou tout miser sur un seul token transforme une mauvaise surprise en catastrophe.",
+      "explanation": "Les cryptos, surtout les petits tokens, peuvent perdre 90 % de leur valeur ou plus, voire disparaître, et les arnaques sont nombreuses. D'où la règle : n'investir que l'argent dont la perte totale ne mettrait en danger ni ton budget, ni ton logement, ni tes projets. Exemple : avec 10 000 € d'épargne, en placer 500 € (5 %) limite la perte maximale à 500 €, même si le token tombe à zéro. En mettre 10 000 € sur un seul petit token qui perd 90 % transforme l'épargne en 1 000 €. Emprunter pour investir, ou tout miser sur un seul token, transforme une mauvaise surprise en catastrophe.",
       "difficulty": 1
     },
     {
@@ -1489,7 +1489,7 @@
         "Une liste d'attente pour participer à une prévente de token",
         "Un programme qui augmente progressivement le levier d'un trader"
       ],
-      "explanation": "Une **on-ramp** permet d'entrer dans l'écosystème crypto en payant en euros ou en dollars (carte, virement…). L'**off-ramp** fait l'inverse : revendre ses cryptos contre de la monnaie classique, versée sur un compte bancaire. Ces points de passage sont généralement soumis au KYC. Une plateforme qui accepte facilement les dépôts mais rend les retraits vers ton compte bancaire difficiles est un signal d'alerte.",
+      "explanation": "Une **on-ramp** (rampe d'accès) est un service qui permet d'entrer dans l'écosystème crypto en payant en monnaie classique (carte, virement). Exemple : tu paies 200 € par carte et tu reçois de l'USDC dans ton portefeuille. L'**off-ramp** fait l'inverse : tu revends tes cryptos et l'argent arrive sur ton compte bancaire. Ces points de passage sont généralement soumis au KYC. Signal d'alerte : une plateforme qui accepte facilement tes dépôts mais complique les retraits vers ton compte bancaire. Avant un gros dépôt, teste un petit retrait. Un pont (bridge), qui transfère des tokens d'une blockchain à une autre, est autre chose.",
       "difficulty": 1
     },
     {
@@ -1500,7 +1500,7 @@
         "Les membres qui conservent le token plusieurs mois après le signal",
         "La plateforme d'échange, qui garantit le prix aux participants"
       ],
-      "explanation": "Dans ces **pump groups**, les organisateurs accumulent discrètement un token peu liquide, puis donnent le signal à des milliers de membres qui achètent en même temps. Le prix s'envole quelques minutes, les organisateurs revendent au sommet, et le cours retombe aussitôt, souvent plus bas qu'avant. La plupart des membres achètent trop tard et perdent : ils servent de liquidité de sortie. Ces pratiques relèvent de la manipulation de marché.",
+      "explanation": "Dans un **pump group**, les organisateurs accumulent discrètement un token peu liquide, puis donnent le signal à des milliers de membres qui achètent en même temps. Exemple : le token vaut 0,004 $ quand les organisateurs achètent. À l'heure annoncée, des milliers d'abonnés achètent : le prix monte à 0,025 $ en quelques minutes. Les organisateurs vendent au sommet, le prix retombe à 0,008 $. Un membre qui a acheté à 0,025 $ perd 68 %. Signaux : abonnement payant, compte à rebours, nom du token révélé à la dernière minute, captures d'écran de gains. Les membres servent de liquidité de sortie aux organisateurs. Ces pratiques relèvent de la manipulation de marché.",
       "difficulty": 2
     },
     {
@@ -1511,7 +1511,7 @@
         "Signaler l'écart aux deux plateformes pour obtenir une prime",
         "Garder le token sur A en attendant qu'il atteigne 102 $"
       ],
-      "explanation": "L'**arbitrage** exploite un écart de prix pour un même actif entre deux marchés. En pratique, les frais, le spread, le slippage et le temps de transfert entre plateformes absorbent souvent l'essentiel de l'écart, et des bots professionnels le referment en quelques secondes. C'est pourquoi les promesses de « bots d'arbitrage » aux gains garantis pour particuliers sont un classique des arnaques.",
+      "explanation": "L'**arbitrage** exploite un écart de prix d'un même actif entre deux marchés : on achète là où il est moins cher et on revend là où il est plus cher. Exemple : le token vaut 100 $ sur A et 102 $ sur B. Tu achètes 100 tokens sur A (10 000 $) et les revends sur B (10 200 $) : 200 $ d'écart. Mais avec 0,1 % de frais de chaque côté (environ 20 $), il reste moins de 180 $ avant frais de transfert et slippage, et le temps d'un transfert l'écart peut disparaître. Des bots professionnels le referment en quelques secondes. D'où les arnaques aux « bots d'arbitrage » aux gains garantis pour particuliers.",
       "difficulty": 2
     },
     {
@@ -1522,7 +1522,7 @@
         "Une blockchain publique gérée par les États membres de l'Union",
         "Un impôt européen prélevé sur chaque transaction en crypto-actifs"
       ],
-      "explanation": "**MiCA** (Markets in Crypto-Assets) est un règlement européen adopté en 2023. Ses règles sur les stablecoins s'appliquent depuis juin 2024 et l'ensemble du texte depuis le 30 décembre 2024. Il impose notamment un agrément aux prestataires de services sur crypto-actifs (plateformes, conservateurs…), la publication d'un livre blanc encadré pour les offres au public et des règles contre les abus de marché. Ce cadre réduit certains risques, mais ne protège pas d'une perte due à la baisse des cours.",
+      "explanation": "**MiCA** (Markets in Crypto-Assets) est un règlement européen adopté en 2023, qui encadre l'émission de crypto-actifs et les prestataires qui travaillent avec. Ses règles sur les stablecoins s'appliquent depuis juin 2024, et l'ensemble du texte depuis le 30 décembre 2024. Il impose notamment un agrément aux prestataires (plateformes, conservateurs…), un livre blanc encadré pour les offres au public, des règles sur les réserves des stablecoins et des règles contre les abus de marché. Exemple : une plateforme qui démarche des Européens sans agrément n'offre pas ces protections. MiCA réduit certains risques, mais ne protège pas d'une perte due à la baisse des cours. Ce n'est ni une monnaie, ni une blockchain, ni un impôt.",
       "difficulty": 2
     },
     {
@@ -1533,7 +1533,7 @@
         "Ils avaient été saisis par la justice américaine avant la faillite",
         "Ils avaient été placés en obligations d'État puis gelés par la SEC"
       ],
-      "explanation": "FTX, fondée par Sam Bankman-Fried, s'est déclarée en faillite le 11 novembre 2022 après une ruée sur les retraits. On a découvert que des milliards de dollars de dépôts clients avaient été utilisés par **Alameda Research**, sa société sœur de trading, pour des paris, des prêts et des dépenses. En 2023, Sam Bankman-Fried a été reconnu coupable de fraude. Leçon : une plateforme centralisée détient tes fonds, et rien ne garantit qu'elle ne s'en sert pas.",
+      "explanation": "FTX, fondée par Sam Bankman-Fried, était l'une des plus grandes plateformes d'échange. Elle s'est déclarée en faillite le 11 novembre 2022, après une ruée sur les retraits. On a alors découvert que des milliards de dollars de dépôts clients avaient été utilisés par **Alameda Research**, la société de trading sœur de la plateforme, pour des paris, des prêts et des dépenses. Un client dont le compte affichait 10 000 $ pouvait donc ne plus avoir de fonds derrière. En 2023, Sam Bankman-Fried a été reconnu coupable de fraude et condamné en 2024 à 25 ans de prison. Leçon : une plateforme centralisée détient tes fonds, et rien ne garantit qu'elle ne s'en sert pas.",
       "difficulty": 3
     },
     {
@@ -1544,7 +1544,7 @@
         "D'un stablecoin qui avait perdu son ancrage au dollar",
         "D'une plateforme piratée par un groupe de hackers étatique"
       ],
-      "explanation": "BitConnect proposait de confier ses jetons BCC à un « programme de prêt » censé rapporter de l'ordre de 1 % par jour grâce à un bot de trading secret, avec un système de parrainage à plusieurs niveaux. Il s'agissait en fait d'une **chaîne de Ponzi** : à la fermeture du programme, en janvier 2018, le jeton a perdu plus de 90 % de sa valeur. Son fondateur a été inculpé aux États-Unis en 2022. Rendements quotidiens réguliers et bot « mystère » sont des signaux d'alerte classiques.",
+      "explanation": "BitConnect proposait de confier ses jetons BCC à un « programme de prêt » censé rapporter de l'ordre de 1 % par jour grâce à un « bot de trading » secret, avec un parrainage à plusieurs niveaux. Calcul : 1 % par jour réinvestis donneraient 1,01^365 ≈ 38 : 1 000 $ deviendraient environ 38 000 $ en un an, ce qu'aucune activité réelle ne produit. C'était une **chaîne de Ponzi**. À la fermeture du programme en janvier 2018, le jeton a perdu plus de 90 % de sa valeur. Son fondateur a été inculpé aux États-Unis en 2022. Signaux : rendement quotidien régulier, bot « mystère », commissions de parrainage.",
       "difficulty": 3
     },
     {
@@ -1555,7 +1555,7 @@
         "Elle avait été créée et garantie par une banque centrale européenne",
         "Elle fonctionnait sur la même blockchain que le bitcoin"
       ],
-      "explanation": "**OneCoin**, lancée en 2014, vendait des « formations » donnant droit à des jetons, via un réseau de vente pyramidale. Il n'existait aucune blockchain publique : les soldes étaient des entrées dans une base de données contrôlée par l'entreprise. Des milliards d'euros ont été collectés dans le monde. Ruja Ignatova a disparu en 2017 et figure depuis 2022 sur la liste des dix fugitifs les plus recherchés par le FBI.",
+      "explanation": "**OneCoin**, lancée en 2014, vendait des « formations » donnant droit à des jetons, via un réseau de vente pyramidale. Il n'existait aucune vraie blockchain publique : les soldes étaient des entrées dans une base de données contrôlée par l'entreprise. Scénario : tu achètes un pack à 5 000 € et vois un solde de jetons grimper, mais tu ne peux le vendre sur aucune plateforme publique ; le prix est fixé par l'entreprise. Signaux : pas d'explorateur de blocs, pas de code vérifiable, commissions pour recruter. Plusieurs milliards d'euros ont été collectés. Ruja Ignatova a disparu en 2017 et figure depuis 2022 parmi les dix fugitifs les plus recherchés par le FBI.",
       "difficulty": 3,
       "source": "https://en.wikipedia.org/wiki/OneCoin"
     },
@@ -1567,7 +1567,7 @@
         "La plateforme qui le cotait a été fermée par la justice coréenne",
         "Une mise à jour du réseau a effacé tous les soldes des détenteurs"
       ],
-      "explanation": "Le contrat du **SQUID** limitait la revente, sous couvert d'un mécanisme « anti-dump » lié à un jeu : les acheteurs voyaient le prix grimper mais ne pouvaient pas sortir. Début novembre 2021, alors que le cours approchait 3 000 $, les créateurs ont retiré la liquidité et disparu, et le token est tombé à presque zéro en quelques minutes. Un cas d'école réunissant **honeypot** et **rug pull**, malgré une large couverture médiatique qui lui donnait un air de légitimité.",
+      "explanation": "Le contrat du token **SQUID**, inspiré de la série *Squid Game*, limitait la revente sous couvert d'un mécanisme « anti-dump » lié à un jeu : les acheteurs voyaient le prix grimper mais ne pouvaient pas sortir. Imagine un solde affiché de 28 000 $ après une hausse spectaculaire, alors que chaque tentative de vente échoue. Début novembre 2021, alors que le cours approchait 3 000 $, les créateurs ont retiré la liquidité et disparu, et le token est tombé à presque zéro en quelques minutes. C'est un cas d'école qui réunit **honeypot** (impossible de vendre) et **rug pull** (liquidité retirée), malgré une large couverture médiatique qui lui donnait un air de légitimité.",
       "difficulty": 3
     },
     {
@@ -1578,7 +1578,7 @@
         "Son mécanisme algorithmique était entré en spirale de la mort",
         "Les autorités américaines venaient d'interdire son utilisation"
       ],
-      "explanation": "Le 10 mars 2023, la faillite de la **Silicon Valley Bank** a bloqué environ 3,3 milliards de dollars des réserves de l'USDC. Craignant un trou dans ces réserves, de nombreux détenteurs ont vendu, et le cours a perdu son ancrage (**depeg**) pendant le week-end. Il est revenu vers 1 $ quand les autorités américaines ont garanti l'ensemble des dépôts de la banque. Même un stablecoin adossé à des réserves dépend de la solidité des établissements qui les conservent.",
+      "explanation": "Le 10 mars 2023, la **Silicon Valley Bank** a fait faillite. Circle, l'émetteur de l'USDC, y avait environ 3,3 milliards de dollars de réserves, soudain bloqués. Craignant un trou dans ces réserves, de nombreux détenteurs ont vendu, et le cours a perdu son ancrage (**depeg**) pendant le week-end. Exemple : avec 10 000 USDC, tu aurais vu ton solde valoir 8 800 $ si tu vendais à 0,88 $, soit 1 200 $ de perte. Le cours est revenu vers 1 $ quand les autorités américaines ont garanti l'ensemble des dépôts de la banque. Même un stablecoin adossé à des réserves dépend de la solidité des banques qui les conservent. Ni bug, ni mécanisme algorithmique, ni interdiction.",
       "difficulty": 3
     },
     {
@@ -1589,7 +1589,7 @@
         "Elle oblige la plateforme à bloquer les retraits pendant sa durée",
         "Elle ne peut être produite que pour le bitcoin, pas pour les autres actifs"
       ],
-      "explanation": "Une **preuve de réserves** démontre, souvent grâce à un arbre de Merkle et à des signatures d'adresses, qu'une plateforme contrôle certains actifs à un instant donné. Mais si elle ne couvre pas l'ensemble du passif (dettes, prêts, engagements hors bilan), une plateforme peut afficher de belles réserves tout en étant insolvable. Des fonds empruntés juste avant la publication peuvent aussi gonfler l'instantané. C'est un progrès en transparence, pas un audit complet.",
+      "explanation": "Une **preuve de réserves** démontre, souvent grâce à un **arbre de Merkle** (qui permet à chaque client de vérifier que son solde est inclus sans révéler celui des autres) et à des signatures d'adresses, qu'une plateforme contrôle certains actifs à un instant donné. Limite : elle ne montre que l'actif. Exemple : une plateforme prouve qu'elle détient 1 000 BTC, mais elle en doit 1 500 à ses clients : sans la dette, elle a l'air saine alors qu'elle est insolvable. Des fonds empruntés juste avant la publication peuvent aussi gonfler l'instantané. C'est un progrès en transparence, pas un audit complet. Elle ne divulgue pas l'identité des clients et ne bloque pas les retraits.",
       "difficulty": 3
     }
   ]
