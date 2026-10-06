@@ -842,6 +842,266 @@
       ],
       "explanation": "Les pixels chauds sont des points isolés trop brillants, rouges, verts ou blancs, qui apparaissent surtout sur les poses de plusieurs secondes. Ils viennent du courant d'obscurité : même dans le noir complet, l'agitation thermique libère des électrons dans les photosites, qui sont comptés comme s'ils venaient de la lumière. Ce courant s'accumule avec la durée de pose et croît fortement avec la température. Exemple : une pose de 2 minutes par une nuit d'été à 25 °C montre nettement plus de pixels chauds que la même pose à 0 °C. Les caméras d'astronomie refroidissent leur capteur pour cette raison.",
       "difficulty": 3
+    },
+    {
+      "question": "Dans quelle unité exprime-t-on la température de couleur d'une source de lumière ?",
+      "answer": "En kelvins (K)",
+      "wrong": [
+        "En degrés Celsius (°C)",
+        "En lux (lx)",
+        "En lumens (lm)"
+      ],
+      "explanation": "La température de couleur décrit la teinte d'une lumière, du plus orangé au plus bleuté : c'est la base du réglage de balance des blancs. Elle s'exprime en kelvins (K), l'unité de température absolue, car on la compare à la couleur d'un corps chauffé. Vers 1 900 K, sa lumière est orangée comme celle d'une bougie ; vers 5 500 K, elle paraît blanche. Exemple : une ampoule à incandescence est autour de 2 700 K, la lumière du jour à midi autour de 5 500 K. Le lux mesure l'éclairement (la lumière reçue par une surface) et le lumen le flux lumineux émis : ce sont des quantités de lumière, pas des couleurs.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Temp%C3%A9rature_de_couleur"
+    },
+    {
+      "question": "Laquelle de ces sources a la température de couleur la plus basse, donc la lumière la plus orangée ?",
+      "answer": "La flamme d'une bougie",
+      "wrong": [
+        "Le ciel bleu à l'ombre",
+        "Un flash électronique",
+        "Le soleil de midi"
+      ],
+      "explanation": "En photo, connaître l'ordre de grandeur des températures de couleur aide à anticiper les dominantes. Paradoxalement, une température basse correspond à une lumière « chaude », orangée, et une température haute à une lumière « froide », bleutée. La bougie est tout en bas de l'échelle, vers 1 900 K. Suivent l'ampoule classique (environ 2 700 K), le soleil de midi et le flash (vers 5 500 K), puis l'ombre sous un ciel bleu, qui peut dépasser 7 000 K. Exemple : un repas aux chandelles photographié en réglage « lumière du jour » sort très orange.",
+      "difficulty": 1
+    },
+    {
+      "question": "Tu photographies en extérieur, en plein jour, avec la balance des blancs restée sur « tungstène ». Quelle dominante obtiens-tu ?",
+      "answer": "Une dominante bleue",
+      "wrong": [
+        "Une dominante orangée",
+        "Une dominante verte",
+        "Aucune : l'image est neutre"
+      ],
+      "explanation": "La balance des blancs indique à l'appareil la couleur de la lumière ambiante, pour qu'il la neutralise. Le préréglage « tungstène » (environ 3 200 K) suppose une lumière très orangée : l'appareil ajoute donc beaucoup de bleu pour compenser. Sous la lumière du jour, déjà neutre (vers 5 500 K), ce bleu ajouté n'est plus compensé et toute l'image vire au bleu. C'est l'erreur classique après une soirée en intérieur, quand on oublie de remettre la balance en automatique le lendemain. La dominante orangée correspond au cas inverse : réglage « lumière du jour » sous des ampoules.",
+      "difficulty": 2
+    },
+    {
+      "question": "En plein soleil (environ 5 500 K), tu règles manuellement la balance des blancs sur 8 000 K. Comment devient l'image ?",
+      "answer": "Plus chaude, avec une dominante orangée",
+      "wrong": [
+        "Plus froide, avec une dominante bleue",
+        "Plus verte, avec une dominante cyan",
+        "Inchangée : seul le RAW est modifié"
+      ],
+      "explanation": "Le réglage en kelvins de la balance des blancs déroute souvent, car il fonctionne « à l'envers ». La valeur choisie n'est pas la couleur voulue pour la photo, mais la couleur supposée de la lumière. En indiquant 8 000 K, tu dis à l'appareil que la lumière est très bleue : il ajoute alors de l'orange pour la neutraliser. Or la lumière réelle n'est qu'à 5 500 K : l'image sort donc réchauffée. Exemple : régler 7 000 à 8 000 K en fin de journée accentue l'ambiance dorée. À l'inverse, choisir 3 200 K sous le soleil donne une image bleutée. Le piège « plus froide » confond la valeur réglée avec le rendu obtenu.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pour régler une balance des blancs personnalisée, que photographie-t-on généralement ?",
+      "answer": "Une carte grise neutre, sous la lumière de la scène",
+      "wrong": [
+        "Le ciel bleu visible à travers une fenêtre",
+        "Une feuille orange vif posée sur le sujet",
+        "La source de lumière, en la visant de face"
+      ],
+      "explanation": "La balance personnalisée sert quand l'éclairage est inhabituel ou mélangé et que les préréglages ne suffisent pas, par exemple sous les LED d'une salle de sport. On photographie une surface neutre, une carte grise ou blanche sans teinte, placée exactement sous la même lumière que le sujet. L'appareil mesure la couleur qu'il voit sur cette carte et calcule la correction qui la rend parfaitement neutre. Exemple : un photographe de mariage fait une vue de sa carte grise dans chaque salle. Photographier une surface colorée ou la lampe elle-même fausserait la mesure, puisque ce ne serait plus une référence neutre.",
+      "difficulty": 2
+    },
+    {
+      "question": "Qu'est-ce qu'un « mired », unité utilisée pour les filtres de correction de couleur ?",
+      "answer": "1 000 000 divisé par la température en kelvins",
+      "wrong": [
+        "La température en kelvins divisée par 1 000",
+        "L'écart en kelvins entre deux sources",
+        "Le logarithme de la température en kelvins"
+      ],
+      "explanation": "Les éclairagistes et photographes utilisent des filtres colorés (gélatines) pour accorder la couleur de leurs lampes. Leur effet s'exprime en mireds (« micro reciprocal degrees ») : M = 1 000 000 / T, avec T en kelvins. Intérêt : un même filtre décale la couleur d'un nombre à peu près constant de mireds, alors que son effet en kelvins varie selon la source. Exemple : 5 500 K vaut environ 182 mireds et 3 200 K environ 312 mireds. Pour faire passer un flash à 5 500 K vers une lumière de type tungstène à 3 200 K, il faut donc un filtre orangé d'environ +130 mireds. Les filtres orangés ont un décalage positif, les bleus un décalage négatif.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Mired"
+    },
+    {
+      "question": "Pourquoi la balance des blancs automatique peut-elle affadir la photo d'un coucher de soleil ?",
+      "answer": "Elle neutralise la dominante orangée qu'on voulait garder",
+      "wrong": [
+        "Elle sous-expose systématiquement les ciels lumineux",
+        "Elle augmente l'ISO et donc le bruit",
+        "Elle force la mesure de la lumière en spot"
+      ],
+      "explanation": "La balance des blancs automatique (AWB) analyse l'image et cherche à rendre neutres les teintes qu'elle suppose blanches ou grises. C'est efficace la plupart du temps, mais elle ne sait pas que l'orange d'un coucher de soleil est voulu. Elle tente donc de le corriger en ajoutant du bleu, et la scène perd sa chaleur. Exemple : un même coucher de soleil peut sortir pâle en AWB et orange flamboyant en préréglage « lumière du jour » ou « nuageux ». En RAW, on peut corriger après coup. La balance des blancs agit sur les couleurs, pas sur l'exposition ni sur l'ISO.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que désigne la « vitesse de synchronisation flash » d'un boîtier ?",
+      "answer": "La vitesse la plus rapide où tout le capteur est découvert",
+      "wrong": [
+        "La vitesse minimale pour éviter le flou au flash",
+        "La durée de l'éclair émis par le flash",
+        "Le délai de recharge entre deux éclairs"
+      ],
+      "explanation": "La plupart des appareils ont un obturateur à deux rideaux : le premier s'ouvre pour démarrer la pose, le second le suit pour la terminer. Aux vitesses rapides, le second rideau part avant que le premier ait fini sa course : le capteur n'est exposé que par une fente qui défile. Or l'éclair du flash est très bref et doit tomber quand tout le capteur est découvert. La vitesse de synchronisation est la plus rapide où c'est encore le cas, souvent autour de 1/200 ou 1/250 s. Exemple : au-delà, sans mode spécial, une bande de l'image reste noire. Elle n'a rien à voir avec la durée de l'éclair, généralement bien plus courte.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Flash_synchronization"
+    },
+    {
+      "question": "Comment fonctionne le mode flash haute vitesse (HSS, ou FP) au-delà de la vitesse de synchronisation ?",
+      "answer": "Il émet une rafale d'impulsions pendant le passage de la fente",
+      "wrong": [
+        "Il émet un seul éclair beaucoup plus puissant",
+        "Il garde l'obturateur ouvert plus longtemps que réglé",
+        "Il fait lire tout le capteur en une seule fois"
+      ],
+      "explanation": "Le mode HSS (« high speed sync », appelé FP chez Nikon) sert à utiliser le flash au-dessus de la vitesse de synchronisation, par exemple pour un portrait à grande ouverture en plein soleil. Au lieu d'un éclair unique, le flash émet une série d'impulsions très rapprochées, qui forment une lumière quasi continue pendant toute la course de la fente entre les deux rideaux. Chaque partie du capteur reçoit donc la même quantité de lumière. Contrepartie : la puissance utile chute fortement. Exemple : à 1/4000 s, la portée du flash est nettement plus courte qu'à 1/250 s. Un éclair unique, même plus puissant, n'éclairerait qu'une bande du capteur.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pose de 1/4 s au flash sur un cycliste qui traverse le cadre. Quel est l'effet de la synchronisation sur le **second rideau** ?",
+      "answer": "La traînée de mouvement apparaît derrière le cycliste",
+      "wrong": [
+        "La traînée de mouvement apparaît devant le cycliste",
+        "Le flash se déclenche deux fois de suite",
+        "Le cycliste disparaît entièrement de l'image"
+      ],
+      "explanation": "En flash, une pose lente combine deux images : une version nette, figée par l'éclair, et une traînée floue enregistrée par la lumière ambiante. En synchronisation normale (premier rideau), l'éclair part au début de la pose : le sujet est figé à sa position de départ, puis la traînée se forme devant lui, ce qui donne l'impression qu'il recule. En synchronisation second rideau, l'éclair part juste avant la fermeture : la traînée se forme d'abord, et le sujet net apparaît au bout, à sa position finale. Exemple : les phares d'une voiture laissent alors un sillage lumineux derrière elle, ce qui paraît naturel.",
+      "difficulty": 3
+    },
+    {
+      "question": "Un flash a un nombre guide de 40 (à ISO 100, en mètres). À pleine puissance et à f/4, jusqu'à quelle distance éclaire-t-il correctement un sujet ?",
+      "answer": "Environ 10 m",
+      "wrong": [
+        "Environ 4 m",
+        "Environ 20 m",
+        "Environ 160 m"
+      ],
+      "explanation": "Le nombre guide (NG) résume la puissance d'un flash. Il relie la distance du sujet et l'ouverture nécessaire par la formule NG = distance × nombre f, pour une sensibilité donnée, souvent ISO 100. Ici, distance = 40 / 4 = 10 m. Exemple : à f/8, la portée tombe à 5 m ; à f/2.8, elle monte à environ 14 m. Monter de ISO 100 à ISO 400 double la portée, car le nombre guide est multiplié par √4 = 2. Le piège « 160 m » multiplie au lieu de diviser. Ce chiffre sert surtout à comparer des flashs entre eux, en vérifiant l'ISO et la focale de référence, que certains fabricants choisissent avantageuses.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Guide_number"
+    },
+    {
+      "question": "Photo au flash dans une pièce sombre, le flash étant la seule source utile. Sous la vitesse de synchronisation, quel réglage n'a presque aucun effet sur l'exposition du sujet ?",
+      "answer": "La vitesse d'obturation",
+      "wrong": [
+        "L'ouverture du diaphragme",
+        "La sensibilité ISO",
+        "La distance entre flash et sujet"
+      ],
+      "explanation": "Avec un flash, il faut penser à deux expositions : celle de la lumière ambiante et celle de l'éclair. L'éclair est très bref, de l'ordre du millième de seconde ou moins. Tant que l'obturateur est entièrement ouvert pendant ce bref instant, qu'il reste ouvert 1/200 s ou 1/30 s ne change rien à la lumière du flash reçue. L'ouverture, l'ISO et la distance, eux, modifient directement cette lumière. Exemple : dans une pièce presque noire, passer de 1/200 s à 1/60 s ne change pas le sujet éclairé par le flash, mais éclaircit l'arrière-plan éclairé par les lampes. C'est le principe de la synchro lente.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'est-ce que le bracketing d'exposition (AEB) ?",
+      "answer": "Prendre plusieurs vues à des expositions différentes",
+      "wrong": [
+        "Prendre plusieurs vues à des focales différentes",
+        "Prendre plusieurs vues avec des cadrages décalés",
+        "Prendre plusieurs vues avec des flashs différents"
+      ],
+      "explanation": "Le bracketing d'exposition sert à s'assurer d'avoir au moins une image bien exposée, ou à préparer une fusion HDR. L'appareil enchaîne automatiquement plusieurs vues, par exemple trois, en décalant l'exposition à chaque fois : une sous-exposée, une normale, une surexposée. Exemple : un bracketing −2 / 0 / +2 IL devant un vitrail permet de garder les couleurs du verre sur la première vue et les détails de la pierre sombre sur la dernière. AEB signifie « auto exposure bracketing ». Il existe aussi des bracketings de mise au point ou de balance des blancs, mais ce sont d'autres réglages.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Bracketing"
+    },
+    {
+      "question": "Pour obtenir un effet « eau soyeuse » sur une cascade, quel réglage faut-il privilégier ?",
+      "answer": "Une vitesse lente, 1/2 s ou plus, sur trépied",
+      "wrong": [
+        "Une vitesse de 1/2000 s, à main levée",
+        "Une très grande ouverture, comme f/1.4",
+        "Une sensibilité élevée, comme ISO 6400"
+      ],
+      "explanation": "L'effet soyeux est un classique de la photo de paysage : l'eau en mouvement devient un voile lisse. Il s'obtient avec une pose longue : pendant la demi-seconde ou les quelques secondes d'exposition, chaque goutte se déplace et laisse une traînée, et ces traînées se fondent. Le trépied est indispensable pour que les rochers restent nets. Exemple : on travaille souvent à ISO 100 et f/11, en ajoutant un filtre ND si la lumière est forte. Une vitesse de 1/2000 s ferait l'inverse : elle figerait chaque goutte. Une grande ouverture ou un ISO élevé raccourciraient la pose, donc réduiraient l'effet.",
+      "difficulty": 1
+    },
+    {
+      "question": "Un filtre gris neutre noté **ND8** retire combien d'IL de lumière ?",
+      "answer": "3 IL",
+      "wrong": [
+        "8 IL",
+        "1 IL",
+        "0,8 IL"
+      ],
+      "explanation": "Les filtres ND (« neutral density ») sont des verres gris qui réduisent la lumière sans changer les couleurs, pour allonger une pose ou ouvrir davantage en plein jour. La notation « ND » suivie d'un nombre indique le facteur de réduction : un ND8 laisse passer 1/8 de la lumière. Comme chaque IL divise la lumière par 2, et que 8 = 2³, un ND8 retire 3 IL. Exemple : une pose de 1/60 s devient environ 1/8 s avec ce filtre. De même, un ND64 retire 6 IL et un ND1000 environ 10 IL. Le piège « 8 IL » confond le facteur de réduction et le nombre d'IL.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Neutral-density_filter"
+    },
+    {
+      "question": "Sans filtre, la bonne exposition est de 1/8 s. Avec un filtre ND1000 (environ 10 IL), quel temps de pose faut-il ?",
+      "answer": "Environ 2 minutes",
+      "wrong": [
+        "Environ 1 seconde",
+        "Environ 10 secondes",
+        "Environ 20 minutes"
+      ],
+      "explanation": "Le ND1000 est un filtre très sombre, prisé pour les poses longues de jour : mer lissée, nuages étirés, passants effacés. Il divise la lumière par environ 1 000, soit 10 IL, car 2¹⁰ = 1 024. Il faut donc multiplier le temps de pose par environ 1 000 : 1/8 s × 1 000 = 125 s, soit environ 2 minutes. Exemple : on passe alors en mode B (bulb) avec une télécommande, car la plupart des boîtiers ne proposent pas plus de 30 s en réglage normal. Le piège « 1 seconde » revient à multiplier par 10 au lieu de 1 000. Des applications de calcul pour filtres ND évitent ces erreurs sur le terrain.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que fait le mode **B** (bulb) sur un appareil photo ?",
+      "answer": "L'obturateur reste ouvert tant qu'on appuie sur le déclencheur",
+      "wrong": [
+        "Le flash se déclenche automatiquement à chaque photo",
+        "L'appareil prend une rafale de photos très rapides",
+        "La balance des blancs s'adapte à une ampoule"
+      ],
+      "explanation": "La plupart des appareils limitent les temps de pose réglables à 30 secondes. Au-delà, on utilise le mode B, pour « bulb », en référence à la poire pneumatique des anciens déclencheurs. L'obturateur s'ouvre quand on appuie sur le déclencheur et se referme quand on le relâche : c'est toi qui décides de la durée. Exemple : pour un feu d'artifice, on ouvre au départ de la fusée et on ferme après l'éclatement, soit quelques secondes. On utilise une télécommande ou un câble, avec verrouillage, pour ne pas faire bouger l'appareil et ne pas tenir le bouton pendant plusieurs minutes.",
+      "difficulty": 1
+    },
+    {
+      "question": "Selon la « règle des 500 », quelle pose maximale permet de garder des étoiles ponctuelles avec un 24 mm sur un APS-C (facteur 1,5) ?",
+      "answer": "Environ 14 s",
+      "wrong": [
+        "Environ 21 s",
+        "Environ 31 s",
+        "Environ 5 s"
+      ],
+      "explanation": "La Terre tourne, et les étoiles semblent donc se déplacer dans le ciel. Si la pose est trop longue, elles deviennent de petits traits au lieu de points. La règle des 500 donne une durée maximale approximative : 500 divisé par la focale équivalente plein format. Ici, 24 × 1,5 = 36 mm, et 500 / 36 ≈ 14 s. Le piège « 21 s » oublie le facteur de recadrage (500 / 24). Exemple : avec un 20 mm sur plein format, on obtient 25 s. Cette règle date de l'argentique : sur les capteurs très définis d'aujourd'hui, les traînées se voient plus tôt, et beaucoup utilisent 300 au lieu de 500, ou la règle NPF, plus précise.",
+      "difficulty": 3
+    },
+    {
+      "question": "En France, sous des tubes fluorescents alimentés par le secteur à 50 Hz, quelles vitesses évitent le mieux les bandes et variations de luminosité ?",
+      "answer": "1/100 s ou 1/50 s",
+      "wrong": [
+        "1/120 s ou 1/60 s",
+        "1/4000 s ou 1/8000 s",
+        "1/250 s ou 1/500 s"
+      ],
+      "explanation": "Beaucoup d'éclairages artificiels scintillent avec le courant alternatif, trop vite pour l'œil mais pas pour l'appareil. En Europe, le secteur est à 50 Hz : la lumière passe par un maximum à chaque alternance, soit 100 fois par seconde. Une pose de 1/100 s, ou d'un multiple comme 1/50 s, englobe toujours un ou plusieurs cycles complets : chaque photo reçoit la même quantité de lumière. À 1/1000 s, au contraire, chaque image capte un moment différent du cycle, d'où des variations d'une photo à l'autre, ou des bandes avec l'obturateur électronique. Exemple : en Amérique du Nord, où le secteur est à 60 Hz, on choisit plutôt 1/120 ou 1/60 s.",
+      "difficulty": 3
+    },
+    {
+      "question": "Avec un zoom 18-55 mm f/3.5-5.6 en mode M, tu règles f/3.5 à 18 mm puis zoomes à 55 mm sans toucher aux réglages. Que devient l'exposition ?",
+      "answer": "Plus sombre d'environ 1,3 IL",
+      "wrong": [
+        "Plus claire d'environ 1,3 IL",
+        "Inchangée, l'ouverture reste à f/3.5",
+        "Plus sombre d'environ 3 IL"
+      ],
+      "explanation": "Beaucoup de zooms de kit ont une ouverture maximale variable : « f/3.5-5.6 » signifie f/3.5 au grand-angle et f/5.6 au téléobjectif. En zoomant, la focale augmente plus vite que le diamètre de la pupille, donc le nombre f augmente. Réglé à pleine ouverture, l'objectif passe ainsi automatiquement de f/3.5 à f/5.6 à 55 mm. L'écart vaut 2 × log₂(5,6 / 3,5) ≈ 1,36 IL, soit à peu près 1 IL et 1/3. En mode M, rien ne compense : la photo sort plus sombre. Exemple : en intérieur, on corrige en montant l'ISO de 400 à environ 1 000. Les zooms à ouverture constante, comme les 24-70 mm f/2.8, n'ont pas ce comportement.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur trépied, pourquoi utilise-t-on souvent le retardateur de 2 secondes pour une pose lente ?",
+      "answer": "Pour que les vibrations dues à l'appui s'amortissent",
+      "wrong": [
+        "Pour laisser la cellule mesurer plus précisément",
+        "Pour donner au flash le temps de se recharger",
+        "Pour réduire le bruit en refroidissant le capteur"
+      ],
+      "explanation": "Sur trépied, on veut une image parfaitement nette, même avec une pose d'une seconde ou plus. Or appuyer sur le déclencheur fait légèrement bouger l'appareil, surtout sur un trépied léger ou avec un long téléobjectif. Avec le retardateur de 2 secondes, la photo part après que ces petites oscillations se sont calmées. Exemple : une photo de ville de nuit à 1/2 s peut montrer des lumières dédoublées si on déclenche à la main, et rester nette avec le retardateur. Une télécommande ou une application sur smartphone remplissent le même rôle. Le retardateur ne change rien à la mesure de la lumière ni au bruit.",
+      "difficulty": 2
+    },
+    {
+      "question": "En photo argentique, qu'appelle-t-on le « défaut de réciprocité » (effet Schwarzschild) ?",
+      "answer": "En pose longue, le film réagit moins : il faut poser plus que prévu",
+      "wrong": [
+        "En pose longue, le film réagit plus : il faut poser moins",
+        "Le film perd sa sensibilité s'il est rangé trop longtemps",
+        "Les couleurs s'inversent au-delà d'une certaine durée"
+      ],
+      "explanation": "En principe, l'exposition dépend du produit lumière × durée : c'est la loi de réciprocité, qui permet d'échanger vitesse et ouverture. Pour les films, cette loi cesse d'être vraie aux poses longues, souvent au-delà d'environ une seconde selon l'émulsion. Le film devient moins efficace avec une lumière faible prolongée, et il faut allonger la pose plus que ne l'indique le calcul. Exemple : une pose mesurée à 10 s peut demander 20 s ou plus selon le film, d'après les tables du fabricant. Les films couleur peuvent aussi prendre une dominante. Les capteurs numériques ne présentent pas ce défaut de façon notable.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Reciprocity_(photography)"
+    },
+    {
+      "question": "À quoi sert un filtre ND **gradué** en photo de paysage ?",
+      "answer": "À assombrir le ciel sans assombrir le premier plan",
+      "wrong": [
+        "À supprimer les reflets à la surface de l'eau",
+        "À réchauffer les couleurs du coucher de soleil",
+        "À assombrir uniformément toute l'image"
+      ],
+      "explanation": "En paysage, le ciel est souvent beaucoup plus lumineux que le sol : le capteur ne peut pas enregistrer les deux correctement en une seule photo. Le filtre ND gradué est un verre à moitié gris, à moitié transparent, avec une transition douce ou nette. On place la partie grise sur le ciel : elle l'assombrit de 1 à 3 IL tandis que le sol reçoit toute sa lumière. Exemple : un filtre gradué de densité 0.6 retire 2 IL au ciel, ce qui suffit souvent au lever du soleil. Supprimer les reflets sur l'eau est le rôle du polariseur, et assombrir toute l'image celui d'un ND classique.",
+      "difficulty": 2
     }
   ]
 }
