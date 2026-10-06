@@ -467,6 +467,236 @@
       ],
       "explanation": "Un ordinateur partagé peut être configuré pour enregistrer les frappes (keylogger) ou garder les sessions ouvertes. Si tu laisses ta session active ou si tu enregistres le mot de passe, la personne suivante peut entrer dans ton compte. La navigation privée limite les traces locales mais n'empêche pas un enregistreur de frappe. Évite donc les comptes sensibles, par exemple bancaires, sur un appareil public ; si c'est inévitable, déconnecte-toi, ferme le navigateur et change ensuite ton mot de passe depuis un appareil de confiance. La double authentification limite les dégâts, car le seul mot de passe volé ne suffit plus.",
       "difficulty": 1
+    },
+    {
+      "question": "Que prévoit la règle de sauvegarde **3-2-1** ?",
+      "answer": "3 copies des données, sur 2 supports différents, dont 1 copie hors site",
+      "wrong": [
+        "3 sauvegardes par jour, 2 par semaine et 1 par mois",
+        "3 mots de passe, 2 facteurs d'authentification et 1 clé de secours",
+        "3 serveurs, 2 pare-feux et 1 antivirus pour protéger les fichiers"
+      ],
+      "explanation": "La règle 3-2-1 sert à ne jamais perdre ses données par un seul incident. Il faut 3 copies au total (l'original plus 2 sauvegardes), sur 2 types de supports différents (par exemple un disque externe et un stockage en ligne), dont 1 copie conservée hors site, loin de l'original, pour résister à un incendie, un vol ou un dégât des eaux. Exemple : tes photos sur ton ordinateur, une copie sur un disque dur externe et une troisième chiffrée dans le cloud. Une variante 3-2-1-1-0 ajoute une copie hors ligne ou immuable et zéro erreur après vérification de la restauration.",
+      "difficulty": 1,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Pourquoi un dossier synchronisé (OneDrive, Dropbox, Google Drive) ne remplace-t-il pas une vraie sauvegarde ?",
+      "answer": "Une suppression ou un chiffrement des fichiers est aussitôt recopié partout",
+      "wrong": [
+        "Les services de synchronisation n'acceptent que les fichiers texte brut",
+        "Les fichiers synchronisés sont toujours stockés sans aucun chiffrement",
+        "La synchronisation ne fonctionne qu'une seule fois par an environ"
+      ],
+      "explanation": "La synchronisation maintient plusieurs appareils identiques : si tu supprimes un fichier par erreur, ou si un rançongiciel chiffre les fichiers de ton dossier, la modification est envoyée au service et recopiée partout. Il n'y a donc plus de copie saine. Une sauvegarde, au contraire, conserve des états passés. Certains services gardent des versions ou une corbeille pour quelques jours ou semaines, ce qui peut dépanner, mais ce n'est pas conçu comme une protection fiable. Complète la synchronisation par une sauvegarde versionnée, de préférence détachée de l'ordinateur.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi garder une sauvegarde **déconnectée** du réseau protège-t-il contre les rançongiciels ?",
+      "answer": "Un rançongiciel ne peut pas chiffrer une copie qui n'est pas accessible depuis le système infecté",
+      "wrong": [
+        "Les disques déconnectés ne s'usent jamais et ne tombent jamais en panne",
+        "Un rançongiciel ne cible que les fichiers modifiés depuis moins d'un mois",
+        "Un support débranché se chiffre tout seul avec une clé matérielle"
+      ],
+      "explanation": "Un rançongiciel cherche tous les dossiers accessibles : disques locaux, lecteurs réseau, disques USB branchés et sauvegardes en ligne reliées au poste. Certains attaquants suppriment aussi les sauvegardes avant de chiffrer. Un disque débranché après chaque sauvegarde, ou une copie isolée du réseau (air gap), n'est pas atteignable au moment de l'attaque et permet de reconstruire le système. Le support déconnecté n'est pas à l'abri des pannes, d'où l'intérêt de plusieurs copies. Exemple d'erreur fréquente : un disque externe laissé branché en permanence, chiffré avec le reste.",
+      "difficulty": 2,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Qu'est-ce qui permet de s'assurer qu'une sauvegarde est réellement utilisable ?",
+      "answer": "Un test de restauration régulier, qui prouve qu'on peut récupérer les données",
+      "wrong": [
+        "Un grand nombre de fichiers copiés chaque nuit sans erreur affichée",
+        "Un stockage sur un seul disque dur externe de grande capacité",
+        "Une compression maximale des archives pour gagner de la place"
+      ],
+      "explanation": "Une sauvegarde qui n'a jamais été restaurée est une hypothèse, pas une garantie : le support peut être illisible, le mot de passe de chiffrement perdu, un dossier important oublié dans la configuration, ou la copie corrompue sans que le logiciel le signale. Un test consiste à restaurer quelques fichiers ou une machine entière dans un environnement séparé et à vérifier que tout s'ouvre. Il permet aussi de mesurer le temps nécessaire. Fais-le au moins une ou deux fois par an, et après tout changement important de configuration.",
+      "difficulty": 2
+    },
+    {
+      "question": "Une sauvegarde **différentielle** copie :",
+      "answer": "Tout ce qui a changé depuis la dernière sauvegarde complète",
+      "wrong": [
+        "Uniquement ce qui a changé depuis la dernière sauvegarde, quelle qu'elle soit",
+        "L'intégralité des données à chaque exécution du programme",
+        "Seulement les fichiers supprimés depuis la veille"
+      ],
+      "explanation": "La sauvegarde complète copie tout. L'incrémentale ne copie que les changements depuis la dernière sauvegarde, de n'importe quel type, ce qui est rapide mais oblige à restaurer toute la chaîne. La différentielle compare toujours à la dernière sauvegarde complète : elle grossit au fil de la semaine, mais une restauration ne demande que deux éléments, la complète et la dernière différentielle. Exemple : complète le dimanche, puis chaque soir une différentielle contenant tout ce qui a changé depuis dimanche. La décision dépend du compromis entre espace disque, durée de sauvegarde et simplicité de restauration.",
+      "difficulty": 3
+    },
+    {
+      "question": "En continuité d'activité, que mesure le **RPO** (Recovery Point Objective) ?",
+      "answer": "La quantité maximale de données qu'on accepte de perdre, exprimée en durée",
+      "wrong": [
+        "Le temps maximal toléré pour remettre un service en route après un incident",
+        "Le nombre minimal de copies à conserver pour chaque donnée",
+        "Le coût maximal admis pour la restauration d'un système"
+      ],
+      "explanation": "Le RPO indique jusqu'à quel point dans le passé on peut revenir : un RPO de 24 heures signifie qu'on accepte de perdre au plus une journée de données, donc qu'il faut au minimum une sauvegarde par jour. Il ne faut pas le confondre avec le RTO (Recovery Time Objective), qui mesure la durée d'interruption admissible avant le retour à la normale. Exemple : une boutique en ligne qui accepte de perdre au maximum une heure de commandes aura un RPO d'une heure, ce qui impose des sauvegardes ou une réplication très fréquentes.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi faut-il installer rapidement les mises à jour de sécurité ?",
+      "answer": "Elles corrigent des failles connues, que des attaquants exploitent dès leur publication",
+      "wrong": [
+        "Elles augmentent la capacité de stockage disponible de l'appareil",
+        "Elles suppriment automatiquement les virus déjà installés",
+        "Elles sont obligatoires pour que l'appareil accède à Internet"
+      ],
+      "explanation": "Une mise à jour de sécurité (correctif, ou patch) répare une faille, c'est-à-dire une erreur de programmation qu'un attaquant peut exploiter. Dès qu'un correctif est publié, la faille devient publique et des criminels cherchent les machines non corrigées. Exemple : Microsoft a publié le correctif MS17-010 en mars 2017 ; en mai 2017, le ver WannaCry a frappé des centaines de milliers d'ordinateurs restés sans mise à jour. Active donc les mises à jour automatiques du système, du navigateur et des applications, et remplace les appareils qui ne reçoivent plus de correctifs.",
+      "difficulty": 1,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "À quel moment Microsoft publie-t-il habituellement ses correctifs de sécurité mensuels (**Patch Tuesday**) ?",
+      "answer": "Le deuxième mardi de chaque mois",
+      "wrong": [
+        "Le premier lundi de chaque mois",
+        "Le dernier vendredi de chaque mois",
+        "Chaque mercredi, en début de matinée"
+      ],
+      "explanation": "Depuis 2003, Microsoft regroupe la plupart de ses correctifs de sécurité dans une publication mensuelle, le deuxième mardi du mois (Patch Tuesday). Cette régularité permet aux équipes informatiques de planifier les tests et les déploiements. Elle a aussi un revers : une fois les correctifs publiés, des chercheurs et des attaquants comparent les fichiers avant et après pour comprendre la faille, d'où l'importance de déployer vite. Des correctifs urgents peuvent être publiés hors calendrier lorsqu'une faille est déjà exploitée activement.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Patch_Tuesday"
+    },
+    {
+      "question": "Qu'est-ce qu'une faille **zero-day** (jour zéro) ?",
+      "answer": "Une faille inconnue de l'éditeur, exploitée avant qu'un correctif existe",
+      "wrong": [
+        "Une faille corrigée le jour même de sa découverte par l'éditeur",
+        "Une faille présente uniquement dans les logiciels de moins d'un jour",
+        "Une faille qui n'affecte aucun utilisateur tant qu'elle reste secrète"
+      ],
+      "explanation": "Le terme vient du fait que l'éditeur dispose de zéro jour pour corriger : la faille est utilisée par des attaquants avant qu'il ne la connaisse ou qu'un correctif soit disponible. Aucune mise à jour ne peut donc protéger tant que la faille n'est pas corrigée. On réduit le risque par des mesures générales : réduire la surface d'attaque (désinstaller ce qui est inutile), cloisonner, limiter les droits, surveiller et réagir très vite dès qu'un correctif sort. Les failles zero-day sont rares et chères ; la majorité des attaques courantes exploitent des failles anciennes, déjà corrigées.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que signifie la **fin de support** d'un logiciel ou d'un système d'exploitation ?",
+      "answer": "Plus aucun correctif de sécurité n'est publié : les nouvelles failles restent ouvertes",
+      "wrong": [
+        "Le logiciel cesse de fonctionner définitivement à la date indiquée",
+        "Le logiciel est remplacé de force par la version suivante de l'éditeur",
+        "Le logiciel devient gratuit et sans limite pour tous les utilisateurs"
+      ],
+      "explanation": "Passé la date de fin de support, le logiciel continue souvent à tourner, mais chaque nouvelle faille découverte n'est plus corrigée. Elle devient une porte d'entrée permanente, d'autant que les attaquants savent que ces systèmes ne seront jamais réparés. C'est un risque particulièrement important pour un routeur, un NAS ou un système d'exploitation connecté à Internet. Avant la date, migre vers une version supportée ; si c'est impossible, isole la machine du réseau (sans Internet) ou remplace-la. Surveille aussi les dates de fin de support des appareils connectés de la maison.",
+      "difficulty": 2,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Face à une demande de rançon après une attaque par rançongiciel, quel est le conseil des autorités (ANSSI, Cybermalveillance.gouv.fr) ?",
+      "answer": "Ne pas payer : aucune garantie de récupérer les données, et cela finance le crime",
+      "wrong": [
+        "Payer vite, avant que le montant de la rançon n'augmente avec le temps",
+        "Négocier uniquement en cryptomonnaie pour garder son anonymat",
+        "Payer dès que la somme coûte moins cher que la remise en état"
+      ],
+      "explanation": "Payer ne garantit rien : les criminels peuvent ne pas fournir de clé de déchiffrement, fournir un outil défectueux, réattaquer plus tard ou publier quand même les données volées (la double extorsion). Chaque paiement finance aussi la prochaine attaque. Les autorités recommandent de déposer plainte, de conserver les preuves, de contacter un prestataire qualifié et de restaurer depuis des sauvegardes saines. Il arrive aussi que des outils de déchiffrement gratuits existent pour certaines familles de rançongiciels : c'est ce que propose le projet No More Ransom.",
+      "difficulty": 1,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Un message de rançon s'affiche sur ton ordinateur et tes fichiers sont inaccessibles. Quel est le premier réflexe ?",
+      "answer": "Débrancher l'ordinateur du réseau (câble, Wi-Fi) pour empêcher la propagation",
+      "wrong": [
+        "Brancher une clé USB pour copier les fichiers encore intacts",
+        "Redémarrer plusieurs fois pour faire disparaître le message",
+        "Payer au plus vite pour obtenir la clé de déchiffrement"
+      ],
+      "explanation": "Un rançongiciel peut chiffrer aussi les dossiers partagés, les disques reliés et se propager à d'autres machines. Couper aussitôt la connexion (câble réseau, Wi-Fi, éventuellement le réseau de l'entreprise) limite les dégâts. Brancher une clé USB ou un disque externe y propage l'infection et expose cette copie au chiffrement. Redémarrer n'enlève rien et peut effacer des indices utiles. Ensuite : alerter son support informatique, photographier le message, déposer plainte, et ne reconnecter qu'après nettoyage ou réinstallation, puis restauration depuis une sauvegarde saine.",
+      "difficulty": 1,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Quel projet, lancé en 2016 par Europol, la police néerlandaise et des éditeurs de sécurité, propose des outils gratuits pour déchiffrer certains fichiers pris en otage ?",
+      "answer": "No More Ransom",
+      "wrong": [
+        "Stop Ransom Now",
+        "Free Decrypt Initiative",
+        "Ransom Shield Alliance"
+      ],
+      "explanation": "Le portail nomoreransom.org, lancé en juillet 2016 par le Centre européen de lutte contre la cybercriminalité d'Europol, la police néerlandaise, Kaspersky et McAfee, rassemble des outils de déchiffrement gratuits pour de nombreuses familles de rançongiciels dont les clés ont été récupérées ou dont le chiffrement comportait un défaut. Il propose aussi un service d'identification du rançongiciel à partir d'un fichier chiffré ou du message de rançon. Avant de payer quoi que ce soit, il vaut donc la peine d'y vérifier si un outil existe, et de conserver les fichiers chiffrés au cas où une solution apparaîtrait plus tard.",
+      "difficulty": 3,
+      "source": "https://www.nomoreransom.org/"
+    },
+    {
+      "question": "Pour limiter le risque de rançongiciel via un accès à distance de type **RDP**, que recommande-t-on ?",
+      "answer": "Ne pas l'exposer sur Internet, mais passer par un VPN avec double authentification",
+      "wrong": [
+        "Le laisser ouvert à tous mais changer son port par défaut",
+        "L'ouvrir uniquement le week-end quand les équipes sont absentes",
+        "Le protéger par un mot de passe administrateur de huit caractères"
+      ],
+      "explanation": "Un serveur RDP (Bureau à distance) accessible depuis Internet est recherché en permanence par des outils automatiques, qui testent des mots de passe faibles ou volés, ou exploitent des failles ; c'est une porte d'entrée fréquente des rançongiciels. Changer le port ne fait que retarder la découverte (sécurité par l'obscurité). La bonne pratique : ne pas publier le service, y accéder uniquement via un VPN protégé par une double authentification, limiter les comptes autorisés, verrouiller un compte après plusieurs échecs et installer les correctifs sans délai.",
+      "difficulty": 3,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Un e-mail contient une « facture » Word qui demande d'**activer les macros** pour s'afficher. Que faire ?",
+      "answer": "Refuser et ne pas ouvrir : une facture n'a pas besoin de macros",
+      "wrong": [
+        "Les activer uniquement si l'antivirus est à jour",
+        "Les activer, puis les désactiver après la lecture",
+        "Les activer après avoir coupé la connexion Internet"
+      ],
+      "explanation": "Une macro est un petit programme intégré à un document Office. Les documents piégés prétendent qu'il faut « activer le contenu » pour lire le texte, mais ce sont ces macros qui téléchargent ensuite un logiciel malveillant. Un document légitime comme une facture n'exige jamais de macro. Les activer « temporairement » suffit déjà à lancer le code, et couper Internet n'empêche pas la macro d'agir sur les fichiers locaux. Ne les active jamais pour un document inattendu, ouvre-le en mode protégé et vérifie auprès de l'expéditeur par un autre canal.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi est-il conseillé d'afficher les **extensions de fichiers** dans l'explorateur Windows ?",
+      "answer": "Pour repérer un `facture.pdf.exe` qui se fait passer pour un document",
+      "wrong": [
+        "Pour accélérer l'ouverture des fichiers très volumineux du disque",
+        "Pour empêcher Windows d'exécuter les fichiers `.exe` reçus",
+        "Pour chiffrer automatiquement le nom de chaque fichier"
+      ],
+      "explanation": "Par défaut, Windows masque les extensions des types de fichiers connus. Un fichier `facture.pdf.exe` s'affiche alors comme `facture.pdf`, alors que c'est un programme. Les pirates profitent de cette double extension pour faire cliquer sur un exécutable déguisé, parfois avec l'icône d'un PDF. En affichant les extensions (onglet Affichage de l'explorateur, case « Extensions de noms de fichiers »), on voit la vraie fin du nom. Méfie-toi des extensions `.exe`, `.scr`, `.js`, `.vbs` ou `.bat` dans une pièce jointe, et des archives protégées par un mot de passe données dans le message.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un antivirus à jour suffit-il à protéger un ordinateur ?",
+      "answer": "Non : il ne détecte pas tout et ne bloque pas les arnaques aux identifiants",
+      "wrong": [
+        "Oui : il détecte tous les logiciels malveillants, connus ou inconnus",
+        "Oui, à condition de lancer une analyse complète du disque chaque jour",
+        "Oui : il bloque aussi les appels et les SMS frauduleux reçus"
+      ],
+      "explanation": "Un antivirus compare les fichiers à des signatures de logiciels malveillants connus et repère certains comportements suspects. Il est utile, mais pas infaillible : un logiciel très récent peut passer entre les mailles. Surtout, il ne peut rien contre une personne qui entre elle-même ses identifiants sur un faux site, qui paie un faux colis ou obéit à un faux conseiller bancaire. La protection repose donc sur plusieurs couches : mises à jour, mots de passe uniques, double authentification, sauvegardes et vigilance. Sous Windows, Microsoft Defender est intégré ; évite d'empiler plusieurs antivirus actifs.",
+      "difficulty": 1,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Dans un café, tu vois deux réseaux Wi-Fi presque identiques : « CafeDuCentre » et « CafeDuCentre_Free ». Quel est le risque ?",
+      "answer": "L'un peut être un faux point d'accès (evil twin) qui détourne ton trafic",
+      "wrong": [
+        "Les deux réseaux se brouillent et ralentissent toute ta connexion",
+        "Se connecter aux deux à la fois double le débit disponible",
+        "Deux noms voisins prouvent que la box du café est en panne"
+      ],
+      "explanation": "Un evil twin est un point d'accès créé par un attaquant avec un nom proche de celui d'un réseau légitime, souvent avec un signal plus fort. Une fois connecté, l'attaquant se place entre toi et Internet : il peut observer le trafic non chiffré, afficher une fausse page de connexion pour voler des identifiants, ou rediriger vers des sites piégés. Pour t'en protéger : demande au personnel le nom exact du réseau, désactive la connexion automatique aux réseaux ouverts, évite les opérations sensibles (banque, achats), utilise un VPN fiable ou le partage de connexion de ton téléphone.",
+      "difficulty": 2
+    },
+    {
+      "question": "Lequel de ces risques un **VPN** ne réduit-il pas ?",
+      "answer": "Cliquer sur un lien d'hameçonnage ou installer un logiciel piégé",
+      "wrong": [
+        "L'écoute du trafic par les autres clients d'un Wi-Fi public",
+        "La lecture du trafic par le gestionnaire du réseau Wi-Fi de l'hôtel",
+        "La visibilité de ton adresse IP réelle par les sites visités"
+      ],
+      "explanation": "Un VPN (réseau privé virtuel) crée un tunnel chiffré entre ton appareil et un serveur du fournisseur : le réseau local ne voit que du trafic chiffré, et les sites visités voient l'adresse IP du serveur VPN plutôt que la tienne. Mais le VPN ne vérifie pas si un site est honnête, ne bloque pas un message d'hameçonnage, n'empêche pas d'installer un logiciel piégé et ne t'anonymise pas si tu te connectes à ton compte (les sites te reconnaissent à ton identifiant ou à tes cookies). Il complète les bonnes pratiques, il ne les remplace pas.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quand tu utilises un VPN commercial, quelle réalité faut-il garder en tête ?",
+      "answer": "Le fournisseur voit désormais les destinations de ton trafic : il faut lui faire confiance",
+      "wrong": [
+        "Le fournisseur ne peut techniquement rien voir de ton activité en ligne",
+        "Seul ton fournisseur d'accès continue de voir le contenu de tes échanges",
+        "Les sites visités ne reçoivent plus aucune information, cookies compris"
+      ],
+      "explanation": "Un VPN ne supprime pas l'observation, il la déplace : au lieu de ton fournisseur d'accès ou du Wi-Fi public, c'est l'opérateur du VPN qui peut voir à quels sites tu te connectes (et le contenu des échanges non chiffrés). Tout dépend donc de sa confiance : politique de non-conservation des journaux, audits indépendants, juridiction, modèle économique. Un service gratuit peut revendre tes données. De plus, tes cookies et connexions à des comptes continuent d'identifier ton activité. Choisis un fournisseur réputé et audité, ou, en entreprise, le VPN fourni par ton employeur.",
+      "difficulty": 3
     }
   ]
 }

@@ -553,6 +553,513 @@
       "explanation": "`RS256` signe avec une clé privée (secrète) et vérifie avec une clé publique, diffusée par exemple dans un JWKS. `HS256` utilise un unique secret partagé pour signer **et** vérifier. Si le serveur choisit l'algorithme de vérification d'après l'en-tête `alg` du jeton, l'attaquant peut déclarer `HS256` et signer son jeton en prenant comme secret HMAC la clé publique, connue de tous : le serveur, qui utilisera cette même clé pour vérifier, validera la contrefaçon. Protection : imposer côté serveur l'algorithme attendu pour chaque clé (liste blanche), ignorer l'`alg` annoncé par le jeton et employer des bibliothèques à jour.",
       "difficulty": 3,
       "source": "https://portswigger.net/web-security/jwt/algorithm-confusion"
+    },
+    {
+      "question": "Que fait l'en-tête `Strict-Transport-Security` (HSTS) ?",
+      "answer": "Il impose au navigateur de n'utiliser que HTTPS pour ce site",
+      "wrong": [
+        "Il chiffre le contenu des cookies de session",
+        "Il interdit l'affichage de la page dans une `iframe`",
+        "Il limite les origines autorisées pour les scripts"
+      ],
+      "explanation": "Même si un site propose HTTPS, un utilisateur qui tape `exemple.com` ou suit un vieux lien `http://` envoie d'abord une requête en clair : sur un Wi-Fi public, un attaquant peut l'intercepter et la rediriger vers une copie piégée (attaque de « SSL stripping »). Avec `Strict-Transport-Security: max-age=31536000; includeSubDomains`, le site demande au navigateur de mémoriser pendant 31 536 000 secondes (un an) qu'il ne doit être contacté qu'en HTTPS : les requêtes `http://` sont converties avant l'envoi et les erreurs de certificat deviennent bloquantes. Le chiffrement des cookies, le cadrage (`X-Frame-Options`) et les scripts (CSP) relèvent d'autres mécanismes.",
+      "difficulty": 1,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security"
+    },
+    {
+      "question": "Quelle catégorie de l'OWASP Top 10 **2021** couvre l'utilisation de bibliothèques ou de composants obsolètes et vulnérables ?",
+      "answer": "A06:2021 – Vulnerable and Outdated Components",
+      "wrong": [
+        "A02:2021 – Cryptographic Failures",
+        "A05:2021 – Security Misconfiguration",
+        "A09:2021 – Security Logging and Monitoring Failures"
+      ],
+      "explanation": "Une application moderne repose sur des dizaines de bibliothèques et de frameworks que l'on n'a pas écrits. Si l'un d'eux contient une faille connue et que personne ne le met à jour, l'attaquant n'a plus qu'à exploiter cette faille publique, souvent avec des outils automatiques. L'OWASP appelle cela **Vulnerable and Outdated Components** (A06:2021), anciennement « Using Components with Known Vulnerabilities ». Les dépendances indirectes comptent aussi : une bibliothèque tirée par une autre peut porter la faille. Protection : inventaire des dépendances, outils d'analyse (`npm audit`, Dependabot, OWASP Dependency-Check), mises à jour régulières, et suppression des composants inutilisés.",
+      "difficulty": 1,
+      "source": "https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/"
+    },
+    {
+      "question": "Que signifie le principe de **défense en profondeur** ?",
+      "answer": "Cumuler plusieurs couches de protection indépendantes",
+      "wrong": [
+        "Placer les serveurs au cœur du réseau interne",
+        "Choisir une unique protection très robuste",
+        "Sauvegarder les données en plusieurs endroits"
+      ],
+      "explanation": "Aucune protection n'est parfaite : un filtre peut être contourné, un correctif oublié, une erreur de configuration commise. La défense en profondeur (defense in depth) consiste à empiler des barrières indépendantes pour que la chute de l'une ne compromette pas tout. Exemple pour une application web : requêtes paramétrées contre l'injection SQL, **plus** un compte de base à droits minimaux, **plus** un WAF, **plus** de la journalisation avec alertes, **plus** des sauvegardes testées. Pour le XSS : encodage de sortie, CSP et cookies `HttpOnly`. Une protection unique, même excellente, reste un point de défaillance unique.",
+      "difficulty": 1
+    },
+    {
+      "question": "Qu'est-ce que l'**OWASP**, connu notamment pour son « Top 10 » ?",
+      "answer": "Une communauté à but non lucratif dédiée à la sécurité applicative",
+      "wrong": [
+        "Un constructeur de pare-feux matériels pour entreprises",
+        "Une autorité qui délivre les certificats HTTPS",
+        "Un éditeur de scanners de vulnérabilités payants"
+      ],
+      "explanation": "L'OWASP (Open Web Application Security Project à l'origine, aujourd'hui Open Worldwide Application Security Project) est une fondation à but non lucratif, née en 2001, qui produit gratuitement des ressources ouvertes : le **Top 10** (les risques les plus critiques pour les applications web), les *Cheat Sheets* (fiches de bonnes pratiques sur les requêtes préparées, le stockage des mots de passe, la CSP…), l'ASVS (référentiel d'exigences de sécurité) et des outils open source. Le Top 10 est un document de sensibilisation fondé sur des données de terrain, souvent cité dans les audits et les formations : ce n'est pas une norme à cocher.",
+      "difficulty": 1,
+      "source": "https://owasp.org/Top10/"
+    },
+    {
+      "question": "Contre quelle menace HTTPS protège-t-il en priorité ?",
+      "answer": "L'écoute et la modification des échanges sur le réseau",
+      "wrong": [
+        "Les injections SQL dans les formulaires du site",
+        "Les scripts malveillants insérés dans les pages (XSS)",
+        "Les accès à des données d'autres utilisateurs"
+      ],
+      "explanation": "HTTPS, c'est HTTP au-dessus de TLS : il chiffre les échanges, authentifie le serveur grâce à son certificat et détecte toute altération en route. Il empêche donc quelqu'un qui contrôle le réseau (Wi-Fi public, point d'accès piégé…) de lire les mots de passe et les cookies ou de modifier les pages. Mais HTTPS ne dit rien de ce que fait l'application : une injection SQL, un XSS ou un contrôle d'accès défaillant passent très bien dans un tunnel chiffré. Un site en HTTPS n'est donc pas « sûr » en soi. Pour une protection complète, on redirige tout HTTP vers HTTPS, on active HSTS et l'on marque les cookies `Secure`.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel mécanisme ralentit les attaques par force brute sur un formulaire de connexion ?",
+      "answer": "La limitation du nombre de tentatives (rate limiting)",
+      "wrong": [
+        "L'encodage de sortie des caractères spéciaux",
+        "La signature des cookies avec une clé secrète",
+        "Le renouvellement annuel du certificat HTTPS"
+      ],
+      "explanation": "Une attaque par force brute consiste à essayer très vite un grand nombre de mots de passe. Le *rate limiting* plafonne le nombre de tentatives par compte, par adresse IP ou par appareil sur une période donnée (par exemple 5 essais par minute), puis répond avec un code HTTP `429 Too Many Requests`, un délai croissant ou un test anti-robot (CAPTCHA). Les essais massifs deviennent alors inutilement longs. Mieux vaut le combiner avec une authentification multifacteur et une alerte sur les échecs répétés. L'encodage de sortie protège du XSS, la signature des cookies garantit leur intégrité, et le certificat n'a aucun rapport avec le nombre d'essais.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que fait l'en-tête `X-Content-Type-Options: nosniff` ?",
+      "answer": "Il interdit au navigateur de deviner le type d'un contenu",
+      "wrong": [
+        "Il empêche les moteurs de recherche d'indexer la page",
+        "Il masque la version du serveur dans les réponses",
+        "Il bloque les requêtes provenant d'autres sites"
+      ],
+      "explanation": "Chaque réponse HTTP annonce son type avec `Content-Type` (par exemple `image/png`, `text/css`). Certains navigateurs « reniflent » (sniffing) le contenu pour deviner le vrai type quand l'annonce leur semble fausse. Cela peut transformer un fichier envoyé par un utilisateur, servi comme texte ou image, en un script exécuté : la porte ouverte à un XSS. Avec `nosniff`, le navigateur respecte le type annoncé et refuse notamment de charger comme script ou feuille de style une ressource dont le `Content-Type` ne correspond pas. À combiner avec un `Content-Type` correct pour tout fichier servi, surtout les fichiers envoyés par les utilisateurs. L'indexation relève de `X-Robots-Tag`, la version du serveur de l'en-tête `Server`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options"
+    },
+    {
+      "question": "En 2017, par quelle porte d'entrée les pirates ont-ils pénétré chez Equifax, exposant les données d'environ 147 millions de personnes ?",
+      "answer": "Une faille connue d'Apache Struts, dont le correctif n'était pas appliqué",
+      "wrong": [
+        "Un mot de passe administrateur publié dans un dépôt de code",
+        "Un employé piégé par un faux SMS de sa direction",
+        "Une injection SQL sur le formulaire de connexion des clients"
+      ],
+      "explanation": "Equifax, agence américaine d'évaluation de crédit, a subi en 2017 l'une des plus grosses fuites de données personnelles. L'intrusion est passée par un portail web utilisant Apache Struts, un framework Java : une faille critique d'exécution de code à distance (CVE-2017-5638) avait été publiée et corrigée en mars 2017, mais le correctif n'a pas été appliqué à ce système à temps. La leçon rejoint la catégorie « Vulnerable and Outdated Components » de l'OWASP : inventorier tous ses composants, suivre les alertes de sécurité et appliquer les correctifs rapidement, en priorité sur les systèmes exposés à Internet.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/2017_Equifax_data_breach"
+    },
+    {
+      "question": "Pourquoi la faille **Log4Shell** (décembre 2021, bibliothèque Java Log4j) était-elle si critique ?",
+      "answer": "Une simple chaîne journalisée pouvait faire exécuter du code à distance",
+      "wrong": [
+        "Elle cassait le chiffrement TLS des serveurs concernés",
+        "Elle effaçait les journaux et empêchait toute enquête",
+        "Elle exigeait un accès physique à la machine"
+      ],
+      "explanation": "Log4j est une bibliothèque Java très répandue qui écrit les journaux d'une application. Une fonctionnalité de recherche dynamique (via JNDI) faisait que certains textes écrits dans le journal étaient interprétés : le serveur pouvait aller chercher et exécuter du code sur une machine contrôlée par l'attaquant. Comme n'importe quelle donnée contrôlable par l'utilisateur est journalisée (en-tête `User-Agent`, nom d'utilisateur, champ de formulaire), il suffisait d'envoyer un texte spécial. La faille (CVE-2021-44228) a touché des millions de systèmes. Protection : mettre à jour Log4j vers une version corrigée et tenir un inventaire des dépendances, y compris indirectes, pour savoir où elles sont utilisées.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Log4Shell"
+    },
+    {
+      "question": "À quoi sert l'en-tête `Referrer-Policy: no-referrer` ?",
+      "answer": "À ne pas révéler l'URL de la page aux sites visités ensuite",
+      "wrong": [
+        "À empêcher l'accès à la page depuis un autre site",
+        "À masquer l'adresse IP du visiteur au serveur",
+        "À interdire la mise en cache de la page"
+      ],
+      "explanation": "Quand on clique sur un lien ou qu'une page charge une ressource externe, le navigateur ajoute par défaut un en-tête `Referer` indiquant la page d'origine. Si l'URL contient des informations sensibles (jeton de réinitialisation de mot de passe, identifiant de session, nom de document), elles fuient vers le site de destination et vers ses outils d'analyse. `Referrer-Policy: no-referrer` supprime totalement cet en-tête ; `strict-origin-when-cross-origin`, valeur par défaut de la plupart des navigateurs récents, n'envoie que le domaine aux autres sites. Le mieux reste de ne jamais mettre de secret dans une URL. L'adresse IP reste de toute façon visible du serveur, et le cache dépend de `Cache-Control`.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy"
+    },
+    {
+      "question": "Dans CORS, à quoi sert la requête de pré-vérification (**preflight**) envoyée par le navigateur ?",
+      "answer": "À demander au serveur, avec `OPTIONS`, s'il accepte la vraie requête",
+      "wrong": [
+        "À chiffrer la vraie requête avant son envoi",
+        "À vérifier le certificat HTTPS du serveur cible",
+        "À récupérer le jeton CSRF avant d'envoyer le formulaire"
+      ],
+      "explanation": "Pour certaines requêtes cross-origin jugées « non simples » (méthode `PUT` ou `DELETE`, corps JSON, en-têtes personnalisés comme `Authorization`), le navigateur envoie d'abord une requête `OPTIONS` en précisant la méthode et les en-têtes qu'il compte utiliser (`Access-Control-Request-Method`, `Access-Control-Request-Headers`). Le serveur répond avec `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods`, `Access-Control-Allow-Headers`… Si la réponse ne l'autorise pas, le navigateur n'envoie jamais la vraie requête. Le preflight protège d'anciennes API qui ne s'attendaient pas à recevoir de telles requêtes depuis un autre site. Il n'a rien à voir avec le chiffrement ni avec le jeton CSRF.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request"
+    },
+    {
+      "question": "Quel est le rôle de CORS (Cross-Origin Resource Sharing) ?",
+      "answer": "Permettre au serveur d'assouplir la Same-Origin Policy pour certains sites",
+      "wrong": [
+        "Bloquer côté serveur toute requête venant d'un autre site",
+        "Authentifier les utilisateurs d'une API entre deux domaines",
+        "Chiffrer les échanges entre deux origines différentes"
+      ],
+      "explanation": "Par défaut, la Same-Origin Policy empêche le JavaScript d'une page de lire les réponses d'une autre origine. CORS est le mécanisme qui permet à un serveur d'**assouplir** cette règle en déclarant, par des en-têtes comme `Access-Control-Allow-Origin: https://app.exemple.com`, quelles origines peuvent lire ses réponses. Deux points à retenir : c'est le **navigateur** qui applique la règle (un `curl` n'est pas concerné), et CORS n'est donc ni un contrôle d'accès ni une défense du serveur, puisque certaines requêtes sont envoyées quand même. L'authentification et les droits se vérifient côté serveur. Une mauvaise configuration (origines reflétées, `*` mal employé) ouvre au contraire des accès.",
+      "difficulty": 2,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+    },
+    {
+      "question": "Pourquoi recommande-t-on de retirer les versions détaillées des en-têtes `Server` et `X-Powered-By` ?",
+      "answer": "Pour ne pas faciliter le repérage de logiciels vulnérables",
+      "wrong": [
+        "Pour accélérer le chargement des pages du site",
+        "Pour empêcher les injections de commande",
+        "Pour que le navigateur n'affiche plus d'avertissement"
+      ],
+      "explanation": "Des en-têtes comme `Server: Apache/2.4.49` ou `X-Powered-By: PHP/7.2.1` annoncent à tout visiteur le logiciel et sa version. Un attaquant, ou un scanner automatique, peut les comparer à des bases de vulnérabilités connues pour cibler en priorité les serveurs obsolètes. En les retirant ou en les réduisant (`ServerTokens Prod` sous Apache, `server_tokens off;` sous Nginx, `expose_php = Off` en PHP), on limite cette fuite d'information. Mais c'est de la discrétion, pas de la protection : cacher une version vulnérable ne la corrige pas. Le vrai remède reste la mise à jour.",
+      "difficulty": 2
+    },
+    {
+      "question": "Une fonction de l'application télécharge une URL fournie par l'utilisateur. Quelle protection est la plus solide contre la **SSRF** ?",
+      "answer": "N'autoriser qu'une liste blanche de destinations connues",
+      "wrong": [
+        "Bloquer une liste noire d'adresses internes comme `127.0.0.1`",
+        "Vérifier le format de l'URL avec du JavaScript côté client",
+        "Chiffrer les requêtes sortantes du serveur avec TLS"
+      ],
+      "explanation": "Une SSRF (Server-Side Request Forgery) fait émettre au serveur des requêtes vers des cibles choisies par l'attaquant, souvent des services internes (administration, base, métadonnées cloud) inaccessibles depuis Internet. Une liste noire est fragile : une même adresse peut s'écrire de multiples façons (décimal, IPv6, nom DNS pointant vers l'IP interne, redirection HTTP). La liste blanche (domaines précis, protocole `https`, ports attendus) inverse la logique : tout ce qui n'est pas explicitement prévu est refusé. On la complète par la désactivation du suivi des redirections, la segmentation réseau et IMDSv2 dans le cloud. Un contrôle JavaScript se contourne, et TLS ne limite pas les destinations.",
+      "difficulty": 2,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html"
+    },
+    {
+      "question": "Quelle bonne pratique réduit le risque lié aux fichiers envoyés par les utilisateurs ?",
+      "answer": "Les stocker hors du répertoire web, sous un nom généré par le serveur",
+      "wrong": [
+        "Se fier à l'extension indiquée dans le nom du fichier",
+        "Faire confiance au type MIME déclaré par le navigateur",
+        "Conserver le nom d'origine pour retrouver le fichier"
+      ],
+      "explanation": "Un fichier envoyé par un visiteur est une entrée non fiable, au même titre qu'un champ de formulaire. Risques : script exécutable déposé dans un dossier servi par le serveur (webshell), écrasement de fichiers existants via un nom du type `../../fichier`, fichier HTML ou SVG contenant du JavaScript (XSS), saturation du disque. Bonnes pratiques : contrôler côté serveur l'extension **et** le contenu réel (liste blanche de types), limiter la taille, renommer avec un identifiant aléatoire, stocker hors du répertoire web, servir avec un `Content-Type` fixe et `X-Content-Type-Options: nosniff`. L'extension et le type MIME déclarés viennent du client : ils se falsifient.",
+      "difficulty": 2,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html"
+    },
+    {
+      "question": "Pourquoi la liste **HSTS preload**, intégrée directement aux navigateurs, existe-t-elle ?",
+      "answer": "Protéger dès la toute première visite, avant tout en-tête HSTS reçu",
+      "wrong": [
+        "Accélérer la négociation TLS en pré-chargeant les certificats",
+        "Interdire l'accès aux sites dont le certificat est révoqué",
+        "Remplacer les autorités de certification par une liste fixe"
+      ],
+      "explanation": "L'en-tête HSTS n'est lu qu'**après** une première connexion réussie : lors de la toute première visite (ou après l'expiration de `max-age`), une requête `http://` reste exposée à une interception. La liste *preload* y remédie : c'est une liste de domaines codée en dur dans les navigateurs, qui les contactent toujours en HTTPS, même sans visite préalable. Pour y inscrire un domaine (via hstspreload.org), il faut servir un certificat valide, rediriger HTTP vers HTTPS et envoyer `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload` (au moins un an, sous-domaines inclus). Attention : le retrait est lent, et tous les sous-domaines doivent supporter HTTPS avant l'inscription.",
+      "difficulty": 3,
+      "source": "https://hstspreload.org/"
+    },
+    {
+      "question": "Quel en-tête permet de tester une CSP **sans rien bloquer**, en recevant seulement des rapports de violation ?",
+      "answer": "`Content-Security-Policy-Report-Only`",
+      "wrong": [
+        "`Content-Security-Policy-Test-Mode`",
+        "`Content-Security-Report-Only`",
+        "`X-Content-Security-Report`"
+      ],
+      "explanation": "Déployer d'emblée une CSP stricte peut casser des pages : scripts en ligne légitimes, widgets tiers, outils d'analyse. L'en-tête `Content-Security-Policy-Report-Only` utilise la même syntaxe mais **n'impose rien** : le navigateur signale seulement chaque violation à l'adresse indiquée (directive `report-to` ou, plus ancienne, `report-uri`), sans bloquer la ressource. On observe les rapports pendant quelques jours, on ajuste la politique, puis on passe à l'en-tête `Content-Security-Policy`, qui bloque réellement. On peut même envoyer les deux en parallèle : la politique en vigueur et celle à l'essai. Exemple : `Content-Security-Policy-Report-Only: default-src 'self'; report-to csp-endpoint`.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only"
+    },
+    {
+      "question": "Un serveur répond `Access-Control-Allow-Origin: *` **et** `Access-Control-Allow-Credentials: true`. Que fait le navigateur pour une requête avec cookies ?",
+      "answer": "Il refuse la réponse, car `*` est interdit avec des identifiants",
+      "wrong": [
+        "Il l'accepte et expose les données à tous les sites",
+        "Il l'accepte mais n'envoie pas les cookies",
+        "Il remplace `*` par l'origine de la page appelante"
+      ],
+      "explanation": "Pour une requête CORS « avec identifiants » (cookies, authentification HTTP), la spécification Fetch interdit le joker `*` dans `Access-Control-Allow-Origin` : le serveur doit citer une origine précise. Si la réponse contient `*` avec `Allow-Credentials: true`, le navigateur la rejette et le JavaScript n'y a pas accès. C'est une barrière volontaire : sans elle, n'importe quel site pourrait lire des données privées de visiteurs connectés. Le piège est que des développeurs « corrigent » l'erreur en **reflétant** l'en-tête `Origin` reçu, ce qui rétablit exactement le danger. La bonne solution est une liste blanche d'origines de confiance, avec `Vary: Origin` pour que les caches ne mélangent pas les réponses.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+    },
+    {
+      "question": "Pourquoi l'en-tête `X-XSS-Protection` est-il aujourd'hui déconseillé ?",
+      "answer": "Le filtre a été retiré des navigateurs et pouvait créer des failles",
+      "wrong": [
+        "Il désactive les cookies `HttpOnly` sur les pages concernées",
+        "Il n'a jamais été reconnu par aucun navigateur",
+        "Il a été remplacé par `X-Frame-Options` en 2020"
+      ],
+      "explanation": "`X-XSS-Protection` pilotait un « filtre XSS » intégré à certains navigateurs (Internet Explorer, Chrome, Safari), qui tentait de détecter un script injecté dans l'URL et de neutraliser la page. Ce filtre s'est révélé contournable et pouvait même introduire des failles sur des sites sains, en supprimant des portions légitimes de page. Edge l'a retiré en 2018 et Chrome en 2019 ; Firefox ne l'a jamais implémenté. La protection moderne repose sur l'encodage de sortie et une `Content-Security-Policy` stricte. Si l'en-tête est présent, l'OWASP conseille la valeur `0` (désactivé) ; le plus simple est de ne plus l'envoyer. `X-Frame-Options` concerne le clickjacking, un tout autre sujet.",
+      "difficulty": 3,
+      "source": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection"
+    },
+    {
+      "question": "Quelle catégorie, **nouvelle** dans l'OWASP Top 10 2021, vise les défauts de conception plutôt que les erreurs d'implémentation ?",
+      "answer": "A04:2021 – Insecure Design",
+      "wrong": [
+        "A05:2021 – Security Misconfiguration",
+        "A07:2021 – Identification and Authentication Failures",
+        "A09:2021 – Security Logging and Monitoring Failures"
+      ],
+      "explanation": "Une application peut être codée sans aucune faute d'implémentation et rester vulnérable, parce que sa **conception** ne prévoit pas les abus. L'OWASP a ajouté A04:2021 – Insecure Design pour insister sur la prévention en amont : modélisation des menaces (threat modeling), modèles de conception sécurisés, exigences de sécurité dès les spécifications. Exemple : un site de réservation qui autorise des annulations gratuites en nombre illimité sera exploité par des robots, même si son code est impeccable. Un bug se corrige par un correctif ; un défaut de conception demande de repenser le fonctionnement. D'où l'idée de penser la sécurité dès le départ (« shift left »).",
+      "difficulty": 3,
+      "source": "https://owasp.org/Top10/A04_2021-Insecure_Design/"
+    },
+    {
+      "question": "Que recouvre la catégorie **A08:2021 – Software and Data Integrity Failures** ?",
+      "answer": "Du code ou des mises à jour acceptés sans contrôle d'intégrité",
+      "wrong": [
+        "Des données personnelles stockées sans chiffrement",
+        "L'absence de journalisation des tentatives de connexion",
+        "Des mots de passe faibles acceptés à l'inscription"
+      ],
+      "explanation": "A08 regroupe les cas où l'application fait confiance à du code ou à des données sans vérifier qu'ils n'ont pas été altérés : mises à jour automatiques non signées, bibliothèques ou plug-ins téléchargés depuis une source non vérifiée, chaîne CI/CD insuffisamment protégée, désérialisation de données non fiables (catégorie distincte en 2017). L'attaque contre SolarWinds (2020) l'illustre : du code malveillant a été inséré dans le processus de fabrication d'une mise à jour légitime, ensuite distribuée à des milliers de clients. Protection : signatures numériques, vérification d'empreintes (SRI pour les scripts), dépôts de confiance, verrouillage des dépendances (`package-lock.json`) et pipelines sécurisés. Chiffrement, authentification et journalisation relèvent d'autres catégories (A02, A07, A09).",
+      "difficulty": 3,
+      "source": "https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures/"
+    },
+    {
+      "question": "À quoi sert le fichier `/.well-known/security.txt` (RFC 9116) ?",
+      "answer": "À indiquer comment signaler une vulnérabilité à l'organisation",
+      "wrong": [
+        "À interdire aux robots l'accès aux pages sensibles",
+        "À publier la clé publique TLS du site",
+        "À déclarer les en-têtes de sécurité à appliquer"
+      ],
+      "explanation": "Quand un chercheur trouve une faille sur un site, il ne sait pas toujours à qui la signaler. La RFC 9116 (2022) standardise un petit fichier texte placé à `https://exemple.fr/.well-known/security.txt`, qui indique le contact à utiliser et une date d'expiration : `Contact: mailto:securite@exemple.fr` et `Expires: 2027-01-01T00:00:00Z`, avec en option la politique de divulgation, la langue ou une clé PGP. Cela facilite la **divulgation responsable** : prévenir l'organisation en privé avant toute publication. Ce n'est pas un fichier de contrôle d'accès (c'est `robots.txt` qui parle aux robots d'indexation) et il ne configure aucun en-tête.",
+      "difficulty": 3,
+      "source": "https://www.rfc-editor.org/rfc/rfc9116"
+    },
+    {
+      "question": "Quelle mesure limite le plus les conséquences du vol d'un mot de passe sur un compte en ligne ?",
+      "answer": "L'authentification multifacteur (MFA)",
+      "wrong": [
+        "L'affichage du mot de passe sous forme de points",
+        "Une question secrète portant sur la famille",
+        "Un message de bienvenue personnalisé à la connexion"
+      ],
+      "explanation": "L'authentification multifacteur (MFA) exige, en plus du mot de passe (ce que l'on sait), un second élément d'une autre nature : un objet que l'on possède (application d'authentification, clé de sécurité, SMS) ou une caractéristique personnelle (biométrie). Un mot de passe volé par hameçonnage, fuite de données ou credential stuffing ne suffit donc plus pour se connecter. Les clés FIDO2 et les passkeys sont les plus résistantes au hameçonnage, car elles sont liées au nom de domaine du site. Les autres options n'ajoutent aucune barrière : les points masquent seulement la saisie à l'écran, la question secrète est souvent devinable, et un message de bienvenue ne vérifie rien.",
+      "difficulty": 1,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Multifactor_Authentication_Cheat_Sheet.html"
+    },
+    {
+      "question": "Pourquoi un site en production ne doit-il pas afficher la **trace d'erreur** (stack trace) aux visiteurs ?",
+      "answer": "Elle révèle des détails internes utiles à un attaquant",
+      "wrong": [
+        "Elle ralentit le chargement de toutes les pages",
+        "Elle empêche le navigateur de mettre la page en cache",
+        "Elle consomme trop d'espace dans les journaux"
+      ],
+      "explanation": "Une trace d'erreur brute peut contenir le chemin des fichiers sur le serveur, les noms de tables, la requête SQL en cause, la version du framework, voire des identifiants de connexion à la base. Ces informations aident l'attaquant à comprendre l'architecture et à choisir ses attaques : c'est une fuite d'informations liée à la mauvaise configuration. En production, on affiche un message générique (« Une erreur est survenue ») avec éventuellement un identifiant de corrélation, tandis que les détails complets sont écrits dans les **journaux** réservés à l'équipe. Exemple : désactiver le mode débogage (`DEBUG = False` sous Django, `APP_DEBUG=false` sous Laravel).",
+      "difficulty": 1
+    },
+    {
+      "question": "Laquelle de ces situations est une **mauvaise configuration de sécurité** (OWASP A05:2021) ?",
+      "answer": "Laisser le mot de passe administrateur par défaut d'un équipement",
+      "wrong": [
+        "Exiger une authentification multifacteur pour l'administration",
+        "Limiter l'interface d'administration à un réseau dédié",
+        "Désactiver les fonctions et les comptes inutilisés"
+      ],
+      "explanation": "A05:2021 – Security Misconfiguration regroupe les réglages dangereux : comptes et mots de passe par défaut (`admin/admin`) conservés, listage de répertoires activé, mode débogage laissé en production, messages d'erreur trop bavards, ports et services inutiles ouverts, en-têtes de sécurité absents, stockage cloud accessible publiquement. Ces défauts sont fréquents car les produits sont souvent livrés avec une configuration « pour que ça marche » plutôt que « sûre ». Les trois autres situations sont au contraire du **durcissement** (hardening). Protection : configuration de référence reproductible, revue régulière, suppression de tout ce qui est inutile et changement obligatoire des identifiants par défaut dès l'installation.",
+      "difficulty": 1,
+      "source": "https://owasp.org/Top10/A05_2021-Security_Misconfiguration/"
+    },
+    {
+      "question": "Pourquoi une application web doit-elle journaliser les événements de sécurité (échecs de connexion, accès refusés) ?",
+      "answer": "Pour détecter une attaque en cours et enquêter après coup",
+      "wrong": [
+        "Pour accélérer le traitement des requêtes",
+        "Pour dispenser de corriger les failles connues",
+        "Pour chiffrer automatiquement les données sensibles"
+      ],
+      "explanation": "Sans journaux, une intrusion peut durer des mois sans être détectée. Les journaux de sécurité (horodatage, identifiant du compte, adresse IP, action, résultat) permettent de repérer des signaux d'attaque : rafale d'échecs de connexion, accès refusés répétés sur des identifiants d'objets consécutifs, requêtes contenant des motifs d'injection. Ils servent aussi à reconstituer le déroulé d'un incident. C'est l'objet de A09:2021 – Security Logging and Monitoring Failures : journaliser ne suffit pas, il faut **surveiller** (alertes, SIEM) et conserver les journaux sur un support protégé contre la modification. Journaliser ne corrige rien : les failles doivent être traitées par ailleurs.",
+      "difficulty": 1,
+      "source": "https://owasp.org/Top10/A09_2021-Security_Logging_and_Monitoring_Failures/"
+    },
+    {
+      "question": "Qu'est-ce que la **divulgation responsable** d'une vulnérabilité ?",
+      "answer": "Alerter d'abord l'éditeur en privé, puis publier après correction",
+      "wrong": [
+        "Publier aussitôt la faille pour forcer tout le monde à réagir",
+        "Revendre la faille au plus offrant avant toute correction",
+        "Tester la faille sur des données réelles pour en prouver l'impact"
+      ],
+      "explanation": "Un chercheur qui découvre une faille dans un site ou un logiciel peut la publier tout de suite (ce qui expose les utilisateurs avant qu'un correctif existe), la vendre, ou la signaler. La divulgation responsable (ou coordonnée) consiste à prévenir d'abord l'organisation concernée par un canal privé (adresse de sécurité, plateforme de bug bounty), à lui laisser un délai raisonnable pour corriger, souvent 90 jours dans la politique de Google Project Zero, puis à publier les détails. Un test qui accède à des données réelles d'utilisateurs dépasse le cadre : on s'en tient à la preuve minimale, sans copier ni exploiter les données rencontrées.",
+      "difficulty": 1
+    },
+    {
+      "question": "Un formulaire contient `<input type=\"hidden\" name=\"prix\" value=\"50\">`. Un utilisateur peut-il changer cette valeur avant l'envoi ?",
+      "answer": "Oui : il maîtrise tout ce que son navigateur envoie",
+      "wrong": [
+        "Non : un champ caché n'est pas modifiable",
+        "Non, tant que le site est servi en HTTPS",
+        "Oui, mais seulement avec un compte administrateur"
+      ],
+      "explanation": "Un champ `hidden` est seulement non affiché : sa valeur figure dans le code source et peut être changée avec les outils de développement du navigateur, un proxy d'interception (Burp Suite) ou une requête écrite à la main. HTTPS chiffre le trajet, mais l'utilisateur est l'une des deux extrémités : il modifie ses requêtes avant qu'elles ne soient chiffrées. Conséquence : toute donnée venant du client (champs cachés, cookies, en-têtes, paramètres d'URL) est non fiable. Le serveur doit recalculer lui-même ce qui compte (le prix d'après le catalogue, le propriétaire d'après la session). C'est un cas typique de falsification de paramètres (parameter tampering).",
+      "difficulty": 1
+    },
+    {
+      "question": "À quoi sert le **sel** (salt) ajouté à un mot de passe avant de le hacher ?",
+      "answer": "À obtenir des empreintes différentes pour des mots de passe identiques",
+      "wrong": [
+        "À chiffrer l'empreinte pour que personne ne puisse la lire",
+        "À accélérer le calcul de l'empreinte à chaque connexion",
+        "À rallonger automatiquement les mots de passe trop courts"
+      ],
+      "explanation": "Sans sel, deux utilisateurs ayant le même mot de passe ont la même empreinte : un attaquant qui vole la base peut utiliser des tables précalculées (« rainbow tables ») ou casser d'un coup tous les comptes qui partagent une empreinte. Le sel est une valeur aléatoire, unique par utilisateur, stockée en clair à côté de l'empreinte et mélangée au mot de passe avant le hachage : `hash(sel + mot_de_passe)`. Les empreintes deviennent toutes différentes, les tables précalculées inutilisables, et chaque mot de passe doit être attaqué séparément. Le sel n'est pas secret, ne chiffre rien et n'accélère rien. Les bibliothèques modernes (bcrypt, Argon2) le gèrent automatiquement.",
+      "difficulty": 2,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "Lors de la déconnexion d'un utilisateur, que doit faire le serveur pour que la session soit vraiment terminée ?",
+      "answer": "Invalider la session côté serveur, pas seulement effacer le cookie",
+      "wrong": [
+        "Effacer uniquement le cookie dans le navigateur de l'utilisateur",
+        "Masquer le bouton de déconnexion après le clic",
+        "Garder la session active quelques minutes en cas de reconnexion"
+      ],
+      "explanation": "Supprimer le cookie dans le navigateur ne détruit pas la session : si quelqu'un a copié l'identifiant de session (réseau non chiffré, XSS, ordinateur partagé), il reste valable côté serveur et permet de continuer à agir au nom de l'utilisateur. À la déconnexion, le serveur doit **supprimer ou invalider** la session dans son stockage, puis demander l'effacement du cookie. Il faut aussi prévoir une expiration par inactivité (par exemple 15 à 30 minutes) et une durée de vie maximale. Les jetons JWT sans état posent le même problème : tant qu'ils n'expirent pas, ils restent valides, d'où des durées de vie courtes ou une liste de révocation.",
+      "difficulty": 2,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html"
+    },
+    {
+      "question": "Quelles propriétés doit avoir le lien de réinitialisation de mot de passe envoyé par e-mail ?",
+      "answer": "Un jeton aléatoire, à usage unique et de courte durée",
+      "wrong": [
+        "Un identifiant dérivé de l'adresse e-mail, facile à retrouver",
+        "Un lien valable jusqu'au prochain changement de mot de passe",
+        "Un jeton contenant l'ancien mot de passe haché"
+      ],
+      "explanation": "Le lien de réinitialisation est une clé temporaire vers le compte : quiconque le détient peut choisir un nouveau mot de passe. Il doit donc être **imprévisible** (généré par un générateur aléatoire cryptographique et assez long pour ne pas être deviné), **à usage unique** (invalidé dès qu'il sert, ou dès qu'une nouvelle demande est faite) et **de courte durée** (par exemple 15 à 60 minutes). Côté serveur, on stocke son empreinte plutôt que sa valeur. Un jeton dérivé de l'e-mail ou d'un compteur peut être reconstitué par un attaquant, et un lien durable reste exploitable s'il fuit (archives de messagerie, en-tête `Referer`).",
+      "difficulty": 2,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html"
+    },
+    {
+      "question": "Une application masque le bouton « Administration » aux utilisateurs ordinaires, sans autre contrôle. Pourquoi est-ce insuffisant ?",
+      "answer": "Le serveur doit vérifier les droits à chaque requête",
+      "wrong": [
+        "Un bouton masqué ralentit le chargement de la page",
+        "Il faut aussi cacher l'URL de la page d'administration",
+        "Les boutons masqués restent affichés par les anciens navigateurs"
+      ],
+      "explanation": "Masquer un élément d'interface relève de l'ergonomie, pas de la sécurité : l'utilisateur contrôle son navigateur. Il peut lire le code HTML, deviner ou retrouver l'adresse `/admin` ou l'appel d'API, et envoyer lui-même la requête. Si le serveur ne vérifie pas son autorisation, l'action réussit : c'est le contrôle d'accès défaillant (A01:2021), ici par « navigation forcée » (forced browsing). Règles : refuser par défaut ; vérifier l'authentification **et** l'autorisation à chaque requête, côté serveur, y compris pour les appels d'API et pour l'objet demandé ; appliquer le moindre privilège ; journaliser les refus. Cacher l'URL est de la sécurité par l'obscurité, jamais un contrôle.",
+      "difficulty": 2,
+      "source": "https://owasp.org/Top10/A01_2021-Broken_Access_Control/"
+    },
+    {
+      "question": "Pourquoi une empreinte `SHA-256` simple est-elle un mauvais choix pour stocker des mots de passe ?",
+      "answer": "Elle est très rapide à calculer, ce qui facilite les essais massifs",
+      "wrong": [
+        "Ses empreintes sont réversibles avec une clé secrète",
+        "Ses empreintes sont trop longues pour une base de données",
+        "Elle impose un sel identique pour tous les utilisateurs"
+      ],
+      "explanation": "SHA-256 est une excellente fonction de hachage pour vérifier l'intégrité de fichiers, où la vitesse est un atout. Pour des mots de passe, c'est un défaut : un attaquant qui a volé la base peut tester des milliards de candidats par seconde sur une carte graphique et retrouver vite tous les mots de passe courants. Les algorithmes dédiés (Argon2id, scrypt, bcrypt, PBKDF2) sont volontairement lents et, pour certains, gourmands en mémoire, avec un « facteur de coût » réglable que l'on augmente avec la puissance des machines. Un coût d'environ 100 ms par essai réduit fortement le rythme de l'attaquant. SHA-256 n'est ni réversible ni trop long : son problème est sa rapidité.",
+      "difficulty": 2,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    {
+      "question": "Que ne faut-il **jamais** écrire dans les journaux d'une application web ?",
+      "answer": "Les mots de passe, jetons de session et numéros de carte",
+      "wrong": [
+        "L'horodatage et le résultat de chaque requête reçue",
+        "Les codes de statut HTTP et les durées de réponse",
+        "La méthode HTTP et le chemin demandé, sans paramètres"
+      ],
+      "explanation": "Les journaux sont lus par beaucoup de monde (support, exploitation, outils d'analyse externes) et copiés dans des sauvegardes : tout secret qu'on y écrit se retrouve exposé. Il ne faut donc pas y consigner les mots de passe (même erronés), les jetons de session ou d'API, les clés, les numéros de carte bancaire et, plus largement, les données personnelles sensibles (principe de minimisation du RGPD). Si un champ doit apparaître, on le masque (`****`) ou on le tronque. Piège fréquent : journaliser le corps complet d'une requête de connexion, ou une URL contenant un jeton en paramètre. À l'inverse, on consigne bien l'horodatage, le résultat et le chemin de la requête.",
+      "difficulty": 2,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html"
+    },
+    {
+      "question": "Pourquoi un identifiant de session doit-il être long et produit par un générateur aléatoire cryptographique ?",
+      "answer": "Pour qu'un attaquant ne puisse ni le deviner ni le prédire",
+      "wrong": [
+        "Pour que l'utilisateur puisse le mémoriser facilement",
+        "Pour réduire la taille du cookie échangé à chaque requête",
+        "Pour accélérer la recherche de la session en base"
+      ],
+      "explanation": "L'identifiant de session est, de fait, la clé d'accès de l'utilisateur connecté : qui le connaît peut se faire passer pour lui. S'il est court, ou construit à partir d'un compteur, de l'heure ou d'un nombre pseudo-aléatoire prévisible, un attaquant peut en énumérer ou en déduire d'autres valides. L'OWASP demande au moins 64 bits d'entropie réelle (en pratique 128 bits ou plus, soit 16 octets aléatoires, ce que fournissent les frameworks) et un générateur cryptographiquement sûr (`secrets` en Python, `crypto.randomBytes` en Node.js). Il ne doit contenir aucune information sur l'utilisateur et ne jamais transiter dans l'URL.",
+      "difficulty": 2,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html"
+    },
+    {
+      "question": "Pourquoi préfère-t-on une **liste blanche** (allowlist) à une liste noire (blocklist) pour valider une entrée ?",
+      "answer": "On n'accepte que ce qui est prévu, au lieu de deviner les attaques",
+      "wrong": [
+        "Elle s'exécute plus vite qu'une expression régulière",
+        "Elle dispense d'encoder les données à l'affichage",
+        "Elle remplace les contrôles de droits d'accès"
+      ],
+      "explanation": "Une liste noire énumère ce qui est interdit (`<script>`, `DROP`, `../`) : il suffit alors à l'attaquant de trouver une variante non prévue (casse différente, double encodage, balise ou fonction alternative). Une liste blanche définit ce qui est autorisé : un code postal = 5 chiffres, un pays = valeur d'une liste fermée, une colonne de tri = un nom parmi trois. Tout le reste est refusé par défaut, y compris les formes d'attaque qu'on n'avait pas imaginées. Exemple : `^[0-9]{5}$` pour un code postal. La validation d'entrée n'est qu'une couche de défense : on y ajoute requêtes paramétrées et encodage de sortie, car certains champs (commentaires, noms avec apostrophe) doivent accepter des caractères délicats.",
+      "difficulty": 2,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html"
+    },
+    {
+      "question": "Un enregistrement DNS `CNAME` de `aide.exemple.fr` pointe vers un service tiers dont le compte a été supprimé. Quel risque cela crée-t-il ?",
+      "answer": "Un tiers peut reprendre cette cible et servir du contenu sous votre nom",
+      "wrong": [
+        "Le certificat du domaine principal est automatiquement révoqué",
+        "Toutes les requêtes DNS du domaine sont interrompues",
+        "Le CNAME est converti en enregistrement A par les résolveurs"
+      ],
+      "explanation": "Un CNAME « pendant » (dangling) désigne un nom que plus personne ne contrôle : stockage supprimé, site hébergé fermé, ancienne application cloud. Un attaquant peut créer un compte sur ce service, revendiquer le même nom de ressource et se retrouver à servir du contenu sur `aide.exemple.fr` : c'est la prise de contrôle de sous-domaine (subdomain takeover). Conséquences : hameçonnage sur un domaine de confiance, vol de cookies définis pour le domaine parent (`Domain=exemple.fr`), contournement de CSP ou de CORS qui font confiance aux sous-domaines. Protection : supprimer l'enregistrement DNS **avant ou en même temps** que la ressource, tenir un inventaire des sous-domaines et auditer régulièrement les enregistrements.",
+      "difficulty": 3
+    },
+    {
+      "question": "Deux requêtes simultanées utilisent un même bon de réduction à usage unique et toutes deux réussissent. Quelle faille est en cause ?",
+      "answer": "Une condition de concurrence (race condition)",
+      "wrong": [
+        "Une fixation de session (session fixation)",
+        "Une redirection ouverte (open redirect)",
+        "Une désérialisation non sécurisée"
+      ],
+      "explanation": "L'application fait deux étapes séparées : (1) vérifier que le bon est valable, (2) le marquer comme utilisé. Si deux requêtes arrivent presque en même temps, toutes deux passent l'étape 1 avant que l'une ait terminé l'étape 2 : c'est une condition de concurrence (race condition), plus précisément un TOCTOU (time-of-check to time-of-use). Elle touche aussi les retraits d'argent, les votes, les stocks. Protection : rendre l'opération **atomique**, par exemple avec une mise à jour conditionnelle en une seule instruction (`UPDATE bons SET utilise = 1 WHERE id = ? AND utilise = 0`, puis vérifier qu'une ligne a bien été modifiée), une transaction avec verrou ou une contrainte d'unicité en base.",
+      "difficulty": 3,
+      "source": "https://portswigger.net/web-security/race-conditions"
+    },
+    {
+      "question": "Qu'est-ce qu'un **ReDoS** (Regular expression Denial of Service) ?",
+      "answer": "Une regex dont le calcul devient exponentiel sur certaines entrées",
+      "wrong": [
+        "Une redirection ouverte utilisée pour saturer un serveur",
+        "Une saturation de la bande passante par des requêtes DNS",
+        "Un moteur de gabarits qui exécute du code utilisateur"
+      ],
+      "explanation": "Beaucoup de moteurs d'expressions régulières (JavaScript, Python, Java, PHP…) utilisent le retour arrière (backtracking) : face à une expression ambiguë comme `^(a+)+$`, ils explorent un nombre de chemins qui croît de façon exponentielle avec la longueur de l'entrée. Quelques dizaines de caractères bien choisis peuvent alors occuper un processeur pendant de longues secondes : quelques requêtes suffisent à bloquer le serveur, d'où le déni de service. Ce type de motif a provoqué en 2016 une panne de Stack Overflow et en 2019 une panne de Cloudflare. Protection : éviter les quantificateurs imbriqués, limiter la longueur des entrées, fixer un délai maximal, utiliser un moteur à temps linéaire (RE2).",
+      "difficulty": 3,
+      "source": "https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS"
+    },
+    {
+      "question": "Pourquoi est-il dangereux de construire un **gabarit** (template) à partir d'une saisie utilisateur côté serveur ?",
+      "answer": "Le moteur peut exécuter du code fourni par l'utilisateur",
+      "wrong": [
+        "Le gabarit devient trop lourd à compiler pour le serveur",
+        "Le navigateur exécute le gabarit avec les droits du visiteur",
+        "Les variables du gabarit sont envoyées en clair au client"
+      ],
+      "explanation": "Les moteurs de gabarits (Jinja2, Twig, Freemarker, Thymeleaf…) évaluent côté serveur des expressions comme `{{ 7 * 7 }}`, qui affiche 49. Il faut distinguer deux usages : passer une saisie comme **donnée** à un gabarit fixe (sûr : la valeur est simplement affichée, après encodage) ou **concaténer** la saisie dans le texte du gabarit (dangereux). Dans le second cas, l'utilisateur écrit lui-même des expressions interprétées par le moteur, ce qui peut mener à la lecture de variables internes, de fichiers, voire à l'exécution de commandes : c'est l'injection de gabarit côté serveur (SSTI). Protection : ne jamais construire un gabarit depuis une entrée, préférer un moteur « sans logique » ou un mode bac à sable, et limiter les droits du processus.",
+      "difficulty": 3,
+      "source": "https://portswigger.net/web-security/server-side-template-injection"
+    },
+    {
+      "question": "Pourquoi une API authentifiée par un en-tête `Authorization: Bearer …` est-elle peu exposée au CSRF ?",
+      "answer": "Le navigateur n'ajoute pas cet en-tête automatiquement",
+      "wrong": [
+        "Le jeton Bearer est chiffré, donc illisible par un autre site",
+        "L'en-tête `Authorization` est protégé par `SameSite`",
+        "Chaque jeton Bearer ne peut servir qu'une seule fois"
+      ],
+      "explanation": "Le CSRF fonctionne parce que le navigateur joint **automatiquement** les cookies à toute requête vers le site, même lancée depuis une autre page. Un en-tête `Authorization: Bearer …` n'a pas ce comportement : le JavaScript de l'application doit l'ajouter explicitement, et un site tiers ne peut pas le faire (la Same-Origin Policy l'empêche de lire le jeton). Une requête forgée arrive donc sans identifiant et est refusée. Revers : pour que le JavaScript puisse l'utiliser, on stocke souvent le jeton dans `localStorage`, où un XSS peut le lire, alors qu'un cookie `HttpOnly` y résiste. Aucun stockage n'est parfait : dans les deux cas, il faut prévenir le XSS (encodage de sortie, CSP). `SameSite` ne concerne que les cookies.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle vulnérabilité arrive en 1re place de l'**OWASP API Security Top 10** dans l'édition 2023 ?",
+      "answer": "API1:2023 – Broken Object Level Authorization",
+      "wrong": [
+        "API2:2023 – Broken Authentication",
+        "API4:2023 – Unrestricted Resource Consumption",
+        "API7:2023 – Server Side Request Forgery"
+      ],
+      "explanation": "Une API expose des identifiants d'objets (`/api/commandes/1043`). La **BOLA** (Broken Object Level Authorization) apparaît quand le serveur vérifie que l'appelant est authentifié, mais pas qu'il a le droit d'accéder à *cet* objet-là : en changeant l'identifiant, on lit ou modifie les données d'un autre utilisateur. C'est l'équivalent, pour les API, de l'IDOR. Elle domine le classement car elle est très répandue et simple à exploiter. Protection : à chaque accès à un objet, vérifier côté serveur son appartenance ou les droits de l'utilisateur (`WHERE id = ? AND proprietaire_id = <utilisateur de la session>`). Des identifiants imprévisibles (UUID) ne sont qu'un complément, pas un contrôle d'accès.",
+      "difficulty": 3,
+      "source": "https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/"
+    },
+    {
+      "question": "Pourquoi un verrouillage **définitif** d'un compte après 5 mots de passe erronés peut-il se retourner contre le site ?",
+      "answer": "Un attaquant peut bloquer volontairement les comptes d'autrui",
+      "wrong": [
+        "Il permet de lire les mots de passe dans les journaux",
+        "Il oblige à stocker les mots de passe en clair",
+        "Il désactive l'authentification multifacteur du compte"
+      ],
+      "explanation": "Verrouiller un compte freine la force brute, mais un verrouillage permanent et prévisible crée un déni de service ciblé : il suffit à un attaquant (ou à un concurrent) de saisir volontairement de mauvais mots de passe pour interdire l'accès à des centaines de comptes légitimes, et le support est submergé. Approches plus fines : verrouillage **temporaire** de quelques minutes, délais qui augmentent à chaque échec, limitation par couple compte/adresse IP, CAPTCHA après quelques échecs, alerte envoyée à l'utilisateur et, surtout, authentification multifacteur. Il s'agit de trouver un équilibre entre protection et disponibilité. Le verrouillage n'a aucun effet sur le mode de stockage des mots de passe ni sur la MFA.",
+      "difficulty": 3,
+      "source": "https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html"
     }
   ]
 }
