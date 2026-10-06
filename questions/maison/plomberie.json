@@ -850,6 +850,278 @@
       ],
       "explanation": "Dans les maisons construites avant la fin des années 1990, les descentes d'eaux usées sont parfois en **fibrociment**, un mélange de ciment et de fibres. Avant l'interdiction de l'amiante en France, en 1997, ces fibres étaient souvent de l'amiante. Découper, poncer ou casser ce matériau libère des fibres invisibles qui se logent dans les poumons et peuvent provoquer des maladies graves des années plus tard. On fait donc vérifier le matériau avant d'y toucher. S'il contient de l'amiante, on confie de préférence la dépose à une entreprise qualifiée, et les déchets suivent une filière spéciale. Piège : la disqueuse est le pire outil, car c'est elle qui produit le plus de poussière.",
       "difficulty": 2
+    },
+    {
+      "question": "Le niveau d'eau du réservoir des WC est bien sous le trop-plein, pourtant un filet d'eau coule en permanence dans la cuvette. Que faut-il vérifier en priorité ?",
+      "answer": "Le joint du clapet du mécanisme de chasse",
+      "wrong": [
+        "Le joint de la pipe sous la cuvette",
+        "Le réglage du robinet d'arrêt du WC",
+        "Le siphon intégré à la cuvette"
+      ],
+      "explanation": "Un réservoir de WC contient deux organes : le **robinet flotteur**, qui le remplit, et le **mécanisme de chasse**, qui le vide. Au repos, un clapet muni d'un joint ferme le fond du réservoir. Si ce joint est usé, entartré ou déformé, l'eau file en continu vers la cuvette et le robinet flotteur compense sans arrêt. Comme le niveau reste sous le trop-plein, la fuite ne peut venir que du clapet. Exemple : un filet d'eau, même fin, coule jour et nuit et peut représenter plusieurs mètres cubes facturés par mois. Souvent, nettoyer ou changer le joint suffit. Piège : si l'eau débordait par le trop-plein, c'est le robinet flotteur qu'il faudrait régler.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Chasse_d%27eau"
+    },
+    {
+      "question": "Dans le réservoir d'une chasse d'eau, à quoi sert le **robinet flotteur** ?",
+      "answer": "À remplir le réservoir puis couper l'arrivée",
+      "wrong": [
+        "À vider le réservoir dans la cuvette",
+        "À choisir entre petite et grande chasse",
+        "À évacuer l'air contenu dans le réservoir"
+      ],
+      "explanation": "Après chaque chasse, le réservoir doit se remplir à nouveau, tout seul. C'est le rôle du **robinet flotteur** : un flotteur monte avec le niveau de l'eau et, arrivé à la hauteur réglée, ferme le robinet d'arrivée. Exemple : si le flotteur est réglé trop haut, l'eau atteint le tube de trop-plein et s'écoule en continu dans la cuvette ; on abaisse alors le flotteur avec sa vis ou sa crémaillère. Piège : vider le réservoir et choisir la petite ou la grande chasse, c'est le travail du **mécanisme de chasse**, l'autre pièce du réservoir.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quoi sert la **double touche** d'une chasse d'eau moderne ?",
+      "answer": "À choisir entre une petite et une grande chasse",
+      "wrong": [
+        "À rincer la cuvette avec de l'eau chaude",
+        "À lancer la chasse puis le remplissage",
+        "À vider le réservoir deux fois plus vite"
+      ],
+      "explanation": "Les WC représentent un des plus gros postes de consommation d'eau d'un logement. La double touche libère soit une partie du réservoir (souvent 3 litres), soit sa totalité (souvent 6 litres). La petite chasse suffit pour les urines, la grande sert aux matières. Mini-calcul : 4 personnes qui utilisent 4 fois par jour la petite chasse au lieu de la grande économisent 16 × 3 = 48 litres par jour, soit environ 17 m³ par an. Piège : la chasse utilise toujours de l'eau froide, et le remplissage se fait automatiquement grâce au robinet flotteur.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle est la différence entre un **mélangeur** et un **mitigeur** ?",
+      "answer": "Le mitigeur règle débit et température d'une seule commande",
+      "wrong": [
+        "Le mélangeur ne fonctionne qu'à l'eau froide",
+        "Le mitigeur a besoin d'une alimentation électrique",
+        "Le mélangeur se pose seulement sur une baignoire"
+      ],
+      "explanation": "Les deux mêlent eau chaude et eau froide, mais pas de la même façon. Le **mélangeur** a deux robinets, un pour le chaud et un pour le froid : on dose chacun à la main. Le **mitigeur** a une seule commande : avec un levier, on le lève pour le débit et on le tourne à gauche ou à droite pour la température ; une cartouche à disques en céramique fait le mélange à l'intérieur. Exemple : avec un mitigeur, on retrouve sa température d'un geste, alors qu'avec un mélangeur il faut tâtonner à chaque fois. Piège : un mitigeur classique est purement mécanique, il ne demande aucune électricité.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Mitigeur"
+    },
+    {
+      "question": "Sur un mitigeur **thermostatique** de douche, à quelle température se situe habituellement la butée de sécurité qu'il faut enfoncer pour aller au-delà ?",
+      "answer": "38 °C",
+      "wrong": [
+        "25 °C",
+        "50 °C",
+        "65 °C"
+      ],
+      "explanation": "Un mitigeur thermostatique garde la température choisie même quand la pression ou la température de l'arrivée varie. Un élément sensible à la chaleur, dans sa cartouche, corrige automatiquement la proportion d'eau chaude et d'eau froide. Sa poignée s'arrête par défaut à **38 °C**, une température agréable pour la douche ; pour aller au-delà, il faut appuyer sur un bouton. Exemple : quelqu'un tire la chasse pendant ta douche, l'eau froide perd de la pression ; avec un mitigeur classique, l'eau devient brûlante, avec un thermostatique elle reste stable. Piège : 50 °C est la limite réglementaire de l'eau chaude aux points de puisage des salles de bains, pas la butée.",
+      "difficulty": 2
+    },
+    {
+      "question": "Un mitigeur à levier goutte par le bec même fermé. Quelle pièce change-t-on le plus souvent ?",
+      "answer": "La cartouche céramique",
+      "wrong": [
+        "Le mousseur du bec",
+        "Le flexible d'alimentation",
+        "Le joint torique du pied"
+      ],
+      "explanation": "Dans un mitigeur à levier, tout se joue dans la **cartouche** : deux disques en céramique, un fixe et un mobile, glissent l'un sur l'autre pour ouvrir ou fermer le passage. Un grain de sable ou du calcaire peut les rayer, et l'eau passe alors même fermé. On coupe l'eau, on retire le cache et la vis du levier, on dévisse l'écrou et on emporte l'ancienne cartouche au magasin pour trouver le même modèle. Exemple : une goutte par seconde représente environ 4 litres par jour, soit à peu près 1,5 m³ par an. Piège : le joint torique du pied provoque plutôt une fuite à la base du bec quand on le fait pivoter.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sur un vieux robinet à tête, l'eau suinte **autour de la tige** quand on l'ouvre, mais le robinet ne goutte pas une fois fermé. Quel élément est en cause ?",
+      "answer": "Le presse-étoupe",
+      "wrong": [
+        "Le joint de clapet",
+        "Le siège du robinet",
+        "Le mousseur du bec"
+      ],
+      "explanation": "Le robinet à tête classique a deux étanchéités distinctes. En bas, un **joint de clapet** vient s'écraser sur le **siège** pour couper l'eau : s'il est usé, le robinet goutte au bec une fois fermé. Autour de la tige qui tourne, le **presse-étoupe** (garniture ou joint torique) empêche l'eau de remonter quand le robinet est ouvert. Exemple : ici, le robinet ferme bien mais fuit autour de la tige en position ouverte : on resserre légèrement l'écrou de presse-étoupe ou on refait la garniture, eau coupée. Piège : le joint de clapet ne travaille qu'à la fermeture, il n'explique pas une fuite autour de la tige.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans un chauffe-eau électrique vertical, où l'eau chaude destinée aux robinets est-elle puisée ?",
+      "answer": "En partie haute du ballon",
+      "wrong": [
+        "En partie basse du ballon",
+        "Au milieu, au niveau du thermostat",
+        "Directement autour de la résistance"
+      ],
+      "explanation": "Dans un ballon, l'eau se range naturellement par couches : c'est la **stratification**. L'eau chaude, plus légère, monte ; l'eau froide, plus lourde, reste en bas. On fait donc entrer l'eau froide en **bas**, souvent par un diffuseur pour ne pas tout mélanger, et on puise l'eau chaude en **haut**, parfois par un tube interne si les deux raccords sortent sous l'appareil. Exemple : pendant une longue douche, l'eau froide qui entre pousse l'eau chaude vers le haut et la zone froide monte peu à peu ; quand elle atteint la sortie, l'eau devient tiède d'un coup. Piège : la partie basse, c'est l'arrivée d'eau froide.",
+      "difficulty": 2
+    },
+    {
+      "question": "À quelle pression la soupape d'un **groupe de sécurité** de chauffe-eau domestique est-elle habituellement tarée ?",
+      "answer": "7 bar",
+      "wrong": [
+        "1 bar",
+        "3 bar",
+        "16 bar"
+      ],
+      "explanation": "Le **groupe de sécurité** se monte sur l'arrivée d'eau froide d'un chauffe-eau à accumulation. Il réunit un robinet d'arrêt, un clapet anti-retour, une **soupape** qui s'ouvre à **7 bar** et un orifice de vidange. La soupape évite qu'en chauffant, l'eau qui se dilate fasse monter la pression jusqu'à déformer la cuve. Exemple : si le réseau délivre déjà une pression élevée (au-delà d'environ 4 à 5 bar), la soupape s'ouvre trop souvent ; on pose alors un réducteur de pression en amont. Piège : 3 bar est une pression de confort pour l'installation, pas le seuil de la soupape.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Groupe_de_s%C3%A9curit%C3%A9"
+    },
+    {
+      "question": "Pendant la chauffe, quelques gouttes d'eau s'écoulent du groupe de sécurité d'un cumulus. Que faut-il en penser ?",
+      "answer": "C'est normal : l'eau chauffée se dilate",
+      "wrong": [
+        "La cuve est percée et doit être changée",
+        "La résistance est entartrée et fuit",
+        "Le thermostat est réglé trop bas"
+      ],
+      "explanation": "Le cumulus est un chauffe-eau électrique à réserve d'eau. En chauffant, l'eau prend du volume : environ 1,7 % entre l'eau froide du réseau et 60 °C. Comme le clapet anti-retour empêche cette eau de repartir vers le réseau, la soupape du groupe de sécurité laisse s'échapper le surplus. Exemple : pour un ballon de 200 litres, cela fait environ 3 litres évacués à chaque chauffe, d'où l'écoulement vers un siphon avec entonnoir. Piège : une cuve percée fuirait en permanence par le corps du ballon. En revanche, si le groupe coule sans arrêt, même hors chauffe, il faut vérifier la pression ou le groupe lui-même.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Groupe_de_s%C3%A9curit%C3%A9"
+    },
+    {
+      "question": "Pourquoi ne doit-on jamais placer de robinet d'arrêt **entre** le groupe de sécurité et le chauffe-eau ?",
+      "answer": "Fermé, il isolerait le ballon de sa soupape",
+      "wrong": [
+        "Il ferait chuter la pression d'eau chaude",
+        "Il bloquerait la vidange du réseau public",
+        "Il créerait un coup de bélier à chaque chauffe"
+      ],
+      "explanation": "La soupape du groupe de sécurité est la protection ultime du ballon contre la surpression. Elle ne fonctionne que si rien ne la sépare de la cuve. Le groupe intègre déjà son propre robinet d'arrêt, placé en amont de la soupape, pour couper l'eau sans couper cette protection. Exemple : si quelqu'un ferme par erreur un robinet posé entre les deux, puis que la résistance chauffe, la pression monte sans issue jusqu'à déformer ou rompre la cuve, avec de l'eau très chaude. Piège : le problème n'est pas le confort ou la pression d'eau chaude, c'est un risque d'accident grave.",
+      "difficulty": 3
+    },
+    {
+      "question": "Avant de vidanger ou de démonter un chauffe-eau électrique, quelle est la **toute première** opération ?",
+      "answer": "Couper son alimentation au tableau électrique",
+      "wrong": [
+        "Ouvrir la soupape du groupe de sécurité",
+        "Dévisser le capot de la résistance",
+        "Fermer tous les robinets d'eau chaude"
+      ],
+      "explanation": "Un chauffe-eau électrique combine eau et électricité : on supprime d'abord le danger électrique. Couper son disjoncteur au tableau évite l'électrocution en ouvrant le capot. Cela évite aussi que la **résistance** (l'élément chauffant) se mette en marche hors de l'eau : elle surchauffe alors et peut griller en quelques minutes. Ensuite seulement : fermer l'arrivée d'eau froide, ouvrir un robinet d'eau chaude et vidanger par le groupe de sécurité. Exemple : une résistance de 2 000 à 3 000 W qui chauffe à sec rougit et se détruit vite. Piège : ouvrir la soupape d'abord, courant en marche, revient à vider le ballon pendant que la résistance peut chauffer.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pendant la vidange d'un chauffe-eau par le groupe de sécurité, pourquoi ouvre-t-on un robinet d'eau chaude de la maison ?",
+      "answer": "Pour faire entrer l'air dans le ballon",
+      "wrong": [
+        "Pour rincer le circuit d'eau chaude",
+        "Pour faire baisser la température de la cuve",
+        "Pour vérifier que le courant est coupé"
+      ],
+      "explanation": "Un ballon est une cuve fermée : pour que l'eau sorte par le bas, il faut que de l'air puisse entrer par le haut. En ouvrant un robinet d'eau chaude, on laisse l'air remonter par le tuyau d'eau chaude jusqu'à la cuve. Sans cela, l'eau sort au goutte-à-goutte puis s'arrête, retenue par le vide qui se forme. Exemple : c'est comme une paille remplie de liquide qu'on bouche du doigt : rien ne coule tant qu'on n'enlève pas le doigt. La vidange complète d'un grand ballon reste lente, il faut de la patience. Piège : ouvrir un robinet ne dit rien sur l'électricité, qu'on coupe au tableau avant tout.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel est le rôle de l'**anode en magnésium** placée dans la cuve d'un chauffe-eau électrique ?",
+      "answer": "Se corroder à la place de la cuve en acier",
+      "wrong": [
+        "Chauffer l'eau en appoint de la résistance",
+        "Mesurer la température pour le thermostat",
+        "Capter le calcaire pour adoucir l'eau"
+      ],
+      "explanation": "La plupart des cuves sont en acier recouvert d'émail, et l'émail a toujours de minuscules défauts où l'acier pourrait rouiller. L'**anode sacrificielle** en magnésium est une tige vissée dans la cuve. Le magnésium s'oxyde plus facilement que l'acier : c'est donc lui qui se dissout peu à peu, et l'acier est protégé. Exemple : une anode neuve est une tige épaisse ; usée, il n'en reste qu'un fil, et la cuve commence alors à se corroder jusqu'à se percer. On la contrôle régulièrement, plus souvent si l'eau est agressive. Certains ballons utilisent une anode en titane à courant imposé, qui ne s'use pas. Piège : l'anode ne retient pas le calcaire.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Anode_sacrificielle"
+    },
+    {
+      "question": "Les **légionelles**, bactéries responsables de la légionellose, prolifèrent surtout dans une eau à quelle température ?",
+      "answer": "Entre environ 25 et 45 °C",
+      "wrong": [
+        "Entre environ 0 et 10 °C",
+        "Entre environ 60 et 80 °C",
+        "Entre environ 85 et 95 °C"
+      ],
+      "explanation": "La **légionellose** est une infection pulmonaire. On l'attrape en respirant de fines gouttelettes d'eau contaminée, sous la douche par exemple, pas en buvant l'eau. Les légionelles se multiplient surtout dans l'eau **tiède et stagnante**, entre environ 25 et 45 °C ; au-delà de 50 °C elles ne se développent plus, et vers 60 °C elles sont rapidement détruites. Exemple : un ballon réglé à 40 °C pour économiser l'énergie leur offre des conditions idéales ; on recommande donc une eau d'au moins 55 °C en sortie de ballon. Piège : l'eau très chaude est justement l'arme contre ces bactéries.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/L%C3%A9gionellose"
+    },
+    {
+      "question": "Dans les pièces destinées à la toilette, quelle température maximale de l'eau chaude la réglementation française fixe-t-elle aux points de puisage ?",
+      "answer": "50 °C",
+      "wrong": [
+        "38 °C",
+        "60 °C",
+        "70 °C"
+      ],
+      "explanation": "Deux risques s'opposent : les légionelles, qui demandent de l'eau chaude bien chaude dans le ballon, et les **brûlures**, qui demandent une eau moins chaude au robinet. Un arrêté de 2005 limite donc l'eau chaude à **50 °C** aux points de puisage des salles de bains et salles d'eau. Exemple : à 60 °C, quelques secondes suffisent pour une brûlure grave, surtout chez un enfant ; à 50 °C, il en faut plusieurs minutes. La solution : garder le ballon chaud et abaisser la température au robinet avec un mitigeur thermostatique ou un limiteur. Piège : 38 °C est la butée de confort des mitigeurs thermostatiques, pas la limite réglementaire.",
+      "difficulty": 3
+    },
+    {
+      "question": "Où un **chauffe-eau thermodynamique** puise-t-il l'essentiel de l'énergie qui chauffe l'eau ?",
+      "answer": "Dans la chaleur de l'air, via une pompe à chaleur",
+      "wrong": [
+        "Dans du gaz brûlé par un brûleur",
+        "Dans des panneaux photovoltaïques",
+        "Uniquement dans sa résistance électrique"
+      ],
+      "explanation": "Le chauffe-eau thermodynamique est un ballon d'eau chaude équipé d'une **pompe à chaleur**. Un fluide frigorigène capte les calories de l'air (air ambiant d'un garage, d'une cave ou air extérieur), un compresseur les concentre et les transfère à l'eau. Comme dans un réfrigérateur, mais à l'envers. Exemple : pour 1 kWh d'électricité consommé, il fournit souvent 2 à 3 kWh de chaleur, d'où l'économie par rapport à un cumulus classique ; en contrepartie, il refroidit la pièce où il puise l'air. Il garde une résistance d'appoint pour les périodes froides. Piège : chauffer uniquement par résistance, c'est le cumulus électrique classique.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Chauffe-eau_thermodynamique"
+    },
+    {
+      "question": "Quel équipement, monté sur l'arrivée d'eau froide d'un chauffe-eau, absorbe la dilatation de l'eau et évite que le groupe de sécurité goutte à chaque chauffe ?",
+      "answer": "Un vase d'expansion sanitaire",
+      "wrong": [
+        "Un disconnecteur",
+        "Un purgeur automatique",
+        "Un filtre à sédiments"
+      ],
+      "explanation": "Quand l'eau chauffe dans le ballon, elle gonfle et doit aller quelque part. Le **vase d'expansion** est une petite cuve divisée par une membrane : d'un côté de l'air sous pression, de l'autre l'eau. L'eau en trop vient comprimer le coussin d'air au lieu de partir à l'égout. Il doit être de type **sanitaire**, avec une membrane compatible avec l'eau potable, différent d'un vase de chauffage. Exemple : un ballon de 200 litres rejette environ 3 litres par chauffe, soit environ 1 m³ par an que le vase évite de gaspiller. Piège : le disconnecteur protège le réseau public contre les retours d'eau, il n'absorbe aucune dilatation.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Groupe_de_s%C3%A9curit%C3%A9"
+    },
+    {
+      "question": "Un tuyau d'eau a gelé dans un garage. Quelle méthode est adaptée pour le dégeler ?",
+      "answer": "Le réchauffer doucement au sèche-cheveux",
+      "wrong": [
+        "Le chauffer à la flamme d'un chalumeau",
+        "Taper dessus pour briser la glace",
+        "Augmenter la pression avec un surpresseur"
+      ],
+      "explanation": "Le gel menace surtout les tuyaux dans les garages, vides sanitaires et murs extérieurs. En gelant, l'eau augmente de volume d'environ 9 % : la glace peut fendre un tuyau ou ouvrir un raccord, et la fuite n'apparaît qu'au dégel. On réchauffe donc **doucement** (sèche-cheveux, linges chauds), avec un robinet ouvert en aval pour que l'eau puisse s'écouler, en commençant du côté du robinet. Exemple : 1 litre d'eau donne environ 1,09 litre de glace, assez pour faire éclater un tube. Piège : la flamme d'un chalumeau risque d'abîmer le tuyau, de faire bouillir l'eau piégée et de mettre le feu à l'isolant.",
+      "difficulty": 1
+    },
+    {
+      "question": "À l'approche de l'hiver, que faut-il faire pour protéger un robinet extérieur classique du gel ?",
+      "answer": "Couper l'eau en amont, à l'intérieur, puis le vidanger",
+      "wrong": [
+        "Le fermer à fond et le laisser ainsi tout l'hiver",
+        "Le laisser couler en continu à petit filet",
+        "L'entourer de ruban téflon contre le froid"
+      ],
+      "explanation": "Un robinet de jardin est alimenté par un tuyau qui traverse le mur : la partie située dehors gèle dès les nuits froides. Fermer le robinet extérieur ne suffit pas, car l'eau reste dans le tuyau, juste derrière. On ferme donc la vanne intérieure (idéalement un robinet avec purge), puis on ouvre le robinet extérieur pour vider le tronçon et on le laisse ouvert. Exemple : une seule nuit à -5 °C peut suffire à fendre un tuyau plein d'eau. Il existe aussi des robinets **incongelables**, dont la fermeture se fait loin à l'intérieur du mur. Piège : laisser couler un filet gaspille de l'eau, et le téflon n'isole pas du froid.",
+      "difficulty": 1
+    },
+    {
+      "question": "Après une facture d'eau anormalement élevée, une fuite est réparée. Dans quel cas **ne** peut-on **pas** demander le plafonnement de la facture prévu par la loi « Warsmann » ?",
+      "answer": "Une chasse d'eau qui fuyait dans la cuvette",
+      "wrong": [
+        "Une canalisation enterrée après le compteur",
+        "Un tuyau percé dans le vide sanitaire",
+        "Une conduite fuyarde encastrée dans une dalle"
+      ],
+      "explanation": "Depuis la loi de 2011 dite « Warsmann », l'occupant d'un logement peut faire plafonner sa facture en cas de fuite. Il faut que la consommation dépasse le double de la moyenne habituelle et que la fuite touche une **canalisation** après compteur. Il présente au service des eaux, dans le mois, une attestation de réparation par un plombier : il ne paie alors pas plus du double de sa consommation moyenne. Exemple : 120 m³ par an en moyenne, 500 m³ facturés à cause d'un tuyau enterré percé : la facture est ramenée à 240 m³. Piège : les fuites d'**appareils** (chasse d'eau, robinetterie, chauffe-eau, électroménager) sont exclues.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pour refaire le joint entre une baignoire et le carrelage, quel produit utilise-t-on ?",
+      "answer": "Un mastic silicone sanitaire",
+      "wrong": [
+        "Une colle PVC d'évacuation",
+        "Un ruban téflon large",
+        "Une pâte à joint pour filasse"
+      ],
+      "explanation": "Entre une baignoire et le mur, il faut un joint étanche qui supporte de légers mouvements. Le **mastic silicone** reste souple après séchage : il suit la baignoire, qui s'enfonce un peu quand elle est pleine. La version **sanitaire** contient un fongicide qui freine les moisissures noires. On retire l'ancien joint, on nettoie, on dégraisse, on sèche, puis on applique et on lisse. Exemple : on remplit souvent la baignoire d'eau avant de faire le joint, pour qu'il soit posé dans la position la plus basse et ne se déchire pas ensuite. Piège : la colle PVC sert à assembler des tubes et le téflon à étancher des filetages.",
+      "difficulty": 1
+    },
+    {
+      "question": "Ton chauffe-eau électrique fuit directement par sa **cuve** (le corps du ballon), et non par un raccord. Que faut-il retenir ?",
+      "answer": "Une cuve percée ne se répare pas : on remplace le ballon",
+      "wrong": [
+        "Un mastic silicone sur le trou tiendra durablement",
+        "Il suffit de changer le groupe de sécurité",
+        "Il suffit de baisser la température du thermostat"
+      ],
+      "explanation": "Une cuve qui fuit est généralement rongée de l'intérieur par la corrosion, souvent parce que l'anode était usée. Elle contient de l'eau chaude sous plusieurs bars de pression : aucun mastic ne tiendra. On coupe tout de suite l'électricité au tableau et l'arrivée d'eau froide, puis on vidange pour limiter les dégâts. Le remplacement est un travail pour lequel on fait souvent appel à un professionnel. Exemple : un ballon de 200 litres plein pèse plus de 250 kg, et sa fixation au mur doit être adaptée. Piège : une fuite au groupe de sécurité ou à un raccord se répare, une fuite de cuve non.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel est l'avantage d'une distribution d'eau **en pieuvre**, avec un collecteur d'où part un tube par point d'eau ?",
+      "answer": "Chaque point d'eau a son tube, sans raccord caché",
+      "wrong": [
+        "Tous les points d'eau partagent un seul tube",
+        "Elle se passe de robinet d'arrêt général",
+        "Elle évite toute pose de réducteur de pression"
+      ],
+      "explanation": "Il existe deux grandes façons de distribuer l'eau dans un logement. En **série**, un tuyau principal court d'un appareil à l'autre, avec des tés à chaque dérivation. En **pieuvre**, un **collecteur** (ou nourrice) placé près de l'arrivée distribue un tube continu, souvent en PER ou multicouche, vers chaque point d'eau. Avantages : pas de raccord enfermé dans les murs, là où naissent souvent les fuites, et moins de perturbation quand deux robinets coulent à la fois. Exemple : avec une vanne par circuit au collecteur, on change le robinet de la cuisine sans priver d'eau la salle de bains. Piège : le robinet d'arrêt général reste indispensable.",
+      "difficulty": 2
     }
   ]
 }
