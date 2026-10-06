@@ -4,5 +4,966 @@
   "icon": "📜",
   "description": "Grandes attaques de l'histoire, CVE et CVSS, OWASP, MITRE ATT&CK, ANSSI, métiers, CTF et vocabulaire du milieu.",
   "order": 9,
-  "questions": []
+  "questions": [
+    {
+      "question": "Quel malware de 1989, envoyé sur disquette à des abonnés dont des participants à une conférence de l'OMS sur le sida, est considéré comme le **premier rançongiciel** documenté ?",
+      "answer": "Le cheval de Troie AIDS de Joseph Popp",
+      "wrong": [
+        "Le virus de boot Brain des frères Alvi",
+        "Le ver Morris de Robert Tappan Morris",
+        "Le virus Michelangelo, actif chaque 6 mars"
+      ],
+      "explanation": "Un **rançongiciel** rend des données inaccessibles puis réclame de l'argent. Le **cheval de Troie AIDS** (1989) en est le premier exemple documenté : le biologiste Joseph Popp a fait envoyer par courrier des disquettes « AIDS Information Introductory Diskette », notamment à des participants à une conférence de l'OMS. Après un certain nombre de démarrages, le programme masquait des données et exigeait 189 dollars pour une adresse postale au Panama, au nom d'une société fictive (PC Cyborg). Popp a été arrêté à Amsterdam, détenu à Londres, puis déclaré mentalement inapte à être jugé. Brain (1986) est un virus de disquette et Morris (1988) un ver : aucun ne réclamait de rançon. Protection : ne lancer aucun support reçu d'une source inconnue, garder des sauvegardes hors ligne.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/AIDS_(Trojan_horse)"
+    },
+    {
+      "question": "Le **ver Morris** (2 novembre 1988) a saturé des milliers de machines, alors que son auteur affirmait ne pas vouloir de dégâts. Quelle erreur de conception a aggravé sa propagation ?",
+      "answer": "Il se recopiait parfois même sur une machine déjà infectée",
+      "wrong": [
+        "Il effaçait le disque dur après chaque infection",
+        "Il chiffrait les fichiers puis réclamait une rançon",
+        "Il se réinstallait toutes les heures sur le même poste"
+      ],
+      "explanation": "Un **ver** est un programme qui se propage seul de machine en machine. Pour ne pas être arrêté par une simple réponse « déjà infecté », Robert Tappan Morris a fait en sorte qu'il se copie malgré tout environ une fois sur sept. Des machines ont donc hébergé de nombreuses copies, chacune consommant du processeur : elles ont ralenti puis planté. Le ver n'effaçait rien ; c'est sa **réplication incontrôlée** qui a causé le déni de service. Il exploitait des failles de services Unix courants et des mots de passe faibles. Morris a été le premier condamné aux États-Unis au titre du *Computer Fraud and Abuse Act* (3 ans de probation, 400 heures d'intérêt général). Protection : corriger les services exposés, désactiver ceux qui ne servent pas, imposer des mots de passe robustes.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Ver_Morris"
+    },
+    {
+      "question": "En mars 1999, le virus de macro **Melissa** a saturé des messageries du monde entier. Quelle peine son auteur, David L. Smith, a-t-il reçue en 2002 ?",
+      "answer": "Vingt mois de prison fédérale et 5 000 $ d'amende",
+      "wrong": [
+        "Dix ans de prison ferme et cinq millions de dollars",
+        "Un simple avertissement, faute de loi applicable",
+        "Cinq ans de probation sans aucune incarcération"
+      ],
+      "explanation": "**Melissa** est un virus de macro : un programme caché dans un document Word qui, une fois le document ouvert, s'envoyait par courriel aux contacts de la victime. Il apparaît le 26 mars 1999. Son auteur a été identifié en quelques jours : des informations d'identification laissées dans le document, puis les journaux d'un fournisseur d'accès, ont mené à David L. Smith, arrêté le 1er avril 1999. En 2002, il a été condamné à 20 mois de prison fédérale, 3 ans de liberté surveillée, 5 000 dollars d'amende et 100 heures d'intérêt général, sa coopération avec les enquêteurs ayant réduit la peine. Protection : les macros Office sont désactivées par défaut dans les versions récentes ; ne les active jamais sur un document inattendu, même venu d'un contact.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Melissa_(computer_virus)"
+    },
+    {
+      "question": "En 2000, les poursuites contre le principal suspect du ver **ILOVEYOU**, un étudiant philippin, ont été abandonnées. Quelle raison est avancée ?",
+      "answer": "Aucune loi ne couvrait ces faits et la nouvelle ne rétroagissait pas",
+      "wrong": [
+        "Le suspect, mineur, bénéficiait d'une immunité pénale",
+        "Les victimes ont retiré leurs plaintes contre un dédommagement",
+        "Le suspect a été jugé puis acquitté aux États-Unis"
+      ],
+      "explanation": "Le 4 mai 2000, **ILOVEYOU**, un ver de messagerie (programme qui s'envoie seul aux contacts de la victime), se répand depuis Manille. Le principal suspect, Onel de Guzman, est identifié, mais les Philippines n'avaient alors aucune loi visant précisément le piratage : les charges retenues sont abandonnées. Une loi sur le commerce électronique, signée en juin 2000, ne pouvait pas s'appliquer à des faits antérieurs, car en droit pénal on ne punit pas un acte qui n'était pas une infraction au moment où il a été commis (**non-rétroactivité**). L'épisode a accéléré l'adoption de lois sur la cybercriminalité. Protection : afficher les extensions de fichiers pour repérer un piège comme `.txt.vbs` et n'ouvrir aucune pièce jointe inattendue, même d'un contact.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/ILOVEYOU"
+    },
+    {
+      "question": "Découvert en juillet 2001 par deux chercheurs de la société eEye, le ver **Code Red** doit son nom à quoi ?",
+      "answer": "Une boisson, Mountain Dew Code Red, que buvaient les chercheurs",
+      "wrong": [
+        "Une alerte « code rouge » lancée par le Pentagone",
+        "Un message « code rouge » affiché sur les sites infectés",
+        "Le nom de code du correctif publié par Microsoft"
+      ],
+      "explanation": "En juillet 2001, Marc Maiffret et Ryan Permeh, de la société eEye Digital Security, analysent un ver qui passe de serveur web en serveur web. Ils le baptisent **Code Red** d'après la boisson Mountain Dew Code Red qu'ils buvaient pendant leur analyse. Le ver a infecté environ 359 000 serveurs le 19 juillet 2001 et visait, à certaines phases, l'adresse du site web de la Maison-Blanche pour le saturer. Microsoft avait pourtant publié le correctif (bulletin MS01-033) environ un mois plus tôt : les serveurs touchés étaient ceux qui n'avaient pas été mis à jour. Ni le Pentagone ni Microsoft n'ont donné ce nom. Protection : appliquer rapidement les correctifs, surtout sur les serveurs exposés à Internet.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Code_Red_(computer_worm)"
+    },
+    {
+      "question": "Le 25 janvier 2003, le ver **SQL Slammer** s'est propagé à une vitesse inédite. En combien de temps a-t-il infecté l'essentiel de ses quelque 75 000 victimes ?",
+      "answer": "Environ dix minutes",
+      "wrong": [
+        "Environ deux heures",
+        "Environ deux jours",
+        "Environ trois semaines"
+      ],
+      "explanation": "**SQL Slammer** est un ver qui exploitait une faille de Microsoft SQL Server. Minuscule (376 octets) et envoyé dans un seul paquet réseau, il a infecté l'essentiel de ses 75 000 victimes en une dizaine de minutes, saturant des liaisons et perturbant des routeurs dans le monde. Aucun humain ne peut réagir à cette vitesse : la défense doit être préparée à l'avance. Le correctif (bulletin MS02-039) existait pourtant depuis six mois ; beaucoup d'organisations, Microsoft compris, ne l'avaient pas installé. Protection : appliquer les correctifs, ne jamais exposer une base de données à Internet (filtrer ses ports au pare-feu) et segmenter le réseau pour freiner une propagation.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/SQL_Slammer"
+    },
+    {
+      "question": "Auteur du ver **Sasser** (début mai 2004), un étudiant allemand de 18 ans n'a écopé en 2005 que d'une peine avec sursis. Pourquoi cette peine légère ?",
+      "answer": "Il a été jugé comme mineur, ayant créé le ver avant ses 18 ans",
+      "wrong": [
+        "Il avait remboursé tous les dégâts avant son procès",
+        "Le tribunal a jugé que le ver n'avait causé aucun dommage",
+        "Il bénéficiait d'une amnistie votée après l'épidémie"
+      ],
+      "explanation": "Le ver **Sasser** se propageait sans aucun clic de l'utilisateur et a notamment perturbé l'AFP, des vols de Delta Air Lines, la garde côtière britannique et des hôpitaux. Un ami de l'auteur l'a signalé à Microsoft, qui offrait 250 000 dollars de récompense : Sven Jaschan a été arrêté le 7 mai 2004 à Rotenburg, en Basse-Saxe. Jugé en juillet 2005, il a été condamné à 21 mois avec sursis pour sabotage informatique : le tribunal l'a traité comme un mineur, car il avait écrit le ver avant ses 18 ans. Les primes offertes par les éditeurs pour retrouver les auteurs de virus ont ensuite fait école. Protection : le ver visait une faille Windows corrigée dès avril 2004, donc installer les correctifs et activer le pare-feu suffisait.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Sasser_(computer_worm)"
+    },
+    {
+      "question": "En janvier 2009, le ver **Conficker** a infecté Intramar, le réseau informatique d'une institution française, clouant des avions au sol faute de plans de vol. Laquelle ?",
+      "answer": "La Marine nationale",
+      "wrong": [
+        "La Gendarmerie nationale",
+        "La SNCF",
+        "Air France"
+      ],
+      "explanation": "**Conficker** (premiers signalements en novembre 2008) est un ver qui s'est répandu sur des millions de PC Windows, estimés entre 9 et 15 millions début 2009. Parmi ses victimes, Intramar, le réseau de la **Marine nationale**, contaminé le 15 janvier 2009 : des avions de plusieurs bases n'ont pu décoller car leurs plans de vol ne pouvaient pas être téléchargés. Microsoft avait diffusé un correctif d'urgence le 23 octobre 2008, mais environ 30 % des PC restaient non corrigés en janvier 2009. En février 2009, l'éditeur a annoncé un groupe de travail avec d'autres acteurs du secteur et 250 000 dollars de récompense pour retrouver les auteurs. Protection : correctifs, mots de passe robustes et désactivation de l'exécution automatique des clés USB.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Conficker"
+    },
+    {
+      "question": "Quel collectif américain a présenté **Back Orifice**, un outil d'administration à distance, à la DEF CON d'août 1998 pour dénoncer l'insécurité de Windows 9x ?",
+      "answer": "Le Cult of the Dead Cow",
+      "wrong": [
+        "L0pht Heavy Industries",
+        "Le Chaos Computer Club",
+        "La Legion of Doom"
+      ],
+      "explanation": "Un **outil d'administration à distance** permet de piloter un ordinateur depuis un autre poste : légitime pour un administrateur, dangereux s'il est installé à l'insu de l'utilisateur. **Back Orifice** est présenté à la DEF CON 6 (1er août 1998) par le **Cult of the Dead Cow**, dont l'auteur Sir Dystic, pour démontrer le manque de sécurité de Windows 95/98. Les antivirus l'ont aussitôt classé comme malveillant ; une suite, Back Orifice 2000, paraît en 1999. L0pht (auditionné par le Sénat américain en mai 1998), le CCC allemand (1981) et la Legion of Doom sont d'autres collectifs célèbres, mais pas à l'origine de ce programme. Protection : pare-feu, comptes protégés par mot de passe et antivirus à jour.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Back_Orifice"
+    },
+    {
+      "question": "Pourquoi le développeur français Jean-Pierre Lesueur a-t-il cessé en 2012 de faire évoluer **DarkComet**, son outil d'administration à distance ?",
+      "answer": "Il a appris qu'il servait à espionner des opposants en Syrie",
+      "wrong": [
+        "Un tribunal français lui avait interdit de le diffuser",
+        "Un éditeur d'antivirus avait racheté son projet",
+        "Interpol avait saisi ses serveurs de téléchargement"
+      ],
+      "explanation": "**DarkComet** est un outil d'administration à distance (RAT) conçu pour dépanner un ordinateur à distance, mais largement détourné pour espionner des victimes à leur insu. Son auteur, le Français Jean-Pierre Lesueur (« DarkCoderSc »), le développait depuis 2008. En 2012, il a su qu'il servait en Syrie à surveiller des militants pendant la guerre civile ; il a déclaré n'avoir jamais imaginé qu'un gouvernement puisse l'utiliser pour espionner et a arrêté le développement en juillet 2012. L'affaire illustre le problème des **outils à double usage**, utiles ou nuisibles selon l'intention de l'utilisateur. Protection : n'ouvrir aucun fichier inattendu, tenir l'antivirus à jour et surveiller les connexions sortantes inhabituelles.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/DarkComet"
+    },
+    {
+      "question": "En mai 2014, une opération internationale coordonnée par le FBI a mené à près de cent arrestations dans 19 pays. Elle visait **Blackshades**. De quel type de logiciel s'agit-il ?",
+      "answer": "Un outil d'administration à distance détourné pour espionner",
+      "wrong": [
+        "Un rançongiciel loué en service à des affiliés",
+        "Un réseau de caméras piraté pour des attaques DDoS",
+        "Un faux antivirus qui vendait des abonnements"
+      ],
+      "explanation": "**Blackshades** était un logiciel d'accès à distance vendu publiquement à bas prix, présenté comme un outil légitime puis largement utilisé par des cybercriminels pour prendre le contrôle d'ordinateurs à l'insu de leurs propriétaires. L'opération de mai 2014 a donné lieu à près de cent arrestations dans 19 pays, 359 perquisitions et plus de 1 100 appareils saisis. Ses concepteurs, Alex Yücel et Michael Hogue, ont été poursuivis aux États-Unis. L'affaire montre que vendre un outil « à double usage » en connaissant son usage criminel expose à des poursuites, comme ses acheteurs. Protection : ne pas ouvrir de pièce jointe ou de fichier inattendu, tenir le système et l'antivirus à jour.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Blackshades"
+    },
+    {
+      "question": "En juin 2014, l'**opération Tovar**, dirigée par le département de la Justice américain, a visé quel duo cybercriminel ?",
+      "answer": "Le botnet Gameover Zeus et le rançongiciel CryptoLocker",
+      "wrong": [
+        "Le botnet Mirai et le ver Conficker",
+        "Le botnet Emotet et le rançongiciel WannaCry",
+        "Le ver Slammer et le cheval de Troie Blackshades"
+      ],
+      "explanation": "Un **botnet** est un réseau d'ordinateurs infectés, pilotés à distance par des criminels. **Gameover Zeus** servait à voler des identifiants bancaires et à diffuser **CryptoLocker**, un rançongiciel apparu en septembre 2013. L'opération Tovar, annoncée début juin 2014, associait le FBI, la National Crime Agency britannique, des polices de dix autres pays, des éditeurs de sécurité et des universités : elle a coupé les communications du botnet avec ses serveurs de commande et permis ensuite de proposer un portail de déchiffrement aux victimes. Le Russe Evgeniy Bogachev (« Slavik ») a été inculpé comme dirigeant présumé. CryptoLocker aurait rapporté environ 3 millions de dollars. Protection : sauvegardes hors ligne testées, mises à jour, prudence avec les pièces jointes.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Operation_Tovar"
+    },
+    {
+      "question": "Les trois auteurs du botnet **Mirai** (Paras Jha, Josiah White, Dalton Norman) ont plaidé coupable en décembre 2017. Quelle peine la justice américaine leur a-t-elle infligée ?",
+      "answer": "De la probation et des travaux d'intérêt général, sans prison",
+      "wrong": [
+        "Dix ans de prison ferme pour chacun des trois auteurs",
+        "Une amende de 100 millions de dollars, sans peine de prison",
+        "Cinq ans de prison ferme, réduits à six mois pour l'aîné"
+      ],
+      "explanation": "**Mirai** est un botnet d'objets connectés (caméras, routeurs…) infectés parce que leurs mots de passe d'usine n'avaient jamais été changés, puis utilisés pour des attaques par saturation (DDoS). Le 21 octobre 2016, il a frappé Dyn, un prestataire DNS, rendant Twitter, Netflix, Reddit ou GitHub inaccessibles pendant des heures. Le code avait été publié en ligne quelques semaines plus tôt, d'où de nombreuses variantes. Le journaliste Brian Krebs a identifié en janvier 2017 l'auteur du pseudo « Anna-senpai » : Paras Jha. Avec Josiah White et Dalton Norman, il a plaidé coupable le 13 décembre 2017 ; la condamnation a été de la probation et des travaux d'intérêt général, sans prison. Protection : changer les mots de passe par défaut, mettre à jour les appareils et ne pas les exposer à Internet.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Mirai_(malware)"
+    },
+    {
+      "question": "En décembre 2017, les États-Unis et le Royaume-Uni ont publiquement attribué le rançongiciel **WannaCry** (mai 2017) à quel État ?",
+      "answer": "La Corée du Nord",
+      "wrong": [
+        "La Russie",
+        "L'Iran",
+        "La Chine"
+      ],
+      "explanation": "**WannaCry** a frappé le 12 mai 2017 plus de 300 000 ordinateurs dans environ 150 pays, dont des hôpitaux du système de santé britannique (NHS). En décembre 2017, Washington et Londres l'ont officiellement attribué à la **Corée du Nord** ; en septembre 2018, la justice américaine a inculpé Park Jin-hyok, présenté comme membre d'une équipe liée au Reconnaissance General Bureau nord-coréen. L'**attribution**, c'est-à-dire l'identification d'un responsable, est un exercice délicat : elle repose sur des recoupements techniques et du renseignement, d'où la formule « attribué par les gouvernements américain et britannique ». Protection : le correctif existait depuis le 14 mars 2017 ; mises à jour rapides, désactivation de SMBv1 et sauvegardes hors ligne auraient limité les dégâts.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/WannaCry_ransomware_attack"
+    },
+    {
+      "question": "Marcus Hutchins, qui avait freiné **WannaCry** en mai 2017, a été arrêté à Las Vegas en août 2017. Pour quels faits était-il poursuivi ?",
+      "answer": "La création et la diffusion d'un cheval de Troie bancaire, Kronos",
+      "wrong": [
+        "L'écriture de WannaCry, qu'il aurait ensuite neutralisé",
+        "La revente d'exploits volés à la NSA à des mafias",
+        "L'enregistrement frauduleux du domaine d'arrêt d'urgence"
+      ],
+      "explanation": "Ce chercheur britannique, connu sous le pseudo MalwareTech, avait ralenti WannaCry en mai 2017 en enregistrant un nom de domaine. Le 3 août 2017, en quittant la DEF CON, il est arrêté par le FBI pour des faits de 2014-2015 liés à **Kronos**, un cheval de Troie bancaire (un programme déguisé qui vole des identifiants). Il a plaidé coupable de deux chefs en avril 2019 ; le 26 juillet 2019, le juge l'a condamné à la peine déjà purgée, assortie d'un an de liberté surveillée, en soulignant son évolution vers la sécurité légitime. Aucun lien n'a été établi avec l'écriture de WannaCry. Leçon : une action utile à la communauté n'efface pas d'éventuels faits antérieurs.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Marcus_Hutchins"
+    },
+    {
+      "question": "Le 27 juin 2017, **NotPetya** s'est d'abord diffusé grâce à la mise à jour piégée d'un logiciel ukrainien très répandu. Lequel ?",
+      "answer": "M.E.Doc, un logiciel ukrainien de déclarations fiscales",
+      "wrong": [
+        "1C:Entreprise, un logiciel de gestion comptable russe",
+        "Un client VPN installé chez un opérateur télécom",
+        "Un lecteur PDF très répandu chez les éditeurs locaux"
+      ],
+      "explanation": "**NotPetya** a frappé le 27 juin 2017, d'abord en Ukraine puis dans le monde (Maersk, Saint-Gobain, Merck…), Maersk estimant ses pertes entre 200 et 300 millions de dollars. Son point de départ : le mécanisme de mise à jour de **M.E.Doc**, logiciel ukrainien de comptabilité et de déclarations fiscales installé dans de très nombreuses entreprises du pays. C'est une attaque de la **chaîne d'approvisionnement** (supply chain) : on compromet un fournisseur de confiance pour atteindre ses clients. En février 2018, les États-Unis, le Royaume-Uni et l'Australie l'ont attribué au GRU russe (groupe Sandworm), ce que la Russie conteste. Protection : segmentation du réseau, droits d'administration limités, sauvegardes hors ligne, surveillance des mises à jour des fournisseurs.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Petya_(malware)"
+    },
+    {
+      "question": "En janvier 2021, Europol et Eurojust ont annoncé la prise de contrôle de l'infrastructure de quel réseau cybercriminel, décrit comme l'un des plus dangereux au monde ?",
+      "answer": "Emotet",
+      "wrong": [
+        "TrickBot",
+        "Conficker",
+        "Zeus"
+      ],
+      "explanation": "**Emotet** est apparu en 2014 comme cheval de Troie bancaire avant de devenir une plateforme de diffusion d'autres logiciels malveillants, notamment des rançongiciels, via des courriels piégés. Le 27 janvier 2021, une opération coordonnée par Europol et Eurojust (nom de code « Ladybird ») avec les autorités des Pays-Bas, d'Allemagne, des États-Unis, du Royaume-Uni, de France, de Lituanie, du Canada et d'Ukraine a permis de prendre le contrôle de ses serveurs de commande. Des arrestations ont eu lieu en Ukraine. TrickBot a été perturbé séparément en octobre 2020, Conficker date de 2008 et Zeus de 2007. Protection : se méfier des pièces jointes et des macros, filtrer les courriels et sauvegarder hors ligne.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Emotet"
+    },
+    {
+      "question": "Quelle société israélienne édite **Pegasus**, le logiciel espion au centre du « Projet Pegasus » publié en juillet 2021 par un consortium de médias et d'ONG ?",
+      "answer": "NSO Group",
+      "wrong": [
+        "Cellebrite",
+        "Check Point",
+        "Elbit Systems"
+      ],
+      "explanation": "Un **logiciel espion** (spyware) surveille un appareil à l'insu de son propriétaire. **Pegasus**, édité par NSO Group (Israël), est vendu à des États pour des enquêtes antiterroristes ou criminelles, mais a été retrouvé sur des téléphones de journalistes, d'avocats et d'opposants. Premier cas public documenté : août 2016, avec le militant émirati Ahmed Mansoor, analysé par Citizen Lab et Lookout. En juillet 2021, Forbidden Stories et Amnesty International, avec des médias partenaires, publient le « Projet Pegasus » à partir d'une liste d'environ 50 000 numéros qui auraient été sélectionnés par des clients de NSO. En novembre 2021, Washington place NSO sur sa liste d'entités restreintes. Protection : mises à jour rapides du téléphone et mode Isolation (Lockdown Mode) d'iOS pour les personnes à risque.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Pegasus_(spyware)"
+    },
+    {
+      "question": "Quel journal a affirmé en juin 2012, en citant des sources officielles, que **Stuxnet** relevait d'un programme américain baptisé « Olympic Games » ?",
+      "answer": "Le New York Times",
+      "wrong": [
+        "Le Washington Post",
+        "The Guardian",
+        "Le Wall Street Journal"
+      ],
+      "explanation": "**Stuxnet**, découvert en juin 2010 par la société biélorusse VirusBlokAda, a visé l'installation d'enrichissement d'uranium de Natanz, en Iran. Aucun État n'a revendiqué l'opération. En juin 2012, le **New York Times** (le journaliste David Sanger) écrit qu'il s'agissait d'un programme conjoint des États-Unis et d'Israël, « Olympic Games », lancé sous George W. Bush et poursuivi sous Barack Obama. Ni Washington ni Tel-Aviv ne l'ont confirmé officiellement : on parle d'une **attribution par la presse**. L'Institute for Science and International Security a estimé qu'environ 1 000 centrifugeuses avaient pu être détruites. Leçon : l'isolement d'un réseau (« air gap ») ne suffit pas ; contrôler les clés USB et segmenter la partie industrielle.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Stuxnet"
+    },
+    {
+      "question": "Quel nom de code porte l'opération internationale de février 2024, menée par la National Crime Agency britannique, qui a perturbé l'infrastructure du rançongiciel **LockBit** ?",
+      "answer": "Opération Cronos",
+      "wrong": [
+        "Opération Tovar",
+        "Opération Endgame",
+        "Opération Aurora"
+      ],
+      "explanation": "Un **rançongiciel** (ransomware) chiffre les données d'une victime et exige une rançon ; beaucoup de groupes les louent à des « affiliés » qui mènent les attaques. Le 19 février 2024, l'opération **Cronos**, menée par la NCA britannique avec le FBI, Europol et des polices de plusieurs pays, a perturbé LockBit : prise de contrôle de serveurs, saisie du code source et récupération de clés de déchiffrement pour les victimes. Des arrestations ont eu lieu en Ukraine, en Pologne et aux États-Unis. Tovar (2014) visait Gameover Zeus, Endgame (mai 2024) des logiciels chargeurs, et Aurora (2010) était une cyberattaque contre Google, pas une opération policière. Protection : sauvegardes hors ligne testées, authentification multifacteur, correctifs, plainte en cas d'attaque.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/LockBit"
+    },
+    {
+      "question": "À la suite du ver Morris de novembre 1988, quelle structure a été créée à l'université Carnegie Mellon, avec le soutien de la DARPA, pour coordonner la réponse aux incidents ?",
+      "answer": "Le CERT/CC (CERT Coordination Center)",
+      "wrong": [
+        "Le SANS Institute, centre de formation",
+        "Le programme CVE du MITRE, registre des failles",
+        "La division sécurité informatique du NIST"
+      ],
+      "explanation": "Le 2 novembre 1988, le ver de Robert Tappan Morris, étudiant à Cornell, paralyse une part importante des machines Unix reliées à Internet (environ 6 000 selon les estimations). Personne ne savait qui prévenir ni comment diffuser un correctif. La DARPA finance donc, dès novembre 1988, le **CERT/CC** à Carnegie Mellon : un centre qui **coordonne la réponse aux incidents**, c'est-à-dire qui centralise les alertes, diffuse les correctifs et met en relation les administrateurs. Ce modèle a été repris dans le monde entier, par exemple avec le CERT-FR en France. Réflexe à retenir : toute organisation doit avoir un contact identifié pour recevoir les alertes de sécurité et un processus pour appliquer vite les correctifs. Le SANS (formation), le MITRE (CVE) et le NIST (normes) ont d'autres rôles.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Ver_Morris"
+    },
+    {
+      "question": "Kevin Mitnick, hacker américain arrêté par le FBI en 1995, est surtout resté célèbre pour avoir popularisé quelle approche, qui vise les personnes plutôt que les machines ?",
+      "answer": "L'ingénierie sociale",
+      "wrong": [
+        "Le déni de service distribué",
+        "L'attaque par force brute",
+        "Le chiffrement asymétrique"
+      ],
+      "explanation": "Un système peut être très bien protégé techniquement et tomber à cause d'une personne. L'**ingénierie sociale** consiste à manipuler quelqu'un (par téléphone, courriel ou en face à face) pour obtenir une information ou un accès, en jouant sur la confiance, l'urgence ou l'autorité. Kevin Mitnick, arrêté le 15 février 1995 après des années de cavale, a expliqué que se faire passer pour un employé suffisait souvent à obtenir un mot de passe ; devenu consultant, il a publié *The Art of Deception* en 2002 et est mort en 2023. La force brute et le DDoS visent des systèmes, et le chiffrement asymétrique est une protection. Exemple actuel : un faux « support informatique » qui te réclame un code reçu par SMS. Protection : vérifier l'identité en rappelant un numéro officiel, ne jamais communiquer un mot de passe ou un code.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Kevin_Mitnick"
+    },
+    {
+      "question": "En 1986, l'astronome et administrateur système Clifford Stoll a démasqué des pirates qui revendaient leurs trouvailles au KGB. Quelle anomalie l'a mis sur la piste, au Lawrence Berkeley Laboratory ?",
+      "answer": "Une erreur de 75 cents dans la comptabilité du temps de calcul",
+      "wrong": [
+        "Un pic inexpliqué de courriers sortants en pleine nuit",
+        "Un appel d'une agence fédérale signalant l'intrusion",
+        "Un fichier de mots de passe retrouvé sur un forum public"
+      ],
+      "explanation": "Le laboratoire facturait le temps de calcul de chaque utilisateur. Stoll, chargé d'expliquer un écart de **75 cents** entre deux systèmes comptables, découvre qu'un compte inconnu a utilisé la machine : un intrus s'y est glissé et explore des réseaux militaires américains. En retraçant les connexions téléphoniques et en piégeant l'intrus avec de faux documents, il remonte jusqu'à des pirates de Hanovre (Allemagne de l'Ouest), dont Markus Hess, qui vendaient des informations au KGB. Il en tire le livre *The Cuckoo's Egg* (1989). Leçon : une anomalie minime dans les **journaux** (logs) peut révéler une intrusion. Protection : conserver et surveiller les journaux, supprimer les comptes inutilisés et alerter sur les comptes nouveaux.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/The_Cuckoo%27s_Egg"
+    },
+    {
+      "question": "Dans les années 1970, les « phreakers » détournaient le réseau téléphonique avec un sifflet offert dans des paquets de céréales Cap'n Crunch. Quelle fréquence émettait-il ?",
+      "answer": "2 600 Hz",
+      "wrong": [
+        "440 Hz",
+        "1 000 Hz",
+        "4 000 Hz"
+      ],
+      "explanation": "À l'époque, les ordres de commande du réseau téléphonique américain passaient dans le même canal que la voix (signalisation « dans la bande »). Une tonalité de **2 600 Hz** indiquait à un central qu'une ligne longue distance était libre : le sifflet Cap'n Crunch l'émettait, ce que John Draper (« Captain Crunch ») a popularisé. De cette culture du **phreaking** (le piratage téléphonique) est issu le magazine *2600*, créé en 1984. La parade a été de séparer le canal de commande de celui de la voix (signalisation hors bande, comme avec le protocole SS7). Principe à retenir : ne jamais laisser les données d'un utilisateur se mélanger aux commandes d'un système, idée qu'on retrouve contre les injections SQL.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Phreaking"
+    },
+    {
+      "question": "Quel film de 1983, où un lycéen entre sans le savoir dans un ordinateur militaire par modem, aurait alerté le président Reagan sur les risques informatiques ?",
+      "answer": "WarGames",
+      "wrong": [
+        "Tron",
+        "Hackers",
+        "Matrix"
+      ],
+      "explanation": "*WarGames* (1983) raconte l'histoire d'un lycéen qui, en cherchant des jeux par modem, s'introduit dans l'ordinateur du NORAD et manque de déclencher une guerre nucléaire. Ronald Reagan l'aurait vu à Camp David en juin 1983 et aurait demandé à ses conseillers si un tel scénario était possible : la réponse fut que oui, ce qui a débouché sur une directive de sécurité des systèmes en 1984, puis sur le *Computer Fraud and Abuse Act* de 1986. Le film a popularisé le *war dialing* (composer des numéros en série pour trouver des modems) et le mot « hacker » auprès du grand public. Tron date de 1982, Hackers de 1995 et Matrix de 1999. Leçon : ne jamais laisser un système sensible joignable sans authentification forte.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/WarGames"
+    },
+    {
+      "question": "En avril-mai 2007, l'Estonie a subi une vague d'attaques visant banques, médias et administrations, après le déplacement d'une statue à Tallinn. De quel type étaient majoritairement ces attaques ?",
+      "answer": "Des dénis de service distribués (DDoS)",
+      "wrong": [
+        "Des rançongiciels chiffrant les ministères",
+        "Des vols massifs de cartes bancaires",
+        "Des intrusions par clés USB piégées"
+      ],
+      "explanation": "Un **déni de service distribué** (DDoS) consiste à submerger un service de requêtes envoyées depuis de très nombreuses machines (souvent un botnet), afin que les utilisateurs légitimes ne puissent plus y accéder. À partir du 27 avril 2007, après le déplacement du Soldat de bronze de Tallinn, le Parlement, des banques, des ministères et des médias estoniens ont été visés. L'attribution à un État est restée débattue : un seul étudiant a été condamné, pour l'attaque d'un site de parti. L'épisode a conduit à l'ouverture à Tallinn, en 2008, du centre d'excellence de l'OTAN pour la cyberdéfense coopérative (CCDCOE). Protection : filtrage anti-DDoS chez l'opérateur ou un CDN, capacité de montée en charge, plan de continuité.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/2007_cyberattacks_on_Estonia"
+    },
+    {
+      "question": "Après la découverte de **Heartbleed** (CVE-2014-0160, avril 2014), pourquoi mettre à jour OpenSSL ne suffisait-il pas à rétablir la sécurité d'un serveur ?",
+      "answer": "Des clés privées avaient pu fuiter : il fallait réémettre les certificats",
+      "wrong": [
+        "Le correctif ne s'appliquait qu'aux serveurs de messagerie, pas au web",
+        "Les mots de passe étaient la seule donnée exposée, les clés restaient sûres",
+        "Le correctif n'existait pas encore : seul un contournement était proposé"
+      ],
+      "explanation": "Heartbleed, rendue publique le 7 avril 2014, était un défaut de l'extension *heartbeat* d'OpenSSL : en demandant un « écho » plus long que la donnée envoyée, un client obtenait jusqu'à 64 Ko de la mémoire du serveur, parfois avec la **clé privée** du certificat, des mots de passe ou des cookies de session. Corriger OpenSSL (version 1.0.1g, publiée le jour même) fermait la porte, mais ne rendait pas ce qui avait déjà fuité. Il fallait donc générer de nouvelles clés, faire **révoquer et réémettre les certificats**, puis inviter les utilisateurs à changer leurs mots de passe. Sans cela, quelqu'un détenant l'ancienne clé pouvait se faire passer pour le site. Les autres propositions sont fausses : le correctif existait dès l'annonce et la faille touchait les serveurs HTTPS.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Heartbleed"
+    },
+    {
+      "question": "Fin 2020, des pirates ont glissé du code malveillant dans les mises à jour de la plateforme Orion de SolarWinds, atteignant des milliers de clients. Comment appelle-t-on ce type d'attaque ?",
+      "answer": "Une attaque de la chaîne d'approvisionnement",
+      "wrong": [
+        "Une attaque par force brute sur les mots de passe",
+        "Une attaque de l'homme du milieu sur le réseau",
+        "Une injection SQL dans le site de l'éditeur"
+      ],
+      "explanation": "Une attaque de la **chaîne d'approvisionnement** (supply chain) compromet un fournisseur de confiance pour atteindre ses clients. Ici, des mises à jour d'Orion, logiciel de supervision de réseaux, ont été piégées entre mars et juin 2020, et environ 18 000 clients les ont téléchargées. La campagne a été révélée le 8 décembre 2020 par FireEye, qui avait détecté une intrusion chez elle. En avril 2021, le gouvernement américain l'a attribuée au service de renseignement extérieur russe (SVR). Les mises à jour étant signées par l'éditeur, les clients n'avaient aucune raison de s'en méfier. Protection : segmenter les outils d'administration, limiter leurs droits et leur accès à Internet, surveiller les flux sortants et exiger un inventaire des composants logiciels (SBOM) auprès des fournisseurs.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/2020_United_States_federal_government_data_breach"
+    },
+    {
+      "question": "Quel identifiant **CVE** désigne la faille Log4Shell, divulguée en décembre 2021 dans la bibliothèque Java Apache Log4j 2 ?",
+      "answer": "CVE-2021-44228",
+      "wrong": [
+        "CVE-2021-34527",
+        "CVE-2017-0144",
+        "CVE-2014-0160"
+      ],
+      "explanation": "Un identifiant **CVE** (*Common Vulnerabilities and Exposures*) nomme de façon unique une faille publique : CVE, année, numéro. **Log4Shell** est CVE-2021-44228 : une faille de la bibliothèque de journalisation Log4j 2, notée 10,0 sur 10 en CVSS, car elle permettait à un attaquant distant de faire exécuter du code par un serveur à partir d'un simple message journalisé. Les autres identifiants sont réels mais désignent d'autres failles : CVE-2021-34527 (PrintNightmare), CVE-2017-0144 (EternalBlue, exploitée par WannaCry) et CVE-2014-0160 (Heartbleed). Protection : mettre à jour Log4j vers la version corrigée (les versions 2.15.0, 2.16.0 puis 2.17.0 se sont succédé en décembre 2021) et tenir un inventaire des composants pour savoir où la bibliothèque est embarquée.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Log4Shell"
+    },
+    {
+      "question": "En 2017, la fuite de données d'Equifax a touché près de 148 millions d'Américains. Quelle faute de gestion des correctifs l'a rendue possible ?",
+      "answer": "Un correctif Apache Struts publié deux mois plus tôt n'avait pas été appliqué",
+      "wrong": [
+        "Un courriel d'hameçonnage avait piégé un dirigeant",
+        "Une sauvegarde non chiffrée traînait sur un serveur public",
+        "Un fournisseur de paiement avait laissé une porte dérobée"
+      ],
+      "explanation": "**Apache Struts** est un framework (cadre de développement) très répandu pour les applications web Java. Une faille critique (CVE-2017-5638) a été corrigée le 7 mars 2017 ; dès le 10 mars, des pirates scannaient Internet pour trouver des serveurs non corrigés. Equifax n'avait pas appliqué le correctif sur son site de contestation de dossiers : l'intrusion débute le 12 mai 2017 et dure 76 jours sans être détectée. L'entreprise l'a découverte le 29 juillet et l'a annoncée le 7 septembre 2017. Protection : un inventaire à jour des composants exposés, des correctifs appliqués dans des délais courts pour les failles critiques, et une surveillance des journaux.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/2017_Equifax_data_breach"
+    },
+    {
+      "question": "Comment la porte dérobée insérée dans la bibliothèque **xz Utils** (CVE-2024-3094) a-t-elle été découverte en mars 2024 ?",
+      "answer": "Un ingénieur a remarqué une charge anormale lors de connexions SSH",
+      "wrong": [
+        "Un antivirus a bloqué la bibliothèque au démarrage",
+        "Le mainteneur historique a signalé lui-même le code piégé",
+        "Une analyse automatique des distributions a signalé le code"
+      ],
+      "explanation": "**xz Utils** est une bibliothèque de compression présente dans la plupart des distributions Linux. Un contributeur sous le pseudonyme « Jia Tan » avait gagné la confiance du mainteneur pendant plus de deux ans avant d'y introduire une porte dérobée, visant l'accès à distance par OpenSSH. Fin mars 2024, l'ingénieur Andres Freund (Microsoft) a remarqué que des connexions SSH consommaient trop de processeur et provoquaient des erreurs dans un outil de débogage mémoire ; son enquête a révélé la manipulation avant que les versions piégées (5.6.0 et 5.6.1) n'atteignent massivement les systèmes stables. La faille a reçu la note CVSS maximale de 10,0. Leçon : les projets open source maintenus par des bénévoles sont un maillon de la chaîne d'approvisionnement ; il faut vérifier les versions et ne pas déployer aveuglément les dernières.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/XZ_Utils_backdoor"
+    },
+    {
+      "question": "Le 19 juillet 2024, une panne mondiale a fait planter environ 8,5 millions de PC Windows (aéroports, hôpitaux, banques…). Quelle en était la cause ?",
+      "answer": "Une mise à jour défectueuse d'un logiciel de sécurité",
+      "wrong": [
+        "Un rançongiciel diffusé par un groupe criminel",
+        "Un déni de service visant les serveurs de Microsoft",
+        "Une panne électrique d'un grand centre de données"
+      ],
+      "explanation": "Le 19 juillet 2024, une mise à jour de configuration défectueuse du capteur Falcon de CrowdStrike, un logiciel de sécurité qui s'exécute au plus près du système, a fait planter environ 8,5 millions de PC Windows, qui bouclaient sur un écran bleu. Ce n'était **pas une cyberattaque** : le PDG de l'éditeur l'a confirmé. L'incident rappelle que la sécurité couvre aussi la **disponibilité** : un outil de défense mal déployé peut paralyser autant qu'une attaque. Protection : déploiement progressif des mises à jour (par vagues, en commençant par un petit groupe de machines), plan de continuité et procédure de reprise testée, y compris pour les postes critiques.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/2024_CrowdStrike-related_IT_outages"
+    },
+    {
+      "question": "Pour les versions de Windows alors prises en charge, combien de temps avant la diffusion de **WannaCry** (12 mai 2017) Microsoft avait-il publié le correctif de la faille exploitée ?",
+      "answer": "Environ deux mois avant, le 14 mars 2017",
+      "wrong": [
+        "Quelques heures avant, le matin du 12 mai 2017",
+        "Aucun, il n'a été publié qu'après l'attaque",
+        "Plus de cinq ans avant, lors de la sortie de Windows 7"
+      ],
+      "explanation": "WannaCry s'est propagé à partir du 12 mai 2017 en exploitant une faille du protocole de partage de fichiers SMBv1 de Windows, dévoilée au monde en avril 2017 par la fuite d'outils attribués à la NSA par le groupe Shadow Brokers. Or Microsoft avait publié le correctif (bulletin MS17-010) le **14 mars 2017**, pour les versions encore prises en charge. Les machines touchées étaient donc surtout celles qui n'avaient pas été mises à jour ou qui tournaient sur un système obsolète comme Windows XP, pour lequel Microsoft a dû publier un correctif exceptionnel après l'attaque. Exemple : des hôpitaux du NHS britannique. Protection : cycle de correctifs régulier, désactivation de SMBv1, aucun partage SMB exposé à Internet, remplacement des systèmes en fin de support.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/WannaCry"
+    },
+    {
+      "question": "Après l'attaque du rançongiciel DarkSide contre Colonial Pipeline (mai 2021), qu'a annoncé le département de la Justice américain en juin 2021 ?",
+      "answer": "Avoir saisi une partie de la rançon payée en bitcoins",
+      "wrong": [
+        "Avoir arrêté les auteurs lors d'un coup de filet en Russie",
+        "Avoir déchiffré les fichiers grâce à une faille du rançongiciel",
+        "Avoir obtenu le remboursement intégral par l'assureur"
+      ],
+      "explanation": "Colonial Pipeline, qui transporte une part importante des carburants de la côte est des États-Unis, a stoppé ses oléoducs pendant six jours en mai 2021 après une attaque par rançongiciel du groupe DarkSide. L'intrusion serait partie d'un ancien compte VPN, sans authentification multifacteur, dont le mot de passe avait été compromis. L'entreprise a versé 75 bitcoins (environ 4,4 millions de dollars) ; en juin 2021, le département de la Justice a annoncé avoir récupéré 63,7 bitcoins, soit environ 2,3 millions de dollars au cours de l'époque. Protection : authentification multifacteur partout, suppression des comptes inutilisés, séparation entre réseau bureautique et réseau industriel, sauvegardes hors ligne.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Colonial_Pipeline_ransomware_attack"
+    },
+    {
+      "question": "À quoi sert un identifiant **CVE**, comme CVE-2021-44228 ?",
+      "answer": "À nommer de façon unique une faille de sécurité publique",
+      "wrong": [
+        "À mesurer la gravité d'une faille sur une échelle de 0 à 10",
+        "À classer le type de faiblesse, par exemple l'injection",
+        "À certifier qu'un logiciel est exempt de toute faille connue"
+      ],
+      "explanation": "Un identifiant **CVE** (*Common Vulnerabilities and Exposures*) est un nom unique, de la forme CVE-année-numéro, donné à une faille de sécurité publiquement connue. Il permet aux éditeurs, chercheurs et outils de parler de la même faille sans ambiguïté. Le programme a été lancé en 1999 par le MITRE. Ne pas le confondre avec le **CVSS**, qui note la gravité de 0 à 10, ni avec le **CWE**, qui classe les types de faiblesses (comme l'injection SQL). Un CVE ne dit rien de la qualité d'un logiciel : il signale simplement qu'une faille précise existe. Protection : suivre les CVE qui concernent tes logiciels (bulletins des éditeurs, alertes du CERT-FR) et appliquer les correctifs.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures"
+    },
+    {
+      "question": "Dans le système de notation **CVSS** v3.x, quelle plage de score correspond à la gravité « critique » ?",
+      "answer": "De 9,0 à 10,0",
+      "wrong": [
+        "De 7,0 à 8,9",
+        "De 4,0 à 6,9",
+        "De 0,1 à 3,9"
+      ],
+      "explanation": "Le **CVSS** (*Common Vulnerability Scoring System*), maintenu par le FIRST, note la gravité intrinsèque d'une faille de 0,0 à 10,0, d'après des critères comme le vecteur d'attaque (réseau, local), la complexité, les privilèges requis, l'interaction de l'utilisateur et l'impact sur la confidentialité, l'intégrité et la disponibilité. Les seuils sont : aucune 0,0 ; faible 0,1-3,9 ; moyenne 4,0-6,9 ; élevée 7,0-8,9 ; **critique 9,0-10,0**. Exemples : Log4Shell (2021) et la porte dérobée de xz Utils (2024) sont notées 10,0. Le score ne dit rien du contexte : une faille « critique » sur un serveur isolé peut être moins urgente qu'une faille « moyenne » déjà exploitée sur ton serveur web. D'où l'intérêt de croiser avec la probabilité d'exploitation (EPSS) et le catalogue KEV.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Common_Vulnerability_Scoring_System"
+    },
+    {
+      "question": "Quelle est la différence entre un **CWE** (par exemple CWE-89) et un **CVE** ?",
+      "answer": "Le CWE décrit un type de faiblesse, le CVE une faille précise",
+      "wrong": [
+        "Le CWE est un score de gravité, le CVE un type d'attaque",
+        "Le CWE désigne un correctif, le CVE la faille corrigée",
+        "Le CWE ne concerne que le matériel, le CVE que les logiciels"
+      ],
+      "explanation": "Le **CWE** (*Common Weakness Enumeration*), maintenu par le MITRE, est un catalogue de **types de faiblesses** : des erreurs de conception ou de programmation récurrentes, comme CWE-79 (XSS) ou CWE-89 (injection SQL). Un **CVE** est l'identifiant d'une **faille précise** dans un produit précis, par exemple une injection SQL dans une version donnée d'un logiciel. Une même faiblesse CWE se retrouve donc dans de très nombreux CVE. Le score de gravité est le rôle du CVSS, et le CWE couvre aussi des faiblesses matérielles. Protection : former les développeurs aux catégories CWE les plus fréquentes (le « CWE Top 25 » annuel) évite des familles entières de failles.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Common_Weakness_Enumeration"
+    },
+    {
+      "question": "Qu'est-ce qu'une **CNA** dans le programme CVE ?",
+      "answer": "Une organisation habilitée à attribuer des identifiants CVE",
+      "wrong": [
+        "Un laboratoire qui certifie les correctifs des éditeurs",
+        "Un registre qui recense les noms de domaine malveillants",
+        "Une base d'exploits publics gérée par le NIST"
+      ],
+      "explanation": "Une **CNA** (*CVE Numbering Authority*) est une organisation autorisée à attribuer des identifiants CVE aux failles de son périmètre : de grands éditeurs (Microsoft, Red Hat, Oracle…), des CERT comme le CERT/CC, ou des coordinateurs. Le MITRE en est l'autorité principale. Une fois le CVE publié, la **NVD** (*National Vulnerability Database*) du NIST enrichit en général la fiche avec une note CVSS, des types de faiblesses CWE et les produits concernés. Ces organismes ne certifient pas les correctifs et ne gèrent pas de listes de noms de domaine. Pour un chercheur qui découvre une faille, passer par la CNA de l'éditeur ou par une CNA coordinatrice permet d'obtenir un CVE et de coordonner la publication avec le correctif.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures"
+    },
+    {
+      "question": "Dans l'**OWASP Top 10 2021**, quelle catégorie (A04), nouvelle cette année-là, regroupe les défauts venant d'une conception sans modélisation des menaces ni principes de sécurité ?",
+      "answer": "Insecure Design (conception non sécurisée)",
+      "wrong": [
+        "Broken Access Control (contrôle d'accès défaillant)",
+        "Cryptographic Failures (défaillances cryptographiques)",
+        "Security Misconfiguration (mauvaise configuration)"
+      ],
+      "explanation": "L'**OWASP** publie le Top 10 des risques les plus critiques pour les applications web. Dans l'édition 2021, **A04 : Insecure Design** est une nouveauté : elle vise les failles qu'aucun correctif de code ne peut réparer car l'application a été conçue sans penser à la sécurité, par exemple une fonction de récupération de compte fondée sur des « questions secrètes » faciles à deviner. Les autres catégories citées existent bien (A01, A02 et A05) mais portent sur d'autres risques : droits mal vérifiés, mauvais usage de la cryptographie et configurations par défaut. Protection : modéliser les menaces dès la conception (par exemple avec STRIDE), définir des exigences de sécurité avant de coder et prévoir des tests d'abus.",
+      "difficulty": 2,
+      "source": "https://owasp.org/Top10/"
+    },
+    {
+      "question": "Que désigne la « triade **CIA** » (en français DIC) en sécurité de l'information ?",
+      "answer": "Confidentialité, intégrité et disponibilité",
+      "wrong": [
+        "Chiffrement, identification et authentification",
+        "Contrôle, inspection et audit",
+        "Cryptographie, isolation et archivage"
+      ],
+      "explanation": "La triade **CIA** (*Confidentiality, Integrity, Availability*), ou **DIC** en français (disponibilité, intégrité, confidentialité), résume les trois objectifs de la sécurité de l'information. La **confidentialité** : seules les personnes autorisées accèdent aux données. L'**intégrité** : les données ne sont pas modifiées sans autorisation. La **disponibilité** : les services et les données sont accessibles quand on en a besoin. Exemples : une fuite de données attaque la confidentialité, une falsification de virement l'intégrité et un déni de service ou un rançongiciel la disponibilité. On y ajoute souvent la traçabilité (preuve). Protection : chaque mesure (chiffrement, sauvegardes, contrôle d'accès) se rattache à l'un de ces trois objectifs.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/S%C3%A9curit%C3%A9_de_l%27information"
+    },
+    {
+      "question": "Dans **MITRE ATT&CK**, quelle tactique regroupe les techniques qu'un attaquant utilise pour passer d'une machine à une autre à l'intérieur d'un réseau déjà compromis ?",
+      "answer": "Lateral Movement (mouvement latéral)",
+      "wrong": [
+        "Persistence (persistance)",
+        "Discovery (découverte)",
+        "Exfiltration (exfiltration)"
+      ],
+      "explanation": "MITRE ATT&CK classe le comportement des attaquants en **tactiques** (l'objectif du moment, comme l'accès initial ou l'exfiltration) puis en techniques (la façon de l'atteindre). Le **mouvement latéral** (identifiant TA0008) désigne le fait de rebondir de poste en poste ou vers un serveur plus intéressant, par exemple avec des identifiants volés. La *persistence* vise à rester présent après un redémarrage, la *discovery* à explorer l'environnement et l'*exfiltration* à sortir des données : ce sont d'autres objectifs. Protection : segmenter le réseau, ne pas réutiliser le même mot de passe administrateur sur plusieurs machines, limiter les comptes à privilèges et surveiller les connexions internes inhabituelles.",
+      "difficulty": 2,
+      "source": "https://attack.mitre.org/tactics/enterprise/"
+    },
+    {
+      "question": "Dans la **Cyber Kill Chain** de Lockheed Martin (2011), quelle étape suit directement la « livraison » (*delivery*) du code malveillant à la cible ?",
+      "answer": "L'exploitation (exploitation)",
+      "wrong": [
+        "La reconnaissance (reconnaissance)",
+        "L'armement (weaponization)",
+        "Les actions sur objectifs (actions on objectives)"
+      ],
+      "explanation": "La **Cyber Kill Chain** décrit une intrusion en sept étapes : reconnaissance (collecte d'informations sur la cible), armement (préparation de l'outil), livraison (envoi, par exemple par un courriel), **exploitation** (déclenchement d'une faille ou d'une erreur humaine), installation, commande et contrôle, puis actions sur objectifs. Le modèle, publié en 2011 par Eric Hutchins, Michael Cloppert et Rohan Amin, vient du vocabulaire militaire de la « chaîne de destruction ». Son intérêt défensif : **briser la chaîne en un seul maillon** suffit à faire échouer l'attaque (filtrage des courriels contre la livraison, correctifs contre l'exploitation, segmentation contre la suite). La reconnaissance et l'armement précèdent la livraison.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Kill_chain"
+    },
+    {
+      "question": "Dans la méthode de modélisation des menaces **STRIDE**, créée chez Microsoft à la fin des années 1990, que représente la lettre « I » ?",
+      "answer": "Information disclosure (divulgation d'informations)",
+      "wrong": [
+        "Injection (injection de code)",
+        "Interception (écoute du réseau)",
+        "Isolation (cloisonnement des processus)"
+      ],
+      "explanation": "**STRIDE** aide à repérer les menaces sur un schéma d'application, en cherchant pour chaque composant six catégories : *Spoofing* (usurpation d'identité), *Tampering* (altération de données), *Repudiation* (nier une action faute de traces), *Information disclosure* (fuite de données, qui viole la confidentialité), *Denial of service* (déni de service) et *Elevation of privilege* (obtention de droits supérieurs). Exemple : une API qui renvoie trop de champs d'un profil utilisateur relève du « I ». Chaque catégorie correspond à une propriété à protéger (authenticité, intégrité, non-répudiation, confidentialité, disponibilité, autorisation). Faire cet exercice dès la conception permet de prévoir les contre-mesures avant d'écrire le code.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/STRIDE_(security)"
+    },
+    {
+      "question": "Dans la « **pyramide de la douleur** » de David Bianco (2013), quel type d'indicateur est le plus facile à changer pour un attaquant, donc le moins gênant pour lui si on le bloque ?",
+      "answer": "Les empreintes (hash) de fichiers",
+      "wrong": [
+        "Les outils de l'attaquant",
+        "Les adresses IP de ses serveurs",
+        "Ses tactiques, techniques et procédures (TTP)"
+      ],
+      "explanation": "La pyramide de la douleur classe les indicateurs de compromission selon l'effort qu'ils coûtent à l'attaquant quand un défenseur les bloque. À la base, les **empreintes de fichiers** (hash) : il suffit de modifier un octet pour en changer, c'est trivial. Viennent ensuite les adresses IP, les noms de domaine, les traces réseau ou système, les outils et, au sommet, les **TTP** (le comportement), qu'un attaquant ne change qu'au prix d'un vrai effort. Conséquence défensive : une liste de hash ou d'IP est utile mais éphémère, alors qu'une détection fondée sur le comportement (par exemple, un outil bureautique qui lance une console d'administration) résiste mieux dans la durée.",
+      "difficulty": 3,
+      "source": "https://www.sans.org/tools/the-pyramid-of-pain"
+    },
+    {
+      "question": "Quelle fonction a été ajoutée aux cinq fonctions historiques du cadre de cybersécurité du NIST (identifier, protéger, détecter, répondre, rétablir) dans sa version 2.0, publiée en février 2024 ?",
+      "answer": "Gouverner (Govern)",
+      "wrong": [
+        "Auditer (Audit)",
+        "Anticiper (Anticipate)",
+        "Certifier (Certify)"
+      ],
+      "explanation": "Le **NIST Cybersecurity Framework** (CSF), publié en 2014 par l'institut américain des normes, organise la gestion du risque cyber en fonctions : *Identify*, *Protect*, *Detect*, *Respond* et *Recover*. La version 2.0 (février 2024) ajoute **Govern** (gouverner) : définir la stratégie, les rôles, les responsabilités, la politique de gestion des risques et la supervision de la chaîne d'approvisionnement. Autrement dit, la cybersécurité n'est plus seulement l'affaire des équipes techniques mais de la direction. Les autres mots proposés ne sont pas des fonctions du cadre. Exemple : décider qui, au comité de direction, accepte un risque résiduel relève de Govern, alors que l'installation d'un correctif relève de Protect.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/NIST_Cybersecurity_Framework"
+    },
+    {
+      "question": "Dans l'**OWASP Top 10 pour les applications LLM** (éditions 2023 et 2025), quel risque occupe la première place ?",
+      "answer": "L'injection de prompt (prompt injection)",
+      "wrong": [
+        "Le vol de modèle (model theft)",
+        "L'empoisonnement des données d'entraînement",
+        "L'agentivité excessive (excessive agency)"
+      ],
+      "explanation": "Un **LLM** (grand modèle de langage) suit des instructions écrites en langage naturel. Dans une **injection de prompt**, un attaquant glisse des instructions dans l'entrée de l'utilisateur ou dans un contenu externe lu par le modèle (page web, courriel, document) pour détourner son comportement : divulguer des données, ou déclencher une action non voulue. Elle est classée LLM01 par l'OWASP, dont le Top 10 LLM est paru en 2023 puis a été mis à jour en 2025. Exemple : un assistant qui résume des courriels et qui obéit à une phrase cachée dans l'un d'eux. Protection : traiter toute entrée comme non fiable, donner au modèle le minimum de droits et d'outils, et faire valider par un humain les actions sensibles.",
+      "difficulty": 2,
+      "source": "https://genai.owasp.org/llm-top-10/"
+    },
+    {
+      "question": "À quelle autorité l'**ANSSI**, créée par décret en juillet 2009, est-elle rattachée ?",
+      "answer": "Au SGDSN, placé auprès du Premier ministre",
+      "wrong": [
+        "Au ministère de l'Intérieur et à la Gendarmerie",
+        "À la CNIL, autorité administrative indépendante",
+        "Au ministère de la Justice, via la Chancellerie"
+      ],
+      "explanation": "L'**ANSSI** (Agence nationale de la sécurité des systèmes d'information) est l'autorité nationale en matière de cybersécurité. Créée par un décret du 7 juillet 2009 en remplacement de la DCSSI, c'est un service à compétence nationale rattaché au **SGDSN** (Secrétariat général de la défense et de la sécurité nationale), qui assiste le Premier ministre. Elle défend les systèmes d'information de l'État et des opérateurs d'importance vitale, conseille et sensibilise, qualifie des produits et prestataires (visa de sécurité, qualification PASSI pour les audits) et héberge le CERT-FR. Ne pas la confondre avec la CNIL, qui protège les données personnelles et sanctionne leurs violations.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Agence_nationale_de_la_s%C3%A9curit%C3%A9_des_syst%C3%A8mes_d%27information"
+    },
+    {
+      "question": "À quoi sert la plateforme **cybermalveillance.gouv.fr** ?",
+      "answer": "À assister les victimes et à les orienter vers des professionnels",
+      "wrong": [
+        "À déposer une plainte pénale en ligne à la place du commissariat",
+        "À obtenir la certification d'une entreprise en conformité RGPD",
+        "À signaler à l'ANSSI une faille trouvée chez un éditeur"
+      ],
+      "explanation": "**Cybermalveillance.gouv.fr**, dispositif national d'assistance aux victimes de cybermalveillance mis en place à partir de 2017 par un groupement d'intérêt public (le GIP ACYMA), s'adresse aux particuliers, aux entreprises et aux collectivités. Après un court diagnostic (« Je pense être victime d'un piratage, d'un hameçonnage, d'un rançongiciel… »), il propose des conseils pratiques et met en relation avec des prestataires de proximité labellisés. Il publie aussi des guides de prévention et des alertes sur les arnaques en cours. Il **ne remplace pas** le dépôt de plainte, ne délivre pas de certification RGPD (rôle de la CNIL) et ne centralise pas le signalement de failles auprès de l'ANSSI. Bon réflexe : déconnecter l'appareil, conserver les preuves et porter plainte.",
+      "difficulty": 1,
+      "source": "https://www.cybermalveillance.gouv.fr/"
+    },
+    {
+      "question": "Quel est le rôle du **CERT-FR**, dont les avis et alertes portent des identifiants du type CERTFR-2024-AVI-0123 ?",
+      "answer": "Centre gouvernemental de veille, d'alerte et de réponse aux incidents",
+      "wrong": [
+        "Régulateur qui sanctionne les fuites de données personnelles",
+        "Autorité qui délivre les certificats de sécurité aux éditeurs",
+        "Association qui forme les étudiants aux compétitions de hacking"
+      ],
+      "explanation": "Un **CERT** (*Computer Emergency Response Team*) est une équipe de veille et de réponse aux incidents. Le **CERT-FR**, rattaché à l'ANSSI, est le CERT gouvernemental français : il surveille les vulnérabilités et les menaces, assiste les administrations et les opérateurs d'importance vitale lors d'incidents et publie des bulletins. Les **avis** (AVI) annoncent des failles et des correctifs pour des produits courants, les **alertes** (ALE) signalent des menaces ou des failles en cours d'exploitation, avec un identifiant du type CERTFR-année-AVI-numéro. La sanction des fuites de données est le rôle de la CNIL, et les qualifications sont délivrées par l'ANSSI. Bon réflexe : s'abonner aux avis du CERT-FR pour les produits que l'on administre.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/CERT-FR"
+    },
+    {
+      "question": "Selon le **RGPD**, sous quel délai un responsable de traitement doit-il notifier à la CNIL une violation de données personnelles présentant un risque pour les personnes ?",
+      "answer": "72 heures après en avoir pris connaissance",
+      "wrong": [
+        "24 heures après la découverte de l'incident",
+        "7 jours après la découverte de l'incident",
+        "30 jours après la découverte de l'incident"
+      ],
+      "explanation": "Le **RGPD** (règlement européen applicable depuis le 25 mai 2018) impose, à l'article 33, de notifier à l'autorité de contrôle (en France, la **CNIL**) toute violation de données personnelles susceptible d'engendrer un risque pour les personnes, **dans les 72 heures** après en avoir pris connaissance, si possible. Si le risque est élevé, les personnes concernées doivent aussi être informées. Les sanctions peuvent atteindre 20 millions d'euros ou 4 % du chiffre d'affaires mondial. Exemple : un rançongiciel qui exfiltre un fichier clients déclenche cette obligation. Bon réflexe : préparer à l'avance une procédure de gestion de crise, un registre des violations et des contacts pour ne pas perdre ces trois jours.",
+      "difficulty": 2,
+      "source": "https://www.cnil.fr/fr/violations-de-donnees-personnelles-les-regles-suivre"
+    },
+    {
+      "question": "Quel texte européen de 2019 a donné à l'**ENISA**, l'agence de l'Union européenne pour la cybersécurité, un mandat permanent et créé un cadre européen de certification ?",
+      "answer": "Le Cybersecurity Act (règlement 2019/881)",
+      "wrong": [
+        "La directive NIS de 2016 sur les services essentiels",
+        "Le RGPD sur la protection des données personnelles",
+        "Le règlement eIDAS sur l'identité numérique"
+      ],
+      "explanation": "L'**ENISA** (Agence de l'Union européenne pour la cybersécurité) a été créée en 2004. Le **Cybersecurity Act**, règlement (UE) 2019/881 entré en vigueur en juin 2019, lui a donné un mandat permanent (jusque-là renouvelé périodiquement) et a créé un **cadre européen de certification de cybersécurité** des produits, services et processus numériques. L'agence, dont le siège est en Grèce, soutient les États membres, publie des analyses de menaces et coordonne des exercices comme Cyber Europe. Les autres textes cités sont réels mais portent sur autre chose : la directive NIS (2016) sur les opérateurs de services essentiels, le RGPD sur les données personnelles et eIDAS sur l'identification électronique.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Agence_de_l%27Union_europ%C3%A9enne_pour_la_cybers%C3%A9curit%C3%A9"
+    },
+    {
+      "question": "Que recense le catalogue **KEV** (*Known Exploited Vulnerabilities*), publié par l'agence américaine CISA depuis novembre 2021 ?",
+      "answer": "Les failles dont l'exploitation réelle est confirmée",
+      "wrong": [
+        "Les failles les plus graves selon le score CVSS",
+        "Les failles découvertes par les chercheurs de la CISA",
+        "Les failles corrigées depuis moins d'un mois"
+      ],
+      "explanation": "La **CISA** (*Cybersecurity and Infrastructure Security Agency*), agence américaine créée en 2018, tient le catalogue **KEV** : la liste des vulnérabilités pour lesquelles on dispose de preuves d'exploitation active par des attaquants. Il est lancé en novembre 2021 avec une directive qui impose aux agences fédérales de corriger ces failles dans des délais fixés. Intérêt : prioriser. Un score CVSS élevé indique une gravité théorique, alors qu'une entrée KEV montre qu'un attaquant l'utilise déjà. Une faille moyenne mais présente dans le KEV est souvent plus urgente qu'une faille critique jamais exploitée. Bon réflexe : croiser l'inventaire de ses logiciels avec le KEV et corriger en premier ce qui y figure.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Cybersecurity_and_Infrastructure_Security_Agency"
+    },
+    {
+      "question": "Quelle directive européenne, adoptée fin 2022 et à transposer avant le 17 octobre 2024, a étendu les obligations de cybersécurité à bien plus de secteurs et d'entités ?",
+      "answer": "NIS 2 (directive (UE) 2022/2555)",
+      "wrong": [
+        "NIS 1 (directive (UE) 2016/1148)",
+        "DORA (règlement (UE) 2022/2554)",
+        "eIDAS 2 (règlement (UE) 2024/1183)"
+      ],
+      "explanation": "La directive **NIS 2** (directive (UE) 2022/2555) remplace la directive NIS de 2016, qui ne visait que des « opérateurs de services essentiels ». Elle impose à des entités dites « essentielles » ou « importantes », dans un grand nombre de secteurs (énergie, santé, transport, eau, numérique, administrations, gestion des déchets, industrie…), des mesures de gestion des risques, une notification rapide des incidents significatifs et une responsabilité des dirigeants. Les États membres devaient la transposer avant le 17 octobre 2024. DORA est un règlement qui concerne le secteur financier et eIDAS 2 l'identité numérique. En France, l'ANSSI est l'autorité de référence en matière de cybersécurité. Bon réflexe : cartographier ses activités pour savoir si l'on est concerné.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Directive_NIS_2"
+    },
+    {
+      "question": "Quelle loi française de janvier 1988 a introduit les premières infractions de fraude informatique, comme l'accès frauduleux à un système ?",
+      "answer": "La loi Godfrain",
+      "wrong": [
+        "La loi Informatique et Libertés",
+        "La loi Hadopi",
+        "La loi pour la confiance dans l'économie numérique"
+      ],
+      "explanation": "La **loi Godfrain** (loi du 5 janvier 1988 relative à la fraude informatique, du nom du député Jacques Godfrain) est le premier texte français à punir l'**accès frauduleux** à un système informatique, son maintien frauduleux, l'altération de données ou le fait d'entraver son fonctionnement. Ses dispositions se retrouvent aujourd'hui aux articles 323-1 et suivants du Code pénal, qui parlent de « système de traitement automatisé de données » (STAD). La loi Informatique et Libertés (1978) protège les données personnelles, la loi Hadopi (2009) vise le téléchargement illicite et la LCEN (2004) encadre l'économie numérique. Pour un administrateur ou un chercheur, retenir : tout accès sans autorisation est puni, même sans dégât ; seule une autorisation claire protège.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Loi_Godfrain"
+    },
+    {
+      "question": "Selon l'article 323-1 du Code pénal en vigueur début 2026, quelle peine encourt la personne qui accède ou se maintient frauduleusement dans un système de traitement automatisé de données (cas simple) ?",
+      "answer": "Trois ans d'emprisonnement et 100 000 € d'amende",
+      "wrong": [
+        "Six mois d'emprisonnement et 7 500 € d'amende",
+        "Un an d'emprisonnement et 15 000 € d'amende",
+        "Cinq ans d'emprisonnement et 500 000 € d'amende"
+      ],
+      "explanation": "L'article 323-1 du Code pénal (issu de la loi Godfrain de 1988) punit de **trois ans d'emprisonnement et de 100 000 euros d'amende** le fait d'accéder ou de se maintenir frauduleusement dans tout ou partie d'un système de traitement automatisé de données. « Frauduleusement » signifie en connaissance de l'absence d'autorisation ; aucun dégât n'est nécessaire. Si l'accès a entraîné la suppression ou la modification de données, ou une altération du fonctionnement du système, la peine monte à cinq ans et 150 000 euros. Conséquence pratique : un test d'intrusion, même bien intentionné, sans autorisation écrite du propriétaire du système est une infraction. Se protéger en tant que chercheur : obtenir un accord écrit et un périmètre précis avant de tester.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Loi_Godfrain"
+    },
+    {
+      "question": "L'article 323-3-1 du Code pénal punit la détention ou la mise à disposition d'outils conçus pour des intrusions informatiques. Dans quel cas échappe-t-on à cette infraction ?",
+      "answer": "En présence d'un motif légitime, comme la recherche ou la sécurité",
+      "wrong": [
+        "Si l'outil est diffusé sous licence open source",
+        "Tant que l'outil n'a jamais servi contre un système réel",
+        "Si le détenteur travaille pour une société de sécurité agréée"
+      ],
+      "explanation": "L'article 323-3-1 du Code pénal réprime le fait, **sans motif légitime, notamment de recherche ou de sécurité informatique**, d'importer, de détenir, d'offrir, de céder ou de mettre à disposition un équipement, un programme ou une donnée conçus ou spécialement adaptés pour commettre des intrusions ou des atteintes aux systèmes. La mention du motif légitime protège les professionnels (pentesters, chercheurs, enseignants, équipes de défense) qui manipulent des outils offensifs pour tester ou pour apprendre. En revanche, la licence open source ne protège pas par elle-même, l'absence d'usage réel ne suffit pas non plus, et il n'existe pas d'agrément qui rendrait un détenteur automatiquement légitime. Bon réflexe : documenter le contexte (contrat, périmètre, finalité pédagogique).",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Loi_Godfrain"
+    },
+    {
+      "question": "Quel délai **Google Project Zero**, équipe créée en 2014, laisse-t-il en principe à un éditeur pour corriger une faille avant de la rendre publique ?",
+      "answer": "90 jours",
+      "wrong": [
+        "7 jours",
+        "30 jours",
+        "1 an"
+      ],
+      "explanation": "La **divulgation coordonnée** (ou responsable) consiste à prévenir d'abord l'éditeur en privé, puis à publier les détails après un délai raisonnable pour laisser le temps de corriger. Google Project Zero, équipe de chercheurs de Google fondée en 2014, applique en principe un délai de **90 jours** : passé ce délai, les détails sont publiés même sans correctif, ce qui pousse les éditeurs à agir. Le délai est ramené à 7 jours quand la faille est déjà exploitée activement. À l'opposé, la divulgation immédiate (« full disclosure ») publie sans prévenir. Côté entreprise, publier un fichier `security.txt` (RFC 9116, 2022) à l'adresse `/.well-known/security.txt` indique aux chercheurs à qui s'adresser.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Project_Zero"
+    },
+    {
+      "question": "Depuis la loi pour une République numérique (octobre 2016), à quelle autorité peut-on signaler de bonne foi une faille découverte dans un système, avec protection de son identité ?",
+      "answer": "À l'ANSSI, qui préserve la confidentialité de l'identité",
+      "wrong": [
+        "À la CNIL, seule habilitée à recevoir ces signalements",
+        "Au procureur de la République, exclusivement",
+        "À la DGSI, qui traite tous les signalements"
+      ],
+      "explanation": "L'article 47 de la loi pour une République numérique (7 octobre 2016) a créé l'article L2321-4 du Code de la défense : une personne de **bonne foi** qui transmet à l'ANSSI l'existence d'une vulnérabilité d'un système de traitement automatisé de données ne déclenche pas l'obligation de dénonciation au parquet (article 40 du Code de procédure pénale) pour les agents de l'ANSSI, et l'agence préserve la confidentialité de son identité et des conditions du signalement. L'ANSSI a reçu 243 signalements de ce type en 2023. Ce dispositif n'autorise pas à intruser : l'accès initial peut rester une infraction. Bon réflexe : ne pas copier de données, ne pas aller plus loin que nécessaire, et signaler rapidement.",
+      "difficulty": 3,
+      "source": "https://cyber.gouv.fr/reglementation/cybersecurite-systemes-dinformation/declaration-de-vulnerabilites/"
+    },
+    {
+      "question": "Quelle condition est indispensable avant de lancer un **test d'intrusion** (pentest) sur un système d'information ?",
+      "answer": "L'autorisation écrite du propriétaire, périmètre inclus",
+      "wrong": [
+        "Une déclaration préalable auprès de la CNIL",
+        "L'accord du seul hébergeur de la page d'accueil",
+        "Un diplôme d'ingénieur délivré par l'État"
+      ],
+      "explanation": "Un **test d'intrusion** (pentest) simule une attaque pour mesurer la résistance d'un système, à la demande de son propriétaire. Il repose sur un **contrat** et des **règles d'engagement** écrites : périmètre (quelles adresses, quels systèmes), dates, techniques autorisées, interlocuteurs en cas d'incident, traitement des données trouvées. Sans autorisation écrite, le même test est un accès frauduleux, puni par l'article 323-1 du Code pénal (trois ans d'emprisonnement et 100 000 € d'amende). Si le système est hébergé chez un tiers, son accord peut aussi être nécessaire, mais il ne remplace pas celui du propriétaire. La CNIL n'a pas à être prévenue et aucun diplôme n'est exigé. À distinguer d'un simple scan de vulnérabilités, automatisé.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Test_d%27intrusion"
+    },
+    {
+      "question": "Dans un exercice de cybersécurité, quel rôle joue la **blue team** ?",
+      "answer": "Elle défend le système : détecter les attaques et y répondre",
+      "wrong": [
+        "Elle simule des attaquants pour éprouver les défenses",
+        "Elle arbitre l'exercice et fixe les règles du jeu",
+        "Elle fait collaborer attaquants et défenseurs pour progresser"
+      ],
+      "explanation": "Dans un exercice de simulation d'attaque, la **blue team** est l'équipe de **défense** : elle surveille, détecte, enquête et répond aux incidents, avec des outils comme les journaux, un SIEM ou un EDR. La **red team** joue les attaquants pour tester l'organisation, la **purple team** désigne la collaboration entre rouges et bleus, pour que chaque technique testée améliore une détection, et la **white team** arbitre et fixe les règles. Exemple : la red team tente un mouvement latéral et la blue team vérifie si l'alerte s'est déclenchée ; sinon, on corrige la règle de détection. Bon réflexe : mesurer aussi le temps de détection et de réponse, pas seulement le nombre d'alertes.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Red_team"
+    },
+    {
+      "question": "Dans un **SOC** (centre opérationnel de sécurité), à quoi sert un **SIEM** ?",
+      "answer": "À centraliser et corréler les journaux pour détecter des incidents",
+      "wrong": [
+        "À chiffrer les sauvegardes et les stocker hors site",
+        "À bloquer le trafic malveillant à l'entrée du réseau",
+        "À tester les applications en simulant des attaques"
+      ],
+      "explanation": "Un **SOC** est l'équipe, les processus et les outils qui surveillent en continu la sécurité d'une organisation. Son outil central est le **SIEM** (*Security Information and Event Management*) : il collecte les journaux (logs) des pare-feu, serveurs, postes et applications, les normalise puis applique des règles de **corrélation** pour faire ressortir ce qui est suspect. Exemple : de nombreuses tentatives de connexion échouées suivies d'une réussite depuis un pays inhabituel déclenchent une alerte que les analystes examinent. Le blocage du trafic revient à un pare-feu ou un IPS, le chiffrement des sauvegardes à un autre outil, et les tests par simulation d'attaque à un pentest. Bon réflexe : synchroniser les horloges, conserver les journaux assez longtemps et couvrir les systèmes critiques.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Security_information_and_event_management"
+    },
+    {
+      "question": "Quelle est la particularité du terme « **CERT** » par rapport au terme générique « **CSIRT** » pour désigner une équipe de réponse aux incidents ?",
+      "answer": "CERT est une marque déposée de l'université Carnegie Mellon",
+      "wrong": [
+        "CERT ne désigne que des équipes internes à une entreprise",
+        "Les deux sont des labels délivrés par l'ANSSI après audit",
+        "CSIRT est le nom américain, CERT le nom européen"
+      ],
+      "explanation": "Un **CSIRT** (*Computer Security Incident Response Team*) est une équipe chargée de recevoir, analyser et traiter les incidents de sécurité. **CERT** (*Computer Emergency Response Team*) est le nom donné en 1988 au CERT/CC de l'université Carnegie Mellon, créé après le ver Morris, et c'est une **marque déposée** de l'université : beaucoup d'équipes l'utilisent avec son accord, d'autres préfèrent le terme générique CSIRT. Dans les faits, les deux désignent des équipes de même nature, gouvernementales, sectorielles ou internes (le CERT-FR en France). Le FIRST, forum mondial créé en 1990, les fédère, et l'Union européenne a organisé un réseau des CSIRT nationaux. Aucun des deux termes n'est un label de l'ANSSI.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Computer_emergency_response_team"
+    },
+    {
+      "question": "Quelle entreprise a lancé en 1995 l'un des tout premiers programmes de **bug bounty**, pour la version bêta de son navigateur 2.0 ?",
+      "answer": "Netscape",
+      "wrong": [
+        "Microsoft",
+        "Mozilla Foundation",
+        "Google"
+      ],
+      "explanation": "Un programme de **bug bounty** (prime aux bogues) rémunère les personnes qui signalent des failles. **Netscape** a lancé en 1995 l'un des premiers, pour la bêta de Netscape Navigator 2.0, avec des récompenses pour les bogues de sécurité. Google a ouvert son programme de récompenses des vulnérabilités en 2010, et le gouvernement américain a annoncé « Hack the Pentagon », sa première initiative de ce type, en mars 2016. La Mozilla Foundation n'existait pas encore en 1995 (elle a été créée en 2003), et Microsoft n'a pas été pionnier. Intérêt : des milliers de chercheurs testent un produit, ce qui complète les audits internes. Condition : respecter les règles du programme et son périmètre.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Bug_bounty_program"
+    },
+    {
+      "question": "Qu'est-ce qu'un programme de **bug bounty** ?",
+      "answer": "Une organisation rémunère les chercheurs qui lui signalent des failles",
+      "wrong": [
+        "Un concours où l'on attaque le site d'un concurrent",
+        "Une assurance couvrant les pertes liées à un piratage",
+        "Un abonnement donnant accès aux correctifs en avance"
+      ],
+      "explanation": "Un **bug bounty** est un dispositif par lequel une organisation invite des chercheurs en sécurité à chercher des failles dans ses produits ou services, selon des **règles publiques** : périmètre autorisé (quels sites, quelles applications), méthodes permises, barème de récompenses selon la gravité et engagement de ne pas poursuivre ceux qui respectent le cadre. Des plateformes comme HackerOne, Bugcrowd, YesWeHack ou Yogosha font l'intermédiaire. Exemple : une faille critique dans une application de paiement peut rapporter plusieurs milliers d'euros. Attention : sortir du périmètre ou toucher à des données réelles hors de ce qui est nécessaire peut rester une infraction. Un bug bounty complète, sans remplacer, les audits et les tests d'intrusion.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Bug_bounty_program"
+    },
+    {
+      "question": "Quel est le rôle principal d'un **RSSI** (responsable de la sécurité des systèmes d'information) ?",
+      "answer": "Définir et piloter la politique de sécurité de l'organisation",
+      "wrong": [
+        "Administrer au quotidien les serveurs et les comptes utilisateurs",
+        "Veiller seul au respect du RGPD sur les données personnelles",
+        "Réparer les postes de travail des utilisateurs en panne"
+      ],
+      "explanation": "Le **RSSI** (*CISO* en anglais) définit la **politique de sécurité** du système d'information (PSSI), analyse les risques (par exemple avec la méthode EBIOS Risk Manager publiée par l'ANSSI en 2018), pilote les projets de protection, sensibilise les équipes et coordonne la réponse aux incidents. Il ne se confond pas avec l'administrateur système, qui exploite les serveurs au quotidien, ni avec le **DPO** (délégué à la protection des données), qui veille au respect du RGPD. On recommande souvent de le rattacher à la direction générale plutôt qu'à la direction informatique, pour éviter qu'il soit juge et partie. Bon réflexe : l'associer dès le début des projets numériques.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Responsable_de_la_s%C3%A9curit%C3%A9_des_syst%C3%A8mes_d%27information"
+    },
+    {
+      "question": "Dans un CTF au format **Jeopardy**, comment marque-t-on des points ?",
+      "answer": "En résolvant des défis classés par catégories et en validant des flags",
+      "wrong": [
+        "En attaquant les serveurs adverses tout en défendant les siens",
+        "En gardant le plus longtemps le contrôle d'une machine cible",
+        "En signalant des failles réelles à des entreprises volontaires"
+      ],
+      "explanation": "Un **CTF** (*Capture The Flag*) est une compétition de cybersécurité où l'on s'entraîne légalement sur des systèmes préparés pour cela. Dans le format **Jeopardy** (comme le jeu télévisé), un tableau de défis regroupés par catégories (web, cryptographie, rétro-ingénierie, forensics, stéganographie, OSINT, exploitation de binaires…) rapporte des points croissants avec la difficulté ; on marque en validant le *flag* de chaque défi. Dans le format **attaque-défense**, chaque équipe protège ses propres services tout en attaquant ceux des autres, et dans le format **king of the hill**, on tente de garder le contrôle d'une cible. Les signalements de failles réelles relèvent du bug bounty. Les CTF sont une excellente école pour comprendre les attaques afin de mieux s'en protéger.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Capture_the_flag_(cybersecurity)"
+    },
+    {
+      "question": "Dans un CTF (*Capture The Flag*), qu'appelle-t-on un **flag** ?",
+      "answer": "Une chaîne secrète à retrouver puis soumettre pour valider un défi",
+      "wrong": [
+        "Un marqueur indiquant qu'une équipe a abandonné l'épreuve",
+        "Un bonus de temps accordé aux équipes en retard",
+        "Une vulnérabilité logicielle connue servant de point d'entrée"
+      ],
+      "explanation": "Dans un CTF, chaque défi cache un **flag** : une chaîne de caractères secrète, souvent de la forme `FLAG{texte}` ou `CTF{texte}`, que l'on obtient en résolvant l'épreuve (déchiffrer un message, analyser un fichier, trouver une faille dans une application de test…). On la soumet sur la plateforme, qui vérifie qu'elle est correcte et accorde les points. Le flag n'est donc pas la faille elle-même, mais la preuve que l'on a réussi. Dans le format attaque-défense, des flags sont aussi placés sur les services de chaque équipe, que les adversaires tentent de voler. Dans la vraie vie, l'équivalent est de prouver qu'une faille est exploitable sans toucher aux données d'un client : on laisse un fichier témoin ou on lit une donnée de test.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Capture_the_flag_(cybersecurity)"
+    },
+    {
+      "question": "Quel rassemblement de hackers, fondé à Las Vegas en 1993 par Jeff Moss, organise depuis 1996 l'un des CTF les plus réputés du monde ?",
+      "answer": "DEF CON",
+      "wrong": [
+        "Black Hat",
+        "SSTIC",
+        "Chaos Communication Congress"
+      ],
+      "explanation": "**DEF CON** est née en 1993 à Las Vegas à l'initiative de Jeff Moss (« Dark Tangent »), alors âgé de 18 ans, d'abord comme fête d'adieu pour un ami. Elle réunit chaque année chercheurs, hackers et curieux, et son **CTF**, organisé depuis DEF CON 4 en 1996, est considéré comme l'une des compétitions les plus prestigieuses. Jeff Moss a aussi fondé Black Hat en 1997, une conférence plus orientée entreprises. Le SSTIC est un colloque français qui se tient à Rennes, et le Chaos Communication Congress est la rencontre annuelle du Chaos Computer Club allemand. Ces événements publient des conférences en ligne : une bonne façon de se cultiver sans rien attaquer.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/DEF_CON"
+    },
+    {
+      "question": "Quel organisme organise le **France Cybersecurity Challenge** (FCSC), compétition ouverte au public qui sélectionne l'équipe de France pour le challenge européen ?",
+      "answer": "L'ANSSI",
+      "wrong": [
+        "La CNIL",
+        "Le COMCYBER des armées",
+        "Cybermalveillance.gouv.fr"
+      ],
+      "explanation": "Le **FCSC** est une compétition de cybersécurité organisée par l'**ANSSI** pour repérer et former de jeunes talents. Elle propose des défis de type CTF (Jeopardy) ouverts à tous, et sert à sélectionner l'équipe de France qui participe à l'ECSC, le challenge européen. En décembre 2023, l'ANSSI a lancé **Hackropole**, une plateforme qui réunit plus de 300 défis des éditions passées, en accès libre et sans compétition, pour s'entraîner à son rythme. La CNIL protège les données personnelles, le COMCYBER est le commandement de la cyberdéfense des armées et Cybermalveillance.gouv.fr assiste les victimes. Bon réflexe pour débuter : commencer par les défis de niveau facile et lire des corrigés.",
+      "difficulty": 2,
+      "source": "https://cyber.gouv.fr/france-cybersecurity-challenge"
+    },
+    {
+      "question": "À quoi servent des plateformes comme **Root-Me** ou **NewbieContest** ?",
+      "answer": "À s'entraîner légalement sur des défis conçus pour être attaqués",
+      "wrong": [
+        "À tester des attaques sur de vrais sites sans autorisation",
+        "À acheter ou revendre des failles inconnues à des chercheurs",
+        "À passer l'examen officiel de certification des pentesters"
+      ],
+      "explanation": "**Root-Me** et **NewbieContest** sont des plateformes francophones d'entraînement à la sécurité informatique : elles proposent des défis (web, cryptographie, forensics, stéganographie, réseau, programmation…) hébergés dans un cadre prévu pour être attaqué, avec un classement et des forums d'entraide. C'est la façon **légale** d'apprendre ; s'entraîner sur de vrais sites sans accord est puni par l'article 323-1 du Code pénal. D'autres plateformes existent : OverTheWire (jeux en ligne de commande), Hack The Box, TryHackMe, picoCTF ou Hackropole de l'ANSSI. Elles ne vendent pas de failles (cela relève des courtiers en vulnérabilités) et ne délivrent pas de certification officielle. Bon réflexe : commencer par les défis les plus simples et lire les solutions des autres.",
+      "difficulty": 1,
+      "source": "https://www.root-me.org/"
+    },
+    {
+      "question": "Qu'est-ce qu'une faille **zero-day** (0-day) ?",
+      "answer": "Une faille inconnue de l'éditeur, donc sans correctif disponible",
+      "wrong": [
+        "Une faille découverte il y a moins de vingt-quatre heures",
+        "Une faille qui ne se déclenche qu'à minuit",
+        "Une faille corrigée le jour même de sa publication"
+      ],
+      "explanation": "Une faille **zero-day** est une vulnérabilité que l'éditeur ignore ou pour laquelle il n'existe pas encore de correctif : il a eu « zéro jour » pour réagir. Elle peut être exploitée par un attaquant avant toute protection officielle, ce qui la rend précieuse (certains États ou courtiers les achètent) et dangereuse. Quand le correctif est publié mais pas encore installé, on parle de faille **n-day**, qui sert bien plus souvent aux attaques de masse. Exemple : Stuxnet (2010) aurait utilisé plusieurs zero-days. Protection : on ne peut pas corriger l'inconnu, d'où la défense en profondeur (segmentation, moindre privilège, EDR, journaux, sauvegardes) et l'application rapide des correctifs dès leur sortie.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Zero-day_vulnerability"
+    },
+    {
+      "question": "Que désigne un groupe **APT** (*Advanced Persistent Threat*) ?",
+      "answer": "Un acteur aux moyens importants qui s'installe durablement dans une cible",
+      "wrong": [
+        "Un outil automatique de test d'intrusion pour les entreprises",
+        "Un virus qui se propage en quelques minutes sur Internet",
+        "Une équipe défensive chargée des enquêtes après incident"
+      ],
+      "explanation": "Une **menace persistante avancée** (APT) désigne un attaquant organisé et doté de moyens importants (souvent lié à un État ou à un groupe criminel structuré) qui cible une organisation précise, s'y installe discrètement et y reste des mois ou des années pour espionner ou saboter. Le terme s'est popularisé après le rapport de Mandiant de février 2013 sur « APT1 », attribué à une unité de l'armée chinoise. On rencontre des noms comme APT28 ou APT29 (numérotation Mandiant). Ce n'est pas un outil, ni un virus rapide, ni une équipe de défense. Protection : réduire la surface d'attaque, authentification multifacteur, segmentation, supervision des journaux et exercice de réponse à incident, car l'adversaire est patient.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Advanced_persistent_threat"
+    },
+    {
+      "question": "Qu'est-ce qu'un **IOC** (indicateur de compromission) ?",
+      "answer": "Une trace observable suggérant qu'un système a été compromis",
+      "wrong": [
+        "Une note de gravité attribuée à une faille connue",
+        "Un score de confiance calculé par l'antivirus",
+        "Un plan de réponse prévu en cas d'incident"
+      ],
+      "explanation": "Un **IOC** (*Indicator of Compromise*) est un élément observable qui laisse penser qu'une machine ou un réseau a été compromis : adresse IP ou nom de domaine d'un serveur malveillant, empreinte (hash) d'un fichier connu pour être piégé, nom d'un fichier ou d'une clé de registre, comportement réseau inhabituel. Les équipes de sécurité les partagent (formats STIX/TAXII, plateformes comme MISP) pour que d'autres puissent chercher les mêmes traces dans leurs journaux. La note de gravité est le rôle du CVSS, et le plan de réponse celui d'une procédure de gestion d'incident. Limite : un IOC se périme vite, car un attaquant change facilement d'adresse ou de fichier ; on le complète par des détections de comportement.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Indicator_of_compromise"
+    },
+    {
+      "question": "Que désigne la **surface d'attaque** d'un système ?",
+      "answer": "L'ensemble des points par lesquels un attaquant peut tenter d'entrer",
+      "wrong": [
+        "La zone géographique où sont hébergés les serveurs",
+        "Le nombre total d'attaques subies au cours d'une année",
+        "L'ensemble des utilisateurs ayant des droits d'administration"
+      ],
+      "explanation": "La **surface d'attaque** regroupe tous les points d'entrée possibles d'un système : services exposés sur Internet, ports ouverts, applications web, comptes utilisateurs, interfaces d'administration, fournisseurs, clés USB, et même les employés (hameçonnage). Plus elle est grande, plus il y a de chances qu'une faille s'y trouve. Réduire la surface d'attaque est un principe de base : fermer les ports inutiles, désinstaller les services non utilisés, supprimer les comptes dormants, ne pas exposer les interfaces d'administration sur Internet et faire l'inventaire de ce qui est visible depuis l'extérieur. Exemple : une base de données accessible depuis Internet alors que seule une application interne en a besoin élargit inutilement la surface.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Attack_surface"
+    },
+    {
+      "question": "Dans le **Traffic Light Protocol** (TLP) du FIRST, que signifie un marquage **TLP:RED** sur une information partagée ?",
+      "answer": "Réservée aux seuls destinataires nommés, sans autre diffusion",
+      "wrong": [
+        "Diffusable librement au public, sans aucune restriction",
+        "Partageable avec toute la communauté de confiance du secteur",
+        "Diffusable à toute l'organisation et à ses clients"
+      ],
+      "explanation": "Le **TLP** est un système de marquage, géré par le FIRST, qui indique avec qui une information sensible (alerte, indicateurs de compromission, analyse d'incident) peut être partagée. **TLP:RED** : réservée aux seuls destinataires nommés dans l'échange (réunion, courriel), sans transmission à qui que ce soit d'autre. **TLP:AMBER** (et sa variante AMBER+STRICT) autorise un partage limité au sein de l'organisation, et de ses clients quand c'est nécessaire, pour agir. **TLP:GREEN** permet de partager avec la communauté ou le secteur, mais pas publiquement. **TLP:CLEAR** (qui a remplacé WHITE dans la version 2.0 de 2022) est sans restriction. Bon réflexe : respecter le marquage reçu, qui garantit la confiance entre équipes, et marquer ce que l'on partage.",
+      "difficulty": 2,
+      "source": "https://www.first.org/tlp/"
+    },
+    {
+      "question": "Que dit le principe du **moindre privilège** ?",
+      "answer": "Chaque compte n'a que les droits nécessaires à sa tâche",
+      "wrong": [
+        "Chaque utilisateur doit pouvoir tout modifier en cas d'urgence",
+        "Seuls les administrateurs peuvent se connecter au système",
+        "Les droits d'un compte sont alignés sur ceux de son responsable"
+      ],
+      "explanation": "Le principe du **moindre privilège** impose de donner à chaque utilisateur, programme ou service uniquement les droits dont il a besoin pour sa tâche, et seulement le temps nécessaire. Ainsi, si un compte est compromis ou si un logiciel est piégé, les dégâts sont limités. Exemple : un compte de lecture seule pour une application qui n'affiche que des données, un poste de travail sans droits d'administrateur local, ou un serveur web qui n'a pas le droit d'écrire dans ses propres fichiers. À l'inverse, des droits larges « pour la facilité » (tout le monde administrateur) transforment toute erreur en incident majeur. Bon réflexe : revoir régulièrement les droits et retirer ceux qui ne servent plus.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Principle_of_least_privilege"
+    },
+    {
+      "question": "Quelle idée centrale résume l'approche **Zero Trust** ?",
+      "answer": "Ne jamais faire confiance par défaut : vérifier chaque accès",
+      "wrong": [
+        "Faire confiance à tout ce qui se trouve dans le réseau interne",
+        "Ne confier la sécurité à aucun prestataire externe",
+        "Interdire tout accès à distance au système d'information"
+      ],
+      "explanation": "Le modèle **Zero Trust** (confiance zéro), formulé par John Kindervag en 2010 alors qu'il travaillait pour Forrester, repose sur « ne jamais faire confiance, toujours vérifier » : aucun utilisateur, appareil ou flux n'est considéré comme sûr du simple fait qu'il se trouve dans le réseau de l'entreprise. Chaque accès est authentifié, autorisé selon le contexte (identité, état du poste, sensibilité de la ressource) et limité au strict nécessaire, en supposant qu'une compromission est possible. Le NIST l'a décrit dans la publication SP 800-207 (août 2020). C'est l'opposé du modèle « château fort », où l'intérieur du réseau est de confiance. Il n'interdit pas l'accès à distance ni les prestataires : il les contrôle.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Zero_trust_security_model"
+    },
+    {
+      "question": "Comment appelle-t-on un réseau physiquement isolé d'Internet et de tout réseau non sûr ?",
+      "answer": "Un réseau « air gap » (isolé par entrefer)",
+      "wrong": [
+        "Une zone démilitarisée (DMZ)",
+        "Un réseau privé virtuel (VPN)",
+        "Un réseau à traduction d'adresses (NAT)"
+      ],
+      "explanation": "Un réseau en **air gap** (entrefer) n'a aucune connexion, filaire ou sans fil, avec Internet ou avec d'autres réseaux moins sûrs ; on l'emploie pour des systèmes très sensibles (installations industrielles, réseaux classifiés). La DMZ, le VPN et le NAT sont des techniques de réseau qui, elles, **maintiennent** des connexions. Mais l'air gap n'est pas une garantie : les supports amovibles et les prestataires qui interviennent sur site sont des voies d'entrée, comme l'a illustré Stuxnet (découvert en 2010), qui a atteint des installations non connectées à Internet. Protection : contrôler et analyser les clés USB sur une station dédiée, désactiver les ports inutiles, journaliser les échanges et limiter les interventions externes.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Air_gap_(networking)"
+    },
+    {
+      "question": "Que désigne un hacker « **white hat** » (chapeau blanc) ?",
+      "answer": "Un spécialiste qui cherche des failles avec autorisation pour les corriger",
+      "wrong": [
+        "Un pirate qui agit pour s'enrichir ou nuire",
+        "Un militant qui attaque des sites pour défendre une cause",
+        "Un débutant qui utilise des outils sans les comprendre"
+      ],
+      "explanation": "Les « chapeaux » viennent des westerns, où le héros porte un chapeau blanc. Un **white hat** est un spécialiste qui recherche des failles **avec l'autorisation** du propriétaire du système, pour les corriger : pentester, chercheur participant à un bug bounty, membre d'une équipe de défense. Un **black hat** agit sans autorisation, pour de l'argent ou pour nuire. Le **grey hat** se situe entre les deux : il cherche sans permission mais sans but malveillant, ce qui reste illégal en France au titre de l'article 323-1 du Code pénal. Le **hacktiviste** attaque au nom d'une cause, et le **script kiddie** utilise des outils tout faits sans les comprendre. Retenir : l'autorisation, et non l'intention, fait la frontière légale.",
+      "difficulty": 1,
+      "source": "https://en.wikipedia.org/wiki/Hacker_(computer_security)"
+    },
+    {
+      "question": "Dans la nomenclature de Microsoft pour nommer les acteurs de menace (depuis 2023), à quels acteurs le suffixe « **Typhoon** » est-il associé ?",
+      "answer": "Des acteurs étatiques liés à la Chine",
+      "wrong": [
+        "Des acteurs étatiques liés à la Russie",
+        "Des acteurs étatiques liés à l'Iran",
+        "Des acteurs étatiques liés à la Corée du Nord"
+      ],
+      "explanation": "Chaque éditeur de sécurité nomme les groupes d'attaquants à sa façon, ce qui complique les recoupements. Depuis 2023, Microsoft utilise des **noms météorologiques** : « **Typhoon** » pour les acteurs liés à la Chine, « Blizzard » pour la Russie, « Sandstorm » pour l'Iran et « Sleet » pour la Corée du Nord ; « Tempest » désigne les acteurs financiers. CrowdStrike utilise des animaux : Bear (Russie), Panda (Chine), Kitten (Iran), Chollima (Corée du Nord). Mandiant numérote : APT28, APT29… Un même groupe peut donc avoir plusieurs noms, ce qui montre la prudence nécessaire avec l'**attribution** : on parle de « groupe attribué par tel éditeur à tel État », et non de certitude judiciaire. Bon réflexe : recouper plusieurs sources.",
+      "difficulty": 3,
+      "source": "https://learn.microsoft.com/en-us/unified-secops-platform/microsoft-threat-actor-naming"
+    }
+  ]
 }
