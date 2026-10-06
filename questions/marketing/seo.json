@@ -611,7 +611,7 @@
         "Google indexe chaque vue deux fois, ce qui crée du contenu dupliqué",
         "Les fragments imposent un rendu côté serveur pour être explorés"
       ],
-      "explanation": "Pour Google, la partie qui suit le `#` (le fragment) ne change pas l'URL : `/#/produits` et `/#/contact` désignent la même page `exemple.fr/`, et leurs contenus ne peuvent pas être indexés séparément. Google recommande d'utiliser l'**History API** (`pushState`) pour obtenir de vraies URL comme `exemple.fr/produits`. L'ancien schéma d'exploration AJAX en `#!` n'est d'ailleurs plus recommandé depuis 2015.",
+      "explanation": "Une URL peut se terminer par un **fragment**, la partie après le `#`. À l'origine, il sert à sauter à un endroit de la page (`exemple.fr/page#avis`). Pour Google, ce fragment ne désigne pas une autre page : `exemple.fr/#/produits` et `exemple.fr/#/contact` sont, à ses yeux, la même adresse `exemple.fr/`. Les contenus de chaque « vue » ne peuvent donc pas être indexés séparément.\n\nExemple : ton application monopage (*SPA*) affiche un catalogue sous `#/produits`, mais Google ne verra jamais une page « produits » à part. La solution est d'utiliser l'**History API** du navigateur, qui crée de vraies URL :\n```js\nhistory.pushState({}, '', '/produits');\n```\nOn obtient `exemple.fr/produits`, indexable. Le `#` n'est pas interdit dans une URL, et n'impose pas de rendu côté serveur.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics"
     },
@@ -623,7 +623,7 @@
         "Google indexe la page mais sans afficher d'extrait",
         "Google y voit du cloaking et applique une action manuelle"
       ],
-      "explanation": "Quand Google rencontre un `noindex` dans le HTML initial, il peut **sauter l'étape de rendu** : le script qui retire la balise ne s'exécute alors jamais de son point de vue. Sa documentation est explicite : si la page doit être indexée, il ne faut pas mettre de `noindex` dans le code d'origine. L'inverse, ajouter un `noindex` en JavaScript sur une page d'erreur, fonctionne en revanche.",
+      "explanation": "Scénario : une page est servie avec `<meta name=\"robots\" content=\"noindex\">` dans le HTML d'origine, et un script retire cette balise une fois la page chargée pour la rendre indexable.\n\nLe problème : pour économiser des ressources, Google peut **sauter l'étape de rendu** (l'exécution du JavaScript) quand il voit un `noindex` dans le HTML reçu. Son raisonnement est « cette page n'est pas à indexer, inutile d'aller plus loin ». Le script qui retire la balise ne s'exécute alors jamais, et la page reste hors de l'index.\n\nLa documentation de Google est claire : si une page doit être indexée, n'y mets **pas** de `noindex` dans le code d'origine. L'inverse fonctionne : ajouter un `noindex` en JavaScript sur une page d'erreur (par exemple « produit introuvable ») est possible.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics"
     },
@@ -635,7 +635,7 @@
         "WebSub",
         "Open Graph"
       ],
-      "explanation": "Avec **IndexNow**, le site envoie une simple requête HTTP (avec une clé de vérification hébergée chez lui) pour signaler un changement d'URL, au lieu d'attendre le passage d'un robot ; les moteurs participants se partagent ces notifications. Le protocole a été lancé en octobre 2021 par Microsoft Bing et Yandex, puis rejoint par d'autres moteurs comme Seznam ou Naver. WebSub est un protocole de notification d'abonnements à des flux, et Open Graph un balisage pour les réseaux sociaux.",
+      "explanation": "**IndexNow** est un protocole ouvert, lancé en octobre 2021 par Microsoft Bing et Yandex. Au lieu d'attendre qu'un robot repasse, le site prévient lui-même les moteurs qu'une URL a été ajoutée, modifiée ou supprimée, avec une simple requête HTTP :\n```\nhttps://www.bing.com/indexnow?url=https://exemple.fr/nouvelle-page&key=a1b2c3d4e5f6a7b8\n```\nLa clé (`a1b2c3d4e5f6a7b8`) est un code que tu choisis et que tu héberges dans un fichier sur ton site (`https://exemple.fr/a1b2c3d4e5f6a7b8.txt`) : c'est ainsi que les moteurs vérifient que tu es bien le propriétaire. Les moteurs participants se partagent ces notifications. D'autres moteurs, comme Seznam ou Naver, l'ont rejoint.\n\nUtile pour un site d'actualités ou une boutique dont les prix et le stock changent souvent. WebSub notifie des abonnés de flux, et Open Graph sert à l'aperçu sur les réseaux sociaux.",
       "difficulty": 3,
       "source": "https://en.wikipedia.org/wiki/IndexNow"
     },
@@ -647,7 +647,7 @@
         "L'attribut `rel` du lien",
         "Le titre de la page liée"
       ],
-      "explanation": "L'**ancre** (ou texte d'ancrage, *anchor text*) est le texte visible et cliquable placé entre `<a>` et `</a>`. Elle indique aux visiteurs comme à Google le sujet de la page liée : « tarifs de la formation SEO » est bien plus informatif que « cliquez ici ». En netlinking, une sur-optimisation des ancres (toujours le même mot-clé exact) est en revanche un signal de manipulation.",
+      "explanation": "Dans un lien HTML, l'**ancre** (*anchor text*) est le texte visible et cliquable, entre `<a>` et `</a>` :\n```html\n<a href=\"/formation-seo\">tarifs de la formation SEO</a>\n```\nIci, l'ancre est « tarifs de la formation SEO ». Elle dit aux visiteurs comme à Google de quoi parle la page de destination. C'est bien plus informatif que « cliquez ici » ou « en savoir plus ». La cible du lien est son `href` (la destination), pas l'ancre.\n\nEn netlinking, attention à la sur-optimisation : si 80 % des liens externes vers ton site utilisent exactement la même ancre « chaussures de trail pas cher », cela paraît artificiel. Un profil naturel mélange le nom de la marque, l'adresse brute, des ancres génériques et des expressions variées.",
       "difficulty": 1,
       "source": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable"
     },
@@ -659,7 +659,7 @@
         "La pagination",
         "Le pied de page"
       ],
-      "explanation": "Le **fil d'Ariane** (*breadcrumb*) montre où se situe la page dans la hiérarchie et permet de remonter d'un clic vers les niveaux supérieurs. Il renforce le maillage interne vers les catégories et peut être balisé avec le type schema.org `BreadcrumbList`, qui aide Google à comprendre la structure du site. Le méga-menu présente toutes les rubriques d'un coup, la pagination découpe une longue liste en plusieurs pages.",
+      "explanation": "Le **fil d'Ariane** (*breadcrumb* en anglais) tire son nom du fil qui aidait Thésée à retrouver son chemin dans le labyrinthe. Sur un site, il montre où se trouve la page et permet de remonter d'un clic :\n```html\n<nav><a href=\"/\">Accueil</a> &gt; <a href=\"/chaussures/\">Chaussures</a> &gt; Running</nav>\n```\nCôté SEO, c'est un bon outil de **maillage interne** : chaque page produit renvoie vers ses catégories parentes. On peut aussi le baliser avec le type `BreadcrumbList` de schema.org, ce qui aide Google à comprendre l'arborescence du site.\n\nNe le confonds pas avec le méga-menu (grand menu déroulant qui affiche toutes les rubriques d'un coup), la pagination (découpage d'une liste en pages 1, 2, 3…) ou le pied de page.",
       "difficulty": 1,
       "source": "https://developers.google.com/search/docs/appearance/structured-data/breadcrumb"
     },
@@ -671,7 +671,7 @@
         "Rediriger chaque visiteur vers la version de son pays",
         "Définir la langue utilisée par Googlebot pour explorer la page"
       ],
-      "explanation": "`hreflang` relie entre elles les variantes linguistiques ou régionales d'un même contenu (`fr`, `fr-BE`, `en-GB`…), afin que Google affiche la bonne version à chaque internaute dans ses résultats. Il ne traduit rien et ne redirige personne : c'est une simple indication pour le moteur. Sans lui, un internaute belge risque par exemple de tomber sur la version française, avec des prix ou une livraison inadaptés.",
+      "explanation": "Si ton site existe en plusieurs versions (`fr`, `fr-BE`, `en-GB`…), `hreflang` indique à Google quelles pages sont les variantes d'un même contenu, pour afficher la bonne à chaque internaute :\n```html\n<link rel=\"alternate\" hreflang=\"fr-FR\" href=\"https://exemple.com/fr/\">\n<link rel=\"alternate\" hreflang=\"fr-BE\" href=\"https://exemple.com/fr-be/\">\n<link rel=\"alternate\" hreflang=\"en-GB\" href=\"https://exemple.com/en-gb/\">\n```\nSans cette indication, un internaute belge peut tomber sur la version française, avec des prix en euros pour la France et des délais de livraison qui ne s'appliquent pas à lui.\n\nAttention à ce qu'il ne fait **pas** : il ne traduit rien et ne redirige personne. C'est une simple information pour le moteur, qui reste libre de s'en servir. Il ne définit pas non plus la langue utilisée par Googlebot pour explorer.",
       "difficulty": 1,
       "source": "https://developers.google.com/search/docs/specialty/international/localized-versions"
     },
@@ -683,7 +683,7 @@
         "403",
         "500"
       ],
-      "explanation": "Le code **200 OK** signifie que la requête a abouti et que le contenu est renvoyé : c'est le statut attendu pour toute page à indexer. 301 indique une redirection permanente, 403 un accès interdit et 500 une erreur interne du serveur. Les codes sont regroupés par familles : 2xx succès, 3xx redirection, 4xx erreur côté client, 5xx erreur côté serveur.",
+      "explanation": "Quand ton navigateur demande une page, le serveur répond avec un **code de statut HTTP** à trois chiffres qui dit comment ça s'est passé. Tu peux le voir avec `curl -I` :\n```\n$ curl -I https://exemple.fr/blog/article\nHTTP/1.1 200 OK\n```\n**200 OK** signifie que la requête a réussi et que le contenu est renvoyé : c'est le statut attendu pour toute page que l'on veut voir indexée.\n\nLes codes sont regroupés par familles : **2xx** succès, **3xx** redirection (301 : déplacement permanent), **4xx** erreur côté client (403 : accès interdit, 404 : introuvable), **5xx** erreur côté serveur (500 : erreur interne). Pour le SEO, une page importante qui répond 301, 403 ou 500 au lieu de 200 est un signal d'alerte à corriger rapidement.",
       "difficulty": 1,
       "source": "https://developers.google.com/search/docs/crawling-indexing/http-network-errors"
     },
@@ -695,7 +695,7 @@
         "Des espaces encodés : `/chaussures%20de%20running`",
         "Aucun séparateur : `/chaussuresderunning`"
       ],
-      "explanation": "Google recommande les **tirets** (`-`) plutôt que les underscores (`_`) pour séparer les mots d'une URL, car ils sont plus lisibles pour les humains comme pour les moteurs. Les espaces encodés en `%20` rendent l'URL illisible, et des mots collés empêchent de distinguer les termes. Une URL courte, lisible et descriptive aide aussi l'internaute à savoir où il va cliquer.",
+      "explanation": "Google recommande de séparer les mots d'une URL avec des **tirets** (`-`). Comparons quatre écritures de la même adresse :\n```\n/chaussures-de-running     <- recommandé\n/chaussures_de_running     <- à éviter (underscores)\n/chaussures%20de%20running <- illisible (espaces encodés)\n/chaussuresderunning       <- mots collés\n```\nGoogle considère le tiret comme un séparateur de mots. Les underscores sont moins lisibles, les espaces donnent le `%20` incompréhensible pour un humain, et des mots collés empêchent de distinguer les termes.\n\nUne bonne URL est courte, lisible et descriptive : on devine la page avant même de cliquer. Exemple : `exemple.fr/blog/choisir-chaussures-trail` en dit plus que `exemple.fr/p?id=4821`. Évite aussi de changer les URL sans nécessité, car il faudra ensuite les rediriger.",
       "difficulty": 1,
       "source": "https://developers.google.com/search/docs/crawling-indexing/url-structure"
     },
@@ -707,7 +707,7 @@
         "Via un attribut `hreflang` sur chaque page du site",
         "Via un en-tête HTTP `X-Sitemap` sur la page d'accueil"
       ],
-      "explanation": "On soumet un sitemap dans le rapport **Sitemaps** de la Search Console, ou on le déclare avec une ligne `Sitemap: https://exemple.fr/sitemap.xml` dans `robots.txt`, ce qui le rend aussi visible pour les autres moteurs. L'ancienne méthode du « ping » HTTP vers Google a été abandonnée en 2023, car ces soumissions anonymes servaient surtout aux spammeurs. Un en-tête `X-Sitemap`, lui, n'existe pas.",
+      "explanation": "Un sitemap ne sert à rien si Google ne sait pas où le trouver. Deux moyens principaux :\n\n**1.** Le soumettre dans le rapport **Sitemaps** de la Google Search Console.\n\n**2.** Ajouter une ligne `Sitemap:` dans le `robots.txt`, avec l'adresse complète :\n```\nSitemap: https://exemple.fr/sitemap.xml\n```\nLa seconde méthode a l'avantage d'être vue aussi par les autres moteurs, qui lisent eux aussi le `robots.txt`.\n\nIl existait une troisième méthode, le « ping » (appeler une adresse Google avec l'URL du sitemap), mais Google l'a abandonnée en 2023, car ces soumissions anonymes servaient surtout aux spammeurs. Quant à un en-tête HTTP `X-Sitemap`, il n'existe pas, et la meta description ou `hreflang` n'ont rien à voir avec les sitemaps.",
       "difficulty": 1,
       "source": "https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping"
     },
@@ -719,7 +719,7 @@
         "La position moyenne de la page dans la SERP",
         "Le temps moyen passé par les visiteurs sur la page"
       ],
-      "explanation": "La **profondeur** (ou profondeur de clic) correspond au nombre minimal de clics depuis la page d'accueil. Plus une page est profonde, moins elle reçoit de popularité interne et moins elle est explorée souvent : on cherche donc à garder les pages importantes à quelques clics de l'accueil. Elle ne dépend pas du nombre de dossiers dans l'URL : une page en `/a/b/c/` peut très bien être liée directement depuis l'accueil.",
+      "explanation": "La **profondeur** d'une page est le nombre minimal de clics qu'il faut pour l'atteindre depuis la page d'accueil. Elle se compte en clics, pas en mots, ni en visites, ni en position dans Google.\n\nExemple d'un site e-commerce :\n```\nAccueil -> Chaussures -> Running -> Fiche \"Trail X\"\n```\nLa fiche est à 3 clics de l'accueil. Une page profonde reçoit moins de popularité interne et est explorée moins souvent. On cherche donc à garder les pages importantes à quelques clics de l'accueil, par exemple avec un menu clair et des liens depuis les pages populaires.\n\nElle ne dépend pas de l'URL : `/a/b/c/` peut être à 1 clic de l'accueil si la page d'accueil la lie directement, et une URL courte comme `/promo` peut être à 6 clics si elle est enterrée dans le menu.",
       "difficulty": 1
     },
     {
@@ -730,7 +730,7 @@
         "301 Moved Permanently",
         "503 Service Unavailable"
       ],
-      "explanation": "Le code **410 Gone** dit explicitement que la ressource a disparu pour de bon, alors que **404** dit seulement qu'elle est introuvable, sans préciser si c'est définitif. Pour Google, la différence est minime : les deux entraînent la sortie de l'URL de l'index. Si un contenu équivalent existe ailleurs, mieux vaut une redirection 301 vers lui.",
+      "explanation": "Un **404 Not Found** dit « je ne trouve pas cette page », sans préciser si c'est provisoire ou définitif. Un **410 Gone** va plus loin : « cette page a été supprimée volontairement et ne reviendra pas ».\n\nExemple : tu retires un produit définitivement de ton catalogue, sans équivalent. Tu peux renvoyer 410 pour l'annoncer clairement. Pour Google, la différence est minime : dans les deux cas, l'URL finit par sortir de l'index. La 301 est un autre cas : elle sert à pointer vers un remplaçant (`301 Moved Permanently`), et non à signaler une suppression sèche. Un 503 signale, lui, une indisponibilité temporaire.\n\nSi le produit a un équivalent (une nouvelle version, la catégorie qui le contenait), mieux vaut rediriger en 301 vers cette page pour ne pas perdre les visiteurs et les liens reçus.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/crawling-indexing/http-network-errors"
     },
@@ -742,7 +742,7 @@
         "404 Not Found",
         "301 vers une page de maintenance"
       ],
-      "explanation": "Le code **503** indique une indisponibilité temporaire : Google ralentit son exploration et revient plus tard, sans retirer les pages de l'index (un en-tête `Retry-After` peut préciser quand revenir). Servir une page de maintenance en 200 risque de la faire indexer à la place du vrai contenu, et une 404 annonce des pages inexistantes. Une 503 ne doit toutefois pas durer : des erreurs serveur persistantes finissent par faire sortir les URL de l'index.",
+      "explanation": "Pendant une maintenance de quelques heures, il faut répondre à Google « le site est indisponible **temporairement** ». C'est le rôle du code **503** :\n```\nHTTP/1.1 503 Service Unavailable\nRetry-After: 3600\n```\n`Retry-After` indique en secondes quand revenir (3 600 s, soit 1 heure). Google comprend qu'il doit repasser plus tard, ralentit son exploration et ne retire pas les pages de l'index.\n\nÀ éviter : une belle page « En maintenance » servie avec un code **200**. Google la prend pour le vrai contenu et risque de l'indexer à la place de tes pages. Une **404** annonce des pages inexistantes, et une 301 vers la page de maintenance dit que les pages ont déménagé.\n\nLa 503 doit rester brève : si elle dure des jours, Google finit par considérer les URL comme perdues et les retire de l'index.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/crawling-indexing/http-network-errors"
     },
@@ -754,7 +754,7 @@
         "Oui, à condition que la page soit aussi dans le sitemap",
         "Non, il l'ignore dès que la page reçoit des backlinks"
       ],
-      "explanation": "La balise canonique est une **indication**, pas une directive : Google la combine avec d'autres signaux (redirections, liens internes, sitemap, HTTPS, similarité des contenus) pour choisir l'URL canonique. Si ces signaux se contredisent, ou si la page désignée est très différente, il peut en choisir une autre ; l'outil d'inspection d'URL affiche alors la « canonique sélectionnée par Google ». D'où l'intérêt de signaux cohérents partout.",
+      "explanation": "Quand plusieurs pages sont proches, Google choisit une **URL canonique**. La balise `rel=\"canonical\"` l'aide, mais c'est une **indication forte**, pas un ordre. Google la combine avec d'autres signaux : redirections, liens internes, sitemap, HTTPS, similarité réelle des contenus.\n\nExemple : la page A déclare `canonical` vers B, mais tous tes liens internes et ton sitemap pointent vers A, et leurs contenus sont très différents. Google peut décider que A est la bonne canonique. Dans la Search Console, l'outil d'inspection d'URL affiche alors « URL canonique sélectionnée par Google », différente de celle que tu avais déclarée.\n\nIl ne l'ignore pas parce que la page a des backlinks, et le sitemap n'est pas une condition. La règle d'or est d'envoyer des signaux **cohérents** : mêmes URL partout.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls"
     },
@@ -766,7 +766,7 @@
         "1 000 URL et 5 Mo non compressé",
         "100 000 URL et 100 Mo non compressé"
       ],
-      "explanation": "Un sitemap ne peut pas dépasser **50 000 URL** ni **50 Mo** non compressé. Au-delà, on le découpe en plusieurs fichiers que l'on regroupe dans un **index de sitemaps**, lui-même soumis à Google. Découper par type de contenu (produits, catégories, articles) permet en plus de suivre l'indexation de chaque section dans la Search Console.",
+      "explanation": "Un fichier sitemap XML est limité à **50 000 URL** et **50 Mo** non compressé (la taille compte avant compression `.gz`). Si tu as plus, tu découpes en plusieurs sitemaps et tu les regroupes dans un **index de sitemaps** :\n```xml\n<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <sitemap><loc>https://exemple.fr/sitemap-produits.xml</loc></sitemap>\n  <sitemap><loc>https://exemple.fr/sitemap-blog.xml</loc></sitemap>\n</sitemapindex>\n```\nC'est cet index que tu soumets à la Search Console.\n\nMini-calcul : une boutique de 120 000 fiches produit a besoin d'au moins 3 fichiers (120 000 ÷ 50 000 = 2,4, arrondi à 3). Découper par type de contenu (produits, catégories, articles) permet aussi de suivre dans la Search Console combien de pages de chaque section sont indexées.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap"
     },
@@ -778,7 +778,7 @@
         "Uniquement les pages publiées dans le mois",
         "Les URL bloquées par le `robots.txt`"
       ],
-      "explanation": "Le sitemap sert à signaler les pages que l'on souhaite voir indexées : il doit contenir les URL **canoniques**, accessibles en **200** et sans `noindex`. Y glisser des redirections, des erreurs ou des doublons envoie des signaux contradictoires et dilue la confiance de Google dans le fichier. Toutes les pages importantes y ont leur place, pas seulement les plus récentes.",
+      "explanation": "Le sitemap est une liste des pages que tu **souhaites** voir indexées. Il doit donc contenir uniquement les URL canoniques, indexables (sans `noindex`) et qui répondent en **200 OK**.\n\nÀ exclure : les redirections (`301`), les pages en erreur (`404`), les doublons non canoniques, les pages bloquées par le `robots.txt`.\n\nExemple : ton sitemap contient `http://exemple.fr/produit` alors que ce lien redirige vers `https://www.exemple.fr/produit` et que la canonique est la version https. Tu indiques une URL qui n'est pas la bonne. Si cela arrive sur des milliers d'URL, Google fait de moins en moins confiance au fichier.\n\nLes pages importantes y ont leur place même si elles sont anciennes : le sitemap ne se limite pas aux contenus du mois. Un `<lastmod>` fiable aide à signaler ceux qui ont réellement changé.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap"
     },
@@ -790,7 +790,7 @@
         "La page canonique de l'ensemble des versions",
         "La version destinée aux robots d'exploration"
       ],
-      "explanation": "`hreflang=\"x-default\"` désigne la page de repli, servie aux internautes dont la langue ou la région ne correspond à aucune version déclarée : typiquement un sélecteur de langue ou une page d'accueil internationale. Ce n'est ni une canonique ni forcément la langue d'origine du site. Elle s'ajoute simplement à la liste des autres annotations `hreflang`.",
+      "explanation": "Quand tu déclares plusieurs versions linguistiques avec `hreflang`, il reste un cas à traiter : un internaute dont la langue ou la région ne correspond à **aucune** version. La valeur `x-default` désigne la page de repli à lui proposer.\n```html\n<link rel=\"alternate\" hreflang=\"fr\" href=\"https://exemple.com/fr/\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://exemple.com/en/\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://exemple.com/\">\n```\nIci, un internaute dont la langue est le japonais ne correspond ni à `fr` ni à `en` : il est envoyé vers `https://exemple.com/`, souvent un sélecteur de langue ou une page d'accueil internationale.\n\n`x-default` n'est pas la canonique de l'ensemble, ni forcément la langue d'origine du site, et ne vise pas les robots. Elle s'ajoute simplement à la liste des autres annotations.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/specialty/international/localized-versions"
     },
@@ -802,7 +802,7 @@
         "La page anglaise devient la canonique de la page française",
         "Seule la page anglaise est alors affichée dans les résultats"
       ],
-      "explanation": "Google exige des **liens de retour** : si la page X déclare Y comme variante, Y doit aussi déclarer X, sinon les annotations peuvent être ignorées. Cette réciprocité empêche un site tiers de se proclamer « version traduite » de vos pages. Chaque version doit aussi se citer elle-même dans la liste complète des variantes.",
+      "explanation": "Les annotations `hreflang` doivent être **réciproques** (« liens de retour »). Si la page française déclare la page anglaise comme sa variante, la page anglaise doit déclarer la française en retour :\n```html\n<!-- Dans la page FR -->\n<link rel=\"alternate\" hreflang=\"fr\" href=\"https://exemple.com/fr/\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://exemple.com/en/\">\n<!-- Dans la page EN : la même liste -->\n```\nSans retour, Google peut ignorer les annotations. Cette règle empêche qu'un site tiers se déclare « version traduite » de tes pages sans ton accord. Chaque page doit aussi se citer elle-même dans la liste (ci-dessus, `fr` apparaît dans la page FR).\n\nGoogle n'ajoute pas le lien manquant de lui-même. La page anglaise ne devient pas canonique, et les deux versions restent affichables. Si une page n'est pas reliée en retour, c'est souvent un oubli dans le modèle (template) du site.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/specialty/international/localized-versions"
     },
@@ -814,7 +814,7 @@
         "Ralentir fortement l'affichage des images des produits",
         "Déclencher une pénalité manuelle pour contenu caché"
       ],
-      "explanation": "Chaque combinaison de filtres (`?couleur=bleu&taille=42&tri=prix`) peut créer une nouvelle URL : sur un gros catalogue, on obtient des millions de pages quasi dupliquées. Les robots y épuisent leur budget d'exploration au détriment des pages utiles, et les signaux se dispersent. On limite donc les combinaisons explorables (liens non crawlables, règles `robots.txt`, canoniques) et on ne laisse indexables que les facettes qui répondent à une vraie demande.",
+      "explanation": "La **navigation à facettes** permet de filtrer un catalogue (couleur, taille, prix, marque). Chaque combinaison peut créer une nouvelle URL :\n```\n/chaussures?couleur=bleu\n/chaussures?couleur=bleu&taille=42\n/chaussures?couleur=bleu&taille=42&tri=prix\n```\nSur un gros catalogue, ces combinaisons se comptent en millions de pages quasi identiques. Les robots épuisent leur **budget d'exploration** dessus au lieu de visiter les vraies fiches produit, et les signaux se dispersent entre des pages dupliquées.\n\nOn maîtrise cela en limitant les combinaisons explorables : liens non suivis, règles dans le `robots.txt` (par exemple `Disallow: /*?tri=`), balises canoniques. Seules les facettes qui répondent à une vraie recherche, comme « chaussures de trail bleues », restent indexables.\n\nCe n'est pas une pénalité manuelle, et cela ne bloque pas l'accès aux fiches.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/crawling-indexing/crawling-managing-faceted-navigation"
     },
@@ -826,7 +826,7 @@
         "Ajouter une canonique de B vers A",
         "Ne rien changer : les chaînes sont sans effet"
       ],
-      "explanation": "Une **chaîne de redirections** ralentit l'utilisateur, consomme des requêtes d'exploration et multiplie les risques d'erreur. Googlebot suit jusqu'à 10 sauts, mais on recommande de faire pointer chaque ancienne URL directement vers sa destination finale, et de mettre à jour les liens internes pour qu'ils visent C sans redirection. Ces chaînes apparaissent souvent après plusieurs refontes successives.",
+      "explanation": "Une **chaîne de redirections** survient quand A mène à B, qui mène à C :\n```\n/ancien  -301->  /intermediaire  -301->  /final\n```\nChaque saut ralentit l'utilisateur, consomme une requête d'exploration et augmente le risque d'erreur. Googlebot suit jusqu'à 10 sauts, mais on recommande de faire pointer chaque ancienne URL **directement** vers sa destination finale :\n```\n/ancien          -301->  /final\n/intermediaire   -301->  /final\n```\nIl faut aussi mettre à jour les liens internes pour qu'ils visent `/final` sans passer par une redirection.\n\nCes chaînes apparaissent souvent après plusieurs refontes successives du site, chacune ayant ajouté sa redirection sans nettoyer les précédentes. Passer A en 302 ou ajouter une canonique ne supprime pas la chaîne, et la laisser en l'état n'est pas neutre.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/crawling-indexing/http-network-errors"
     },
@@ -838,7 +838,7 @@
         "Un sous-domaine : `fr.exemple.com`",
         "Un paramètre : `exemple.com/?pays=fr`"
       ],
-      "explanation": "Un **domaine national** (ccTLD) comme `.fr` ou `.de` est rattaché à un pays : c'est, selon Google, un signal fort que le site vise ce pays. Sous-dossiers et sous-domaines d'un `.com` sont valables mais neutres géographiquement, et doivent s'appuyer sur d'autres signaux comme `hreflang` ; les paramètres d'URL sont déconseillés pour séparer les versions. Exception notable : Google traite certains ccTLD comme `.io`, `.co` ou `.tv` comme des domaines génériques.",
+      "explanation": "Google considère un **domaine national** (ccTLD, *country code top-level domain*) comme `.fr`, `.de` ou `.es` comme un signal fort que le site vise ce pays :\n```\nexemple.fr            -> signal géographique clair (France)\nexemple.com/fr/       -> neutre\nfr.exemple.com        -> neutre\nexemple.com/?pays=fr  -> déconseillé\n```\nUn sous-dossier ou un sous-domaine d'un `.com` fonctionne très bien, mais ne dit rien sur le pays à lui seul : il faut ajouter d'autres signaux comme `hreflang`. Les paramètres d'URL sont déconseillés pour séparer les versions.\n\nException : certaines extensions de pays, comme `.io`, `.co` ou `.tv`, sont traitées comme des domaines génériques. Un `.co` n'indique pas forcément la Colombie. Le choix reste stratégique : un domaine national par pays demande plus de gestion, un sous-dossier profite de la popularité du site principal.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites"
     },
@@ -850,7 +850,7 @@
         "Un en-tête HTTP `Link` dans la réponse",
         "Des balises `xhtml:link` dans le sitemap XML"
       ],
-      "explanation": "Google accepte trois méthodes équivalentes pour `hreflang` : des éléments `<link rel=\"alternate\" hreflang=\"…\">` dans le `<head>`, un en-tête HTTP `Link` (pratique pour les PDF) ou des entrées `xhtml:link` dans le sitemap XML. Le `robots.txt`, lui, ne gère que l'exploration et ne connaît pas `hreflang`. Sur un gros site multilingue, passer par le sitemap évite d'alourdir chaque page.",
+      "explanation": "Il existe trois façons de déclarer `hreflang`, toutes acceptées par Google :\n```html\n<!-- 1. Dans le <head> de chaque page -->\n<link rel=\"alternate\" hreflang=\"en-GB\" href=\"https://exemple.com/en-gb/\">\n```\n```\n# 2. Dans l'en-tête HTTP (pratique pour les PDF)\nLink: <https://exemple.com/en-gb/>; rel=\"alternate\"; hreflang=\"en-GB\"\n```\n```xml\n<!-- 3. Dans le sitemap XML -->\n<xhtml:link rel=\"alternate\" hreflang=\"en-GB\" href=\"https://exemple.com/en-gb/\"/>\n```\nSur un gros site multilingue, le sitemap évite d'alourdir le code de chaque page.\n\nLe `robots.txt`, lui, ne sert qu'à régler l'exploration (`Disallow`, `Allow`, `Sitemap`). Il ne connaît aucune directive `hreflang` : y écrire une ligne de ce genre n'a aucun effet.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/specialty/international/localized-versions"
     },
@@ -862,7 +862,7 @@
         "`gb-EN`",
         "`eng-GB`"
       ],
-      "explanation": "Une valeur `hreflang` combine un code de langue **ISO 639-1** (`en`, sur deux lettres) et, en option, un code de pays **ISO 3166-1 alpha-2** : celui du Royaume-Uni est `GB`. `UK` est un code réservé, que Google ignore dans `hreflang`, tout comme `EU` ou `UN`. L'ordre compte aussi : la langue d'abord, le pays ensuite, et un code de pays seul n'est pas valide.",
+      "explanation": "Une valeur `hreflang` se construit comme `langue` ou `langue-PAYS` :\n```\nen        -> anglophones, partout\nen-GB     -> anglophones du Royaume-Uni\nen-US     -> anglophones des États-Unis\n```\nLa langue suit la norme **ISO 639-1** (deux lettres : `en`, `fr`) et le pays la norme **ISO 3166-1 alpha-2** (deux lettres en majuscules). Le code officiel du Royaume-Uni (*Great Britain*) est **GB**. `UK` est souvent utilisé par erreur : ce n'est pas le code officiel.\n\nAutres pièges : l'ordre. Il faut la langue d'abord, le pays ensuite (`gb-EN` est donc faux), et un pays seul (`GB`) n'est pas valide pour `hreflang`. Les codes à trois lettres (`eng`) ne sont pas non plus attendus.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/specialty/international/localized-versions"
     },
@@ -874,7 +874,7 @@
         "La dernière page de la série",
         "La page d'accueil du site"
       ],
-      "explanation": "Google recommande de donner à chaque page paginée **sa propre URL canonique**, et non de toutes les canoniser vers la page 1 : les produits listés en page 2 ou 3 sont différents, et une canonique vers la page 1 risquerait d'empêcher leur découverte. Chaque page doit aussi être liée à la suivante par un vrai lien `<a href>`. Pour signaler la page 1 comme meilleure page d'atterrissage, il suffit que toutes les pages de la série la lient.",
+      "explanation": "Une liste de produits est découpée en pages (`?page=1`, `?page=2`…), c'est la **pagination**. Google recommande que chaque page paginée ait sa **propre URL canonique** :\n```html\n<!-- Dans la page ?page=2 -->\n<link rel=\"canonical\" href=\"https://exemple.fr/chaussures?page=2\">\n```\nSi tu canonisais toutes les pages vers `?page=1`, Google risquerait de n'indexer que la page 1 et de ne jamais voir les produits des pages 2 ou 3.\n\nChaque page doit aussi être reliée à la suivante par un vrai lien `<a href=\"?page=3\">`. Google n'utilise plus les balises `rel=\"prev\"` et `rel=\"next\"` pour comprendre la pagination.\n\nUne canonique vers la dernière page ou vers l'accueil serait encore plus incohérente.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/specialty/ecommerce/pagination-and-incremental-page-loading"
     },
@@ -886,7 +886,7 @@
         "Comme une erreur, faute de prise en charge",
         "Comme une 304 : un contenu inchangé"
       ],
-      "explanation": "Le code **308 Permanent Redirect** est, pour Google, l'équivalent d'une **301** : la cible a vocation à devenir l'URL canonique. De même, **307** est traité comme une 302. La différence tient au protocole HTTP : 307 et 308 interdisent au navigateur de changer la méthode de la requête (un `POST` reste un `POST`), alors que 301 et 302 le tolèrent historiquement.",
+      "explanation": "Un code **308 Permanent Redirect** est, pour Google, l'équivalent d'une **301** : l'ancienne adresse est remplacée définitivement par la nouvelle.\n```\nHTTP/1.1 308 Permanent Redirect\nLocation: https://exemple.fr/nouvelle-page\n```\nDe la même façon, **307** est traité comme une **302** (redirection temporaire).\n\nLa nuance est technique : avec 301 et 302, certains navigateurs transforment un envoi de formulaire (`POST`) en simple consultation (`GET`) lors de la redirection. Avec 307 et 308, la méthode est conservée : un `POST` reste un `POST`. Pour des pages web ordinaires, on peut donc utiliser 301 ou 308 sans différence pour le SEO.\n\nUn 304 *Not Modified* est autre chose : il dit « contenu inchangé depuis ta dernière visite ». Et le 308 est bien compris par Google, pas considéré comme une erreur.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/crawling-indexing/http-network-errors"
     },
@@ -898,7 +898,7 @@
         "Comme une soft 404",
         "Comme du cloaking à sanctionner"
       ],
-      "explanation": "Google distingue deux cas : un `meta refresh` **instantané** est traité comme une redirection permanente, un `meta refresh` **différé** (après quelques secondes) comme une redirection temporaire. Les redirections côté serveur (301, 308) restent préférables ; le `meta refresh` est une solution de repli quand on n'a pas accès au serveur. Les redirections JavaScript viennent en dernier recours, car elles dépendent du rendu.",
+      "explanation": "Une redirection `meta refresh` est une balise HTML qui renvoie le visiteur vers une autre page :\n```html\n<meta http-equiv=\"refresh\" content=\"0; url=https://exemple.fr/nouvelle-page\">\n```\nLe chiffre `0` est le délai en secondes. Google distingue deux cas : un `meta refresh` **instantané** (0 seconde) est traité comme une redirection **permanente**, un `meta refresh` **différé** (par exemple 5 secondes, avec un message « vous allez être redirigé ») comme une redirection **temporaire**.\n\nLes redirections serveur (301, 308) restent toutefois préférables : plus rapides et plus fiables. Le `meta refresh` sert de solution de repli quand on n'a pas accès à la configuration du serveur, par exemple sur un hébergement limité. Les redirections en JavaScript viennent en dernier recours, car elles dépendent du rendu de la page.\n\nCe n'est ni une soft 404 ni du cloaking.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/crawling-indexing/301-redirects"
     },
@@ -910,7 +910,7 @@
         "Une balise `rel=\"canonical\"` vers l'URL",
         "Un en-tête HTTP `Link` avec `rel=\"canonical\"`"
       ],
-      "explanation": "Selon la documentation de Google, les **redirections** et les annotations `rel=\"canonical\"` (balise ou en-tête HTTP) sont des signaux forts, tandis que la présence d'une URL dans le **sitemap** n'est qu'un signal faible. Les signaux s'additionnent : ils doivent donc tous désigner la même URL. Un sitemap qui liste une URL alors que la canonique en désigne une autre envoie un message contradictoire.",
+      "explanation": "Quand Google doit choisir la version canonique parmi plusieurs pages proches, il additionne des **signaux**. Selon sa documentation :\n```\nSignal fort   : redirection 301\nSignal fort   : <link rel=\"canonical\"> (balise ou en-tête HTTP Link)\nSignal faible : présence de l'URL dans le sitemap\n```\nLe sitemap est donc le signal le plus faible : y lister une URL dit « celle-ci me semble canonique », mais cela pèse moins qu'une redirection ou qu'une balise canonique.\n\nCes signaux s'additionnent : l'idéal est qu'ils désignent tous la **même** URL. Exemple de message contradictoire : ton sitemap liste `/produit-a`, alors que la balise canonique de cette page pointe vers `/produit-b`. Google doit trancher, et pas forcément dans le sens que tu espères.\n\nLe plus important est la cohérence, pas la quantité de signaux.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls"
     },
@@ -922,7 +922,7 @@
         "`<lastmod>` et `<priority>`",
         "`<loc>` et `<changefreq>`"
       ],
-      "explanation": "Google indique ignorer `<priority>` et `<changefreq>`, souvent remplies automatiquement et peu fiables. Il utilise en revanche `<lastmod>`, à condition que cette date soit exacte de façon constante et vérifiable, c'est-à-dire qu'elle reflète une vraie modification significative de la page. `<loc>`, l'URL elle-même, est la seule balise obligatoire de chaque entrée.",
+      "explanation": "Dans un sitemap, chaque entrée `<url>` peut contenir plusieurs balises. Google en ignore deux :\n```xml\n<url>\n  <loc>https://exemple.fr/blog/guide</loc>\n  <lastmod>2025-03-12</lastmod>\n  <changefreq>daily</changefreq>\n  <priority>0.8</priority>\n</url>\n```\n`<changefreq>` (fréquence de changement) et `<priority>` (importance relative) sont **ignorées** : souvent remplies à la main ou par défaut, elles sont peu fiables. `<loc>`, l'URL, est la seule balise obligatoire. `<lastmod>`, la date de dernière modification, est utilisée, mais seulement si elle est exacte de façon constante.\n\nPiège fréquent : un CMS met `lastmod` à la date du jour à chaque génération du sitemap, même sans changement. Google s'en rend compte, et finit par ne plus faire confiance à cette date.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap"
     },
@@ -934,7 +934,7 @@
         "En lisant les annotations `hreflang` de la page",
         "En se fiant à la langue indiquée dans l'URL"
       ],
-      "explanation": "Google indique utiliser le **contenu visible** de la page pour en déterminer la langue, et non les informations techniques comme l'attribut `lang` ou l'URL. `hreflang` sert à relier des variantes entre elles, pas à détecter la langue de la page. Mélanger plusieurs langues dans le texte principal, ou juxtaposer original et traduction, brouille donc ce signal.",
+      "explanation": "Pour savoir dans quelle langue est une page, Google lit son **contenu visible**, le texte que voit l'internaute. Il n'utilise pas les informations du code comme l'attribut `lang`, ni la langue présente dans l'URL.\n\nExemple : une page entièrement en français, mais dont la balise indique `<html lang=\"en\">` à cause d'un modèle mal configuré. Google la comprend quand même comme du français, d'après son texte. L'attribut `lang` reste utile pour l'accessibilité, notamment pour que les lecteurs d'écran choisissent la bonne voix.\n\n`hreflang` n'est pas là pour détecter la langue, mais pour relier entre elles les variantes d'une même page.\n\nConséquence : une page qui mélange plusieurs langues dans son texte principal, ou qui juxtapose un original et sa traduction, brouille le signal. Mieux vaut une page par langue.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites"
     },
@@ -946,7 +946,7 @@
         "Le carrousel d'actualités",
         "Le lien annexe (sitelink)"
       ],
-      "explanation": "L'**extrait optimisé** (*featured snippet*), surnommé « position zéro », met en avant un passage d'une page (paragraphe, liste, tableau) qui répond à la requête, avec un lien vers la source. Google choisit lui-même l'extrait ; un contenu structuré, avec une question en intertitre suivie d'une réponse concise, augmente les chances d'être retenu. Le pack local présente des établissements sur une carte, et les liens annexes (*sitelinks*) des raccourcis vers d'autres pages d'un même site.",
+      "explanation": "L'**extrait optimisé** (*featured snippet*) est l'encadré tout en haut des résultats qui répond directement à la question, avec un lien vers la page source. On l'appelle parfois la « position zéro ».\n\nExemple : tu tapes « combien de temps cuire un œuf dur ». Google affiche un paragraphe ou une liste tiré d'un site, au-dessus des liens classiques. Google choisit lui-même la page, mais on augmente ses chances avec une structure claire : une question en intertitre, suivie d'une réponse brève.\n```html\n<h2>Combien de temps cuire un œuf dur ?</h2>\n<p>Compte environ 10 minutes dans l'eau frémissante.</p>\n```\nNe confonds pas avec le pack local (établissements sur une carte), le carrousel d'actualités (articles récents) ou les liens annexes (*sitelinks*), ces raccourcis vers d'autres pages d'un même site, sous un résultat.",
       "difficulty": 1,
       "source": "https://developers.google.com/search/docs/appearance/featured-snippets"
     },
@@ -958,7 +958,7 @@
         "Le panneau de connaissances",
         "Le carrousel d'images"
       ],
-      "explanation": "Le **pack local** (*local pack*) affiche une carte et une poignée d'établissements, généralement trois, issus des fiches Google Business Profile. Il apparaît pour les requêtes à intention locale, explicites (« près de moi », nom de ville) ou implicites (« boulangerie »). Y figurer dépend surtout de la fiche d'établissement, et pas seulement des signaux du site web.",
+      "explanation": "Pour une recherche comme « pizzeria près de moi », Google affiche en haut des résultats une carte et quelques établissements (généralement trois) : c'est le **pack local** (*local pack*). Chaque ligne vient d'une fiche **Google Business Profile**, avec sa note, son adresse et ses horaires.\n\nIl apparaît pour les recherches à intention locale, explicites (« près de moi », « pizzeria Lyon ») ou implicites (« boulangerie » : Google déduit que tu cherches à proximité). Pour y figurer, la fiche d'établissement compte plus que le site web : catégorie, avis, adresse, photos.\n\nÀ ne pas confondre avec l'extrait optimisé (un passage de texte qui répond à une question), le panneau de connaissances (la fiche d'information sur une entité, à droite) ou le carrousel d'images.",
       "difficulty": 1
     },
     {
@@ -969,7 +969,7 @@
         "Google Tag Manager",
         "Google Merchant Center"
       ],
-      "explanation": "**Google Business Profile** (appelé Google My Business jusqu'en novembre 2021) permet de renseigner adresse, horaires, catégories et photos, et de répondre aux avis clients. Une fiche complète et active est le premier levier du SEO local. La Search Console suit la présence d'un site dans la recherche, Tag Manager gère les balises de suivi et Merchant Center les flux de produits pour Google Shopping.",
+      "explanation": "**Google Business Profile** (nommé Google My Business jusqu'en novembre 2021) est l'outil gratuit où un commerce gère sa fiche dans Google Maps et dans les résultats locaux. On y renseigne l'adresse, les horaires, la catégorie, des photos, et on répond aux avis.\n\nExemple : un coiffeur à Nantes crée sa fiche, ajoute « Salon de coiffure » comme catégorie, ses horaires du samedi et des photos de son salon. Quand quelqu'un cherche « coiffeur près de moi », il peut alors apparaître dans le pack local avec sa note. Une fiche complète et active est le premier levier du SEO local.\n\nLes autres outils ont un autre rôle : la **Search Console** suit la présence d'un site dans Google, **Tag Manager** gère les balises de suivi, et **Merchant Center** les flux de produits pour Google Shopping.",
       "difficulty": 1,
       "source": "https://support.google.com/business/answer/7091"
     },
@@ -981,7 +981,7 @@
         "Notoriété, Avis, Proximité",
         "Network, Authority, Popularity"
       ],
-      "explanation": "Le **NAP** (*Name, Address, Phone*) regroupe les coordonnées d'un établissement. Leur cohérence exacte entre le site, la fiche Google Business Profile et les annuaires (Pages Jaunes, Yelp…) renforce la confiance des moteurs dans ces informations. Une adresse écrite différemment selon les sources, ou un ancien numéro oublié quelque part, brouille au contraire ce signal.",
+      "explanation": "Le **NAP** (*Name, Address, Phone*) désigne les trois coordonnées de base d'un établissement : nom, adresse, téléphone. En SEO local, la règle est la **cohérence exacte** de ces informations partout où elles apparaissent : site web, fiche Google Business Profile, annuaires (Pages Jaunes, Yelp…).\n\nExemple d'incohérence :\n```\nSite web  : Boulangerie Dupont, 12 rue des Lilas, 69003 Lyon, 04 72 00 00 00\nAnnuaire  : Dupont Boulanger, 12 r. des Lilas, Lyon, 04 72 00 00 11\n```\nNom différent, adresse abrégée, ancien numéro : Google se demande s'il s'agit du même commerce et fait moins confiance à ces informations.\n\nLe sigle n'a aucun rapport avec la navigation, l'accessibilité ou la notoriété d'un site : il désigne ces trois coordonnées.",
       "difficulty": 1
     },
     {
@@ -992,7 +992,7 @@
         "Des pages optimisées pour l'affichage sur mobile",
         "Des pages rédigées en langage simple et accessible"
       ],
-      "explanation": "Le **thin content** désigne des pages à faible valeur ajoutée : textes creux, fiches produits copiées du fournisseur, pages générées automatiquement, contenus d'affiliation sans apport original. Ce type de pages est visé depuis l'algorithme Panda (2011). Ce n'est pas une question de nombre de mots : une page courte qui répond parfaitement à la question n'est pas du thin content.",
+      "explanation": "Le **thin content** (« contenu mince ») désigne des pages qui n'apportent que peu ou pas de valeur à l'internaute. Il ne s'agit pas d'un code HTML léger : c'est le contenu qui est creux.\n\nExemples typiques : une fiche produit qui copie mot pour mot la description du fournisseur, des centaines de pages générées automatiquement avec juste le nom de ville qui change, un site d'affiliation qui ne fait que recopier les avis d'un autre. Google s'attaque à ces pages depuis l'algorithme **Panda** (2011).\n\nAttention, ce n'est pas une question de longueur. Une page courte qui répond précisément à la question (par exemple « quel est l'indicatif téléphonique de la Belgique ? ») est utile, donc pas du thin content. À l'inverse, un long texte de remplissage peut en être.",
       "difficulty": 1
     },
     {
@@ -1003,7 +1003,7 @@
         "L'optimisation SEO des sites qui proposent un thème sombre",
         "Les audits SEO réalisés sans l'accord du propriétaire"
       ],
-      "explanation": "Le **black hat** regroupe les pratiques contraires aux règles anti-spam des moteurs : cloaking, achat de liens, contenu caché, réseaux de sites, bourrage de mots-clés… Elles peuvent donner des résultats rapides, mais exposent à des déclassements algorithmiques ou à des actions manuelles. Le **white hat** respecte les consignes, et le **grey hat** désigne la zone intermédiaire, tolérée mais risquée.",
+      "explanation": "Le **black hat SEO** (« chapeau noir », par référence aux méchants des films de western) regroupe les pratiques qui violent les règles anti-spam des moteurs pour manipuler le classement : cloaking, achat de liens, texte caché, réseaux de sites, bourrage de mots-clés…\n\nExemple : un site écrit « chaussures de trail » en blanc sur fond blanc, cinquante fois en bas de page. Les visiteurs ne le voient pas, mais les robots le lisent. Cela peut marcher un temps, puis le site subit un déclassement algorithmique ou une **action manuelle** (une pénalité décidée par un humain chez Google).\n\nÀ l'inverse, le **white hat** (« chapeau blanc ») respecte les consignes, et le **grey hat** occupe la zone grise : tolérée, mais risquée. Ça n'a aucun rapport avec le dark web ni avec les thèmes sombres.",
       "difficulty": 1,
       "source": "https://developers.google.com/search/docs/essentials/spam-policies"
     },
@@ -1015,7 +1015,7 @@
         "Échanger des liens en pied de page avec un site partenaire",
         "Recopier sur son blog des articles publiés ailleurs"
       ],
-      "explanation": "Le **guest blogging** (article invité) consiste à rédiger un contenu pour un site tiers de sa thématique, qui le publie avec un lien vers l'auteur. Pratiqué avec mesure, il apporte visibilité et liens pertinents. Pratiqué à grande échelle avec des ancres optimisées, il est considéré par Google comme un schéma de liens.",
+      "explanation": "Le **guest blogging** (article invité) consiste à écrire un article pour le site d'un tiers, qui le publie avec une signature et un lien vers l'auteur.\n\nExemple : un coach de running rédige « 5 erreurs à éviter pour son premier trail » pour un blog de randonnée, avec un lien vers son site dans la biographie. Le blog reçoit un contenu gratuit, le coach gagne en visibilité et un lien pertinent, venu d'un site de la même thématique.\n\nPratiqué avec mesure, c'est légitime. Mais Google considère comme un **schéma de liens** les campagnes d'articles invités à grande échelle dont les liens ont des ancres chargées de mots-clés. Ça ne se confond pas avec les commentaires de blog, avec l'échange de liens en pied de page ni avec le simple copier-coller d'articles : ce dernier est du contenu dupliqué.",
       "difficulty": 1,
       "source": "https://developers.google.com/search/docs/essentials/spam-policies"
     },
@@ -1027,7 +1027,7 @@
         "Un contenu mis à jour automatiquement chaque jour",
         "Un contenu accessible uniquement aux abonnés"
       ],
-      "explanation": "Un contenu **evergreen** (« toujours vert ») répond à une question durable : guide pour choisir ses chaussures de running, définition, tutoriel de base. Il génère du trafic régulier pendant des années, à l'inverse d'un article d'actualité dont l'audience retombe vite. Il gagne tout de même à être actualisé de temps en temps pour rester exact.",
+      "explanation": "Un contenu **evergreen** (« toujours vert », comme un conifère) répond à un besoin qui ne passe pas de mode. On le lit avec autant d'intérêt dans plusieurs années.\n\nExemples : « Comment choisir ses chaussures de running », « Définition du taux de clic », « Comment changer une chambre à air de vélo ». À l'opposé, « Résultats du match de ce soir » ou « Les nouveautés de la rentrée » perdent leur intérêt en quelques jours.\n\nL'avantage : l'article evergreen génère du trafic régulier pendant des années, alors qu'un article d'actualité a un pic puis retombe. Il gagne toutefois à être relu et actualisé de temps en temps (prix, chiffres, outils cités) pour rester exact.\n\nLe mot n'a pas de lien avec l'écologie, ne désigne pas un contenu mis à jour automatiquement, et n'est pas réservé aux abonnés.",
       "difficulty": 1
     },
     {
@@ -1038,7 +1038,7 @@
         "Générer automatiquement des articles optimisés",
         "Acheter des backlinks sur des sites partenaires"
       ],
-      "explanation": "**Screaming Frog SEO Spider** est un *crawler* : il parcourt un site en suivant ses liens, comme Googlebot, et liste pour chaque URL son code HTTP, sa balise `<title>`, sa canonique, ses directives robots, sa profondeur, etc. On repère ainsi erreurs 404, chaînes de redirections ou titres dupliqués, et, en croisant avec le sitemap, des pages orphelines. Le suivi de positions relève d'autres outils.",
+      "explanation": "**Screaming Frog SEO Spider** est un logiciel d'audit qui joue le rôle d'un **crawler** : il visite ton site en suivant les liens, comme le ferait Googlebot, et dresse un tableau de chaque URL trouvée.\n```\nURL                    Code  Title\n/chaussures/trail-x    200   Chaussures Trail X | TrailShop\n/ancienne-page         404   (vide)\n/promo                 301   (vide)\n```\nPour chaque page, il relève le code HTTP, la balise `<title>`, la canonique, les directives robots, la profondeur, etc. On repère ainsi d'un coup les erreurs 404, les chaînes de redirections ou les titres dupliqués. En le croisant avec le sitemap, on trouve aussi des pages orphelines.\n\nIl ne suit pas les positions sur des mots-clés (c'est le rôle d'autres outils), n'écrit pas d'articles et n'achète pas de backlinks.",
       "difficulty": 1
     },
     {
@@ -1049,7 +1049,7 @@
         "Un mot-clé trop générique pour être bien positionné",
         "La disparition d'un mot-clé du vocabulaire des internautes"
       ],
-      "explanation": "Il y a **cannibalisation** quand plusieurs pages d'un site visent la même intention de recherche : Google hésite entre elles, les positions fluctuent et aucune ne s'impose. La solution consiste souvent à fusionner les contenus en une page plus complète (avec redirection 301), ou à différencier clairement leurs angles. On la repère notamment dans la Search Console, quand plusieurs URL alternent sur une même requête.",
+      "explanation": "Il y a **cannibalisation** quand plusieurs pages de ton site visent la même intention de recherche. Google hésite entre elles, alterne les pages affichées, et aucune ne s'impose. Elles se concurrencent au lieu de s'additionner.\n\nExemple : un blog a deux articles, `/blog/choisir-chaussures-trail` et `/guide/chaussures-de-trail`, qui répondent tous les deux à « chaussures de trail ». Un jour l'un est en position 8, le lendemain l'autre.\n\nPour la repérer, dans la Search Console, filtre une requête et regarde l'onglet « Pages » : si plusieurs URL apparaissent, c'est suspect. La solution consiste souvent à fusionner les contenus en une page plus complète, puis à rediriger l'ancienne en 301, ou à différencier clairement leurs angles (l'un sur le choix, l'autre sur l'entretien).\n\nCe n'est pas un concurrent qui copie ton contenu.",
       "difficulty": 2
     },
     {
@@ -1060,7 +1060,7 @@
         "Yearly Metrics Yearly Logs : les statistiques annuelles d'un site",
         "Your Mobile Your Layout : l'adaptation d'un site au mobile"
       ],
-      "explanation": "**YMYL** (*Your Money or Your Life*) désigne les sujets susceptibles d'affecter la santé, la stabilité financière, la sécurité ou le bien-être des personnes : conseils médicaux, placements, informations juridiques… Les évaluateurs de Google appliquent à ces pages des exigences d'E-E-A-T particulièrement élevées, car une information erronée peut y causer un tort réel.",
+      "explanation": "**YMYL** signifie *Your Money or Your Life* (« ton argent ou ta vie »). Ce sont les sujets où une information fausse peut faire du tort à quelqu'un : santé, argent, sécurité, droit.\n\nExemples : un article qui conseille une dose de médicament, un site qui recommande un placement financier, une page expliquant ses droits en cas de licenciement. À l'inverse, un article sur « les meilleurs jeux de société » n'est pas YMYL : une erreur y a peu de conséquences.\n\nLes évaluateurs de qualité de Google appliquent à ces pages des exigences d'**E-E-A-T** (expérience, expertise, autorité, fiabilité) particulièrement élevées. Un site YMYL doit montrer qui écrit (un médecin, un conseiller financier identifié), citer ses sources et rester à jour.\n\nLe sigle n'a rien à voir avec les réseaux sociaux, les statistiques ou le mobile.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
     },
@@ -1072,7 +1072,7 @@
         "`rel=\"noopener\"`",
         "`rel=\"external\"`"
       ],
-      "explanation": "Google recommande `rel=\"sponsored\"` pour les liens issus d'une publicité ou d'une contrepartie ; `rel=\"nofollow\"` reste accepté pour ces liens. `rel=\"ugc\"` sert aux liens publiés par les utilisateurs (commentaires, forums), `noopener` relève de la sécurité du navigateur et `external` n'a aucun effet SEO. Un lien payant non qualifié peut être considéré comme un schéma de liens.",
+      "explanation": "Google distingue plusieurs types de liens grâce à l'attribut `rel`. Pour un lien **payant** (publicité, article sponsorisé, ou contrepartie), il recommande `rel=\"sponsored\"` :\n```html\n<a href=\"https://partenaire.fr/offre\" rel=\"sponsored\">Découvrir l'offre</a>\n```\n`rel=\"nofollow\"` reste accepté pour ces liens, et on peut cumuler les valeurs (`rel=\"sponsored nofollow\"`).\n\nLes autres valeurs proposées ont un autre rôle. `rel=\"ugc\"` est destiné aux liens publiés par les utilisateurs (commentaires, forums). `noopener` concerne la sécurité du navigateur lors de l'ouverture d'un nouvel onglet. `external` n'a aucun effet SEO.\n\nUn lien payant sans qualification peut être considéré comme un schéma de liens et entraîner une action manuelle.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links"
     },
@@ -1084,7 +1084,7 @@
         "Signaler à Google un site concurrent qui fait du spam",
         "Retirer une page de son site des résultats de Google"
       ],
-      "explanation": "Lancé en octobre 2012, l'**outil de désaveu** permet de transmettre la liste des liens ou domaines que l'on ne veut pas voir pris en compte, typiquement après une action manuelle pour liens artificiels. Il ne supprime pas les liens eux-mêmes. Google le réserve aux cas sérieux : la plupart des sites n'en ont pas besoin, ses algorithmes ignorant déjà l'essentiel des liens de mauvaise qualité.",
+      "explanation": "Parfois, un site reçoit des backlinks qu'il n'a pas voulus : un réseau de sites spammeurs, des liens achetés par un ancien prestataire. L'**outil de désaveu** (lancé en octobre 2012) permet de dire à Google : « ne tiens pas compte de ces liens ». On envoie un simple fichier texte :\n```\n# Liens à ignorer\ndomain:annuaire-spam.example\nhttps://autre-site.example/page-avec-lien.html\n```\n`domain:` désavoue tout un site, une URL seule désavoue une page précise. L'outil ne supprime pas les liens : ils restent en ligne, mais Google ne les prend plus en compte.\n\nIl est réservé aux cas sérieux, typiquement après une action manuelle pour liens artificiels. La plupart des sites n'en ont pas besoin, car les algorithmes de Google ignorent déjà l'essentiel des liens de mauvaise qualité. Ce n'est pas un outil de signalement de concurrents.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/blog/2012/10/a-new-tool-to-disavow-links"
     },
@@ -1096,7 +1096,7 @@
         "Cacher des liens dans le code source d'une page",
         "Échanger des liens avec des sites partenaires"
       ],
-      "explanation": "Le **linkbaiting** (« appât à liens ») consiste à produire un contenu qui attire naturellement des backlinks : étude originale avec des chiffres inédits, outil gratuit, infographie, guide de référence. C'est l'approche la plus conforme aux consignes de Google, car les liens obtenus sont éditoriaux. Acheter ou échanger des liens à grande échelle relève au contraire des schémas de liens.",
+      "explanation": "Le **linkbaiting** (« appât à liens ») consiste à créer un contenu tellement utile ou original que d'autres sites le citent d'eux-mêmes, avec un lien.\n\nExemples : une étude originale avec des chiffres inédits (« nous avons analysé 1 000 sorties de running »), un calculateur gratuit (par exemple de fréquence cardiaque maximale), une infographie claire, un guide de référence très complet. Des journalistes, blogueurs ou associations le reprennent, et les liens arrivent sans les avoir demandés.\n\nC'est l'approche la plus conforme aux consignes de Google, car ces liens sont **éditoriaux** : donnés librement, parce que le contenu le mérite. À l'inverse, acheter des liens ou les échanger à grande échelle relève des schémas de liens, et le fait de cacher des liens dans le code est de la manipulation.",
       "difficulty": 2
     },
     {
@@ -1107,7 +1107,7 @@
         "Un annuaire de blogs réservé aux membres payants",
         "Un groupe de blogueurs qui partagent leurs statistiques"
       ],
-      "explanation": "Un **PBN** est un ensemble de sites, souvent bâtis sur des noms de domaine expirés qui conservent des backlinks, dont le seul but est de faire des liens vers un site « money ». C'est une technique black hat : Google la considère comme un schéma de liens et ses systèmes anti-spam cherchent à neutraliser ces réseaux. Depuis mars 2024, réutiliser un domaine expiré pour profiter de sa réputation passée est même visé par une règle anti-spam spécifique.",
+      "explanation": "Un **PBN** (*Private Blog Network*, réseau de blogs privés) est un ensemble de sites contrôlés par une même personne, dont le seul but est de faire des liens vers un autre site, le site « money » qu'on cherche à faire monter.\n\nSouvent, ces sites sont bâtis sur des **noms de domaine expirés** : d'anciens sites abandonnés qui avaient gardé de bons backlinks, rachetés puis remplis de textes bon marché. Exemple : on rachète `ancien-blog-voyage.fr`, on y publie trois articles qui pointent vers une boutique de bagages.\n\nC'est une technique **black hat** : Google la classe comme un schéma de liens, et ses systèmes anti-spam cherchent à neutraliser ces réseaux. Depuis mars 2024, la réutilisation d'un domaine expiré pour profiter de sa réputation passée est même visée par une règle anti-spam spécifique.\n\nRien à voir avec un VPN (réseau privé virtuel).",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/essentials/spam-policies"
     },
@@ -1119,7 +1119,7 @@
         "Officiellement utilisés par Google pour classer les sites",
         "Calculés par le W3C pour certifier la qualité d'un site"
       ],
-      "explanation": "Le **Trust Flow** (Majestic) et le **Domain Authority** (Moz) sont des scores propriétaires qui estiment la popularité d'un site à partir de leurs propres index de liens. Pratiques pour comparer des sites, ils ne sont pas utilisés par Google, qui ne publie plus aucun score de popularité depuis l'abandon du PageRank affiché dans sa barre d'outils (2016). Les « gonfler » artificiellement n'a donc aucun intérêt en soi.",
+      "explanation": "Le **Trust Flow** (créé par l'outil Majestic) et le **Domain Authority** (créé par Moz) sont des notes sur 100 qui estiment la popularité d'un site. Chaque outil les calcule à partir de **son propre index de liens**, pas à partir des données de Google.\n\nExemple : en SEO, on les utilise pour comparer deux sites avant de demander un lien : un blog à Domain Authority 55 paraît plus influent qu'un site à 12. C'est un repère pratique, rien de plus.\n\nGoogle ne s'en sert pas pour classer les sites. Il ne publie plus aucun score de popularité depuis qu'il a abandonné le PageRank affiché dans sa barre d'outils (2016). Il ne les affiche pas non plus dans la Search Console, et le W3C n'en est pas à l'origine.\n\nLes « gonfler » artificiellement n'a donc aucun intérêt en soi.",
       "difficulty": 2
     },
     {
@@ -1130,7 +1130,7 @@
         "L'ancienneté, le chiffre d'affaires et la taille",
         "Le budget Google Ads, les avis et la catégorie"
       ],
-      "explanation": "Google explique que ses résultats locaux reposent principalement sur la **pertinence** (adéquation de la fiche avec la recherche), la **distance** (éloignement entre l'établissement et l'internaute ou le lieu recherché) et la **notoriété** (à quel point l'établissement est connu : avis, liens, citations, présence en ligne). Payer des annonces Google Ads n'améliore pas le classement local naturel.",
+      "explanation": "Google explique que ses résultats **locaux** reposent principalement sur trois critères :\n\nLa **pertinence** : la fiche correspond-elle à la recherche ? Une fiche « Pizzeria napolitaine » est plus pertinente pour « pizza au feu de bois » qu'un restaurant généraliste. La **distance** : à quelle distance l'établissement se trouve de la personne ou du lieu cherché. La **notoriété** : à quel point l'établissement est connu, d'après les avis, les liens, les citations dans les annuaires et sa présence en ligne.\n\nExemple : si tu cherches « boulangerie » à Lyon, une boulangerie à 200 m avec de nombreux bons avis passe avant une autre à 3 km avec peu d'avis.\n\nLe prix, les horaires ou le nombre de photos ne sont pas ces trois critères. Dépenser en Google Ads n'améliore pas le classement local naturel.",
       "difficulty": 2,
       "source": "https://support.google.com/business/answer/7091"
     },
@@ -1142,7 +1142,7 @@
         "Le fichier `sitemap.xml`",
         "Le fichier `robots.txt`"
       ],
-      "explanation": "Chaque requête reçue par le serveur est enregistrée dans ses **logs** : on y voit les passages de Googlebot URL par URL, avec la date et le code HTTP renvoyé. L'**analyse de logs** révèle les pages trop ou pas assez explorées, les erreurs rencontrées par le robot et le gaspillage du budget de crawl. Google Analytics, qui repose sur du JavaScript exécuté chez les visiteurs, ne mesure pas l'activité des robots.",
+      "explanation": "Chaque requête reçue par un serveur web est enregistrée dans ses **logs** (journaux). Une ligne ressemble à ceci :\n```\n66.249.66.1 - - [12/Mar/2025:08:14:02 +0100] \"GET /blog/guide HTTP/1.1\" 200 15234 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"\n```\nOn lit l'adresse IP du visiteur, la date, l'URL demandée, le code HTTP (200) et l'identifiant du visiteur, ici Googlebot. En filtrant ces lignes, l'**analyse de logs** montre exactement quelles URL Googlebot a explorées, quand et avec quel résultat. On y découvre des pages trop explorées, d'autres jamais visitées, des erreurs, du gaspillage de budget de crawl.\n\nGoogle Analytics ne montre pas cela : il mesure les visites humaines grâce à un script chargé dans le navigateur, pas l'activité des robots. Le sitemap et le `robots.txt` sont des consignes, pas des preuves d'exploration.",
       "difficulty": 2
     },
     {
@@ -1153,7 +1153,7 @@
         "Du maillage interne en cocon sémantique",
         "De l'optimisation classique pour le SEO local"
       ],
-      "explanation": "Les **pages satellites** (*doorway pages*) sont créées pour se positionner sur des requêtes très proches et canaliser l'internaute vers une même destination, sans valeur propre. Google les classe parmi les pratiques de spam. Cibler plusieurs villes reste légitime si chaque page apporte un contenu réellement spécifique (équipe locale, adresse, réalisations sur place), et pas un simple changement de nom de ville.",
+      "explanation": "Les **pages satellites** (*doorway pages*, ou pages « porte ») sont créées en grand nombre pour se positionner sur des requêtes très proches et envoyer l'internaute vers un même service, sans valeur propre. Google les classe parmi les pratiques de spam.\n\nExemple de texte quasi identique, avec juste la ville qui change :\n```\nPlombier à Lyon : appelez-nous pour tous vos travaux.\nPlombier à Villeurbanne : appelez-nous pour tous vos travaux.\nPlombier à Bron : appelez-nous pour tous vos travaux.\n```\nCibler plusieurs villes reste légitime si chaque page apporte un contenu réellement spécifique : adresse de l'agence locale, équipe sur place, chantiers réalisés dans la commune, avis de clients du quartier. La longue traîne, le maillage interne et le SEO local sont des pratiques recommandées, mais pas quand elles servent à fabriquer des pages vides.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/essentials/spam-policies"
     },
@@ -1165,7 +1165,7 @@
         "Avec l'attribut `rel=\"follow\"`",
         "Avec l'attribut `data-follow=\"true\"`"
       ],
-      "explanation": "L'attribut `dofollow` **n'existe pas** : c'est un terme de jargon qui désigne un lien ordinaire, sans `nofollow`, `sponsored` ni `ugc`. Un simple `<a href=\"…\">` peut transmettre de la popularité. Écrire `rel=\"dofollow\"` ou `rel=\"follow\"` n'a aucun effet, car ce ne sont pas des valeurs reconnues par les moteurs.",
+      "explanation": "En HTML, **`dofollow` n'existe pas**. C'est du jargon des référenceurs pour désigner un lien ordinaire, c'est-à-dire sans `nofollow`, `sponsored` ni `ugc`.\n```html\n<a href=\"https://exemple.fr/page\">Lien ordinaire (« dofollow »)</a>\n<a href=\"https://exemple.fr/page\" rel=\"nofollow\">Lien nofollow</a>\n```\nLe premier lien peut transmettre de la popularité : aucun attribut n'est nécessaire, c'est le comportement par défaut.\n\nÉcrire `rel=\"dofollow\"`, `rel=\"follow\"` ou `data-follow=\"true\"` ne sert à rien : ces valeurs ne sont pas reconnues par les moteurs, qui les ignorent. Elles ne sont pas dangereuses, juste inutiles. Seuls `nofollow`, `sponsored` et `ugc` ont un sens pour Google dans l'attribut `rel`.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links"
     },
@@ -1177,7 +1177,7 @@
         "Les mentions légales sont retirées de l'index",
         "Google applique une pénalité pour manipulation"
       ],
-      "explanation": "Cette technique, le **PageRank sculpting**, a fonctionné à une époque. Mais en 2009, Matt Cutts (Google) a expliqué que la popularité attribuée aux liens en `nofollow` « s'évapore » au lieu d'être redistribuée aux autres liens de la page. Mettre des liens internes en `nofollow` ne fait donc rien gagner ailleurs, et peut même freiner la découverte de pages. Un `nofollow` n'empêche pas non plus l'indexation de la page liée.",
+      "explanation": "Le **PageRank sculpting** consiste à mettre `nofollow` sur certains liens (mentions légales, connexion…) pour « concentrer » la popularité sur les autres. Cela a fonctionné à une époque. Mais en 2009, Matt Cutts, alors responsable de la lutte contre le spam chez Google, a expliqué que la popularité d'un lien en `nofollow` n'est pas redistribuée aux autres liens : elle « s'évapore ».\n\nExemple : une page a 10 liens, dont 2 en `nofollow`. Avant 2009, chacun des 8 autres recevait 1/8 de la popularité. Après, chacun reçoit toujours 1/10, et les 2/10 des liens `nofollow` sont perdus. Aucun gain donc.\n\nCette pratique peut même nuire, en freinant la découverte de pages. Google ne la pénalise pas : c'est juste inutile. Et le `nofollow` n'empêche pas l'indexation de la page liée (pour cela, on utilise `noindex`).",
       "difficulty": 3
     },
     {
@@ -1188,7 +1188,7 @@
         "En vérifiant que les requêtes respectent le `robots.txt`",
         "En vérifiant que l'IP est située aux États-Unis"
       ],
-      "explanation": "Le user-agent se falsifie trivialement : beaucoup de robots se font passer pour Googlebot. Google recommande une **recherche DNS inverse** sur l'adresse IP (le nom obtenu doit se terminer par `googlebot.com`, `google.com` ou `googleusercontent.com`), puis une **recherche DNS directe** sur ce nom pour vérifier qu'il renvoie bien la même IP. Google publie aussi la liste de ses plages d'adresses IP au format JSON.",
+      "explanation": "Le *user-agent*, l'identifiant qu'un visiteur annonce, se **falsifie** en une ligne de code : beaucoup de robots malveillants se font passer pour Googlebot. Un `Googlebot` dans les journaux ne prouve donc rien. Vérifier l'adresse IP « située aux États-Unis » ou le respect du `robots.txt` ne suffit pas non plus.\n\nGoogle recommande une double vérification DNS :\n```\n$ host 66.249.66.1\n1.66.249.66.in-addr.arpa domain name pointer crawl-66-249-66-1.googlebot.com.\n$ host crawl-66-249-66-1.googlebot.com\ncrawl-66-249-66-1.googlebot.com has address 66.249.66.1\n```\nLa **recherche DNS inverse** (de l'IP vers un nom) doit donner un nom finissant par `googlebot.com`, `google.com` ou `googleusercontent.com`. La **recherche DNS directe** (du nom vers l'IP) doit ensuite renvoyer la même adresse. Google publie aussi la liste de ses plages d'adresses IP au format JSON.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/crawling-indexing/verifying-googlebot"
     },
@@ -1200,7 +1200,7 @@
         "L'attribut `title` de l'image",
         "Le texte du paragraphe précédent"
       ],
-      "explanation": "Quand un lien ne contient qu'une image, Google se sert de l'attribut **`alt`** de l'image comme texte d'ancre. Un `alt` vide ou absent prive donc le lien de tout contexte, un oubli fréquent sur les logos et bannières cliquables. C'est aussi ce texte que lisent les lecteurs d'écran pour annoncer la destination du lien.",
+      "explanation": "Un lien dont le seul contenu est une image n'a pas de texte cliquable :\n```html\n<a href=\"/chaussures-trail\"><img src=\"banniere.jpg\" alt=\"Voir nos chaussures de trail\"></a>\n```\nDans ce cas, Google utilise l'attribut **`alt`** de l'image comme texte d'ancre, pour comprendre la page visée. Ni le nom du fichier, ni l'attribut `title`, ni le paragraphe voisin ne jouent ce rôle.\n\nUn `alt` vide ou absent prive donc le lien de tout contexte. C'est un oubli fréquent sur les logos qui renvoient vers l'accueil, et sur les bannières cliquables. Le même texte est lu par les lecteurs d'écran pour annoncer la destination du lien aux personnes malvoyantes.\n\nBon réflexe : pour une image-lien, l'`alt` décrit la destination (« Voir nos chaussures de trail »), plus que l'image elle-même.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable"
     },
@@ -1212,7 +1212,7 @@
         "6 mois",
         "5 ans"
       ],
-      "explanation": "Le rapport Performances conserve **16 mois** de données (clics, impressions, CTR, position moyenne), ce qui permet de comparer une même période d'une année sur l'autre. Au-delà, les données sont perdues : pour garder un historique plus long, il faut les exporter régulièrement, via l'API ou l'export groupé vers BigQuery. L'ancienne version de l'outil n'offrait que 90 jours d'historique.",
+      "explanation": "Le rapport **Performances** de la Google Search Console indique, pour ton site, les clics, les impressions, le CTR et la position moyenne par requête ou par page. Il conserve **16 mois** de données.\n\nCela permet de comparer une même période d'une année sur l'autre : par exemple septembre de cette année avec septembre de l'année précédente, pour juger l'effet d'une refonte, en gommant la saisonnalité.\n\nAu-delà de 16 mois, les anciennes données disparaissent. Si tu veux garder un historique plus long, il faut les exporter régulièrement : via l'API de la Search Console ou l'export groupé vers BigQuery (l'entrepôt de données de Google).\n\nL'ancienne version de l'outil n'offrait que 90 jours d'historique.",
       "difficulty": 3
     }
   ]

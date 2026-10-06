@@ -288,6 +288,291 @@
       ],
       "explanation": "Les condensateurs au **tantale** offrent une forte capacité, très stable, dans un petit volume ; on les trouve souvent sur les cartes compactes. Leur défaillance typique est le **court-circuit** : un point faible de l'isolant laisse passer le courant, chauffe, et le dioxyde de manganèse libère de l'oxygène qui entretient une combustion. D'où une règle de prudence répandue : ne les utiliser qu'à environ **la moitié** de leur tension nominale et limiter le courant à la mise sous tension. Exemple : sur un rail de 5 V, on choisit un tantale de 10 V. Les versions à polymère conducteur sont moins exposées à ce risque.",
       "difficulty": 3
+    },
+    {
+      "question": "Un condensateur électrolytique est donné pour 2 000 heures à 105 °C. Selon la règle empirique habituelle, quelle durée de vie peut-on espérer s'il travaille à 85 °C ?",
+      "answer": "Environ 8 000 heures",
+      "wrong": [
+        "Environ 4 000 heures",
+        "Environ 2 400 heures",
+        "Environ 20 000 heures"
+      ],
+      "explanation": "Le vieillissement des condensateurs électrolytiques est la panne la plus fréquente des vieilles alimentations : leur électrolyte liquide s'évapore peu à peu. Les fabricants appliquent une règle tirée de la loi d'Arrhenius : la durée de vie **double à chaque baisse de 10 °C**. De 105 à 85 °C, on gagne deux fois 10 °C, donc la durée est multipliée par 2 × 2 = 4 : 2 000 × 4 = **environ 8 000 heures**. Le piège 4 000 heures n'applique qu'un seul doublement. En pratique, éloigner un électrolytique d'un radiateur de quelques centimètres peut prolonger sa vie de plusieurs années.",
+      "difficulty": 3
+    },
+    {
+      "question": "En quelle unité s'exprime l'inductance d'une bobine ?",
+      "answer": "Le henry (H)",
+      "wrong": [
+        "Le farad (F)",
+        "Le weber (Wb)",
+        "Le tesla (T)"
+      ],
+      "explanation": "Une bobine est un fil enroulé qui crée un champ magnétique quand un courant la traverse ; on en trouve dans les alimentations, les filtres et les moteurs. Sa grandeur caractéristique, l'**inductance** L, se mesure en **henrys** (H), du nom du physicien américain Joseph Henry. Elle dit à quel point la bobine s'oppose aux variations du courant : u = L × di/dt. En électronique, on manipule surtout des microhenrys (µH) et des millihenrys (mH) : une bobine d'alimentation à découpage fait typiquement de 1 à 100 µH. Le weber mesure le flux magnétique, le tesla le champ magnétique et le farad la capacité d'un condensateur.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Bobine_(électricité)"
+    },
+    {
+      "question": "Que se passe-t-il quand on coupe brutalement le courant qui traverse une bobine, comme celle d'un relais ou d'un moteur ?",
+      "answer": "Une forte surtension apparaît à ses bornes",
+      "wrong": [
+        "Le courant s'arrête net, sans autre effet",
+        "La tension à ses bornes tombe aussitôt à zéro",
+        "Elle se comporte comme un condensateur chargé"
+      ],
+      "explanation": "Une bobine stocke de l'énergie dans son champ magnétique et **s'oppose aux variations du courant** qui la traverse. La tension à ses bornes vaut u = L × di/dt : plus le courant change vite, plus cette tension est grande. Si un interrupteur coupe le courant en une fraction de microseconde, di/dt devient énorme et la bobine produit une **surtension** de plusieurs dizaines, voire centaines de volts. Exemple : la bobine d'allumage d'une voiture exploite cet effet pour produire les milliers de volts qui font jaillir l'étincelle des bougies. Dans un montage, cette pointe peut détruire le transistor qui commande la bobine, d'où l'ajout d'une diode de roue libre.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi place-t-on une diode en inverse aux bornes de la bobine d'un relais commandé par un transistor ?",
+      "answer": "Pour absorber la surtension à la coupure et protéger le transistor",
+      "wrong": [
+        "Pour accélérer la fermeture du contact du relais",
+        "Pour réduire le courant consommé par la bobine",
+        "Pour redresser le courant alternatif de la bobine"
+      ],
+      "explanation": "Une bobine de relais s'oppose à l'arrêt brutal de son courant : quand le transistor se bloque, elle génère une pointe de tension qui peut le détruire. La diode dite de **roue libre** offre un chemin au courant de la bobine, qui tourne alors en boucle à travers elle et s'éteint doucement. Elle est montée **en inverse** (cathode côté +) : en fonctionnement normal, elle ne conduit pas et ne consomme rien. Exemple : une simple 1N4148 ou 1N4007 suffit pour un petit relais 5 V. Contrepartie : le relais retombe un peu plus lentement. Elle n'accélère donc rien, au contraire.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle est l'impédance d'une bobine idéale de 1 mH à la fréquence de 10 kHz ?",
+      "answer": "Environ 63 Ω",
+      "wrong": [
+        "Environ 10 Ω",
+        "Environ 6,3 Ω",
+        "Environ 630 Ω"
+      ],
+      "explanation": "En alternatif, une bobine s'oppose au courant d'autant plus que la fréquence est élevée ; cette opposition est son **impédance** (ici une réactance), en ohms. Elle vaut Z = 2π × f × L. Ici : 2 × 3,14 × 10 000 × 0,001 ≈ **62,8 Ω**. C'est le comportement inverse de celui du condensateur. Exemple : à 100 kHz, la même bobine présente 628 Ω, alors qu'en continu elle ne vaut que la faible résistance de son fil. D'où son usage comme **self de choc** : laisser passer le continu et freiner les parasites haute fréquence. Le piège 10 Ω vient de l'oubli du facteur 2π.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que se passe-t-il quand le courant dans une bobine à noyau de ferrite dépasse son courant de saturation ?",
+      "answer": "Son inductance s'effondre et le courant grimpe brutalement",
+      "wrong": [
+        "Son inductance double et le courant se stabilise",
+        "Elle bloque totalement le passage du courant continu",
+        "Elle inverse le sens du courant qui la traverse"
+      ],
+      "explanation": "Le noyau de ferrite d'une bobine concentre le champ magnétique, ce qui multiplie son inductance. Mais il ne peut canaliser qu'un flux limité : au-delà, il est **saturé**, et sa capacité à renforcer le champ s'effondre. L'inductance chute alors vers celle d'une simple bobine à air, bien plus faible. Le courant n'est presque plus freiné et monte très vite. Exemple : dans une alimentation à découpage, une bobine saturée peut laisser passer en quelques microsecondes un courant capable de détruire le transistor. D'où l'importance du **courant de saturation** (Isat) indiqué par le fabricant, distinct du courant admissible en échauffement (Irms).",
+      "difficulty": 3
+    },
+    {
+      "question": "Un transformateur idéal a 1 150 spires au primaire et 60 spires au secondaire. Quelle tension obtient-on au secondaire sous 230 V ?",
+      "answer": "12 V",
+      "wrong": [
+        "24 V",
+        "6 V",
+        "115 V"
+      ],
+      "explanation": "Un transformateur modifie une tension alternative grâce à deux bobines enroulées sur un même noyau : le **primaire**, qui reçoit la tension, et le **secondaire**, qui la restitue. Dans un transformateur idéal, les tensions sont dans le rapport des nombres de spires : U₂ = U₁ × N₂ / N₁. Ici : 230 × 60 / 1 150 = **12 V**. Le courant suit le rapport inverse : en abaissant la tension d'un facteur 19 environ, le secondaire peut fournir environ 19 fois plus de courant que n'en absorbe le primaire, aux pertes près. Un transformateur ne fonctionne qu'en alternatif : en continu, le flux magnétique ne varie pas et rien n'est induit au secondaire.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Transformateur_électrique"
+    },
+    {
+      "question": "Un circuit LC associe une bobine de 10 µH et un condensateur de 100 nF. Quelle est sa fréquence de résonance ?",
+      "answer": "Environ 159 kHz",
+      "wrong": [
+        "Environ 1 MHz",
+        "Environ 15,9 kHz",
+        "Environ 1,59 MHz"
+      ],
+      "explanation": "Un circuit **LC** (bobine + condensateur) échange de l'énergie entre le champ magnétique de la bobine et le champ électrique du condensateur, à une fréquence propre appelée **fréquence de résonance**. C'est le principe de l'accord des postes de radio. Elle vaut f₀ = 1 / (2π √(L × C)). Ici, L × C = 10⁻⁵ × 10⁻⁷ = 10⁻¹², donc √(LC) = 10⁻⁶ s et f₀ = 10⁶ / 2π ≈ **159 kHz**. À cette fréquence, la bobine et le condensateur présentent la même impédance. Le piège 1 MHz vient de l'oubli du 2π : 10⁶ rad/s est la pulsation ω₀, pas une fréquence en hertz.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Circuit_LC"
+    },
+    {
+      "question": "Sur une diode comme la 1N4007, quelle broche repère la bague grise ou blanche peinte sur le boîtier ?",
+      "answer": "La cathode",
+      "wrong": [
+        "L'anode",
+        "La broche de masse",
+        "La gâchette"
+      ],
+      "explanation": "Une diode ne laisse passer le courant que dans un sens : de l'**anode** vers la **cathode** (sens conventionnel). On l'utilise pour redresser l'alternatif ou protéger un montage d'une inversion de branchement. Sur le symbole, une flèche pointe vers un trait : ce trait représente la cathode, et c'est lui que rappelle la **bague** peinte sur le boîtier. Exemple : pour protéger un montage, on place la diode en série, anode côté pile et bague côté circuit : elle conduit si la pile est dans le bon sens. Pour conduire, l'anode doit être plus positive que la cathode d'environ 0,6 à 0,7 V pour une diode au silicium. La gâchette n'existe que sur les thyristors et les triacs.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Diode"
+    },
+    {
+      "question": "Quelle est la tension directe typique d'une diode de redressement au silicium en conduction ?",
+      "answer": "Environ 0,7 V",
+      "wrong": [
+        "Environ 0,2 V",
+        "Environ 2 V",
+        "Environ 5 V"
+      ],
+      "explanation": "Quand une diode conduit, elle n'est pas un simple fil : une tension reste à ses bornes, la **tension directe** (souvent appelée tension de seuil). Pour une jonction PN au silicium, elle vaut environ **0,6 à 0,7 V** en usage courant, et monte vers 1 V à fort courant. Exemple : une pile de 9 V suivie d'une diode de protection ne fournit plus qu'environ 8,3 V au montage. D'autres diodes chutent moins : environ 0,3 V pour le germanium et 0,2 à 0,45 V pour une Schottky. Une LED, elle, demande de 1,8 V à plus de 3 V selon sa couleur.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel est le principal atout d'une diode **Schottky** par rapport à une diode PN classique ?",
+      "answer": "Une chute directe plus faible et une commutation rapide",
+      "wrong": [
+        "Une tension inverse maximale bien plus élevée",
+        "Un courant de fuite inverse quasi nul",
+        "Une émission de lumière visible en conduction"
+      ],
+      "explanation": "La diode **Schottky** repose sur une jonction **métal-semi-conducteur** au lieu d'une jonction PN. Résultat : sa tension directe n'est que d'environ 0,2 à 0,45 V, contre 0,7 V pour une diode au silicium. Et comme elle ne stocke pas de charges dans sa jonction, elle commute très vite. Exemple : dans une alimentation qui débite 2 A, remplacer une diode classique par une Schottky économise environ 0,6 W de chaleur. Ses défauts sont précisément les pièges : un courant de fuite inverse plus élevé, qui croît vite avec la température, et une tension inverse maximale généralement plus faible.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Diode_Schottky"
+    },
+    {
+      "question": "Comment monte-t-on une diode Zener pour obtenir une tension de référence stable ?",
+      "answer": "En inverse, en série avec une résistance qui limite le courant",
+      "wrong": [
+        "En direct, directement aux bornes de l'alimentation",
+        "En inverse, directement aux bornes de l'alimentation",
+        "En direct, en série avec un condensateur"
+      ],
+      "explanation": "Une diode **Zener** est faite pour fonctionner **en inverse** : au-delà de sa tension Zener (3,3 V, 5,1 V, 12 V…), elle conduit en maintenant à ses bornes une tension presque constante. Mais une fois cette tension atteinte, plus rien ne limite le courant : il faut **toujours** une résistance en série. Exemple : pour obtenir 5,1 V à partir de 12 V avec 10 mA, on prend R = (12 − 5,1) / 0,01 ≈ 690 Ω, soit 680 Ω en série E12. Sans résistance, branchée directement sur l'alimentation, la Zener est traversée par un courant énorme et grille. En direct, elle se comporte comme une diode ordinaire (environ 0,7 V).",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Diode_Zener"
+    },
+    {
+      "question": "Pourquoi les diodes Zener d'environ 5 à 6 V sont-elles réputées les plus stables en température ?",
+      "answer": "Effets Zener et avalanche s'y compensent en température",
+      "wrong": [
+        "Leur courant de fuite est nul à cette tension",
+        "Leur jonction est en germanium et non en silicium",
+        "Elles intègrent une thermistance de compensation"
+      ],
+      "explanation": "Une diode « Zener » conduit en inverse grâce à deux mécanismes physiques différents. Sous environ 5 V domine l'**effet Zener**, un effet tunnel : sa tension baisse quand la température monte (coefficient négatif). Au-dessus d'environ 6 V domine l'**effet d'avalanche** : sa tension augmente avec la température (coefficient positif). Vers 5 à 6 V, les deux coexistent et leurs dérives se compensent en partie. Exemple : une Zener de 5,6 V dérive nettement moins qu'une 3,3 V ou qu'une 12 V. Par abus de langage, on appelle « Zener » toutes ces diodes, même celles de 24 V qui fonctionnent en réalité par avalanche.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Diode_Zener"
+    },
+    {
+      "question": "Un transformateur délivre 12 V efficaces, redressés par un pont de diodes puis filtrés par un gros condensateur. Quelle tension continue obtient-on environ, à vide ?",
+      "answer": "Environ 15,6 V",
+      "wrong": [
+        "Environ 12 V",
+        "Environ 10,6 V",
+        "Environ 17 V"
+      ],
+      "explanation": "C'est le schéma classique d'une alimentation linéaire : transformateur, **pont de diodes** (quatre diodes, dit pont de Graetz) puis condensateur de filtrage. Le condensateur se charge à la tension **crête** du signal, et non à sa valeur efficace : 12 × √2 ≈ 17 V. À chaque alternance, le courant traverse **deux diodes** du pont, qui font perdre environ 2 × 0,7 = 1,4 V. Il reste donc environ **15,6 V** à vide. En charge, la tension ondule et baisse entre deux crêtes. Le piège 12 V oublie le facteur √2, 17 V oublie la chute des diodes, et 10,6 V applique cette chute à la valeur efficace.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Pont_de_diodes"
+    },
+    {
+      "question": "Quel composant simple, placé en série sur l'entrée d'alimentation, protège un montage contre une inversion de polarité ?",
+      "answer": "Une diode",
+      "wrong": [
+        "Un condensateur",
+        "Une bobine",
+        "Une résistance"
+      ],
+      "explanation": "Brancher une pile ou un bloc secteur à l'envers peut détruire un montage en un instant : c'est une erreur très courante. Une **diode** en série sur l'entrée ne laisse passer le courant que dans le bon sens : si la polarité est inversée, elle bloque et rien ne circule. Exemple : avec une 1N4007, le montage perd environ 0,7 V ; une pile de 9 V ne lui fournit plus qu'environ 8,3 V. Pour réduire cette perte, on utilise une diode Schottky (0,3 à 0,4 V), voire un MOSFET monté en « diode idéale ». Un condensateur, une bobine ou une résistance laissent passer le courant dans les deux sens et ne protègent donc de rien.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que garantit la référence **1N4007** par rapport à la 1N4001 de la même famille ?",
+      "answer": "Une tension inverse maximale de 1 000 V au lieu de 50 V",
+      "wrong": [
+        "Un courant direct de 7 A au lieu de 1 A",
+        "Une commutation sept fois plus rapide",
+        "Une tension directe de 0,1 V au lieu de 0,7 V"
+      ],
+      "explanation": "La famille **1N4001 à 1N4007** regroupe des diodes de redressement très répandues, toutes prévues pour **1 A** en direct. Seule change leur **tension inverse maximale**, celle qu'elles peuvent bloquer sans claquer : 50 V pour la 1N4001, puis 100, 200, 400, 600, 800 et **1 000 V** pour la 1N4007. Comme l'écart de prix est minime, la 1N4007 est devenue la diode de redressement « à tout faire », y compris sur le secteur, dont la crête atteint 325 V. Le chiffre 7 n'indique donc ni le courant ni la vitesse. Pour des signaux rapides, on prend plutôt une diode de signal comme la 1N4148.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel composant protège une ligne de données (un port USB par exemple) contre les décharges électrostatiques, en réagissant quasi instantanément ?",
+      "answer": "Une diode TVS (suppresseur de transitoires)",
+      "wrong": [
+        "Un fusible réarmable de type polyfuse",
+        "Un éclateur à gaz (parafoudre)",
+        "Un condensateur de sécurité de classe X"
+      ],
+      "explanation": "Une décharge électrostatique, comme l'étincelle d'un doigt sur un connecteur, peut atteindre plusieurs kilovolts pendant quelques nanosecondes : de quoi détruire une puce. La diode **TVS** (Transient Voltage Suppressor) est une diode à avalanche conçue pour encaisser ces pointes : au-delà de sa tension de claquage, elle conduit presque instantanément et dévie la surtension vers la masse. Exemple : de nombreux ports USB sont protégés par un petit boîtier regroupant plusieurs diodes TVS. Les pièges ne conviennent pas : un polyfuse doit chauffer avant d'agir, ce qui prend des millisecondes, et un éclateur à gaz s'amorce trop lentement pour des fronts aussi raides.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur une LED neuve de 5 mm, comment reconnaître l'anode (+) ?",
+      "answer": "C'est la patte la plus longue",
+      "wrong": [
+        "C'est la patte du côté plat du boîtier",
+        "C'est la patte la plus courte",
+        "Les deux pattes sont interchangeables"
+      ],
+      "explanation": "Une LED (diode électroluminescente) est une diode : elle ne s'allume que branchée dans le bon sens, l'**anode** vers le + et la **cathode** vers le −. Sur une LED neuve, l'anode est la patte **la plus longue**. La cathode se repère aussi au **méplat**, la petite partie plate sur le bord du boîtier rond. Exemple : si les pattes ont été coupées, on se fie au méplat, ou on teste la LED avec le mode diode d'un multimètre. Branchée à l'envers, elle ne s'allume pas, et elle supporte mal une tension inverse de plus de 5 V environ, bien moins qu'une diode de redressement.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Diode_électroluminescente"
+    },
+    {
+      "question": "Pourquoi ne faut-il jamais brancher une LED directement sur une pile de 9 V ?",
+      "answer": "Rien ne limiterait son courant, elle serait détruite",
+      "wrong": [
+        "Elle s'allumerait trop faiblement pour être visible",
+        "Elle clignoterait de façon incontrôlable",
+        "La pile se rechargerait à travers la LED"
+      ],
+      "explanation": "Une LED a besoin d'un courant maîtrisé, typiquement 5 à 20 mA pour une LED d'indication. Or, au-delà de sa tension de seuil (environ 2 V pour une rouge), son courant **augmente très brutalement** pour une faible hausse de tension. Sur 9 V, plus rien ne freine ce courant, à part la résistance interne de la pile : il dépasse largement ce que la LED tolère, et elle grille. La solution est une **résistance série**, qui fixe le courant. Exemple : avec 9 V et une LED rouge, une résistance de 470 Ω donne environ 15 mA. Une LED ne recharge jamais une pile : le courant ne la traverse que dans un sens.",
+      "difficulty": 1
+    },
+    {
+      "question": "Une LED rouge (tension directe 2 V) doit être alimentée en 5 V sous environ 15 mA. Quelle résistance série faut-il calculer ?",
+      "answer": "200 Ω",
+      "wrong": [
+        "333 Ω",
+        "133 Ω",
+        "2 kΩ"
+      ],
+      "explanation": "La résistance série fixe le courant d'une LED. Elle encaisse la tension que la LED ne prend pas : 5 − 2 = 3 V. Avec la loi d'Ohm, R = 3 / 0,015 = **200 Ω**. En pratique, si l'on ne dispose que de la série E12, on prend la valeur supérieure, 220 Ω, ce qui donne environ 13,6 mA : la LED brille presque autant et la marge est confortable. Le piège 333 Ω vient de l'oubli de la tension de la LED (5 / 0,015) ; 133 Ω utilise la tension de la LED au lieu de celle de la résistance ; 2 kΩ correspond à 1,5 mA au lieu de 15 mA, une erreur de conversion.",
+      "difficulty": 2
+    },
+    {
+      "question": "Une LED blanche (3,2 V, 20 mA) est alimentée en 12 V à travers une résistance série. Quelle puissance dissipe cette résistance ?",
+      "answer": "Environ 0,18 W",
+      "wrong": [
+        "Environ 0,06 W",
+        "Environ 0,24 W",
+        "Environ 0,02 W"
+      ],
+      "explanation": "Une résistance série se choisit aussi en **puissance**, pas seulement en valeur. Ici, elle encaisse la tension restante, 12 − 3,2 = 8,8 V, sous 20 mA : P = U × I = 8,8 × 0,02 ≈ **0,18 W**. Une résistance de 1/4 W serait déjà proche de sa limite : une 1/2 W est plus confortable. La LED, elle, ne consomme que 3,2 × 0,02 = 64 mW : près des trois quarts de l'énergie partent en chaleur dans la résistance. Le piège 0,24 W est la puissance totale du montage (12 × 0,02). Pour économiser, on met plusieurs LED en série ou on utilise un driver à courant constant.",
+      "difficulty": 3
+    },
+    {
+      "question": "Parmi ces LED, laquelle présente la tension directe la plus élevée ?",
+      "answer": "La LED bleue",
+      "wrong": [
+        "La LED rouge",
+        "La LED orange",
+        "La LED infrarouge"
+      ],
+      "explanation": "La tension directe d'une LED dépend de l'énergie des photons qu'elle émet, donc de sa couleur. Cette énergie est fixée par la **bande interdite** du semi-conducteur, l'écart d'énergie que franchissent les électrons en émettant la lumière. Plus la longueur d'onde est courte (vers le bleu), plus les photons sont énergétiques et plus il faut de tension. Ordres de grandeur : environ 1,2 à 1,5 V pour l'infrarouge, 1,8 à 2,2 V pour le rouge et l'orange, et **3 à 3,5 V** pour le bleu (comme pour le blanc, qui est une LED bleue recouverte de luminophore). Conséquence pratique : une pile de 3 V suffit à peine à allumer une LED bleue.",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment la plupart des LED blanches produisent-elles leur lumière ?",
+      "answer": "Une puce bleue excite un luminophore jaune",
+      "wrong": [
+        "Une puce émet directement du blanc pur",
+        "Une puce infrarouge excite un gaz rare",
+        "Un filament chauffé dans une bulle de verre"
+      ],
+      "explanation": "Aucun semi-conducteur n'émet directement de la lumière blanche, qui est un mélange de couleurs. La plupart des LED blanches associent une puce **bleue** en nitrure de gallium-indium à un **luminophore**, une poudre qui absorbe une partie du bleu et réémet du jaune. L'œil perçoit le mélange bleu + jaune comme du blanc. L'épaisseur et la composition du luminophore fixent la teinte, blanc chaud ou froid. Exemple : en regardant de près une LED blanche éteinte, on voit souvent la couche jaune qui recouvre la puce. La LED bleue efficace a valu le prix Nobel de physique 2014 à Isamu Akasaki, Hiroshi Amano et Shuji Nakamura.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi déconseille-t-on de brancher plusieurs LED en parallèle derrière une seule résistance ?",
+      "answer": "Leurs tensions directes diffèrent, le courant se répartit mal",
+      "wrong": [
+        "Leurs capacités parasites forment un oscillateur",
+        "Elles se polarisent en inverse les unes les autres",
+        "La résistance annule leurs tensions de seuil"
+      ],
+      "explanation": "Mettre des LED en parallèle derrière une seule résistance semble économique, mais c'est un piège. Deux LED, même identiques, n'ont jamais exactement la même tension directe. Comme leur courant varie très fortement avec la tension, celle qui a le seuil le plus bas prend l'essentiel du courant. En plus, elle chauffe, son seuil baisse encore, et elle accapare encore plus de courant : c'est l'**emballement thermique**. Exemple : avec trois LED et une résistance prévue pour 60 mA au total, l'une peut recevoir bien plus que ses 20 mA et griller, reportant tout le courant sur les autres. La solution : **une résistance par LED**, ou des LED en série, traversées par le même courant.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'y a-t-il à l'intérieur d'un optocoupleur comme le PC817 ?",
+      "answer": "Une LED infrarouge face à un phototransistor",
+      "wrong": [
+        "Une bobine qui actionne un contact mécanique",
+        "Un transformateur miniature à deux enroulements",
+        "Deux diodes Zener montées tête-bêche"
+      ],
+      "explanation": "Un **optocoupleur** transmet un signal entre deux circuits sans aucun fil commun, grâce à la lumière. Côté entrée, une **LED infrarouge** s'allume quand on lui envoie du courant ; côté sortie, un **phototransistor** devient conducteur quand il est éclairé. Un isolant transparent les sépare : c'est l'**isolation galvanique**, qui tient plusieurs kilovolts. Exemple : un microcontrôleur peut ainsi commander un circuit relié au secteur sans risque, et une alimentation à découpage renvoie ainsi l'information de sa tension de sortie vers son primaire. Le relais isole aussi, mais avec une bobine et un contact mécanique, plus lents et sujets à l'usure.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Photocoupleur"
     }
   ]
 }

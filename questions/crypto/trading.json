@@ -553,7 +553,7 @@
         "+75 %",
         "+150 %"
       ],
-      "explanation": "Les pourcentages de perte et de gain ne sont pas symétriques. Exemple : tu investis 1 000 € et la valeur baisse de 50 % : il reste 500 €. Pour revenir à 1 000 €, il faut doubler la mise, soit **+100 %**. Un gain de +50 % ne ramènerait qu'à 750 €, et +75 % à 875 €. Plus la chute est forte, plus la remontée nécessaire est énorme : −80 % exige +400 %, −90 % exige +900 %. C'est pourquoi limiter les pertes compte davantage que viser de gros gains.",
+      "explanation": "Les pourcentages de perte et de gain ne sont pas symétriques. Exemple : tu investis 1 000 € et la valeur baisse de 50 % : il reste 500 €. Pour revenir à 1 000 €, il faut doubler la mise, soit **+100 %**. Un gain de +50 % ne ramènerait qu'à 750 €, et +75 % à 875 €. Plus la chute est forte, plus la remontée nécessaire est énorme : −80 % exige +400 %, −90 % exige +900 %. Dans l'autre sens, +100 % puis −50 % ramène exactement au point de départ. C'est pourquoi limiter les pertes compte davantage que viser de gros gains.",
       "difficulty": 2
     },
     {
@@ -807,7 +807,7 @@
         "Le contrat est bloqué par le réseau, car le MEV y est interdit",
         "Les ETH sont mis en staking et rapportent quelques % par an"
       ],
-      "explanation": "Dans cette arnaque répandue, le contrat fourni contient, souvent de façon obscurcie, l'adresse de l'escroc : dès que la victime envoie des ETH et « démarre » le bot, les fonds lui sont transférés. Le **MEV** (valeur extractible par ceux qui ordonnent les transactions) existe bel et bien, mais il est disputé par des acteurs très spécialisés : aucun code copié d'une vidéo ne permet d'en profiter. Ne déploie jamais un contrat que tu ne comprends pas ligne par ligne.",
+      "explanation": "Cette arnaque circule sous forme de vidéos qui promettent des gains quotidiens avec un « bot d'arbitrage MEV ». Le **MEV** (valeur extractible par ceux qui ordonnent les transactions) existe vraiment, mais il est disputé par des acteurs très spécialisés : aucun code copié d'une vidéo n'en profite. Scénario : on te fait copier un contrat, le déployer, puis envoyer 2 ETH « pour alimenter le bot ». Le code, souvent obscurci, contient l'adresse de l'escroc : quand tu lances le bot, les ETH partent chez lui. Signaux : commentaires désactivés, chaîne récente, gains quotidiens promis, code illisible. Ne déploie jamais un contrat que tu ne comprends pas.",
       "difficulty": 3
     },
     {
@@ -818,7 +818,7 @@
         "Parce que les codes SMS expirent souvent avant d'arriver",
         "Parce que les applications 2FA augmentent les plafonds de retrait"
       ],
-      "explanation": "Avec le **SIM swapping**, un escroc convainc ton opérateur, en usurpant ton identité, de transférer ton numéro sur une carte SIM qu'il contrôle : il reçoit alors tes codes SMS et peut réinitialiser tes comptes. Une application d'authentification génère les codes sur ton appareil, sans passer par le réseau téléphonique. Une clé de sécurité physique offre une protection encore plus forte.",
+      "explanation": "Le **SIM swapping** consiste à convaincre ton opérateur mobile, en se faisant passer pour toi avec des informations volées, de transférer ton numéro vers une carte SIM que l'escroc contrôle. Scénario : ton téléphone perd soudain le réseau sans raison. Pendant ce temps, l'escroc clique sur « mot de passe oublié » sur ta plateforme crypto, reçoit le code SMS à ta place, prend le compte et retire tes fonds. Une application d'authentification génère les codes sur ton appareil, hors réseau téléphonique. Une clé de sécurité physique protège encore mieux. Ce n'est pas une question de coût des SMS ni de plafonds de retrait.",
       "difficulty": 2
     },
     {
@@ -829,7 +829,7 @@
         "Répartir la somme entre plusieurs adresses de destination",
         "Envoyer la somme sans mémo, pour que l'opération soit plus rapide"
       ],
-      "explanation": "Une transaction blockchain est **irréversible** : une erreur d'adresse ou de réseau fait perdre les fonds définitivement. Envoyer d'abord un petit montant, vérifier qu'il arrive bien, puis envoyer le reste coûte un peu plus de frais mais évite la catastrophe. C'est particulièrement utile pour un premier envoi vers une plateforme ou un nouveau portefeuille.",
+      "explanation": "Une transaction blockchain est **irréversible** : une adresse erronée ou un mauvais réseau fait perdre les fonds. Réflexe : envoyer d'abord un petit montant et vérifier qu'il arrive. Exemple : tu dois envoyer 10 000 € vers une nouvelle adresse. Tu commences par 20 € ; une fois la réception confirmée, tu envoies le reste. Tu paies des frais deux fois, mais tu évites de perdre 10 000 € sur une faute de frappe. Les frais ne sont pas nuls le dimanche, répartir la somme sur plusieurs adresses ne règle rien, et omettre un mémo obligatoire peut au contraire faire perdre le dépôt.",
       "difficulty": 1
     },
     {
@@ -840,7 +840,7 @@
         "La transaction est refusée et les fonds reviennent en quelques minutes",
         "Les USDT sont convertis en ETH à l'arrivée, à un taux défavorable"
       ],
-      "explanation": "Un même token peut exister sur plusieurs blockchains : l'USDT circule par exemple sur Ethereum, Tron ou Solana. Les réseaux compatibles EVM (Ethereum, BNB Chain, Polygon…) utilisent même des adresses de format identique, ce qui rend l'erreur facile. Si tu envoies sur un réseau que le destinataire ne surveille pas, les fonds arrivent là où il ne les voit pas : au mieux une récupération longue et parfois payante, au pire une perte définitive. Vérifie toujours que le **réseau** de retrait correspond à celui indiqué pour le dépôt.",
+      "explanation": "Un même token peut exister sur plusieurs blockchains : l'USDT circule par exemple sur Ethereum, Tron ou Solana. Chaque version est un jeton distinct. Les réseaux compatibles EVM (Ethereum, BNB Chain, Polygon…) partagent le même format d'adresse (0x…), ce qui rend l'erreur facile. Exemple : tu retires 500 USDT sur BNB Chain vers une adresse de dépôt que la plateforme n'utilise que pour Ethereum. Les fonds arrivent sur un réseau qu'elle ne surveille pas : au mieux une récupération longue et parfois payante, au pire une perte définitive. Il n'y a pas de conversion automatique ni de retour en arrière. Vérifie que le réseau de retrait correspond à celui du dépôt.",
       "difficulty": 2
     },
     {
@@ -851,7 +851,7 @@
         "À réduire les frais de réseau payés pour le dépôt",
         "À accélérer la confirmation du dépôt par les validateurs"
       ],
-      "explanation": "Sur des réseaux comme XRP Ledger, Stellar ou Cosmos, les plateformes regroupent souvent les dépôts de tous leurs clients sur une même adresse : le **mémo** indique à qui appartient chaque versement. Si tu l'oublies, les fonds peuvent arriver sur l'adresse commune sans être attribués, et il faut alors passer par le support, parfois longuement, pour les récupérer. Le mémo n'est pas un secret et ne chiffre rien.",
+      "explanation": "Certaines plateformes (sur XRP Ledger, Stellar, Cosmos…) donnent la même adresse de dépôt à tous leurs clients. Le **mémo** (ou tag de destination) est le numéro qui indique à quel client appartient le versement. Analogie : l'adresse est celle d'un immeuble, le mémo est le numéro d'appartement. Exemple : tu envoies 1 000 XRP vers l'adresse de la plateforme en oubliant le tag 123456 : les fonds arrivent à l'immeuble, mais personne ne sait à qui les attribuer. Il faut ensuite passer par le support, parfois pendant des semaines. Le mémo n'est pas secret, ne chiffre rien et n'a aucun effet sur les frais.",
       "difficulty": 3
     },
     {
@@ -862,7 +862,7 @@
         "Installer l'extension proposée, puisqu'elle est en tête des résultats",
         "Saisir sa phrase de récupération pour confirmer que c'est le bon site"
       ],
-      "explanation": "Les escrocs achètent des **annonces sponsorisées** qui pointent vers des copies parfaites de sites de portefeuilles ou de plateformes, avec un nom de domaine à une lettre près. Ces faux sites volent les identifiants ou proposent de fausses extensions qui dérobent la phrase de récupération. Réflexe : enregistrer l'adresse officielle en favori et l'utiliser systématiquement, et ne jamais saisir sa phrase de récupération sur un site web.",
+      "explanation": "Les escrocs achètent des **annonces sponsorisées** qui apparaissent avant les vrais résultats et mènent vers des copies parfaites de sites de portefeuilles ou de plateformes. Scénario : tu cherches ton portefeuille, tu cliques sur la première annonce, au nom de domaine presque identique (une lettre en plus, une extension .xyz au lieu de .com). Le faux site te demande ta phrase de récupération « pour synchroniser » ou te fait installer une extension piégée : tout est volé. Les annonces ne sont pas toutes vérifiées. Réflexe : enregistrer l'adresse officielle en favori et ne jamais saisir sa phrase de récupération sur un site web.",
       "difficulty": 1
     },
     {
@@ -873,7 +873,7 @@
         "L'équipe de développeurs chargée de maintenir le token",
         "La liste des plateformes où le token peut être acheté"
       ],
-      "explanation": "La **tokenomics** (contraction de token et economics) décrit combien de tokens existent et existeront, qui les détient (équipe, investisseurs, communauté), à quel rythme ils sont émis ou débloqués, et à quoi ils servent. C'est l'un des premiers éléments à analyser : une belle technologie ne sauve pas un token dont l'équipe détient la majorité ou dont l'offre gonfle sans cesse.",
+      "explanation": "La **tokenomics** (token + economics) est l'économie d'un token : combien en existent ou existeront, qui les détient, à quelle vitesse ils sont émis ou débloqués, et à quoi ils servent. Exemple : le token A a 1 milliard d'unités, 5 % pour l'équipe débloqués sur 4 ans et 40 % pour la communauté. Le token B en réserve 60 % à l'équipe, sans verrouillage. Même avec une belle technologie, le B est bien plus risqué. C'est l'un des premiers éléments à analyser avant d'investir. Elle ne désigne ni un classement de cours, ni l'équipe de développeurs, ni la liste des plateformes où acheter.",
       "difficulty": 1
     },
     {
@@ -884,7 +884,7 @@
         "La première compte les tokens sur les CEX, la seconde ceux déposés sur les DEX",
         "La première compte les tokens en staking, la seconde ceux qui ont été brûlés"
       ],
-      "explanation": "La **circulating supply** est la quantité de tokens réellement disponibles sur le marché ; c'est elle qui sert à calculer la market cap. La **max supply** est le plafond absolu fixé par le protocole (21 millions pour le bitcoin) ; certains tokens n'en ont aucun, comme l'ether. Entre les deux, la **total supply** compte les tokens déjà créés, y compris ceux qui sont encore bloqués.",
+      "explanation": "La **circulating supply** est la quantité de tokens réellement disponibles sur le marché, celle qui sert à calculer la market cap. La **max supply** est le plafond que le protocole ne dépassera jamais (21 millions pour le bitcoin) ; certains tokens, comme l'ether, n'en ont pas. La **total supply** compte les tokens déjà créés, y compris ceux encore bloqués. Exemple : max supply de 1 000 M, 600 M déjà créés, mais seulement 200 M en circulation (400 M sont bloqués en vesting). À 0,50 $, la market cap est de 100 M$ et la FDV de 500 M$. Les autres définitions proposées ne correspondent à aucune de ces mesures.",
       "difficulty": 2
     },
     {
@@ -895,7 +895,7 @@
         "Ses frais de transaction augmentent à chaque nouveau bloc miné",
         "Son prix est indexé sur l'indice des prix à la consommation"
       ],
-      "explanation": "Un token **inflationniste** voit son offre croître avec le temps, par exemple via les récompenses de minage, de staking ou de farming. Si la demande ne suit pas, cette dilution pèse sur le prix : un rendement de 100 % par an payé en tokens nouvellement créés peut être entièrement effacé par la baisse du cours. À l'inverse, un token **déflationniste** voit son offre diminuer, généralement grâce à des burns.",
+      "explanation": "Un token **inflationniste** voit son offre augmenter dans le temps, car de nouveaux tokens sont émis : récompenses de minage, de staking ou de farming. Si la demande ne suit pas, le prix baisse. Exemple : un protocole promet 100 % de rendement annuel payé en tokens nouveaux. Tu stakes 1 000 tokens à 1 $ et en reçois 1 000 de plus. Si tout le monde fait pareil, l'offre double ; à demande égale, le prix passe à 0,50 $ : tes 2 000 tokens valent 1 000 $, comme avant. Le rendement a été entièrement dilué. Un token **déflationniste**, lui, voit son offre baisser, souvent grâce à des burns. Cela n'a rien à voir avec l'inflation de l'euro.",
       "difficulty": 2
     },
     {
@@ -906,7 +906,7 @@
         "La communauté ne pourra jamais acheter le token sur une plateforme décentralisée",
         "Le token ne pourra jamais être coté sur une plateforme d'échange centralisée"
       ],
-      "explanation": "Une allocation aussi concentrée, **sans vesting**, signifie que l'équipe détient la majorité des tokens et peut les vendre dès le lancement, sur le dos des acheteurs. Les projets sérieux réservent une part plus modeste à l'équipe et la débloquent progressivement sur plusieurs années. Combine toujours l'analyse de la répartition avec celle du calendrier de déblocage.",
+      "explanation": "La répartition (allocation) des tokens indique qui reçoit quelle part. Si 60 % vont à l'équipe sans **vesting** (déblocage progressif), elle peut tout vendre dès le lancement. Exemple : sur 1 milliard de tokens, l'équipe reçoit 600 millions. À 0,10 $, cela fait 60 M$ sur le papier, alors que le pool de liquidité ne contient que 200 000 $. Dès qu'elle vend une fraction, le prix s'effondre et les acheteurs supportent la perte. Un projet sérieux réserve une part plus modeste à l'équipe et la débloque progressivement sur plusieurs années. Sans aucun calendrier, c'est un signal d'alerte majeur.",
       "difficulty": 2
     },
     {
@@ -917,7 +917,7 @@
         "Les nouveaux acheteurs paieront des frais de gas plus élevés",
         "Le réseau refusera les transactions des plus petits portefeuilles"
       ],
-      "explanation": "Une forte **concentration des détenteurs** donne à une poignée d'adresses le pouvoir de faire s'effondrer le prix : il suffit que l'une d'elles vende pour écraser la liquidité disponible. Ces adresses appartiennent souvent à l'équipe ou à des initiés, parfois réparties sur plusieurs portefeuilles pour masquer la concentration. Il faut toutefois exclure de l'analyse les adresses légitimes comme le pool de liquidité, les contrats de lock ou l'adresse de burn.",
+      "explanation": "Une forte **concentration des détenteurs** donne à quelques adresses le pouvoir de faire s'effondrer le prix. Exemple : 5 adresses détiennent 85 % de l'offre, soit 17 % chacune en moyenne. Si l'une d'elles vend, elle écrase la liquidité disponible : le prix chute pour tous les autres. Ces adresses sont souvent celles de l'équipe, parfois réparties sur plusieurs portefeuilles financés par la même source pour masquer la concentration. Sur l'explorateur de blocs, regarde la liste des détenteurs (« holders »), mais exclus les adresses légitimes comme le pool de liquidité, les contrats de lock ou l'adresse de burn. Aucun mécanisme ne retire automatiquement le token des plateformes.",
       "difficulty": 2
     },
     {
@@ -928,7 +928,7 @@
         "Un gel des échanges sur toutes les plateformes pendant l'opération",
         "Une conversion automatique des tokens débloqués en stablecoins"
       ],
-      "explanation": "Un **unlock** libère des tokens jusque-là bloqués par le vesting. Les investisseurs privés les ont souvent obtenus à un prix bien inférieur au cours actuel : beaucoup sont tentés d'encaisser, ce qui ajoute de l'offre sur le marché. Le calendrier des déblocages est public pour la plupart des projets et mérite d'être consulté avant d'acheter. L'effet n'est pas automatique, mais il est souvent anticipé par le marché.",
+      "explanation": "Un **unlock** libère des tokens jusque-là bloqués par le vesting. Exemple : un projet a 1 milliard de tokens, dont 300 millions en circulation. Il débloque 15 % de l'offre totale, soit 150 millions de tokens : la circulation augmente de 50 % d'un coup. Si les investisseurs privés ont acheté à 0,05 $ et que le cours est à 0,50 $, chacun gagne ×10 en vendant : la tentation d'encaisser est forte, ce qui ajoute de l'offre au marché. L'effet n'est pas automatique, car le marché l'anticipe souvent, mais il n'y a ni hausse garantie, ni gel des échanges, ni conversion. Le calendrier des unlocks est public pour la plupart des projets.",
       "difficulty": 2
     },
     {
@@ -939,7 +939,7 @@
         "900 000 tokens",
         "Aucun token"
       ],
-      "explanation": "Pendant le **cliff** de 12 mois, rien n'est débloqué. Ensuite, 1 200 000 / 24 = 50 000 tokens se libèrent chaque mois. À 18 mois, six mois de déblocage se sont écoulés : 6 × 50 000 = **300 000 tokens**. Le piège à 900 000 consiste à oublier le cliff et à compter 18 mensualités. La fin d'un cliff est souvent un moment de pression vendeuse à surveiller.",
+      "explanation": "Le **cliff** est une période initiale pendant laquelle aucun token n'est débloqué. Ici, rien pendant 12 mois, puis 1 200 000 / 24 = 50 000 tokens par mois pendant 24 mois. Formule : tokens débloqués = 50 000 × (nombre de mois − 12). À 18 mois : 50 000 × 6 = **300 000 tokens**. Le piège à 900 000 consiste à oublier le cliff et à compter 18 mensualités (18 × 50 000). À 36 mois, la totalité des 1 200 000 est débloquée. Le moment de fin du cliff est souvent une période de pression vendeuse à surveiller. L'option « aucun token » oublie que le cliff est terminé depuis 6 mois.",
       "difficulty": 3
     },
     {
@@ -950,7 +950,7 @@
         "Les 99 % sont reversés au vendeur plus tard, il ne perd donc rien",
         "C'est un réglage standard imposé par la plupart des DEX"
       ],
-      "explanation": "Beaucoup de tokens prélèvent une **taxe** sur chaque achat ou vente, envoyée à l'équipe ou à un « fonds marketing ». Une taxe de vente de 99 % revient à confisquer presque tout ce que tu vends : l'achat fonctionne, mais tu ne récupères quasiment rien en sortant, comme avec un honeypot. Pire, certains contrats permettent au propriétaire de modifier ces taxes après le lancement : un token « 0 % de taxe » peut passer à 99 % du jour au lendemain.",
+      "explanation": "Beaucoup de tokens prélèvent une **taxe** sur les achats ou les ventes, versée à l'équipe ou à un « fonds marketing ». Une taxe de 99 % à la vente confisque presque tout. Exemple : tu achètes pour 1 000 $, la taxe de 1 % te laisse 990 $ de tokens. Tu revends ces 990 $ : le contrat garde 99 %, tu ne récupères que 9,90 $. L'achat fonctionne, la sortie est quasiment impossible : c'est un piège de type honeypot. Pire, certains contrats permettent au propriétaire de modifier les taxes après le lancement : un token à 0 % peut passer à 99 % du jour au lendemain. Aucune DEX n'impose cela.",
       "difficulty": 2
     },
     {
@@ -961,7 +961,7 @@
         "Que l'équipe ne détient plus aucun token du projet en portefeuille",
         "Que le contrat a été audité par un organisme de sécurité indépendant"
       ],
-      "explanation": "Renoncer à la propriété transfère le rôle d'**owner** à l'adresse nulle : les fonctions protégées par ce rôle (modifier les taxes, mettre en pause, minter…) deviennent inutilisables. C'est rassurant, mais pas une garantie absolue : l'équipe peut garder des tokens à vendre, retirer une liquidité non verrouillée, ou avoir prévu d'autres rôles privilégiés, voire un contrat modifiable via un proxy. Il faut donc vérifier le code, pas seulement l'annonce.",
+      "explanation": "Renoncer à la propriété (`renounceOwnership()` dans le modèle Ownable très répandu) transfère le rôle d'**owner** à l'adresse nulle : les fonctions réservées au propriétaire (changer les taxes, mettre en pause, créer des tokens) ne peuvent plus être appelées. C'est rassurant, mais limité. Exemple : un projet affiche « ownership renounced », mais son équipe détient 50 % des tokens dans un portefeuille et n'a pas verrouillé la liquidité : elle peut toujours vendre ou retirer le pool. Un contrat modifiable via un proxy (un contrat intermédiaire que l'on peut remplacer) peut aussi cacher d'autres rôles. Vérifie le code, pas seulement l'annonce.",
       "difficulty": 3
     },
     {
@@ -972,7 +972,7 @@
         "Il peut fixer lui-même le prix affiché du token sur toutes les plateformes",
         "Il peut lire la phrase de récupération des portefeuilles des détenteurs"
       ],
-      "explanation": "Une fonction **mint** crée de nouveaux tokens. Si le propriétaire peut l'appeler librement, il peut s'en attribuer des milliards et les vendre dans le pool de liquidité : le prix s'effondre et les détenteurs sont dilués. C'est l'une des techniques de rug pull les plus courantes. Un contrat sain plafonne l'émission ou la soumet à des règles transparentes, et les outils d'analyse de contrats signalent ce type de fonction.",
+      "explanation": "Une fonction **mint** crée de nouveaux tokens. Si le propriétaire peut l'appeler sans limite, il peut les créer à volonté. Exemple : un token a 1 million d'unités et un pool qui contient 10 ETH. Le propriétaire crée 1 milliard de tokens pour lui, les vend dans le pool et en retire presque tous les ETH ; le prix tombe presque à zéro et tous les autres détenteurs sont dilués. Dans le code, repère `function mint(address to, uint256 amount) external onlyOwner` sans plafond. Il ne peut pas annuler des transactions passées, fixer le prix sur les plateformes (c'est le marché qui le fait) ni lire les phrases de récupération.",
       "difficulty": 3
     },
     {
@@ -983,7 +983,7 @@
         "Une fonction qui émet un événement public à chaque transfert",
         "Une fonction qui indique le nombre total de tokens déjà émis"
       ],
-      "explanation": "Une fonction de **blacklist** contrôlée par le créateur lui permet de bloquer n'importe quel portefeuille, par exemple tous les acheteurs, pendant que lui seul peut vendre : c'est un honeypot déguisé. Les fonctions de pause des échanges ou de modification des taxes posent le même problème. Certains stablecoins régulés possèdent une liste noire pour des raisons légales, mais dans un memecoin c'est un drapeau rouge. Consulter son solde (`balanceOf`), connaître l'offre totale (`totalSupply`) ou émettre un événement `Transfer` sont en revanche des éléments standards de tout token ERC-20.",
+      "explanation": "Une fonction de **blacklist** contrôlée par le créateur lui permet d'empêcher n'importe quelle adresse de vendre. Dans le code, cela ressemble à un test du type `require(!isBlacklisted[from])` à chaque transfert. Scénario : tu achètes 500 $ du memecoin ; le créateur ajoute ton adresse à la liste noire ; ta vente échoue, alors que lui reste libre de vendre : c'est un honeypot déguisé. Certains stablecoins régulés ont une liste noire pour des raisons légales, mais dans un memecoin, c'est un drapeau rouge. Consulter un solde (`balanceOf`), l'offre totale (`totalSupply`) ou émettre un événement `Transfer` est standard et sans danger.",
       "difficulty": 3
     },
     {
@@ -994,7 +994,7 @@
         "L'équipe du projet a fourni ses pièces d'identité à l'explorateur",
         "Le token est garanti contre le piratage par une assurance"
       ],
-      "explanation": "« Vérifié » signifie seulement que le développeur a publié le **code source** et que l'explorateur a confirmé qu'il produit exactement le bytecode déployé sur la blockchain. Chacun peut alors lire le contrat et y repérer des fonctions dangereuses. Ce n'est en aucun cas un label de sécurité : un contrat vérifié peut parfaitement contenir un honeypot. À l'inverse, un contrat non vérifié est opaque et doit inciter à la plus grande prudence.",
+      "explanation": "Sur un explorateur de blocs, « **contrat vérifié** » veut dire que le développeur a publié le **code source** lisible et que l'explorateur a confirmé qu'il produit exactement le **bytecode** (le programme illisible réellement exécuté par la blockchain). Tout le monde peut alors lire le contrat. Ce n'est pas un label de sécurité. Exemple : un contrat vérifié contient `setSellTax(99)` réservé au propriétaire : il est vérifié, et pourtant piégé. À l'inverse, un contrat non vérifié est opaque : tu ne peux pas savoir ce qu'il fait, ce qui impose la plus grande prudence. L'explorateur ne réalise pas d'audit, ne vérifie pas l'identité de l'équipe et n'offre aucune assurance.",
       "difficulty": 2
     },
     {
@@ -1005,7 +1005,7 @@
         "Le lock concerne les plateformes centralisées, le burn les DEX uniquement",
         "Le lock double la liquidité du pool, le burn la divise par deux"
       ],
-      "explanation": "Les **jetons LP** représentent la propriété de la liquidité d'un pool. Les verrouiller dans un contrat de lock empêche de les retirer avant une échéance, après laquelle l'équipe pourra les récupérer. Les envoyer à une adresse de burn les rend irrécupérables : la liquidité correspondante reste dans le pool pour toujours. Le burn est donc plus rassurant qu'un lock court, mais ne protège pas contre d'autres risques, comme une fonction `mint` ou une équipe qui vend ses propres tokens.",
+      "explanation": "Les **jetons LP** représentent la propriété de la liquidité d'un pool : celui qui les détient peut retirer les fonds du pool. Exemple : un pool contient 100 000 $. Si l'équipe verrouille ses jetons LP six mois, elle ne peut rien retirer avant l'échéance, mais pourra le faire ensuite. Si elle les **brûle** (envoyés à une adresse inaccessible), personne ne pourra jamais retirer ces 100 000 $ : ils restent dans le pool pour toujours. Le burn est donc plus rassurant qu'un lock court. Il ne protège pas contre une fonction `mint` ni contre une équipe qui vend ses propres tokens. Ni l'un ni l'autre ne double ou ne divise la liquidité.",
       "difficulty": 3
     },
     {
@@ -1016,7 +1016,7 @@
         "Le hard rug dure plusieurs années ; le soft rug tient en une seule transaction",
         "Le hard rug vise les plateformes centralisées ; le soft rug les portefeuilles"
       ],
-      "explanation": "Dans un **hard rug**, les créateurs retirent d'un coup la liquidité ou exploitent une porte dérobée du contrat : le cours tombe à zéro en quelques minutes. Dans un **soft rug**, l'équipe délaisse progressivement le projet tout en vendant ses tokens sur des semaines ou des mois, en invoquant des retards ou des difficultés. Plus discret, le soft rug est aussi plus difficile à prouver, mais le résultat pour les détenteurs est le même.",
+      "explanation": "Le **hard rug** est le vol brutal : les créateurs retirent d'un coup la liquidité ou exploitent une porte dérobée du contrat. Le prix tombe à zéro en quelques minutes. Le **soft rug** est plus lent : l'équipe vend ses tokens petit à petit pendant des semaines tout en rassurant la communauté. Exemple : sur 6 semaines, le prix passe de 0,20 $ à 0,02 $ (−90 %) pendant que l'équipe invoque des retards de développement. Signaux : portefeuilles de l'équipe qui envoient régulièrement des tokens vers des plateformes ou le pool (visible sur l'explorateur de blocs), feuille de route repoussée sans cesse, réseaux sociaux de plus en plus silencieux. Le résultat pour les détenteurs est le même.",
       "difficulty": 3
     },
     {
@@ -1027,7 +1027,7 @@
         "Fournir de la liquidité à une plateforme qui ferme ses portes",
         "Recevoir des tokens gratuits juste avant la fin d'un projet"
       ],
-      "explanation": "Un gros détenteur ne peut vendre que s'il trouve des acheteurs en face. Quand des initiés (équipe, investisseurs précoces, influenceurs) font la promotion d'un token qu'ils ont obtenu pour presque rien, les nouveaux acheteurs attirés par le battage leur servent d'**exit liquidity** : ils absorbent les ventes et supportent la baisse qui suit. Se demander « qui me vend ce token, et pourquoi ? » est un bon réflexe.",
+      "explanation": "Un gros détenteur ne peut vendre que si quelqu'un achète en face. Quand des initiés (équipe, investisseurs précoces, influenceurs) promeuvent un token qu'ils ont obtenu presque gratuitement, les nouveaux acheteurs deviennent leur **exit liquidity** : leur « liquidité de sortie ». Exemple : un initié a acheté 100 millions de tokens à 0,001 $ ; une campagne les fait monter à 0,10 $, soit ×100. Tu achètes 1 000 $ à 0,10 $ pendant qu'il vend à toi et aux autres : il encaisse, et tu supportes la baisse qui suit. Signaux : plusieurs influenceurs qui font la promotion au même moment, sans mentionner leurs intérêts. Question utile : qui me vend ce token, et pourquoi ?",
       "difficulty": 2
     },
     {
@@ -1038,7 +1038,7 @@
         "Que le token ne pourra jamais descendre sous son prix d'émission",
         "Que l'État a autorisé la vente du token au grand public en Europe"
       ],
-      "explanation": "Un **audit** est une revue du code par une société spécialisée, qui signale des failles à un instant donné. Il ne couvre pas toujours tout le code, ne garantit pas que les problèmes relevés ont été corrigés, et ne dit rien des intentions de l'équipe : un contrat audité peut contenir des fonctions de mint ou de taxe parfaitement assumées. Certains escrocs affichent même de faux badges : vérifie que le rapport existe sur le site de l'auditeur et lis ses conclusions.",
+      "explanation": "Un **audit** est une revue du code par une société spécialisée, qui signale des failles à un instant donné. Il réduit le risque, mais ne garantit rien d'absolu. Exemple : un rapport date d'il y a deux ans et concerne la version 1 du contrat ; depuis, l'équipe a déployé une version 2 avec une nouvelle fonction de création de tokens : elle n'est pas couverte. Un audit peut aussi relever des pouvoirs dangereux du propriétaire que l'équipe choisit de garder. Il ne dit rien de l'honnêteté de l'équipe. Certains escrocs affichent de faux badges : vérifie que le rapport figure bien sur le site de l'auditeur et lis ses conclusions. Ce n'est ni une assurance, ni un prix plancher, ni une autorisation de l'État.",
       "difficulty": 2
     },
     {
@@ -1049,7 +1049,7 @@
         "Ses membres travaillent sous pseudonyme pour se protéger",
         "Ses membres ont tous déjà été condamnés pour fraude"
       ],
-      "explanation": "Une équipe **doxxée** (de *doxxing*, révéler l'identité de quelqu'un) a rendu publique l'identité réelle de ses membres, parfois vérifiée par un tiers. Cela n'empêche pas une arnaque, mais rend la fuite plus risquée pour les fondateurs, qui peuvent être poursuivis. À l'inverse, une équipe anonyme n'est pas forcément malhonnête (le créateur de Bitcoin est lui-même pseudonyme), mais c'est un risque supplémentaire à prendre en compte.",
+      "explanation": "Une équipe **doxxée** (de *doxxing*, révéler l'identité de quelqu'un) a rendu publique l'identité réelle de ses membres. Scénario : l'équipe A présente des noms, des profils professionnels vérifiables et des entreprises passées ; en cas de fraude, elle peut être poursuivie. L'équipe B se cache derrière des avatars et des pseudos : si le projet disparaît, personne à retrouver. Cela n'empêche pas une arnaque, et des identités peuvent être inventées (photos volées : une recherche d'image inversée peut le révéler). Une équipe anonyme n'est pas forcément malhonnête (le créateur de Bitcoin est pseudonyme), mais c'est un risque de plus. Être doxxé n'a rien à voir avec un piratage.",
       "difficulty": 2
     },
     {
@@ -1060,7 +1060,7 @@
         "International Coin Organization : l'organisme qui régule les tokens",
         "Instant Conversion Order : un ordre d'échange immédiat"
       ],
-      "explanation": "Une **ICO** (Initial Coin Offering, par analogie avec l'IPO d'une entreprise en Bourse) permet à un projet de lever des fonds en vendant directement son token au public, souvent contre de l'ether. En 2017-2018, des milliers de projets ont ainsi levé des milliards de dollars, avec très peu de contrôle ; une grande partie a échoué ou s'est révélée frauduleuse. Il n'existe pas d'organisme mondial unique qui régule les tokens.",
+      "explanation": "Une **ICO** (Initial Coin Offering) permet à un projet de lever des fonds en vendant directement son token au public, souvent contre de l'ether. Le nom évoque l'**IPO**, l'introduction en Bourse d'une entreprise, mais sans le contrôle d'un régulateur ni de droits sur l'entreprise. Exemple : en 2017, un projet vend 100 millions de tokens à 0,10 $ et lève 10 M$ avec seulement un livre blanc et aucun produit. Pendant la bulle de 2017-2018, des milliers de projets ont levé des milliards de dollars avec très peu de contrôle ; beaucoup ont échoué ou étaient frauduleux. Il n'existe pas d'organisme mondial unique qui régule les tokens.",
       "difficulty": 1
     },
     {
@@ -1071,7 +1071,7 @@
         "L'IEO vend des NFT, l'IDO vend uniquement des stablecoins",
         "L'IEO a lieu avant la création du token, l'IDO après sa cotation"
       ],
-      "explanation": "Après la vague des ICO, de nouveaux formats sont apparus. Dans une **IEO** (Initial Exchange Offering), la vente est organisée par une plateforme d'échange centralisée, qui sélectionne le projet et engage en partie sa réputation. Dans une **IDO** (Initial DEX Offering), le token est lancé sur une plateforme décentralisée ou un « launchpad », souvent avec une liquidité immédiate. Aucun de ces formats ne garantit la qualité du projet.",
+      "explanation": "Après la vague des ICO, de nouveaux formats de levée de fonds sont apparus. Dans une **IEO** (Initial Exchange Offering), la vente est organisée par une plateforme d'échange centralisée (CEX), qui sélectionne le projet et engage une partie de sa réputation. Dans une **IDO** (Initial DEX Offering), le token est lancé sur une plateforme décentralisée ou un « launchpad », souvent avec une liquidité ouverte aussitôt. Exemple : pour une IEO, tu souscris avec les fonds déjà présents sur ton compte vérifié ; pour une IDO, tu connectes ton portefeuille et achètes dans le pool dès son ouverture. Aucun de ces formats ne garantit la qualité du projet.",
       "difficulty": 3
     },
     {
@@ -1082,7 +1082,7 @@
         "Un lancement où l'équipe garantit le remboursement en cas de baisse",
         "Un lancement réservé aux acheteurs ayant passé une vérification KYC"
       ],
-      "explanation": "Un **fair launch** vise l'égalité d'accès : pas de prévente à prix réduit pour des initiés, pas de gros paquet de tokens réservé à l'équipe ou aux investisseurs. Le bitcoin, lancé sans prévente et dont chaque unité est créée par un minage ouvert à tous, est souvent cité en exemple. Le terme est toutefois devenu un argument marketing : certains « fair launches » sont accaparés dès les premières secondes par des bots ou par des portefeuilles liés aux créateurs.",
+      "explanation": "Un **fair launch** (lancement équitable) vise l'égalité d'accès : pas de prévente à prix réduit pour des initiés, pas de paquet de tokens réservé à l'équipe ou aux investisseurs. Exemple : 100 % de l'offre est mise dans le pool de liquidité, et chacun achète au même prix de départ. Le bitcoin, lancé sans prévente, avec des unités créées par un minage ouvert à tous, est souvent cité en exemple. Mais le terme est devenu un argument marketing : certains « fair launches » sont accaparés dès la première seconde par des bots ou des portefeuilles liés aux créateurs. Signal : sur l'explorateur de blocs, plusieurs gros achats dans le tout premier bloc, avec des montants identiques.",
       "difficulty": 3
     },
     {
@@ -1093,7 +1093,7 @@
         "Ils protègent le pool contre les attaques en limitant les achats",
         "Ils publient automatiquement le code source du contrat du token"
       ],
-      "explanation": "Les **sniper bots** surveillent la création des pools et achètent dès que la liquidité est ajoutée, parfois dans le même bloc, à un prix qu'aucun humain ne peut obtenir. Ils revendent ensuite aux acheteurs arrivés plus tard. Certains créateurs utilisent eux-mêmes des snipers depuis des portefeuilles secondaires pour accaparer l'offre discrètement, ce qui fausse l'apparente répartition des détenteurs.",
+      "explanation": "Les **sniper bots** surveillent la création des pools de liquidité et achètent dès que la liquidité est ajoutée, parfois dans le même bloc, à un prix qu'aucun humain ne peut obtenir. Exemple : un bot achète pour 1 000 $ au prix de départ ; quelques minutes plus tard, les acheteurs humains ont fait tripler le prix, et le bot revend pour 3 000 $. Toi, tu as acheté au prix déjà gonflé. Certains créateurs utilisent eux-mêmes des bots depuis des portefeuilles secondaires pour accaparer l'offre discrètement, ce qui fausse la répartition apparente des détenteurs. Les snipers ne détectent pas les honeypots, ne protègent pas le pool et ne publient aucun code.",
       "difficulty": 3
     },
     {
@@ -1104,7 +1104,7 @@
         "Elle est convertie en bitcoin et placée dans une réserve de garantie",
         "Elle est versée aux validateurs du réseau sous forme de frais de gas"
       ],
-      "explanation": "Dans un token à **réflexion**, chaque achat ou vente est taxé (par exemple 10 %), et une partie est répartie entre tous les détenteurs : leur solde augmente sans rien faire, ce qui encourage à garder. Ce mécanisme ne crée aucune valeur : il prélève les acheteurs et les vendeurs pour payer les détenteurs, et ne fonctionne que tant que de nouveaux acheteurs arrivent. Beaucoup de ces tokens ont perdu l'essentiel de leur valeur une fois l'engouement retombé.",
+      "explanation": "Dans un token à **réflexion**, chaque achat ou vente est taxé, et une partie de la taxe est répartie automatiquement entre tous les détenteurs, proportionnellement à leurs avoirs : leur solde augmente sans rien faire. Exemple (chiffres d'illustration) : 10 % de taxe, dont 5 % redistribués. Pour 1 000 000 $ échangés dans la journée, 50 000 $ sont partagés ; un détenteur de 1 % de l'offre en reçoit 500 $. Ce mécanisme ne crée aucune valeur : il prélève acheteurs et vendeurs pour payer les détenteurs, et ne tient que si de nouveaux acheteurs arrivent. Beaucoup de ces tokens ont perdu l'essentiel de leur valeur quand l'engouement est retombé.",
       "difficulty": 3
     },
     {
@@ -1115,7 +1115,7 @@
         "10 milliards de dollars",
         "100 millions de dollars"
       ],
-      "explanation": "Market cap = prix × tokens en circulation = 1 $ × 1 000 milliards = **1 000 milliards de dollars**, soit 10 000 fois sa valeur actuelle (100 millions de dollars), un niveau que seule une poignée d'actifs au monde a jamais atteint. C'est le **biais de l'unité** : un prix unitaire minuscule donne l'impression qu'un token est « pas cher » et peut facilement grimper, alors que seule la capitalisation compte. Raisonne toujours en market cap, jamais en prix unitaire.",
+      "explanation": "Le prix unitaire ne dit rien de la taille d'un projet : seule la market cap compte. Ici, la market cap actuelle est 0,0001 $ × 1 000 milliards = 100 millions de dollars. Pour atteindre 1 $, il faudrait 1 $ × 1 000 milliards = **1 000 milliards de dollars**, soit 10 000 fois plus : plus que la valeur de presque toutes les entreprises du monde. C'est le **biais de l'unité** : un prix minuscule donne l'impression qu'un token est « pas cher » et peut facilement grimper, alors que le nombre de tokens est gigantesque. Raisonne toujours en market cap, jamais en prix unitaire.",
       "difficulty": 2
     },
     {
@@ -1126,7 +1126,7 @@
         "Les détenteurs pourront revendre 20 M$ de tokens au prix actuel",
         "La liquidité est verrouillée à hauteur de 20 M$ dans le contrat"
       ],
-      "explanation": "La market cap multiplie le dernier prix par toute l'offre en circulation, mais ce prix n'est fixé que par de petits échanges. Avec seulement 50 000 $ dans le pool, une vente de quelques dizaines de milliers de dollars en absorberait une grande partie et ferait plonger le cours. La market cap n'est ni de l'argent investi ni une valeur réalisable : c'est la **profondeur de liquidité** qui dit combien on peut réellement vendre.",
+      "explanation": "La market cap multiplie le dernier prix par toute l'offre en circulation, mais ce prix est fixé par de petits échanges. Avec seulement 50 000 $ dans le pool, la liquidité réellement disponible est minuscule face aux 20 M$ affichés. Exemple : le pool contient 25 000 $ d'un côté et l'équivalent de 25 000 $ en tokens de l'autre. Si tu vends 10 000 $ de tokens, tu n'encaisses qu'environ 7 100 $ et le prix est divisé par deux. Un détenteur qui possède 1 % de l'offre (200 000 $ sur le papier) ne peut donc pas vendre sans tout faire s'effondrer. La market cap n'est ni de l'argent investi ni une trésorerie ni une valeur réalisable.",
       "difficulty": 3
     },
     {
@@ -1137,7 +1137,7 @@
         "À restaurer un portefeuille dont on a perdu la phrase de récupération",
         "À annuler une transaction envoyée par erreur à la mauvaise adresse"
       ],
-      "explanation": "Un **explorateur de blocs** est un moteur de recherche de la blockchain : il affiche n'importe quelle transaction, le solde d'une adresse, la liste des détenteurs d'un token ou le code d'un contrat. C'est l'outil de base pour vérifier un envoi, l'adresse d'un contrat ou la répartition d'un token. Il ne donne aucun pouvoir sur les fonds : il ne peut ni annuler un envoi, ni restaurer un portefeuille.",
+      "explanation": "Un **explorateur de blocs** est un moteur de recherche de la blockchain. Il affiche publiquement les transactions, le solde des adresses, la liste des détenteurs d'un token et le code des contrats. Exemple : un ami dit t'avoir envoyé 100 USDT ; tu colles le hash (l'identifiant de la transaction) dans l'explorateur et tu vois le statut, le montant, l'adresse du destinataire et le réseau. C'est l'outil de base pour vérifier un envoi, l'adresse d'un contrat ou la concentration des détenteurs. Il n'a aucun pouvoir sur les fonds : il ne peut ni annuler un envoi, ni restaurer un portefeuille, ni miner.",
       "difficulty": 1
     },
     {
@@ -1148,7 +1148,7 @@
         "Il oblige à livrer physiquement les tokens à la clôture",
         "Il ne s'utilise que sans effet de levier, comme le spot"
       ],
-      "explanation": "Un **future** classique expire à une date fixée, où la position est réglée. Le **contrat perpétuel**, devenu le produit dérivé le plus échangé en crypto, n'a pas d'échéance : on le garde tant que la marge suffit. Pour que son prix reste proche du prix spot, il utilise des paiements périodiques entre acheteurs et vendeurs, le **funding rate**. Il peut être liquidé comme n'importe quelle position à levier.",
+      "explanation": "Un **future** classique expire à une date fixée, où la position est réglée. Le **contrat perpétuel** (perp), devenu le dérivé le plus échangé en crypto, n'a pas d'échéance : on le garde tant que la marge suffit. Pour que son prix reste proche du prix spot, il utilise un paiement périodique entre acheteurs et vendeurs, le **funding rate**. Exemple : tu ouvres un long perpétuel sur le bitcoin avec 500 $ de marge ; tu peux le garder trois jours ou trois mois, sans date de règlement. Il peut quand même être liquidé comme toute position à levier, il n'impose aucune livraison physique et s'utilise surtout avec levier.",
       "difficulty": 2
     },
     {
@@ -1159,7 +1159,7 @@
         "La plateforme paie les deux camps à parts égales",
         "Les positions sont fermées puis rouvertes automatiquement"
       ],
-      "explanation": "Le **funding rate** est un paiement périodique (souvent toutes les 8 heures) entre traders. Quand il est positif, le prix du perpétuel est en général au-dessus du prix spot, signe que les acheteurs dominent : les **longs paient les shorts**, ce qui incite à rééquilibrer. Négatif, c'est l'inverse. Un funding élevé et durable grignote une position gardée longtemps, même si le prix ne bouge pas.",
+      "explanation": "Le **funding rate** est un paiement périodique (souvent toutes les 8 heures) entre traders longs et shorts, qui garde le prix du perpétuel proche du prix spot. Quand il est positif, le perpétuel se négocie plus haut que le spot, car les acheteurs dominent : les **longs paient les shorts**. Négatif, c'est l'inverse. La plateforme ne paie rien : elle ne fait que transférer. Exemple (chiffres d'illustration) : avec 0,01 % toutes les 8 h, un long de 10 000 $ paie 1 $ par échéance, soit 3 $ par jour, environ 90 $ par mois, même si le prix ne bouge pas. Un funding élevé et durable grignote donc les positions gardées longtemps.",
       "difficulty": 3
     },
     {
@@ -1170,7 +1170,7 @@
         "Isolée : uniquement des positions short ; croisée : uniquement des positions long",
         "Isolée : frais de trading nuls ; croisée : frais doublés sur chaque ordre"
       ],
-      "explanation": "En **marge isolée**, chaque position dispose de sa propre marge : si elle est liquidée, tu perds cette marge, mais le reste du compte est épargné. En **marge croisée**, tout le solde disponible sert de garantie commune : la position résiste plus longtemps, mais une seule mauvaise position peut emporter l'ensemble du compte. Pour un débutant, la marge isolée limite les dégâts.",
+      "explanation": "En **marge isolée**, chaque position a sa marge propre : si elle est liquidée, tu perds seulement cette marge, le reste du compte est épargné. En **marge croisée**, tout le solde du compte sert de garantie commune. Exemple : ton compte contient 5 000 $ et tu ouvres une position avec 500 $. En marge isolée, le pire est de perdre 500 $. En marge croisée, la position tient plus longtemps car elle puise dans les 4 500 $ restants, mais une seule mauvaise position peut emporter les 5 000 $. Pour un débutant, la marge isolée limite les dégâts. Le choix n'a aucun rapport avec le sens long ou short, ni avec les frais.",
       "difficulty": 3
     },
     {
@@ -1181,7 +1181,7 @@
         "Parce que le dernier prix échangé n'est publié qu'une fois par jour",
         "Parce que le prix de marque est fixé chaque matin par une banque centrale"
       ],
-      "explanation": "Le **mark price** est un prix de référence calculé notamment à partir d'un indice de prix spot sur plusieurs plateformes, et lissé dans le temps. Le dernier prix échangé (last price) peut, lui, bondir quelques secondes à cause d'un gros ordre ou d'une manipulation sur un carnet peu profond. Utiliser le prix de marque pour les liquidations et le PnL latent protège contre ces mèches artificielles, sans les neutraliser totalement.",
+      "explanation": "Le **prix de marque** (mark price) est un prix de référence calculé à partir d'un indice de prix spot sur plusieurs plateformes, et lissé dans le temps. Le dernier prix échangé (last price) peut bondir quelques secondes à cause d'un gros ordre ou d'une manipulation sur un carnet peu profond. Exemple : un token vaut 100 $ partout, mais sur une plateforme, un gros ordre fait plonger le dernier prix à 85 $ pendant 3 secondes. Si les liquidations dépendaient du dernier prix, des longs liquidables à 90 $ seraient éliminés. Avec le prix de marque, qui reste proche de 100 $, ils survivent. Cela limite les mèches artificielles, sans les supprimer totalement.",
       "difficulty": 3
     },
     {
@@ -1192,7 +1192,7 @@
         "Les liquidations créent de nouveaux tokens qui diluent le marché",
         "Les positions courtes sont obligées de vendre quand le prix baisse"
       ],
-      "explanation": "Quand une position longue à levier est liquidée, la plateforme la ferme en vendant au marché. Ces ventes forcées poussent le prix plus bas, ce qui atteint le seuil de liquidation d'autres positions, vendues à leur tour : c'est l'effet domino des **cascades de liquidations**, à l'origine de chutes éclair de 10 à 20 % en quelques minutes. Le même phénomène existe à la hausse quand des shorts sont liquidés : on parle alors de **short squeeze**.",
+      "explanation": "Quand une position longue à levier est liquidée, la plateforme la ferme en vendant au marché. Ces ventes forcées poussent le prix plus bas, ce qui atteint le seuil de liquidation d'autres positions, vendues à leur tour : c'est l'effet domino des **cascades de liquidations**. Exemple : le prix vaut 100 $ ; 50 M$ de longs seront liquidés vers 92 $ et 80 M$ vers 90 $. Une baisse à 92 $ déclenche la première vague de ventes forcées, qui pousse le prix à 90 $, ce qui déclenche la seconde. C'est ainsi que des chutes éclair de 10 à 20 % surviennent en quelques minutes. À la hausse, le phénomène inverse s'appelle un **short squeeze**.",
       "difficulty": 3
     },
     {
@@ -1203,7 +1203,7 @@
         "Le taux d'intérêt payé par la plateforme sur les dépôts",
         "La proportion de traders en position longue sur la plateforme"
       ],
-      "explanation": "L'**open interest** compte les positions encore ouvertes à un instant donné. Chaque contrat a un acheteur et un vendeur : il ne dit donc pas si le marché est plutôt long ou short. Contrairement au **volume**, qui additionne tous les échanges d'une période, il mesure l'exposition encore engagée. Un open interest qui grimpe fortement avec un levier élevé signale un marché fragile, exposé aux cascades de liquidations.",
+      "explanation": "L'**open interest** (intérêt ouvert) est le nombre total de contrats dérivés encore ouverts à un instant donné, ni clôturés ni liquidés. Chaque contrat a un acheteur et un vendeur : il ne dit donc pas si le marché est long ou short. Exemple : Alice ouvre un long de 1 BTC face à Bob qui ouvre un short : l'open interest est de 1 BTC. Alice revend sa position à Carol : le volume monte (deux échanges), mais l'open interest reste à 1 BTC. Si Carol et Bob clôturent, il retombe à 0. Un open interest qui grimpe avec un levier élevé signale un marché fragile, exposé aux cascades de liquidations.",
       "difficulty": 3
     },
     {
@@ -1214,7 +1214,7 @@
         "Limitée à 50 % de la mise, grâce au mécanisme de marge",
         "Nulle, car la plateforme rembourse les pertes des shorts"
       ],
-      "explanation": "Un **short** gagne quand le prix baisse, mais ce gain est plafonné : le prix ne peut pas descendre sous zéro. À l'inverse, rien n'empêche le prix de doubler, tripler ou décupler : la perte théorique est **illimitée**. En pratique, sur une plateforme de dérivés, la position est liquidée avant et l'on perd la marge engagée. La perte « limitée à la mise » caractérise au contraire l'achat simple, sans levier.",
+      "explanation": "Un **short** gagne quand le prix baisse, mais ce gain est plafonné : le prix ne peut pas descendre sous zéro. Exemple : tu shortes 1 token à 100 $ sans levier. Le gain maximal est de 100 $ (si le prix tombe à 0). Mais si le prix monte à 300 $, tu perds 200 $ ; à 1 000 $, tu perds 900 $ : rien ne limite la hausse, donc la perte théorique est **illimitée**. En pratique, sur une plateforme de dérivés, la position est liquidée avant et l'on perd la marge engagée. L'achat simple, lui, ne peut pas perdre plus que la mise.",
       "difficulty": 2
     },
     {
@@ -1225,7 +1225,7 @@
         "Le droit, sans obligation, de vendre du bitcoin à un prix fixé, à une échéance donnée",
         "La garantie de recevoir du bitcoin gratuitement si son prix baisse"
       ],
-      "explanation": "Un **call** donne le droit d'acheter l'actif à un prix d'exercice (strike) ; il devient intéressant à exercer si le prix du marché dépasse ce strike. Pour ce droit, l'acheteur paie une **prime**, qui constitue sa perte maximale si l'option expire sans valeur. Le droit de vendre à un prix fixé est un **put**. Les options sont des produits complexes, rarement adaptés aux débutants.",
+      "explanation": "Une **option d'achat** (call) donne le **droit**, sans obligation, d'acheter un actif à un prix fixé (le strike), à une échéance donnée. Pour ce droit, tu paies une **prime**. Exemple : tu achètes un call sur 1 BTC, strike 60 000 $, prime 2 000 $. À l'échéance, si le bitcoin vaut 70 000 $, tu l'achètes à 60 000 $ : gain de 10 000 $ − 2 000 $ de prime = 8 000 $. S'il vaut 58 000 $, tu n'exerces pas : ta perte maximale est la prime de 2 000 $. Le droit de vendre à un prix fixé est un **put**. Les options sont des produits complexes, rarement adaptés aux débutants.",
       "difficulty": 2
     },
     {
@@ -1236,7 +1236,7 @@
         "Convertir ses tokens en stablecoins pour se protéger de la volatilité",
         "Faire transiter ses fonds par plusieurs adresses pour brouiller leur origine"
       ],
-      "explanation": "Le **wash trading** consiste à être à la fois acheteur et vendeur, directement ou via des comptes complices. Aucun actif ne change réellement de mains, mais le volume affiché grimpe, donnant l'illusion d'un marché actif et liquide. En 2019, la société Bitwise a estimé, dans une analyse présentée à la SEC, qu'environ 95 % du volume de bitcoin déclaré par les plateformes étudiées était fictif ou non économique. Cette pratique est interdite sur les marchés régulés.",
+      "explanation": "Le **wash trading** consiste à être à la fois acheteur et vendeur, seul ou via des comptes complices, pour simuler de l'activité. Aucun actif ne change réellement de mains, mais le volume affiché grimpe. Exemple : un compte vend 1 000 tokens à 1 $ à un autre compte du même propriétaire, qui les lui revend ; répété 500 fois, cela affiche 500 000 $ de volume sans aucun vrai échange. En 2019, la société Bitwise a estimé, dans une analyse présentée à la SEC, qu'environ 95 % du volume de bitcoin déclaré par les plateformes étudiées était fictif ou non économique. La pratique est interdite sur les marchés régulés. Brouiller l'origine des fonds est autre chose.",
       "difficulty": 2
     },
     {
@@ -1247,7 +1247,7 @@
         "Exécuter un ordre au prix moyen de la journée pour réduire le slippage",
         "Découper un gros ordre en petits morceaux pour limiter son impact sur le prix"
       ],
-      "explanation": "Le **spoofer** affiche par exemple un énorme ordre d'achat juste sous le prix pour faire croire à une forte demande, pousse les autres à acheter, puis annule son ordre avant qu'il ne soit exécuté et vend au prix gonflé. Ces « murs » d'ordres qui apparaissent et disparaissent sont fréquents sur les marchés crypto peu surveillés. Le spoofing est une manipulation de marché interdite sur les marchés régulés, en Europe comme aux États-Unis. Découper un gros ordre en petits morceaux est en revanche une pratique légitime.",
+      "explanation": "Le **spoofing** consiste à placer de gros ordres qu'on n'a pas l'intention d'exécuter, pour tromper les autres traders sur l'offre et la demande. Exemple : le prix est à 100 $. Un spoofer pose un ordre d'achat de 500 000 $ à 99,50 $. Les autres voient une forte demande, achètent, et le prix monte à 101 $. Il annule alors son « mur » d'ordres avant qu'il soit exécuté, et vend au prix gonflé. Signal : des murs d'ordres énormes qui disparaissent dès que le prix s'en approche. C'est une manipulation de marché interdite sur les marchés régulés. Découper un gros ordre en petits morceaux est en revanche légitime.",
       "difficulty": 3
     },
     {
@@ -1258,7 +1258,7 @@
         "Un bot bloque ton ordre jusqu'à ce que tu paies une rançon",
         "Un bot divise ton ordre en deux pour réduire tes frais de gas"
       ],
-      "explanation": "Le bot repère ta transaction en attente et place un achat juste avant la tienne (**front-running**), ce qui fait monter le prix ; ton achat s'exécute alors plus cher, puis le bot revend aussitôt après (**back-running**) en empochant la différence. Ton ordre est pris en « sandwich ». Plus ta tolérance de slippage est élevée, plus l'attaquant peut te faire payer cher. Une tolérance serrée et l'envoi de transactions par un canal privé limitent ce risque.",
+      "explanation": "Dans une **attaque sandwich**, un bot repère ta transaction en attente sur la DEX, achète juste avant toi pour faire monter le prix (**front-running**), laisse ton ordre s'exécuter plus cher, puis revend juste après (**back-running**) en empochant la différence. Exemple : tu achètes pour 10 000 $ avec une tolérance de slippage de 5 % : le bot peut te faire payer jusqu'à 5 % de plus, soit environ 500 $ qui finissent dans sa poche. Avec 0,5 % de tolérance, le plafond tombe à 50 $. Une tolérance serrée et l'envoi des transactions par un canal privé limitent ce risque. Le bot ne copie pas ton ordre, ne demande aucune rançon et ne réduit pas tes frais.",
       "difficulty": 3
     },
     {
@@ -1269,7 +1269,7 @@
         "L'ordre est exécuté vers 80 $, au meilleur prix alors disponible",
         "L'ordre est annulé et la plateforme rembourse la perte subie"
       ],
-      "explanation": "Un **stop-limit** place, une fois le seuil de déclenchement atteint, un ordre **à cours limité** : il ne vendra pas en dessous de 94 $. Si le marché s'effondre trop vite, aucun acheteur n'est disponible à 94 $ ou plus et l'ordre reste en attente pendant que la perte se creuse. Un **stop-market**, lui, vend au meilleur prix disponible, ici vers 80 $ : un slippage important, mais la certitude de sortir.",
+      "explanation": "Un **stop-limit** a deux seuils : le déclenchement (95 $) et le prix limite (94 $). Une fois 95 $ franchi, il place un ordre de vente **limité**, qui ne vend pas sous 94 $. Exemple : tu détiens 10 tokens à 100 $ et le marché s'effondre à 80 $ sans échange entre les deux. L'ordre est déclenché, mais aucun acheteur n'est disponible à 94 $ ou plus : il reste en attente pendant que le prix continue vers 60 $, ce qui fait passer la perte de 200 $ à 400 $. Un **stop-market** aurait vendu vers 80 $, avec un fort slippage mais la certitude de sortir. Le stop-limit n'est donc pas exécuté à 95 $ et n'est pas remboursé.",
       "difficulty": 3
     },
     {
@@ -1280,7 +1280,7 @@
         "Il est refusé, car un achat limité doit être sous le prix actuel",
         "Il s'exécute à 101 $ et tu paies les frais de maker"
       ],
-      "explanation": "Un ordre limité d'achat signifie « au plus 101 $ ». Comme des vendeurs proposent déjà à 100 $, l'ordre se remplit immédiatement contre eux, au prix de 100 $, meilleur que ta limite. Il retire de la liquidité du carnet : tu es donc **taker**. Un ordre limité n'est pas automatiquement « maker ». Pour garantir ce statut, certaines plateformes proposent l'option **post-only**, qui annule l'ordre s'il devait s'exécuter immédiatement.",
+      "explanation": "Un ordre limité d'achat à 101 $ signifie « je paie au maximum 101 $ ». Comme des vendeurs proposent déjà à 100 $, l'ordre se remplit tout de suite contre eux, au prix de 100 $, meilleur que ta limite. Il retire de la liquidité du carnet : tu es donc **taker**, et tu paies les frais de taker, en général plus élevés que ceux des makers. Un ordre limité n'est pas automatiquement « maker ». Pour garantir ce statut, certaines plateformes proposent l'option **post-only**, qui annule l'ordre s'il devait s'exécuter immédiatement. L'ordre n'est ni refusé ni exécuté à 101 $.",
       "difficulty": 3
     },
     {
@@ -1291,7 +1291,7 @@
         "70 % des détenteurs du token sont actuellement en perte",
         "Le token a été échangé 70 fois plus que sa moyenne"
       ],
-      "explanation": "Le **RSI**, présenté par J. Welles Wilder en 1978, oscille entre 0 et 100 et compare l'ampleur des hausses et des baisses récentes, souvent sur 14 périodes. Au-dessus de 70, on parle classiquement de **surachat** ; sous 30, de **survente**. Ce n'est pas un signal de vente automatique : en forte tendance haussière, le RSI peut rester au-dessus de 70 longtemps pendant que le prix continue de monter.",
+      "explanation": "Le **RSI** (Relative Strength Index), présenté par J. Welles Wilder en 1978, oscille entre 0 et 100 et compare l'ampleur des hausses et des baisses récentes, souvent sur 14 périodes. RSI = 100 − 100 / (1 + RS), où RS est le gain moyen divisé par la perte moyenne. Si les hausses sont en moyenne 3 fois plus grosses que les baisses, RS = 3 et RSI = 75. Au-dessus de 70, on parle de **surachat** ; sous 30, de **survente**. Ce n'est pas un signal de vente automatique : en forte tendance haussière, le RSI peut rester longtemps au-dessus de 70 pendant que le prix monte encore.",
       "difficulty": 3
     },
     {
@@ -1302,7 +1302,7 @@
         "Le prix qui dépasse pour la première fois son plus haut historique",
         "Le croisement à la hausse du cours du bitcoin et de celui de l'or"
       ],
-      "explanation": "Un **golden cross** survient quand une moyenne mobile courte (classiquement 50 jours) croise à la hausse une moyenne longue (200 jours) : on y voit souvent le signe d'une tendance haussière. Le croisement inverse s'appelle **death cross**. Comme toute moyenne mobile, ces signaux arrivent en retard sur le prix et produisent de nombreux faux signaux : ce sont des indicateurs, pas des prédictions.",
+      "explanation": "Une **moyenne mobile** est la moyenne des derniers prix de clôture sur N jours : elle lisse le bruit. Un **golden cross** survient quand la moyenne courte (classiquement 50 jours) passe au-dessus de la moyenne longue (200 jours). Exemple : la moyenne 50 jours passe de 95 $ à 101 $ alors que la moyenne 200 jours est à 100 $ : croisement haussier, souvent lu comme le début d'une tendance haussière. Le croisement inverse est le **death cross**. Problème : ces moyennes réagissent avec retard, si bien que le prix a souvent déjà beaucoup monté, et les faux signaux sont nombreux. Ce sont des indicateurs, pas des prédictions.",
       "difficulty": 3
     },
     {
@@ -1313,7 +1313,7 @@
         "50 €",
         "Environ 83,33 €"
       ],
-      "explanation": "Avec 100 € à 100 €, tu obtiens 1 token ; avec 100 € à 50 €, 2 tokens. Tu possèdes donc 3 tokens pour 200 €, soit **200 / 3 ≈ 66,67 €** par token. Le piège à 75 € fait la moyenne simple des deux prix, ce qui n'est juste que si l'on achète la même **quantité** à chaque fois. En investissant un montant fixe, on achète davantage de tokens quand le prix est bas : c'est tout l'intérêt du DCA.",
+      "explanation": "Avec 100 € à 100 € par token, tu obtiens 1 token ; avec 100 € à 50 €, tu en obtiens 2. Tu possèdes 3 tokens pour 200 € investis : prix de revient moyen = 200 / 3 ≈ **66,67 €**. Le piège à 75 € fait la moyenne simple des deux prix ((100 + 50) / 2), ce qui n'est juste que si l'on achète la même **quantité** à chaque fois. En investissant une somme fixe, on achète davantage de tokens quand le prix est bas : c'est tout l'intérêt du DCA. Autre intérêt : pour récupérer ta mise, il suffit que le token remonte à environ 66,67 €, et non à 100 €.",
       "difficulty": 3
     },
     {
@@ -1324,7 +1324,7 @@
         "La part des blocs Bitcoin minés par le plus grand pool",
         "La part des bitcoins détenus par les plateformes d'échange"
       ],
-      "explanation": "La **dominance du bitcoin** = market cap du bitcoin / market cap de l'ensemble du marché crypto. Quand elle baisse, les altcoins progressent plus vite que le bitcoin, ce qu'on appelle parfois une « altseason » ; quand elle monte, les capitaux se replient vers le bitcoin, souvent en période d'incertitude. Son niveau exact dépend de la liste de tokens prise en compte par chaque site.",
+      "explanation": "La **dominance du bitcoin** = market cap du bitcoin / market cap de l'ensemble du marché crypto. Exemple : bitcoin à 1 000 Md$ pour un marché total de 2 000 Md$ : dominance de 50 %. Si les altcoins gagnent 20 % (de 1 000 à 1 200 Md$) et que le bitcoin stagne, la dominance tombe à 1 000 / 2 200 ≈ 45,5 % : on parle parfois d'« altseason ». Quand la dominance monte, les capitaux se replient vers le bitcoin, souvent en période d'incertitude. Son niveau exact dépend de la liste de tokens prise en compte par chaque site. Elle ne mesure ni les paiements en bitcoin ni la répartition du minage.",
       "difficulty": 2
     },
     {

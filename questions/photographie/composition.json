@@ -282,6 +282,290 @@
       ],
       "explanation": "En noir et blanc, les couleurs deviennent des gris, et des filtres colorés permettent de choisir lesquelles seront claires ou sombres. Un filtre laisse passer sa propre couleur et bloque en grande partie sa complémentaire. Le **rouge** arrête l'essentiel du **bleu** du ciel : celui-ci impressionne peu le film et apparaît **très sombre** sur le tirage. Les nuages blancs, qui contiennent toutes les couleurs, restent clairs et ressortent. Exemple : c'est la recette des ciels dramatiques, presque noirs, de nombreux paysages classiques en noir et blanc. Le filtre jaune produit le même effet en plus discret. Le piège : c'est le filtre vert qui éclaircit les feuillages ; le rouge les assombrit plutôt.",
       "difficulty": 3
+    },
+    {
+      "question": "Pour un paysage où tout doit être net, du premier plan jusqu'à l'horizon, quelle ouverture choisis-tu en général ?",
+      "answer": "Un diaphragme fermé, vers f/8 à f/11",
+      "wrong": [
+        "Une très grande ouverture, vers f/1,4",
+        "Une grande ouverture, vers f/2,8",
+        "Une ouverture moyenne, vers f/4"
+      ],
+      "explanation": "L'ouverture du diaphragme est le principal réglage qui contrôle la **profondeur de champ**, c'est-à-dire la zone de l'image qui paraît nette, devant et derrière le point de mise au point. Plus le diaphragme est **fermé** (grand nombre f, comme f/11), plus cette zone est profonde. En paysage au grand-angle, f/8 à f/11 permet généralement d'avoir tout net. Exemple : avec un 24 mm à f/11 et une mise au point à 2 m, la netteté s'étend d'environ 1 m jusqu'à l'infini. Le piège : une grande ouverture comme f/1,4 ou f/2,8 réduit la profondeur de champ ; elle sert à flouter un fond, pas à tout rendre net. Fermer au-delà de f/16 fait en outre apparaître la **diffraction**, qui adoucit toute l'image.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pour détacher un portrait sur un arrière-plan très flou, quelle combinaison est la plus efficace ?",
+      "answer": "Grande ouverture, longue focale, fond éloigné",
+      "wrong": [
+        "Petite ouverture, courte focale, fond proche",
+        "Grande ouverture, courte focale, fond proche",
+        "Petite ouverture, longue focale, fond proche"
+      ],
+      "explanation": "Détacher un sujet sur un fond flou est l'un des effets les plus recherchés en portrait, car il efface les détails gênants de l'arrière-plan. Trois leviers se cumulent. Une **grande ouverture** (f/1,8 ou f/2,8) réduit la profondeur de champ. Une **longue focale** (85 mm, 135 mm) grossit le fond et n'en montre qu'une petite portion. Enfin, un **fond éloigné** du sujet se retrouve loin de la zone nette, donc très flou. Exemple : un modèle à 2 m de toi et à 10 m d'une haie, photographié au 85 mm à f/2, se détache sur une haie réduite à une texture verte lisse. Le piège : coller le modèle contre un mur annule presque l'effet, même à grande ouverture.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que désigne le terme **bokeh**, emprunté au japonais ?",
+      "answer": "La qualité esthétique du flou d'arrière-plan",
+      "wrong": [
+        "Le flou de bougé dû à une pose trop longue",
+        "Le grain visible à haute sensibilité ISO",
+        "La netteté maximale au centre de l'image"
+      ],
+      "explanation": "Le mot **bokeh** vient du japonais « boke », qui évoque le flou ou le brouillé ; on l'utilise pour juger la beauté des zones floues d'une photo. Il ne mesure pas la quantité de flou, mais son **aspect** : doux et crémeux, ou au contraire agité et « nerveux ». On le remarque surtout sur les points lumineux de l'arrière-plan, qui deviennent des disques. Exemple : les guirlandes d'un sapin de Noël, derrière un portrait pris à f/1,8, se transforment en bulles colorées. Le bokeh dépend de la conception de l'objectif et de la forme de son diaphragme. Le piège : le flou de bougé vient d'un mouvement pendant la pose, et le grain d'une sensibilité élevée ; ni l'un ni l'autre n'est du bokeh.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Bokeh"
+    },
+    {
+      "question": "À distance moyenne (portrait en pied, paysage), comment la zone de netteté se répartit-elle autour du plan de mise au point ?",
+      "answer": "Environ 1/3 devant et 2/3 derrière",
+      "wrong": [
+        "Environ 2/3 devant et 1/3 derrière",
+        "Exactement moitié devant, moitié derrière",
+        "Entièrement derrière le plan de mise au point"
+      ],
+      "explanation": "Savoir comment la zone nette se répartit aide à choisir où faire la mise au point dans une scène profonde. À distance moyenne, la règle empirique veut qu'environ **un tiers** de la profondeur de champ se trouve **devant** le point de mise au point, et **deux tiers derrière**. Exemple : si la zone nette totale mesure 3 m, elle s'étend à peu près 1 m devant le point visé et 2 m derrière. Il vaut donc mieux viser un peu en avant du milieu de ce qu'on veut rendre net, par exemple le premier tiers d'un groupe disposé en rangs. Le piège : la répartition moitié-moitié ne s'observe qu'en macro, à très courte distance. À l'hyperfocale, au contraire, la zone arrière s'étend jusqu'à l'infini.",
+      "difficulty": 2
+    },
+    {
+      "question": "Si tu fais la mise au point à la **distance hyperfocale**, quelle zone de la scène sera nette ?",
+      "answer": "De la moitié de cette distance jusqu'à l'infini",
+      "wrong": [
+        "Du point de mise au point jusqu'à l'infini",
+        "Du premier plan jusqu'au double de cette distance",
+        "Uniquement le tiers de cette distance"
+      ],
+      "explanation": "L'**hyperfocale** sert surtout en paysage, pour obtenir la plus grande zone nette possible avec une ouverture donnée. C'est la distance de mise au point la plus proche pour laquelle l'infini reste net. En faisant le point dessus, la netteté s'étend de **la moitié de l'hyperfocale jusqu'à l'infini**. Exemple chiffré en 24 × 36 : un 24 mm à f/8 a une hyperfocale d'environ 2,4 m. Mise au point à 2,4 m, tout est net d'environ 1,2 m jusqu'à l'infini. Le piège : faire le point directement sur l'infini paraît logique, mais la zone nette commencerait alors à 2,4 m seulement. On « gaspillerait » la part de netteté qui se trouverait au-delà de l'infini.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Distance_hyperfocale"
+    },
+    {
+      "question": "Quelle notion sert à définir ce que l'on accepte comme « net » dans le calcul de la profondeur de champ ?",
+      "answer": "Le cercle de confusion",
+      "wrong": [
+        "Le cercle chromatique",
+        "Le point nodal",
+        "La fonction de transfert de modulation"
+      ],
+      "explanation": "Le calcul de la profondeur de champ a besoin d'un critère pour décider ce qui est « net » : ce critère, c'est le **cercle de confusion**. Un point du sujet situé hors du plan de mise au point ne forme pas un point sur le capteur, mais une petite tache. Tant que le diamètre de cette tache reste sous un certain seuil, l'œil la perçoit comme un point net. Exemple : en 24 × 36, on retient souvent environ **0,03 mm**, valable pour un tirage de taille courante regardé à distance normale. La profondeur de champ est donc une **convention** : agrandir fortement l'image ou la regarder de très près la réduit. Le piège : le cercle chromatique sert à décrire les couleurs, et la FTM mesure le contraste qu'un objectif restitue.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Cercle_de_confusion"
+    },
+    {
+      "question": "En macrophotographie, quelle technique permet d'obtenir un insecte net de la tête à l'abdomen malgré une profondeur de champ de quelques millimètres ?",
+      "answer": "L'empilement de mises au point (focus stacking)",
+      "wrong": [
+        "Le HDR par bracketing d'exposition",
+        "Le filé à vitesse d'obturation lente",
+        "La surimpression de deux images floues"
+      ],
+      "explanation": "En macrophotographie, la profondeur de champ est minuscule : souvent quelques millimètres, voire moins, même diaphragme fermé. Le **focus stacking** (empilement de mises au point) contourne cette limite. On prend une série de photos en déplaçant légèrement le point de mise au point entre chaque vue, de l'avant à l'arrière du sujet. Un logiciel fusionne ensuite les images en ne gardant que les zones nettes de chacune. Exemple : une trentaine de vues espacées de 0,3 mm couvrent 9 mm de profondeur, de quoi rendre net un insecte d'un centimètre photographié de trois quarts. Le piège : le HDR combine aussi plusieurs images, mais des **expositions** différentes, pour gérer le contraste, pas des mises au point différentes.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quel principe, exploité par les objectifs à bascule et les chambres photographiques, permet d'**incliner le plan de netteté**, par exemple pour rendre net tout un champ qui s'éloigne ?",
+      "answer": "Le principe de Scheimpflug",
+      "wrong": [
+        "La loi de Snell-Descartes",
+        "Le principe de Huygens-Fresnel",
+        "La loi de Lambert"
+      ],
+      "explanation": "Normalement, le plan net est parallèle au capteur : pour rendre net un sol qui s'éloigne, du premier plan au lointain, il faut fermer beaucoup le diaphragme. Le **principe de Scheimpflug** offre une autre solution. Il dit que si le plan du sujet, le plan de l'objectif et le plan du capteur se coupent sur une même droite, tout le plan du sujet est net. En **basculant** l'objectif (objectifs « tilt » ou chambres photographiques), on peut ainsi coucher la netteté sur le sol. Exemple : un champ de tulipes entièrement net, du premier rang à l'horizon, même à f/5,6. Le piège : la loi de Snell-Descartes décrit la réfraction de la lumière, et le principe de Huygens-Fresnel la propagation des ondes.",
+      "difficulty": 3,
+      "source": "https://en.wikipedia.org/wiki/Scheimpflug_principle"
+    },
+    {
+      "question": "Quel effet obtient-on en photographiant une rue de haut avec une bande de netteté très étroite, le haut et le bas de l'image étant flous ?",
+      "answer": "Un effet maquette : la scène paraît miniature",
+      "wrong": [
+        "Un effet fisheye : la scène paraît bombée",
+        "Un effet de filé : la scène paraît en mouvement",
+        "Un effet HDR : la scène paraît surréaliste"
+      ],
+      "explanation": "L'effet maquette est un trompe-l'œil qui joue sur notre façon d'interpréter le flou. Quand on photographie une vraie maquette de près, la profondeur de champ est très faible : seule une étroite bande est nette. Notre cerveau associe donc un flou très marqué en haut et en bas de l'image à des **objets petits et proches**. Reproduire ce flou sur une vraie rue vue de haut fait croire à des **miniatures**. Exemple : un carrefour photographié depuis un toit, avec une bande nette sur les voitures et des couleurs saturées, ressemble à un circuit de jouets. On l'obtient avec un objectif à bascule ou en ajoutant du flou au post-traitement. Le piège : l'effet fisheye vient d'un objectif très grand-angle qui courbe les lignes, sans rapport avec le flou.",
+      "difficulty": 2
+    },
+    {
+      "question": "Le **Groupe f/64**, fondé en 1932 en Californie notamment par Ansel Adams et Edward Weston, tire son nom de…",
+      "answer": "une très petite ouverture, gage de netteté maximale",
+      "wrong": [
+        "le nombre de photographes fondateurs du groupe",
+        "l'adresse de leur première galerie à San Francisco",
+        "le format des négatifs utilisés, en millimètres"
+      ],
+      "explanation": "Le nom de ce groupe de photographes californiens est un manifeste technique. **f/64** est une ouverture minuscule, disponible sur les objectifs de **chambre grand format**. Elle donne une profondeur de champ immense et une netteté extrême sur toute l'image. Fondé en 1932 par Ansel Adams, Edward Weston, Imogen Cunningham, Willard Van Dyke et d'autres, le groupe défendait une photographie « pure », nette et sans artifice, la « straight photography ». Exemple : les gros plans de coquillages ou de poivrons d'Edward Weston, où chaque détail de texture est visible. C'était une réaction au **pictorialisme**, qui imitait la peinture avec des flous volontaires. Le piège : le chiffre 64 ne compte ni les membres ni les millimètres du film.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Groupe_f/64"
+    },
+    {
+      "question": "En portrait à grande ouverture, sur quoi fais-tu la mise au point en priorité ?",
+      "answer": "Sur l'œil le plus proche de l'appareil",
+      "wrong": [
+        "Sur l'œil le plus éloigné de l'appareil",
+        "Sur le bout du nez du sujet",
+        "Sur l'oreille la plus proche"
+      ],
+      "explanation": "Le regard est le point d'accroche d'un portrait : si l'œil est flou, la photo paraît ratée, même si le reste est net. Or, à grande ouverture, la profondeur de champ peut ne mesurer que quelques centimètres. Exemple : avec un 85 mm à f/1,8 à 1,5 m du sujet, la zone nette fait environ 3 cm. Sur un visage de trois quarts, les deux yeux ne sont pas à la même distance, et un seul sera parfaitement net. On privilégie alors l'**œil le plus proche** de l'appareil, qui est le plus grand et le plus visible dans l'image. Le piège : viser l'œil le plus éloigné laisserait l'œil proche, celui qu'on regarde en premier, hors de la zone nette.",
+      "difficulty": 1
+    },
+    {
+      "question": "Tu cadres le même portrait en buste, à la même ouverture, d'abord au 35 mm de près, puis au 105 mm en reculant. Comment évolue la **profondeur de champ** autour du sujet ?",
+      "answer": "Elle reste à peu près la même",
+      "wrong": [
+        "Elle est bien plus faible au 105 mm",
+        "Elle est bien plus grande au 105 mm",
+        "Elle double exactement au 105 mm"
+      ],
+      "explanation": "On croit souvent qu'un téléobjectif « réduit la profondeur de champ ». C'est vrai à distance égale, mais pas à cadrage égal. À **grandissement identique** (même taille du sujet dans l'image) et à ouverture égale, la zone nette autour du sujet est quasiment **indépendante de la focale**, tant qu'on reste loin de l'hyperfocale. Exemple : un buste cadré au 35 mm à 1 m, puis au 105 mm à 3 m, tous deux à f/2,8, a une zone nette d'environ 12 à 13 cm dans les deux cas. Ce qui change, c'est l'**arrière-plan** : le 105 mm en montre une portion trois fois plus étroite et l'agrandit, donc le flou du fond paraît bien plus prononcé. D'où l'impression, trompeuse, d'une profondeur de champ plus faible.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'appelle-t-on l'**heure dorée** en photographie ?",
+      "answer": "La période peu après le lever et avant le coucher du soleil",
+      "wrong": [
+        "La période où le soleil est au plus haut dans le ciel",
+        "La période qui suit le coucher, ciel bleu profond",
+        "La nuit de pleine lune, quand le ciel est dégagé"
+      ],
+      "explanation": "La lumière change beaucoup au fil de la journée, et l'heure dorée est le moment préféré de nombreux photographes. Elle correspond à la période où le soleil est **bas sur l'horizon** : peu après son lever et peu avant son coucher. Sa lumière arrive alors rasante, chaude (orangée) et douce. Elle projette de longues ombres qui sculptent les reliefs, et elle flatte les visages. Exemple : un portrait en extérieur pris une demi-heure avant le coucher du soleil, avec une peau dorée et un fond lumineux. Sa durée réelle varie selon la latitude et la saison. Le piège : la période qui suit le coucher, quand le ciel devient bleu profond, est l'**heure bleue**. Et le soleil au plus haut donne au contraire une lumière dure.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Heure_dor%C3%A9e"
+    },
+    {
+      "question": "À quel moment survient l'**heure bleue** ?",
+      "answer": "Au crépuscule, quand le soleil est juste sous l'horizon",
+      "wrong": [
+        "Juste avant midi, quand le ciel est dégagé",
+        "Peu après le lever, soleil au-dessus de l'horizon",
+        "En plein après-midi, par temps couvert"
+      ],
+      "explanation": "L'heure bleue est un moment très prisé pour photographier les villes et les paysages. Elle survient quand le soleil est **juste sous l'horizon**, avant son lever ou après son coucher. Il n'y a plus de lumière directe : seul le ciel, encore éclairé, diffuse une lumière douce d'un bleu profond. Exemple : une place illuminée photographiée 20 minutes après le coucher du soleil ; le bleu du ciel équilibre les lumières orangées des lampadaires et des vitrines. Elle est assez brève, quelques dizaines de minutes, d'où l'intérêt d'être en place à l'avance avec un trépied. Le piège : peu après le lever, quand le soleil est déjà au-dessus de l'horizon, on est dans l'heure dorée, pas dans l'heure bleue.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Heure_bleue"
+    },
+    {
+      "question": "Pourquoi la lumière du soleil bas sur l'horizon est-elle plus chaude (orangée) qu'à midi ?",
+      "answer": "Elle traverse plus d'atmosphère, qui diffuse le bleu",
+      "wrong": [
+        "Le soleil émet moins de lumière bleue le soir",
+        "L'humidité du soir teinte la lumière en orange",
+        "L'ozone absorbe le rouge en milieu de journée"
+      ],
+      "explanation": "Cette question explique pourquoi l'heure dorée est dorée. Quand le soleil est bas, sa lumière parcourt une **épaisseur d'atmosphère** bien plus grande pour nous atteindre. Exemple : au ras de l'horizon, elle traverse près de 40 fois plus d'air que sous un soleil au zénith. Or les molécules de l'air diffusent beaucoup plus les courtes longueurs d'onde (le bleu) que les grandes (le rouge) : c'est la **diffusion Rayleigh**, qui varie comme 1/λ⁴. Le bleu est dispersé en chemin, et la lumière qui nous arrive directement est enrichie en orange et en rouge. Le même phénomène explique le bleu du ciel en journée. Le piège : le soleil émet la même lumière toute la journée ; c'est le trajet dans l'air qui change.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Diffusion_Rayleigh"
+    },
+    {
+      "question": "Où l'heure dorée est-elle la plus **brève** ?",
+      "answer": "Près de l'équateur",
+      "wrong": [
+        "Près des cercles polaires",
+        "Aux latitudes moyennes, en hiver",
+        "Elle dure partout exactement une heure"
+      ],
+      "explanation": "La durée de l'heure dorée dépend de l'angle sous lequel le soleil monte ou descend sur l'horizon. Près de l'**équateur**, il se lève et se couche selon une trajectoire **presque verticale**. Il traverse donc très vite la zone des faibles hauteurs (en gros, moins de 6° au-dessus de l'horizon) qui donne la lumière dorée. Exemple : à l'équateur, le soleil gagne ces 6° en moins d'une demi-heure. Plus on monte en latitude, plus sa course est **oblique** : il reste longtemps bas, et l'heure dorée peut durer bien plus d'une heure, voire toute la journée en hiver près des cercles polaires. Le piège : le mot « heure » n'est qu'une approximation, la durée réelle varie énormément.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'est-ce qui rend une lumière **douce**, avec des ombres aux contours progressifs ?",
+      "answer": "Une source de grande taille apparente par rapport au sujet",
+      "wrong": [
+        "Une source de petite taille apparente, placée loin",
+        "Une source très puissante, réglée au maximum",
+        "Une source de couleur chaude, vers 3 000 K"
+      ],
+      "explanation": "La « qualité » d'une lumière, dure ou douce, se lit dans ses ombres. Une lumière **douce** donne des ombres aux bords progressifs ; une lumière **dure**, des ombres aux contours nets. Ce qui décide, c'est la **taille apparente** de la source vue depuis le sujet. Une grande source éclaire le sujet sous de nombreux angles à la fois, si bien que la transition entre lumière et ombre (la pénombre) s'élargit. Exemple : une fenêtre d'un mètre carré à 1 m d'un visage donne une lumière douce ; le soleil direct, minuscule dans le ciel, donne des ombres tranchées. Le piège : la puissance ne change que la quantité de lumière, et la couleur que sa teinte ; ni l'une ni l'autre ne rend la lumière plus douce.",
+      "difficulty": 2
+    },
+    {
+      "question": "Tu éloignes une boîte à lumière de ton modèle, de 1 m à 4 m, en compensant la puissance. Que devient la qualité de la lumière ?",
+      "answer": "Plus dure, car la source paraît plus petite",
+      "wrong": [
+        "Plus douce, car la lumière s'étale davantage",
+        "Inchangée, seule l'intensité diminue",
+        "Plus douce, car elle traverse plus d'air"
+      ],
+      "explanation": "Ce qui rend une lumière douce, c'est la **taille apparente** de la source vue depuis le sujet, pas sa taille réelle. En reculant la boîte à lumière de 1 m à 4 m, elle paraît quatre fois plus petite depuis la place du modèle. Les ombres deviennent plus nettes et la lumière plus **dure**. Exemple : une boîte de 80 cm placée à 1 m enveloppe le visage ; à 4 m, elle se comporte presque comme un spot. Le soleil illustre bien ce principe : immense mais très lointain, il donne une lumière dure. Le piège classique est de croire qu'une lumière « qui vient de loin » s'étale et s'adoucit. Pour adoucir, il faut au contraire **rapprocher** la source ou l'agrandir.",
+      "difficulty": 3
+    },
+    {
+      "question": "Ta lampe est à 2 m du sujet. Tu la recules à 4 m sans changer sa puissance. Quelle quantité de lumière le sujet reçoit-il désormais ?",
+      "answer": "Le quart de la lumière initiale",
+      "wrong": [
+        "La moitié de la lumière initiale",
+        "Le huitième de la lumière initiale",
+        "Autant, seule la couleur change"
+      ],
+      "explanation": "La loi du carré inverse est la règle de base pour placer ses lampes et ses flashs. Elle dit que la lumière reçue varie comme l'inverse du **carré de la distance** à la source : quand la distance double, la lumière se répartit sur une surface quatre fois plus grande. Calcul : de 2 m à 4 m, la distance est multipliée par 2, donc la lumière est divisée par 2² = **4**. En photo, cela représente une perte de **2 IL** (deux diaphragmes) : il faudrait par exemple passer de f/8 à f/4 pour compenser. Le piège : la moitié serait juste si la lumière diminuait proportionnellement à la distance, ce qui n'est pas le cas. La loi est exacte pour une petite source et reste une bonne approximation en studio.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Inverse-square_law"
+    },
+    {
+      "question": "Pourquoi un ciel uniformément couvert est-il apprécié pour le portrait ?",
+      "answer": "Les nuages diffusent le soleil en une lumière douce",
+      "wrong": [
+        "La lumière y est plus chaude qu'en plein soleil",
+        "Les ombres y deviennent plus nettes et plus dures",
+        "La lumière y vient toujours d'en dessous"
+      ],
+      "explanation": "Le temps qu'il fait change complètement la lumière disponible pour un portrait en extérieur. Une couche nuageuse uniforme transforme tout le ciel en une **immense source diffuse**, comme une gigantesque boîte à lumière. Les ombres deviennent légères, la peau est flattée, et le modèle ne plisse pas les yeux. Exemple : un portrait de mariage sous un ciel gris clair n'a ni ombre dure sous les yeux, ni reflet brillant sur le front. Le piège : cette lumière n'est pas plus chaude, elle est au contraire **plus froide** (bleutée) qu'en plein soleil, ce que la balance des blancs corrige. Elle peut aussi manquer de relief : un réflecteur aide alors à recréer du modelé.",
+      "difficulty": 1
+    },
+    {
+      "question": "En plein soleil de midi, quel défaut typique observe-t-on sur un portrait ?",
+      "answer": "Des ombres dures sous les arcades, le nez et le menton",
+      "wrong": [
+        "Une forte dominante bleue sur tout le visage",
+        "Des ombres très longues étirées sur le sol",
+        "Une lumière trop douce qui manque de contraste"
+      ],
+      "explanation": "À midi, le soleil est haut dans le ciel et sa lumière tombe presque à la verticale. C'est une petite source très puissante, donc une lumière **dure**. Sur un visage, les orbites se remplissent d'ombre (effet « yeux de panda »), et le nez et le menton projettent des ombres marquées. Le sujet, ébloui, plisse aussi les yeux. Exemple : une photo de groupe en plein été à 13 h montre souvent des visages aux yeux sombres et aux fronts brillants. Pour s'en sortir : placer le modèle à l'ombre d'un arbre, utiliser un diffuseur ou un réflecteur, ou déboucher les ombres au flash. Le piège : les ombres au sol sont au contraire **courtes** à midi ; les ombres longues sont typiques du matin et du soir.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle lumière révèle le mieux la **texture** d'une plage de sable ridée par le vent ?",
+      "answer": "Une lumière rasante, soleil très bas",
+      "wrong": [
+        "Une lumière zénithale, soleil au plus haut",
+        "Une lumière frontale, dans l'axe de l'objectif",
+        "Une lumière diffuse de ciel couvert"
+      ],
+      "explanation": "La direction de la lumière décide de ce qu'on voit de la surface d'un objet. Une lumière **rasante** arrive presque parallèlement à la surface. Chaque ride du sable, chaque grain ou aspérité projette alors une petite ombre, et le relief apparaît. Exemple : les rides d'une dune, presque invisibles à midi, se dessinent en lignes contrastées une demi-heure après le lever du soleil. C'est pourquoi les dunes, les murs de pierre ou les champs labourés se photographient tôt le matin ou en fin de journée. Le piège : une lumière zénithale arrive perpendiculairement au sable et supprime ces micro-ombres. Une lumière frontale ou diffuse produit le même effet et « aplatit » la surface.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans un éclairage de studio, à quoi sert la **lumière d'appoint** (fill light) ?",
+      "answer": "À éclaircir les ombres de la lumière principale",
+      "wrong": [
+        "À détacher le sujet de l'arrière-plan",
+        "À éclairer uniquement le fond du studio",
+        "À créer le reflet principal dans les yeux"
+      ],
+      "explanation": "En studio, on combine souvent plusieurs lumières, chacune ayant un rôle précis. Dans l'**éclairage trois points**, la **lumière principale** (key light) crée le modelé du visage. La **lumière d'appoint** (fill light), plus faible et souvent plus diffuse, éclaircit les ombres qu'elle laisse ; on dit qu'elle les « débouche ». Enfin, la **lumière de contre** détache le sujet du fond. Exemple : avec un appoint réglé à la moitié de la puissance de la principale, le côté ombré du visage reste lisible mais garde du relief. Un simple réflecteur blanc peut jouer ce rôle. Le piège : détacher le sujet du fond est le travail de la lumière de contre, et éclairer le fond celui d'une lumière de fond.",
+      "difficulty": 1
+    },
+    {
+      "question": "Comment appelle-t-on la lumière placée derrière le sujet, qui dessine un fin liseré lumineux sur ses cheveux et ses épaules ?",
+      "answer": "Une lumière de contre (rim light)",
+      "wrong": [
+        "Une lumière d'appoint (fill light)",
+        "Une lumière principale (key light)",
+        "Une lumière de fond (background light)"
+      ],
+      "explanation": "Pour qu'un sujet ne se confonde pas avec un fond sombre, on ajoute souvent une lumière placée derrière lui. La **lumière de contre** (ou de découpe, « rim light » en anglais) vise le sujet depuis l'arrière, en direction de l'appareil. Elle dessine un **liseré** lumineux sur les contours : cheveux, épaules, profil. Ce liseré **détache** le sujet de l'arrière-plan et lui donne du volume. Exemple : un portrait sur fond noir où une fine ligne de lumière souligne la chevelure ; sans elle, des cheveux bruns se perdraient dans le noir. Le piège : la lumière de fond éclaire le décor derrière le sujet, et non le sujet lui-même. La lumière d'appoint, elle, éclaircit les ombres du visage depuis l'avant.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi peintres et photographes de l'hémisphère Nord apprécient-ils les ateliers dont les verrières donnent au **nord** ?",
+      "answer": "Presque pas de soleil direct, d'où une lumière douce et stable",
+      "wrong": [
+        "Le soleil direct y entre toute la journée, très intense",
+        "La lumière du nord est plus chaude que celle du sud",
+        "Elles captent beaucoup plus de rayons ultraviolets"
+      ],
+      "explanation": "Bien avant les flashs, peintres et photographes travaillaient à la lumière naturelle, et l'orientation de l'atelier était décisive. Dans l'hémisphère Nord, le soleil passe au **sud** : une verrière orientée au nord ne reçoit presque jamais de soleil direct. Elle n'apporte que la lumière **diffuse du ciel**, douce et surtout **stable** au fil des heures. Exemple : pendant une séance de pose de trois heures, l'éclairage reste presque identique, sans tache de soleil qui se déplace sur le modèle. C'est pourquoi de nombreux ateliers d'artistes, à Paris comme ailleurs, ont de grandes verrières au nord. Le piège : cette lumière n'est pas plus chaude ; elle est même un peu **plus froide** (bleutée) que celle du soleil direct.",
+      "difficulty": 2
     }
   ]
 }

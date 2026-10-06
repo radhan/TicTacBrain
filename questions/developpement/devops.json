@@ -608,7 +608,7 @@
         "GitLab Agent",
         "GitLab Worker"
       ],
-      "explanation": "**GitLab Runner** est une application installée sur une machine (ou fournie par GitLab sur GitLab.com) : il interroge GitLab, récupère les jobs qui lui correspondent (grâce à leurs **tags**) et les exécute avec un **executor** : `docker`, `shell`, `kubernetes`… Avec l'executor Docker, le mot-clé `image` du job choisit l'image dans laquelle ses commandes s'exécutent. L'agent GitLab pour Kubernetes, lui, sert à connecter un cluster à GitLab, pas à exécuter les jobs de CI.",
+      "explanation": "Dans GitLab, le serveur central gère les dépôts et décrit les pipelines, mais il n'exécute pas lui-même les commandes. C'est le rôle du **GitLab Runner** : un programme installé sur une machine (ou fourni par GitLab sur GitLab.com) qui interroge GitLab, récupère les jobs qui lui correspondent (selon leurs **tags**) et les exécute avec un **executor** : `docker`, `shell`, `kubernetes`…\n```yaml\ntest-job:\n  image: node:22\n  tags: [docker]\n  script: npm test\n```\nAvec l'executor Docker, `image` choisit l'image dans laquelle `npm test` s'exécute, et `tags` désigne les runners autorisés à prendre le job. L'agent GitLab pour Kubernetes sert à connecter un cluster à GitLab, pas à exécuter la CI, et GitLab Pages héberge des sites statiques.",
       "difficulty": 1,
       "source": "https://docs.gitlab.com/runner/"
     },
@@ -620,7 +620,7 @@
         "`Pipelinefile`",
         "`.jenkins-ci.yml`"
       ],
-      "explanation": "Le `Jenkinsfile` décrit le pipeline sous forme de code (*pipeline as code*), dans une syntaxe basée sur **Groovy**. Versionné avec l'application, il passe en revue de code comme le reste, et un job *Multibranch Pipeline* peut créer automatiquement un pipeline pour chaque branche qui en contient un. Jenkins est né en 2011 d'un fork de Hudson, à la suite d'un différend avec Oracle, propriétaire de la marque Hudson.",
+      "explanation": "**Jenkins** est un serveur d'automatisation très répandu pour la CI/CD. Plutôt que de cliquer dans une interface pour configurer un job, on décrit le pipeline dans un fichier texte, le `Jenkinsfile`, à la racine du dépôt (*pipeline as code*). Il est versionné avec l'application et relu comme le reste du code.\n```groovy\npipeline {\n  agent any\n  stages {\n    stage('Test') {\n      steps { sh 'npm test' }\n    }\n  }\n}\n```\nLa syntaxe est basée sur **Groovy**. Un job *Multibranch Pipeline* peut créer automatiquement un pipeline pour chaque branche qui contient un `Jenkinsfile`. Les noms `jenkins.yml`, `Pipelinefile` ou `.jenkins-ci.yml` ne sont pas reconnus par défaut.",
       "difficulty": 1,
       "source": "https://www.jenkins.io/doc/book/pipeline/jenkinsfile/"
     },
@@ -632,7 +632,7 @@
         "`terraform setup`",
         "`terraform providers`"
       ],
-      "explanation": "`terraform init` prépare le répertoire de travail : il télécharge les **providers** requis dans `.terraform/`, récupère les modules, configure le **backend** où sera stocké le state, et crée ou met à jour le fichier de verrouillage `.terraform.lock.hcl`. On le relance après avoir ajouté un provider ou un module, ou modifié le backend. `terraform get` ne télécharge que les modules, et `terraform providers` se contente d'afficher les providers requis.",
+      "explanation": "Quand tu récupères un projet Terraform, le dossier ne contient que du code : il manque encore les plugins qui savent parler à AWS, Azure ou autre. `terraform init` prépare tout ça : il télécharge les **providers** (ces plugins) dans `.terraform/`, récupère les modules, configure le **backend** (l'endroit où sera stocké le state) et crée ou met à jour le fichier `.terraform.lock.hcl`.\n```\nterraform init\nterraform plan\n```\nSans `init`, les commandes suivantes échouent. On le relance dès qu'on ajoute un provider ou un module, ou qu'on change le backend. `terraform get` ne télécharge que les modules, et `terraform providers` affiche seulement les providers requis. `terraform setup` n'existe pas.",
       "difficulty": 1,
       "source": "https://developer.hashicorp.com/terraform/cli/commands/init"
     },
@@ -644,7 +644,7 @@
         "XML",
         "TOML"
       ],
-      "explanation": "Un **playbook** est un fichier YAML qui liste des *plays* : chacun cible un groupe d'hôtes de l'inventaire et enchaîne des **tâches**, qui appellent chacune un module (`apt`, `copy`, `template`, `service`…). Par défaut, chaque tâche est exécutée sur tous les hôtes ciblés avant de passer à la suivante. HCL est le langage de Terraform.",
+      "explanation": "Un **playbook** Ansible est le fichier qui décrit ce qu'on veut faire sur quels serveurs. Il s'écrit en **YAML**, un format texte lisible fondé sur l'indentation. Il liste des *plays* : chacun cible un groupe d'hôtes de l'inventaire et enchaîne des **tâches**, qui appellent chacune un module (`apt`, `copy`, `service`…).\n```yaml\n- hosts: web\n  become: true\n  tasks:\n    - name: Installer nginx\n      ansible.builtin.apt:\n        name: nginx\n        state: present\n```\nPar défaut, chaque tâche est exécutée sur tous les hôtes ciblés avant de passer à la suivante. HCL est le langage de Terraform ; XML et TOML ne sont pas utilisés pour les playbooks.",
       "difficulty": 1,
       "source": "https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html"
     },
@@ -656,7 +656,7 @@
         "Deux versions qui servent du trafic en même temps",
         "Un retour à l'ancienne version impossible"
       ],
-      "explanation": "Avec **Recreate**, il y a forcément un moment où aucune instance ne tourne : l'application est indisponible le temps que la nouvelle version démarre. En contrepartie, deux versions ne sont jamais actives en même temps, ce qui peut être nécessaire si elles sont incompatibles. Le **rolling update** évite la coupure en remplaçant les instances progressivement, au prix d'une cohabitation temporaire des deux versions, et le **blue/green** au prix d'une infrastructure doublée pendant la bascule.",
+      "explanation": "Il existe plusieurs façons de remplacer une version par une autre. Avec **Recreate**, on arrête d'abord toutes les instances de l'ancienne version, puis on démarre la nouvelle. C'est simple, mais il y a forcément un moment où plus rien ne tourne : le service est **indisponible** le temps du démarrage.\nExemple : une appli qui met 40 secondes à démarrer est inaccessible pendant 40 secondes à chaque déploiement. En contrepartie, deux versions ne servent jamais du trafic en même temps, ce qui peut être utile si elles sont incompatibles (une migration lourde de base de données, par exemple). Le **rolling update** évite la coupure en remplaçant les instances progressivement, mais les deux versions cohabitent un temps ; le **blue/green** l'évite en doublant temporairement l'infrastructure.",
       "difficulty": 1,
       "source": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy"
     },
@@ -668,7 +668,7 @@
         "Un test de mutation",
         "Un test unitaire"
       ],
-      "explanation": "Un **smoke test** (test de fumée) vérifie très vite que les fonctions vitales marchent, sans chercher l'exhaustivité : l'application démarre, répond, la base est joignable. Le terme vient notamment du test de matériel : on met l'appareil sous tension et on vérifie qu'il ne se met pas à fumer. S'il échoue juste après un déploiement, le pipeline peut déclencher un retour à la version précédente avant que les utilisateurs ne soient touchés.",
+      "explanation": "Après un déploiement, on veut savoir très vite si « ça marche au moins ». Un **smoke test** (test de fumée) vérifie les fonctions vitales, sans chercher l'exhaustivité : l'application démarre, la page d'accueil répond, la connexion fonctionne, la base est joignable. Le nom vient du matériel : on met l'appareil sous tension et on vérifie qu'il ne se met pas à fumer.\n```\ncurl -fsS https://mon-app.exemple/health || exit 1\n```\nSi ce test échoue juste après le déploiement, le pipeline peut déclencher un retour à la version précédente avant que les utilisateurs ne soient touchés. À ne pas confondre : un test de charge mesure la tenue sous forte affluence, un test de mutation évalue la qualité des tests, et un test unitaire vérifie une fonction isolée.",
       "difficulty": 1
     },
     {
@@ -679,7 +679,7 @@
         "En parallèle, dès le début du pipeline",
         "Dans un même conteneur, l'un après l'autre"
       ],
-      "explanation": "Les **stages** s'exécutent dans l'ordre déclaré sous `stages`, et tous les jobs d'un même stage tournent **en parallèle**. Les jobs d'un stage ne démarrent que lorsque ceux du stage précédent ont réussi. Le mot-clé `needs` permet d'assouplir ce modèle : un job démarre alors dès que les jobs dont il dépend sont terminés, sans attendre la fin de tout le stage précédent.",
+      "explanation": "Dans GitLab CI, un pipeline est découpé en **stages** (étapes) exécutés dans l'ordre déclaré. Règle d'or : tous les jobs d'un même stage tournent **en parallèle**, et un stage ne démarre que lorsque tous les jobs du précédent ont réussi.\n```yaml\nstages: [build, test, deploy]\nlint:\n  stage: test\nunit-tests:\n  stage: test\n```\nAvec assez de runners, `lint` et `unit-tests` démarrent donc en même temps, une fois `build` terminé. Ils ne s'exécutent ni l'un après l'autre dans l'ordre du fichier, ni dès le début du pipeline, ni dans un même conteneur : chaque job a son propre environnement. Le mot-clé `needs` permet de lancer un job plus tôt, sans attendre la fin de tout le stage précédent.",
       "difficulty": 2,
       "source": "https://docs.gitlab.com/ci/yaml/"
     },
@@ -691,7 +691,7 @@
         "Le job ne s'exécute que si le précédent a échoué",
         "Le job est ignoré jusqu'à sa suppression du fichier"
       ],
-      "explanation": "Un job `when: manual` n'est pas lancé automatiquement : il apparaît dans le pipeline avec un bouton de lecture, et quelqu'un doit cliquer pour le déclencher. C'est le moyen classique d'obtenir de la **livraison continue** : tout est automatisé jusqu'à la production, mais la mise en prod reste une décision humaine. Avec un environnement protégé, on restreint en plus qui a le droit de le déclencher. Pour lancer un job seulement en cas d'échec, c'est `when: on_failure`.",
+      "explanation": "Certaines étapes d'un pipeline, comme la mise en production, ne doivent pas partir toutes seules. `when: manual` transforme un job en étape à **déclenchement manuel** : il apparaît dans GitLab avec un bouton « lecture » et attend qu'une personne clique dessus.\n```yaml\ndeploy-prod:\n  stage: deploy\n  script: ./deploy.sh production\n  when: manual\n  environment: production\n```\nLe build et les tests s'enchaînent automatiquement, puis le pipeline s'arrête devant `deploy-prod` jusqu'à ce que quelqu'un valide : c'est le schéma de la **livraison continue**. Avec un environnement protégé, on limite en plus qui peut cliquer. Pour exécuter un job seulement après un échec, c'est `when: on_failure`.",
       "difficulty": 2,
       "source": "https://docs.gitlab.com/ci/yaml/"
     },
@@ -703,7 +703,7 @@
         "Il exécute le job sur toutes les branches sauf la principale",
         "Il bloque le merge si la branche n'est pas à jour avec `main`"
       ],
-      "explanation": "`rules` est évalué à la création du pipeline : la première règle qui correspond décide si le job est ajouté, et si aucune ne correspond, le job est exclu. `CI_DEFAULT_BRANCH` contient le nom de la branche par défaut (souvent `main`) et `CI_COMMIT_BRANCH` celui de la branche du pipeline ; cette dernière variable n'est pas définie dans les pipelines de merge request ni de tag, où le job sera donc exclu. `rules` remplace les anciens mots-clés `only` et `except`.",
+      "explanation": "Par défaut, tous les jobs d'un `.gitlab-ci.yml` s'ajoutent à chaque pipeline. Le bloc `rules` permet de décider quand un job doit exister. Il est évalué à la création du pipeline : la première règle qui correspond décide, et si aucune ne correspond, le job est exclu.\n```yaml\ndeploy:\n  script: ./deploy.sh\n  rules:\n    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH\n```\n`CI_DEFAULT_BRANCH` est le nom de la branche par défaut du projet (souvent `main`) et `CI_COMMIT_BRANCH` celui de la branche du pipeline en cours. Le job `deploy` n'apparaît donc que sur la branche par défaut. Cette variable n'existe pas dans les pipelines de merge request ni de tag, où le job est aussi exclu. `rules` remplace les anciens `only` et `except`.",
       "difficulty": 2,
       "source": "https://docs.gitlab.com/ci/yaml/"
     },
@@ -715,7 +715,7 @@
         "Il peut s'exécuter même sans runner disponible",
         "Ses erreurs sont masquées dans les logs du job"
       ],
-      "explanation": "Avec `allow_failure: true`, un échec du job s'affiche en orange, comme un avertissement : les stages suivants s'exécutent et le pipeline peut réussir quand même. C'est utile pour un nouvel outil d'analyse qu'on introduit progressivement, ou pour un test expérimental. Pour relancer automatiquement un job instable, on utilise plutôt `retry`, avec un nombre maximal de tentatives.",
+      "explanation": "Quand un job échoue, GitLab marque normalement le pipeline en échec et bloque les stages suivants. `allow_failure: true` change cela : le job échoué s'affiche en orange, comme un avertissement, mais le pipeline continue et peut réussir.\n```yaml\nlint-strict:\n  script: npm run lint:strict\n  allow_failure: true\n```\nC'est pratique pour introduire progressivement un nouvel outil d'analyse : l'équipe voit les problèmes sans que le pipeline soit bloqué. À ne pas confondre avec `retry`, qui relance automatiquement un job instable, avec un nombre maximal de tentatives. Et `allow_failure` ne masque rien dans les logs : l'erreur reste bien visible.",
       "difficulty": 2,
       "source": "https://docs.gitlab.com/ci/yaml/"
     },
@@ -727,7 +727,7 @@
         "`artifacts` reste sur le runner, `cache` est envoyé sur GitLab",
         "`cache` sert aux images Docker, `artifacts` au code source"
       ],
-      "explanation": "Les **artifacts** sont des fichiers produits par un job (binaire, rapport de tests, `dist/`) : ils sont envoyés sur GitLab, transmis aux jobs des stages suivants et téléchargeables depuis l'interface, avec une durée de conservation (`expire_in`). Le **cache** sert à réutiliser des dépendances téléchargées (`node_modules`, `.m2`…) d'un pipeline à l'autre pour gagner du temps ; il est stocké sur le runner (ou dans un stockage partagé) et n'est jamais garanti. Un job ne doit donc pas dépendre du cache pour fonctionner.",
+      "explanation": "Dans GitLab CI, chaque job démarre dans un environnement propre, et on dispose de deux moyens de conserver des fichiers. Les **artifacts** sont des *résultats* (binaire, rapport de tests, dossier `dist/`) : envoyés sur GitLab, passés aux jobs des stages suivants et téléchargeables depuis l'interface, avec une durée de conservation (`expire_in`). Le **cache** sert à *gagner du temps* en réutilisant des dépendances téléchargées (`node_modules`, `.m2`…) d'un pipeline à l'autre.\n```yaml\ncache:\n  paths: [.npm/]\nbuild:\n  script:\n    - npm ci --cache .npm --prefer-offline\n    - npm run build\n  artifacts:\n    paths: [dist/]\n```\nLe cache n'est jamais garanti (il peut être absent) : un job ne doit pas en dépendre pour fonctionner. Un artifact, lui, est fiable.",
       "difficulty": 2,
       "source": "https://docs.gitlab.com/ci/caching/"
     },
@@ -739,7 +739,7 @@
         "`job { ... }`",
         "`workflow { ... }`"
       ],
-      "explanation": "Un pipeline **déclaratif** commence par `pipeline { }`, qui contient un `agent` (où exécuter), des `stages` composés de blocs `stage('Build') { steps { ... } }`, et éventuellement une section `post` pour les actions finales (notifications, nettoyage). La syntaxe **scriptée**, plus ancienne et plus libre, commence par `node { }` et repose directement sur du code Groovy. La forme déclarative, plus récente, est conçue pour être plus simple à écrire et à relire, et elle est validée plus strictement.",
+      "explanation": "Jenkins propose deux syntaxes pour écrire un `Jenkinsfile`. La syntaxe **déclarative**, plus récente et plus structurée, enveloppe tout dans un bloc `pipeline { }`. Elle contient un `agent` (où exécuter), des `stages` composés de blocs `stage('Build') { steps { ... } }`, et éventuellement une section `post` pour les actions finales (notifications, nettoyage).\n```groovy\npipeline {\n  agent any\n  stages {\n    stage('Build') { steps { sh 'make' } }\n  }\n  post { always { echo 'terminé' } }\n}\n```\nLa syntaxe **scriptée**, plus ancienne et plus libre, commence par `node { }` et repose directement sur du code Groovy. La forme déclarative est plus simple à relire et validée plus strictement avant l'exécution. `job { }` et `workflow { }` ne sont pas des blocs de pipeline Jenkins.",
       "difficulty": 2,
       "source": "https://www.jenkins.io/doc/book/pipeline/syntax/"
     },
@@ -751,7 +751,7 @@
         "Pour figer les versions des providers téléchargés",
         "Pour interdire toute lecture du state par l'équipe"
       ],
-      "explanation": "Si deux personnes, ou deux pipelines, lancent `terraform apply` en même temps sur le même state, elles peuvent créer des ressources en double et écrire des versions incohérentes du state. Avec le verrouillage, la première opération pose un verrou et la seconde échoue (ou patiente, avec `-lock-timeout`) jusqu'à sa libération. Après un crash, `terraform force-unlock` lève un verrou resté orphelin, avec prudence. Figer les versions des providers est le rôle de `.terraform.lock.hcl`.",
+      "explanation": "Le **state** de Terraform est un fichier partagé par toute l'équipe. Imagine deux personnes (ou deux pipelines) qui lancent `terraform apply` au même instant : chacune lit le state, calcule ses changements, puis écrit sa version. Résultat possible : des ressources créées en double, ou un state incohérent qui écrase le travail de l'autre. Le **verrouillage** (*locking*) l'évite : la première opération pose un verrou, la seconde échoue, ou patiente avec `-lock-timeout`, jusqu'à sa libération.\n```\nterraform apply -lock-timeout=60s\n```\nAprès un crash, `terraform force-unlock` lève un verrou resté orphelin, avec prudence. Le verrouillage ne chiffre rien et ne fige pas les versions de providers : c'est le rôle d'un autre fichier, `.terraform.lock.hcl`.",
       "difficulty": 2,
       "source": "https://developer.hashicorp.com/terraform/language/state/locking"
     },
@@ -763,7 +763,7 @@
         "Un conflit de state, bloqué par le verrou du backend",
         "Une dérive (drift), que Terraform ne peut pas détecter"
       ],
-      "explanation": "La **dérive** (*drift*) est l'écart entre l'infrastructure réelle et ce que décrivent le code et le state. Terraform ne surveille rien en continu : c'est à chaque `plan` (ou `apply`) qu'il interroge le fournisseur, constate la différence et propose de revenir à ce que dit le code. `terraform plan -refresh-only` montre seulement les dérives, et `terraform apply -refresh-only` les accepte dans le state sans toucher à l'infrastructure. Beaucoup d'équipes planifient un `plan` régulier dans leur CI pour repérer les dérives.",
+      "explanation": "Terraform part du principe que l'infrastructure n'est modifiée que par lui. Si quelqu'un change à la main une règle de security group dans la console AWS, l'infrastructure réelle s'écarte de ce que décrivent le code et le state : c'est une **dérive** (*drift*).\nTerraform ne surveille rien en continu. C'est à chaque `terraform plan` (ou `apply`) qu'il interroge le fournisseur, constate la différence et propose de revenir à ce que dit le code.\n```\nterraform plan -refresh-only\n```\nCette commande montre seulement les dérives, et `terraform apply -refresh-only` les enregistre dans le state sans toucher à l'infrastructure. Beaucoup d'équipes planifient un `plan` régulier dans leur CI pour repérer les dérives. Le verrou du backend, lui, n'a rien à voir avec ce cas.",
       "difficulty": 2,
       "source": "https://developer.hashicorp.com/terraform/cli/commands/plan"
     },
@@ -775,7 +775,7 @@
         "Aucune, un handler doit être appelé explicitement",
         "Une fois, au tout début du play suivant"
       ],
-      "explanation": "Un **handler** est une tâche qui ne s'exécute que si elle a été notifiée (`notify`) par une tâche ayant rapporté `changed`. Les notifications sont regroupées : le handler s'exécute **une seule fois**, par défaut à la fin des tâches du play, quel que soit le nombre de notifications. On évite ainsi de redémarrer un service trois fois de suite. Pour forcer l'exécution des handlers plus tôt, on utilise `meta: flush_handlers`.",
+      "explanation": "Quand on modifie la configuration d'un service, il faut souvent le redémarrer pour qu'elle soit prise en compte. Mais redémarrer après chaque modification serait inutile. Ansible utilise donc des **handlers** : des tâches spéciales qui ne s'exécutent que si une tâche les a notifiées (`notify`) en rapportant `changed`.\n```yaml\ntasks:\n  - name: Copier nginx.conf\n    ansible.builtin.template:\n      src: nginx.conf.j2\n      dest: /etc/nginx/nginx.conf\n    notify: restart nginx\nhandlers:\n  - name: restart nginx\n    ansible.builtin.service:\n      name: nginx\n      state: restarted\n```\nPeu importe le nombre de tâches qui notifient `restart nginx` : le handler s'exécute **une seule fois**, à la fin des tâches du play. Pour le forcer plus tôt, on utilise `meta: flush_handlers`.",
       "difficulty": 2,
       "source": "https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_handlers.html"
     },
@@ -787,7 +787,7 @@
         "Pour que le registre compresse mieux les couches",
         "Pour que l'image soit reconstruite à chaque déploiement"
       ],
-      "explanation": "`latest` n'est qu'un tag par défaut, **mobile** : il désigne la dernière image poussée avec ce tag, pas forcément la version stable la plus récente, et ne dit pas quel code elle contient. Un tag basé sur le SHA du commit (ou sur un numéro de version) est unique et traçable : on sait exactement ce qui tourne, et revenir en arrière consiste à redéployer le tag précédent. Avec `latest`, Kubernetes utilise d'ailleurs par défaut `imagePullPolicy: Always`, et deux Pods démarrés à des moments différents peuvent exécuter des images différentes sous le même nom.",
+      "explanation": "Une image Docker est identifiée par un nom et un **tag** (`app:3f9c2a1`). Le tag `latest` n'est qu'un tag par défaut, **mobile** : il désigne la dernière image poussée sous ce nom, et ne dit rien du code qu'elle contient ni de sa stabilité. Un tag basé sur le SHA du commit (ou sur un numéro de version) est unique et traçable.\n```\ndocker build -t registry.exemple/app:3f9c2a1 .\ndocker push registry.exemple/app:3f9c2a1\n```\nEn cas de bug, on sait exactement quel code tourne, et revenir en arrière consiste à redéployer le tag précédent. Avec `latest`, deux Pods démarrés à des moments différents peuvent exécuter des images différentes sous le même nom. Kubernetes n'interdit pas `latest` : par défaut, il revérifie simplement le registre à chaque démarrage de Pod (`imagePullPolicy: Always`).",
       "difficulty": 2,
       "source": "https://kubernetes.io/docs/concepts/containers/images/"
     },
@@ -799,7 +799,7 @@
         "À installer les paquets nécessaires avant le script",
         "À exiger une approbation avant de lancer le job"
       ],
-      "explanation": "Avec `needs: [build-front]`, le job n'attend plus la fin de **tout** le stage précédent : il démarre dès que `build-front` a réussi, même si d'autres jobs plus lents de ce stage tournent encore. Le pipeline devient un graphe orienté acyclique (**DAG**) et peut être nettement plus court. Par effet de bord, le job ne télécharge plus que les artifacts des jobs listés dans `needs`, et `needs: []` le fait démarrer dès la création du pipeline.",
+      "explanation": "Par défaut, un job GitLab attend que **tous** les jobs du stage précédent soient terminés. Avec `needs`, on déclare ses vraies dépendances, et le job démarre dès que celles-ci sont terminées.\n```yaml\ntest-front:\n  stage: test\n  needs: [build-front]\n```\n`test-front` démarre dès que `build-front` a réussi, même si `build-back`, plus lent, tourne encore. Le pipeline devient un graphe orienté acyclique (**DAG**, un réseau de dépendances sans boucle) et peut être nettement plus court. Par effet de bord, le job ne télécharge que les artifacts des jobs listés dans `needs`, et `needs: []` le fait démarrer dès la création du pipeline. `needs` n'installe rien, ne relance rien et ne demande aucune approbation.",
       "difficulty": 2,
       "source": "https://docs.gitlab.com/ci/yaml/"
     },
@@ -811,7 +811,7 @@
         "`.pre`",
         "`default`"
       ],
-      "explanation": "Sans liste `stages`, GitLab utilise les stages par défaut `.pre`, `build`, `test`, `deploy` et `.post`, et un job sans `stage` est placé dans **`test`**. `.pre` et `.post` sont des stages spéciaux, toujours exécutés en premier et en dernier. Déclarer explicitement `stages` et le `stage` de chaque job rend malgré tout le pipeline plus lisible.",
+      "explanation": "Dans GitLab CI, les jobs sont rangés dans des stages. Si tu ne déclares pas de liste `stages`, GitLab utilise une liste par défaut : `.pre`, `build`, `test`, `deploy` et `.post`. Un job écrit sans mot-clé `stage` est placé dans **`test`**.\n```yaml\nlint:\n  script: npm run lint\n```\nIci, `lint` s'exécute dans le stage `test`. `.pre` et `.post` sont des stages spéciaux, toujours exécutés en premier et en dernier. Il n'existe pas de stage nommé `default`. Déclarer explicitement `stages` et le `stage` de chaque job reste plus lisible, surtout dans un gros pipeline.",
       "difficulty": 3,
       "source": "https://docs.gitlab.com/ci/yaml/"
     },
@@ -823,7 +823,7 @@
         "Il n'est visible que des mainteneurs du projet",
         "Il s'exécute en arrière-plan, sans bloquer son stage"
       ],
-      "explanation": "Un job dont le nom commence par `.` est un **job caché** : GitLab ne l'ajoute pas au pipeline. On s'en sert comme modèle : d'autres jobs en héritent avec `extends: .deploy-template` (ou via des ancres YAML), puis surchargent ce qui change, par exemple l'environnement cible. C'est aussi un moyen rapide de désactiver temporairement un job sans le supprimer. Ne pas confondre avec les stages spéciaux `.pre` et `.post`, exécutés en premier et en dernier.",
+      "explanation": "Dans un `.gitlab-ci.yml`, plusieurs jobs se ressemblent souvent (même image, mêmes variables, même script). Pour ne pas tout recopier, on écrit un modèle dans un **job caché** : un job dont le nom commence par un point. GitLab ne l'ajoute jamais au pipeline.\n```yaml\n.deploy-template:\n  image: alpine\n  script: ./deploy.sh $TARGET\n\ndeploy-staging:\n  extends: .deploy-template\n  variables:\n    TARGET: staging\n```\nLe job `deploy-staging` hérite du modèle avec `extends` (ou via des ancres YAML) et surcharge ce qui change. Mettre un point devant un job est aussi un moyen rapide de le désactiver temporairement. À ne pas confondre avec les stages spéciaux `.pre` et `.post`, exécutés en premier et en dernier.",
       "difficulty": 3,
       "source": "https://docs.gitlab.com/ci/yaml/"
     },
@@ -835,7 +835,7 @@
         "Ceux déclenchés manuellement par un mainteneur",
         "Ceux des merge requests ouvertes depuis un fork"
       ],
-      "explanation": "Une variable **protégée** n'est injectée que dans les pipelines qui s'exécutent sur une **branche ou un tag protégés** (typiquement `main` et les tags de release). Un développeur qui pousse une branche quelconque ne peut donc pas écrire un job qui affiche le jeton de production. C'est différent d'une variable **masquée**, dont la valeur est remplacée par `[MASKED]` dans les logs mais qui reste disponible dans tous les pipelines. Pour un secret de production, on combine en général les deux.",
+      "explanation": "Les variables CI/CD de GitLab servent à stocker des secrets (jetons de déploiement, mots de passe). Une variable **protégée** n'est injectée que dans les pipelines qui tournent sur une **branche ou un tag protégés** (typiquement `main` et les tags de release).\nExemple : un développeur pousse la branche `test-perso` avec un job `echo $PROD_DEPLOY_TOKEN`. Cette branche n'étant pas protégée, la variable n'est tout simplement pas définie, et le jeton de production reste hors de portée. C'est différent d'une variable **masquée**, dont la valeur est remplacée par `[MASKED]` dans les logs mais qui reste disponible dans tous les pipelines. Pour un secret de production, on combine en général les deux.",
       "difficulty": 3,
       "source": "https://docs.gitlab.com/ci/variables/"
     },
@@ -847,7 +847,7 @@
         "Seulement du job placé juste avant dans le fichier",
         "De tous les jobs du pipeline, stage courant inclus"
       ],
-      "explanation": "Par défaut, un job récupère les artifacts de **tous les jobs des stages précédents**, ce qui peut le ralentir si ces artifacts sont volumineux. Le mot-clé `dependencies` restreint cette liste (`dependencies: []` pour n'en télécharger aucun), et avec `needs`, seuls les artifacts des jobs listés sont récupérés. Les jobs d'un même stage tournant en parallèle, ils ne peuvent pas s'échanger d'artifacts.",
+      "explanation": "Dans GitLab CI, quand un job produit des artifacts, les jobs suivants peuvent les récupérer. Par défaut (sans `needs` ni `dependencies`), un job télécharge automatiquement les artifacts de **tous les jobs des stages précédents**. C'est pratique, mais cela peut le ralentir si ces artifacts sont volumineux.\n```yaml\ndeploy:\n  stage: deploy\n  dependencies: [build-front]\n```\nAvec `dependencies`, on restreint la liste (`dependencies: []` pour n'en télécharger aucun) ; avec `needs`, seuls les artifacts des jobs listés sont récupérés. Les jobs d'un même stage tournent en parallèle : ils ne peuvent donc pas s'échanger d'artifacts. Ce n'est ni « aucun », ni « seulement le job précédent dans le fichier ».",
       "difficulty": 3,
       "source": "https://docs.gitlab.com/ci/yaml/"
     },
@@ -859,7 +859,7 @@
         "Renuméroter `f[1]` et `f[2]` sans rien recréer",
         "Détruire puis recréer les trois fichiers"
       ],
-      "explanation": "Avec `count`, chaque instance est identifiée par son **indice** : `f[0]` = alice, `f[1]` = bob, `f[2]` = carol. En retirant alice, bob passe à l'indice 0 et carol à l'indice 1 : Terraform voit que `f[0]` et `f[1]` changent de nom de fichier (ce qui impose de les remplacer) et que `f[2]` n'existe plus. Avec `for_each = toset(var.noms)`, les instances seraient indexées par clé (`f[\"bob\"]`), et seule `f[\"alice\"]` serait détruite. C'est pourquoi on préfère `for_each` pour une collection dont on peut retirer des éléments.",
+      "explanation": "Avec `count`, Terraform identifie chaque instance par son **indice** dans la liste : au départ, `f[0]` = alice, `f[1]` = bob, `f[2]` = carol. Si tu retires alice, la liste devient `[bob, carol]` : bob passe à l'indice 0 et carol à l'indice 1.\nPour Terraform, `f[0]` doit maintenant produire `bob.txt` au lieu de `alice.txt`, et `f[1]` doit produire `carol.txt` au lieu de `bob.txt`. Changer le nom d'un fichier impose de le **remplacer**. Quant à `f[2]`, il n'existe plus : il est détruit.\n```hcl\nfor_each = toset(var.noms)\nfilename = \"${each.key}.txt\"\n```\nAvec `for_each`, les instances sont indexées par clé (`f[\"bob\"]`), et seule `f[\"alice\"]` serait détruite. C'est pourquoi on préfère `for_each` pour une collection dont on peut retirer des éléments.",
       "difficulty": 3,
       "source": "https://developer.hashicorp.com/terraform/language/meta-arguments/count"
     },
@@ -871,7 +871,7 @@
         "Terraform ignore le changement et garde la base telle quelle",
         "Terraform détruit la base après une confirmation supplémentaire"
       ],
-      "explanation": "`prevent_destroy = true` fait échouer tout plan qui prévoit de **détruire** la ressource, y compris pour la remplacer : c'est un garde-fou contre la suppression accidentelle de données. Pour vraiment la remplacer, il faut d'abord retirer cet argument du code. Il ne protège pas si l'on supprime tout le bloc `resource`, puisque le réglage disparaît avec lui. `create_before_destroy` change seulement l'ordre du remplacement, et `ignore_changes` fait ignorer certains attributs modifiés.",
+      "explanation": "Certaines ressources, comme une base de données de production, ne doivent jamais disparaître par accident. Terraform propose un garde-fou dans le bloc `lifecycle`.\n```hcl\nresource \"aws_db_instance\" \"main\" {\n  # ...\n  lifecycle {\n    prevent_destroy = true\n  }\n}\n```\n`prevent_destroy = true` fait **échouer** tout plan qui prévoit de détruire la ressource, y compris pour la remplacer (un remplacement, c'est une destruction suivie d'une création). Terraform s'arrête sur une erreur et ne touche à rien. Pour vraiment la remplacer, il faut d'abord retirer cet argument du code. Il ne protège pas si on supprime tout le bloc `resource`, puisque le réglage disparaît avec lui. `create_before_destroy` inverse seulement l'ordre du remplacement.",
       "difficulty": 3,
       "source": "https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle"
     },
@@ -883,7 +883,7 @@
         "À attribuer un nom DNS public à une application",
         "À regrouper plusieurs clusters sous une même API"
       ],
-      "explanation": "Un **namespace** découpe un cluster en espaces logiques (par équipe, par projet ou par environnement : `dev`, `staging`…). Les noms des objets doivent être uniques au sein d'un namespace, et on peut y appliquer des droits RBAC, des quotas de ressources (`ResourceQuota`) ou des politiques réseau. Ce n'est pas une frontière de sécurité forte à lui seul : par défaut, les Pods de namespaces différents peuvent communiquer entre eux. Certains objets, comme les Nodes ou les PersistentVolumes, n'appartiennent à aucun namespace.",
+      "explanation": "Un cluster Kubernetes est souvent partagé par plusieurs équipes ou plusieurs environnements. Un **namespace** découpe ce cluster en espaces logiques (`dev`, `staging`, `equipe-paiement`…), un peu comme des dossiers dans un système de fichiers. Les noms d'objets doivent être uniques dans un namespace, pas dans tout le cluster : on peut donc avoir un Service `api` dans `dev` et un autre dans `prod`.\n```\nkubectl get pods -n dev\nkubectl create namespace staging\n```\nOn peut y appliquer des droits (RBAC), des quotas de ressources (`ResourceQuota`) ou des politiques réseau. Ce n'est pas une isolation forte à lui seul : par défaut, les Pods de namespaces différents peuvent communiquer. Certains objets, comme les Nodes, n'appartiennent à aucun namespace.",
       "difficulty": 1,
       "source": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"
     },
@@ -895,7 +895,7 @@
         "Istio",
         "kubeadm"
       ],
-      "explanation": "**Helm** empaquette une application Kubernetes sous forme de **chart** : des modèles de manifestes YAML paramétrés par un fichier `values.yaml`. `helm install` crée une *release*, `helm upgrade` la met à jour et `helm rollback` revient à une révision précédente. **Kustomize**, intégré à `kubectl` (`kubectl apply -k`), suit une autre approche : il superpose des modifications (*overlays*) à des manifestes de base, sans moteur de templates. Istio est un service mesh, et kubeadm un outil d'installation de cluster.",
+      "explanation": "Déployer une application sur Kubernetes demande souvent plusieurs fichiers YAML (Deployment, Service, ConfigMap…), à adapter selon l'environnement. **Helm** les empaquette sous forme de **chart** : des modèles de manifestes paramétrés par un fichier `values.yaml`.\n```\nhelm install mon-blog ./chart --set replicaCount=3\nhelm upgrade mon-blog ./chart\nhelm rollback mon-blog 1\n```\n`helm install` crée une *release* (une installation nommée), `helm upgrade` la met à jour et `helm rollback` revient à une révision précédente. **Kustomize**, intégré à `kubectl` (`kubectl apply -k`), suit une autre approche : il superpose des modifications (*overlays*) à des manifestes de base, sans moteur de modèles. Istio est un service mesh, et kubeadm un outil d'installation de cluster.",
       "difficulty": 1,
       "source": "https://helm.sh/docs/intro/using_helm/"
     },
@@ -907,7 +907,7 @@
         "À empêcher Git de versionner les images Docker",
         "À cacher des fichiers à l'intérieur du conteneur"
       ],
-      "explanation": "Au lancement de `docker build .`, le dossier indiqué (le **contexte de build**) est transmis au moteur de build. `.dockerignore`, avec une syntaxe proche de `.gitignore`, en exclut des fichiers : `node_modules`, `.git`, fichiers `.env`… Le build est plus rapide, le cache n'est pas invalidé par des fichiers inutiles, et on évite qu'un `COPY . .` embarque des secrets dans l'image.",
+      "explanation": "Quand tu lances `docker build .`, Docker envoie d'abord tout le dossier indiqué (le **contexte de build**) au moteur de build. Si ce dossier contient `node_modules` (des centaines de Mo), `.git` ou un fichier `.env` avec des mots de passe, tout est transmis, et un `COPY . .` risque de les embarquer dans l'image. Le fichier `.dockerignore`, de syntaxe proche de `.gitignore`, exclut des fichiers de ce contexte.\n```\nnode_modules\n.git\n.env\n*.log\n```\nRésultat : un build plus rapide, un cache qui n'est pas invalidé par des fichiers inutiles, et pas de secret dans l'image. Il n'agit ni sur les instructions du Dockerfile, ni sur Git (c'est le rôle de `.gitignore`), ni sur l'intérieur du conteneur.",
       "difficulty": 1,
       "source": "https://docs.docker.com/build/concepts/context/"
     },
@@ -919,7 +919,7 @@
         "Repousser les tests après la mise en production",
         "Migrer les serveurs physiques vers le cloud"
       ],
-      "explanation": "Si l'on représente le cycle de vie de gauche (conception, code) à droite (production), **shift left** consiste à déplacer vers la gauche les tests, l'analyse de sécurité et les contrôles qualité : linters et tests dès le poste du développeur ou le commit, analyse des dépendances dans la CI, revue d'architecture en amont. Un défaut trouvé tôt coûte bien moins cher à corriger qu'en production. Le **shift right**, complémentaire, désigne les vérifications en production (canary, chaos engineering, monitoring).",
+      "explanation": "Imagine la vie d'un logiciel comme une ligne qui va de gauche (conception, code) à droite (production). Plus un défaut est découvert à droite, plus il coûte cher à corriger. **Shift left** (« décaler vers la gauche ») consiste à déplacer les tests, l'analyse de sécurité et les contrôles qualité le plus tôt possible : linters et tests dès le commit, analyse des dépendances dans la CI, revue d'architecture avant d'écrire le code.\nExemple : repérer une faille dans une dépendance au moment de la pull request plutôt que lors d'un audit en production. Le **shift right**, complémentaire, désigne les vérifications en production (canary, chaos engineering, monitoring). Rien à voir avec un retour arrière, un report des tests ou une migration vers le cloud.",
       "difficulty": 1
     },
     {
@@ -930,7 +930,7 @@
         "Servir de copie de secours si la production tombe",
         "Stocker les artefacts produits par le pipeline"
       ],
-      "explanation": "La **préproduction** reproduit au plus près la production (même configuration, mêmes versions, données réalistes ou anonymisées) pour y valider une version avant sa mise en service : tests de bout en bout, recette, tests de performance. Plus elle s'écarte de la production, moins elle détecte de problèmes. Une copie prête à reprendre le service relève plutôt du plan de reprise d'activité, et les artefacts sont stockés dans un dépôt ou un registre dédié.",
+      "explanation": "Avant de livrer à de vrais utilisateurs, on veut essayer la nouvelle version quelque part où une erreur ne coûte rien. La **préproduction** (*staging*) est un environnement qui reproduit au plus près la production : même configuration, mêmes versions de logiciels, données réalistes ou anonymisées. On y fait les tests de bout en bout, la recette et les tests de performance.\nExemple : une requête SQL qui marche sur le poste d'un développeur (base récente) échoue en staging, qui utilise la même version de base que la prod, plus ancienne. Mieux vaut l'apprendre là qu'en production. Plus la préproduction s'écarte de la prod, moins elle détecte de problèmes. Une copie de secours relève du plan de reprise d'activité, et les artefacts sont stockés dans un registre dédié.",
       "difficulty": 1
     },
     {
@@ -941,7 +941,7 @@
         "`3.0.0`",
         "`2.4.1.1`"
       ],
-      "explanation": "SemVer utilise le format `MAJEUR.MINEUR.CORRECTIF` : on incrémente le **correctif** pour une correction rétrocompatible (`2.4.2`), le **mineur** pour une nouveauté rétrocompatible (`2.5.0`, en remettant le correctif à zéro) et le **majeur** pour un changement incompatible de l'API (`3.0.0`). Dans un pipeline de release, ce numéro est souvent calculé automatiquement à partir des messages de commit, puis posé en tag Git.",
+      "explanation": "Le **versionnage sémantique** (SemVer) donne un sens à chaque nombre d'une version `MAJEUR.MINEUR.CORRECTIF`, pour que les utilisateurs sachent à quoi s'attendre avant de mettre à jour.\n```\n2.4.1 -> 2.4.2   correction de bug rétrocompatible\n2.4.1 -> 2.5.0   nouveauté rétrocompatible (correctif remis à 0)\n2.4.1 -> 3.0.0   changement incompatible de l'API\n```\nUne simple correction de bug fait donc passer de `2.4.1` à `2.4.2`. `2.4.1.1` n'existe pas en SemVer, qui n'a que trois nombres. Dans un pipeline de release, ce numéro est souvent calculé automatiquement à partir des messages de commit, puis posé en tag Git.",
       "difficulty": 1,
       "source": "https://semver.org/lang/fr/"
     },
@@ -953,7 +953,7 @@
         "Clore l'incident sans rédiger de rapport écrit",
         "Rédiger le rapport avant d'avoir rétabli le service"
       ],
-      "explanation": "Un postmortem **sans reproche** part du principe que chacun a agi au mieux avec les informations dont il disposait : on analyse la chronologie, les causes profondes et les facteurs aggravants (alerte absente, procédure ambiguë, garde-fou manquant), puis on décide d'actions correctives. Si l'on cherche un coupable, les gens cachent leurs erreurs et l'organisation cesse d'apprendre. Cette pratique est au cœur de la culture SRE décrite par Google.",
+      "explanation": "Après un incident (site en panne, données perdues), on rédige un **postmortem** : un compte rendu qui retrace la chronologie, les causes et les actions pour éviter que ça se reproduise. Dans sa version « sans reproche » (*blameless*), on part du principe que chacun a agi au mieux avec ce qu'il savait à ce moment-là, et on cherche les causes **systémiques** : alerte absente, procédure ambiguë, garde-fou manquant.\nExemple : si un ingénieur a supprimé la mauvaise base, la question n'est pas « qui ? » mais « pourquoi la commande permettait-elle de viser la prod sans confirmation ? ». Si l'on cherche un coupable, les gens cachent leurs erreurs et l'organisation cesse d'apprendre. Cette pratique est au cœur de la culture SRE décrite par Google. Le postmortem se rédige par écrit, après le rétablissement du service.",
       "difficulty": 1,
       "source": "https://sre.google/sre-book/postmortem-culture/"
     },
@@ -965,7 +965,7 @@
         "Un StatefulSet",
         "Un ReplicaSet"
       ],
-      "explanation": "Un **DaemonSet** garantit qu'une copie d'un Pod tourne sur chaque nœud (ou sur un sous-ensemble choisi avec un `nodeSelector`) : quand un nœud rejoint le cluster, le Pod y est ajouté automatiquement, et il disparaît avec le nœud. C'est l'objet idéal pour les agents de logs (Fluent Bit), de monitoring (node-exporter) ou réseau. Un **Deployment**, lui, maintient un nombre de réplicas sans se soucier de leur répartition entre les nœuds.",
+      "explanation": "Certains programmes doivent tourner **une fois par machine** : un agent qui collecte les logs, un exportateur de métriques du nœud, un plugin réseau. Un **DaemonSet** garantit qu'une copie du Pod tourne sur chaque nœud du cluster : quand un nouveau nœud rejoint le cluster, le Pod y est ajouté automatiquement, et il disparaît avec le nœud.\n```\nNAME               NODE\nfluent-bit-4xk2p   node-1\nfluent-bit-9qd7m   node-2\n```\nUn Pod par nœud, sans rien configurer à la main. On peut aussi le limiter à certains nœuds avec un `nodeSelector`. Un **Deployment**, lui, maintient un nombre de réplicas sans se soucier de leur répartition : deux Pods pourraient se retrouver sur le même nœud, et un autre nœud n'en recevoir aucun. Un StatefulSet sert aux applications avec état, et un ReplicaSet est géré par un Deployment.",
       "difficulty": 2,
       "source": "https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/"
     },
@@ -977,7 +977,7 @@
         "Un StatefulSet tourne en dehors du réseau du cluster",
         "Seul un StatefulSet peut monter un volume persistant"
       ],
-      "explanation": "Un **StatefulSet** donne à chaque Pod une identité stable : un nom ordonné (`db-0`, `db-1`…), un nom DNS stable via un Service *headless*, et un volume persistant dédié (créé à partir de `volumeClaimTemplates`) qu'il retrouve s'il est recréé. Les Pods sont aussi créés et supprimés dans l'ordre. Un Deployment peut très bien monter un volume persistant, mais ses Pods sont interchangeables, avec des noms aléatoires : il convient aux applications sans état.",
+      "explanation": "Une base de données répliquée ne supporte pas que ses instances soient interchangeables : le réplica `db-1` doit retrouver **ses** données et son rôle après un redémarrage. Un **StatefulSet** donne à chaque Pod une identité stable : un nom ordonné (`db-0`, `db-1`, `db-2`), un nom DNS stable (via un Service *headless*, c'est-à-dire sans IP unique) et un **volume persistant** dédié, créé à partir de `volumeClaimTemplates`.\nExemple : si `db-1` est recréé sur un autre nœud, il garde son nom et rattache de nouveau son propre volume. Les Pods sont aussi créés et supprimés dans l'ordre. Un Deployment peut très bien monter un volume persistant, mais ses Pods sont interchangeables, avec des noms aléatoires : il convient aux applications sans état. Et un StatefulSet redémarre ses Pods comme les autres.",
       "difficulty": 2,
       "source": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/"
     },
@@ -989,7 +989,7 @@
         "Le Cluster Autoscaler",
         "Le kube-scheduler"
       ],
-      "explanation": "Le **HorizontalPodAutoscaler** (HPA) compare régulièrement une métrique (utilisation CPU rapportée aux *requests*, mémoire ou métrique personnalisée) à une cible, et augmente ou réduit le nombre de réplicas entre un minimum et un maximum. Le **VerticalPodAutoscaler** ajuste plutôt les ressources demandées par chaque Pod, et le **Cluster Autoscaler** ajoute ou retire des nœuds quand des Pods ne trouvent pas de place. Un HPA basé sur le CPU exige que les conteneurs déclarent des `requests` CPU.",
+      "explanation": "Quand le trafic augmente, il faut plus de Pods ; quand il baisse, moins, pour économiser. Le **HorizontalPodAutoscaler** (HPA) s'en charge : il compare régulièrement une métrique (utilisation CPU par rapport aux *requests*, mémoire, ou métrique personnalisée) à une cible, et ajuste le nombre de réplicas entre un minimum et un maximum.\nExemple : cible de 70 % de CPU, minimum 2 Pods, maximum 10. Si les Pods dépassent 70 %, le HPA en ajoute, sans dépasser 10 ; quand la charge retombe, il en retire, sans descendre sous 2. À ne pas confondre : le **VerticalPodAutoscaler** change les ressources demandées par chaque Pod (au lieu de leur nombre), le **Cluster Autoscaler** ajoute ou retire des nœuds, et le kube-scheduler place les Pods sur les nœuds. Un HPA basé sur le CPU exige que les conteneurs déclarent des `requests` CPU.",
       "difficulty": 2,
       "source": "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/"
     },
@@ -1001,7 +1001,7 @@
         "Aucun nœud n'a assez de ressources pour l'accueillir",
         "Il attend qu'un volume persistant soit disponible"
       ],
-      "explanation": "`CrashLoopBackOff` indique que le conteneur démarre puis s'arrête en erreur, encore et encore : le kubelet le relance en augmentant le délai entre deux tentatives (*back-off* exponentiel, plafonné). Causes classiques : exception au démarrage, configuration ou secret manquant, liveness probe trop stricte. On diagnostique avec `kubectl logs <pod> --previous` (les logs de l'exécution précédente) et `kubectl describe pod`. Une image introuvable donne plutôt `ImagePullBackOff`, et un manque de ressources laisse le Pod en `Pending`.",
+      "explanation": "Quand un conteneur Kubernetes s'arrête en erreur, le kubelet (l'agent du nœud) le relance. S'il replante, il le relance encore, mais en attendant de plus en plus longtemps entre deux tentatives (*back-off* exponentiel, plafonné). Le statut `CrashLoopBackOff` décrit exactement cela : le conteneur démarre, plante, redémarre, en boucle.\nCauses classiques : exception au démarrage, configuration ou secret manquant, liveness probe trop stricte. Pour diagnostiquer :\n```\nkubectl logs mon-pod --previous\nkubectl describe pod mon-pod\n```\n`--previous` affiche les logs de l'exécution précédente, celle qui a planté. Une image introuvable donne plutôt `ImagePullBackOff`, et un manque de ressources sur les nœuds laisse le Pod en `Pending`.",
       "difficulty": 2,
       "source": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/"
     },
@@ -1013,7 +1013,7 @@
         "`kubectl rollout restart deployment/web`",
         "`kubectl delete deployment/web`"
       ],
-      "explanation": "Chaque modification du modèle de Pod d'un Deployment crée une nouvelle **révision** (un nouveau ReplicaSet, l'ancien étant conservé à 0 réplica). `kubectl rollout undo` revient à la révision précédente, ou à une révision précise avec `--to-revision=N`, et `kubectl rollout history` les liste. `kubectl rollout restart` recrée les Pods avec la même spécification, et `kubectl rollback` n'existe pas. En GitOps, on revient plutôt en arrière dans Git, sinon l'agent réappliquera la version fautive.",
+      "explanation": "Tu viens de déployer une version qui provoque des erreurs : il faut revenir en arrière vite. Chaque modification du modèle de Pod d'un Deployment crée une nouvelle **révision** (un nouveau ReplicaSet, l'ancien étant conservé avec 0 réplica). `kubectl rollout undo` rebascule sur la précédente.\n```\nkubectl rollout history deployment/web\nkubectl rollout undo deployment/web\nkubectl rollout undo deployment/web --to-revision=2\n```\nLa première liste les révisions, la deuxième revient à la précédente, la troisième à une révision précise. `kubectl rollout restart` recrée seulement les Pods avec la même spécification, `kubectl delete` supprimerait tout le Deployment, et `kubectl rollback` n'existe pas. En GitOps, on revient plutôt en arrière dans Git, sinon l'agent réappliquerait la version fautive.",
       "difficulty": 2,
       "source": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#rolling-back-a-deployment"
     },
@@ -1025,7 +1025,7 @@
         "Ils sont déplacés dans un volume anonyme",
         "Ils restent dans `/app/uploads` sur l'hôte"
       ],
-      "explanation": "Tout ce qu'un conteneur écrit hors volume va dans sa **couche inscriptible**, supprimée avec lui ; l'image, en lecture seule, n'est jamais modifiée. Pour persister des données, on monte un **volume** nommé (`-v uploads:/app/uploads`), géré par Docker et indépendant du cycle de vie du conteneur, ou un *bind mount* vers un dossier de l'hôte. Attention : si l'image déclare un `VOLUME` (c'est le cas de l'image officielle `postgres`), Docker crée automatiquement un volume anonyme, qui survit à un `docker rm` lancé sans `-v`.",
+      "explanation": "Une image est en lecture seule. Quand un conteneur démarre, Docker ajoute par-dessus une **couche inscriptible** temporaire, où atterrit tout ce que le conteneur écrit hors volume, y compris dans `/app/uploads`. `docker rm` supprime le conteneur et cette couche avec lui : les fichiers sont perdus. L'image, elle, n'est jamais modifiée.\nPour conserver des données, on monte un **volume**, géré par Docker et indépendant du cycle de vie du conteneur :\n```\ndocker run -v uploads:/app/uploads mon-image\n```\nOu un *bind mount*, qui relie un dossier de l'hôte. Cas particulier : si l'image déclare une instruction `VOLUME` (c'est le cas de l'image officielle `postgres`), Docker crée automatiquement un volume anonyme, qui survit à un `docker rm` lancé sans `-v`. Ici, l'image n'en déclare aucun.",
       "difficulty": 2,
       "source": "https://docs.docker.com/engine/storage/volumes/"
     },
@@ -1037,7 +1037,7 @@
         "`docker`",
         "`daemon`"
       ],
-      "explanation": "Sans instruction `USER` ni option `--user`, le processus tourne en **root** (UID 0) dans le conteneur. Ses privilèges sont réduits par l'isolation, mais c'est le même UID 0 que sur l'hôte : en cas d'évasion du conteneur ou de dossier de l'hôte monté, il agit avec les droits de root. Bonne pratique : créer un utilisateur dédié dans le Dockerfile et basculer dessus avec `USER app`. Docker en mode *rootless* ou le *user namespace remapping* associent aussi ce root à un utilisateur non privilégié de l'hôte.",
+      "explanation": "Un conteneur est isolé, mais il tourne tout de même sur le noyau de la machine hôte. Sans instruction `USER` dans le Dockerfile ni option `--user`, son processus tourne en **root** (UID 0, l'administrateur). Ses privilèges sont réduits par l'isolation, mais c'est le même UID 0 que sur l'hôte : en cas d'évasion du conteneur, ou si un dossier de l'hôte est monté dedans, il agit avec les droits de root.\n```dockerfile\nRUN useradd --create-home app   # image Debian ou Ubuntu\nUSER app\n```\nBonne pratique : créer un utilisateur dédié et basculer dessus. Le mode *rootless* de Docker ou le *user namespace remapping* associent aussi ce root à un utilisateur non privilégié de l'hôte. Ni `nobody`, ni `docker`, ni `daemon` ne sont choisis par défaut.",
       "difficulty": 2,
       "source": "https://docs.docker.com/reference/dockerfile/#user"
     },
@@ -1049,7 +1049,7 @@
         "Conserver les droits d'exécution des fichiers copiés",
         "Copier des fichiers sans créer de nouvelle couche"
       ],
-      "explanation": "Si la source est une archive tar locale (non compressée, ou compressée en gzip, bzip2 ou xz), `ADD app.tar.gz /opt/` en **extrait** le contenu dans le dossier cible ; `ADD` sait aussi télécharger une URL ou cloner un dépôt Git. Ces comportements implicites peuvent surprendre : la documentation de Docker recommande donc `COPY` pour une simple copie, plus explicite. Ni `ADD` ni `COPY` ne peuvent lire un fichier local situé hors du contexte de build, et les deux conservent les permissions des fichiers.",
+      "explanation": "`COPY` et `ADD` copient des fichiers du contexte de build vers l'image, mais `ADD` en fait un peu plus, parfois à l'insu du lecteur. Si la source est une archive tar **locale** (non compressée, ou compressée en gzip, bzip2 ou xz), `ADD` l'**extrait** directement dans la destination.\n```dockerfile\nADD app.tar.gz /opt/\nCOPY app.tar.gz /opt/\n```\nAvec `ADD`, le contenu de l'archive se retrouve dans `/opt/` ; avec `COPY`, l'archive est copiée telle quelle. `ADD` sait aussi télécharger une URL ou cloner un dépôt Git. Comme ces comportements implicites peuvent surprendre, la documentation de Docker recommande `COPY` pour une simple copie. Ni l'un ni l'autre ne peut lire un fichier situé hors du contexte de build, les deux conservent les permissions, et les deux créent une couche.",
       "difficulty": 2,
       "source": "https://docs.docker.com/reference/dockerfile/#add"
     },
@@ -1061,7 +1061,7 @@
         "Un déploiement canary en production",
         "Un environnement de reprise d'activité"
       ],
-      "explanation": "Un **environnement éphémère** (appelé *review app* dans GitLab, *preview deployment* chez d'autres hébergeurs) est créé automatiquement pour une branche ou une merge request, puis détruit à sa fusion ou à sa fermeture. Les relecteurs testent le changement en conditions réelles, isolé des autres travaux, sans se disputer une préproduction partagée. Dans GitLab, on le déclare avec un `environment` dynamique comme `review/$CI_COMMIT_REF_SLUG`, et `on_stop` désigne le job qui le supprime.",
+      "explanation": "Une préproduction partagée devient vite un goulot : chaque équipe attend son tour pour y tester sa branche. Un **environnement éphémère** (*review app* dans GitLab, *preview deployment* chez d'autres hébergeurs) est créé automatiquement pour une branche ou une merge request, puis détruit à sa fusion ou à sa fermeture. Les relecteurs testent le changement en conditions réelles, isolé des autres travaux.\n```yaml\ndeploy-review:\n  script: ./deploy.sh $CI_COMMIT_REF_SLUG\n  environment:\n    name: review/$CI_COMMIT_REF_SLUG\n    url: https://$CI_COMMIT_REF_SLUG.preview.exemple.com\n    on_stop: stop-review\n```\n`on_stop` désigne le job qui supprime l'environnement. Ce n'est ni une préproduction partagée, ni un canary (qui expose une partie des vrais utilisateurs), ni un environnement de reprise d'activité.",
       "difficulty": 2,
       "source": "https://docs.gitlab.com/ci/review_apps/"
     },
@@ -1073,7 +1073,7 @@
         "Les deux conteneurs sont tués puis redémarrés",
         "Les deux Pods sont déplacés vers un nœud moins chargé"
       ],
-      "explanation": "Le CPU est une ressource **compressible** : un conteneur qui atteint sa limite est simplement bridé (*throttling*) par les cgroups, ce qui le ralentit sans le tuer. La mémoire ne l'est pas : au-delà de sa limite, le conteneur est tué par l'OOM killer du noyau et apparaît avec la raison `OOMKilled` (code de sortie 137, soit 128 + 9 pour SIGKILL), puis il est redémarré selon la `restartPolicy`. Kubernetes ne déplace jamais un Pod en cours d'exécution vers un autre nœud : il faudrait le recréer.",
+      "explanation": "Dans Kubernetes, chaque conteneur peut déclarer une **limite** de ressources. Mais CPU et mémoire ne réagissent pas pareil quand on la dépasse. Le CPU est **compressible** : un conteneur qui atteint sa limite est simplement bridé (*throttling*) par les cgroups, le mécanisme de Linux qui plafonne les ressources ; il ralentit, sans être tué. La mémoire ne l'est pas : on ne peut pas « reprendre » de la RAM déjà utilisée, donc au-delà de la limite, le noyau tue le conteneur (c'est l'OOM killer).\n```\nLast State: Terminated\n  Reason: OOMKilled\n  Exit Code: 137\n```\n137 = 128 + 9, soit le signal SIGKILL. Le conteneur est ensuite redémarré selon la `restartPolicy`. Kubernetes ne déplace jamais un Pod en cours d'exécution vers un autre nœud : il faudrait le recréer.",
       "difficulty": 3,
       "source": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
     },
@@ -1085,7 +1085,7 @@
         "Au moins un conteneur définit une request mémoire",
         "Le Pod tourne dans le namespace `kube-system`"
       ],
-      "explanation": "Kubernetes classe les Pods en trois niveaux de qualité de service. **Guaranteed** : chaque conteneur a une request et une limit CPU et mémoire, avec request = limit. **BestEffort** : aucun conteneur n'a de request ni de limit. **Burstable** : tous les autres cas. Quand un nœud manque de mémoire, le kubelet expulse en priorité les Pods qui dépassent leurs requests (les BestEffort en premier) ; les Pods Guaranteed sont les mieux protégés.",
+      "explanation": "Quand un nœud manque de mémoire, Kubernetes doit choisir quels Pods sacrifier. Il se base sur la **classe de QoS** (qualité de service), déduite des `requests` (ressources réservées) et `limits` (plafonds) des conteneurs. **Guaranteed** : chaque conteneur a une request et une limit en CPU et en mémoire, avec request = limit. **BestEffort** : aucun conteneur n'a de request ni de limit. **Burstable** : tous les autres cas.\n```yaml\nresources:\n  requests: { cpu: 500m, memory: 256Mi }\n  limits:   { cpu: 500m, memory: 256Mi }\n```\nSi c'est le cas de tous les conteneurs du Pod, il est Guaranteed. En cas de pénurie, les Pods BestEffort sont expulsés en premier, et les Guaranteed sont les mieux protégés. Le namespace (`kube-system` ou autre) n'influence pas cette classe.",
       "difficulty": 3,
       "source": "https://kubernetes.io/docs/concepts/workloads/pods/pod-qos/"
     },
@@ -1097,7 +1097,7 @@
         "De 8000 à 8999",
         "De 49152 à 65535"
       ],
-      "explanation": "Un Service **NodePort** ouvre le même port sur **tous les nœuds** du cluster et redirige le trafic vers les Pods sélectionnés. Ce port est pris par défaut dans la plage **30000-32767** (modifiable avec l'option `--service-node-port-range` de l'API server), attribué automatiquement ou choisi à la main dans cette plage. En production, on lui préfère souvent un Service `LoadBalancer` ou un Ingress, qui évitent d'exposer des ports élevés sur chaque nœud.",
+      "explanation": "Un Service Kubernetes de type **NodePort** rend une application joignable depuis l'extérieur : il ouvre le même port sur **tous les nœuds** du cluster et redirige le trafic vers les Pods sélectionnés. Ce port est pris par défaut dans la plage **30000-32767** (modifiable avec l'option `--service-node-port-range` de l'API server), attribué automatiquement ou choisi à la main.\n```yaml\nspec:\n  type: NodePort\n  ports:\n    - port: 80\n      nodePort: 30080\n```\nL'application répond alors sur `http://<IP-d-un-nœud>:30080`. En production, on préfère souvent un Service `LoadBalancer` ou un Ingress, pour ne pas exposer de ports élevés sur chaque nœud. Les plages 1024-49151 ou 49152-65535 sont des plages générales de ports TCP, pas celle de Kubernetes.",
       "difficulty": 3,
       "source": "https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport"
     },
@@ -1109,7 +1109,7 @@
         "60 secondes",
         "5 minutes"
       ],
-      "explanation": "Le champ `terminationGracePeriodSeconds` vaut **30 secondes** par défaut. Pendant ce délai, le hook `preStop` s'exécute s'il existe, puis les conteneurs reçoivent SIGTERM et doivent terminer leurs requêtes et fermer leurs connexions ; en parallèle, le Pod est retiré des endpoints des Services. S'ils tournent encore à l'échéance, ils reçoivent SIGKILL. Côté Docker, `docker stop` n'attend que 10 secondes par défaut.",
+      "explanation": "Quand tu supprimes un Pod (ou qu'un déploiement le remplace), Kubernetes ne le coupe pas brutalement : il laisse du temps à l'application pour terminer ses requêtes en cours. Le champ `terminationGracePeriodSeconds` fixe ce délai, **30 secondes** par défaut. Pendant ce temps, le hook `preStop` s'exécute s'il existe, puis les conteneurs reçoivent SIGTERM (« termine-toi ») ; en parallèle, le Pod est retiré de la liste des Pods servis par les Services. S'ils tournent encore à l'échéance, ils reçoivent SIGKILL.\n```yaml\nspec:\n  terminationGracePeriodSeconds: 60\n```\nCe réglage laisse une minute à une application lente à s'arrêter. Côté Docker seul, `docker stop` n'attend que 10 secondes par défaut : ne pas confondre les deux.",
       "difficulty": 3,
       "source": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination"
     },
@@ -1121,7 +1121,7 @@
         "Augmenter `terminationGracePeriodSeconds` à 180",
         "Remplacer le Deployment par un StatefulSet"
       ],
-      "explanation": "Une **startupProbe** vérifie que l'application a fini de démarrer : tant qu'elle n'a pas réussi, les liveness et readiness probes sont désactivées. Avec par exemple `periodSeconds: 10` et `failureThreshold: 18`, l'application dispose de 3 minutes pour démarrer ; ensuite, la liveness probe prend le relais avec ses réglages habituels, réactifs. Gonfler l'`initialDelaySeconds` de la liveness probe fonctionnerait aussi, mais retarderait à chaque démarrage la détection d'un vrai blocage.",
+      "explanation": "Une application Java peut mettre 3 minutes à démarrer. Si la liveness probe (« es-tu encore en vie ? ») commence à tester trop tôt, elle échoue, Kubernetes redémarre le conteneur, et celui-ci n'a jamais le temps de finir de démarrer. La solution : une **startupProbe**, qui vérifie spécifiquement que le démarrage est terminé. Tant qu'elle n'a pas réussi, les liveness et readiness probes sont désactivées.\n```yaml\nstartupProbe:\n  httpGet: { path: /health, port: 8080 }\n  periodSeconds: 10\n  failureThreshold: 18\n```\nIci, 10 s × 18 = 180 s : l'application dispose de 3 minutes. Ensuite, la liveness probe prend le relais avec ses réglages habituels, réactifs. Gonfler l'`initialDelaySeconds` de la liveness marcherait aussi, mais retarderait à chaque démarrage la détection d'un vrai blocage.",
       "difficulty": 3,
       "source": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
     },
@@ -1133,7 +1133,7 @@
         "La forme shell interdit l'usage des variables d'environnement",
         "La forme shell exécute la commande pendant le build"
       ],
-      "explanation": "En forme *shell*, Docker lance `/bin/sh -c \"node server.js\"` : c'est le shell qui devient le **PID 1** du conteneur, et il ne relaie pas les signaux. `docker stop` envoie donc SIGTERM au shell, `node` ne le reçoit jamais et finit tué par SIGKILL au bout du délai de grâce, sans arrêt propre. Cette forme ignore aussi `CMD` et les arguments de `docker run`. La forme *exec* (tableau JSON) lance directement le programme en PID 1 ; en contrepartie, sans shell, une variable comme `$PORT` n'y est pas remplacée.",
+      "explanation": "Un Dockerfile propose deux écritures pour une commande. En forme **exec** (`[\"node\", \"server.js\"]`), Docker lance directement `node`, qui devient le **PID 1** du conteneur. En forme **shell** (`node server.js`), Docker lance `/bin/sh -c \"node server.js\"` : c'est le shell qui est PID 1, et il ne relaie pas les signaux.\nConséquence avec `docker stop` : SIGTERM arrive au shell, `node` ne le reçoit jamais et finit tué par SIGKILL après le délai de grâce, sans arrêt propre (connexions non fermées, écritures perdues). La forme shell ignore aussi `CMD` et les arguments de `docker run`. Les deux formes sont valides et s'exécutent au lancement du conteneur, pas pendant le build. Contrepartie de l'exec : sans shell, une variable comme `$PORT` n'y est pas remplacée.",
       "difficulty": 3,
       "source": "https://docs.docker.com/reference/dockerfile/#entrypoint"
     },
@@ -1145,7 +1145,7 @@
         "Que `api` redémarre automatiquement si `db` s'arrête",
         "Que `api` et `db` tournent dans le même conteneur"
       ],
-      "explanation": "`depends_on` règle l'**ordre de démarrage** : Compose lance `db` avant `api`, mais n'attend que le démarrage du conteneur, pas que PostgreSQL soit prêt à accepter des connexions, ce qui prend quelques secondes. Pour attendre vraiment, on définit un `healthcheck` sur `db` (par exemple avec `pg_isready`) et on écrit `condition: service_healthy` dans la forme longue de `depends_on`. L'application devrait de toute façon savoir réessayer ses connexions, car la base peut redémarrer à tout moment.",
+      "explanation": "Dans un `compose.yaml`, `depends_on` règle l'**ordre de démarrage** : ici, Compose lance le conteneur `db` avant `api`. Mais il n'attend que le démarrage du *conteneur*, pas que PostgreSQL à l'intérieur soit prêt à accepter des connexions, ce qui prend encore quelques secondes. `api` peut donc démarrer et échouer à se connecter. Pour attendre vraiment, on définit un `healthcheck` sur `db` et on utilise la forme longue de `depends_on`.\n```yaml\ndb:\n  healthcheck:\n    test: [\"CMD\", \"pg_isready\", \"-U\", \"postgres\"]\napi:\n  depends_on:\n    db:\n      condition: service_healthy\n```\nL'application devrait de toute façon savoir réessayer ses connexions, car la base peut redémarrer à tout moment. `depends_on` ne relance rien et ne fusionne pas les conteneurs.",
       "difficulty": 3,
       "source": "https://docs.docker.com/compose/how-tos/startup-order/"
     },
@@ -1157,7 +1157,7 @@
         "Arrêter l'ancienne version, puis lancer la migration",
         "Déployer la nouvelle version, puis renommer la colonne"
       ],
-      "explanation": "Pendant un rolling update, un canary ou un blue/green, les deux versions de l'application utilisent la même base : le schéma doit convenir aux deux. Le modèle **expand/contract** (*parallel change*) procède en plusieurs déploiements : on **ajoute** `last_name` et on écrit dans les deux colonnes, on recopie les données existantes, on bascule les lectures, puis on **supprime** `nom` une fois l'ancienne version retirée. Un renommage direct casserait aussitôt les instances encore en ancienne version, et arrêter l'ancienne version imposerait une coupure.",
+      "explanation": "Pendant un rolling update, un canary ou un blue/green, **deux versions** de l'application tournent en même temps sur la **même base**. Le schéma doit donc convenir aux deux. Un `ALTER TABLE ... RENAME COLUMN nom TO last_name` en plein déploiement casserait aussitôt les instances restées en ancienne version, qui cherchent encore `nom`.\nLe modèle **expand/contract** (*parallel change*) procède en plusieurs déploiements :\n```\n1. Expand   : ajouter last_name, écrire dans les deux colonnes\n2. Migrer   : recopier les données existantes\n3. Basculer : lire depuis last_name\n4. Contract : supprimer nom, une fois l'ancienne version retirée\n```\nChaque étape reste compatible avec la version précédente de l'application, donc sans interruption. Arrêter l'ancienne version avant de migrer imposerait une coupure, et renommer après le déploiement casserait la nouvelle version.",
       "difficulty": 3,
       "source": "https://martinfowler.com/bliki/ParallelChange.html"
     },
@@ -1169,7 +1169,7 @@
         "`workflow_run`",
         "`on_demand`"
       ],
-      "explanation": "`workflow_dispatch` ajoute un bouton **Run workflow** dans l'onglet Actions, et permet aussi un déclenchement via l'API ou `gh workflow run`. On peut lui déclarer des `inputs` typés, par exemple l'environnement cible ou un numéro de version, saisis au lancement. `workflow_run`, lui, déclenche un workflow quand un autre workflow a été lancé ou s'est terminé.",
+      "explanation": "Par défaut, un workflow GitHub Actions se lance sur un événement (push, pull request…). Pour pouvoir le lancer **à la main**, par exemple pour un déploiement ponctuel, on ajoute l'événement `workflow_dispatch` sous `on:`. Un bouton **Run workflow** apparaît dans l'onglet Actions ; on peut aussi le déclencher par l'API ou avec `gh workflow run`.\n```yaml\non:\n  workflow_dispatch:\n    inputs:\n      environment:\n        description: Environnement cible\n        default: staging\n```\nLes `inputs` sont saisis au lancement (environnement cible, numéro de version…). `workflow_run`, lui, déclenche un workflow quand un *autre* workflow s'est lancé ou terminé : ce n'est pas un lancement manuel. `manual_trigger` et `on_demand` n'existent pas.",
       "difficulty": 1,
       "source": "https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow"
     },
@@ -1181,7 +1181,7 @@
         "Ajouter `if: github.event.approved` sur le job",
         "Placer le job dans un workflow séparé et privé"
       ],
-      "explanation": "Dans les paramètres du dépôt, on crée un **environment** (par exemple `production`) avec la règle de protection *Required reviewers*. Un job qui déclare `environment: production` se met alors en attente jusqu'à ce qu'un des relecteurs désignés l'approuve. Les secrets de cet environment ne sont accessibles qu'aux jobs qui le référencent, et seulement après cette approbation. `when: manual` est une syntaxe de GitLab CI, inconnue de GitHub Actions.",
+      "explanation": "Pour qu'un humain valide une mise en production, GitHub Actions utilise les **environments**. Dans les paramètres du dépôt, on crée un environment (par exemple `production`) avec la règle de protection *Required reviewers*. Il suffit ensuite que le job le déclare :\n```yaml\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    environment: production\n    steps:\n      - run: ./deploy.sh\n```\nLe job se met alors en attente jusqu'à ce qu'un des relecteurs désignés l'approuve dans l'interface. Les secrets propres à cet environment ne sont accessibles qu'aux jobs qui le référencent, et seulement après cette approbation. `when: manual` est une syntaxe de GitLab CI, inconnue de GitHub Actions, et `if: github.event.approved` ne correspond à rien de réel.",
       "difficulty": 2,
       "source": "https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments"
     },
@@ -1193,7 +1193,7 @@
         "Les deux runs s'exécutent en parallèle",
         "Le nouveau run est annulé, l'ancien continue"
       ],
-      "explanation": "`concurrency` garantit qu'un seul run (ou job) par **groupe** s'exécute à la fois ; ici, le groupe dépend de la branche. Avec `cancel-in-progress: true`, le run en cours est **annulé** dès qu'un nouveau arrive : pratique pour ne tester que le dernier commit poussé. Sans cette option, le nouveau run reste en attente, et par défaut, s'il en arrive un troisième, celui qui attendait est annulé (l'option `queue: max` permet d'en garder plusieurs en file). Pour un déploiement en production, on évite souvent `cancel-in-progress`, qui pourrait l'interrompre en plein milieu.",
+      "explanation": "Si tu pousses deux commits à la suite, le premier run tourne encore quand le second démarre : on perd du temps et des minutes de CI à tester un code déjà dépassé. Le bloc `concurrency` garantit qu'un seul run par **groupe** s'exécute à la fois ; ici, le groupe dépend de la branche (`github.ref`), donc `main` forme un groupe.\n```yaml\nconcurrency:\n  group: ci-${{ github.ref }}\n  cancel-in-progress: true\n```\nAvec `cancel-in-progress: true`, le run en cours est **annulé** dès qu'un nouveau arrive : on ne teste que le dernier commit poussé. Sans cette option, le nouveau run attendrait la fin de l'ancien. Pour un déploiement en production, on évite souvent `cancel-in-progress`, qui pourrait l'interrompre en plein milieu.",
       "difficulty": 3,
       "source": "https://docs.github.com/en/actions/concepts/workflows-and-actions/concurrency"
     }
