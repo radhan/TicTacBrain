@@ -4,5 +4,290 @@
   "icon": "🔋",
   "description": "Résistances, condensateurs, bobines, diodes, LED, transistors, régulateurs : rôle, codes, choix et usages.",
   "order": 2,
-  "questions": []
+  "questions": [
+    {
+      "question": "Une résistance à 4 anneaux porte les couleurs **marron, noir, rouge, or**. Quelle est sa valeur ?",
+      "answer": "1 kΩ à ±5 %",
+      "wrong": [
+        "100 Ω à ±5 %",
+        "10 kΩ à ±5 %",
+        "1,2 kΩ à ±5 %"
+      ],
+      "explanation": "Le code couleur sert à marquer la valeur des résistances traversantes, trop petites pour y imprimer des chiffres. Sur 4 anneaux, les deux premiers sont des **chiffres** et le troisième est le **multiplicateur**, c'est-à-dire le nombre de zéros à ajouter. Ici, marron = 1 et noir = 0 donnent 10 ; rouge = 2 signifie ×10², soit ×100. Résultat : 10 × 100 = **1 000 Ω = 1 kΩ**. Le quatrième anneau, or, indique la tolérance de ±5 %. Le piège 100 Ω vient d'une confusion entre le rouge (×100) et le marron (×10).",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Code_de_couleurs_des_composants"
+    },
+    {
+      "question": "Dans le code couleur des résistances, quelle couleur correspond au chiffre **7** ?",
+      "answer": "Violet",
+      "wrong": [
+        "Bleu",
+        "Gris",
+        "Vert"
+      ],
+      "explanation": "Le code couleur des résistances associe une couleur à chaque chiffre de 0 à 9. L'ordre est : noir 0, marron 1, rouge 2, orange 3, jaune 4, vert 5, bleu 6, **violet 7**, gris 8, blanc 9. Astuce : du rouge au violet, on suit l'ordre de l'arc-en-ciel. Une phrase mnémotechnique aide aussi : « **N**e **M**angez **R**ien **O**u **J**e **V**ous **B**rûle **V**otre **G**rande **B**arbe ». Exemple : jaune-violet-rouge vaut 47 × 100 = 4,7 kΩ, une valeur très courante. Le bleu (6) et le gris (8) encadrent le violet, d'où les confusions fréquentes.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que vaut une résistance marquée **rouge, rouge, or, or** ?",
+      "answer": "2,2 Ω à ±5 %",
+      "wrong": [
+        "22 Ω à ±5 %",
+        "0,22 Ω à ±5 %",
+        "220 Ω à ±5 %"
+      ],
+      "explanation": "Les résistances de quelques ohms, utiles pour limiter ou mesurer un courant, ont besoin d'un multiplicateur inférieur à 1. Quand l'**or** occupe la troisième position, celle du multiplicateur, il vaut **×0,1** ; l'argent vaut ×0,01. Ici, rouge-rouge donne 22, puis 22 × 0,1 = **2,2 Ω**. Le dernier anneau, or lui aussi, est la tolérance : ±5 %, soit une valeur réelle comprise entre 2,09 et 2,31 Ω. Le piège 22 Ω consiste à ignorer le multiplicateur or, comme s'il valait ×1 (ce qui est le rôle du noir).",
+      "difficulty": 2
+    },
+    {
+      "question": "Une résistance de précision à **5 anneaux** est marquée **marron, noir, noir, marron, marron**. Quelle est sa valeur ?",
+      "answer": "1 kΩ à ±1 %",
+      "wrong": [
+        "10 Ω à ±1 %",
+        "10 kΩ à ±1 %",
+        "1,1 kΩ à ±1 %"
+      ],
+      "explanation": "Les résistances de précision (1 % ou mieux) portent 5 anneaux, car deux chiffres ne suffisent plus à exprimer finement leur valeur. Les **trois premiers** anneaux sont des chiffres, le quatrième est le **multiplicateur** et le cinquième la **tolérance**. Ici : marron-noir-noir donne 100, puis marron = ×10, soit **1 000 Ω**. Le dernier marron indique ±1 %, c'est-à-dire entre 990 et 1 010 Ω. Le piège 10 Ω vient d'une lecture « 4 anneaux » : on prend alors le troisième anneau, noir, pour un multiplicateur ×1.",
+      "difficulty": 2
+    },
+    {
+      "question": "Laquelle de ces valeurs fait partie de la série normalisée **E12** de résistances ?",
+      "answer": "4,7 kΩ",
+      "wrong": [
+        "5 kΩ",
+        "4,5 kΩ",
+        "6 kΩ"
+      ],
+      "explanation": "Les fabricants ne produisent pas toutes les valeurs possibles : ils suivent des **séries normalisées**, définies par la norme CEI 60063. La série **E12** compte 12 valeurs par décade : 10, 12, 15, 18, 22, 27, 33, 39, **47**, 56, 68 et 82, puis les mêmes multipliées par 10, 100, 1 000… On trouve donc partout des 4,7 kΩ, mais pas de 5 kΩ. Si un calcul donne 5 kΩ, on prend une valeur voisine (4,7 ou 5,6 kΩ) ou une série plus fine, comme la E24 qui contient 5,1 kΩ. Les valeurs « rondes » comme 5 ou 6 kΩ sont donc des pièges.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/CEI_60063"
+    },
+    {
+      "question": "Pourquoi les valeurs de la série E12 (10, 12, 15, 18, 22…) sont-elles espacées d'un rapport à peu près constant, d'environ 1,21 ?",
+      "answer": "Pour couvrir la décade avec un écart relatif constant, adapté à ±10 %",
+      "wrong": [
+        "Pour que le code couleur tienne toujours sur deux chiffres",
+        "Pour que chaque valeur dissipe la même puissance électrique",
+        "Pour compenser la dérive des résistances en température"
+      ],
+      "explanation": "Les séries E limitent le nombre de valeurs fabriquées tout en couvrant tous les besoins. Pour une résistance, ce qui compte est l'écart **relatif** entre deux valeurs voisines, d'où une progression **géométrique** : chaque valeur vaut environ 1,21 fois la précédente, car 10^(1/12) ≈ 1,21. Avec une tolérance de ±10 %, les plages se rejoignent à peu près : une 10 Ω couvre 9 à 11 Ω, une 12 Ω couvre 10,8 à 13,2 Ω. Le même principe donne la E24 (±5 %) et la E96 (±1 %), au pas plus fin. Le code couleur s'adapte aux valeurs, pas l'inverse.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/CEI_60063"
+    },
+    {
+      "question": "À quoi sert une résistance de 0 Ω sur une carte électronique ?",
+      "answer": "À faire un pont entre deux pistes, posé comme un composant",
+      "wrong": [
+        "À filtrer les parasites haute fréquence de l'alimentation",
+        "À dissiper la chaleur des composants voisins",
+        "À limiter le courant d'appel à la mise sous tension"
+      ],
+      "explanation": "Sur une carte, il faut parfois relier deux points sans fil volant : croiser une piste sur un circuit simple face, ou choisir une option de montage. La résistance de **0 Ω** (en réalité quelques milliohms) n'est qu'un **pont** conducteur. Son intérêt : elle se pose avec les mêmes machines que les autres composants, ce qui évite de souder des fils à la main. Exemple : un fabricant prévoit l'emplacement d'un filtre et y place une 0 Ω tant qu'il n'est pas nécessaire. En version traversante, on la reconnaît à son **unique anneau noir**. Elle ne filtre rien et ne limite aucun courant.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Zero-ohm_link"
+    },
+    {
+      "question": "Une résistance CMS porte le marquage `103`. Quelle est sa valeur ?",
+      "answer": "10 kΩ",
+      "wrong": [
+        "103 Ω",
+        "1 kΩ",
+        "100 kΩ"
+      ],
+      "explanation": "Les résistances CMS (composants montés en surface) sont trop petites pour des anneaux : on y imprime un code à chiffres. Avec 3 chiffres, les deux premiers sont **significatifs** et le troisième donne le **nombre de zéros** à ajouter, exactement comme le multiplicateur du code couleur. Ici : 10 suivi de 3 zéros = 10 000 Ω = **10 kΩ**. Autres exemples : `472` = 4,7 kΩ et `220` = 22 Ω, et non 220 Ω. Le piège 103 Ω consiste à lire le marquage comme un nombre ordinaire, alors que le dernier chiffre n'appartient jamais à la valeur.",
+      "difficulty": 1
+    },
+    {
+      "question": "Comment évolue la résistance d'une thermistance **CTN** quand sa température augmente ?",
+      "answer": "Elle diminue",
+      "wrong": [
+        "Elle augmente",
+        "Elle reste constante",
+        "Elle devient négative"
+      ],
+      "explanation": "Une thermistance est une résistance dont la valeur varie fortement avec la température ; on s'en sert comme capteur de température ou comme protection. **CTN** signifie **coefficient de température négatif** (NTC en anglais) : la résistance **diminue** quand la température monte. Exemple : une CTN « 10 k » vaut 10 kΩ à 25 °C, et environ trois fois moins à 50 °C pour un modèle courant. Le piège « elle devient négative » confond le coefficient et la valeur : c'est le sens de variation qui est négatif, la résistance reste positive. La **CTP** fait l'inverse : sa résistance augmente en chauffant.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Thermistance"
+    },
+    {
+      "question": "Un fusible réarmable de type **polyfuse** (PPTC) est en réalité…",
+      "answer": "Une thermistance CTP dont la résistance s'envole en chauffant",
+      "wrong": [
+        "Un mini-disjoncteur à bilame qui s'ouvre mécaniquement",
+        "Une diode Zener qui court-circuite les surtensions",
+        "Un fusible en verre muni d'un ressort de rappel"
+      ],
+      "explanation": "Un fusible classique fond et doit être remplacé ; un fusible **réarmable** se remet en service tout seul. Le polyfuse est une **CTP**, une résistance à coefficient de température positif, faite d'un polymère chargé de grains de carbone. En cas de surintensité, il chauffe, le polymère se dilate et écarte les grains : la résistance grimpe brutalement et le courant chute à une faible valeur. Une fois le défaut supprimé et le composant refroidi, il redevient conducteur. Exemple : les ports USB d'un ordinateur en sont souvent protégés. Il n'y a ni bilame ni pièce mobile à l'intérieur.",
+      "difficulty": 2,
+      "source": "https://en.wikipedia.org/wiki/Resettable_fuse"
+    },
+    {
+      "question": "Quel est le rôle d'une varistance (MOV) placée en parallèle sur l'entrée secteur d'un appareil ?",
+      "answer": "Écrêter les surtensions en devenant conductrice au-delà d'un seuil",
+      "wrong": [
+        "Limiter le courant d'appel lors de la mise sous tension",
+        "Filtrer les parasites haute fréquence venant du réseau",
+        "Réguler la tension d'alimentation à une valeur fixe"
+      ],
+      "explanation": "Le réseau électrique subit des pics de tension brefs : foudre lointaine, démarrage de moteurs. La **varistance** (VDR, ou MOV pour Metal Oxide Varistor, à base d'oxyde de zinc) protège contre eux. Sous la tension normale, sa résistance est énorme et elle ne fait rien. Au-delà d'un seuil, elle devient brutalement conductrice et absorbe le pic. Exemple : un modèle courant pour le 230 V supporte 275 V efficaces en permanence et commence à conduire vers 430 V, bien au-dessus de la crête normale de 325 V. Elle s'use à chaque gros choc. Limiter le courant d'appel est le rôle d'une CTN, pas d'une varistance.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Varistance"
+    },
+    {
+      "question": "Une résistance de 10 kΩ a un coefficient de température de **100 ppm/°C**. De combien sa valeur varie-t-elle environ si elle s'échauffe de 50 °C ?",
+      "answer": "Environ 50 Ω",
+      "wrong": [
+        "Environ 5 Ω",
+        "Environ 500 Ω",
+        "Environ 5 kΩ"
+      ],
+      "explanation": "Le **coefficient de température** indique de combien la valeur d'une résistance change quand elle chauffe ; il compte beaucoup en mesure de précision. **ppm** signifie « partie par million » : 100 ppm/°C correspondent à 0,01 % par degré. Sur 50 °C d'échauffement, la variation relative vaut 100 × 10⁻⁶ × 50 = 0,005, soit 0,5 %. Sur 10 kΩ, cela fait **50 Ω**. Le piège 500 Ω correspond à une erreur d'un facteur 10 dans la conversion des ppm. Les résistances de précision descendent à quelques ppm/°C, tandis que les modèles à couche de carbone dérivent nettement plus.",
+      "difficulty": 3
+    },
+    {
+      "question": "Une résistance CMS de précision (1 %) porte le marquage EIA-96 `01C`. Quelle est sa valeur ?",
+      "answer": "10 kΩ",
+      "wrong": [
+        "1 kΩ",
+        "100 kΩ",
+        "100 Ω"
+      ],
+      "explanation": "Sur les petites résistances CMS à 1 %, la place manque pour 4 chiffres : on utilise alors le code **EIA-96**, à deux chiffres et une lettre. Les deux chiffres ne sont pas la valeur : c'est un **numéro d'ordre** dans la série E96 (01 → 100, 02 → 102, 03 → 105… 96 → 976). La lettre est un **multiplicateur** : A = ×1, B = ×10, **C = ×100**, D = ×1 000. Ici : 100 × 100 = **10 kΩ**. Autre exemple : `68A` désigne la 68ᵉ valeur, 499, soit 499 Ω. Le piège 100 Ω vient d'une lecture de `01` comme le nombre 1 : 1 × 100 = 100 Ω.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur un condensateur électrolytique aluminium, que signale la bande claire marquée de signes « − » ?",
+      "answer": "La borne négative",
+      "wrong": [
+        "La borne positive",
+        "Le côté à orienter vers le haut",
+        "Le côté de la soupape de sécurité"
+      ],
+      "explanation": "Les condensateurs électrolytiques aluminium offrent de fortes capacités (du microfarad au millifarad), utiles pour filtrer une alimentation. Ils sont **polarisés** : leur sens de branchement est imposé. La bande ornée de signes « − » repère la **borne négative** ; sur un composant neuf, la patte positive est aussi la plus longue. Pourquoi c'est important : leur isolant est une couche d'oxyde extrêmement fine, qui ne se maintient que si l'anode reste plus positive que la cathode. Branché à l'envers, le condensateur chauffe, gonfle et peut éclater. Attention : sur les condensateurs au tantale, la bande marque au contraire le **plus**.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/Condensateur"
+    },
+    {
+      "question": "Un petit condensateur céramique porte le marquage `104`. Quelle est sa capacité ?",
+      "answer": "100 nF",
+      "wrong": [
+        "104 pF",
+        "10 nF",
+        "1 µF"
+      ],
+      "explanation": "Les petits condensateurs céramiques n'ont pas la place d'afficher « 100 nF » : on y imprime un code à 3 chiffres, exprimé en **picofarads** (pF, 10⁻¹² F). Les deux premiers chiffres sont la valeur, le troisième le nombre de zéros. Ici : 10 suivi de 4 zéros = 100 000 pF = **100 nF** = 0,1 µF. C'est la valeur reine du découplage, présente par dizaines sur une carte mère. Autres exemples : `103` = 10 nF, `102` = 1 nF et `220` = 22 pF. Le piège 104 pF vient d'une lecture du code comme un nombre ordinaire.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pourquoi place-t-on un condensateur de 100 nF tout près des broches d'alimentation d'un circuit intégré ?",
+      "answer": "Pour fournir les pics de courant et filtrer les parasites",
+      "wrong": [
+        "Pour limiter le courant consommé par le circuit",
+        "Pour élever la tension d'alimentation du circuit",
+        "Pour protéger le circuit d'une inversion de polarité"
+      ],
+      "explanation": "On parle de condensateur de **découplage**, présent à côté de presque chaque puce. Un circuit numérique consomme son courant par à-coups : à chaque commutation, il réclame des pics très brefs. Les pistes qui viennent de l'alimentation sont trop longues et trop **inductives** (elles freinent les variations rapides de courant) pour les fournir à temps. Le condensateur, placé à quelques millimètres, sert de **réservoir local** et renvoie les parasites haute fréquence vers la masse. Exemple : sans lui, un microcontrôleur peut redémarrer au hasard quand une sortie commute. Il ne limite pas le courant et n'élève aucune tension.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle capacité obtient-on en associant **en série** deux condensateurs de 10 µF ?",
+      "answer": "5 µF",
+      "wrong": [
+        "20 µF",
+        "10 µF",
+        "100 µF"
+      ],
+      "explanation": "Associer des condensateurs permet d'obtenir une valeur ou une tenue en tension qu'on n'a pas sous la main. Leurs règles sont l'inverse de celles des résistances. En **série**, on additionne les inverses : 1/C = 1/C₁ + 1/C₂ = 1/10 + 1/10, donc C = **5 µF**. En **parallèle**, les capacités s'additionnent : on obtiendrait 20 µF. Image intuitive : mettre en série revient à écarter davantage les armatures, ce qui réduit la capacité. Contrepartie utile : la tension se répartit sur les deux, donc deux condensateurs de 16 V en série tiennent environ 32 V (avec des résistances d'équilibrage en pratique).",
+      "difficulty": 1
+    },
+    {
+      "question": "En régime continu établi, comment se comporte un condensateur idéal ?",
+      "answer": "Comme un interrupteur ouvert",
+      "wrong": [
+        "Comme un simple fil",
+        "Comme une résistance de 1 Ω",
+        "Comme une diode passante"
+      ],
+      "explanation": "Un condensateur est fait de deux **armatures** conductrices séparées par un **isolant**. Quand on lui applique une tension continue, un courant circule le temps de le charger, puis s'arrête : une fois chargé, plus aucun courant continu ne le traverse. Il se comporte donc comme un **interrupteur ouvert**. En revanche, il laisse passer les variations, d'autant mieux que la fréquence est élevée. Exemple : en audio, un condensateur de liaison transmet la musique d'un étage à l'autre mais bloque la tension continue. Le piège « simple fil » décrit la bobine, qui fait l'inverse en continu.",
+      "difficulty": 1
+    },
+    {
+      "question": "Que désigne l'**ESR** d'un condensateur électrolytique ?",
+      "answer": "Sa résistance série équivalente interne",
+      "wrong": [
+        "Sa tension maximale en régime de pointe",
+        "Son courant de fuite à la tension nominale",
+        "Sa capacité réelle mesurée à 1 kHz"
+      ],
+      "explanation": "Un condensateur réel n'est pas parfait : ses armatures, ses connexions et son électrolyte ajoutent une petite résistance en série avec la capacité idéale. C'est l'**ESR** (Equivalent Series Resistance), la résistance série équivalente. Elle compte surtout dans les alimentations, où le condensateur encaisse en permanence un courant d'ondulation. Ce courant y dissipe de la chaleur, P = ESR × I² : avec 0,1 Ω et 2 A, cela fait déjà 0,4 W. L'ESR augmente quand l'électrolyte se dessèche avec l'âge, ce qui fait chauffer le condensateur et accélère encore son vieillissement. Un ESR-mètre permet de dépister ces condensateurs fatigués, même quand leur capacité paraît normale.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle fraction de la tension finale un condensateur atteint-il au bout d'une constante de temps τ, lors de sa charge à travers une résistance ?",
+      "answer": "Environ 63 %",
+      "wrong": [
+        "Environ 50 %",
+        "Environ 37 %",
+        "Environ 90 %"
+      ],
+      "explanation": "La charge d'un condensateur à travers une résistance n'est pas linéaire : rapide au début, puis de plus en plus lente, car le courant diminue à mesure que la tension monte. Elle suit u(t) = E × (1 − e^(−t/τ)), où E est la tension d'alimentation et τ = R × C. Pour t = τ, 1 − e⁻¹ ≈ 0,632, soit **environ 63 %**. Exemple : sous 10 V, on lit 6,3 V après τ, 9,5 V après 3 τ et plus de 9,9 V après 5 τ. Le piège 37 % est le chiffre de la **décharge** : après τ, il reste 37 % de la tension de départ.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Circuit_RC"
+    },
+    {
+      "question": "Quelle énergie stocke un condensateur de 1 000 µF chargé sous 12 V ?",
+      "answer": "72 mJ",
+      "wrong": [
+        "144 mJ",
+        "12 mJ",
+        "6 mJ"
+      ],
+      "explanation": "Un condensateur stocke de l'énergie dans le champ électrique entre ses armatures ; c'est ce qui permet au flash d'un appareil photo de délivrer un éclair intense. Cette énergie vaut E = ½ × C × U², en joules, avec C en farads et U en volts. Ici : 0,5 × 0,001 × 12² = 0,5 × 0,001 × 144 = **0,072 J = 72 mJ**. L'énergie grimpe avec le **carré** de la tension : le même condensateur chargé à 24 V stockerait quatre fois plus, 288 mJ. Le piège 144 mJ vient de l'oubli du facteur ½.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pour un filtre ou un oscillateur qui exige une capacité très stable, quel diélectrique céramique faut-il choisir ?",
+      "answer": "C0G (NP0)",
+      "wrong": [
+        "Y5V",
+        "X7R",
+        "Z5U"
+      ],
+      "explanation": "Les condensateurs céramiques se classent selon leur **diélectrique**, l'isolant placé entre les armatures, qui fixe leur stabilité. **C0G**, aussi appelé NP0 (« négatif-positif zéro »), est un diélectrique de **classe 1** : sa capacité varie au plus de ±30 ppm/°C et ne dépend presque pas de la tension appliquée. Les classes 2 et 3 (X7R, Y5V, Z5U) offrent bien plus de capacité dans un petit boîtier, mais varient fortement. Exemple : un Y5V peut perdre jusqu'à 82 % de sa capacité vers 85 °C. Le X7R, plus correct (±15 % de −55 à +125 °C), reste insuffisant pour un oscillateur précis.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle est l'impédance d'un condensateur de 1 µF à la fréquence de 1 kHz ?",
+      "answer": "Environ 159 Ω",
+      "wrong": [
+        "Environ 1 kΩ",
+        "Environ 16 Ω",
+        "Environ 1,6 kΩ"
+      ],
+      "explanation": "En alternatif, un condensateur s'oppose d'autant moins au courant que la fréquence est élevée ; cette opposition s'appelle l'**impédance** (ici une réactance), en ohms. Elle vaut Z = 1 / (2π × f × C). Ici : 1 / (2 × 3,14 × 1 000 × 0,000001) ≈ **159 Ω**. Exemple : à 10 kHz, le même condensateur ne présente plus que 16 Ω, et à 100 Hz il monte à 1,6 kΩ. C'est ce qui permet de filtrer : le condensateur laisse passer les aigus et freine les basses. Le piège 1 kΩ vient de l'oubli du facteur 2π.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi un condensateur céramique de classe 2 (X7R, X5R) de 10 µF peut-il n'offrir qu'une fraction de sa capacité une fois monté ?",
+      "answer": "Sa capacité baisse quand on lui applique une tension continue",
+      "wrong": [
+        "Sa capacité n'est garantie qu'en dessous de 0 °C",
+        "Il perd sa capacité s'il est monté à l'envers",
+        "Sa capacité est divisée par deux dès 1 kHz"
+      ],
+      "explanation": "Les céramiques multicouches de **classe 2** (X7R, X5R) offrent beaucoup de capacité dans un tout petit boîtier, d'où leur succès dans les alimentations. Leur diélectrique, à base de titanate de baryum, est sensible à la **tension continue** qu'on lui applique : c'est l'effet « DC bias ». Plus la tension approche la valeur nominale, plus la capacité chute. Exemple : un 10 µF 6,3 V en petit boîtier peut ne plus valoir que 2 à 4 µF sous 5 V. Il faut lire les courbes du fabricant, ou prendre une tension nominale plus élevée et un boîtier plus gros. Ces condensateurs ne sont pas polarisés : le sens de montage n'y change rien.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel est le principal risque d'un condensateur au tantale classique (au dioxyde de manganèse) ?",
+      "answer": "Il peut s'enflammer en cas de surtension ou de pic de courant",
+      "wrong": [
+        "Il perd toute capacité dès que la température passe sous 0 °C",
+        "Il ne supporte qu'une tension alternative, jamais continue",
+        "Il est trop encombrant pour un montage en surface"
+      ],
+      "explanation": "Les condensateurs au **tantale** offrent une forte capacité, très stable, dans un petit volume ; on les trouve souvent sur les cartes compactes. Leur défaillance typique est le **court-circuit** : un point faible de l'isolant laisse passer le courant, chauffe, et le dioxyde de manganèse libère de l'oxygène qui entretient une combustion. D'où une règle de prudence répandue : ne les utiliser qu'à environ **la moitié** de leur tension nominale et limiter le courant à la mise sous tension. Exemple : sur un rail de 5 V, on choisit un tantale de 10 V. Les versions à polymère conducteur sont moins exposées à ce risque.",
+      "difficulty": 3
+    }
+  ]
 }

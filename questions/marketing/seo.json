@@ -13,7 +13,7 @@
         "Site Engine Optimization",
         "Search Efficiency Operations"
       ],
-      "explanation": "**SEO** signifie *Search Engine Optimization*, soit « optimisation pour les moteurs de recherche ». Il regroupe les techniques visant à améliorer le positionnement d'un site dans les résultats naturels (non payants), par opposition au SEA, qui relève des liens sponsorisés.",
+      "explanation": "**SEO** = *Search Engine Optimization*, « optimisation pour les moteurs de recherche ». Ce sont les techniques qui aident une page à mieux se classer dans les résultats **naturels** de Google, ceux qu'on n'achète pas. À l'inverse, le **SEA** (*Search Engine Advertising*) désigne les annonces payantes, marquées « Annonce » en haut de page.\n\nExemple : un pâtissier lyonnais qui publie une bonne recette de tarte aux pralines et soigne son site fait du SEO. S'il paie Google pour apparaître au-dessus de tout le monde sur « pâtisserie Lyon », c'est du SEA. Le SEO demande du temps, mais une page bien placée apporte du trafic sans payer chaque clic.",
       "difficulty": 1
     },
     {
@@ -24,7 +24,7 @@
         "L'algorithme de classement de Google",
         "Le protocole d'échange entre robots d'indexation"
       ],
-      "explanation": "**SERP** = *Search Engine Results Page*, la page de résultats renvoyée pour une requête. Elle mêle résultats naturels, annonces et éléments enrichis (images, FAQ, knowledge panel). Y apparaître en bonne position est l'objectif du SEO.",
+      "explanation": "**SERP** = *Search Engine Results Page* : c'est la page que Google affiche après une recherche. Elle ne contient pas que dix liens bleus : on y trouve des annonces, des résultats naturels, des images, des questions fréquentes, des notes en étoiles, ou un *knowledge panel* (la fiche d'information sur une personne, un lieu ou une marque connus).\n\nExemple : tape « recette quiche lorraine ». Tu verras peut-être une annonce, des vidéos, puis des blogs de cuisine avec la note et le temps de préparation. Le but du SEO est d'apparaître haut dans cette page, ou d'y obtenir un affichage enrichi. La SERP n'est donc ni un score ni un algorithme : c'est simplement l'écran de résultats.",
       "difficulty": 1
     },
     {
@@ -35,7 +35,7 @@
         "Un lien de votre site vers une source externe",
         "Un lien marqué en `nofollow` dans votre menu"
       ],
-      "explanation": "Un **backlink** est un lien entrant : un autre site pointe vers une de vos pages. Perçu comme un vote de confiance, il est un pilier du SEO off-page (netlinking). Sa valeur dépend de la qualité et de la thématique du site source, pas seulement du nombre de liens.",
+      "explanation": "Un **backlink** est un lien placé sur un autre site qui pointe vers l'une de tes pages. Pour Google, c'est une sorte de recommandation : si un site sérieux te cite, ton contenu mérite probablement le détour.\n\nExemple : un magazine de randonnée écrit « nous avons testé ces chaussures » avec un lien vers ta fiche produit. C'est un backlink. Un lien de ta page d'accueil vers ta page contact est un lien **interne**, et un lien de ton site vers Wikipédia est un lien **sortant**.\n\nLe nombre compte moins que la qualité : un lien d'un site reconnu et sur le même sujet vaut souvent plus que cent liens d'annuaires sans intérêt. Chercher à obtenir ces liens s'appelle le **netlinking**.",
       "difficulty": 1
     },
     {
@@ -46,7 +46,7 @@
         "Résumer la page pour le partage sur les réseaux sociaux",
         "Indiquer la langue principale du document"
       ],
-      "explanation": "La balise `<title>` définit le titre de l'onglet et, surtout, le titre cliquable dans la SERP. C'est un facteur de positionnement et de taux de clic important. À ne pas confondre avec le `<h1>`, qui est le titre visible dans le corps de la page.",
+      "explanation": "La balise `<title>`, placée dans le `<head>` de la page, définit le titre de l'onglet du navigateur et surtout le **titre bleu cliquable** dans les résultats Google. Elle pèse sur le classement et sur le taux de clic.\n```html\n<title>Chaussures de trail femme : guide d'achat | TrailShop</title>\n```\nOn met le sujet principal en premier et on reste court (environ 60 caractères, au-delà Google peut raccourcir l'affichage).\n\nNe la confonds pas avec le `<h1>`, le titre affiché **dans** la page : les deux peuvent être différents. L'aperçu sur les réseaux sociaux repose sur d'autres balises (Open Graph) et la langue se déclare avec l'attribut `lang`.",
       "difficulty": 1
     },
     {
@@ -57,7 +57,7 @@
         "Lister les balises `Hn` présentes sur la page",
         "Déclarer l'URL canonique de la page"
       ],
-      "explanation": "La meta description est un court résumé qui peut servir d'extrait (*snippet*) sous le titre dans les résultats. Ce n'est pas un facteur de classement direct, mais une description claire et incitative améliore le taux de clic. Google peut toutefois la réécrire.",
+      "explanation": "La meta description est un court résumé placé dans le `<head>` :\n```html\n<meta name=\"description\" content=\"Comparatif de 12 chaussures de trail femme : adhérence, poids, prix. Livraison offerte dès 60 €.\">\n```\nGoogle peut l'afficher sous le titre, comme petit extrait (*snippet*). Ce n'est pas un facteur de classement direct : elle ne te fait pas monter, mais un texte clair qui donne envie de cliquer augmente le taux de clic. Google reste libre de la remplacer par un passage de la page s'il répond mieux à la recherche.\n\nElle ne sert ni à imposer un mot-clé ni à déclarer l'URL canonique, qui s'indique avec `<link rel=\"canonical\">`.",
       "difficulty": 1
     },
     {
@@ -68,7 +68,7 @@
         "Empêcher de façon garantie l'indexation des pages sensibles",
         "Rediriger les anciennes URL vers les nouvelles"
       ],
-      "explanation": "`robots.txt` donne des directives d'exploration (`Disallow`, `Allow`) aux robots. Il contrôle le crawl, pas l'indexation : une page bloquée au crawl peut tout de même apparaître dans les résultats si elle est liée ailleurs. Pour empêcher l'indexation, on utilise `noindex`.",
+      "explanation": "Le `robots.txt` est un fichier texte public, à la racine (`https://www.exemple.fr/robots.txt`), qui dit aux **robots** (programmes qui explorent le web, ou *crawlers*) où ils peuvent aller.\n```\nUser-agent: *\nDisallow: /panier/\nSitemap: https://www.exemple.fr/sitemap.xml\n```\n`User-agent: *` vise tous les robots, `Disallow` leur demande de ne pas explorer ce dossier.\n\nAttention : il contrôle l'**exploration**, pas l'**indexation**. Une page bloquée peut quand même apparaître dans Google (juste son adresse) si d'autres sites la citent. Pour l'exclure des résultats, on utilise `noindex`, et la page doit rester explorable pour que Google le lise. Le fichier étant public, il ne protège rien de secret.",
       "difficulty": 1
     },
     {
@@ -79,7 +79,7 @@
         "Préciser le format de compression de l'image",
         "Rendre l'image cliquable vers une autre page"
       ],
-      "explanation": "L'attribut `alt` fournit un texte alternatif décrivant l'image. Il est lu par les lecteurs d'écran (accessibilité), s'affiche si l'image ne charge pas, et aide les moteurs à comprendre l'image, notamment pour le référencement dans Google Images.",
+      "explanation": "L'attribut `alt` donne une description textuelle de l'image :\n```html\n<img src=\"trail-x-bleue.jpg\" alt=\"Chaussure de trail Trail X bleue, vue de profil\">\n```\nCe texte est lu à voix haute par les lecteurs d'écran (accessibilité pour les personnes aveugles ou malvoyantes), s'affiche à la place de l'image si elle ne charge pas, et aide Google à comprendre ce que montre l'image, par exemple pour Google Images.\n\nUn bon `alt` décrit simplement l'image, sans bourrage de mots-clés du genre « chaussure trail pas cher chaussure trail femme ». Les dimensions se règlent avec `width` et `height`, et un lien cliquable avec une balise `<a>`.",
       "difficulty": 1
     },
     {
@@ -90,7 +90,7 @@
         "Une mise en cache plus longue dans le navigateur",
         "Une exploration plus fréquente par les robots"
       ],
-      "explanation": "Le **HTTPS** chiffre les données échangées grâce à TLS, assurant confidentialité et intégrité. Google en a fait un léger signal de classement, et les navigateurs signalent les pages HTTP comme « non sécurisées », ce qui en fait un standard attendu.",
+      "explanation": "En **HTTP**, les données circulent en clair : sur un Wi-Fi public, quelqu'un peut lire ou modifier ce qui passe entre ton navigateur et le site. Le **HTTPS** ajoute un **chiffrement** (TLS, *Transport Layer Security*) grâce à un certificat installé sur le serveur : personne ne peut lire les échanges (confidentialité) ni les altérer en route (intégrité).\n\nExemple : sur `https://boutique.exemple.fr/paiement`, ton numéro de carte est chiffré avant de quitter ton navigateur. Les navigateurs signalent les pages HTTP comme « non sécurisées », et Google tient compte du HTTPS comme d'un léger signal de classement.\n\nLe HTTPS ne compresse rien et n'allonge pas le cache. Lors d'une migration, on redirige l'ancien `http://` vers `https://` en 301.",
       "difficulty": 1
     },
     {
@@ -101,7 +101,7 @@
         "Le premier paragraphe du texte",
         "Le libellé du lien dans le menu de navigation"
       ],
-      "explanation": "La balise `<h1>` marque le titre principal visible dans le corps de la page et structure le contenu avec les `<h2>`, `<h3>`, etc. Elle aide moteurs et utilisateurs à saisir le sujet. Le titre de l'onglet et de la SERP relève, lui, de la balise `<title>`.",
+      "explanation": "Le `<h1>` est le **titre principal du contenu**, celui qu'on voit en haut de la page, comme le titre d'un chapitre. Les `<h2>`, `<h3>`… sont les sous-parties.\n```html\n<h1>Comment choisir ses chaussures de trail</h1>\n<h2>L'adhérence de la semelle</h2>\n<h2>L'amorti et le drop</h2>\n```\nCette hiérarchie aide les lecteurs d'écran et les moteurs à saisir le plan et le sujet de la page. En général, on garde un seul `<h1>` par page.\n\nPiège : le titre de l'onglet et le titre bleu dans Google viennent de la balise `<title>`, pas du `<h1>`. Le premier paragraphe est une balise `<p>`, et le menu utilise des liens `<a>`.",
       "difficulty": 1
     },
     {
@@ -112,7 +112,7 @@
         "Améliorer le maillage interne entre vos pages",
         "Réduire le temps de chargement de vos pages"
       ],
-      "explanation": "Le SEO **off-page** regroupe les leviers extérieurs au site, dominés par le netlinking (acquisition de backlinks). Les balises, le maillage interne et la performance relèvent du SEO **on-page**, réalisé directement sur vos propres pages.",
+      "explanation": "Le SEO se divise en deux familles. Le **on-page** regroupe ce que tu modifies sur ton propre site : textes, balises, vitesse, liens internes. Le **off-page** regroupe ce qui se passe ailleurs, surtout les liens d'autres sites vers le tien.\n\nExemple pour une boutique de chaussures : réécrire les `<title>` de tes fiches produit, ajouter des liens vers tes catégories ou compresser tes images, c'est du on-page. Convaincre un blog de running de tester tes chaussures et de mettre un lien vers ta boutique, c'est du **netlinking**, donc de l'off-page : tu cherches à obtenir des **backlinks** (liens entrants).\n\nLe maillage interne et le temps de chargement paraissent « techniques », mais ils se règlent sur ton site : ils sont donc on-page.",
       "difficulty": 2
     },
     {
@@ -123,7 +123,7 @@
         "La 301 conserve l'ancienne URL, la 302 la supprime",
         "La 301 concerne les pages, la 302 les images"
       ],
-      "explanation": "Une **301** signale un déplacement permanent : les moteurs transfèrent l'URL et le « jus » de lien vers la nouvelle adresse. Une **302** indique un déplacement temporaire et conserve l'ancienne URL dans l'index. Pour un changement définitif, on utilise donc la 301.",
+      "explanation": "Une redirection dit au navigateur ou au robot : « cette adresse a changé, va voir ailleurs ». Le code indique si c'est définitif ou non.\n```\nlocation = /ancienne-page {\n  return 301 https://www.exemple.fr/nouvelle-page;\n}\n```\nLa **301** (*Moved Permanently*) signifie « c'est définitif » : Google remplace l'ancienne URL par la nouvelle dans ses résultats et lui transmet l'essentiel de la popularité acquise. La **302** (*Found*) signifie « c'est provisoire » : l'ancienne URL reste la référence.\n\nExemple : tu changes de nom de domaine ou tu refais tes URL, donc 301. Une page en maintenance pendant deux jours ou une offre temporaire, donc 302. Ne les inverse pas : c'est bien la 301 qui est permanente.",
       "difficulty": 2
     },
     {
@@ -134,7 +134,7 @@
         "Forcer une redirection côté serveur vers une autre page",
         "Déclarer la langue et le pays ciblés par la page"
       ],
-      "explanation": "La balise canonique indique aux moteurs quelle URL considérer comme la version principale parmi des contenus dupliqués (paramètres d'URL, pagination…). Elle consolide les signaux sur une seule page sans rediriger l'internaute. Le blocage d'indexation se fait avec `noindex`, le ciblage langue/pays avec `hreflang`.",
+      "explanation": "Sur un site e-commerce, la même fiche peut exister sous plusieurs URL :\n```\n/chaussures/trail-x\n/chaussures/trail-x?couleur=bleu\n/chaussures/trail-x?utm_source=newsletter\n```\nPour Google, c'est du contenu dupliqué : laquelle classer ? La balise canonique, placée dans le `<head>` de chaque variante, désigne la version de référence :\n```html\n<link rel=\"canonical\" href=\"https://www.exemple.fr/chaussures/trail-x\">\n```\nGoogle regroupe alors les signaux (liens, etc.) sur cette URL. C'est une indication, pas un ordre. Contrairement à une redirection, l'internaute reste sur la page qu'il a ouverte. Elle n'empêche pas l'indexation (c'est `noindex`) et ne gère pas la langue (c'est `hreflang`).",
       "difficulty": 2
     },
     {
@@ -145,7 +145,7 @@
         "`noindex` cible les images, `nofollow` cible le texte",
         "Les deux empêchent exactement la même chose"
       ],
-      "explanation": "`noindex` demande d'exclure la page des résultats de recherche. `nofollow` demande aux robots de ne pas suivre les liens de la page. Les deux peuvent se combiner, mais agissent sur des choses distinctes : l'indexation d'un côté, le suivi des liens de l'autre.",
+      "explanation": "Ces deux consignes se placent dans la balise meta robots, dans le `<head>` de la page :\n```html\n<meta name=\"robots\" content=\"noindex, nofollow\">\n```\n`noindex` demande à Google de **ne pas afficher la page dans ses résultats** (ne pas l'indexer). `nofollow` demande de **ne pas suivre les liens** qu'elle contient.\n\nExemple : une page « Merci pour votre commande » n'a aucun intérêt dans Google, donc `noindex`. Une page de commentaires non modérés dont tu ne veux pas cautionner les liens peut recevoir `nofollow`. On peut combiner les deux, ou n'en mettre qu'un.\n\nPiège : `noindex` ne « bloque pas le crawl ». Le robot doit lire la page pour voir la consigne. Bloquer l'exploration, c'est le rôle du `robots.txt`.",
       "difficulty": 2
     },
     {
@@ -156,7 +156,7 @@
         "Garantir la première position des pages listées",
         "Accélérer le chargement des pages du site"
       ],
-      "explanation": "Le `sitemap.xml` fournit aux moteurs une liste structurée des URL importantes du site, facilitant leur découverte, utile pour les grands sites ou les pages peu liées. Il aide à l'exploration mais ne garantit ni l'indexation ni le classement.",
+      "explanation": "Le `sitemap.xml` est le **plan du site** que l'on donne aux moteurs : une liste d'URL qu'on aimerait voir explorées.\n```xml\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url>\n    <loc>https://www.exemple.fr/blog/choisir-chaussures-trail</loc>\n    <lastmod>2025-03-12</lastmod>\n  </url>\n</urlset>\n```\nOn le déclare dans la Search Console ou dans le `robots.txt` (`Sitemap: https://www.exemple.fr/sitemap.xml`). Il est surtout utile pour un site neuf, un gros catalogue ou des pages peu liées entre elles.\n\nIl aide à **découvrir** les pages, sans garantir ni leur indexation ni leur classement. Il n'interdit rien (c'est le rôle du `robots.txt`) et n'accélère pas le chargement.",
       "difficulty": 2
     },
     {
@@ -167,7 +167,7 @@
         "Navigationnelle",
         "Commerciale d'investigation"
       ],
-      "explanation": "Le verbe « acheter » et le critère de prix traduisent une intention **transactionnelle** : l'internaute veut effectuer un achat. L'intention informationnelle cherche à savoir, la navigationnelle vise un site précis, la commerciale d'investigation compare avant d'acheter.",
+      "explanation": "L'**intention de recherche** est ce que l'internaute veut vraiment faire. Il existe quatre grands types : **informationnelle** (savoir, par exemple « comment choisir ses chaussures de running »), **navigationnelle** (atteindre un site précis, « nike connexion »), **commerciale d'investigation** (comparer avant d'acheter, « meilleures chaussures running comparatif ») et **transactionnelle** (acheter, « acheter chaussures running pas cher »).\n\nIci, le verbe « acheter » et l'envie d'un prix bas montrent que la personne est prête à passer commande. Une page de conseils ne répondra pas bien à cette recherche : il faut une catégorie ou une fiche produit avec prix et bouton d'achat. Adapter la page à l'intention est l'un des leviers majeurs du SEO.",
       "difficulty": 2
     },
     {
@@ -178,7 +178,7 @@
         "Les requêtes contenant une faute d'orthographe",
         "Les pages les plus profondes dans l'arborescence du site"
       ],
-      "explanation": "La **longue traîne** regroupe les requêtes spécifiques à faible volume unitaire (ex. « chaussures running femme pieds larges »). Peu concurrentielles et souvent mieux converties, leur somme pèse lourd dans le trafic total, d'où leur intérêt stratégique.",
+      "explanation": "Quand on classe les requêtes par nombre de recherches, quelques-unes très populaires (« chaussures ») forment la « tête », suivies d'une très longue queue de requêtes rares mais précises : c'est la **longue traîne**.\n\nExemple : « chaussures de trail femme pieds larges drop 4 mm » est tapée par très peu de gens chaque mois. Mais ceux-là savent exactement ce qu'ils cherchent, et la concurrence est faible. Imaginons 200 requêtes de ce genre à 10 recherches par mois chacune : cela fait 2 000 recherches, autant qu'un mot-clé populaire tapé 2 000 fois, avec plus de chances de décrocher la première place et de convertir.\n\nLes mots-clés les plus recherchés d'un marché forment la tête de traîne, pas la longue traîne.",
       "difficulty": 2
     },
     {
@@ -189,7 +189,7 @@
         "Empêcher l'indexation des pages secondaires",
         "Réduire le poids des images du site"
       ],
-      "explanation": "Le maillage interne consiste à créer des liens entre les pages d'un même site. Il aide les robots à explorer le site, transmet de la popularité (*link juice*) vers les pages importantes et améliore la navigation. Les liens venant d'autres sites relèvent, eux, du netlinking.",
+      "explanation": "Le **maillage interne** désigne les liens d'une page de ton site vers une autre page du **même** site.\n```html\n<p>Avant de partir, lis notre <a href=\"/blog/choisir-chaussures-trail\">guide pour choisir ses chaussures de trail</a>.</p>\n```\nLes robots découvrent les pages en suivant des liens : une page sans aucun lien entrant (page « orpheline ») est difficile à trouver. Les liens servent aussi à faire circuler la popularité (*link juice*) vers les pages importantes.\n\nExemple : un article de blog qui a reçu beaucoup de liens externes renvoie vers ta catégorie « chaussures de trail » et lui transmet une partie de sa force. Le texte du lien (l'ancre) doit décrire la page visée, par exemple « guide des chaussures de trail » plutôt que « cliquez ici ». Les liens venant d'autres sites relèvent du netlinking.",
       "difficulty": 2
     },
     {
@@ -200,7 +200,7 @@
         "Google n'affiche de résultats qu'aux utilisateurs sur mobile",
         "Google classe systématiquement les sites mobiles avant ceux de bureau"
       ],
-      "explanation": "Avec l'**indexation mobile-first**, Google s'appuie principalement sur la version mobile d'une page pour l'indexer et la classer, y compris pour les recherches sur ordinateur. D'où l'importance d'un site responsive dont la version mobile contient le même contenu que la version bureau.",
+      "explanation": "Autrefois, Google jugeait un site surtout d'après sa version ordinateur. Avec l'**indexation mobile-first**, il explore et évalue d'abord la version **mobile** d'une page, y compris pour classer les recherches faites sur ordinateur.\n\nExemple : ta fiche produit affiche sur ordinateur une description de 10 lignes, des avis clients et un tableau des tailles, mais ta version mobile ne garde que deux lignes. Google ne verra que cette version réduite, et ton classement peut en pâtir. L'idéal est un site **responsive** (la même page s'adapte à la taille de l'écran) avec le même contenu, les mêmes titres et les mêmes données structurées sur mobile et sur ordinateur.\n\nCela ne veut pas dire que Google préfère les sites mobiles, ni qu'une application est exigée.",
       "difficulty": 2
     },
     {
@@ -211,7 +211,7 @@
         "Mesurer le temps de chargement de la page",
         "Comptabiliser le nombre de visites mensuelles de la page"
       ],
-      "explanation": "Le **PageRank**, nommé d'après Larry Page, modélise les liens comme des votes : une page est jugée importante si elle reçoit beaucoup de liens, surtout depuis des pages elles-mêmes importantes. Ce principe de « popularité par les liens » a fondé l'approche de Google.",
+      "explanation": "Le **PageRank** a été imaginé à la fin des années 1990 par Larry Page et Sergey Brin, les fondateurs de Google (le nom vient de Larry Page). L'idée : un lien d'une page A vers une page B est un **vote** pour B. Mais tous les votes ne pèsent pas pareil : un lien venu d'une page elle-même très citée compte davantage.\n\nAnalogie : en recherche scientifique, un article cité par des chercheurs reconnus est jugé plus crédible qu'un article cité par des inconnus.\n\nExemple : une page citée par un grand quotidien et quelques sites de référence vaut plus que 50 liens venus de pages vides. Aujourd'hui, le PageRank n'est qu'un signal parmi beaucoup d'autres. Il ne repose ni sur la densité d'un mot-clé, ni sur le temps de chargement, ni sur les visites.",
       "difficulty": 2
     },
     {
@@ -222,7 +222,7 @@
         "Le délai de réponse à la première interaction",
         "Le nombre total de requêtes réseau de la page"
       ],
-      "explanation": "Le **LCP** mesure le temps nécessaire pour afficher le plus grand élément de contenu visible (image, bloc de texte) dans la fenêtre. C'est un indicateur de vitesse de chargement perçue ; selon web.dev, un bon LCP se situe à 2,5 secondes ou moins.",
+      "explanation": "Les **Core Web Vitals** sont trois mesures de l'expérience sur une page : le chargement (**LCP**), la réactivité (INP) et la stabilité visuelle (CLS).\n\nLe **LCP** (*Largest Contentful Paint*) chronomètre l'affichage du plus gros élément visible à l'écran, souvent une grande image d'en-tête ou un gros titre. Selon web.dev, un bon LCP est de 2,5 secondes ou moins.\n\nExemple : ta fiche produit affiche une photo de 3 Mo qui met 4 s à apparaître, le LCP est mauvais. On l'améliore en compressant l'image (WebP, AVIF) et en la priorisant :\n```html\n<img src=\"hero.webp\" width=\"1200\" height=\"600\" fetchpriority=\"high\" alt=\"Chaussure Trail X\">\n```\nLa stabilité de la mise en page, c'est le CLS, et le délai de réaction, l'INP.",
       "difficulty": 2,
       "source": "https://web.dev/articles/lcp"
     },
@@ -234,7 +234,7 @@
         "0,3 %",
         "30 %"
       ],
-      "explanation": "Le CTR se calcule ainsi : clics ÷ impressions × 100 = 60 ÷ 2000 × 100 = **3 %**. Ce taux mesure la proportion d'internautes qui cliquent après avoir vu le résultat ; un titre et une description soignés contribuent à l'améliorer.",
+      "explanation": "Le **CTR** (*Click-Through Rate*, taux de clic) est la part des personnes qui ont vu ton résultat et ont cliqué dessus :\n\nCTR = clics ÷ impressions × 100 = 60 ÷ 2 000 × 100 = **3 %**.\n\nUne **impression** est un affichage de ton résultat dans la SERP, qu'il soit cliqué ou non. Les autres réponses correspondraient à d'autres nombres de clics : 6 % ferait 120 clics, 0,3 % seulement 6, et 30 % pas moins de 600.\n\nExemple concret : si tu réécris ton titre et ta description pour qu'ils donnent plus envie, et que le CTR passe à 4 %, tu obtiens 80 clics au lieu de 60 sans changer de position. Ces chiffres sont visibles dans la Google Search Console.",
       "difficulty": 2
     },
     {
@@ -245,7 +245,7 @@
         "La réactivité de la page aux interactions de l'utilisateur",
         "La consommation mémoire de la page"
       ],
-      "explanation": "Le **CLS** quantifie les décalages de mise en page imprévus (une image ou une publicité qui pousse le contenu pendant le chargement). Il reflète la stabilité visuelle perçue ; selon web.dev, un bon score est de 0,1 ou moins. On l'améliore en réservant l'espace des médias et contenus injectés.",
+      "explanation": "Le **CLS** (*Cumulative Layout Shift*) mesure les décalages visuels imprévus de la page pendant qu'elle se charge.\n\nScène vécue : tu lis un article, tu vas toucher un lien, et une pub s'affiche au-dessus et pousse tout le texte vers le bas. Tu cliques sur le mauvais élément. C'est exactement ce que le CLS sanctionne. Le score n'a pas d'unité, et selon web.dev, un bon CLS est de 0,1 ou moins.\n\nLa cause classique : des images sans dimensions déclarées. En précisant `width` et `height`, le navigateur réserve la place avant même le téléchargement :\n```html\n<img src=\"banniere.jpg\" width=\"1200\" height=\"400\" alt=\"Soldes d'été\">\n```\nMême principe pour les publicités et les bandeaux injectés après coup. La vitesse d'affichage relève du LCP, la réactivité de l'INP.",
       "difficulty": 3,
       "source": "https://web.dev/articles/cls"
     },
@@ -257,7 +257,7 @@
         "FCP (First Contentful Paint)",
         "TBT (Total Blocking Time)"
       ],
-      "explanation": "Depuis mars 2024, l'**INP** (*Interaction to Next Paint*) a remplacé le FID comme Core Web Vital de réactivité. L'INP évalue la latence de l'ensemble des interactions d'une visite, là où le FID ne mesurait que la première. TTFB, FCP et TBT restent utiles mais ne sont pas des Core Web Vitals.",
+      "explanation": "Depuis mars 2024, Google a retiré le **FID** de ses Core Web Vitals pour mettre l'**INP** (*Interaction to Next Paint*) à la place. Ces deux mesures concernent la réactivité d'une page.\n\nLe FID ne regardait que le **délai** avant la réaction à la toute première interaction. L'INP observe toutes les interactions (clics, touches, appuis) pendant la visite et retient une valeur proche de la plus lente, jusqu'à l'affichage du résultat. Selon web.dev, un bon INP est de 200 ms ou moins.\n\nExemple : sur une page de boutique, tu cliques sur le filtre « taille 42 » et la liste met 600 ms à se mettre à jour à cause d'un JavaScript trop lourd. L'INP est mauvais. TTFB, FCP et TBT sont de bons outils de diagnostic, mais ne font pas partie des Core Web Vitals.",
       "difficulty": 3,
       "source": "https://web.dev/articles/inp"
     },
@@ -269,7 +269,7 @@
         "RDFa",
         "XML Sitemap"
       ],
-      "explanation": "Google recommande le **JSON-LD** : un bloc `<script type=\"application/ld+json\">` ajouté au code, sans toucher au HTML visible. Microdata et RDFa restent compris mais s'entremêlent au balisage. Les données structurées permettent d'obtenir des résultats enrichis (étoiles, FAQ, recettes…) dans la SERP.",
+      "explanation": "Les **données structurées** sont des étiquettes lisibles par les machines qui précisent à Google ce que contient la page (un produit, une recette, un événement). **schema.org** est le vocabulaire commun utilisé pour ces étiquettes. Bien balisées, elles peuvent donner des résultats enrichis (étoiles, prix, FAQ), sans garantie d'affichage.\n\nGoogle recommande le **JSON-LD** : un bloc séparé, ajouté sans toucher au HTML visible.\n```html\n<script type=\"application/ld+json\">\n{\"@context\":\"https://schema.org\",\"@type\":\"Product\",\n \"name\":\"Chaussures Trail X\",\n \"aggregateRating\":{\"@type\":\"AggregateRating\",\"ratingValue\":\"4.6\",\"reviewCount\":\"128\"}}\n</script>\n```\nMicrodata et RDFa fonctionnent aussi, mais mêlent les attributs au HTML, ce qui les rend plus lourds à maintenir. Le sitemap XML n'est pas un format de données structurées.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data"
     },
@@ -281,7 +281,7 @@
         "Le nombre maximal de backlinks tolérés vers un site",
         "Le délai avant qu'une nouvelle page ne soit classée"
       ],
-      "explanation": "Le **crawl budget** est la quantité de ressources (pages explorées) qu'un moteur consacre à un site sur une période, selon sa taille, sa santé technique et sa popularité. Il devient un enjeu sur les très gros sites, où l'on évite de gaspiller l'exploration sur des URL inutiles.",
+      "explanation": "Un robot comme Googlebot ne peut pas explorer un site sans limite : il dispose d'un temps et de ressources comptés pour chaque site. Ce volume de pages qu'il accepte de parcourir est le **crawl budget** (budget d'exploration). Il dépend de la taille du site, de sa santé technique (serveur rapide, peu d'erreurs) et de sa popularité.\n\nUn blog de 200 pages n'a pas à s'en soucier. C'est surtout un enjeu pour les très gros sites. Exemple : une boutique dont les filtres génèrent des millions d'URL (`/chaussures?couleur=bleu&taille=42&tri=prix`) : le robot gaspille son temps sur ces variantes, au détriment des vraies pages. On peut limiter cela dans le `robots.txt` :\n```\nUser-agent: *\nDisallow: /*?tri=\n```\nIl ne s'agit ni d'un budget publicitaire ni d'un quota de backlinks.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/crawling-indexing/large-site-managing-crawl-budget"
     },
@@ -293,7 +293,7 @@
         "Experience, Engagement, Accessibility, Transparency",
         "Expertise, Exactness, Audience, Targeting"
       ],
-      "explanation": "**E-E-A-T** signifie *Experience, Expertise, Authoritativeness, Trustworthiness* (expérience, expertise, autorité, fiabilité). Le premier « E », Experience, a été ajouté fin 2022 au précédent E-A-T. Ces critères guident les évaluateurs qualité, surtout sur les sujets sensibles (santé, finance).",
+      "explanation": "**E-E-A-T** vient des consignes données aux **évaluateurs qualité** de Google, des personnes qui notent la fiabilité des résultats. Il signifie *Experience, Expertise, Authoritativeness, Trustworthiness* : expérience, expertise, autorité, fiabilité. Le premier « E », l'expérience, a été ajouté en décembre 2022 à l'ancien E-A-T. Selon Google, la fiabilité est le critère central.\n\nExemple : un article sur les douleurs de genou chez le coureur. L'**expérience** : l'auteur est un coureur qui a vécu ce problème. L'**expertise** : un kinésithérapeute, identifié par son nom, valide le texte. L'**autorité** : des sites de référence le citent. La **fiabilité** : des sources, des mentions légales claires, un site en HTTPS.\n\nC'est surtout déterminant pour les sujets sensibles (santé, finance), où une erreur peut nuire au lecteur.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
     },
@@ -305,7 +305,7 @@
         "Acheter massivement des backlinks",
         "Masquer du texte en le mettant à la couleur du fond"
       ],
-      "explanation": "Le **cloaking** consiste à servir aux moteurs une version de la page différente de celle vue par l'internaute, afin de tromper le classement. C'est une technique **black hat** explicitement interdite par Google et passible de pénalité, voire de désindexation.",
+      "explanation": "Le **cloaking** (« camouflage ») consiste à montrer une page aux robots et une **autre** aux visiteurs. Le site repère le robot grâce à son nom (*user-agent*) ou à son adresse IP.\n```\nsi le visiteur est Googlebot : afficher la page A (texte riche sur les chaussures)\nsinon : afficher la page B (publicités pour un casino en ligne)\n```\nLe but est de se classer avec un contenu que l'internaute ne verra jamais. Google l'interdit dans ses règles : c'est du **black hat** (technique trompeuse), qui peut entraîner une pénalité ou la disparition du site de l'index.\n\nAutres pratiques abusives, à ne pas confondre : dupliquer son contenu, acheter des backlinks en masse, écrire du texte de la couleur du fond. Adapter la mise en page à la taille de l'écran reste autorisé, tant que le contenu est le même pour tous.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/essentials/spam-policies"
     },
@@ -317,7 +317,7 @@
         "Le maillage interne",
         "La longue traîne"
       ],
-      "explanation": "Le **keyword stuffing** (bourrage de mots-clés) consiste à surcharger une page d'un mot-clé ou de ses variantes de manière artificielle. C'est une pratique **black hat** sanctionnée : elle dégrade la lecture et ne reflète pas un contenu de qualité. Mieux vaut un champ lexical riche et naturel.",
+      "explanation": "Le **keyword stuffing** (bourrage de mots-clés) consiste à répéter un mot-clé de façon forcée pour tenter de grimper dans les résultats.\n\nExemple de texte bourré : « Nos chaussures de trail pas cher : chaussures de trail pas cher pour homme, chaussures de trail pas cher pour femme. Achetez vos chaussures de trail pas cher chez nous. »\n\nVersion naturelle : « Découvrez notre sélection de chaussures de trail pour homme et pour femme, à partir de 59 €. Adhérence, amorti, poids : on vous aide à choisir. » On y trouve le sujet, mais aussi des mots proches (adhérence, amorti, semelle), c'est ce qu'on appelle un champ lexical riche.\n\nGoogle range cette pratique parmi les techniques **black hat** : elle rend le texte pénible à lire. Le *link baiting* consiste, lui, à créer un contenu qui donne envie de le citer.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/essentials/spam-policies"
     },
@@ -329,7 +329,7 @@
         "Supprimer tous les liens internes vers la page",
         "Ajouter la page au `sitemap.xml`"
       ],
-      "explanation": "Pour désindexer, il faut un `noindex` que le robot doit pouvoir **lire** : la page ne doit donc pas être bloquée par `robots.txt`. Un simple `Disallow` empêche le crawl mais pas forcément l'indexation ; une page bloquée peut rester affichée (souvent sans description) si elle est liée ailleurs.",
+      "explanation": "Scénario : l'ancienne page `/promo-noel` est encore dans Google et tu veux la retirer des résultats. La bonne méthode est d'ajouter `noindex` dans son `<head>`, en la laissant **accessible** aux robots :\n```html\n<meta name=\"robots\" content=\"noindex\">\n```\nAu prochain passage, Googlebot lit la consigne et retire la page de l'index.\n\nPiège classique : bloquer la page dans le `robots.txt` avec `Disallow: /promo-noel`. Le robot n'a plus le droit de la visiter, donc il ne verra jamais ton `noindex`, et l'adresse peut rester affichée si d'autres sites la citent. Supprimer les liens internes n'efface pas non plus une page déjà connue, et l'ajouter au `sitemap.xml` ferait l'inverse : on y liste les pages qu'on veut voir explorées.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/crawling-indexing/block-indexing"
     },
@@ -341,7 +341,7 @@
         "Le temps de chargement des pages augmente fortement",
         "Les backlinks externes passent tous en `nofollow`"
       ],
-      "explanation": "Le contenu dupliqué disperse les signaux (liens, pertinence) entre plusieurs URL et laisse le moteur choisir la version à afficher, parfois la mauvaise. Ce n'est en général pas une pénalité, mais une perte d'efficacité. On l'évite avec une balise canonique ou des redirections 301.",
+      "explanation": "Exemple : une même fiche produit répond à quatre adresses :\n```\nhttp://exemple.fr/chaussures/trail-x\nhttps://exemple.fr/chaussures/trail-x\nhttps://www.exemple.fr/chaussures/trail-x\nhttps://www.exemple.fr/chaussures/trail-x/\n```\nPour toi, c'est une seule page. Pour Google, ce sont quatre URL au contenu identique. Les liens qui pointent vers le site se répartissent entre elles, et Google choisit seul laquelle afficher, parfois la moins bonne : une version `http://` au lieu de `https://`, par exemple.\n\nCe n'est en général pas une pénalité manuelle, mais une dispersion de la force de la page. La parade : choisir une version, rediriger les autres vers elle en 301, et déclarer `<link rel=\"canonical\" href=\"https://www.exemple.fr/chaussures/trail-x\">` pour les variantes qui doivent rester accessibles.",
       "difficulty": 3
     },
     {
@@ -352,7 +352,7 @@
         "Applebot",
         "YandexBot"
       ],
-      "explanation": "**Googlebot** parcourt le Web en suivant les liens et les sitemaps pour découvrir et récupérer les pages. Il existe en version smartphone et ordinateur ; avec l'indexation mobile-first, c'est surtout la version smartphone qui explore les sites. Bingbot est le robot de Microsoft Bing, Applebot celui d'Apple et YandexBot celui du moteur russe Yandex.",
+      "explanation": "**Googlebot** est le robot d'exploration (*crawler*) de Google : un programme qui visite les pages web en suivant les liens et les sitemaps, puis les rapporte à Google. C'est lui qu'on vise dans un `robots.txt` :\n```\nUser-agent: Googlebot\nDisallow: /tmp/\n```\nDans les journaux de ton serveur, il se présente avec un identifiant du type `Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)`. Ce nom peut être imité par n'importe qui : Google conseille de vérifier l'adresse IP du visiteur.\n\nLes autres moteurs ont leurs propres robots : Bingbot (Microsoft Bing), Applebot (Apple) et YandexBot (le moteur russe Yandex). Aujourd'hui, c'est surtout la version smartphone de Googlebot qui visite les sites.",
       "difficulty": 1,
       "source": "https://developers.google.com/search/docs/crawling-indexing/googlebot"
     },
@@ -364,7 +364,7 @@
         "Classement, puis exploration, puis indexation",
         "Exploration, puis classement, puis indexation"
       ],
-      "explanation": "Le robot doit d'abord **explorer** (crawler) la page pour la récupérer, puis Google l'analyse et la stocke dans son **index**. Ce n'est qu'au moment d'une requête que les pages indexées sont **classées** et affichées. Une page non explorée ne peut pas être indexée, et une page non indexée ne peut jamais apparaître dans les résultats, quelle que soit sa qualité.",
+      "explanation": "Un moteur de recherche fonctionne comme une bibliothèque en trois étapes. D'abord l'**exploration** : le robot visite la page et récupère son contenu. Ensuite l'**indexation** : Google analyse la page et la range dans son **index**, son immense catalogue. Enfin le **classement** : quand quelqu'un fait une recherche, Google pioche dans l'index les pages pertinentes et les ordonne.\n\nExemple : tu publies un article lundi. Si le `robots.txt` interdit le dossier du blog, le robot ne le visite pas, donc il ne sera jamais indexé, et n'apparaîtra jamais dans les résultats, même s'il est excellent.\n\nLe classement se fait donc en dernier, au moment de chaque recherche, et non avant l'indexation.",
       "difficulty": 1,
       "source": "https://developers.google.com/search/docs/fundamentals/how-search-works"
     },
@@ -376,7 +376,7 @@
         "`filetype:exemple.fr`",
         "`define:exemple.fr`"
       ],
-      "explanation": "L'opérateur `site:` restreint les résultats à un domaine, voire à un sous-dossier (`site:exemple.fr/blog`). Le nombre de résultats affiché n'est qu'une estimation : pour connaître l'état réel d'indexation, on se fie à la Search Console. `filetype:` filtre par type de fichier (`filetype:pdf`) et `define:` affiche une définition.",
+      "explanation": "Taper `site:` suivi d'un nom de domaine dans Google restreint les résultats à ce site.\n```\nsite:exemple.fr\nsite:exemple.fr/blog\nsite:exemple.fr \"chaussures de trail\"\n```\nLa première ligne liste des pages du domaine, la deuxième se limite au dossier `/blog`, la troisième cherche un mot précis uniquement dans ce site. C'est pratique pour vérifier rapidement si un nouvel article est indexé : `site:exemple.fr/blog/mon-nouvel-article`.\n\nLe nombre de résultats affiché n'est qu'une **estimation**. Pour l'état réel de l'indexation, il faut se fier à la Search Console. Les autres opérateurs proposés n'ont pas cet usage : `filetype:` s'utilise avec une extension (`filetype:pdf`) et `define:` affiche la définition d'un mot.",
       "difficulty": 1
     },
     {
@@ -387,7 +387,7 @@
         "Le rapport sur les liens",
         "L'outil de désaveu de liens"
       ],
-      "explanation": "L'**outil d'inspection d'URL** indique si une page est dans l'index, quelle URL canonique Google a retenue et comment la page a été explorée ; il permet aussi de tester la version en ligne puis de **demander une indexation**. Le rapport Signaux Web essentiels concerne la performance (Core Web Vitals), le rapport sur les liens recense backlinks et liens internes, et l'outil de désaveu sert à faire ignorer des backlinks.",
+      "explanation": "La **Google Search Console** est l'outil gratuit de Google qui montre comment il voit ton site. Son **outil d'inspection d'URL** répond à la question : « cette page est-elle dans Google ? »\n\nExemple : tu publies un article de blog et tu colles son adresse dans la barre du haut. L'outil indique si la page est indexée, quelle URL canonique Google a retenue et comment elle a été explorée. Si elle ne l'est pas encore, tu peux tester la version en ligne, puis cliquer sur **Demander une indexation**.\n\nLes autres rapports ont un autre rôle : « Signaux Web essentiels » suit les Core Web Vitals (performance), « Liens » liste les backlinks et les liens internes, et l'outil de désaveu sert à demander à Google d'ignorer certains backlinks nuisibles.",
       "difficulty": 1
     },
     {
@@ -398,7 +398,7 @@
         "Une page dont l'auteur n'est indiqué nulle part",
         "Une page qui n'a reçu aucune visite depuis sa publication"
       ],
-      "explanation": "Une **page orpheline** existe (elle répond, figure parfois dans le sitemap) mais aucun lien interne ne pointe vers elle : ni les visiteurs ni les robots ne peuvent l'atteindre en naviguant. Elle est donc mal découverte, peu explorée et ne reçoit aucune popularité interne. On les repère en croisant un crawl du site avec le sitemap, les logs serveur ou les données analytics.",
+      "explanation": "Une **page orpheline** est une page qui existe bel et bien, mais vers laquelle **aucun lien interne** ne pointe : ni visiteurs ni robots ne peuvent y arriver en cliquant depuis le reste du site.\n\nExemple : pour une campagne de Noël, on crée la page `/offres-noel`, on l'ajoute au `sitemap.xml`, mais personne ne place de lien vers elle dans le menu ni dans les articles. Google peut la trouver via le sitemap, mais l'explorera peu, et elle ne reçoit aucune popularité interne.\n\nPour les repérer, on compare la liste des pages trouvées en suivant les liens (crawl du site) avec le sitemap, les journaux du serveur ou les statistiques de visites. Le remède : ajouter des liens depuis des pages pertinentes, comme la catégorie ou un article de blog.",
       "difficulty": 1
     },
     {
@@ -409,7 +409,7 @@
         "Seule la page d'accueil peut être explorée",
         "Le fichier est invalide et le site n'est pas exploré"
       ],
-      "explanation": "Une règle `Disallow:` **vide** n'interdit rien : tout le site reste explorable. C'est `Disallow: /` (avec la barre oblique) qui bloque l'intégralité du site. Un seul caractère sépare donc « tout autoriser » de « tout bloquer », une erreur classique lors d'une mise en production depuis un environnement de préproduction.",
+      "explanation": "Dans un `robots.txt`, le mot `Disallow` est suivi du chemin à ne pas explorer. Quand il n'y a **rien** après, aucune zone n'est interdite : tout le site peut être exploré.\n```\nUser-agent: *\nDisallow:      # vide : tout est autorisé\n```\n```\nUser-agent: *\nDisallow: /    # une barre oblique : tout est bloqué\n```\nLe `/` désigne la racine, donc tout le site. Un seul caractère change complètement le sens du fichier.\n\nErreur classique : un site de préproduction (copie de test) est protégé par `Disallow: /`, et ce fichier est copié par mégarde lors de la mise en ligne. Résultat : le site de production devient inexplorable. À l'inverse, un `Disallow:` vide n'est pas une erreur : c'est une syntaxe valide qui autorise tout.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt"
     },
@@ -421,7 +421,7 @@
         "Il s'applique à tout le site comme s'il était à la racine",
         "Il complète les règles du fichier placé à la racine"
       ],
-      "explanation": "Les robots ne lisent `robots.txt` qu'à un seul emplacement : la racine de l'hôte (`https://exemple.fr/robots.txt`). Un fichier placé dans un sous-dossier n'est jamais consulté. Pour restreindre l'exploration de `/blog/`, il faut ajouter une règle `Disallow: /blog/` dans le fichier racine.",
+      "explanation": "Les robots ne cherchent le fichier `robots.txt` qu'à **un seul endroit** : à la racine de l'hôte, c'est-à-dire juste après le nom de domaine.\n```\nhttps://exemple.fr/robots.txt        <- lu\nhttps://exemple.fr/blog/robots.txt   <- jamais consulté\n```\nUn fichier placé dans `/blog/` n'est donc pas lu, il n'a aucun effet : il ne s'applique pas aux URL en `/blog/`, ne s'étend pas à tout le site, et ne complète pas le fichier racine.\n\nSi tu veux restreindre l'exploration du dossier `/blog/`, il faut écrire la règle dans le fichier de la racine :\n```\nUser-agent: *\nDisallow: /blog/\n```\nC'est un piège fréquent pour ceux qui n'ont accès qu'à un sous-dossier de leur hébergement.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt"
     },
@@ -433,7 +433,7 @@
         "Non, car seule la première règle du groupe est appliquée",
         "Oui, mais seulement si la page figure aussi dans le sitemap"
       ],
-      "explanation": "Google applique la règle **la plus spécifique**, c'est-à-dire celle dont le chemin est le plus long : `/dossier/guide.html` est plus précis que `/dossier/`, donc la page est autorisée. L'ordre des lignes n'a aucune importance. En cas d'égalité entre un `Allow` et un `Disallow`, Google retient la règle la moins restrictive, donc `Allow`.",
+      "explanation": "Quand plusieurs règles peuvent s'appliquer à une URL, Google retient la plus **spécifique**, c'est-à-dire celle dont le chemin est le **plus long**. Ici :\n```\nDisallow: /dossier/                  (9 caractères)\nAllow:    /dossier/guide.html        (19 caractères)\n```\n`/dossier/guide.html` correspond aux deux règles. Comme `Allow` est plus précis, la page est **autorisée**, alors que le reste du dossier est bloqué. C'est un moyen simple de bloquer un dossier entier tout en laissant passer une exception.\n\nL'ordre des lignes n'a aucune importance pour Google. Si deux règles ont la même longueur et se contredisent, il applique la moins restrictive, donc `Allow`. Le sitemap n'entre pas en jeu pour décider de l'autorisation.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt"
     },
@@ -445,7 +445,7 @@
         "Uniquement le fichier `/.pdf` situé à la racine",
         "Les dossiers dont le nom commence par `pdf`"
       ],
-      "explanation": "Google reconnaît deux caractères spéciaux : `*`, qui remplace n'importe quelle suite de caractères, et `$`, qui marque la fin de l'URL. `/*.pdf$` bloque donc `/docs/guide.pdf` mais pas `/docs/guide.pdf?v=2`, qui ne se termine pas par `.pdf`. Sans le `$`, la règle bloquerait toute URL contenant `.pdf`, paramètres compris.",
+      "explanation": "Google comprend deux caractères spéciaux dans les règles du `robots.txt` : `*` remplace n'importe quelle suite de caractères et `$` marque la **fin** de l'URL.\n\n`Disallow: /*.pdf$` signifie donc : « toute URL qui finit par `.pdf` ».\n```\n/docs/guide.pdf        -> bloquée\n/docs/guide.pdf?v=2    -> non bloquée (finit par ?v=2)\n```\nSans le `$`, la règle `Disallow: /*.pdf` bloquerait aussi la deuxième adresse, comme toute URL qui contient `.pdf` quelque part, paramètres compris.\n\nCette syntaxe ne cible pas un fichier nommé `/.pdf` à la racine, et ne concerne pas non plus les dossiers dont le nom commence par `pdf`. Le caractère `$` se comprend comme en recherche de texte : « fin de chaîne ».",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt"
     },
@@ -457,7 +457,7 @@
         "Lister le PDF dans un sitemap séparé",
         "Ajouter `?noindex` à la fin de l'URL du PDF"
       ],
-      "explanation": "L'en-tête HTTP `X-Robots-Tag` accepte les mêmes directives que la balise meta robots (`noindex`, `nofollow`, `nosnippet`…) et fonctionne pour tous les types de fichiers : PDF, images, vidéos. Il se configure côté serveur, par exemple dans Apache ou Nginx. Un attribut `rel=\"noindex\"` sur un lien n'existe pas, et un sitemap sert à faire découvrir des URL, pas à les exclure.",
+      "explanation": "Un PDF n'a pas de `<head>` : impossible d'y mettre une balise meta robots. Mais le serveur peut envoyer la consigne dans les **en-têtes HTTP** de sa réponse, avec `X-Robots-Tag`. Exemple de configuration Nginx :\n```\nlocation ~* \\.pdf$ {\n  add_header X-Robots-Tag \"noindex\";\n}\n```\nCet en-tête accepte les mêmes directives que la balise meta robots (`noindex`, `nofollow`, `nosnippet`…) et marche pour tous les types de fichiers : PDF, images, vidéos. Sous Apache, on obtient le même effet avec `Header set X-Robots-Tag \"noindex\"`.\n\nLes autres idées ne fonctionnent pas : `rel=\"noindex\"` sur un lien n'existe pas, un sitemap sert à faire découvrir des URL (pas à les exclure) et ajouter `?noindex` à l'adresse ne change rien pour Google.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag"
     },
@@ -469,7 +469,7 @@
         "Une erreur 404 temporaire due à une surcharge du serveur",
         "Une page 404 personnalisée avec un moteur de recherche interne"
       ],
-      "explanation": "Une **soft 404** est une page qui, pour l'utilisateur, ressemble à une erreur (« produit introuvable », page vide) mais que le serveur sert avec un code **200 OK**. Google la détecte et la traite comme une erreur, mais elle gaspille de l'exploration et brouille les signaux. Une page inexistante doit renvoyer un vrai code 404 ou 410 ; une page 404 personnalisée est très bien, tant qu'elle renvoie ce code.",
+      "explanation": "Une **soft 404** est une page qui ressemble à une erreur pour l'internaute (« Produit introuvable », liste vide), mais que le serveur annonce comme réussie avec le code **200 OK**.\n\nPour vérifier, on regarde le code renvoyé :\n```\n$ curl -I https://exemple.fr/produit-supprime\nHTTP/1.1 200 OK        <- devrait être 404 ou 410\n```\nGoogle détecte souvent ces pages et les traite comme des erreurs, mais elles gaspillent du budget d'exploration et brouillent les signaux. Une page inexistante doit renvoyer un vrai **404** (introuvable) ou **410** (définitivement supprimée).\n\nUne page 404 personnalisée, avec un joli message ou un moteur de recherche interne, est très bien, tant que le code HTTP envoyé reste 404. Ce n'est pas une 404 qui redirige, ni une erreur passagère due à une surcharge.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/crawling-indexing/http-network-errors"
     },
@@ -481,7 +481,7 @@
         "`<a onclick=\"go('/offres')\">Nos offres</a>`",
         "`<a href=\"javascript:go('/offres')\">Nos offres</a>`"
       ],
-      "explanation": "Google n'extrait de façon fiable que les liens écrits sous la forme d'un élément `<a>` doté d'un attribut `href` contenant une vraie URL. Un `<span>` ou un `<a>` sans `href` qui navigue via `onclick` n'est pas vu comme un lien, et une pseudo-URL `javascript:` ne correspond à aucune adresse explorable. Le JavaScript peut gérer la navigation, à condition que le `href` soit bien présent.",
+      "explanation": "Googlebot découvre les pages en suivant des liens, mais il ne sait repérer de façon fiable que ceux écrits comme un élément `<a>` avec un attribut `href` contenant une **vraie URL** :\n```html\n<a href=\"/offres\">Nos offres</a>\n```\nLes autres versions échouent. Un `<span onclick=\"...\">` n'est pas un lien pour Google : c'est un texte qui réagit au clic. Un `<a onclick=\"...\">` sans `href` ne mène nulle part sans exécuter du code, et `href=\"javascript:...\"` n'est pas une adresse explorable.\n\nExemple : un menu de boutique construit avec des `<span onclick=\"go('/offres')\">` fonctionne pour les visiteurs, mais les pages d'offres risquent de ne jamais être découvertes. Le JavaScript peut très bien gérer la navigation, du moment que le `href` est présent.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable"
     },
@@ -493,7 +493,7 @@
         "Leur blocage déclenche automatiquement une action manuelle",
         "Google y lit en priorité les mots-clés de la page"
       ],
-      "explanation": "Pour comprendre une page moderne, Google l'affiche (rendu) avec un Chromium sans interface, ce qui exige d'accéder aux ressources CSS et JavaScript. Si elles sont bloquées, le contenu injecté en JavaScript ou la mise en page mobile peuvent lui échapper, et la page être mal évaluée. Il n'y a pas de pénalité manuelle pour cela, mais une compréhension dégradée de la page.",
+      "explanation": "Pour comprendre une page moderne, Google ne se contente pas de lire le HTML : il l'**affiche** comme le ferait un navigateur (c'est le **rendu**, réalisé avec un Chromium sans interface visible). Il a donc besoin de charger les fichiers CSS (mise en forme) et JavaScript (comportements).\n\nExemple de règles à éviter :\n```\nUser-agent: *\nDisallow: /assets/js/\nDisallow: /assets/css/\n```\nAvec ça, Google ne voit pas la page telle que ton visiteur la voit. Du texte ajouté par JavaScript peut lui échapper, ou une mise en page adaptée au mobile mal comprise, et la page peut être mal évaluée.\n\nIl n'y a pas d'action manuelle automatique pour cela, ni de transfert de PageRank par ces fichiers : c'est juste une compréhension dégradée de ta page.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics"
     },
@@ -505,7 +505,7 @@
         "Le chargement différé (lazy loading)",
         "Le préchargement des liens (prefetch)"
       ],
-      "explanation": "Avec le **rendu côté serveur** (SSR), le serveur exécute le code de l'application et renvoie un HTML contenant déjà le texte et les liens : robots et navigateurs le lisent immédiatement. En **rendu côté client** (CSR), le HTML initial est presque vide et le contenu n'apparaît qu'après l'exécution du JavaScript, ce qui oblige Google à passer par sa file de rendu et fragilise l'indexation. La génération statique (SSG) offre le même avantage que le SSR, avec des pages produites à l'avance.",
+      "explanation": "Quand un robot demande une page, il reçoit d'abord le HTML renvoyé par le serveur. Selon le mode de rendu, ce HTML est plein ou vide.\n```html\n<!-- Rendu côté client (CSR) : HTML initial vide -->\n<body><div id=\"root\"></div><script src=\"app.js\"></script></body>\n\n<!-- Rendu côté serveur (SSR) : HTML déjà complet -->\n<body><h1>Chaussures Trail X</h1><p>Prix : 129 €</p></body>\n```\nEn **SSR**, le serveur exécute l'application et envoie le texte et les liens déjà prêts : navigateurs et robots les lisent immédiatement. En **CSR**, le contenu n'apparaît qu'après exécution du JavaScript. Google doit alors passer par sa file de rendu, ce qui peut retarder ou fragiliser l'indexation.\n\nLa génération statique (SSG) a le même avantage, avec des pages préparées à l'avance. Le *lazy loading* et le *prefetch* ne concernent que le moment où on charge images et ressources.",
       "difficulty": 2
     },
     {
@@ -516,7 +516,7 @@
         "`Allow`",
         "`Sitemap`"
       ],
-      "explanation": "Google ne prend en charge que quatre champs dans `robots.txt` : `user-agent`, `allow`, `disallow` et `sitemap`. `Crawl-delay`, qui demande d'espacer les requêtes, est ignoré par Googlebot mais respecté par Bing. Google ajuste lui-même sa vitesse d'exploration selon la santé du serveur : il ralentit notamment lorsqu'il reçoit des erreurs 5xx ou 429.",
+      "explanation": "Dans un `robots.txt`, Google ne reconnaît que quatre champs : `user-agent`, `allow`, `disallow` et `sitemap`. `Crawl-delay`, qui demande au robot d'espacer ses requêtes, n'en fait pas partie : Googlebot l'ignore, alors que Bingbot le respecte.\n```\nUser-agent: bingbot\nCrawl-delay: 10\n```\nCela peut aider un petit serveur à ne pas être submergé par Bing. Pour Google, la vitesse d'exploration se règle toute seule : il ralentit quand le serveur répond lentement ou renvoie des erreurs 5xx (erreurs du serveur) ou 429 (trop de requêtes).\n\nLes trois autres directives proposées sont au contraire comprises par Google : `Disallow` interdit, `Allow` autorise une exception, et `Sitemap` indique l'adresse du plan du site.",
       "difficulty": 2,
       "source": "https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt"
     },
@@ -528,7 +528,7 @@
         "Oui, sauf si le sous-domaine déclare son propre sitemap",
         "Non, sauf si les deux sous-domaines partagent la même IP"
       ],
-      "explanation": "Un `robots.txt` ne s'applique qu'à l'hôte exact où il est publié : même protocole, même nom d'hôte, même port. `https://www.exemple.fr/robots.txt` ne régit ni `boutique.exemple.fr`, ni `http://www.exemple.fr`, ni `https://www.exemple.fr:8080`. Chaque sous-domaine doit donc disposer de son propre fichier à sa racine.",
+      "explanation": "Un `robots.txt` ne vaut que pour l'**hôte exact** où il est publié : même protocole (`http` ou `https`), même nom d'hôte, même port.\n```\nhttps://www.exemple.fr/robots.txt   -> Disallow: /\n```\nCe fichier régit `https://www.exemple.fr/...` mais **pas** `https://boutique.exemple.fr`, ni `http://www.exemple.fr`, ni `https://www.exemple.fr:8080`. Pour Google, ce sont des hôtes différents.\n\nConséquence : la boutique sur `boutique.exemple.fr` reste explorable, sauf si elle a son propre fichier à sa racine. Dans l'autre sens, un blocage oublié sur un seul sous-domaine peut passer inaperçu. L'adresse IP commune ou le sitemap déclaré n'y changent rien.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt"
     },
@@ -540,7 +540,7 @@
         "Non : le groupe `*` prime toujours sur les groupes nommés",
         "Oui, mais uniquement parce que le groupe Googlebot est écrit en dernier"
       ],
-      "explanation": "Un robot de Google applique **un seul groupe** : celui dont la ligne `User-agent` correspond le plus précisément à son nom. Ici, Googlebot suit le groupe `Googlebot` et ignore entièrement le groupe `*`, donc `/prive/` lui reste accessible. L'ordre des groupes dans le fichier ne compte pas. Pour bloquer aussi `/prive/` à Googlebot, il faut répéter la règle dans son groupe.",
+      "explanation": "Dans un `robots.txt`, les règles sont organisées en **groupes**, un par `User-agent`. Un robot de Google n'applique **qu'un seul groupe** : celui dont le nom correspond le plus précisément au sien. Ce n'est pas un cumul.\n```\nUser-agent: *\nDisallow: /prive/\n\nUser-agent: Googlebot\nDisallow: /tmp/\n```\nGooglebot a ici son groupe nommé, il suit donc ce groupe-là et ignore complètement le groupe `*`. Il peut explorer `/prive/page.html`, mais pas `/tmp/`. L'ordre des groupes dans le fichier ne change rien.\n\nPour bloquer `/prive/` aussi à Googlebot, il faut répéter la règle dans son groupe :\n```\nUser-agent: Googlebot\nDisallow: /tmp/\nDisallow: /prive/\n```\nLes autres robots, sans groupe à leur nom, suivent le groupe `*`.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt"
     },
@@ -552,7 +552,7 @@
         "Il n'explore plus que les URL listées dans le sitemap",
         "Il n'explore que la page d'accueil et ses liens directs"
       ],
-      "explanation": "Pour Google, une erreur 4xx (sauf 429) sur `robots.txt` équivaut à l'absence de fichier : aucune restriction ne s'applique. Une erreur serveur 5xx est en revanche prise au sérieux : pendant les 12 premières heures, Google cesse d'explorer le site, puis se rabat sur la dernière version valide du fichier qu'il a en mémoire. Un `robots.txt` qui répond en 503 par erreur peut donc stopper l'exploration de tout un site.",
+      "explanation": "Quand Googlebot demande `robots.txt` et reçoit une erreur **404** (fichier introuvable), il l'interprète comme « ce site n'a pas de restrictions » : tout peut être exploré. Il en va de même pour les autres erreurs 4xx, sauf 429.\n\nCe n'est pas le cas des erreurs **5xx** (problème côté serveur). Dans ce cas, Google préfère ne rien risquer : il cesse d'explorer le site pendant les 12 premières heures, puis se rabat sur la dernière version valide du fichier qu'il a gardée.\n\nExemple : un hébergeur en maintenance renvoie `503 Service Unavailable` sur `/robots.txt` pendant une nuit. Pendant ce temps, Google peut mettre en pause l'exploration de tout le site. Un simple fichier absent est moins risqué qu'un fichier qui plante.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt"
     },
@@ -564,7 +564,7 @@
         "Il la traite comme un `Disallow` sur les mêmes chemins",
         "Il l'applique seulement aux fichiers PDF et aux images"
       ],
-      "explanation": "Google a longtemps toléré une directive `Noindex` non documentée dans `robots.txt`, mais il a annoncé en juillet 2019 qu'il cesserait de la prendre en charge le 1er septembre 2019, comme les autres règles non standard (`nofollow`, `crawl-delay`). Pour désindexer, il faut utiliser la balise meta robots ou l'en-tête `X-Robots-Tag`, sur des pages laissées accessibles au crawl.",
+      "explanation": "Pendant des années, certains webmasters ont écrit une ligne `Noindex:` dans leur `robots.txt` pour désindexer des pages :\n```\nUser-agent: *\nNoindex: /ancienne-page/\n```\nGoogle la tolérait, mais ce n'était pas une règle officielle. En juillet 2019, il a annoncé qu'il cesserait de la prendre en charge à partir du **1er septembre 2019**, comme les autres règles non standard (`nofollow`, `crawl-delay`). Aujourd'hui, la ligne est tout simplement **ignorée**.\n\nElle n'est pas convertie en `Disallow` et n'a pas d'effet limité aux PDF ou aux images. Pour désindexer, il faut la balise `<meta name=\"robots\" content=\"noindex\">` ou l'en-tête HTTP `X-Robots-Tag`, sur des pages que le robot peut visiter.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/blog/2019/07/a-note-on-unsupported-rules-in-robotstxt"
     },
@@ -576,7 +576,7 @@
         "L'URL est exclue par une balise `noindex`",
         "L'URL est un doublon d'une autre page canonique"
       ],
-      "explanation": "« **Détectée** » signifie que Google a trouvé l'URL (via un lien ou un sitemap) mais a reporté son exploration, souvent pour ne pas surcharger le serveur. « **Explorée**, actuellement non indexée » est différent : la page a été récupérée, mais Google n'a pas jugé utile de l'indexer pour l'instant. Les pages en `noindex` et les doublons ont leurs propres statuts dans ce rapport.",
+      "explanation": "Dans la Search Console, plusieurs états ressemblent à « non indexée », mais n'ont pas la même cause. **Détectée, actuellement non indexée** signifie que Google connaît l'URL (par un lien ou le sitemap) mais ne l'a pas encore **explorée**. Il a repoussé la visite, souvent pour ne pas surcharger le serveur ou parce que la page lui semble peu prioritaire.\n\nÀ comparer avec **Explorée, actuellement non indexée** : là, Google a bien visité la page, mais ne l'a pas jugée assez utile pour l'indexer pour l'instant.\n\nExemple : un site de 50 000 fiches vient de les publier d'un coup. Beaucoup peuvent rester « détectées » un moment, le temps que Google les explore. Les pages en `noindex` et les doublons de canonique ont leurs propres états dans ce rapport.",
       "difficulty": 3
     },
     {
@@ -587,7 +587,7 @@
         "À `noindex` seul",
         "À `nofollow` seul"
       ],
-      "explanation": "Contrairement à ce que son nom suggère, `none` ne veut pas dire « aucune restriction » : c'est la combinaison la plus restrictive, `noindex, nofollow`. Le comportement par défaut, sans balise, est `index, follow` (que l'on peut aussi écrire `all`). Une confusion sur cette valeur peut faire disparaître une page des résultats.",
+      "explanation": "Dans la balise meta robots, `none` est un raccourci pour `noindex, nofollow` :\n```html\n<meta name=\"robots\" content=\"none\">\n<!-- équivalent à -->\n<meta name=\"robots\" content=\"noindex, nofollow\">\n```\nAttention, le mot trompe : on pourrait croire que `none` signifie « aucune restriction », alors que c'est la combinaison la plus restrictive : la page n'est pas indexée et ses liens ne sont pas suivis.\n\nQuand il n'y a aucune balise, le comportement par défaut est `index, follow` (que l'on peut aussi écrire `all`).\n\nExemple de dégât : un développeur copie `none` en pensant « pas de contraintes » sur une page de catégorie. Quelques jours plus tard, la catégorie disparaît des résultats de recherche.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag"
     },
@@ -599,7 +599,7 @@
         "Il utilise désormais le moteur de Firefox pour le rendu",
         "Il n'exécute plus que le JavaScript placé dans le `<head>`"
       ],
-      "explanation": "En mai 2019, Google a annoncé un Googlebot **evergreen** : son service de rendu utilise la dernière version de Chromium (la 74 à l'époque) et suit ensuite ses mises à jour. Auparavant, le rendu reposait sur un moteur figé équivalent à Chrome 41, qui ignorait de nombreuses fonctionnalités modernes (ES6, IntersectionObserver…). Les polyfills ajoutés uniquement pour Googlebot sont alors devenus largement inutiles.",
+      "explanation": "Pour comprendre une page, Google exécute son JavaScript avec un **Chromium**, la version libre du navigateur Chrome. En mai 2019, il a annoncé un Googlebot dit **evergreen** (« toujours vert ») : son service de rendu utilise la dernière version de Chromium (la 74 à l'époque) et suit ensuite ses mises à jour.\n\nAvant, il reposait sur un moteur figé équivalent à Chrome 41, sorti des années plus tôt. Il ne connaissait pas des fonctions modernes de JavaScript (ES6, IntersectionObserver…).\n\nExemple : avec l'ancien moteur, une page écrite avec une syntaxe récente pouvait s'afficher vide pour Googlebot. Il fallait alors ajouter des **polyfills** (du code qui imite les fonctions manquantes) rien que pour lui. Depuis, c'est largement devenu inutile.\n\nGoogle n'a pas arrêté d'exécuter le JavaScript, ni changé pour Firefox.",
       "difficulty": 3,
       "source": "https://developers.google.com/search/blog/2019/05/the-new-evergreen-googlebot"
     },

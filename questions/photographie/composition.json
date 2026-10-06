@@ -4,5 +4,284 @@
   "icon": "🖼️",
   "description": "Règle des tiers, lignes directrices, cadrage, profondeur de champ, qualité et direction de la lumière, heure dorée.",
   "order": 2,
-  "questions": []
+  "questions": [
+    {
+      "question": "Selon la **règle des tiers**, en combien de zones la grille de composition découpe-t-elle l'image ?",
+      "answer": "9",
+      "wrong": [
+        "6",
+        "4",
+        "12"
+      ],
+      "explanation": "La règle des tiers est le repère de composition le plus utilisé en photo : elle aide à décider où placer le sujet. On trace **deux lignes horizontales et deux lignes verticales** équidistantes, ce qui découpe l'image en **9 rectangles** égaux (3 × 3). Les quatre croisements de ces lignes sont les « **points forts** ». Exemple : pour photographier un promeneur dans un champ, place-le sur une verticale plutôt qu'au centre ; l'image paraît plus vivante. La plupart des appareils et des smartphones affichent cette grille à l'écran. Le piège du 6 : il y a bien 3 colonnes **et** 3 rangées, donc 3 × 3 = 9 zones.",
+      "difficulty": 1,
+      "source": "https://fr.wikipedia.org/wiki/R%C3%A8gle_des_tiers"
+    },
+    {
+      "question": "Tu photographies un paysage dont le ciel, chargé de nuages spectaculaires, est l'élément le plus intéressant. Selon la règle des tiers, où places-tu la ligne d'horizon ?",
+      "answer": "Sur la ligne du tiers inférieur",
+      "wrong": [
+        "Sur la ligne du tiers supérieur",
+        "Exactement au milieu de l'image",
+        "Tout en haut, contre le bord du cadre"
+      ],
+      "explanation": "Placer l'horizon est l'une des premières décisions en paysage, car il partage l'image entre ciel et terre. Avec la règle des tiers, on le pose sur l'une des deux lignes horizontales de la grille. Sur le **tiers inférieur**, le ciel occupe les deux tiers de l'image : c'est le bon choix quand les nuages sont l'élément fort. Exemple inverse : un champ de lavande spectaculaire sous un ciel gris uni ; on met alors l'horizon sur le tiers supérieur pour donner la place au sol. Le piège : un horizon au milieu coupe l'image en deux moitiés égales qui se font concurrence. On le garde pour les compositions symétriques, comme un reflet dans un lac.",
+      "difficulty": 1
+    },
+    {
+      "question": "En composition, que désigne-t-on par **lignes directrices** ?",
+      "answer": "Des lignes de la scène qui guident le regard vers le sujet",
+      "wrong": [
+        "Les lignes de la grille affichée dans le viseur",
+        "Les bords du cadre parallèles à l'horizon",
+        "Les repères gravés sur la bague de mise au point"
+      ],
+      "explanation": "Les lignes directrices sont un outil de composition pour conduire l'œil du spectateur à travers l'image. Ce sont des lignes **présentes dans la scène** : route, rivière, clôture, rangée d'arbres, rails, rambarde de quai. L'œil les suit naturellement et arrive au sujet ou au point de fuite. Exemple : une jetée qui part du coin inférieur de l'image et mène à un phare au loin crée à la fois un chemin pour le regard et une forte impression de profondeur. Le piège : la grille affichée dans le viseur n'est qu'un repère technique, invisible sur la photo finale. Attention aussi à une ligne qui file vers le bord du cadre sans mener nulle part : elle fait sortir le regard de l'image.",
+      "difficulty": 1
+    },
+    {
+      "question": "Tu cadres un cycliste qui roule de la gauche vers la droite. Où le placer pour une composition équilibrée ?",
+      "answer": "À gauche, en laissant de l'espace devant lui",
+      "wrong": [
+        "À droite, tout près du bord vers lequel il roule",
+        "Au centre, avec autant d'espace de chaque côté",
+        "À moitié coupé par le bord gauche du cadre"
+      ],
+      "explanation": "Pour un sujet qui bouge ou qui regarde dans une direction, on parle d'**espace de mouvement** (ou espace de regard, « lead room » en anglais). Le principe : laisser plus d'espace **devant** le sujet que derrière lui. Le cycliste semble alors avoir de la place pour avancer, et l'image respire. Exemple concret : avec la règle des tiers, place-le sur la verticale de gauche ; les deux tiers de l'image restent libres devant sa roue. Le piège : collé au bord droit, vers lequel il roule, il paraît sur le point de sortir du cadre, ce qui crée une tension. Ce choix peut être volontaire, mais il ne donne pas une composition équilibrée.",
+      "difficulty": 1
+    },
+    {
+      "question": "Photographier un sujet à travers une fenêtre, sous une arche ou entre deux branches qui l'entourent, c'est utiliser quelle technique de composition ?",
+      "answer": "Le cadre dans le cadre",
+      "wrong": [
+        "L'espace négatif",
+        "La règle des impairs",
+        "Le point de fuite"
+      ],
+      "explanation": "Le cadre dans le cadre (ou **surcadrage**) est une technique qui utilise un élément du décor pour entourer le sujet. Une porte, une fenêtre, une arche, une trouée dans le feuillage ou même un rétroviseur peuvent jouer ce rôle. Cela produit trois effets : le sujet est isolé, le regard est dirigé vers lui, et le premier plan ajoute de la profondeur. Exemple : un pêcheur sur une plage, photographié depuis l'intérieur d'une cabane, à travers l'embrasure sombre de la porte. Ce cadre secondaire n'a pas besoin d'être complet ni net. Le piège : l'**espace négatif** désigne la zone vide autour du sujet, pas un élément qui l'encadre.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quel effet produit généralement une prise de vue en **contre-plongée** (appareil placé plus bas que le sujet, visée vers le haut) ?",
+      "answer": "Le sujet paraît plus grand et dominant",
+      "wrong": [
+        "Le sujet paraît plus petit et vulnérable",
+        "Les verticales restent bien parallèles",
+        "L'arrière-plan devient plus flou"
+      ],
+      "explanation": "L'angle de prise de vue change la façon dont on perçoit le sujet : c'est un outil de narration. En **contre-plongée**, l'appareil est plus bas que le sujet et vise vers le haut ; on le regarde comme un enfant regarde un adulte. Le sujet paraît alors plus grand, imposant, parfois menaçant. Exemple : un sportif photographié depuis le sol, sur fond de ciel, prend des airs de héros. Le piège : c'est la **plongée** (appareil au-dessus, visée vers le bas) qui rend le sujet petit et vulnérable. Autre conséquence de la contre-plongée : les verticales d'un bâtiment convergent vers le haut, car l'appareil n'est plus parallèle à la façade.",
+      "difficulty": 1
+    },
+    {
+      "question": "Quelle impression les **lignes diagonales** donnent-elles le plus souvent à une image ?",
+      "answer": "Du dynamisme et du mouvement",
+      "wrong": [
+        "Du calme et de la stabilité",
+        "De la solennité et de la hauteur",
+        "De l'ordre et de la symétrie"
+      ],
+      "explanation": "L'orientation des lignes d'une image influence l'émotion qu'elle dégage, avant même qu'on identifie le sujet. Les **horizontales** évoquent le calme et le repos (un horizon marin). Les **verticales** évoquent la force et l'élévation (arbres, gratte-ciel). Les **diagonales**, elles, suggèrent le dynamisme, le mouvement ou la tension, car elles rappellent un objet qui tombe ou qui monte. Exemple : un escalier photographié de face paraît statique ; pris de biais, ses marches forment des diagonales et l'image s'anime. Le piège : le calme et la stabilité sont associés aux horizontales, pas aux diagonales. Les courbes en S apportent, elles, douceur et fluidité.",
+      "difficulty": 1
+    },
+    {
+      "question": "Sur ton portrait, un lampadaire de l'arrière-plan semble sortir de la tête du sujet. Quel geste corrige ce défaut à la prise de vue ?",
+      "answer": "Te décaler un peu pour changer d'angle",
+      "wrong": [
+        "Fermer le diaphragme pour tout rendre net",
+        "Passer la photo en noir et blanc",
+        "Augmenter la sensibilité ISO"
+      ],
+      "explanation": "En portrait, l'arrière-plan compte autant que le sujet, et certains éléments peuvent gâcher l'image. On appelle **fusion** (« merger » en anglais) le défaut où un objet du fond se superpose malencontreusement au sujet : poteau qui sort de la tête, branche qui traverse le cou. La correction la plus simple est de changer de point de vue : un **pas de côté** ou un léger changement de hauteur suffit. Exemple : en te déplaçant de 50 cm, le lampadaire passe derrière l'épaule ou sort du cadre. Le piège : fermer le diaphragme rend le lampadaire encore plus net, donc aggrave le défaut. Le noir et blanc et les ISO n'y changent rien.",
+      "difficulty": 1
+    },
+    {
+      "question": "En portrait serré, où place-t-on généralement les **yeux** du sujet dans le cadre ?",
+      "answer": "Sur la ligne du tiers supérieur",
+      "wrong": [
+        "Au centre exact de l'image",
+        "Sur la ligne du tiers inférieur",
+        "Tout en haut, contre le bord du cadre"
+      ],
+      "explanation": "En portrait, les yeux sont le premier point que regarde le spectateur : leur position dans le cadre structure toute l'image. Les placer sur ou près de la **ligne du tiers supérieur** de la grille des tiers laisse de la place au reste du visage et au buste. Exemple : pour un portrait en buste au format vertical, les yeux se retrouvent au tiers de la hauteur en partant du haut, et le menton vers le milieu de l'image. Le piège le plus fréquent est de centrer le visage par réflexe : les yeux tombent alors au milieu, et un grand espace vide, inutile, apparaît au-dessus de la tête. Les placer sur le tiers inférieur produit le même défaut, en pire.",
+      "difficulty": 1
+    },
+    {
+      "question": "Comment appelle-t-on le point vers lequel semblent converger des lignes parallèles qui s'éloignent dans l'image, comme des rails ou les bords d'une route ?",
+      "answer": "Le point de fuite",
+      "wrong": [
+        "Le point fort",
+        "Le point nodal",
+        "Le point chaud"
+      ],
+      "explanation": "La perspective linéaire est un moyen puissant de donner de la profondeur à une image plate. Des lignes parallèles dans la réalité (rails, trottoirs, murs d'un couloir) semblent se rapprocher en s'éloignant, puis se rejoindre en un seul point : le **point de fuite**. Il se situe souvent sur la ligne d'horizon. Exemple : dans une allée d'arbres photographiée dans l'axe, toutes les lignes convergent vers un point au loin ; y placer un promeneur attire immédiatement le regard. Le piège : le **point fort** est l'intersection des lignes de la grille des tiers, sans lien avec la convergence. Le **point nodal** est une notion d'optique, utilisée pour assembler des panoramas sans décalage.",
+      "difficulty": 1
+    },
+    {
+      "question": "En composition, qu'est-ce que l'**espace négatif** ?",
+      "answer": "La zone vide autour du sujet, qui le met en valeur",
+      "wrong": [
+        "L'inversion des tons, comme sur un négatif",
+        "La partie de l'image retirée au recadrage",
+        "La zone hors champ suggérée par le sujet"
+      ],
+      "explanation": "En composition, on distingue l'**espace positif**, occupé par le sujet, et l'**espace négatif**, la zone vide qui l'entoure : ciel uni, mur, eau calme, neige. Loin d'être perdu, cet espace isole le sujet, lui donne de l'importance et crée une impression de calme, de solitude ou d'immensité. Exemple : un petit voilier dans le coin inférieur d'une image dont tout le reste est une mer grise et lisse ; le vide raconte la solitude du bateau. C'est un ressort clé de la photo minimaliste. Le piège : le mot « négatif » n'a rien à voir avec le négatif argentique ni avec l'inversion des tons. Et le hors-champ désigne ce qui est en dehors du cadre, pas le vide à l'intérieur.",
+      "difficulty": 2
+    },
+    {
+      "question": "Quelle est la valeur approchée du **nombre d'or** (φ), parfois utilisé en composition à la place de la règle des tiers ?",
+      "answer": "1,618",
+      "wrong": [
+        "1,414",
+        "1,333",
+        "1,732"
+      ],
+      "explanation": "Le nombre d'or est une proportion mathématique que certains photographes utilisent comme alternative à la règle des tiers. Il vaut **(1 + √5) / 2 ≈ 1,618**. Deux longueurs sont dans ce rapport quand la grande divisée par la petite donne le même résultat que leur somme divisée par la grande. Exemple : un segment de 100 cm coupé selon le nombre d'or donne 61,8 cm et 38,2 cm, car 61,8 / 38,2 ≈ 100 / 61,8 ≈ 1,618. On le retrouve dans la **grille phi** et la **spirale d'or**. Les leurres sont d'autres rapports connus : 1,414 = √2 (format des feuilles A4), 1,333 = 4/3 (format de nombreux capteurs compacts) et 1,732 = √3.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Nombre_d%27or"
+    },
+    {
+      "question": "Tu photographies un lac parfaitement calme dans lequel se reflètent des montagnes. Quel placement de l'horizon met le mieux en valeur la symétrie du reflet ?",
+      "answer": "Au centre de l'image",
+      "wrong": [
+        "Sur la ligne du tiers supérieur",
+        "Sur la ligne du tiers inférieur",
+        "En diagonale, appareil incliné"
+      ],
+      "explanation": "La règle des tiers est un bon point de départ, mais pas une loi : certains sujets réclament au contraire un cadrage centré. C'est le cas des sujets **symétriques**, comme un reflet parfait sur une eau immobile. Avec l'horizon **au centre**, chaque moitié de l'image répond exactement à l'autre, et l'effet miroir saute aux yeux. Exemple : un sommet enneigé et son reflet inversé dans un lac de montagne au lever du jour, l'horizon pile au milieu. Le piège : décaler l'horizon sur un tiers donnerait plus de place soit au paysage, soit au reflet, et casserait la symétrie. Les cadrages centrés conviennent aussi à l'architecture, aux couloirs ou aux portraits de face.",
+      "difficulty": 2
+    },
+    {
+      "question": "Que recommande la **règle des impairs** en composition ?",
+      "answer": "Grouper les éléments en nombre impair, par exemple 3",
+      "wrong": [
+        "Placer le sujet sur une ligne impaire de la grille",
+        "Alterner zones claires et sombres en nombre impair",
+        "Utiliser un nombre impair de sources de lumière"
+      ],
+      "explanation": "La règle des impairs aide à organiser plusieurs éléments dans une même image : objets d'une nature morte, sujets secondaires, personnes d'un groupe. Elle recommande de les grouper en **nombre impair**, 3 ou 5. Avec deux éléments, l'œil hésite et fait des allers-retours. Avec trois, il circule plus naturellement, et l'élément central sert de point d'ancrage, souvent dans une composition **en triangle**. Exemple : en photo culinaire, trois macarons disposés en triangle paraissent plus harmonieux que deux ou quatre alignés. Comme toutes les « règles » de composition, c'est une tendance de la perception, pas une obligation. Elle ne concerne ni la grille des tiers ni le nombre de lampes.",
+      "difficulty": 2
+    },
+    {
+      "question": "Au cinéma comme en photographie, jusqu'où un **plan américain** cadre-t-il un personnage ?",
+      "answer": "Jusqu'à mi-cuisse",
+      "wrong": [
+        "Jusqu'à la taille",
+        "Jusqu'aux épaules",
+        "Des pieds à la tête"
+      ],
+      "explanation": "Les noms des plans viennent du cinéma et servent aussi en photo pour décrire précisément le cadrage d'un personnage. Le **plan américain** coupe le personnage vers **mi-cuisse**. Son nom viendrait des westerns : ce cadrage permettait de montrer à la fois le visage du cow-boy et le revolver à sa ceinture, prêt à être dégainé. Exemple : un musicien debout avec sa guitare, cadré du haut de la tête jusqu'au milieu des cuisses. Pour comparer : le cadrage à la taille s'appelle **plan rapproché taille**, et le personnage entier, de la tête aux pieds, correspond au **plan moyen** (ou plan en pied). Couper ainsi entre deux articulations évite aussi l'impression de membre amputé.",
+      "difficulty": 2
+    },
+    {
+      "question": "En portrait, pourquoi déconseille-t-on de couper le cadre exactement au niveau d'une articulation (coude, genou, poignet, cheville) ?",
+      "answer": "Le membre paraît amputé, ce qui dérange l'œil",
+      "wrong": [
+        "Cela déforme optiquement les membres coupés",
+        "Cela fausse la mesure de la lumière sur la peau",
+        "Cela rend la mise au point sur les yeux impossible"
+      ],
+      "explanation": "L'endroit où le cadre coupe un corps change beaucoup la perception d'un portrait. Un bord du cadre qui tombe pile sur une articulation (coude, genou, poignet, cheville) donne l'impression que le membre a été **amputé** : la coupe paraît accidentelle et dérange l'œil. On coupe donc plutôt **entre deux articulations**, au milieu d'un segment, là où l'œil « complète » naturellement le membre hors du cadre. Exemple : pour un portrait aux trois quarts, coupe à mi-cuisse plutôt qu'au genou, et à mi-avant-bras plutôt qu'au poignet. Le piège : la position de la coupe est une pure affaire de perception ; elle n'a aucun effet sur l'optique, la mesure de la lumière ou la mise au point.",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment appelle-t-on le fait d'incliner volontairement l'appareil pour que l'horizon soit penché, afin de suggérer le malaise ou la tension ?",
+      "answer": "Un angle hollandais",
+      "wrong": [
+        "Une contre-plongée",
+        "Un plan-séquence",
+        "Un panoramique"
+      ],
+      "explanation": "L'inclinaison du cadre est un moyen simple de changer l'ambiance d'une image. L'**angle hollandais** (« dutch angle », ou plan « débullé », en référence à la bulle du niveau) consiste à pencher volontairement l'appareil. L'horizon et les verticales deviennent des diagonales, ce qui crée un déséquilibre : malaise, folie, danger ou action. Exemple : une ruelle sombre cadrée penchée de 20 à 30 degrés évoque aussitôt une scène de thriller. Le terme « dutch » viendrait d'une déformation de « deutsch », le procédé ayant été popularisé par le cinéma expressionniste allemand. Le piège : la contre-plongée change la hauteur du point de vue, pas l'inclinaison de l'horizon.",
+      "difficulty": 2
+    },
+    {
+      "question": "Comment appelle-t-on ce qui n'apparaît pas dans l'image mais que celle-ci suggère, par exemple quand un personnage regarde vers l'extérieur du cadre ?",
+      "answer": "Le hors-champ",
+      "wrong": [
+        "Le contrechamp",
+        "L'espace négatif",
+        "Le surcadrage"
+      ],
+      "explanation": "Une image ne montre qu'une partie du monde, mais elle peut faire imaginer le reste : c'est le rôle du **hors-champ**. Il désigne tout l'espace situé en dehors du cadre, que le spectateur devine grâce à des indices : un regard tourné vers le bord, un geste, une ombre portée, une main qui entre dans l'image. Exemple : une foule qui lève les yeux vers quelque chose qu'on ne voit pas ; on se demande aussitôt ce qui se passe. Bien utilisé, le hors-champ crée du mystère et prolonge l'image. Le piège : le **contrechamp** est un terme de cinéma qui désigne le plan filmé dans la direction opposée au précédent. L'**espace négatif**, lui, est la zone vide à l'intérieur du cadre.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi des montagnes lointaines paraissent-elles plus claires, moins contrastées et bleutées, ce qui renforce l'impression de profondeur ?",
+      "answer": "Par la perspective atmosphérique",
+      "wrong": [
+        "Par la perspective linéaire",
+        "Par l'aberration chromatique",
+        "Par le vignetage de l'objectif"
+      ],
+      "explanation": "En paysage, la profondeur ne vient pas seulement des lignes : l'air lui-même en crée. Plus un objet est lointain, plus sa lumière traverse une épaisse couche d'air chargée de particules et d'humidité. Cet air diffuse la lumière, surtout le bleu : les plans éloignés deviennent **plus clairs, moins contrastés et bleutés**. C'est la **perspective atmosphérique** (ou aérienne), déjà décrite par Léonard de Vinci. Exemple : des chaînes de collines superposées dans la brume du matin, de plus en plus pâles vers l'horizon, donnent une forte sensation de profondeur. Le piège : la perspective linéaire repose sur des lignes qui convergent vers un point de fuite, pas sur la couleur ou le contraste des plans.",
+      "difficulty": 2,
+      "source": "https://fr.wikipedia.org/wiki/Perspective_a%C3%A9rienne"
+    },
+    {
+      "question": "Une grande masse sombre (un rocher) occupe la gauche de ton cadre. Comment obtenir un **équilibre asymétrique** ?",
+      "answer": "Placer à droite un élément plus petit mais lumineux",
+      "wrong": [
+        "Placer à droite un second rocher identique",
+        "Recadrer pour mettre le rocher au centre",
+        "Assombrir la droite pour l'harmoniser"
+      ],
+      "explanation": "L'équilibre d'une image repose sur le **poids visuel** de ses éléments : certains attirent plus le regard que d'autres. Une petite zone claire, colorée ou contrastée peut peser autant qu'une grande masse sombre. Pour un **équilibre asymétrique**, on oppose donc à la grande masse un élément **plus petit mais plus lumineux**, de l'autre côté du cadre. Exemple : un gros rocher sombre à gauche et, à droite, une petite voile blanche sur la mer ; l'image tient comme une balance, avec un poids lourd d'un côté et un poids léger mais voyant de l'autre. Le piège : un second rocher identique donnerait un équilibre **symétrique**. Et recentrer le rocher évite le problème au lieu de le résoudre.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pour un gros plan très serré sur un visage, quelle coupe est généralement jugée la plus acceptable ?",
+      "answer": "Couper le haut du crâne",
+      "wrong": [
+        "Couper le menton",
+        "Couper la bouche",
+        "Couper au milieu des yeux"
+      ],
+      "explanation": "En portrait serré, le visage ne tient pas entier dans le cadre : il faut choisir ce qu'on sacrifie. L'expression se lit dans les **yeux et la bouche**. Il faut les garder entiers, ainsi que le menton, qui « pose » le visage dans l'image. Le haut du crâne et le front, eux, apportent très peu à l'expression ; l'œil reconstitue sans peine la forme de la tête hors du cadre. Exemple : dans les portraits très serrés des magazines, le cadre coupe souvent au milieu du front, au-dessus des sourcils, sans que cela gêne. Le piège : couper le menton donne au contraire une image déséquilibrée, comme si le visage glissait hors du cadre.",
+      "difficulty": 2
+    },
+    {
+      "question": "Dans une **grille phi**, fondée sur le nombre d'or, à quelle distance de chaque bord se trouvent les lignes, en proportion de la largeur ?",
+      "answer": "Environ 38 %",
+      "wrong": [
+        "Environ 33 %",
+        "Environ 25 %",
+        "Environ 45 %"
+      ],
+      "explanation": "La grille phi est une variante de la grille des tiers, fondée sur le nombre d'or (φ ≈ 1,618), que certains photographes préfèrent pour placer leurs sujets. Elle découpe chaque côté en trois segments dans les proportions **1 : 0,618 : 1**. La longueur totale vaut donc 1 + 0,618 + 1 = 2,618, et la première ligne tombe à 1 / 2,618 ≈ **38,2 %** du bord. Exemple : sur une photo de 6 000 pixels de large, les lignes phi sont vers 2 292 et 3 708 pixels, contre 2 000 et 4 000 pour la règle des tiers. Le piège : 33 % correspond à la règle des tiers. La grille phi est plus **resserrée vers le centre**, ce qui donne des compositions un peu moins excentrées.",
+      "difficulty": 3
+    },
+    {
+      "question": "Dans un cadre au format **3:2**, on « rabat » le petit côté sur le grand pour former un carré à chaque extrémité. Où tombent ces lignes de **rabattement** ?",
+      "answer": "Sur les verticales de la règle des tiers",
+      "wrong": [
+        "Sur les verticales de la grille phi",
+        "Au quart et aux trois quarts de la largeur",
+        "Exactement au milieu de l'image"
+      ],
+      "explanation": "Le **rabattement** est un tracé de composition hérité des peintres : on « rabat » le petit côté du cadre sur le grand pour former un carré à chaque extrémité, et les bords de ces carrés deviennent des lignes de force. Faisons le calcul au format **3:2** (celui du 24 × 36) : largeur 3, hauteur 2. Le carré de 2 × 2 rabattu depuis le bord gauche s'arrête à 2/3 de la largeur. Celui rabattu depuis le bord droit commence à 1/3. Les lignes de rabattement coïncident donc exactement avec les **verticales des tiers**. Le piège : ce n'est pas vrai pour tous les formats. Au 4:3 (largeur 4, hauteur 3), elles tomberaient au quart et aux trois quarts de la largeur.",
+      "difficulty": 3
+    },
+    {
+      "question": "Qu'est-ce qui détermine réellement la **perspective** d'une photo, c'est-à-dire le rapport de taille apparente entre un premier plan et un arrière-plan ?",
+      "answer": "La distance entre l'appareil et les sujets",
+      "wrong": [
+        "La focale de l'objectif utilisé",
+        "L'ouverture du diaphragme choisie",
+        "La taille du capteur de l'appareil"
+      ],
+      "explanation": "La perspective, c'est la façon dont les objets proches et lointains se comparent en taille dans l'image. Elle ne dépend que du **point de vue**, c'est-à-dire de la distance entre l'appareil et les différents plans. Exemple : un randonneur à 5 m de toi paraît immense devant une montagne ; recule à 50 m, et la montagne semble se rapprocher de lui. L'« écrasement » des plans attribué au téléobjectif vient en fait du **recul** qu'il impose. Le piège : depuis le même endroit, un grand-angle donne exactement la même perspective, il cadre simplement plus large. Recadrer cette photo donnerait la même image qu'au téléobjectif, en moins détaillé. La focale ne choisit que la portion de scène cadrée.",
+      "difficulty": 3
+    },
+    {
+      "question": "En noir et blanc argentique, quel effet produit un **filtre rouge** vissé sur l'objectif lors de la photo d'un ciel bleu parsemé de nuages blancs ?",
+      "answer": "Le ciel devient très sombre et les nuages ressortent",
+      "wrong": [
+        "Le ciel devient très clair et les nuages disparaissent",
+        "Les feuillages verts deviennent beaucoup plus clairs",
+        "Aucun, un filtre coloré est sans effet en noir et blanc"
+      ],
+      "explanation": "En noir et blanc, les couleurs deviennent des gris, et des filtres colorés permettent de choisir lesquelles seront claires ou sombres. Un filtre laisse passer sa propre couleur et bloque en grande partie sa complémentaire. Le **rouge** arrête l'essentiel du **bleu** du ciel : celui-ci impressionne peu le film et apparaît **très sombre** sur le tirage. Les nuages blancs, qui contiennent toutes les couleurs, restent clairs et ressortent. Exemple : c'est la recette des ciels dramatiques, presque noirs, de nombreux paysages classiques en noir et blanc. Le filtre jaune produit le même effet en plus discret. Le piège : c'est le filtre vert qui éclaircit les feuillages ; le rouge les assombrit plutôt.",
+      "difficulty": 3
+    }
+  ]
 }

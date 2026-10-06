@@ -311,7 +311,7 @@
         "`.workflows/`",
         "`.ci/github/`"
       ],
-      "explanation": "GitHub Actions détecte automatiquement les fichiers `.yml` ou `.yaml` placés dans le dossier `.github/workflows/` du dépôt : chaque fichier est un **workflow** distinct, déclenché par les événements listés sous sa clé `on`. Le dossier `.github/actions/` est souvent utilisé, par convention, pour ranger des actions locales réutilisables, mais un fichier qui s'y trouve n'est jamais lancé comme workflow.",
+      "explanation": "**GitHub Actions** est le système de CI/CD intégré à GitHub : des fichiers YAML décrivent ce qui doit se lancer quand un événement survient (push, pull request…). GitHub ne les cherche qu'à un endroit : `.github/workflows/`. Chaque fichier `.yml` ou `.yaml` placé là est un **workflow** distinct.\n```yaml\n# .github/workflows/ci.yml\non: push\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm test\n```\nCe fichier lance `npm test` à chaque push. Le dossier `.github/actions/` sert parfois, par convention, à ranger des actions locales réutilisables, mais un fichier qui s'y trouve n'est jamais lancé comme workflow. `.workflows/` et `.ci/github/` ne sont pas lus du tout.",
       "difficulty": 1,
       "source": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax"
     },
@@ -323,7 +323,7 @@
         "`platform`",
         "`machine`"
       ],
-      "explanation": "`runs-on` choisit le runner : une machine hébergée par GitHub (`ubuntu-latest`, `windows-latest`, `macos-latest`…) ou un **runner auto-hébergé**, désigné par ses labels (`runs-on: [self-hosted, linux]`). Chaque job démarre sur une machine vierge, ce qui rend les builds reproductibles. La clé `container` ne remplace pas `runs-on` : elle fait tourner les étapes du job dans un conteneur, sur le runner choisi.",
+      "explanation": "Dans GitHub Actions, un **job** est un groupe d'étapes exécuté sur une machine : le **runner**. La clé `runs-on` choisit laquelle : une machine hébergée par GitHub (`ubuntu-latest`, `windows-latest`, `macos-latest`) ou un **runner auto-hébergé** que tu gères toi-même, désigné par ses labels.\n```yaml\njobs:\n  build:\n    runs-on: ubuntu-latest\n  deploy:\n    runs-on: [self-hosted, linux]\n```\nChaque job démarre sur une machine vierge, ce qui rend les builds reproductibles. `runner`, `platform` et `machine` ne sont pas des clés valides pour cela. La clé `container` existe, mais elle ne remplace pas `runs-on` : elle fait tourner les étapes dans un conteneur, sur le runner choisi.",
       "difficulty": 1,
       "source": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax"
     },
@@ -335,7 +335,7 @@
         "Le fichier de configuration qui décrit les étapes du pipeline",
         "Une variable secrète injectée au moment du déploiement"
       ],
-      "explanation": "Un **artefact** est un résultat du build : binaire, archive `.jar` ou `.zip`, bundle JavaScript, image Docker, rapport de tests… L'outil de CI le conserve (ou le pousse dans un dépôt d'artefacts comme Nexus, Artifactory ou un registre de conteneurs) pour le transmettre aux étapes suivantes, le rendre téléchargeable ou le déployer. Le fichier qui décrit les étapes, lui, est la définition du pipeline (`.gitlab-ci.yml`, workflow GitHub Actions, `Jenkinsfile`…).",
+      "explanation": "Un pipeline CI/CD transforme du code source en quelque chose de déployable. Ce « quelque chose » est l'**artefact** : tout fichier produit par le pipeline, comme un binaire, une archive `.jar` ou `.zip`, un bundle JavaScript, une image Docker ou un rapport de tests. L'outil de CI le conserve (ou le pousse dans un dépôt d'artefacts : Nexus, Artifactory, registre de conteneurs) pour le transmettre aux étapes suivantes ou le déployer.\nExemple : l'étape de build produit `app-1.4.2.jar`, et l'étape de déploiement récupère ce même fichier. Le fichier qui décrit les étapes (`.gitlab-ci.yml`, `Jenkinsfile`) est la définition du pipeline, une erreur de build n'est pas un artefact, et un secret n'est qu'une variable.",
       "difficulty": 1
     },
     {
@@ -346,7 +346,7 @@
         "Les tests d'intégration",
         "Les tests manuels"
       ],
-      "explanation": "La pyramide, popularisée par Mike Cohn, place à sa base de **nombreux tests unitaires**, rapides et ciblés, puis moins de tests d'intégration, et au sommet quelques tests de bout en bout (*end-to-end*), lents, coûteux et plus fragiles. Une pyramide inversée (beaucoup de tests de bout en bout, peu d'unitaires) donne un pipeline lent et des échecs difficiles à diagnostiquer.",
+      "explanation": "Une suite de tests automatisés mélange plusieurs niveaux. Un test **unitaire** vérifie une petite fonction isolée ; un test d'**intégration** vérifie que plusieurs morceaux (le code et la base de données, par exemple) fonctionnent ensemble ; un test **de bout en bout** (*end-to-end*) simule un vrai utilisateur sur toute l'application. La **pyramide des tests**, popularisée par Mike Cohn, conseille beaucoup d'unitaires à la base (rapides, peu coûteux, précis), moins d'intégration, et quelques tests de bout en bout au sommet (lents, fragiles).\nExemple : 500 tests unitaires qui tournent en 20 secondes, et 10 scénarios de bout en bout qui en prennent 15 minutes. Une pyramide inversée donne un pipeline lent et des échecs difficiles à diagnostiquer.",
       "difficulty": 1,
       "source": "https://martinfowler.com/articles/practical-test-pyramid.html"
     },
@@ -358,7 +358,7 @@
         "Une image regroupe plusieurs conteneurs qui tournent ensemble",
         "Un conteneur est la recette texte qui sert à construire l'image"
       ],
-      "explanation": "Une **image** est un modèle en lecture seule, composé de couches empilées (système de fichiers et métadonnées comme la commande par défaut). Un **conteneur** est une instance de cette image lancée avec `docker run` : Docker ajoute une couche inscriptible par-dessus l'image et isole le processus. On peut lancer autant de conteneurs qu'on veut à partir d'une même image, un peu comme on crée plusieurs objets à partir d'une classe. La recette texte, c'est le Dockerfile.",
+      "explanation": "Docker sépare le « modèle » de son « exécution ». Une **image** est un modèle en lecture seule, formé de couches empilées (fichiers du système, programme, commande par défaut). Un **conteneur** est une instance de cette image, lancée avec `docker run` : Docker ajoute une fine couche inscriptible par-dessus et isole le processus.\n```\ndocker run -d --name a nginx\ndocker run -d --name b nginx\n```\nCes deux commandes créent deux conteneurs indépendants à partir de la même image `nginx`, un peu comme deux objets créés à partir d'une même classe en programmation. Une image n'est donc pas un « conteneur arrêté » : elle existe avant tout conteneur. Et la recette texte qui sert à la fabriquer, c'est le Dockerfile.",
       "difficulty": 1,
       "source": "https://docs.docker.com/get-started/docker-overview/"
     },
@@ -370,7 +370,7 @@
         "Docker Desktop",
         "Docker Buildx"
       ],
-      "explanation": "**Docker Compose** lit un fichier `compose.yaml` (ou l'ancien `docker-compose.yml`) qui déclare les services, leurs images, ports, volumes, variables et réseaux. `docker compose up -d` crée et démarre l'ensemble, `docker compose down` l'arrête et supprime les conteneurs. C'est l'outil idéal pour un environnement de développement ou de test local. Docker Hub est un registre d'images, et Buildx une extension dédiée à la construction d'images.",
+      "explanation": "Une application réelle se compose souvent de plusieurs conteneurs : une API, une base de données, un cache. Les lancer un par un avec de longues commandes `docker run` est pénible. **Docker Compose** permet de tout décrire dans un fichier YAML, `compose.yaml`, puis de tout démarrer d'une seule commande.\n```yaml\nservices:\n  api:\n    build: .\n    ports: [\"8080:8080\"]\n  db:\n    image: postgres:16\n    environment:\n      POSTGRES_PASSWORD: example\n```\n`docker compose up -d` crée et lance l'ensemble, `docker compose down` l'arrête et supprime les conteneurs. C'est idéal pour un environnement de développement ou de test local. Docker Hub est un registre d'images, Docker Desktop une application d'installation, et Buildx une extension pour construire des images.",
       "difficulty": 1,
       "source": "https://docs.docker.com/compose/"
     },
@@ -382,7 +382,7 @@
         "`kubectl show pods`",
         "`kubectl ps`"
       ],
-      "explanation": "`kubectl get` liste les ressources d'un type donné (`pods`, `deployments`, `services`…) ; on ajoute `-n mon-namespace` pour viser un autre namespace, `-A` pour tous, et `-o wide` pour voir le nœud et l'IP de chaque Pod. Pour le détail d'un objet et ses événements récents, on utilise `kubectl describe pod <nom>`, et `kubectl logs <nom>` pour les journaux d'un conteneur. `kubectl` n'a pas de sous-commande `list`, `show` ni `ps`.",
+      "explanation": "**kubectl** est l'outil en ligne de commande pour parler à un cluster Kubernetes. Le verbe pour lister des ressources est `get`, suivi du type d'objet.\n```\nkubectl get pods\nkubectl get pods -n production -o wide\n```\nLa première commande liste les Pods du namespace courant (un namespace est un espace de noms qui sépare les ressources d'un cluster, par exemple par équipe ou par environnement). La seconde vise le namespace `production` et ajoute le nœud et l'IP de chaque Pod ; `-A` listerait tous les namespaces. Pour le détail d'un Pod et ses événements, on utilise `kubectl describe pod <nom>`, et `kubectl logs <nom>` pour ses journaux. `list`, `show` et `ps` n'existent pas dans kubectl (`ps` est un réflexe venu de Docker).",
       "difficulty": 1,
       "source": "https://kubernetes.io/docs/reference/kubectl/quick-reference/"
     },
@@ -394,7 +394,7 @@
         "En parallèle, et aucune option ne permet de les ordonner",
         "L'un après l'autre, sur la même machine virtuelle"
       ],
-      "explanation": "Par défaut, les jobs d'un workflow démarrent **en parallèle**, chacun sur son propre runner. Pour créer une dépendance, on écrit `needs: build` dans le job `deploy` : il attend alors la réussite de `build`, et il est ignoré si `build` échoue (sauf condition comme `if: always()`). Même enchaînés, deux jobs ne partagent pas de machine : pour transmettre des fichiers de l'un à l'autre, il faut passer par des artefacts ou par les outputs du job.",
+      "explanation": "Dans GitHub Actions, un workflow est découpé en **jobs**. Sans précision, GitHub les démarre **en même temps**, chacun sur son propre runner (sa propre machine). Pour imposer un ordre, on utilise `needs`.\n```yaml\njobs:\n  build:\n    runs-on: ubuntu-latest\n  deploy:\n    needs: build\n    runs-on: ubuntu-latest\n```\nAvec `needs: build`, `deploy` attend la réussite de `build`, et il est ignoré si `build` échoue (sauf condition comme `if: always()`). L'ordre d'écriture dans le YAML n'a aucune influence. Même enchaînés, deux jobs ne partagent pas de machine : pour passer des fichiers de l'un à l'autre, il faut passer par des artefacts.",
       "difficulty": 2,
       "source": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax"
     },
@@ -406,7 +406,7 @@
         "4",
         "7"
       ],
-      "explanation": "Une matrice crée un job par **combinaison** de valeurs : 3 systèmes × 2 versions de Node = 6 combinaisons. `exclude` retire celles qui correspondent à toutes les clés indiquées, ici macOS avec Node 20, ce qui laisse **5** jobs. À l'inverse, `include` ajoute une combinaison, ou des variables supplémentaires à certaines combinaisons. Chaque job de la matrice s'exécute sur son propre runner, en parallèle.",
+      "explanation": "Une **matrice** (*matrix*) lance le même job avec plusieurs combinaisons de valeurs, sans recopier le YAML. Ici, trois systèmes et deux versions de Node font 3 × 2 = 6 combinaisons, donc 6 jobs.\nMais `exclude` retire les combinaisons qui correspondent à toutes les clés indiquées : ici `macos-latest` avec Node 20. Il reste 6 − 1 = **5** jobs :\n```\nubuntu + 20, ubuntu + 22, windows + 20, windows + 22, macos + 22\n```\nSeule une combinaison disparaît : macOS reste testé avec Node 22. À l'inverse, `include` ajoute une combinaison ou des variables supplémentaires. Chaque job de la matrice tourne sur son propre runner, en parallèle.",
       "difficulty": 2,
       "source": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax"
     },
@@ -418,7 +418,7 @@
         "Déclarer `dist/` dans les `outputs` du job `build`",
         "Lancer `deploy` avec `needs: build` suffit à copier `dist/`"
       ],
-      "explanation": "Chaque job tourne sur un **runner neuf** : les fichiers créés par `build` n'existent pas pour `deploy`, même avec `needs`. On publie donc `dist/` avec `actions/upload-artifact`, puis on le récupère dans `deploy` avec `actions/download-artifact` ; l'artefact reste aussi téléchargeable depuis l'interface pendant sa durée de rétention. Les `outputs` d'un job ne transportent que de petites chaînes de caractères (un numéro de version, un tag…), pas des fichiers.",
+      "explanation": "Dans GitHub Actions, chaque job tourne sur un **runner neuf** : les fichiers créés par `build` n'existent pas sur la machine de `deploy`, même avec `needs`. La solution prévue : `build` publie le dossier comme **artefact**, `deploy` le télécharge.\n```yaml\n# job build\n- uses: actions/upload-artifact@v4\n  with:\n    name: site\n    path: dist/\n# job deploy\n- uses: actions/download-artifact@v4\n  with:\n    name: site\n```\nL'artefact reste aussi téléchargeable depuis l'interface pendant sa durée de rétention. Les `outputs` d'un job, eux, ne transportent que de petites chaînes de caractères (un numéro de version, un tag), pas des dossiers entiers.",
       "difficulty": 2,
       "source": "https://github.com/actions/upload-artifact"
     },
@@ -430,7 +430,7 @@
         "Pour partager le cache avec les dépôts forkés",
         "Pour que le cache expire automatiquement chaque jour"
       ],
-      "explanation": "`hashFiles()` calcule une empreinte SHA-256 des fichiers indiqués : tant que le lockfile ne change pas, la clé reste identique et le cache (par exemple `~/.npm`) est restauré, ce qui accélère l'installation. Dès qu'une dépendance change, la clé change, et un nouveau cache est enregistré à la fin du job. Les `restore-keys` (comme `npm-`) permettent de repartir d'un cache proche quand aucune clé ne correspond exactement.",
+      "explanation": "Réinstaller les dépendances à chaque exécution du workflow est lent. L'action de cache enregistre le dossier de téléchargements (ici `~/.npm`) pour le réutiliser au run suivant. Reste une question : quand faut-il l'oublier ? C'est le rôle de la **clé**.\n```yaml\nkey: npm-${{ hashFiles('**/package-lock.json') }}\n```\n`hashFiles()` calcule une empreinte (un SHA-256) du lockfile. Tant que le lockfile ne bouge pas, la clé reste identique et le cache est restauré : installation rapide. Dès qu'une dépendance change, le lockfile change, donc la clé aussi : un nouveau cache est créé à la fin du job. Cette empreinte ne sert ni à chiffrer le cache, ni à le faire expirer. Les `restore-keys` permettent de repartir d'un cache proche quand aucune clé ne correspond exactement.",
       "difficulty": 2,
       "source": "https://github.com/actions/cache"
     },
@@ -442,7 +442,7 @@
         "Pour que chaque environnement ait sa propre version du code",
         "Pour pouvoir se passer de tests en préproduction"
       ],
-      "explanation": "Reconstruire l'application pour chaque environnement introduit un risque : une dépendance mise à jour entre-temps, un outil de build différent… et l'on déploie alors un binaire qui **n'a jamais été testé**. Le principe *build once, deploy many* promeut le même artefact (même empreinte, même tag d'image) d'un environnement à l'autre ; seule la configuration, injectée au déploiement (variables d'environnement, secrets), diffère.",
+      "explanation": "Imagine que tu reconstruises l'application une fois pour la préproduction, puis une seconde fois pour la production. Entre les deux, une dépendance a pu être mise à jour, un outil de build a changé… et tu déploies en prod un binaire **qui n'a jamais été testé**. Le principe *build once, deploy many* évite cela : on construit l'artefact une seule fois, on le teste en préproduction, puis on déploie **exactement le même** (même empreinte, même tag d'image) en production.\nCe qui change d'un environnement à l'autre, c'est la configuration, injectée au déploiement : variables d'environnement, secrets, adresse de la base de données.\n```\nregistry/app:3f9c2a1  ->  staging  ->  prod\n```\nLe gain d'espace disque n'est qu'un détail, et on ne se passe évidemment pas de tests.",
       "difficulty": 2
     },
     {
@@ -453,7 +453,7 @@
         "Un test trop lent, exécuté seulement la nuit",
         "Un test désactivé temporairement avec un `skip`"
       ],
-      "explanation": "Un test **flaky** (instable) donne des résultats différents sur le même code : dépendance à l'heure ou à l'ordre d'exécution, appel à un service réseau, attente asynchrone mal gérée (un `sleep` au lieu d'attendre un événement)… Il est nocif car l'équipe prend l'habitude de relancer le pipeline sans réfléchir, et finit par ignorer les vrais échecs. Bonne pratique : le mettre en quarantaine, suivre son taux d'échec et le corriger rapidement.",
+      "explanation": "Un bon test donne toujours le même résultat sur le même code. Un test **flaky** (« instable ») passe ou échoue au hasard, sans que personne ait rien changé. Causes fréquentes : dépendance à l'heure ou à l'ordre d'exécution, appel à un service réseau, attente asynchrone mal gérée.\n```js\nawait page.click('#save')\nawait sleep(500) // trop court une fois sur dix\nexpect(await page.text('#toast')).toBe('Enregistré')\n```\nUn `sleep` fixe, au lieu d'attendre l'apparition de l'élément, est un grand classique. Le vrai danger : l'équipe prend l'habitude de relancer le pipeline sans réfléchir, puis finit par ignorer aussi les vrais échecs. Un test qui échoue toujours, qui est lent ou désactivé avec `skip` n'est pas flaky. Bonne pratique : le mettre en quarantaine et le corriger vite.",
       "difficulty": 2
     },
     {
@@ -464,7 +464,7 @@
         "Chacun garde sa branche de fonctionnalité pendant tout le sprint",
         "Ils livrent chaque version depuis un dépôt Git différent"
       ],
-      "explanation": "En **trunk-based development**, chacun intègre de petits changements sur le tronc (`main`) au moins une fois par jour, directement ou via des branches très courtes (quelques heures, un ou deux jours au plus). C'est la condition d'une vraie intégration continue : on évite les fusions douloureuses de branches longues, et le travail inachevé est masqué derrière des *feature flags*. À l'opposé, **Git Flow** maintient des branches longues comme `develop` et `release/*`.",
+      "explanation": "Il existe deux grandes façons de gérer les branches Git. Avec **Git Flow**, on maintient des branches longues (`develop`, `release/*`) et chaque fonctionnalité vit plusieurs semaines dans sa branche. En **trunk-based development**, tout le monde intègre ses changements dans une branche principale unique, le « tronc » (`main`), au moins une fois par jour, directement ou via des branches très courtes.\nExemple : au lieu d'une branche de trois semaines pour une grosse fonctionnalité, on pousse chaque jour un petit morceau, caché derrière un *feature flag* tant qu'il n'est pas terminé. Résultat : plus de fusions douloureuses, et une vraie intégration continue. Garder sa branche de fonctionnalité pendant tout le sprint est exactement ce que cette méthode cherche à éviter.",
       "difficulty": 2,
       "source": "https://trunkbaseddevelopment.com/"
     },
@@ -476,7 +476,7 @@
         "Construire une version différente de l'application par client",
         "Marquer dans Git les commits qui ajoutent une fonctionnalité"
       ],
-      "explanation": "Un **feature flag** est une condition dans le code, pilotée par configuration, qui active ou désactive une fonctionnalité à l'exécution. Il **découple le déploiement** (le code est en production) **de la mise en service** (les utilisateurs y ont accès) : on peut livrer du code inachevé masqué, l'ouvrir à un pourcentage d'utilisateurs, ou couper une fonctionnalité défaillante sans redéployer. Revers de la médaille : les flags obsolètes doivent être retirés, sinon ils deviennent une dette technique.",
+      "explanation": "Livrer du code et le rendre visible aux utilisateurs sont deux choses différentes. Un **feature flag** est un « interrupteur » dans le code, piloté par la configuration, qui active ou désactive une fonctionnalité à l'exécution.\n```js\nif (flags.isEnabled('nouveau-paiement', user)) {\n  return payWithNewFlow(cart)\n}\nreturn payWithOldFlow(cart)\n```\nLe code est déployé en production (**déploiement**) mais reste invisible jusqu'à ce qu'on l'active (**mise en service**) : d'abord pour l'équipe interne, puis pour 5 % des utilisateurs, puis pour tous. Si ça tourne mal, on coupe l'interrupteur sans redéployer. Revers : les flags devenus inutiles doivent être retirés, sinon ils s'accumulent en dette technique.",
       "difficulty": 2,
       "source": "https://martinfowler.com/articles/feature-toggles.html"
     },
@@ -488,7 +488,7 @@
         "Il met le conteneur en pause en gelant ses processus",
         "Il renvoie SIGTERM toutes les 10 s jusqu'à l'arrêt"
       ],
-      "explanation": "`docker stop` envoie d'abord le signal d'arrêt (SIGTERM par défaut, modifiable avec `STOPSIGNAL`) au processus principal (PID 1) du conteneur. S'il tourne encore à la fin du délai de grâce (**10 secondes** par défaut pour un conteneur Linux, réglable avec `-t`), Docker envoie **SIGKILL**, qui ne peut pas être ignoré. `docker kill` envoie SIGKILL immédiatement, et `docker pause` gèle les processus sans les arrêter. Une application doit donc intercepter SIGTERM pour s'arrêter proprement.",
+      "explanation": "Un conteneur a un processus principal, le **PID 1**. Pour l'arrêter proprement, `docker stop` lui envoie d'abord **SIGTERM**, un signal Linux qui dit « termine-toi » et que l'application peut intercepter pour fermer ses connexions et sauvegarder son état. Si le processus tourne encore au bout du délai de grâce (**10 secondes** par défaut, réglable avec `-t`), Docker envoie **SIGKILL**, qui coupe le processus de force et ne peut pas être ignoré.\n```\ndocker stop -t 30 mon-conteneur\n```\nCette commande laisse 30 secondes avant le SIGKILL. `docker kill` envoie SIGKILL tout de suite, et `docker pause` gèle les processus sans les arrêter. Docker n'attend donc jamais indéfiniment, et n'envoie pas SIGTERM en boucle.",
       "difficulty": 2,
       "source": "https://docs.docker.com/reference/cli/docker/container/stop/"
     },
@@ -500,7 +500,7 @@
         "Il empêche toute lecture via `kubectl get secret`",
         "Il les rend illisibles dans etcd sans mot de passe"
       ],
-      "explanation": "Le **base64** des champs `data` d'un Secret sert seulement à transporter des données binaires dans du YAML : `echo cGFzc3dvcmQ= | base64 -d` suffit à retrouver `password`. Par défaut, les Secrets sont stockés **non chiffrés** dans etcd ; on les protège avec le chiffrement au repos (`EncryptionConfiguration`, souvent via un KMS), des règles RBAC strictes, et des outils comme Sealed Secrets ou External Secrets pour ne jamais committer de secret en clair dans Git. Beaucoup d'offres Kubernetes managées activent ce chiffrement d'office.",
+      "explanation": "Un **Secret** Kubernetes sert à stocker un mot de passe ou une clé. Ses valeurs sont écrites en **base64**, mais c'est un simple *encodage* (une façon de transcrire des octets en texte), pas un *chiffrement* : n'importe qui peut le défaire, sans clé.\n```\necho cGFzc3dvcmQ= | base64 -d\n# password\n```\nSans chiffrement au repos configuré, les Secrets sont stockés tels quels dans etcd (la base de données du cluster), et `kubectl get secret -o yaml` les affiche sans difficulté à qui en a le droit. Pour les protéger : chiffrement au repos (`EncryptionConfiguration`, souvent via un KMS), règles RBAC strictes, et des outils comme Sealed Secrets ou External Secrets pour ne jamais committer un secret en clair dans Git.",
       "difficulty": 2,
       "source": "https://kubernetes.io/docs/concepts/configuration/secret/"
     },
@@ -512,7 +512,7 @@
         "Seulement les secrets définis au niveau de l'organisation",
         "Les secrets du fork, copiés lors de sa création"
       ],
-      "explanation": "Le code d'une PR venant d'un fork n'est pas digne de confiance : il pourrait simplement afficher ou exfiltrer les secrets. GitHub ne transmet donc **aucun secret**, à l'exception du `GITHUB_TOKEN`, aux workflows déclenchés depuis un fork, et ce `GITHUB_TOKEN` n'a que des droits en lecture. Le dépôt peut en plus exiger une approbation manuelle avant de lancer les workflows de contributeurs externes. Les traitements qui ont besoin de secrets passent par d'autres mécanismes, à manier avec précaution, comme `pull_request_target`.",
+      "explanation": "Sur un dépôt public, n'importe qui peut forker le projet et ouvrir une pull request. Or un workflow `pull_request` exécute le code de cette PR : un contributeur malveillant pourrait y glisser une ligne qui envoie ailleurs les secrets du dépôt (clé de déploiement, token npm…).\nGitHub applique donc une règle de prudence : pour une PR venue d'un fork, le workflow ne reçoit **aucun secret**, hormis un `GITHUB_TOKEN` limité à la lecture.\n```yaml\non: pull_request\n# secrets.NPM_TOKEN sera vide pour une PR venue d'un fork\n```\nLe dépôt peut aussi exiger l'approbation d'un mainteneur avant de lancer les workflows de contributeurs externes. Les secrets ne sont pas copiés dans les forks, et ceux de l'organisation ne sont pas transmis non plus. Pour les cas qui exigent des secrets, il existe `pull_request_target`, à manier avec beaucoup de précaution.",
       "difficulty": 3,
       "source": "https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows"
     },
@@ -524,7 +524,7 @@
         "Les tests modifient directement la branche principale",
         "Le code de la PR remplace le fichier du workflow"
       ],
-      "explanation": "`pull_request_target` s'exécute dans le contexte du **dépôt de base** : le fichier de workflow utilisé est celui de sa branche par défaut (la PR ne peut donc pas le modifier), et il a accès aux secrets ainsi qu'à un `GITHUB_TOKEN` pouvant écrire. C'est voulu pour des opérations sûres, comme étiqueter ou commenter une PR. Mais s'il récupère le code de la PR et l'exécute (`npm install` lance des scripts, les tests aussi), un attaquant peut voler les secrets : c'est l'attaque dite *pwn request*. Pour tester du code externe, on utilise `pull_request`, sans secrets.",
+      "explanation": "Pour les PR venues de forks, GitHub propose un second déclencheur, `pull_request_target`. Il s'exécute dans le contexte du **dépôt de base** : il a accès aux secrets et à un `GITHUB_TOKEN` capable d'écrire. C'est pratique pour des actions sûres, comme étiqueter ou commenter une PR.\nLe danger apparaît quand le workflow récupère aussi le code de la PR et l'exécute :\n```yaml\non: pull_request_target\nsteps:\n  - uses: actions/checkout@v4\n    with:\n      ref: ${{ github.event.pull_request.head.sha }}\n  - run: npm install && npm test\n```\n`npm install` lance des scripts du projet, et les tests aussi : un attaquant y met du code qui vole les secrets (attaque dite *pwn request*). Le fichier de workflow, lui, vient de la branche par défaut : la PR ne peut pas le remplacer. Pour tester du code externe, on utilise `pull_request`, sans secrets.",
       "difficulty": 3,
       "source": "https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows"
     },
@@ -536,7 +536,7 @@
         "Les runners refusent les actions référencées par un tag",
         "Le SHA rend le téléchargement de l'action plus rapide"
       ],
-      "explanation": "Un tag Git comme `v2` est **mutable** : si le dépôt de l'action est compromis, l'attaquant peut le faire pointer vers un code malveillant, exécuté ensuite dans tous les workflows qui l'utilisent, avec leurs secrets. C'est ce qui s'est produit en mars 2025 avec `tj-actions/changed-files`, dont les tags ont été réécrits pour afficher les secrets dans les logs. Un SHA de commit complet est immuable : on le met à jour volontairement, par exemple via Dependabot, en notant la version en commentaire.",
+      "explanation": "Quand tu écris `uses: un-editeur/une-action@v2`, tu fais confiance à ce que le tag `v2` désigne **aujourd'hui**. Or un tag Git est *mutable* : son propriétaire (ou un attaquant qui a pris la main sur son dépôt) peut le faire pointer vers un autre code. Un **SHA de commit** complet, lui, est une empreinte du contenu : il ne peut pas être déplacé.\n```yaml\n- uses: un-editeur/une-action@a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0 # v2.1.0\n```\nEn mars 2025, les tags de `tj-actions/changed-files` ont été réécrits vers un code malveillant qui affichait les secrets dans les logs de nombreux workflows. Contrepartie du SHA : on met à jour volontairement, par exemple avec Dependabot. Il n'apporte ni correctifs automatiques, ni gain de vitesse.",
       "difficulty": 3,
       "source": "https://docs.github.com/en/actions/reference/security/secure-use"
     },
@@ -548,7 +548,7 @@
         "Git n'est pas installé sur les runners hébergés",
         "Le checkout copie les fichiers sans le dossier `.git`"
       ],
-      "explanation": "Pour aller vite, `actions/checkout` fait par défaut un clone **superficiel** : un seul commit, celui qui a déclenché le workflow, sans l'historique ni les tags. Les commandes qui ont besoin de l'historique (`git describe`, calcul d'une version à partir des tags, `git log` entre deux versions) échouent alors ou donnent un résultat faux. On ajoute `with: fetch-depth: 0` pour récupérer tout l'historique, branches et tags compris.",
+      "explanation": "Par défaut, `actions/checkout` fait un clone **superficiel** (*shallow*) pour aller vite : un seul commit, celui qui a déclenché le workflow, sans l'historique ni les tags (`fetch-depth: 1`). Les commandes qui ont besoin de l'historique échouent alors ou donnent un résultat faux : `git describe --tags`, le calcul d'une version à partir des tags, `git log` entre deux versions.\n```yaml\n- uses: actions/checkout@v4\n  with:\n    fetch-depth: 0\n```\n`fetch-depth: 0` récupère tout l'historique, branches et tags compris. Le checkout fournit bien un dossier `.git`, git est installé sur les runners hébergés, et les tags sont récupérables : ils ne sont simplement pas téléchargés par défaut.",
       "difficulty": 3,
       "source": "https://github.com/actions/checkout"
     },
@@ -560,7 +560,7 @@
         "`echo \"tag=1.4.2\" >> \"$GITHUB_STEP_SUMMARY\"`",
         "`export tag=1.4.2`"
       ],
-      "explanation": "Chaque étape dispose de fichiers spéciaux dont le chemin est donné par des variables d'environnement. Écrire `nom=valeur` dans `$GITHUB_OUTPUT` définit un **output** de l'étape, lisible ensuite avec `${{ steps.version.outputs.tag }}`. `$GITHUB_ENV` définit plutôt une variable d'environnement pour les étapes suivantes (lue via `env.tag`), et `$GITHUB_STEP_SUMMARY` ajoute du Markdown au résumé du run. Un simple `export` disparaît à la fin de l'étape, car chaque étape lance un nouveau shell.",
+      "explanation": "Dans GitHub Actions, les étapes d'un job doivent parfois s'échanger des valeurs (un numéro de version calculé, par exemple). Chaque étape tourne dans un nouveau shell, donc un simple `export` disparaît à la fin de l'étape. Le mécanisme prévu : écrire `nom=valeur` dans le fichier désigné par `$GITHUB_OUTPUT`.\n```yaml\n- id: version\n  run: echo \"tag=1.4.2\" >> \"$GITHUB_OUTPUT\"\n- run: echo \"Version ${{ steps.version.outputs.tag }}\"\n```\nLa seconde étape lit l'**output** `tag` de l'étape d'id `version`. `$GITHUB_ENV` définit plutôt une variable d'environnement pour les étapes suivantes (lue via `env.tag`), pas un output ; `$GITHUB_STEP_SUMMARY` sert à ajouter du Markdown au résumé du run.",
       "difficulty": 3,
       "source": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands"
     },
@@ -572,7 +572,7 @@
         "Oui, mais seulement une fois l'image compressée au push",
         "Non, car `rm` est ignoré dans une instruction `RUN`"
       ],
-      "explanation": "Chaque instruction `COPY`, `ADD` ou `RUN` crée une **couche** immuable, et l'image est l'empilement de toutes ses couches. Supprimer un fichier dans une couche suivante ne fait que le masquer : les 500 Mo restent dans la couche du `COPY`, et sont toujours téléchargés avec l'image. Pour s'en débarrasser, il faut ajouter et supprimer le fichier dans la même instruction (télécharger, extraire puis supprimer dans un seul `RUN`), utiliser un montage temporaire (`RUN --mount`) ou un build multi-stage.",
+      "explanation": "Une image Docker est un **empilement de couches** immuables : chaque `COPY`, `ADD` ou `RUN` en crée une. Supprimer un fichier dans une couche suivante ne l'efface pas : on ajoute seulement une couche qui le *masque*. Ici, les 500 Mo de l'archive restent dans la couche du `COPY`, et l'image finale les contient toujours (on les télécharge avec elle).\nPour réellement s'en débarrasser, il faut que le fichier n'entre jamais dans une couche, par exemple en le montant seulement le temps du `RUN` :\n```dockerfile\nRUN --mount=type=bind,source=dataset.tar.gz,target=/tmp/d.tgz tar -xzf /tmp/d.tgz -C /data\n```\nUn build multi-stage, où l'on ne copie que le résultat, fonctionne aussi. Et `rm` n'est pas ignoré : il marche, mais seulement sur la couche courante.",
       "difficulty": 3,
       "source": "https://docs.docker.com/build/building/best-practices/"
     },
@@ -584,7 +584,7 @@
         "6",
         "8"
       ],
-      "explanation": "Par défaut, `maxSurge` et `maxUnavailable` valent **25 %**. `maxSurge` est arrondi à l'entier supérieur : 25 % de 4 = 1, donc au plus 4 + 1 = **5** Pods. `maxUnavailable` est arrondi à l'entier inférieur : 1 Pod au plus peut être indisponible, donc au moins 3 restent disponibles. Le contrôleur remplace ainsi les Pods par petites vagues, sans jamais doubler la capacité comme le ferait un déploiement blue/green.",
+      "explanation": "Avec la stratégie `RollingUpdate`, Kubernetes remplace les Pods par petites vagues pour que le service ne s'interrompe pas. Deux réglages encadrent le rythme : `maxSurge`, le nombre de Pods **en plus** autorisés pendant la mise à jour, et `maxUnavailable`, le nombre de Pods qui peuvent manquer. Par défaut, les deux valent 25 %.\nPour 4 réplicas : 25 % de 4 = 1. Le surplus est arrondi à l'entier supérieur (1), donc au plus 4 + 1 = **5** Pods en même temps ; l'indisponibilité est arrondie à l'inférieur (1), donc au moins 3 Pods restent disponibles.\n```yaml\nstrategy:\n  type: RollingUpdate\n  rollingUpdate:\n    maxSurge: 25%\n    maxUnavailable: 25%\n```\nOn ne double donc jamais la capacité (8 Pods), contrairement à un blue/green.",
       "difficulty": 3,
       "source": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/"
     },
@@ -596,7 +596,7 @@
         "`gitlab-pipeline.yaml`",
         "`.gitlab/workflows/ci.yml`"
       ],
-      "explanation": "GitLab lit par défaut le fichier `.gitlab-ci.yml` à la racine du dépôt (le chemin peut être changé dans les paramètres du projet). Il déclare les **stages** et les **jobs**, et chaque push, merge request ou tag peut déclencher un pipeline selon les règles définies. Le mot-clé `include` permet d'y importer d'autres fichiers YAML, du même projet ou d'un autre, pour mutualiser la configuration.",
+      "explanation": "**GitLab CI/CD** lit un fichier placé à la racine du dépôt : `.gitlab-ci.yml`. Il y déclare des **stages** (étapes ordonnées) et des **jobs** (tâches rattachées à un stage). Chaque push, merge request ou tag peut alors déclencher un pipeline.\n```yaml\nimage: node:22\nstages: [test, deploy]\ntest-job:\n  stage: test\n  script: npm test\n```\nCe pipeline lance `npm test` dans l'étape `test`. Le chemin du fichier peut être changé dans les paramètres du projet, et le mot-clé `include` permet d'importer d'autres fichiers YAML (du même projet ou d'un autre) pour mutualiser la configuration. Le dossier `.gitlab/workflows/` fait penser à GitHub Actions, pas à GitLab.",
       "difficulty": 1,
       "source": "https://docs.gitlab.com/ci/yaml/"
     },

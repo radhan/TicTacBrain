@@ -560,6 +560,227 @@
       ],
       "explanation": "Dans un tableau ou une boîte, chaque fil est serré sous une vis ou dans une borne : de ce serrage dépend la qualité du contact. Un contact desserré présente une **résistance de contact** élevée, c'est-à-dire qu'il freine le passage du courant. Cette résistance dégage de la chaleur par **effet Joule** (P = R × I²), parfois avec de petits arcs électriques. Exemple : 0,1 Ω de mauvais contact traversé par 16 A dissipe environ 25 W, concentrés sur quelques millimètres, de quoi carboniser l'isolant. Ni le disjoncteur ni le différentiel ne le détectent, car le courant reste normal. Des bornes noircies ou une odeur de brûlé imposent de couper et de faire refaire la connexion.",
       "difficulty": 2
+    },
+    {
+      "question": "Dans une installation électrique, quel rôle joue le conducteur à isolant vert et jaune ?",
+      "answer": "C'est le conducteur de protection (la terre)",
+      "wrong": [
+        "C'est le neutre, qui ramène le courant",
+        "C'est la phase, qui amène le courant",
+        "C'est le fil pilote du chauffage"
+      ],
+      "explanation": "Les couleurs des fils permettent d'identifier chaque conducteur d'un coup d'œil. Le **vert/jaune** est réservé, sans exception, au **conducteur de protection**, relié à la prise de terre. Il ne transporte aucun courant en fonctionnement normal : il sert à évacuer un courant de défaut, par exemple si un fil dénudé touche la carcasse métallique d'un four. Le différentiel détecte alors la fuite et coupe. On n'utilise jamais un fil vert/jaune pour autre chose, ni un fil d'une autre couleur pour la terre. Le neutre est en principe bleu clair, et la phase d'une autre couleur (rouge, marron, noir…).",
+      "difficulty": 1
+    },
+    {
+      "question": "En schéma TT, la tension de contact ne doit pas dépasser 50 V. Si la protection différentielle de tête est de 500 mA, quelle est la résistance maximale de la prise de terre (R = U / I) ?",
+      "answer": "100 Ω",
+      "wrong": [
+        "25 Ω",
+        "500 Ω",
+        "1 667 Ω"
+      ],
+      "explanation": "La prise de terre doit être assez « bonne » pour qu'un défaut ne porte jamais les masses métalliques à une tension dangereuse avant que le différentiel ne coupe. La **tension limite conventionnelle** de contact est fixée à 50 V dans les locaux secs. Le différentiel de tête, ici 500 mA, ne coupe qu'à partir de 0,5 A ; à ce courant, la masse ne doit pas dépasser 50 V : R ≤ 50 / 0,5 = **100 Ω**. C'est la valeur couramment exigée pour une maison équipée d'un disjoncteur de branchement 500 mA. Piège : 1 667 Ω correspond au calcul fait avec un 30 mA (50 / 0,03), mais c'est le différentiel le moins sensible qui fixe la limite.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pourquoi un lave-linge à carcasse métallique doit-il être branché sur une prise reliée à la terre ?",
+      "answer": "Pour qu'un défaut d'isolement fasse couper le différentiel",
+      "wrong": [
+        "Pour que son moteur tourne à la bonne vitesse",
+        "Pour réduire sa consommation d'électricité",
+        "Pour le protéger contre les surcharges"
+      ],
+      "explanation": "Un lave-linge est un appareil de **classe I** : sa sécurité repose sur la liaison de sa carcasse métallique à la terre. Si un fil abîmé touche la carcasse, c'est un **défaut d'isolement** : sans terre, la carcasse resterait sous tension, et la première personne qui la toucherait serait traversée par le courant. Avec la terre, le courant de défaut s'écoule aussitôt par le fil vert/jaune ; le différentiel 30 mA voit la fuite et coupe en une fraction de seconde. Exemple : un lave-linge qui « picote » quand on le touche est un signal d'alarme ; on le débranche et on fait vérifier la prise et l'appareil. La terre ne joue aucun rôle sur la consommation ni contre les surcharges.",
+      "difficulty": 1
+    },
+    {
+      "question": "Dans une salle de bains, à quoi correspond le volume 0 défini par la NF C 15-100 ?",
+      "answer": "À l'intérieur de la baignoire ou du receveur de douche",
+      "wrong": [
+        "À la zone située à moins de 60 cm de la baignoire",
+        "Au plafond situé au-dessus de la douche",
+        "À la zone hors de portée des projections d'eau"
+      ],
+      "explanation": "La NF C 15-100 découpe la salle de bains en **volumes** selon le risque d'être mouillé, et fixe pour chacun le matériel autorisé. Le **volume 0** est le plus exposé : c'est l'intérieur de la baignoire ou du receveur de douche, là où l'on se tient dans l'eau. Le **volume 1** s'étend au-dessus, jusqu'à 2,25 m du sol, et le **volume 2** forme une bande de 60 cm autour du volume 1. Au-delà, on est « hors volume ». Exemple : une prise de courant ordinaire n'a rien à faire au bord de la baignoire ; on la place hors volume, protégée par un différentiel 30 mA.",
+      "difficulty": 1
+    },
+    {
+      "question": "Selon la NF C 15-100, quel matériel électrique peut-on installer dans le volume 0 d'une salle de bains ?",
+      "answer": "Du matériel TBTS 12 V, étanche à l'immersion (IPX7)",
+      "wrong": [
+        "Une prise 2P+T protégée par un différentiel 30 mA",
+        "Un luminaire de classe II alimenté en 230 V",
+        "Un chauffe-eau électrique instantané"
+      ],
+      "explanation": "Le volume 0, l'intérieur de la baignoire ou du receveur, est l'endroit où le corps est mouillé et en contact direct avec l'eau : le risque y est maximal. Seul y est admis du matériel en **TBTS 12 V** (très basse tension de sécurité, fournie par un transformateur de sécurité installé hors volume) et protégé contre l'**immersion temporaire**, c'est-à-dire de degré **IPX7**. À 12 V, même une main mouillée ne laisse passer qu'un courant inoffensif. Exemple : l'éclairage immergé d'une baignoire peut être alimenté ainsi. Le 230 V est exclu de ce volume, même protégé par un différentiel, et un chauffe-eau ne peut se placer qu'à partir du volume 1.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quel montage permet d'allumer et d'éteindre une même lampe depuis deux endroits, par exemple en haut et en bas d'un escalier ?",
+      "answer": "Un montage va-et-vient",
+      "wrong": [
+        "Un montage simple allumage",
+        "Un montage double allumage",
+        "Un montage avec variateur"
+      ],
+      "explanation": "Dans un couloir ou un escalier, on veut pouvoir allumer en entrant et éteindre en sortant, sans revenir sur ses pas. Le **va-et-vient** utilise deux interrupteurs spéciaux à trois bornes, reliés entre eux par deux fils appelés **navettes**. Chaque interrupteur fait passer la phase sur l'une ou l'autre navette : la lampe s'allume quand les deux interrupteurs « choisissent » la même navette, et s'éteint sinon. Exemple : tu allumes en bas, tu montes, tu éteins en haut. Le double allumage, lui, commande deux lampes différentes depuis un même endroit, avec un interrupteur à deux touches.",
+      "difficulty": 1
+    },
+    {
+      "question": "Pour commander l'éclairage d'un long couloir depuis cinq endroits différents, quelle solution fonctionne simplement ?",
+      "answer": "Un télérupteur commandé par des boutons poussoirs",
+      "wrong": [
+        "Cinq interrupteurs va-et-vient montés en série",
+        "Cinq interrupteurs simples montés en parallèle",
+        "Un variateur relié à cinq interrupteurs"
+      ],
+      "explanation": "Au-delà de deux points de commande, le va-et-vient devient compliqué. Le **télérupteur** est un relais installé dans le tableau ou dans une boîte : à chaque impulsion reçue, il change d'état, allumé puis éteint. On le commande avec des **boutons poussoirs**, qui ne ferment le circuit que pendant l'appui, et on peut en brancher autant qu'on veut en parallèle. Exemple : cinq poussoirs le long du couloir ; un appui n'importe où allume, l'appui suivant n'importe où éteint. Avec cinq interrupteurs simples en parallèle, la lumière ne s'éteindrait que si tous étaient ouverts : impossible de commander librement depuis chaque point.",
+      "difficulty": 2
+    },
+    {
+      "question": "Sans télérupteur, de quoi a-t-on besoin pour commander une même lampe depuis trois endroits ?",
+      "answer": "Deux va-et-vient et un permutateur",
+      "wrong": [
+        "Trois interrupteurs va-et-vient",
+        "Deux va-et-vient et un poussoir",
+        "Trois interrupteurs simples"
+      ],
+      "explanation": "Le va-et-vient classique ne gère que deux points de commande. Pour en ajouter, on insère entre les deux va-et-vient un **permutateur** (ou inverseur) : un interrupteur à quatre bornes qui, à chaque manœuvre, croise ou décroise les deux navettes. Exemple pour trois endroits : un va-et-vient au début, un permutateur au milieu, un va-et-vient à la fin. Pour quatre endroits, on ajoute un second permutateur, et ainsi de suite. Trois va-et-vient ne suffisent pas, car un va-et-vient ne sait pas croiser deux navettes. Au-delà de trois points, le télérupteur est souvent plus simple à câbler.",
+      "difficulty": 3
+    },
+    {
+      "question": "Sur quel conducteur un interrupteur d'éclairage doit-il agir ?",
+      "answer": "Sur la phase",
+      "wrong": [
+        "Sur le neutre",
+        "Sur la terre",
+        "Sur la phase ou le neutre, au choix"
+      ],
+      "explanation": "Un interrupteur sert à ouvrir le circuit d'une lampe. Il doit couper la **phase**, le conducteur qui amène la tension. S'il coupait le neutre, la lampe s'éteindrait bien, mais la douille et ses fils resteraient reliés à la phase, donc à 230 V par rapport à la terre. Exemple : en changeant une ampoule « éteinte » dans ce cas, on peut s'électriser en touchant le culot. C'est aussi pourquoi, avant de toucher à un luminaire, on coupe le disjoncteur au tableau au lieu de se fier à l'interrupteur, puis on vérifie l'absence de tension. La terre, elle, ne doit jamais être interrompue.",
+      "difficulty": 1
+    },
+    {
+      "question": "À quoi servent les « éclipses » (ou obturateurs) d'une prise de courant ?",
+      "answer": "À fermer les alvéoles contre l'introduction d'objets",
+      "wrong": [
+        "À signaler la présence de tension par un voyant",
+        "À protéger la prise contre les surcharges",
+        "À relier automatiquement la prise à la terre"
+      ],
+      "explanation": "Un enfant peut être tenté d'enfoncer une épingle ou une clé dans les trous d'une prise, appelés **alvéoles**. Les **éclipses** sont des volets internes qui obturent ces alvéoles : ils ne s'ouvrent que lorsque les deux broches d'une fiche poussent en même temps. Une seule tige glissée dans un trou bute donc contre le volet. La NF C 15-100 impose ces prises à éclipses dans les logements, ce qui rend les cache-prises en plastique beaucoup moins utiles. Elles ne protègent ni des surcharges, rôle du disjoncteur, ni des fuites de courant, rôle du différentiel.",
+      "difficulty": 1
+    },
+    {
+      "question": "La fiche plate à deux broches dite « Europlug », qui équipe de nombreux petits appareils, est prévue pour un courant maximal de…",
+      "answer": "2,5 A",
+      "wrong": [
+        "6 A",
+        "10 A",
+        "16 A"
+      ],
+      "explanation": "L'**Europlug** (type C) est la petite fiche plate sans terre qui se branche dans presque toutes les prises d'Europe continentale. Elle équipe des appareils de faible puissance et de classe II, comme des chargeurs, des rasoirs ou des radios. Elle est prévue pour **2,5 A** au plus, soit environ 575 W en 230 V. Ses broches fines ne sont pas conçues pour des courants plus forts : un appareil puissant, comme un radiateur ou une bouilloire, possède une fiche plus robuste, souvent avec contact de terre, prévue pour 16 A. On ne remplace donc jamais la fiche d'un tel appareil par une Europlug.",
+      "difficulty": 3,
+      "source": "https://fr.wikipedia.org/wiki/Europlug"
+    },
+    {
+      "question": "Tu as coupé le disjoncteur d'un circuit avant de remplacer une prise. Comment utiliser correctement le vérificateur d'absence de tension (VAT) ?",
+      "answer": "Le vérifier sur une source sous tension avant et après",
+      "wrong": [
+        "Mesurer une seule fois, entre phase et terre",
+        "Se fier à son bip, sans contrôler l'appareil",
+        "Mesurer seulement si l'interrupteur est éteint"
+      ],
+      "explanation": "Le **VAT** (vérificateur d'absence de tension) est l'appareil qui permet de s'assurer qu'un circuit est vraiment hors tension avant d'y toucher. Une étiquette fausse ou un disjoncteur mal repéré arrive souvent : couper ne suffit pas, il faut vérifier. Mais un VAT en panne afficherait « pas de tension » partout ! On le teste donc sur une source **sous tension connue** (une prise d'un autre circuit, ou le testeur prévu à cet effet) **avant** la mesure ; on mesure ensuite entre tous les conducteurs (phase, neutre, terre) ; puis on le reteste **après**. Exemple : prise de la chambre coupée, VAT contrôlé sur la prise du couloir, mesures sur la chambre, puis nouveau contrôle sur le couloir.",
+      "difficulty": 2
+    },
+    {
+      "question": "Pourquoi un tournevis testeur à néon ne suffit-il pas pour s'assurer qu'un fil est hors tension ?",
+      "answer": "Son voyant peut rester éteint malgré une tension présente",
+      "wrong": [
+        "Il ne fonctionne que sur le courant continu",
+        "Il provoque un court-circuit en touchant le fil",
+        "Il ne détecte que les tensions supérieures à 1 000 V"
+      ],
+      "explanation": "Le tournevis testeur contient une petite lampe au néon et une forte résistance ; le circuit se referme à travers le corps de l'utilisateur, qui pose un doigt sur le capuchon. Son allumage dépend donc de nombreux facteurs : chaussures isolantes, sol sec, forte lumière ambiante, néon usé. Il peut rester **éteint alors que le fil est sous 230 V**, ce qui donne une fausse impression de sécurité. Il sert au mieux à repérer une phase, jamais à prouver l'absence de tension : pour cela, on utilise un **VAT** normalisé à deux pointes, contrôlé avant et après usage. Exemple : sur un parquet sec, avec des semelles en caoutchouc, le néon peut briller si faiblement qu'on ne le voit pas.",
+      "difficulty": 2
+    },
+    {
+      "question": "À partir de quelle intensité environ un courant alternatif traversant la main provoque-t-il une contraction musculaire qui empêche de lâcher le conducteur saisi ?",
+      "answer": "Environ 10 mA",
+      "wrong": [
+        "Environ 0,5 mA",
+        "Environ 500 mA",
+        "Environ 2 A"
+      ],
+      "explanation": "Les effets du courant sur le corps dépendent surtout de son **intensité** et de sa **durée**. Les ordres de grandeur couramment retenus en alternatif 50 Hz sont : vers **0,5 mA**, simple picotement (seuil de perception) ; vers **10 mA**, contraction des muscles qui empêche de lâcher l'objet saisi, la main se refermant dessus ; vers **30 mA**, risque de paralysie respiratoire ; vers **75 mA**, risque de fibrillation du cœur ; vers **1 A**, arrêt cardiaque. Ce seuil de « non-lâcher » explique pourquoi une électrisation peut durer et s'aggraver. C'est aussi pour rester sous les seuils les plus graves que les différentiels des logements sont réglés sur 30 mA.",
+      "difficulty": 3
+    },
+    {
+      "question": "Quelle est la différence entre une électrisation et une électrocution ?",
+      "answer": "L'électrocution est une électrisation qui entraîne la mort",
+      "wrong": [
+        "L'électrisation concerne le continu, l'électrocution l'alternatif",
+        "L'électrocution désigne un simple picotement sans gravité",
+        "L'électrisation ne touche que les appareils, pas les personnes"
+      ],
+      "explanation": "On parle d'**électrisation** dès qu'un courant électrique traverse le corps, quelles qu'en soient les conséquences : picotement, brûlure, chute, trouble cardiaque. L'**électrocution** est une électrisation qui entraîne la **mort**. La distinction n'est pas qu'une affaire de vocabulaire : une électrisation d'apparence bénigne peut provoquer des brûlures internes ou des troubles du rythme cardiaque qui se manifestent plus tard. Exemple : après avoir pris une « châtaigne » en 230 V, même si l'on se sent bien, il est recommandé de consulter un médecin ou d'appeler le 15. Les deux termes concernent aussi bien le courant continu que l'alternatif.",
+      "difficulty": 2
+    },
+    {
+      "question": "Une personne est électrisée et reste en contact avec un appareil sous tension. Quel est le premier geste à faire ?",
+      "answer": "Couper le courant au tableau avant de la toucher",
+      "wrong": [
+        "La tirer aussitôt par le bras pour la dégager",
+        "L'asperger d'eau pour la faire réagir",
+        "Appeler les secours et attendre sans couper"
+      ],
+      "explanation": "Tant que la victime est en contact avec la source, elle fait partie du circuit : la toucher, c'est risquer d'être électrisé à son tour. Le premier geste est donc de **supprimer le danger** : couper le courant au disjoncteur ou au tableau, ou débrancher l'appareil si on peut le faire sans toucher la personne. Ensuite seulement, on alerte les secours (15, 18 ou 112) et on pratique les gestes de premiers secours, avec un défibrillateur si la victime ne respire plus. Exemple : une personne crispée sur une perceuse défectueuse ; on court au tableau abaisser le disjoncteur général, puis on s'occupe d'elle. L'eau, conductrice, aggraverait le risque.",
+      "difficulty": 1
+    },
+    {
+      "question": "Lors d'une consignation électrique, à quoi sert l'étape appelée « condamnation » ?",
+      "answer": "À empêcher toute remise sous tension pendant les travaux",
+      "wrong": [
+        "À vérifier que le circuit n'est plus sous tension",
+        "À relier le circuit coupé à la terre",
+        "À identifier le circuit sur lequel on travaille"
+      ],
+      "explanation": "La **consignation** est la procédure qui met un circuit en sécurité avant d'y travailler ; elle est codifiée pour les professionnels par la norme NF C 18-510. Elle comprend notamment la **séparation** (couper le circuit), la **condamnation**, l'identification et la **vérification d'absence de tension**. La condamnation consiste à bloquer l'organe de coupure en position ouverte, par exemple avec un cadenas ou un dispositif verrouillable, et à le signaler par une pancarte. Exemple à la maison : pendant que tu changes un luminaire, quelqu'un pourrait réarmer le disjoncteur en croyant à une panne ; un mot « Travaux en cours, ne pas remettre » sur le tableau, voire un cache verrouillable, évite cet accident.",
+      "difficulty": 3
+    },
+    {
+      "question": "Lors de la vente d'un logement, le diagnostic de l'installation intérieure d'électricité est obligatoire lorsque cette installation a plus de…",
+      "answer": "15 ans",
+      "wrong": [
+        "5 ans",
+        "10 ans",
+        "25 ans"
+      ],
+      "explanation": "Le **diagnostic électricité** informe l'acheteur ou le locataire de l'état de sécurité de l'installation intérieure d'un logement. Il est obligatoire, pour une vente comme pour une location, lorsque l'installation date de **plus de 15 ans**. Réalisé par un diagnostiqueur certifié selon la norme NF C 16-600, il repère les anomalies dangereuses : absence de différentiel, terre défaillante, matériel vétuste, conducteurs à nu… Il reste valable **3 ans** pour une vente et **6 ans** pour une location. Ce n'est pas un contrôle de conformité à la NF C 15-100 : il porte uniquement sur la sécurité et n'oblige pas le vendeur à faire des travaux.",
+      "difficulty": 3
+    },
+    {
+      "question": "Tu refermes une pince ampèremétrique autour d'un câble entier, phase et neutre ensemble, qui alimente un radiateur en marche. Qu'affiche-t-elle ?",
+      "answer": "Presque zéro : les courants aller et retour s'annulent",
+      "wrong": [
+        "Le double du courant consommé par le radiateur",
+        "Le courant exact consommé par le radiateur",
+        "La tension du circuit au lieu du courant"
+      ],
+      "explanation": "La **pince ampèremétrique** mesure un courant sans ouvrir le circuit : ses mâchoires captent le champ magnétique créé par le courant qui traverse les conducteurs enserrés. Dans un câble entier, la phase et le neutre transportent le même courant en sens opposés : leurs champs magnétiques s'annulent, et la pince affiche presque **zéro**. Il faut donc enserrer **un seul conducteur**, par exemple la phase seule dans le tableau. Exemple : sur la phase d'un radiateur de 2 000 W, on lit environ 8,7 A. C'est exactement le principe qu'exploite le différentiel : s'il reste un courant net, c'est qu'une partie du courant fuit ailleurs.",
+      "difficulty": 3
+    },
+    {
+      "question": "Pour une maison neuve, quel document visé par le Consuel faut-il en principe avant la mise en service de l'électricité ?",
+      "answer": "Une attestation de conformité de l'installation",
+      "wrong": [
+        "Un diagnostic de performance énergétique",
+        "Une habilitation électrique pour l'occupant",
+        "Un certificat d'étalonnage du compteur"
+      ],
+      "explanation": "Le **Consuel** (Comité national pour la sécurité des usagers de l'électricité) est l'organisme chargé de contrôler les installations électriques neuves avant leur raccordement. Lorsqu'une maison est construite, l'installateur, ou le particulier qui a fait lui-même son installation, remplit une **attestation de conformité** à la NF C 15-100, que le Consuel vise après examen du dossier et, souvent, une visite sur place. Sans cette attestation visée, le gestionnaire du réseau ne met pas l'installation en service. Elle est aussi exigée après une rénovation complète ayant nécessité une mise hors tension par le distributeur. Le DPE concerne la performance énergétique, et l'habilitation électrique s'adresse aux travailleurs.",
+      "difficulty": 2
     }
   ]
 }

@@ -68,7 +68,7 @@
         "Automated Trading Hub : une plateforme de trading automatisé",
         "All The Holders : l'ensemble des détenteurs"
       ],
-      "explanation": "L'**ATH** (All-Time High) est le prix le plus haut jamais atteint par un actif ; l'**ATL** (All-Time Low) est son plus bas historique. Ces repères servent à situer un cours : si un jeton vaut 20 $ alors que son ATH est de 100 $, il est 80 % sous son record. Mais attention : être loin de son ATH ne veut pas dire « en solde ». Beaucoup de projets ne retrouvent jamais leur ancien sommet, et un record passé ne garantit rien pour l'avenir.",
+      "explanation": "L'**ATH** (All-Time High) est le prix le plus haut jamais atteint par un actif ; l'**ATL** (All-Time Low) est son plus bas historique. Ces repères servent à situer un cours : si un jeton vaut 20 $ alors que son ATH est de 100 $, il est 80 % sous son record. Mais attention : être loin de son ATH ne veut pas dire « en solde ». Beaucoup de projets ne retrouvent jamais leur ancien sommet, et un record passé ne garantit rien pour l'avenir. ATH ne désigne ni des heures d'échange ni l'ensemble des détenteurs.",
       "difficulty": 1
     },
     {
@@ -277,7 +277,7 @@
         "L'obligation de reverser une partie des gains aux détenteurs",
         "L'indexation du prix du token sur un stablecoin"
       ],
-      "explanation": "Le **vesting** étale la mise en circulation des tokens réservés (équipe, fonds, conseillers) sur des mois ou des années, parfois avec une période de blocage initial (cliff). L'objectif est d'aligner les intérêts sur le long terme et d'éviter une vente massive dès le lancement. Un calendrier de déblocage chargé peut toutefois peser sur le cours à chaque échéance.",
+      "explanation": "Le **vesting** est le calendrier de déblocage des tokens réservés à l'équipe, aux investisseurs ou aux conseillers. Souvent, un **cliff** (période initiale sans aucun déblocage) précède un déblocage régulier. Exemple : l'équipe reçoit 200 millions de tokens avec 12 mois de cliff, puis un déblocage mensuel sur 36 mois, soit environ 5,6 millions de tokens par mois. Cela évite qu'elle vende tout dès le lancement et aligne ses intérêts sur le long terme. Mais chaque déblocage met de nouveaux tokens sur le marché, ce qui peut peser sur le cours. Les tokens ne sont ni détruits ni indexés sur un stablecoin.",
       "difficulty": 3
     },
     {
@@ -288,7 +288,7 @@
         "On réduit par dix le risque de perte",
         "On bloque ses tokens pendant dix jours"
       ],
-      "explanation": "Un **levier** de 10x permet de contrôler une position valant dix fois le capital déposé (marge). Les variations de prix sont donc amplifiées dans les deux sens : une hausse de 5 % rapporte 50 % de la marge, mais une baisse de 5 % en détruit autant. Plus le levier est élevé, plus la **liquidation** (perte de la marge) survient tôt.",
+      "explanation": "Un **future** est un contrat dérivé qui permet de parier sur le prix futur d'un actif. Avec un **levier** de ×10, tu contrôles une position dix fois plus grosse que ta mise (la **marge**). Exemple : tu déposes 1 000 € et tu ouvres une position de 10 000 € sur le jeton X. Si le prix monte de 5 %, tu gagnes 500 €, soit 50 % de ta mise. S'il baisse de 5 %, tu perds 500 €. S'il baisse de 10 %, ta marge est détruite : c'est la **liquidation**. Le levier multiplie donc les gains comme les pertes ; il ne garantit rien et ne réduit pas le risque.",
       "difficulty": 3
     },
     {
@@ -299,7 +299,7 @@
         "Environ 50 %",
         "Environ 100 %"
       ],
-      "explanation": "Avec un levier de 10x, votre marge ne représente que 1/10 de la position : une baisse d'environ **10 %** efface toute la marge, déclenchant la **liquidation** (fermeture forcée). En pratique, elle survient même un peu avant à cause des frais et de la marge de maintenance. C'est pourquoi un fort levier rend une position très fragile.",
+      "explanation": "Avec un levier de ×10, ta marge représente 1/10 de la position. Exemple : tu mets 1 000 € de marge pour contrôler 10 000 € de jeton X (position longue, donc tu gagnes si ça monte). Si le prix baisse de 10 %, ta position perd 1 000 € : toute ta marge est partie et la plateforme ferme la position de force (**liquidation**). En pratique, cela arrive un peu avant, à cause des frais et de la marge de maintenance (le minimum que la plateforme exige pour garder ta position). Règle : la distance de liquidation vaut environ 1 / levier. À ×100, ce serait 1 % ; à ×2, 50 %.",
       "difficulty": 3
     },
     {
@@ -310,7 +310,7 @@
         "Environ 3,65 %",
         "Environ 20 %"
       ],
-      "explanation": "Avec composition quotidienne, APY = (1 + 0,10/365)^365 − 1 ≈ **10,52 %**. L'APY dépasse l'APR grâce aux intérêts réinvestis chaque jour. Afficher un APY plutôt qu'un APR fait paraître le rendement plus élevé à taux nominal égal : il faut toujours comparer la même métrique entre deux offres.",
+      "explanation": "Ici, on convertit un taux simple (APR) en taux avec intérêts composés (APY). Quand les gains sont réinvestis chaque jour, la formule est APY = (1 + 0,10 / 365)^365 − 1 ≈ **10,52 %**. Exemple : 1 000 € à 10 % d'APR simple rapportent 100 € en un an ; avec composition quotidienne, ils rapportent environ 105,16 €. L'écart paraît faible à 10 %, mais il grandit avec le taux. Une offre qui affiche un APY et une autre qui affiche un APR ne se comparent pas directement : il faut toujours comparer la même mesure.",
       "difficulty": 3
     },
     {
@@ -321,7 +321,7 @@
         "30 %",
         "97 %"
       ],
-      "explanation": "Slippage = (prix attendu − prix obtenu) / prix attendu = (100 − 97) / 100 = 0,03 = **3 %**. Un tel écart est fréquent sur un token peu liquide ou lors d'un gros ordre. Sur une DEX, régler une tolérance de slippage trop élevée peut même ouvrir la porte à des attaques de type sandwich qui dégradent encore le prix.",
+      "explanation": "Le slippage se calcule en pourcentage : (prix attendu − prix obtenu) / prix attendu = (100 − 97) / 100 = 0,03, soit **3 %**. Exemple : tu vends 50 jetons en comptant sur 100 $ pièce, donc 5 000 $. L'ordre s'exécute à 97 $ : tu encaisses 4 850 $, soit 150 $ de moins que prévu. Un tel écart est fréquent sur un jeton peu liquide ou pour un gros ordre. Sur une DEX, une tolérance de slippage réglée trop haut peut aussi ouvrir la porte aux attaques « sandwich », où un robot dégrade encore ton prix. Les autres chiffres (0,3 %, 30 %, 97 %) viennent d'erreurs de calcul.",
       "difficulty": 3
     },
     {
@@ -332,7 +332,7 @@
         "Le cours va forcément quintupler pour rejoindre la FDV",
         "La liquidité du projet est verrouillée à 80 %"
       ],
-      "explanation": "FDV cinq fois supérieure à la market cap signifie qu'environ 20 % seulement des tokens circulent (100 / 500). Les 80 % restants arriveront plus tard (vesting, émissions) et peuvent **diluer** les détenteurs et peser sur le prix. La FDV n'est ni une garantie de valeur ni un objectif de cours : c'est un signal de pression vendeuse potentielle à surveiller.",
+      "explanation": "La market cap ne compte que les tokens en circulation ; la FDV compte tous ceux prévus. Ici, 100 M$ / 500 M$ = 20 % : seulement un cinquième des tokens circule, et 80 % restent à débloquer (vesting, émissions futures). Exemple : si 100 millions de tokens supplémentaires arrivent en un mois alors qu'il y en avait 100 millions en circulation, l'offre double. À demande égale, le prix risque de baisser : c'est la **dilution**. Attention, ces 80 % ne sont pas de la liquidité verrouillée, et la FDV n'est ni une réserve ni un objectif de cours.",
       "difficulty": 3
     },
     {
@@ -343,7 +343,7 @@
         "Fund Under Development : un fonds de projet encore en construction",
         "Full User Disclosure : la publication des avoirs d'un utilisateur"
       ],
-      "explanation": "**FUD** (Fear, Uncertainty and Doubt) désigne les informations, vraies ou fausses, qui sèment la peur et poussent à vendre. Le terme est utile, mais attention : les promoteurs de projets douteux qualifient volontiers de « FUD » toute critique légitime pour la discréditer. Une alerte argumentée (contrat suspect, équipe anonyme, liquidité non verrouillée) mérite d'être vérifiée, pas balayée d'un revers de main.",
+      "explanation": "Le **FUD** (Fear, Uncertainty and Doubt, « peur, incertitude et doute ») désigne les rumeurs ou critiques qui poussent à vendre par peur. Exemple : un tweet affirme qu'une plateforme est en difficulté et le cours perd 15 % en une heure ; l'information peut être vraie ou fausse. Piège inverse : les promoteurs d'un projet douteux crient « FUD ! » dès qu'on les critique. Signal d'alerte : une équipe qui répond à toute question sur son contrat par « FUD » et bannit les sceptiques de son groupe Telegram. Une critique argumentée (contrat suspect, liquidité non verrouillée) se vérifie.",
       "difficulty": 1
     },
     {
@@ -354,7 +354,7 @@
         "Du nom d'un célèbre fonds d'investissement new-yorkais spécialisé en crypto",
         "D'une commande du logiciel Bitcoin Core servant à bloquer des fonds"
       ],
-      "explanation": "En décembre 2013, en pleine chute du bitcoin, un utilisateur du forum Bitcointalk a publié un message intitulé « I AM HODLING », coquille de « holding ». Le mot est devenu un mème, puis a été réinterprété après coup comme l'acronyme « Hold On for Dear Life ». Il désigne la stratégie qui consiste à conserver ses actifs sur le long terme sans réagir aux variations de court terme.",
+      "explanation": "**HODL** est devenu le mot d'ordre de ceux qui gardent leurs cryptos malgré les baisses. Son origine est une faute de frappe : en décembre 2013, en pleine chute du bitcoin, un utilisateur du forum Bitcointalk a écrit « I AM HODLING » au lieu de « holding ». Le mème a été réinterprété après coup comme « Hold On for Dear Life » (« tiens bon pour la vie »). Exemple : tu achètes à 100 $, le cours tombe à 50 $ ; le HODLer ne vend pas et attend. Satoshi Nakamoto n'a rien à voir là-dedans. Garder ne protège pas d'un projet qui meurt vraiment.",
       "difficulty": 2,
       "source": "https://en.wikipedia.org/wiki/Hodl"
     },
@@ -366,7 +366,7 @@
         "Le bull market est un marché réglementé, le bear market un marché non réglementé",
         "Le bull market se déroule en semaine, le bear market la nuit et le week-end"
       ],
-      "explanation": "Le **taureau** (bull) frappe avec ses cornes de bas en haut, l'**ours** (bear) avec ses pattes de haut en bas : d'où les images de hausse et de baisse. Un bull market est une tendance haussière prolongée, un bear market une baisse durable, souvent définie en Bourse comme un recul d'au moins 20 % depuis un sommet. En crypto, ces cycles sont très marqués : le bitcoin a déjà perdu plus de 70 % entre un sommet et un creux, et les altcoins souvent bien davantage.",
+      "explanation": "Un **bull market** (marché haussier) est une longue période de hausse ; un **bear market** (marché baissier) est une longue période de baisse. Le taureau frappe de bas en haut avec ses cornes, l'ours de haut en bas avec ses pattes. En Bourse, on parle souvent de bear market après un recul d'au moins 20 % depuis un sommet. En crypto, les cycles sont brutaux : le bitcoin a déjà perdu plus de 70 % entre un sommet et un creux. Exemple : 10 000 € qui perdent 70 % deviennent 3 000 € ; pour revenir à 10 000 €, il faut gagner environ 233 %. Ces termes ne dépendent ni de l'heure ni du type de marché.",
       "difficulty": 1
     },
     {
@@ -377,7 +377,7 @@
         "Garder l'actif très peu de temps avant de le revendre",
         "Acheter une petite quantité pour tester la plateforme"
       ],
-      "explanation": "Une position **short** profite d'une baisse : on vend un actif (souvent emprunté, ou via un produit dérivé) pour le racheter plus tard, si possible moins cher. À l'inverse, une position **long** profite de la hausse. Le mot « short » ne parle pas de durée : une position short peut rester ouverte des mois, et une position long quelques minutes.",
+      "explanation": "Prendre une position **short**, c'est parier sur la baisse. On vend un actif (emprunté, ou via un produit dérivé) pour le racheter plus tard, si possible moins cher. Exemple : un jeton vaut 100 $ et tu ouvres un short de 1 000 $ (l'équivalent de 10 jetons). S'il tombe à 80 $, tu gagnes 200 $. S'il monte à 120 $, tu perds 200 $. Comme un prix peut monter sans limite, la perte d'un short n'a pas de plafond théorique : d'où la liquidation avec du levier. Une position **long** parie au contraire sur la hausse. « Short » ne parle pas de la durée de détention.",
       "difficulty": 1
     },
     {
@@ -388,7 +388,7 @@
         "À bloquer toute vente tant que le prix est en baisse",
         "À annuler les frais de transaction en cas de perte"
       ],
-      "explanation": "Un **stop-loss** déclenche la vente quand le cours franchit un seuil fixé à l'avance, ce qui coupe une position perdante avant que la perte ne s'aggrave. C'est un outil de base de la gestion du risque, indispensable avec du levier. Il ne garantit pas le prix exact : en cas de chute brutale ou de marché peu liquide, la vente peut s'exécuter nettement plus bas que le seuil.",
+      "explanation": "Un **stop-loss** (« arrêter la perte ») est un ordre de vente qui se déclenche tout seul quand le prix descend à un seuil que tu as fixé. Exemple : tu achètes 100 jetons à 10 $ (1 000 $) et tu places un stop-loss à 8,50 $. Si le cours y tombe, tout est vendu : tu perds 150 $ au lieu de regarder la baisse continuer. Limite : le prix de vente n'est pas garanti. Si le cours chute de 9 $ à 6 $ sans échanges entre les deux, l'ordre s'exécute vers 6 $, pas à 8,50 $. Ce n'est ni un ordre d'achat ni un blocage de la vente.",
       "difficulty": 1
     },
     {
@@ -399,7 +399,7 @@
         "Il vend le token si son prix retombe à 10 $, pour limiter la perte",
         "Il bloque le token jusqu'à ce que son prix atteigne 15 $"
       ],
-      "explanation": "Un **take-profit** sécurise un gain en vendant automatiquement à un objectif fixé, sans devoir surveiller l'écran. Il se combine souvent avec un **stop-loss** placé sous le prix d'achat : on décide à l'avance où l'on sort, en gain comme en perte. Cela évite de laisser l'avidité ou la panique dicter la décision sur le moment.",
+      "explanation": "Un **take-profit** est un ordre de vente automatique placé au-dessus du prix actuel pour encaisser un gain. Exemple : tu as acheté à 10 $ et tu places un take-profit à 15 $ : si le cours atteint 15 $, tes 200 jetons sont vendus et tu encaisses 3 000 $ pour 2 000 $ investis, soit 1 000 $ de gain (+50 %). On l'associe souvent à un **stop-loss** (vente automatique sous le prix d'achat), par exemple à 8 $ : tu risques 2 $ pour viser 5 $. Un ordre qui se déclencherait si le prix retombe à 10 $ serait un stop-loss, pas un take-profit.",
       "difficulty": 1
     },
     {
@@ -410,7 +410,7 @@
         "Vendre systématiquement dès que le prix augmente de 10 %",
         "Emprunter pour acheter davantage chaque fois que le prix baisse"
       ],
-      "explanation": "Le **DCA** (investissement programmé) consiste par exemple à acheter pour 50 € chaque semaine, que le cours soit haut ou bas. Cela lisse le prix d'achat moyen et évite d'avoir à deviner le « bon moment », ce que personne ne réussit de façon fiable. Le DCA réduit le risque de mauvais timing, mais pas le risque que l'actif lui-même perde toute sa valeur.",
+      "explanation": "Le **DCA** (Dollar-Cost Averaging, investissement programmé) consiste à investir la même somme à dates fixes, quel que soit le prix. Exemple : tu achètes pour 100 € chaque mois, avec un prix de 10 €, 5 €, 20 € puis 10 €. Tu obtiens 10 + 20 + 5 + 10 = 45 jetons pour 400 €, soit un prix moyen d'achat d'environ 8,89 €, alors que la moyenne des prix était de 11,25 €. Quand le prix est bas, ta somme fixe achète plus de jetons. Cela évite de chercher le meilleur moment, mais ne protège pas d'un actif qui perd durablement toute sa valeur.",
       "difficulty": 1
     },
     {
@@ -421,7 +421,7 @@
         "Une copie frauduleuse du bitcoin",
         "Une cryptomonnaie qui vaut plus cher que le bitcoin"
       ],
-      "explanation": "**Altcoin** est la contraction d'« alternative coin » : toute cryptomonnaie apparue après le bitcoin et différente de lui (Ether, Solana, memecoins…). La catégorie est immense, des grands projets aux shitcoins. Les altcoins sont en général plus volatils que le bitcoin et chutent souvent plus fort que lui lors des baisses de marché.",
+      "explanation": "**Altcoin** vient de « alternative coin » : toute cryptomonnaie autre que le bitcoin, comme l'Ether, Solana, Dogecoin ou n'importe quel memecoin. La catégorie va de projets sérieux à de pures arnaques. Ce n'est pas une copie frauduleuse, et le prix unitaire n'a rien à voir avec la définition. Les altcoins sont en général plus volatils que le bitcoin. Exemple d'ordre de grandeur : lors d'une baisse du marché, si le bitcoin perd 20 %, il n'est pas rare qu'un altcoin en perde 40 % ou plus. Plus le projet est petit, plus le risque est grand.",
       "difficulty": 1
     },
     {
@@ -432,7 +432,7 @@
         "Tu achètes le token à crédit avec un effet de levier obligatoire",
         "Tu réserves le token à un prix fixé, livré dans trois mois"
       ],
-      "explanation": "Sur le marché **spot**, l'échange est réglé tout de suite : tu possèdes l'actif acheté et tu peux le retirer vers ton propre portefeuille. Les **produits dérivés** (futures, options) permettent au contraire de spéculer sur le prix sans détenir l'actif, souvent avec levier. En spot sans levier, il n'y a pas de liquidation : la perte maximale est la somme investie.",
+      "explanation": "Sur le marché **spot** (au comptant), tu paies et tu reçois l'actif tout de suite : tu en es propriétaire et tu peux le retirer vers ton portefeuille. Exemple : tu achètes 0,1 ETH à 3 000 $, donc 300 $. Tu détiens 0,1 ETH ; au pire, l'ETH vaut zéro et tu perds tes 300 $, pas un centime de plus. Sur un **dérivé** (futures, options), tu ne détiens pas l'actif, tu paries sur son prix, souvent avec levier : avec 300 $ de marge à ×10, tu contrôles 3 000 $ et tu peux être liquidé avant que le prix ne s'effondre.",
       "difficulty": 1
     },
     {
@@ -443,7 +443,7 @@
         "La liste des tokens détenus par chacun des clients",
         "Le registre des frais encaissés par la plateforme"
       ],
-      "explanation": "Le **carnet d'ordres** affiche d'un côté les **bids** (offres d'achat) et de l'autre les **asks** (offres de vente), avec les quantités proposées à chaque prix. Une transaction a lieu quand un acheteur et un vendeur s'accordent sur un prix. Un carnet bien garni signale un marché liquide ; un carnet presque vide annonce de forts écarts de prix au moindre ordre.",
+      "explanation": "Le **carnet d'ordres** (order book) liste toutes les offres en attente : les **bids** (acheteurs) d'un côté, les **asks** (vendeurs) de l'autre, avec prix et quantités. Exemple : asks à 100,10 $ (5 jetons) et 100,20 $ (8 jetons) ; bids à 99,90 $ (4 jetons) et 99,80 $ (10 jetons). Un ordre d'achat au marché de 10 jetons prend 5 jetons à 100,10 $ puis 5 à 100,20 $ : prix moyen 100,15 $. Un carnet bien garni = marché liquide. Un carnet presque vide fait sauter le prix au moindre ordre. Ce n'est ni un historique de cours ni la liste des avoirs des clients.",
       "difficulty": 1
     },
     {
@@ -454,7 +454,7 @@
         "La marge de maintenance",
         "Le funding rate"
       ],
-      "explanation": "Le **spread** est l'écart entre le meilleur prix auquel quelqu'un accepte d'acheter (bid) et le meilleur prix auquel quelqu'un accepte de vendre (ask). C'est un coût caché : acheter puis revendre aussitôt fait perdre le spread. Il est minime sur les marchés liquides et peut devenir énorme sur les tokens obscurs. Le **slippage**, lui, est l'écart entre le prix attendu d'un ordre et le prix réellement obtenu.",
+      "explanation": "Le **spread** est l'écart entre le meilleur prix d'achat proposé (bid, 99,90 $) et le meilleur prix de vente (ask, 100,10 $) : ici 0,20 $, soit 0,2 %. C'est un coût caché : si tu achètes au marché à 100,10 $ puis revends aussitôt à 99,90 $, tu perds 0,20 $ par jeton, donc 20 $ pour 100 jetons, sans que le cours ait bougé. Sur un jeton obscur avec un bid à 0,90 $ et un ask à 1,10 $, l'écart monte à 20 %. Le **slippage** est autre chose : l'écart entre le prix espéré et le prix réellement obtenu.",
       "difficulty": 2
     },
     {
@@ -465,7 +465,7 @@
         "Le maker est la plateforme, le taker le client qui paie les frais",
         "Le maker vend toujours, le taker achète toujours"
       ],
-      "explanation": "Un **maker** place un ordre qui ne s'exécute pas immédiatement et attend dans le carnet : il « fabrique » de la liquidité. Un **taker** passe un ordre qui se remplit tout de suite contre un ordre existant : il « prend » cette liquidité. Les plateformes facturent généralement des frais plus bas aux makers pour encourager la liquidité. Acheteurs comme vendeurs peuvent être makers ou takers selon leur façon de passer l'ordre.",
+      "explanation": "Un **maker** ajoute de la liquidité : son ordre limité attend dans le carnet. Un **taker** la consomme : son ordre s'exécute immédiatement contre un ordre déjà présent. Exemple : le prix est à 100 $. Tu places un ordre d'achat limité à 99 $ : il attend, tu es maker. Si tu cliques sur « acheter au marché », tu prends l'offre à 100 $ tout de suite : tu es taker. Les plateformes facturent généralement moins les makers (par exemple 0,10 % contre 0,20 % pour les takers, chiffres fictifs). Acheteur ou vendeur peut être l'un ou l'autre ; ce n'est pas lié au sens de l'ordre.",
       "difficulty": 2
     },
     {
@@ -476,7 +476,7 @@
         "Le nombre d'ETH échangés sur 24 heures",
         "Le nombre d'USDT disponibles à l'achat"
       ],
-      "explanation": "Dans une paire **BASE/COTATION**, le prix indique combien d'unités de la devise de cotation (ici l'USDT, un stablecoin) il faut pour obtenir une unité de la devise de base (l'ETH). Acheter sur ETH/USDT, c'est donc payer en USDT pour recevoir de l'ETH. Bien lire le sens de la paire évite des erreurs grossières de montant.",
+      "explanation": "Dans une paire **BASE/COTATION**, le prix indique combien d'unités de la devise de cotation il faut pour une unité de la devise de base. Ici, l'ETH est la base et l'USDT, un stablecoin proche du dollar, la cotation : 1 ETH = 3 000 USDT. Exemple : pour acheter 0,5 ETH, tu paies 0,5 × 3 000 = 1 500 USDT. À l'envers (paire USDT/ETH), un USDT vaudrait environ 0,00033 ETH. Bien lire le sens de la paire évite des erreurs de montant. Le nombre affiché n'est ni un volume ni un stock d'USDT disponible.",
       "difficulty": 2
     },
     {
@@ -487,7 +487,7 @@
         "Le prix moyen, la médiane, l'écart type et la tendance",
         "Le prix d'achat, le prix de vente, le levier et la marge"
       ],
-      "explanation": "Chaque bougie résume une période (une minute, une heure, un jour…) par quatre prix : **Open, High, Low, Close** (OHLC). Le corps relie l'ouverture et la clôture, les **mèches** montrent les extrêmes atteints pendant la période. La couleur indique le sens : en général verte si la clôture dépasse l'ouverture, rouge sinon.",
+      "explanation": "Un graphique en chandeliers découpe le temps en périodes (1 minute, 1 heure, 1 jour…). Chaque bougie résume une période par quatre prix : **Open** (ouverture), **High** (plus haut), **Low** (plus bas) et **Close** (clôture), soit OHLC. Exemple : sur une journée, ouverture 100 $, plus haut 108 $, plus bas 95 $, clôture 105 $. Le corps va de 100 à 105 ; les **mèches** montrent les extrêmes, de 95 à 108. La couleur indique le sens : en général verte si la clôture est au-dessus de l'ouverture, rouge sinon. Volume, frais et levier ne sont pas dessinés par la bougie.",
       "difficulty": 2
     },
     {
@@ -498,7 +498,7 @@
         "Le volume d'échange a été très faible pendant toute la journée",
         "La plateforme a suspendu les échanges pendant une partie de la journée"
       ],
-      "explanation": "La **mèche** (ou ombre) d'une bougie montre les prix extrêmes atteints pendant la période, au-delà du corps qui relie ouverture et clôture. Une longue mèche basse indique que les vendeurs ont fait chuter le cours, mais que les acheteurs l'ont ramené vers le haut avant la clôture. Sur un token peu liquide, une seule grosse vente peut créer une mèche spectaculaire et déclencher au passage tous les stop-loss placés dans cette zone.",
+      "explanation": "Dans une bougie, le corps va de l'ouverture à la clôture et les **mèches** (ombres) montrent les prix extrêmes touchés. Exemple : ouverture à 100 $, chute jusqu'à 70 $, puis remontée et clôture à 98 $. Le corps est petit (98-100 $), la mèche basse mesure 28 $. Cela montre que les vendeurs ont poussé le cours très bas, puis que les acheteurs l'ont ramené vers le haut avant la fermeture. Si le prix avait clôturé au plus bas, il n'y aurait pas de mèche basse. Une seule bougie n'est pas un signal fiable. Une mèche sur un jeton peu liquide peut aussi déclencher des stop-loss.",
       "difficulty": 2
     },
     {
@@ -509,7 +509,7 @@
         "Le prix plancher garanti par la plateforme d'échange",
         "La capacité d'un token à résister aux piratages"
       ],
-      "explanation": "Une **résistance** est une zone où le cours a buté à plusieurs reprises, car de nombreux vendeurs s'y manifestent. Son pendant est le **support**, une zone où les achats ont plusieurs fois arrêté la baisse. Ce ne sont pas des murs garantis : ce sont des repères tirés de l'historique des prix, qui finissent souvent par être franchis.",
+      "explanation": "Une **résistance** est un niveau de prix où le cours a buté plusieurs fois parce que beaucoup de vendeurs s'y manifestent. Exemple : un jeton touche 50 $ trois fois en deux mois et redescend à chaque fois : 50 $ est une résistance. Son contraire est le **support**, un niveau où les achats ont arrêté la baisse (par exemple 40 $). Certains traders placent un take-profit juste sous la résistance. Si le prix la franchit nettement, elle devient souvent un support. Ce sont des repères tirés de l'historique, pas des murs garantis ni un prix plancher offert par la plateforme.",
       "difficulty": 2
     },
     {
@@ -520,7 +520,7 @@
         "La rapidité des retraits vers un compte bancaire",
         "Le nombre de plateformes où elle est cotée"
       ],
-      "explanation": "Un actif **volatil** voit son prix varier fortement et souvent, à la hausse comme à la baisse. Les cryptomonnaies sont bien plus volatiles que la plupart des actions ou des devises, et les petits tokens encore plus que le bitcoin. Une forte volatilité signifie de gros gains possibles, mais tout autant de grosses pertes : elle mesure un risque, pas une promesse.",
+      "explanation": "La **volatilité** mesure à quel point un prix varie, en amplitude et en fréquence. Un actif volatil peut monter ou descendre de beaucoup en peu de temps. Exemple : 1 000 € investis dans un petit token qui bouge de ±20 % en une journée valent entre 800 € et 1 200 € le même jour. Les cryptos sont bien plus volatiles que la plupart des actions ou des devises, et les petits tokens encore plus que le bitcoin. C'est un indicateur de risque, pas une promesse de gain. Elle n'a rien à voir avec la vitesse des transactions ou des retraits.",
       "difficulty": 1
     },
     {
@@ -531,7 +531,7 @@
         "Parce que les plateformes bloquent les achats au-delà d'un certain prix",
         "Parce que ses détenteurs paient un impôt spécial à chaque achat"
       ],
-      "explanation": "La **liquidité** mesure la facilité d'acheter ou de vendre une quantité sans faire bouger le prix. Sur un token peu liquide, il y a peu d'acheteurs en face : vendre une somme modeste peut faire plonger le cours de 20 ou 50 %. Un gain affiché à l'écran n'est donc pas un gain réalisable. Avant d'acheter, regarde la profondeur du carnet d'ordres ou la taille du pool de liquidité.",
+      "explanation": "La **liquidité** mesure la facilité d'acheter ou de vendre sans faire bouger le prix. Sur un token peu liquide, le prix affiché est trompeur. Exemple : un jeton affiche 1 $ et tu en détiens 100 000, soit « 100 000 $ » à l'écran. Mais son pool de liquidité ne contient que 20 000 $ et 20 000 jetons : en revendant tes 100 000 jetons, tu n'obtiendrais qu'environ 16 700 $, car le prix s'effondre à chaque vente. Avant d'acheter, regarde la taille du pool ou la profondeur du carnet d'ordres. Un gain affiché n'est pas un gain réalisable.",
       "difficulty": 2
     },
     {
@@ -542,7 +542,7 @@
         "Un gain garanti par contrat",
         "Un gain composé annuel"
       ],
-      "explanation": "Tant que la position n'est pas vendue, le gain est **latent** (unrealized PnL) : il n'existe qu'à l'écran et peut disparaître si le cours rechute. Il devient **réalisé** au moment de la vente. Beaucoup d'investisseurs ont vu des gains latents spectaculaires s'évaporer faute d'avoir encaissé, surtout sur des tokens peu liquides où la vente elle-même fait baisser le prix.",
+      "explanation": "Un gain est **latent** (ou non réalisé) tant que tu n'as pas vendu : c'est un chiffre à l'écran qui bouge avec le cours. Il devient **réalisé** au moment de la vente. Exemple : tu achètes 100 jetons à 1 $ (100 $). Le cours passe à 3 $ : ton portefeuille affiche 300 $, soit 200 $ de gain latent. Si le cours retombe à 1,50 $ avant que tu vendes, il ne reste que 50 $ de gain. Sur un jeton peu liquide, vendre fait même baisser le prix : le gain affiché peut s'évaporer à la vente. Un gain n'est jamais garanti par contrat.",
       "difficulty": 2
     },
     {
@@ -553,7 +553,7 @@
         "+75 %",
         "+150 %"
       ],
-      "explanation": "Après −50 %, un token à 100 $ vaut 50 $ ; pour revenir à 100 $, il doit doubler, soit **+100 %**. Les pourcentages ne sont pas symétriques : plus la chute est forte, plus la remontée nécessaire est énorme (−80 % exige +400 %, −90 % exige +900 %). C'est pourquoi limiter ses pertes compte davantage que viser de gros gains.",
+      "explanation": "Les pourcentages de perte et de gain ne sont pas symétriques. Exemple : tu investis 1 000 € et la valeur baisse de 50 % : il reste 500 €. Pour revenir à 1 000 €, il faut doubler la mise, soit **+100 %**. Un gain de +50 % ne ramènerait qu'à 750 €, et +75 % à 875 €. Plus la chute est forte, plus la remontée nécessaire est énorme : −80 % exige +400 %, −90 % exige +900 %. C'est pourquoi limiter les pertes compte davantage que viser de gros gains.",
       "difficulty": 2
     },
     {
@@ -564,7 +564,7 @@
         "500 €",
         "1 000 €"
       ],
-      "explanation": "1 % de 5 000 € = **50 €**. Cette règle ne limite pas la taille de la position mais la perte possible : on place son stop-loss de sorte que, s'il est touché, on ne perde que 50 €. Ainsi, même une série de dix trades perdants d'affilée ne coûte qu'environ 10 % du capital, ce qui laisse le temps de se corriger.",
+      "explanation": "Cette règle sert à ne pas se ruiner sur une série de mauvais trades. 1 % de 5 000 € = **50 €** de perte maximale par trade. Elle limite la perte possible, pas la taille de la position : on place son stop-loss (vente automatique sous le prix d'achat) et on en déduit la taille. Exemple : tu achètes à 10 $ avec un stop-loss à 9 $, soit 1 $ de risque par jeton ; pour risquer 50 €, tu peux prendre 50 jetons (500 $ environ). Même dix pertes d'affilée ne coûtent alors qu'environ 10 % du capital. Les autres montants (5 €, 500 €, 1 000 €) valent 0,1 %, 10 % et 20 %.",
       "difficulty": 1
     },
     {
@@ -575,7 +575,7 @@
         "1 pour 2",
         "1 pour 5"
       ],
-      "explanation": "Le risque est de 5 $ par token (100 − 95) et le gain visé de 15 $ (115 − 100) : on risque 1 pour espérer gagner 3, soit un ratio de **1:3**. Avec un tel ratio, il suffit de gagner un trade sur quatre pour être à l'équilibre, hors frais. Un ratio défavorable (risquer 10 pour gagner 2) exige au contraire d'avoir raison presque à chaque fois.",
+      "explanation": "Le ratio risque/rendement compare ce que tu risques à ce que tu espères gagner. Ici, le risque est de 5 $ par jeton (100 − 95) et le gain visé de 15 $ (115 − 100) : tu risques 1 pour gagner 3, soit **1:3**. Avec ce ratio, il suffit de gagner 1 trade sur 4 pour être à l'équilibre, hors frais. Exemple : sur 10 trades à 100 € de risque, 3 gagnants (+300 € chacun) et 7 perdants (−100 €) donnent +200 €. À l'inverse, risquer 10 pour gagner 2 exige de gagner plus de 8 trades sur 10 (83 %) pour ne pas perdre d'argent.",
       "difficulty": 2
     },
     {
@@ -586,7 +586,7 @@
         "La liste officielle des plateformes autorisées à coter le token",
         "Le relevé bancaire qui certifie les réserves du projet"
       ],
-      "explanation": "Le **whitepaper** expose le problème visé, la solution technique, l'économie du token (tokenomics) et souvent la feuille de route. C'est la première chose à lire avant d'investir. Signaux d'alerte : texte vague bourré de mots à la mode, promesses de rendement, passages copiés d'un autre projet, absence de détails techniques. Ce n'est jamais une garantie : un document soigné peut cacher un projet creux.",
+      "explanation": "Le **livre blanc** (whitepaper) est le document de présentation d'un projet : le problème visé, la technologie, la répartition et l'utilité du token (la **tokenomics**), la feuille de route. C'est le premier document à lire avant d'investir. Signaux d'alerte : texte de 3 pages bourré de mots à la mode (« IA révolutionnaire », « blockchain de nouvelle génération ») sans détail technique ; équipe sans noms ni visages ; rendement promis ; passages copiés d'un autre projet (colle une phrase dans un moteur de recherche pour le vérifier) ; 80 % des tokens réservés à l'équipe. Même bien rédigé, il ne garantit rien : ce n'est ni un contrat de remboursement ni une preuve de réserves.",
       "difficulty": 1
     },
     {
@@ -597,7 +597,7 @@
         "La variation du prix du token sur les dernières 24 heures",
         "Le nombre de tokens créés par le protocole sur les dernières 24 heures"
       ],
-      "explanation": "Le **volume** mesure l'activité réelle d'échange : un volume élevé indique en principe un marché actif où l'on peut acheter et vendre facilement. Mais ce chiffre se falsifie : certaines plateformes ou équipes gonflent le volume en s'échangeant des tokens à elles-mêmes (**wash trading**) pour attirer les acheteurs. Un volume énorme sur un token inconnu, sans communauté visible, doit éveiller la méfiance.",
+      "explanation": "Le **volume sur 24 h** est la valeur totale des achats et ventes d'un token sur la dernière journée. Un volume élevé indique en principe un marché actif, où l'on peut entrer et sortir facilement. Mais il peut être truqué par du **wash trading** : l'équipe s'échange ses propres tokens pour simuler de l'activité. Exemple : un token de 200 000 $ de market cap affiche 5 M$ de volume, soit 25 fois sa taille, avec quelques centaines de détenteurs et aucune communauté visible : c'est suspect. Ce n'est ni le nombre de nouveaux détenteurs ni la variation du prix.",
       "difficulty": 1
     },
     {
@@ -608,7 +608,7 @@
         "C'est sûr dès lors que la plateforme a un site professionnel",
         "C'est sans risque tant que l'on retire ses gains chaque semaine"
       ],
-      "explanation": "2 % par jour, réinvestis, multiplieraient la mise par plus de 1 000 en un an : aucune activité réelle ne produit cela durablement. Un rendement **élevé et garanti** est la signature des chaînes de Ponzi, qui paient les anciens avec l'argent des nouveaux jusqu'à l'effondrement. Retirer régulièrement ne protège pas : ces plateformes bloquent souvent les retraits juste avant de disparaître.",
+      "explanation": "Cette question porte sur un signal d'arnaque très courant : la promesse d'un rendement garanti et élevé. Calcul : 2 % par jour réinvestis donnent 1,02^365 ≈ 1 377 : 1 000 € deviendraient environ 1,4 million d'euros en un an. Aucune activité réelle ne produit cela. Un tel rendement est la signature d'une **chaîne de Ponzi**, qui paie les anciens avec l'argent des nouveaux. Autres signaux : mot « garanti », « bot de trading » mystérieux, bonus pour recruter des proches, retraits qui deviennent « en maintenance ». Un site professionnel ne prouve rien, et retirer ses gains chaque semaine ne protège pas : le blocage survient juste avant la disparition.",
       "difficulty": 1
     },
     {
@@ -619,7 +619,7 @@
         "Tu reçois 2 ETH, mais seulement après vérification d'identité",
         "Tu peux annuler la transaction si rien n'arrive"
       ],
-      "explanation": "L'arnaque au **faux giveaway** usurpe l'image d'une personnalité ou d'une entreprise, souvent avec des vidéos détournées ou des deepfakes, pour réclamer un envoi « à doubler ». Rien n'est jamais renvoyé. Une transaction blockchain est irréversible : aucune banque ni plateforme ne peut l'annuler. Règle simple : personne ne distribue de l'argent gratuit en échange d'un envoi préalable.",
+      "explanation": "L'arnaque au **faux giveaway** (cadeau) usurpe l'image d'une célébrité ou d'une entreprise : vidéo en direct détournée, deepfake, chaîne YouTube piratée, adresse ou QR code affiché en bas de l'écran, compteur « offre limitée ». Rien n'est jamais renvoyé. Exemple : tu envoies 1 ETH (environ 3 000 $ au cours de l'exemple) ; il part définitivement chez l'escroc. Une transaction blockchain est irréversible : aucune banque ni plateforme ne peut l'annuler. Règle : personne ne distribue de l'argent en demandant d'abord un envoi. Signaux : commentaires désactivés, faux comptes qui disent avoir reçu leur double.",
       "difficulty": 1
     },
     {
@@ -630,7 +630,7 @@
         "Ne lui donner que la moitié des mots, par précaution",
         "La lui transmettre par e-mail plutôt que par message privé"
       ],
-      "explanation": "La **phrase de récupération** (seed phrase) donne le contrôle total du portefeuille : quiconque la connaît peut le vider. Aucun support, administrateur ou plateforme sérieuse ne la demande jamais. Les escrocs surveillent les groupes publics et contactent en privé ceux qui posent des questions, en se faisant passer pour l'équipe. N'en donner qu'une partie n'est pas une protection : c'est déjà céder à la manipulation, et l'escroc réclamera la suite.",
+      "explanation": "La **phrase de récupération** (seed phrase, 12 ou 24 mots) est la clé maîtresse de ton portefeuille : quiconque la connaît peut le vider depuis n'importe où, sans ton accord. Aucun support sérieux ne la demande jamais. Scénario : tu poses une question dans un groupe public ; cinq minutes plus tard, un compte nommé « Support officiel » t'écrit en privé et réclame les mots pour « synchroniser » ton portefeuille. Signaux : message privé que tu n'as pas sollicité, urgence, titre d'administrateur facile à imiter. N'en donner qu'une partie, ou l'envoyer par e-mail, revient à céder : l'escroc réclamera la suite.",
       "difficulty": 1
     },
     {
@@ -641,7 +641,7 @@
         "Les investisseurs prêtent leurs tokens contre une garantie supérieure",
         "Le prix du token y est indexé en permanence sur celui du bitcoin"
       ],
-      "explanation": "Une **chaîne de Ponzi** ne produit aucun rendement réel : elle verse aux premiers participants l'argent des nouveaux arrivants, ce qui donne l'illusion d'une activité rentable. Elle s'effondre inévitablement dès que les entrées ralentissent ou que trop de gens veulent retirer. En crypto, elle se cache souvent derrière un prétendu « bot de trading » ou un « arbitrage secret » aux rendements étonnamment réguliers.",
+      "explanation": "Une **chaîne de Ponzi** paie les anciens investisseurs avec l'argent des nouveaux, sans aucune activité réelle derrière. Exemple : 100 personnes déposent 1 000 € (100 000 €) et on leur promet 10 % par mois. Dès le premier mois, il faut sortir 10 000 € : ils viennent des dépôts suivants, pas de gains. Quand les entrées ralentissent ou que beaucoup veulent retirer, tout s'écroule. Signaux : rendement élevé et très régulier, « bot de trading » ou « arbitrage secret » invérifiable, pression pour recruter. Ce n'est ni un partage de frais de minage, ni du prêt avec garantie, ni un token indexé sur le bitcoin.",
       "difficulty": 2
     },
     {
@@ -652,7 +652,7 @@
         "D'un économiste qui a décrit mathématiquement le mécanisme en 1950",
         "D'un jeu de société des années 1930 fondé sur des pyramides de jetons"
       ],
-      "explanation": "En 1920, à Boston, Charles Ponzi promettait 50 % de gain en 45 jours grâce à un prétendu arbitrage sur les **coupons-réponse internationaux** de la poste. En réalité, il payait les premiers investisseurs avec l'argent des suivants, et le système s'est effondré la même année. Le procédé existait avant lui, mais son nom est resté attaché à ce type de fraude, omniprésent dans les arnaques crypto.",
+      "explanation": "Le nom vient de **Charles Ponzi**, escroc italien installé à Boston. En 1920, il promettait 50 % de gain en 45 jours grâce à un prétendu arbitrage sur les **coupons-réponse internationaux** de la poste (des bons achetés dans un pays, échangeables contre des timbres dans un autre). En réalité, il payait les premiers investisseurs avec l'argent des suivants. Annualisé, 50 % tous les 45 jours donnerait environ ×27 en un an : un rendement trop beau pour être vrai. Le système s'est effondré la même année. Le procédé existait avant lui ; son nom est resté associé à cette fraude, très fréquente dans la crypto.",
       "difficulty": 2,
       "source": "https://fr.wikipedia.org/wiki/Charles_Ponzi"
     },
@@ -664,7 +664,7 @@
         "D'un mécanisme de staking qui récompense la sécurité du réseau",
         "D'un airdrop réservé aux membres les plus actifs du projet"
       ],
-      "explanation": "Quand l'essentiel des gains vient du **recrutement** et non d'un produit réel, on est face à une **vente pyramidale**. Seuls les premiers inscrits gagnent ; la grande majorité perd sa mise quand le flux de nouveaux membres se tarit. Ces schémas sont interdits en France. Des fraudes crypto célèbres comme OneCoin ou BitConnect reposaient largement sur ce marketing de parrainage à plusieurs niveaux.",
+      "explanation": "Quand les gains viennent surtout du **recrutement** de nouveaux membres, et non de la vente d'un vrai produit, c'est une **vente pyramidale**. Calcul : si chaque membre doit recruter 3 personnes, le niveau 10 en demande 3^10 = 59 049, et le niveau 20 en demande plus de 3,4 milliards de personnes, ce qui est impossible. Le recrutement se tarit vite, et la grande majorité des derniers arrivés perd sa mise. Ce n'est pas un parrainage simple (un petit bonus pour un client amené), ni du staking, ni un airdrop. Ces schémas sont interdits en France. OneCoin et BitConnect reposaient largement sur ce système.",
       "difficulty": 2
     },
     {
@@ -675,7 +675,7 @@
         "Miner des cryptos en détournant en secret la puissance de calcul d'ordinateurs piratés",
         "Vendre à découvert un token juste avant l'annonce publique d'une mauvaise nouvelle"
       ],
-      "explanation": "Dans le **pig butchering** (de l'expression chinoise *sha zhu pan*), l'escroc noue pendant des semaines une relation de confiance, souvent amoureuse ou amicale, via une appli de rencontre, un réseau social ou un faux « mauvais numéro ». Il présente ensuite une plateforme d'investissement qui affiche des gains fictifs pour encourager des dépôts toujours plus gros, puis coupe le contact. Le « cochon » est la victime qu'on engraisse avant de l'abattre.",
+      "explanation": "Le **pig butchering** (de l'expression chinoise *sha zhu pan*, « engraisser puis abattre le cochon ») est une arnaque lente. Scénario : un inconnu t'écrit un « mauvais numéro » ; vous discutez pendant des semaines, il ou elle devient un ami ou un partenaire amoureux. Puis il mentionne ses gains en crypto et te guide vers une plateforme. Tu déposes 200 €, le solde affiché passe à 400 €, un petit retrait fonctionne. Tu déposes alors 20 000 € : la plateforme affiche 50 000 €, mais tu ne peux plus rien retirer. Signaux : contact non sollicité, passage rapide sur WhatsApp ou Telegram, mélange de romance et d'investissement, plateforme inconnue des régulateurs.",
       "difficulty": 2
     },
     {
@@ -686,7 +686,7 @@
         "Il suffit de payer une fois pour récupérer la totalité des gains",
         "C'est une simple vérification d'identité obligatoire en Europe"
       ],
-      "explanation": "Réclamer un versement pour libérer des fonds est un grand classique des **fausses plateformes** : les soldes affichés ne sont que des chiffres sur une page web, sans rien derrière. Chaque paiement entraîne une nouvelle demande (frais, taxes, « assurance »…), jusqu'à épuisement de la victime. Une plateforme légitime déduit ses frais du montant retiré : elle n'exige pas un nouveau dépôt pour débloquer ton propre argent.",
+      "explanation": "Demander un paiement pour libérer des fonds est un grand classique des **fausses plateformes** : les soldes affichés ne sont que des chiffres sur une page web. Scénario : tu as déposé 5 000 €, ton compte affiche 48 000 € ; pour retirer, on te demande 15 % de « taxes », soit 7 200 €. Tu paies. Il faut ensuite une « assurance », puis des « frais de conformité », et ainsi de suite. Signaux : paiement exigé avant retrait, taxes à verser à la plateforme au lieu de les déclarer à l'administration fiscale, délai pressant. Une plateforme sérieuse déduit ses frais du retrait ; elle ne demande pas un nouveau dépôt.",
       "difficulty": 2
     },
     {
@@ -697,7 +697,7 @@
         "D'une démarche obligatoire pour déclarer le vol au fisc",
         "D'une assurance automatique fournie par la blockchain"
       ],
-      "explanation": "Les escrocs revendent et réutilisent les listes de victimes : de faux avocats, « hackers éthiques » ou enquêteurs promettent de récupérer les fonds moyennant des frais d'avance, puis disparaissent. C'est l'**arnaque au recouvrement** (recovery scam). Une victime doit porter plainte auprès des autorités et se méfier de toute sollicitation qu'elle n'a pas demandée, surtout si elle exige un paiement préalable.",
+      "explanation": "Après une arnaque, les victimes sont ciblées une seconde fois : c'est l'**arnaque au recouvrement** (recovery scam). Les escrocs revendent et réutilisent les listes de victimes. Scénario : tu as perdu 5 000 €. Deux semaines plus tard, un « cabinet spécialisé » ou un « hacker éthique » te contacte : il dit avoir retrouvé les fonds et réclame 10 % (500 €) d'avance, puis des « frais de justice ». Il disparaît après le paiement. Signaux : contact non sollicité, frais d'avance, récupération « garantie ». Il n'existe ni service public de restitution automatique, ni assurance de la blockchain. Dépose plainte et méfie-toi de toute offre qui exige un paiement.",
       "difficulty": 2
     },
     {
@@ -708,7 +708,7 @@
         "Un remboursement automatique de frais de gas effectué par le réseau",
         "Une attaque à 51 % visant à annuler tes transactions précédentes"
       ],
-      "explanation": "Dans l'**address poisoning**, l'attaquant génère une adresse qui ressemble à celle d'un de tes destinataires habituels (mêmes premiers et derniers caractères) et fait apparaître une transaction minuscule ou nulle dans ton historique. Il parie que, lors d'un prochain envoi, tu copieras l'adresse depuis l'historique en ne vérifiant que le début et la fin. Parade : utiliser un carnet d'adresses enregistré et vérifier l'adresse complète avant chaque envoi.",
+      "explanation": "L'**address poisoning** (empoisonnement d'adresse) exploite un réflexe : copier une adresse depuis son historique. Les adresses blockchain sont de longues suites de caractères que l'on ne vérifie souvent qu'au début et à la fin. L'attaquant génère une adresse dont les premiers et derniers caractères ressemblent à ceux de ton ami, et fait apparaître dans ton historique une transaction de 0 USDT avec elle. Scénario : tu veux envoyer 2 000 USDT à ton ami, tu copies l'adresse de ton historique sans comparer toute l'adresse : les fonds partent chez l'attaquant. Parade : carnet d'adresses enregistré, vérification de l'adresse complète. Ce n'est pas un test de ton ami.",
       "difficulty": 3
     },
     {
@@ -719,7 +719,7 @@
         "Un mineur caché, qui utilise ton processeur pour miner",
         "Un keylogger, qui enregistre les touches que tu tapes"
       ],
-      "explanation": "Un **clipper** (pirate de presse-papiers) surveille ce que tu copies : dès qu'il reconnaît une adresse crypto, il la remplace par celle de l'attaquant, parfois choisie pour lui ressembler. Si tu ne vérifies pas, tu envoies les fonds au pirate, sans retour possible. D'où la règle : toujours comparer l'adresse collée avec l'originale et, avec un portefeuille matériel, vérifier l'adresse affichée sur l'écran de l'appareil.",
+      "explanation": "Un **clipper** est un logiciel malveillant qui surveille le presse-papiers (la mémoire de ce que tu copies). Dès qu'il reconnaît une adresse crypto, il la remplace par celle de l'attaquant, souvent choisie pour commencer et finir comme l'originale. Scénario : tu copies l'adresse de ton ami, tu la colles et tu vérifies seulement le début ; tu envoies 0,5 BTC, qui part chez le pirate sans retour possible. Parade : comparer l'adresse collée avec l'originale caractère par caractère, et avec un portefeuille matériel, vérifier l'adresse affichée sur l'écran de l'appareil. Un rançongiciel chiffre des fichiers, un keylogger enregistre les frappes : ce n'est pas ce symptôme.",
       "difficulty": 2
     },
     {
@@ -730,7 +730,7 @@
         "Augmenter ton solde pour te rendre éligible à un airdrop",
         "Tester la vitesse du réseau avant une mise à jour du protocole"
       ],
-      "explanation": "Une **dusting attack** envoie de minuscules montants à de nombreuses adresses. Sur une blockchain à UTXO comme Bitcoin, si tu dépenses ensuite cette poussière en même temps que tes autres fonds, l'attaquant peut relier plusieurs de tes adresses entre elles et tenter de t'identifier, en vue de phishing ou d'extorsion. Parade : ne pas dépenser ces montants ; certains portefeuilles permettent de les « geler » pour qu'ils ne soient jamais utilisés.",
+      "explanation": "Une **dusting attack** envoie de minuscules montants (la « poussière ») à de nombreuses adresses. Sur Bitcoin, chaque paiement reçu fonctionne comme une pièce (un **UTXO**), et une transaction peut en regrouper plusieurs. Exemple : tu reçois 546 satoshis non sollicités (1 satoshi = 0,00000001 BTC). Plus tard, tu les dépenses avec tes autres fonds : l'analyse de la blockchain relie alors plusieurs de tes adresses, ce qui peut te désanonymiser et préparer du phishing ou du chantage. Parade : ne pas dépenser la poussière ; certains portefeuilles permettent de la mettre de côté. Ce n'est ni un remboursement de frais, ni une condition pour un airdrop.",
       "difficulty": 3
     },
     {
@@ -741,7 +741,7 @@
         "Tes frais de gas seront prélevés sans limite à chaque transaction",
         "Le token restera bloqué dans ton portefeuille jusqu'à la révocation"
       ],
-      "explanation": "Pour échanger un token ERC-20, tu dois d'abord **approuver** un contrat à le dépenser. Une approbation illimitée lui permet de prélever n'importe quel montant de ce token, à tout moment, tant qu'elle n'est pas révoquée. Si ce contrat est malveillant, ou piraté des mois plus tard, tes fonds peuvent être vidés sans nouvelle signature. Bonne pratique : n'approuver que le montant nécessaire et révoquer régulièrement les approbations inutiles.",
+      "explanation": "Pour échanger un token ERC-20 (le standard de la plupart des jetons sur Ethereum), tu dois d'abord **approuver** un contrat à le dépenser. Une approbation **illimitée** l'autorise à prendre n'importe quelle quantité, à tout moment, tant qu'elle n'est pas révoquée. Scénario : tu échanges 100 USDC mais tu approuves un montant illimité. Six mois plus tard, le contrat est piraté alors que ton portefeuille contient 5 000 USDC : l'attaquant peut tout prélever sans nouvelle signature. Si tu avais approuvé seulement 100 USDC, ta perte maximale aurait été de 100 USDC. Bonne pratique : approuver le montant nécessaire et révoquer régulièrement les approbations inutiles.",
       "difficulty": 3
     },
     {
@@ -752,7 +752,7 @@
         "Signer un message bloque ton portefeuille pendant 24 heures",
         "Signer un message déclenche des frais cachés prélevés plus tard"
       ],
-      "explanation": "Certains standards, comme **permit** (EIP-2612) ou Permit2, permettent d'accorder une autorisation de dépense par simple **signature hors chaîne**, sans payer de gas. L'attaquant soumet ensuite lui-même cette signature à la blockchain et transfère tes tokens. Les drainers exploitent largement ce mécanisme, car la victime croit qu'une signature « gratuite » est sans danger. Signer ne révèle pas ta clé privée, mais peut céder des droits : lis toujours ce que ton portefeuille te demande de signer.",
+      "explanation": "Signer un message ne coûte pas de **gas** (les frais de transaction) et ne révèle pas ta clé privée. Mais certaines signatures valent autorisation. Le standard **permit** (EIP-2612) permet d'autoriser un tiers à dépenser tes jetons par simple signature. Scénario : un site « Vérifie ton portefeuille pour recevoir un airdrop » te fait signer un message illisible. En réalité, il autorise l'attaquant à dépenser 5 000 USDC pendant dix ans ; l'attaquant envoie ensuite lui-même la signature à la blockchain. Signaux : mots spender, value, deadline ou Permit dans la fenêtre, montant énorme, échéance lointaine. Un message de connexion lisible, avec le nom du site, est normal.",
       "difficulty": 3
     },
     {
@@ -763,7 +763,7 @@
         "Le droit de vendre un seul NFT, au prix que tu as fixé",
         "Le droit de copier l'image de tes NFT pour les exposer"
       ],
-      "explanation": "`setApprovalForAll` est une fonction des standards ERC-721 et ERC-1155 qui donne à un opérateur le droit de transférer **l'ensemble** de tes NFT d'une collection, tant que l'autorisation n'est pas révoquée. Les places de marché légitimes l'utilisent, mais c'est aussi une cible de choix pour les sites de phishing : une seule signature suffit à vider toute la collection. Vérifie toujours l'adresse de l'opérateur et le domaine du site.",
+      "explanation": "`setApprovalForAll` est une fonction des standards NFT (ERC-721 et ERC-1155) qui donne à un **opérateur** le droit de transférer **tous** tes NFT d'une collection, y compris ceux que tu achèteras plus tard, jusqu'à révocation. Les places de marché légitimes l'utilisent pour mettre tes NFT en vente. Mais c'est aussi la cible favorite des sites de phishing. Scénario : tu possèdes 12 NFT d'une collection ; tu signes sur un faux site de mint ; l'attaquant, désormais opérateur, transfère les 12 en une seule transaction. Pour un seul NFT, il existe une approbation plus limitée. Vérifie l'adresse de l'opérateur et le nom de domaine avant de signer.",
       "difficulty": 3
     },
     {
@@ -774,7 +774,7 @@
         "Choisir celui qui a le plus fort volume dans l'heure",
         "Choisir celui qui apparaît en premier dans la recherche"
       ],
-      "explanation": "N'importe qui peut créer un token avec le même nom et le même symbole qu'un projet connu : seule l'**adresse du contrat** est unique. Il faut la récupérer depuis une source officielle (site ou documentation du projet) et la comparer caractère par caractère. Les faux tokens affichent parfois un volume fabriqué pour paraître légitimes, et un prix bas ne prouve rien.",
+      "explanation": "N'importe qui peut créer un token avec le même nom et le même symbole qu'un projet connu. Seule l'**adresse du contrat** (une longue suite de caractères commençant par 0x sur Ethereum) est unique. Scénario : tu cherches « PEPE » sur une DEX et vois cinq résultats. L'un affiche un prix minuscule et 2 M$ de volume : tu achètes 1 000 $ et découvres que c'est un faux jeton impossible à revendre. Méthode : récupère l'adresse sur le site officiel du projet ou sur sa page d'un agrégateur de référence (CoinGecko, CoinMarketCap), compare-la caractère par caractère, vérifie la date de création. Prix bas, volume, ordre de recherche ne prouvent rien.",
       "difficulty": 2
     },
     {
@@ -785,7 +785,7 @@
         "L'utiliser après avoir changé le code PIN de l'appareil",
         "La recopier sur papier, puis détruire la carte imprimée"
       ],
-      "explanation": "Un portefeuille matériel légitime **génère lui-même** la phrase de récupération lors de sa configuration et l'affiche sur son écran : elle n'est jamais fournie à l'avance. Une phrase pré-imprimée est connue de quelqu'un d'autre, qui n'attend que tes dépôts pour les voler ; changer le PIN n'y change rien, car le PIN ne protège que l'accès à l'appareil. Achète ces appareils chez le fabricant ou un revendeur officiel et méfie-toi de ceux d'occasion.",
+      "explanation": "Un portefeuille matériel (hardware wallet) légitime **génère lui-même** la phrase de récupération à la première utilisation et l'affiche sur son écran, pour que tu la notes toi-même. Elle n'est jamais fournie à l'avance. Scénario : tu reçois un boîtier avec une carte portant déjà 24 mots. Tu y déposes 2 000 € ; la personne qui a imprimé la carte connaît la phrase et vide le portefeuille en quelques secondes. Changer le code PIN n'y change rien : il ne protège que l'accès physique à l'appareil, pas la phrase. Signaux : emballage ouvert, appareil d'occasion, vendeur tiers à prix cassé. Achète chez le fabricant ou un revendeur officiel.",
       "difficulty": 2
     },
     {
@@ -796,7 +796,7 @@
         "C'est un antivirus qui protégera ton portefeuille des pirates",
         "C'est un logiciel qui accélère la validation des transactions"
       ],
-      "explanation": "AnyDesk et TeamViewer sont des logiciels légitimes de **prise en main à distance**, mais les escrocs s'en servent pour piloter l'ordinateur de la victime : ouvrir son portefeuille ou sa banque, valider des virements ou des transferts en son nom. Aucun service sérieux d'investissement n'a besoin de contrôler ton écran. Si tu as installé un tel logiciel à la demande d'un inconnu, désinstalle-le et change tes mots de passe depuis un autre appareil.",
+      "explanation": "AnyDesk et TeamViewer sont des logiciels légitimes de **prise en main à distance** : celui qui reçoit ton code voit ton écran et peut utiliser ta souris. Les escrocs s'en servent pour agir à ta place. Scénario : une pub avec une célébrité t'amène vers un « conseiller », qui te dit : « pour ton premier bitcoin, installe AnyDesk, je te guide ». Une fois connecté, il te demande d'ouvrir ta banque, puis valide lui-même un virement. Aucun service d'investissement sérieux n'a besoin de contrôler ton ordinateur. Si c'est fait : désinstalle le logiciel, change tes mots de passe depuis un autre appareil et préviens ta banque.",
       "difficulty": 1
     },
     {
